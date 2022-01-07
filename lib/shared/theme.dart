@@ -6,9 +6,9 @@ double defaultMargin = 24.0;
 
 Color primaryColor = Color(0xff5F59E1);
 Color secondaryColor = Color(0xff38ABBE);
-Color backgroundColor1 = Color(0xff9c27b0);
-Color backgroundColor3 = Color(0xff388e3c);
-Color backgroundColor2 = Color(0xffffe0b2);
+Color backgroundColor1 = Color(0xffff4081);
+Color backgroundColor2 = Color(0xffff9100);
+Color backgroundColor3 = Color(0xffffe0b2);
 Color primaryTextColor = Color(0xff111111);
 Color secondaryTextColor = Color(0xffFFFFFF);
 Color buttonGreyColor = Color(0xffffa726);

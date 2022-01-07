@@ -43,9 +43,10 @@ class _LoginPageState extends State<login_page> {
       // print('profile: $user');
       print(token['message']);
       //กลับไปที่หน้า HomeStack
-      //   Navigator.pushNamedAndRemoveUntil(
-      //       context, '/home_page', (route) => false);
-      Navigator.pushNamed(context, '/home_page');
+      Navigator.pushNamedAndRemoveUntil(
+          context, '/home_page', (route) => false);
+
+      // Navigator.pushNamed(context, '/home_page');
     } else {
       Map<String, dynamic> err = json.decode(response.body);
       print(err['message']);
@@ -85,40 +86,40 @@ class _LoginPageState extends State<login_page> {
                           padding: const EdgeInsets.all(30),
                           child: Column(
                             children: [
-                              FormBuilderTextField(
-                                initialValue: 'ghame123@gmail.com',
-                                name: "email",
-                                maxLines: 1,
-                                keyboardType: TextInputType.emailAddress,
-                                decoration: InputDecoration(
+                              Material(
+                                elevation: 18,
+                                shadowColor: Colors.grey.withOpacity(0.5),
+                                child: FormBuilderTextField(
+                                  initialValue: 'ghame123@gmail.com',
+                                  name: "email",
+                                  maxLines: 1,
+                                  keyboardType: TextInputType.emailAddress,
+                                  decoration: InputDecoration(
                                     suffixIcon: Icon(Icons.email),
-                                    hintText: 'อีเมล',
-                                    filled: true,
+                                    labelText: 'อีเมล',
                                     fillColor: Colors.white,
-                                    border: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    errorStyle: TextStyle(
-                                        backgroundColor: Colors.white)),
+                                    filled: true,
+                                  ),
+                                ),
                               ),
                               SizedBox(height: 5),
-                              FormBuilderTextField(
-                                initialValue: '123456',
-                                name: "password",
-                                maxLines: 1,
-                                keyboardType: TextInputType.visiblePassword,
-                                obscureText: true,
-                                decoration: InputDecoration(
-                                    suffixIcon: Icon(Icons.security),
-                                    hintText: 'Password',
-                                    filled: true,
+                              Material(
+                                elevation: 18,
+                                shadowColor: Colors.grey.withOpacity(0.5),
+                                child: FormBuilderTextField(
+                                  initialValue: '123456',
+                                  name: "password",
+                                  maxLines: 1,
+                                  keyboardType: TextInputType.visiblePassword,
+                                  obscureText: true,
+                                  decoration: InputDecoration(
+                                    suffixIcon: Icon(Icons.vpn_key),
+                                    labelText: 'อีเมล',
                                     fillColor: Colors.white,
-                                    border: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    errorStyle: TextStyle(
-                                        backgroundColor: Colors.white)),
-                              ),
+                                    filled: true,
+                                  ),
+                                ),
+                              )
                             ],
                           ),
                         ),

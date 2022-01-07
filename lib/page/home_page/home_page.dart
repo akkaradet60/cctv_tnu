@@ -218,7 +218,7 @@ class _home_pageState extends State<home_page> {
     }
 
     return Scaffold(
-      drawer: menu(),
+      drawer: manu(),
       appBar: AppBar(
         title: const Text('เทศบาลเมืองมหาสารคาม'),
         actions: <Widget>[
@@ -233,14 +233,21 @@ class _home_pageState extends State<home_page> {
         ],
       ),
       body: SafeArea(
-        child: ListView(
-          children: [
-            slider(),
-            titleMenus(),
-            cardMenus(),
-            cardMenus1(),
-            SizedBox(height: 111),
-          ],
+        child: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [Colors.pinkAccent, Colors.orangeAccent],
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft)),
+          child: ListView(
+            children: [
+              slider(),
+              titleMenus(),
+              cardMenus(),
+              cardMenus1(),
+              SizedBox(height: 111),
+            ],
+          ),
         ),
       ),
     );
