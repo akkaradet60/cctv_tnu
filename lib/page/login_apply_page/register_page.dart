@@ -1,10 +1,5 @@
-import 'dart:ffi';
-
-import 'package:cctv_tun/shared/theme.dart';
-import 'package:cctv_tun/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:form_field_validator/form_field_validator.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -12,28 +7,38 @@ class register_page extends StatefulWidget {
   register_page({Key? key}) : super(key: key);
 
   @override
-  _register_pageState createState() => _register_pageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _register_pageState extends State<register_page> {
+class _RegisterPageState extends State<register_page> {
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
+
   Future<void> register(Map formValues) async {
-    print(formValues);
+    //formValues['name']
+    //print(formValues);
     var url = Uri.parse('https://api.codingthailand.com/api/register');
     var response = await http.post(url,
+        headers: {'Content-Type': 'application/json'},
         body: json.encode({
-          "name": formValues['name'],
-          "email": formValues['email'],
-          "password": formValues['password']
+          "name": formValues["name"],
+          "email": formValues["email"],
+          "password": formValues["password"]
         }));
     if (response.statusCode == 201) {
       Map<String, dynamic> feedback = json.decode(response.body);
-      print(feedback['message']);
+      //print(feedback['message']);
+      // print(feedback['message']);
+      //กลับไปที่หน้า LoginPage
+      //  Future.delayed(Duration(seconds: 3), () {
+      //  Navigator.pop(context);
+      // });
+
     } else {
       Map<String, dynamic> err = json.decode(response.body);
       print(err['errors']['email'][0]);
+      //print(err['errors']['email'][0]);
+
     }
-    //var response = await http.post(url, headers: {'con': '/'});
   }
 
   @override
@@ -52,154 +57,98 @@ class _register_pageState extends State<register_page> {
             ),
           ],
         ),
-        body: SafeArea(
-          child: ListView(
-            children: [
-              Container(
-                margin: EdgeInsets.only(top: 10),
+        body: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [Colors.deepOrange, Colors.lightBlue],
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft)),
+          child: Center(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.all(40),
                 child: Column(
                   children: [
+                    Text('ลงทะเบียน', style: TextStyle(fontSize: 40)),
+                    SizedBox(height: 40),
                     FormBuilder(
                       key: _fbKey,
-                      initialValue: {
-                        'name': '',
-                        'email': '',
-                        'password': ''
-                        /* 'email': '',
-                        'name': '',
-                        'surname': '',
-                        'password': '',
-                        'password2': '',
-                        'phonenumber': '',*/
-                      },
+                      initialValue: {'name': '', 'email': '', 'password': ''},
+                      autovalidateMode: AutovalidateMode
+                          .always, //ถ้าไม่ใส่ต้อง submit ก่อนถึงจะตรวจสอบ validation
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          FormBuilderTextField(
-                            name: "email",
-                            maxLines: 1,
-                            keyboardType: TextInputType.text,
-                            decoration: const InputDecoration(
-                              suffixIcon: Icon(Icons.email),
-                              helperText: 'อีเมล',
-                              filled: true,
-                              fillColor: Colors.white,
-                            ),
-                            validator: MultiValidator([
-                              RequiredValidator(
-                                errorText: "ป้อนข้อมูล อีเมล ด้วย",
-                              ),
-                            ]),
-                          ),
                           FormBuilderTextField(
                             name: "name",
                             maxLines: 1,
                             keyboardType: TextInputType.text,
-                            decoration: const InputDecoration(
-                              suffixIcon: Icon(Icons.account_box_outlined),
-                              helperText: 'ชื่อ',
-                              filled: true,
-                              fillColor: Colors.white,
-                            ),
-                            validator: MultiValidator([
-                              RequiredValidator(
-                                  errorText: "ป้อนข้อมูล ชื่อ ด้วย"),
-                            ]),
+                            decoration: InputDecoration(
+                                hintText: 'ชื่อ-สกุล',
+                                filled: true,
+                                fillColor: Colors.white,
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                errorStyle:
+                                    TextStyle(backgroundColor: Colors.white)),
                           ),
+                          SizedBox(height: 20),
                           FormBuilderTextField(
-                            name: "surname",
+                            name: "email",
                             maxLines: 1,
                             keyboardType: TextInputType.emailAddress,
-                            decoration: const InputDecoration(
-                              suffixIcon: Icon(Icons.account_box_outlined),
-                              helperText: 'นาม-สกุล',
-                              filled: true,
-                              fillColor: Colors.white,
-                            ),
-                            validator: MultiValidator([
-                              RequiredValidator(
-                                errorText: "ป้อนข้อมูล นาม-สกุล ด้วย",
-                              ),
-                            ]),
+                            decoration: InputDecoration(
+                                hintText: 'Email',
+                                filled: true,
+                                fillColor: Colors.white,
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                errorStyle:
+                                    TextStyle(backgroundColor: Colors.white)),
                           ),
+                          SizedBox(height: 20),
                           FormBuilderTextField(
                             name: "password",
                             maxLines: 1,
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: const InputDecoration(
-                              suffixIcon: Icon(Icons.security),
-                              helperText: 'รหัสผ่าน',
-                              filled: true,
-                              fillColor: Colors.white,
-                            ),
-                            validator: MultiValidator([
-                              RequiredValidator(
-                                errorText: "ป้อนข้อมูล รหัสผ่าน ด้วย",
-                              ),
-                            ]),
-                          ),
-                          FormBuilderTextField(
-                            name: 'password2',
-                            maxLines: 1,
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: const InputDecoration(
-                              suffixIcon: Icon(Icons.security),
-                              helperText: 'ยืนยันรหัสผ่าน',
-                              filled: true,
-                              fillColor: Colors.white,
-                            ),
-                            validator: MultiValidator([
-                              RequiredValidator(
-                                errorText: "ป้อนข้อมูล อีเมล ด้วย",
-                              ),
-                            ]),
-                          ),
-                          FormBuilderTextField(
-                            name: 'phonenumber',
-                            maxLines: 1,
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: const InputDecoration(
-                              suffixIcon: Icon(Icons.security),
-                              helperText: 'เบอร์โทร',
-                              filled: true,
-                              fillColor: Colors.white,
-                            ),
-                            validator: MultiValidator([
-                              RequiredValidator(
-                                errorText: "ป้อนข้อมูล เบอร์โทร ด้วย",
-                              ),
-                            ]),
-                          ),
-                          Container(
-                            color: Colors.transparent,
-                            padding:
-                                EdgeInsets.symmetric(horizontal: defaultMargin),
-                            margin: EdgeInsets.only(top: 10, bottom: 5),
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  CustomButton(
-                                    title: 'สมัครสมาชิก',
-                                    onPressed: () {
-                                      if (_fbKey.currentState!
-                                          .saveAndValidate()) {
-                                        print(_fbKey.currentState!.value);
-                                        //  register(_fbKey.currentState!.value);
-                                      }
-                                    },
-                                    colorButton: primaryColor,
-                                    textStyle: secondaryTextStyle.copyWith(
-                                        fontWeight: medium, fontSize: 16),
-                                  ),
-                                ]),
+                            keyboardType: TextInputType.visiblePassword,
+                            obscureText: true,
+                            decoration: InputDecoration(
+                                hintText: 'Password',
+                                filled: true,
+                                fillColor: Colors.white,
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                errorStyle:
+                                    TextStyle(backgroundColor: Colors.white)),
                           ),
                         ],
                       ),
                     ),
+                    SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        MaterialButton(
+                          padding: EdgeInsets.all(20),
+                          color: Colors.brown,
+                          // minWidth: 100,
+                          // height: 20,
+                          textColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Text("ลงทะเบียน"),
+                          onPressed: () {
+                            if (_fbKey.currentState!.saveAndValidate()) {
+                              // print(_fbKey.currentState.value);
+                              register(_fbKey.currentState!.value);
+                            }
+                          },
+                        ),
+                      ],
+                    )
                   ],
                 ),
               ),
-            ],
+            ),
           ),
         ));
   }

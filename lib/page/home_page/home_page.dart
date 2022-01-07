@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cctv_tun/page/manu/manu.dart';
 import 'package:cctv_tun/shared/theme.dart';
 import 'package:cctv_tun/widgets/menus_custom.dart';
 import 'package:flutter/material.dart';
@@ -217,6 +218,7 @@ class _home_pageState extends State<home_page> {
     }
 
     return Scaffold(
+      drawer: menu(),
       appBar: AppBar(
         title: const Text('เทศบาลเมืองมหาสารคาม'),
         actions: <Widget>[
