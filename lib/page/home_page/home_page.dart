@@ -198,7 +198,7 @@ class _home_pageState extends State<home_page> {
                   MenusCustom(
                     iconMenus: 'assets/homepage/icon_11.png',
                     titleMenus: 'สินค้า OTOP',
-                    pathName: '/otopproducts',
+                    pathName: '/productshome_page',
                     titleMenus1: '',
                     titleMenus2: '',
                   ),
@@ -235,10 +235,11 @@ class _home_pageState extends State<home_page> {
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [Colors.pinkAccent, Colors.orangeAccent],
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft)),
+            gradient: LinearGradient(
+                colors: [Colors.pinkAccent, Colors.orangeAccent],
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft),
+          ),
           child: ListView(
             children: [
               slider(),

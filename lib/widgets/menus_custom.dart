@@ -57,7 +57,9 @@ class MenusCustom extends StatelessWidget {
               ),
             ),
             SizedBox(height: 12),
-            Text(titleMenus),
+            Text(
+              titleMenus,
+            ),
             Text(titleMenus1),
           ],
         ),

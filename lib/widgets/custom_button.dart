@@ -39,7 +39,7 @@ class CustomButton extends StatelessWidget {
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }

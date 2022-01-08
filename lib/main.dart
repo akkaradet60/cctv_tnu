@@ -4,6 +4,10 @@ import 'package:cctv_tun/page/login_apply_page/confirm_email/confirmemail.dart';
 import 'package:cctv_tun/page/login_apply_page/login.page.dart';
 import 'package:cctv_tun/page/login_apply_page/register_pe.dart';
 import 'package:cctv_tun/page/login_apply_page/register_page.dart';
+import 'package:cctv_tun/page/otoproducts/productshome_page.dart';
+
+import 'package:cctv_tun/page/otoproducts/products_page.dart';
+import 'package:cctv_tun/page/otoproducts/productshop_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -34,6 +38,9 @@ class MyApp extends StatelessWidget {
         '/register_page': (context) => register_page(),
         '/RegisterPage': (context) => RegisterPage(),
         '/login_page': (context) => login_page(),
+        '/products_page': (context) => products_page(),
+        '/productshop_page': (context) => productshop_page(),
+        '/productshome_page': (context) => productshome_page(),
       },
     );
   }
