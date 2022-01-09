@@ -115,13 +115,18 @@ class productshome_page extends StatelessWidget {
                       child: Text(
                         'สินค้า OTOP',
                         style: primaryTextStyle.copyWith(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
                       ),
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.orange,
+                        primary: Colors.brown[900],
                         onPrimary: Colors.white,
-                        shadowColor: Colors.grey,
-                        elevation: 20,
+                        shadowColor: Colors.grey[700],
+                        elevation: 30,
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(40))),
                       ),
                     ),
                   ),
@@ -131,19 +136,30 @@ class productshome_page extends StatelessWidget {
                   color: Colors.transparent,
                   width: 342,
                   height: 50,
+
+                  //    decoration: BoxDecoration(
+                  //  color: secondaryTextColor,
+                  //  borderRadius: BorderRadius.circular(
+                  //  40,
+                  //  ),
                   child: Container(
                     child: ElevatedButton(
                       onPressed: () {},
                       child: Text(
                         'สินค้าขายดีอาทิตย์นี้',
                         style: primaryTextStyle.copyWith(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
                       ),
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.orange,
+                        primary: Colors.brown[900],
                         onPrimary: Colors.white,
-                        shadowColor: Colors.grey,
-                        elevation: 20,
+                        shadowColor: Colors.grey[700],
+                        elevation: 30,
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(40))),
                       ),
                     ),
                   ),
@@ -159,13 +175,18 @@ class productshome_page extends StatelessWidget {
                       child: Text(
                         'ยอดนิยมประจำสัปดาห์',
                         style: primaryTextStyle.copyWith(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
                       ),
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.orange,
+                        primary: Colors.brown[900],
                         onPrimary: Colors.white,
-                        shadowColor: Colors.grey,
-                        elevation: 20,
+                        shadowColor: Colors.grey[700],
+                        elevation: 30,
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(40))),
                       ),
                     ),
                   ),

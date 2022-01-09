@@ -17,6 +17,8 @@ class login_page extends StatefulWidget {
 class _LoginPageState extends State<login_page> {
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
 
+  get offset => null;
+
   Future<void> login(Map formValues) async {
     //formValues['name']
     //print(formValues);
@@ -88,7 +90,7 @@ class _LoginPageState extends State<login_page> {
                             children: [
                               Material(
                                 elevation: 18,
-                                shadowColor: Colors.grey.withOpacity(0.5),
+                                shadowColor: Colors.grey[700],
                                 child: FormBuilderTextField(
                                   initialValue: 'ghame123@gmail.com',
                                   name: "email",
@@ -105,7 +107,7 @@ class _LoginPageState extends State<login_page> {
                               SizedBox(height: 5),
                               Material(
                                 elevation: 18,
-                                shadowColor: Colors.grey.withOpacity(0.5),
+                                shadowColor: Colors.grey[700],
                                 child: FormBuilderTextField(
                                   initialValue: '123456',
                                   name: "password",
@@ -114,7 +116,7 @@ class _LoginPageState extends State<login_page> {
                                   obscureText: true,
                                   decoration: InputDecoration(
                                     suffixIcon: Icon(Icons.vpn_key),
-                                    labelText: 'อีเมล',
+                                    labelText: 'รหัสผ่าน',
                                     fillColor: Colors.white,
                                     filled: true,
                                   ),
@@ -135,13 +137,27 @@ class _LoginPageState extends State<login_page> {
                       children: <Widget>[
                         InkWell(
                           onTap: () {},
-                          child: Text('ลืมรหัสผ่าน',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15,
-                                  fontFamily: 'ลืม',
-                                  decoration: TextDecoration.underline)),
+                          child: Text(
+                            'ลืมรหัสผ่าน',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              decoration: TextDecoration.underline,
+                              shadows: <Shadow>[
+                                Shadow(
+                                  offset: Offset(1.0, 1.0),
+                                  blurRadius: 3.0,
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                ),
+                                Shadow(
+                                  offset: Offset(1.0, 1.0),
+                                  blurRadius: 8.0,
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -156,7 +172,22 @@ class _LoginPageState extends State<login_page> {
                         Text(
                           'ยังไม่ได้เป็นสมัครสมาชิก ?',
                           style: TextStyle(
-                            fontFamily: 'sss',
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            decoration: TextDecoration.underline,
+                            /*shadows: <Shadow>[
+                              Shadow(
+                                offset: Offset(1.0, 1.0),
+                                blurRadius: 3.0,
+                                color: Color.fromARGB(255, 0, 0, 0),
+                              ),
+                              Shadow(
+                                offset: Offset(1.0, 1.0),
+                                blurRadius: 8.0,
+                                color: Color.fromARGB(255, 0, 0, 0),
+                              ),
+                            ],*/
                           ),
                         ),
                         SizedBox(
@@ -168,11 +199,24 @@ class _LoginPageState extends State<login_page> {
                           child: Text(
                             'สมัครสมาชิก',
                             style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'sss',
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                                decoration: TextDecoration.underline),
+                              color: Colors.white,
+                              fontFamily: 'sss',
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              decoration: TextDecoration.underline,
+                              shadows: <Shadow>[
+                                Shadow(
+                                  offset: Offset(1.0, 1.0),
+                                  blurRadius: 3.0,
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                ),
+                                Shadow(
+                                  offset: Offset(1.0, 1.0),
+                                  blurRadius: 8.0,
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                ),
+                              ],
+                            ),
                           ),
                         )
                       ],
@@ -218,10 +262,13 @@ class _LoginPageState extends State<login_page> {
                                   ImageIcon(AssetImage('assets/uif-u/01.png')),
                               label: Text('ล็อกอินด้วย facebook'),
                               style: ElevatedButton.styleFrom(
-                                primary: Colors.blueAccent,
+                                primary: Colors.blue[900],
                                 onPrimary: Colors.white,
-                                shadowColor: Colors.grey,
-                                elevation: 20,
+                                shadowColor: Colors.grey[700],
+                                elevation: 30,
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(40))),
                               ),
                             ),
                           ),
