@@ -1,8 +1,13 @@
+import 'dart:convert';
+import 'dart:ffi';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cctv_tun/page/manu/manu.dart';
+import 'package:cctv_tun/page/otoproducts/products_page.dart';
 import 'package:cctv_tun/shared/theme.dart';
 import 'package:cctv_tun/widgets/menus_custom.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class home_page extends StatefulWidget {
   home_page({Key? key}) : super(key: key);
@@ -13,6 +18,29 @@ class home_page extends StatefulWidget {
 
 class _home_pageState extends State<home_page> {
   @override
+  var porfile;
+  @override
+  void initState() {
+    super.initState();
+    getprofile();
+  }
+
+  Future<void> getprofile() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      porfile = json.decode(prefs.getString('profile').toString());
+    });
+  }
+
+  Future<void> logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove('roke');
+    await prefs.remove('profile');
+
+    Navigator.of(context, rootNavigator: true)
+        .pushNamedAndRemoveUntil('/login_page', (route) => false);
+  }
+
   Widget build(BuildContext context) {
     Widget slider() {
       int _curr = 0;
@@ -99,7 +127,7 @@ class _home_pageState extends State<home_page> {
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_1.png',
                       titleMenus: 'แจ้งเหตุฉุกเฉิน',
-                      pathName: '/warn',
+                      pathName: '/warn_page',
                       titleMenus1: '',
                       titleMenus2: '',
                     ),
@@ -205,7 +233,7 @@ class _home_pageState extends State<home_page> {
                   MenusCustom(
                     iconMenus: 'assets/homepage/icon_12.png',
                     titleMenus: 'สถานที่ราชการ',
-                    pathName: '/testmaps',
+                    pathName: '/map_page',
                     titleMenus1: '',
                     titleMenus2: '',
                   ),
@@ -214,6 +242,15 @@ class _home_pageState extends State<home_page> {
             ],
           ),
         ),
+      );
+    }
+
+    Widget tt(BuildContext context) {
+      return ListView.builder(
+        itemCount: 1,
+        itemBuilder: (BuildContext context, int index) {
+          return Container();
+        },
       );
     }
 
@@ -241,7 +278,7 @@ class _home_pageState extends State<home_page> {
                 end: Alignment.bottomLeft),
           ),
           child: ListView(
-            children: [
+            children: <Widget>[
               slider(),
               titleMenus(),
               cardMenus(),

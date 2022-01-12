@@ -32,7 +32,7 @@ class MenusCustom extends StatelessWidget {
               decoration: BoxDecoration(
                   color: secondaryTextColor,
                   borderRadius: BorderRadius.circular(
-                    40,
+                    50,
                   ),
                   boxShadow: [
                     BoxShadow(

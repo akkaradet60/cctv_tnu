@@ -5,6 +5,8 @@
         android:label="cctv_tun"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyCMJDfYlD0QlfIJD0-mhdGIiExii0UituM"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -31,5 +33,6 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        
     </application>
 </manifest>

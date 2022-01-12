@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class products_page extends StatefulWidget {
-  products_page({Key? key}) : super(key: key);
+class probestseller_page extends StatefulWidget {
+  probestseller_page({Key? key}) : super(key: key);
 
   @override
   _otopproductsState createState() => _otopproductsState();
 }
 
-class _otopproductsState extends State<products_page> {
+class _otopproductsState extends State<probestseller_page> {
   List<Data> data = [];
   bool isLoading = true;
   Future<void> getData() async {
@@ -188,7 +188,7 @@ class _otopproductsState extends State<products_page> {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 child: Text(
-                  'สินค้า OTOP ทั้งหมด',
+                  'สินค้าขายดีอาทิตย์นี้',
                   style: primaryTextStyle.copyWith(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
