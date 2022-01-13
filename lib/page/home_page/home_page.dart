@@ -233,7 +233,7 @@ class _home_pageState extends State<home_page> {
                   MenusCustom(
                     iconMenus: 'assets/homepage/icon_12.png',
                     titleMenus: 'สถานที่ราชการ',
-                    pathName: '/map_page',
+                    pathName: '/map_page1',
                     titleMenus1: '',
                     titleMenus2: '',
                   ),

@@ -5,14 +5,15 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class map_page extends StatefulWidget {
-  map_page({Key? key}) : super(key: key);
+class map_page2 extends StatefulWidget {
+  map_page2({Key? key}) : super(key: key);
 
   @override
   _map_pageState createState() => _map_pageState();
 }
 
-class _map_pageState extends State<map_page> {
+class _map_pageState extends State<map_page2> {
+  double? lat1, lne2;
   Completer<GoogleMapController> _controller = Completer();
   LatLng latLng = LatLng(16.186348810730625, 103.30025897021274);
 

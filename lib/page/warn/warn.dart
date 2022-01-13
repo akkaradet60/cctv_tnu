@@ -14,7 +14,6 @@ class warn_page extends StatefulWidget {
 }
 
 class _warn1State extends State<warn_page> {
-  late double lat1, lng1, lat2, lng2, distance;
   @override
   Widget build(BuildContext context) {
     Widget imageSplash() {

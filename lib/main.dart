@@ -4,6 +4,7 @@ import 'package:cctv_tun/page/login_apply_page/confirm_email/confirmemail.dart';
 import 'package:cctv_tun/page/login_apply_page/login.page.dart';
 import 'package:cctv_tun/page/login_apply_page/register_pe.dart';
 import 'package:cctv_tun/page/login_apply_page/register_page.dart';
+import 'package:cctv_tun/page/map/map_page%20copy.dart';
 import 'package:cctv_tun/page/map/map_page.dart';
 import 'package:cctv_tun/page/otoproducts/probestseller_page.dart';
 import 'package:cctv_tun/page/otoproducts/productshome_page.dart';
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
           '/probestseller_page': (context) => probestseller_page(),
           '/propopular_page': (context) => propopular_page(),
           '/map_page': (context) => map_page(),
+          '/map_page1': (context) => map_page2(),
           '/warn_page': (context) => warn_page(),
         },
       ),

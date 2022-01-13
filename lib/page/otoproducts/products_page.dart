@@ -66,10 +66,11 @@ class _otopproductsState extends State<products_page> {
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft)),
         child: ListView.builder(
-            scrollDirection: Axis.horizontal,
+            // scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return Center(
-                child: Row(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     InkWell(
                       onTap: () {
@@ -83,76 +84,71 @@ class _otopproductsState extends State<products_page> {
                       },
                       child: Container(
                         margin: EdgeInsets.only(top: 20, bottom: 0),
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: [
-                              SizedBox(width: defaultMargin),
-                              Container(
-                                height: 400,
-                                width: 365,
-                                decoration: BoxDecoration(
-                                    color: secondaryTextColor,
-                                    borderRadius: BorderRadius.circular(
-                                      24,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          offset: Offset(2, 2),
-                                          blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                      BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          offset: Offset(2, 4),
-                                          blurRadius: 7.0,
-                                          spreadRadius: 1.0),
-                                    ]),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Column(
-                                      children: [
-                                        Image.network(
-                                          '${data[index].picture}',
-                                          width: 200,
-                                        ),
-                                        SizedBox(height: 15),
-                                        Container(
-                                          width: 340,
-                                          color: Colors.grey[200],
-                                          height: 150,
-                                          child: Column(
-                                            children: [
-                                              SizedBox(height: 15),
-                                              Container(
-                                                width: 300,
-                                                child: Text(
-                                                  'ชื่อสินค้า: ${data[index].detail}',
-                                                  style:
-                                                      primaryTextStyle.copyWith(
-                                                          fontSize: 18,
-                                                          fontWeight: medium),
-                                                ),
-                                              ),
-                                              SizedBox(height: 15),
-                                              Text(
-                                                'ราคาสินค้า : ${data[index].view} บาท',
+                        child: Row(
+                          children: [
+                            SizedBox(width: defaultMargin),
+                            Container(
+                              height: 400,
+                              width: 365,
+                              decoration: BoxDecoration(
+                                  color: secondaryTextColor,
+                                  borderRadius: BorderRadius.circular(
+                                    24,
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.grey.withOpacity(0.5),
+                                        offset: Offset(2, 2),
+                                        blurRadius: 7,
+                                        spreadRadius: 1.0),
+                                    BoxShadow(
+                                        color: Colors.grey.withOpacity(0.5),
+                                        offset: Offset(2, 4),
+                                        blurRadius: 7.0,
+                                        spreadRadius: 1.0),
+                                  ]),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Column(
+                                    children: [
+                                      Image.network(
+                                        '${data[index].picture}',
+                                        width: 200,
+                                      ),
+                                      SizedBox(height: 15),
+                                      Container(
+                                        width: 340,
+                                        color: Colors.grey[200],
+                                        height: 150,
+                                        child: Column(
+                                          children: [
+                                            SizedBox(height: 15),
+                                            Container(
+                                              child: Text(
+                                                'ชื่อสินค้า: ${data[index].detail}',
                                                 style:
                                                     primaryTextStyle.copyWith(
-                                                        fontSize: 20,
+                                                        fontSize: 18,
                                                         fontWeight: medium),
                                               ),
-                                            ],
-                                          ),
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                ),
+                                            ),
+                                            SizedBox(height: 15),
+                                            Text(
+                                              'ราคาสินค้า : ${data[index].view} บาท',
+                                              style: primaryTextStyle.copyWith(
+                                                  fontSize: 20,
+                                                  fontWeight: medium),
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  )
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -167,36 +163,39 @@ class _otopproductsState extends State<products_page> {
   }
 
   Widget customBottomNav() {
-    return Container(
-      height: 100,
-      child: BottomAppBar(
-          shape: CircularNotchedRectangle(),
-          notchMargin: 5,
-          color: Colors.pink,
-          clipBehavior: Clip.antiAlias,
-          child: Row(
-            children: [
-              Container(
-                margin: EdgeInsets.only(
-                  top: 5,
-                  left: 50,
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        height: 100,
+        child: BottomAppBar(
+            shape: CircularNotchedRectangle(),
+            notchMargin: 5,
+            color: Colors.pink,
+            clipBehavior: Clip.antiAlias,
+            child: Row(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(
+                    top: 5,
+                    left: 50,
+                  ),
+                  width: 80,
+                  child: Image.network(
+                      'https://district.cdd.go.th/bangkruai/wp-content/uploads/sites/308/2021/02/logo_img1599704122.png'),
                 ),
-                width: 80,
-                child: Image.network(
-                    'https://district.cdd.go.th/bangkruai/wp-content/uploads/sites/308/2021/02/logo_img1599704122.png'),
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Text(
-                  'สินค้า OTOP ทั้งหมด',
-                  style: primaryTextStyle.copyWith(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
-                ),
-              )
-            ],
-          )),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(
+                    'สินค้า OTOP ทั้งหมด',
+                    style: primaryTextStyle.copyWith(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                )
+              ],
+            )),
+      ),
     );
   }
 }
