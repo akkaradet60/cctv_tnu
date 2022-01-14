@@ -134,7 +134,7 @@ class _home_pageState extends State<home_page> {
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_2.png',
                       titleMenus: 'ร้องเรียน',
-                      pathName: '/hotline',
+                      pathName: '/hotline_page',
                       titleMenus1: '',
                       titleMenus2: '',
                     ),
@@ -233,7 +233,7 @@ class _home_pageState extends State<home_page> {
                   MenusCustom(
                     iconMenus: 'assets/homepage/icon_12.png',
                     titleMenus: 'สถานที่ราชการ',
-                    pathName: '/map_page1',
+                    pathName: '/map_page',
                     titleMenus1: '',
                     titleMenus2: '',
                   ),

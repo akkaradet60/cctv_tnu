@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cctv_tun/shared/theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class map_page extends StatefulWidget {
@@ -13,8 +14,39 @@ class map_page extends StatefulWidget {
 }
 
 class _map_pageState extends State<map_page> {
+  Future<Position> _getLocation() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return Future.error('Location services are disabled.');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+
+    userLocation = await Geolocator.getCurrentPosition();
+    return userLocation;
+  }
+
+  late Position userLocation;
+  late GoogleMapController mapController;
   Completer<GoogleMapController> _controller = Completer();
   LatLng latLng = LatLng(16.186348810730625, 103.30025897021274);
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
 
   var _currentLocation = 0;
   static final CameraPosition Sarakham = CameraPosition(
@@ -38,8 +70,53 @@ class _map_pageState extends State<map_page> {
       zoom: 14,
     );
     return Scaffold(
-      appBar: AppBar(),
-      body: Column(
+      appBar: AppBar(
+        title: const Text('สถานที่ราชการ'),
+        actions: <Widget>[
+          IconButton(
+            icon: Image.asset('assets/logo.png', scale: 15),
+            tooltip: 'Show Snackbar',
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('แจ้งเหตุฉุกเฉิน')));
+            },
+          ),
+        ],
+      ),
+      body: FutureBuilder(
+        future: _getLocation(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            return GoogleMap(
+              markers: <Marker>[
+                Marker(
+                    markerId: MarkerId('100'),
+                    position: LatLng(16.155182041998927, 103.30619597899741),
+                    infoWindow: InfoWindow(
+                        title: 'ศูตย์ราชการมหาสารคาม',
+                        snippet: '-------------------',
+                        onTap: () {})),
+              ].toSet(),
+              mapType: MapType.normal,
+              onMapCreated: (GoogleMapController controller) {
+                _controller.complete(controller);
+              },
+              myLocationEnabled: true,
+              initialCameraPosition: cameraPosition,
+            );
+          } else {
+            return Center(
+              child: Column(
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: <Widget>[
+                  //     CircularProgressIndicator(),
+                  //    ],
+                  ),
+            );
+          }
+        },
+      ),
+      /* Column(
         children: [
           Container(
             padding: EdgeInsets.symmetric(horizontal: 0),
@@ -75,7 +152,7 @@ class _map_pageState extends State<map_page> {
           },
         ),*/
         ],
-      ),
+      ),*/
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,
         items: [
