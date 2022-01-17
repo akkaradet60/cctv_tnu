@@ -1,3 +1,4 @@
+import 'package:cctv_tun/page/appeal/appeal_page.dart';
 import 'package:cctv_tun/page/home_page/home_page.dart';
 import 'package:cctv_tun/page/login_apply_page/confirm_email/confirmemail.dart';
 
@@ -8,6 +9,7 @@ import 'package:cctv_tun/page/map/map_page%20copy%202.dart';
 
 import 'package:cctv_tun/page/map/map_page.dart';
 import 'package:cctv_tun/page/otoproducts/probestseller_page.dart';
+
 import 'package:cctv_tun/page/otoproducts/productshome_page.dart';
 
 import 'package:cctv_tun/page/otoproducts/products_page.dart';
@@ -44,7 +46,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.pink,
-          canvasColor: Colors.pink[400],
+          canvasColor: Colors.orange[200],
         ),
         routes: {
           '/': (context) => token == null ? login_page() : home_page(),
@@ -62,6 +64,8 @@ class MyApp extends StatelessWidget {
           '/map_page1': (context) => map_page1(),
           '/warn_page': (context) => warn_page(),
           '/hotline_page': (context) => hotline_page(),
+          //'/ProductPage': (context) => ProductPage(),
+          '/appeal_page': (context) => appeal_page(),
         },
       ),
     );

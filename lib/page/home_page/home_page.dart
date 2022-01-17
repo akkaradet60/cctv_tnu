@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:ffi';
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cctv_tun/page/manu/manu.dart';
 import 'package:cctv_tun/page/otoproducts/products_page.dart';
@@ -141,7 +140,7 @@ class _home_pageState extends State<home_page> {
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_3.png',
                       titleMenus: 'สายด่วน',
-                      pathName: '/appeal',
+                      pathName: '/appeal_page',
                       titleMenus1: '',
                       titleMenus2: '',
                     ),
@@ -186,31 +185,33 @@ class _home_pageState extends State<home_page> {
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  MenusCustom(
-                    iconMenus: 'assets/homepage/icon_7.png',
-                    titleMenus: 'รางวัล',
-                    pathName: '/reward',
-                    titleMenus1: '',
-                    titleMenus2: '',
-                  ),
-                  MenusCustom(
-                    iconMenus: 'assets/homepage/icon_8.png',
-                    titleMenus: 'YOUTUBE',
-                    pathName: '/youtube',
-                    titleMenus1: '',
-                    titleMenus2: '',
-                  ),
-                  MenusCustom(
-                    iconMenus: 'assets/homepage/icon_9.png',
-                    titleMenus: 'คู่มือการใช้งาน',
-                    pathName: '/help',
-                    titleMenus1: '',
-                    titleMenus2: '',
-                  ),
-                ],
+              Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    MenusCustom(
+                      iconMenus: 'assets/homepage/icon_7.png',
+                      titleMenus: 'รางวัล',
+                      pathName: '/reward',
+                      titleMenus1: '',
+                      titleMenus2: '',
+                    ),
+                    MenusCustom(
+                      iconMenus: 'assets/homepage/icon_8.png',
+                      titleMenus: 'YOUTUBE',
+                      pathName: '/youtube',
+                      titleMenus1: '',
+                      titleMenus2: '',
+                    ),
+                    MenusCustom(
+                      iconMenus: 'assets/homepage/icon_9.png',
+                      titleMenus: 'คู่มือการใช้งาน',
+                      pathName: '/help',
+                      titleMenus1: '',
+                      titleMenus2: '',
+                    ),
+                  ],
+                ),
               ),
               SizedBox(height: 18),
               Row(

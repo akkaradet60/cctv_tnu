@@ -1,3 +1,4 @@
+import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/models/otoproduct.dart';
 import 'package:cctv_tun/shared/theme.dart';
 
@@ -17,7 +18,8 @@ class _otopproductsState extends State<probestseller_page> {
   List<Data> data = [];
   bool isLoading = true;
   Future<void> getData() async {
-    var url = Uri.parse('https://api.codingthailand.com/api/course');
+    var url = Uri.parse(
+        'https://bc-official.com/api/app_nt/api/app/otop/best-seller-product/restful/?product_app_id=${Global.app_id}');
     var response = await http.get(url);
     if (response.statusCode == 200) {
       // print(json.decode(response.body));
@@ -75,10 +77,10 @@ class _otopproductsState extends State<probestseller_page> {
                       onTap: () {
                         Navigator.pushNamed(context, '/productshop_page',
                             arguments: {
-                              'id': data[index].id,
+                              /*    'id': data[index].id,
                               'detail': data[index].detail,
                               'picture': data[index].picture,
-                              'view': data[index].view,
+                              'view': data[index].view,*/
                             });
                       },
                       child: Container(

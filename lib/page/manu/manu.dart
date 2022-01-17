@@ -62,8 +62,7 @@ class _manuState extends State<manu> {
                         children: [
                           UserAccountsDrawerHeader(
                             currentAccountPicture: CircleAvatar(
-                              backgroundImage:
-                                  AssetImage('assets/homepage/icon_1.png'),
+                              backgroundImage: AssetImage('assets/logo.png'),
                               backgroundColor: Colors.pink,
                             ),
                             accountEmail: Text('สวัสดีคุณ ${profile['name']}'),

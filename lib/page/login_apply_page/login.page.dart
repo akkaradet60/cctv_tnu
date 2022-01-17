@@ -1,8 +1,11 @@
+import 'package:cctv_tun/main.dart';
+import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/shared/theme.dart';
 import 'package:cctv_tun/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:http/http.dart' as http;
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
@@ -22,36 +25,74 @@ class _LoginPageState extends State<login_page> {
   Future<void> login(Map formValues) async {
     //formValues['name']
     //print(formValues);
-    var url = Uri.parse('https://api.codingthailand.com/api/login');
+    var url = Uri.parse(Global.urlWeb + 'api/login/restful');
     var response = await http.post(url,
-        headers: {'Content-Type': 'application/json'},
+        headers: {
+          "Accept": "application/json",
+        },
         body: json.encode({
           "email": formValues['email'],
           "password": formValues['password']
         }));
+    Map<String, dynamic> token = json.decode(response.body);
     if (response.statusCode == 200) {
-      Map<String, dynamic> token = json.decode(response.body);
-
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString('token', response.body);
+      var profileUrl = Global.urlWeb +
+          'api/profile/restful?user_id=${token['access_id']}&user_app_id=${Global.app_id}';
+      var responseProfile = await http.get(Uri.parse(profileUrl),
+          headers: {'Authorization': 'Bearer ${token['access_token']}'});
+      var profile = json.decode(responseProfile.body);
+      Map<String, dynamic> user =
+          profile['data'][0]; // { id: 111, name: john ....}
+      await prefs.setString('profile', jsonEncode(user));
+      print('profile: $user');
+
+      var appUrl = Global.urlWeb +
+          'api/app/application/restful/?app_id=${Global.app_id}';
+      var responseApp = await http.get(Uri.parse(appUrl),
+          headers: {'Authorization': 'Bearer ${token['access_token']}'});
+      var application_data = json.decode(responseApp.body);
+      Map<String, dynamic> app_data =
+          application_data['data'][0]; // { id: 111, name: john ....}
+      await prefs.setString('application', jsonEncode(app_data));
+      //print(app_data);
+      print('app: $app_data');
 
       //get Profile
-      var profileUrl = Uri.parse('https://api.codingthailand.com/api/profile');
+      /* var profileUrl = Uri.parse('https://api.codingthailand.com/api/profile');
       var responseProfile = await http.get(profileUrl,
           headers: {'Authorization': 'Bearer ${token['access_token']}'});
       Map<String, dynamic> profile = json.decode(responseProfile.body);
       var user = profile['data']['user']; // { id: 111, name: john ....}
       await prefs.setString('profile', json.encode(user));
       // print('profile: $user');
-      print(token['message']);
+      print(token['message']);*/
       //กลับไปที่หน้า HomeStack
       Navigator.pushNamedAndRemoveUntil(
           context, '/home_page', (route) => false);
 
       // Navigator.pushNamed(context, '/home_page');
     } else {
-      Map<String, dynamic> err = json.decode(response.body);
-      print(err['message']);
+      Alert(
+        context: context,
+        type: AlertType.warning,
+        // title: "แจ้งเตือน",
+        desc: '${token['message']}',
+        buttons: [
+          DialogButton(
+            child: const Text(
+              "ปิด",
+              style: TextStyle(color: Colors.white, fontSize: 18),
+            ),
+            onPressed: () => Navigator.pop(context),
+            gradient: const LinearGradient(colors: [
+              Color.fromRGBO(116, 116, 191, 1.0),
+              Color.fromRGBO(52, 138, 199, 1.0),
+            ]),
+          )
+        ],
+      ).show();
     }
   }
 
@@ -233,7 +274,7 @@ class _LoginPageState extends State<login_page> {
                             title: 'ล็อกอิน',
                             onPressed: () {
                               if (_fbKey.currentState!.saveAndValidate()) {
-                                /// print(_formKey.currentState!.value);
+                                print(_fbKey.currentState!.value);
                                 login(_fbKey.currentState!.value);
                               }
                             },

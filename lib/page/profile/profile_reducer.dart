@@ -7,7 +7,7 @@ class ProfileState {
 
   ProfileState({this.profile = const {'user_email': 'No Data'}});
 
-  ProfileState copyWith({required Map<String, dynamic> profile}) {
+  ProfileState copyWith({required Map<String, void> profile}) {
     return ProfileState(profile: profile);
   }
 }
