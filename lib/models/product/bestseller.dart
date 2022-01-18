@@ -185,9 +185,9 @@ class Data {
     productCountView = json['product_count_view'];
     productUpdateDate = json['product_update_date'];
     productCreateDate = json['product_create_date'];
-    if (json['product_image'] != null) {
+    if (json['product_images'] != null) {
       productImage = <ProductImage>[];
-      json['product_image'].forEach((v) {
+      json['product_images'].forEach((v) {
         productImage!.add(new ProductImage.fromJson(v));
       });
     }

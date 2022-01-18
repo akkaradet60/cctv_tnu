@@ -82,229 +82,223 @@ class _productsState extends State<productshop_page> {
 
     productt = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('สินค้า'),
-        actions: <Widget>[
-          IconButton(
-            icon: Image.asset('assets/logo.png', scale: 15),
-            tooltip: 'Show Snackbar',
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
-            },
-          ),
-        ],
-      ),
-      body: FutureBuilder<dynamic>(
-          future: getData(productt['productPrice']),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return ListView.separated(
-                  itemBuilder: (context, index) {
-                    return Container(
-                      margin: EdgeInsets.only(
-                        top: 10,
-                      ),
-                      child: Container(
-                        color: Colors.grey,
-                        margin: const EdgeInsets.symmetric(horizontal: 15),
-                        child: Column(
-                          children: [
-                            Container(
-                              child: Card(
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: NetworkImage(
-                                            '${productt['productiPathName']}')),
-                                  ),
+        appBar: AppBar(
+          title: const Text('สินค้า'),
+          actions: <Widget>[
+            IconButton(
+              icon: Image.asset('assets/logo.png', scale: 15),
+              tooltip: 'Show Snackbar',
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+              },
+            ),
+          ],
+        ),
+        body: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [Colors.pinkAccent, Colors.orangeAccent],
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft)),
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Card(
+              child: ListView(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: [Colors.pinkAccent, Colors.orangeAccent],
+                            begin: Alignment.topRight,
+                            end: Alignment.bottomLeft)),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Card(
+                            child: Column(
+                              children: [
+                                Container(
+                                  width: 300,
+                                  height: 300,
+                                  child: Image.network(
+                                      '${productt['productiPathName']}'),
+                                  // decoration: BoxDecoration(
+                                  //   image: DecorationImage(
+                                  //       image: NetworkImage(
+                                  //           '${productt['productiPathName']}')),
+                                  // ),
                                 ),
-                              ),
-                              height: 300,
-                              width: 400,
-                              margin: EdgeInsets.only(top: 0),
+                              ],
                             ),
-                            Container(
-                              child: Card(
-                                child: Container(
-                                  height: 600,
-                                  width: 400,
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        color: Colors.orange,
-                                        child: Row(
+                          ),
+                        ),
+                        Container(
+                          child: Card(
+                            child: Container(
+                              height: 600,
+                              width: 400,
+                              child: Column(
+                                children: [
+                                  Container(
+                                    color: Colors.orange,
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.shopping_cart_rounded,
+                                          size: 40,
+                                        ),
+                                        Text(
+                                          '   ศูนย์แสดงสินค้าโอทอป',
+                                          style: primaryTextStyle.copyWith(
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 60,
+                                        ),
+                                        ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            primary: Colors.orange[300],
+                                            onPrimary: Colors.black,
+                                          ),
+                                          child: Text('ดูร้านค้า'),
+                                          onPressed: () => Navigator.pushNamed(
+                                              context, '/shop'),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    color: Colors.pink[200],
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.article,
+                                          size: 40,
+                                        ),
+                                        Text(
+                                          '   ชื่อสินค้า :  ',
+                                          style: primaryTextStyle.copyWith(
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(
+                                      top: 10,
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          ' $_product : บาท',
+                                          style: primaryTextStyle.copyWith(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        SizedBox(
+                                          width: 60,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           children: [
-                                            Icon(
-                                              Icons.shopping_bag_outlined,
-                                              color: Colors.red,
-                                              size: 40,
-                                            ),
-                                            Text(
-                                              '   ศูนย์แสดงสินค้าโอทอป',
-                                              style: primaryTextStyle.copyWith(
-                                                fontSize: 15,
+                                            Container(
+                                              child: Row(
+                                                children: [
+                                                  ElevatedButton(
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                        primary:
+                                                            Colors.orange[300],
+                                                        onPrimary: Colors.black,
+                                                      ),
+                                                      child: Text(
+                                                        '-',
+                                                        style: primaryTextStyle
+                                                            .copyWith(
+                                                                fontSize: 20,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                height: 2),
+                                                      ),
+                                                      onPressed:
+                                                          _incrementCounterp),
+                                                ],
                                               ),
                                             ),
                                             SizedBox(
-                                              width: 60,
+                                              width: 10,
                                             ),
-                                            ElevatedButton(
-                                              style: ElevatedButton.styleFrom(
-                                                primary: Colors.orange[300],
-                                                onPrimary: Colors.black,
-                                              ),
-                                              child: Text('ดูร้านค้า'),
-                                              onPressed: () =>
-                                                  Navigator.pushNamed(context,
-                                                      '/products_page'),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
-                                        color: Colors.pink[200],
-                                        child: Row(
-                                          children: [
-                                            Icon(
-                                              Icons.favorite,
-                                              color: Colors.red,
-                                              size: 40,
-                                            ), //'${productt['view']
-                                            Container(
-                                              width: 300,
-                                              child: Text(
-                                                '   ชื่อสินค้า : ${productt['productName']} ',
-                                                style:
-                                                    primaryTextStyle.copyWith(
-                                                  fontSize: 15,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.only(
-                                          top: 10,
-                                        ),
-                                        child: Column(
-                                          children: [
                                             Text(
-                                              ' $_product : บาท',
+                                              '$_counter',
                                               style: primaryTextStyle.copyWith(
                                                   fontSize: 25,
-                                                  fontWeight: FontWeight.bold),
+                                                  fontWeight: FontWeight.bold,
+                                                  height: 2),
                                             ),
                                             SizedBox(
-                                              width: 60,
+                                              width: 10,
                                             ),
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Container(
-                                                  child: Row(
-                                                    children: [
-                                                      ElevatedButton(
-                                                          style: ElevatedButton
-                                                              .styleFrom(
-                                                            primary: Colors
-                                                                .orange[300],
-                                                            onPrimary:
-                                                                Colors.black,
-                                                          ),
-                                                          child: Text(
-                                                            '-',
-                                                            style: primaryTextStyle
-                                                                .copyWith(
-                                                                    fontSize:
-                                                                        20,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
-                                                                    height: 2),
-                                                          ),
-                                                          onPressed:
-                                                              _incrementCounterp),
-                                                    ],
-                                                  ),
+                                            ElevatedButton(
+                                                style: ElevatedButton.styleFrom(
+                                                  primary: Colors.orange[300],
+                                                  onPrimary: Colors.black,
                                                 ),
-                                                SizedBox(
-                                                  width: 10,
-                                                ),
-                                                Text(
-                                                  '$_counter',
+                                                child: Text(
+                                                  '+',
                                                   style:
                                                       primaryTextStyle.copyWith(
-                                                          fontSize: 25,
+                                                          fontSize: 20,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                           height: 2),
                                                 ),
-                                                SizedBox(
-                                                  width: 10,
-                                                ),
-                                                ElevatedButton(
-                                                    style: ElevatedButton
-                                                        .styleFrom(
-                                                      primary:
-                                                          Colors.orange[300],
-                                                      onPrimary: Colors.black,
-                                                    ),
-                                                    child: Text(
-                                                      '+',
-                                                      style: primaryTextStyle
-                                                          .copyWith(
-                                                              fontSize: 20,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              height: 2),
-                                                    ),
-                                                    onPressed:
-                                                        _incrementCounter)
-                                              ],
-                                            )
+                                                onPressed: _incrementCounter)
                                           ],
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 55,
-                                        color: Colors.grey[200],
-                                        child: Row(
-                                          children: [
-                                            Text(
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 100,
+                                    color: Colors.grey[200],
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          width: 350,
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
                                               '   รายละเอียดสินค้า : ',
                                               style: primaryTextStyle.copyWith(
                                                 fontSize: 15,
                                               ),
                                             ),
-                                          ],
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
+                                ],
                               ),
-                              height: 300,
-                              width: 400,
-                              margin: EdgeInsets.only(top: 0),
                             ),
-                          ],
+                          ),
+                          height: 300,
+                          width: 400,
+                          margin: EdgeInsets.only(top: 0),
                         ),
-                      ),
-                    );
-                  },
-                  separatorBuilder: (context, index) => Divider(),
-                  itemCount: snapshot.data.length);
-            } else if (snapshot.hasError) {
-              return Text('data');
-            }
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }),
-    );
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ));
   }
 }
