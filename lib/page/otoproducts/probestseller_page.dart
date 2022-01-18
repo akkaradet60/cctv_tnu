@@ -130,7 +130,7 @@ class _otopproductsState extends State<probestseller_page> {
                                               Container(
                                                 width: 300,
                                                 child: Text(
-                                                  'ชื่อสินค้า: ${data[index].detail}',
+                                                  'ชื่อสินค้า: ${data[index].}',
                                                   style:
                                                       primaryTextStyle.copyWith(
                                                           fontSize: 18,
