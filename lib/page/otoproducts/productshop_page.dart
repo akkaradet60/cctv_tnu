@@ -59,7 +59,7 @@ class _productsState extends State<productshop_page> {
   @override
   Widget build(BuildContext context) {
     void _incrementCounter() {
-      _product1 = int.parse('${productt['view']}');
+      _product1 = int.parse('${productt['productPrice']}');
       setState(() {
         _counter++;
         _product = _product + _product1;
@@ -68,7 +68,7 @@ class _productsState extends State<productshop_page> {
 
     void _incrementCounterp() {
       setState(() {
-        _product1 = int.parse('${productt['view']}');
+        _product1 = int.parse('${productt['productPrice']}');
         _counter--;
         _product = _product - _product1;
         if (_counter < 0) {
@@ -96,7 +96,7 @@ class _productsState extends State<productshop_page> {
         ],
       ),
       body: FutureBuilder<dynamic>(
-          future: getData(productt['picture']),
+          future: getData(productt['productPrice']),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ListView.separated(
@@ -116,7 +116,7 @@ class _productsState extends State<productshop_page> {
                                   decoration: BoxDecoration(
                                     image: DecorationImage(
                                         image: NetworkImage(
-                                            '${productt['picture']}')),
+                                            '${productt['productiPathName']}')),
                                   ),
                                 ),
                               ),
@@ -174,7 +174,7 @@ class _productsState extends State<productshop_page> {
                                             Container(
                                               width: 300,
                                               child: Text(
-                                                '   ชื่อสินค้า : ${productt['detail']} ',
+                                                '   ชื่อสินค้า : ${productt['productName']} ',
                                                 style:
                                                     primaryTextStyle.copyWith(
                                                   fontSize: 15,

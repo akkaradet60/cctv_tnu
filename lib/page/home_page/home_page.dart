@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:ffi';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/manu/manu.dart';
 import 'package:cctv_tun/page/otoproducts/products_page.dart';
 import 'package:cctv_tun/shared/theme.dart';
@@ -16,12 +17,34 @@ class home_page extends StatefulWidget {
 }
 
 class _home_pageState extends State<home_page> {
+  Future<void> getProfile() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    Map<String, dynamic> appToken =
+        json.decode(prefs.getString('token').toString());
+    // print(appToken['access_token']);
+
+    setState(() {
+      Global.token = appToken['access_token'];
+    });
+
+    var newProfile = json.decode(prefs.getString('profile').toString());
+    var newApplication = json.decode(prefs.getString('application').toString());
+    // print(newProfile);
+    // print(newApplication);
+    //call redux action
+    /* final store = StoreProvider.of<AppState>(context);
+    store.dispatch(updateProfileAction(newProfile));
+    store.dispatch(updateApplicationAction(newApplication));*/
+  }
+
   @override
   var porfile;
   @override
   void initState() {
     super.initState();
     getprofile();
+    getProfile();
   }
 
   Future<void> getprofile() async {
@@ -206,7 +229,7 @@ class _home_pageState extends State<home_page> {
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_9.png',
                       titleMenus: 'คู่มือการใช้งาน',
-                      pathName: '/help',
+                      pathName: '/Manual_page',
                       titleMenus1: '',
                       titleMenus2: '',
                     ),

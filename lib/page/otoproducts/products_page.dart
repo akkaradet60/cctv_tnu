@@ -1,10 +1,14 @@
-import 'package:cctv_tun/page/models/otoproduct.dart';
+import 'package:cctv_tun/models/product/bestseller.dart';
+import 'package:cctv_tun/page/global/global.dart';
+
 import 'package:cctv_tun/shared/theme.dart';
 
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import 'package:shared_preferences/shared_preferences.dart';
 
 class products_page extends StatefulWidget {
   products_page({Key? key}) : super(key: key);
@@ -17,13 +21,16 @@ class _otopproductsState extends State<products_page> {
   List<Data> data = [];
   bool isLoading = true;
   Future<void> getData() async {
-    var url = Uri.parse('https://api.codingthailand.com/api/course');
-    var response = await http.get(url);
+    var url =
+        'https://www.bc-official.com/api/app_nt/api/app/otop/best-seller-product/restful/?product_app_id=${Global.app_id}';
+    var response = await http.get(Uri.parse(url),
+        headers: {'Authorization': 'Bearer ${Global.token}'});
     if (response.statusCode == 200) {
       // print(json.decode(response.body));
       //นำ json ใส่ที่โมเมล product
-      final product paroduct = product.fromJson(json.decode(response.body));
-      // print(paroduct.data);
+      final BestSeller paroduct =
+          BestSeller.fromJson(json.decode(response.body));
+      print(paroduct.data);
       setState(() {
         data = paroduct.data!;
         isLoading = false;
@@ -36,10 +43,32 @@ class _otopproductsState extends State<products_page> {
     }
   }
 
+  Future<void> getProfile() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    Map<String, dynamic> appToken =
+        json.decode(prefs.getString('token').toString());
+    // print(appToken['access_token']);
+
+    setState(() {
+      Global.token = appToken['access_token'];
+    });
+
+    var newProfile = json.decode(prefs.getString('profile').toString());
+    var newApplication = json.decode(prefs.getString('application').toString());
+    // print(newProfile);
+    // print(newApplication);
+    //call redux action
+    /* final store = StoreProvider.of<AppState>(context);
+    store.dispatch(updateProfileAction(newProfile));
+    store.dispatch(updateApplicationAction(newApplication));*/
+  }
+
   @override
   void initState() {
     super.initState();
     getData();
+    getProfile();
   }
 
   @override
@@ -76,10 +105,10 @@ class _otopproductsState extends State<products_page> {
                       onTap: () {
                         Navigator.pushNamed(context, '/productshop_page',
                             arguments: {
-                              'id': data[index].id,
+                              /*   'id': data[index].id,
                               'detail': data[index].detail,
                               'picture': data[index].picture,
-                              'view': data[index].view,
+                              'view': data[index].view,*/
                             });
                       },
                       child: Container(
@@ -113,11 +142,11 @@ class _otopproductsState extends State<products_page> {
                                   Column(
                                     children: [
                                       Image.network(
-                                        '${data[index].picture}',
+                                        'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
                                         width: 200,
                                       ),
                                       SizedBox(height: 15),
-                                      Container(
+                                      /* Container(
                                         width: 340,
                                         color: Colors.grey[200],
                                         height: 150,
@@ -142,7 +171,7 @@ class _otopproductsState extends State<products_page> {
                                             ),
                                           ],
                                         ),
-                                      )
+                                      )*/
                                     ],
                                   )
                                 ],

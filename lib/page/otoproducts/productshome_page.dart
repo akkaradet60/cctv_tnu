@@ -1,5 +1,7 @@
 import 'dart:ffi';
 
+import 'package:cctv_tun/models/product/bestseller.dart';
+import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/shared/theme.dart';
 
 import 'package:flutter/material.dart';
@@ -17,6 +19,59 @@ class productshome_page extends StatefulWidget {
 }
 
 class _nameState extends State<productshome_page> {
+  List<Data> data = [];
+  bool isLoading = true;
+  Future<void> getData() async {
+    var url =
+        'https://www.bc-official.com/api/app_nt/api/app/otop/best-seller-product/restful/?product_app_id=${Global.app_id}';
+    var response = await http.get(Uri.parse(url),
+        headers: {'Authorization': 'Bearer ${Global.token}'});
+    if (response.statusCode == 200) {
+      // print(json.decode(response.body));
+      //นำ json ใส่ที่โมเมล product
+      final BestSeller paroduct =
+          BestSeller.fromJson(json.decode(response.body));
+      print(paroduct.data);
+      setState(() {
+        data = paroduct.data!;
+        isLoading = false;
+      });
+    } else {
+      setState(() {
+        isLoading = false;
+      });
+      print('error 400');
+    }
+  }
+
+  Future<void> getProfile() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    Map<String, dynamic> appToken =
+        json.decode(prefs.getString('token').toString());
+    // print(appToken['access_token']);
+
+    setState(() {
+      Global.token = appToken['access_token'];
+    });
+
+    var newProfile = json.decode(prefs.getString('profile').toString());
+    var newApplication = json.decode(prefs.getString('application').toString());
+    // print(newProfile);
+    // print(newApplication);
+    //call redux action
+    /* final store = StoreProvider.of<AppState>(context);
+    store.dispatch(updateProfileAction(newProfile));
+    store.dispatch(updateApplicationAction(newApplication));*/
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+    getProfile();
+  }
+
   // late Map< String,dynamic> profile;
 
   @override

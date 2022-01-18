@@ -1,4 +1,6 @@
+import 'package:cctv_tun/page/Manual/Manual_page.dart';
 import 'package:cctv_tun/page/appeal/appeal_page.dart';
+
 import 'package:cctv_tun/page/home_page/home_page.dart';
 import 'package:cctv_tun/page/login_apply_page/confirm_email/confirmemail.dart';
 
@@ -59,13 +61,14 @@ class MyApp extends StatelessWidget {
           '/productshop_page': (context) => productshop_page(),
           '/productshome_page': (context) => productshome_page(),
           '/probestseller_page': (context) => probestseller_page(),
-          '/propopular_page': (context) => propopular_page(),
+          // '/propopular_page': (context) => propopular_page(),
           '/map_page': (context) => map_page(),
           '/map_page1': (context) => map_page1(),
           '/warn_page': (context) => warn_page(),
           '/hotline_page': (context) => hotline_page(),
           //'/ProductPage': (context) => ProductPage(),
           '/appeal_page': (context) => appeal_page(),
+          '/Manual_page': (context) => manual_page(),
         },
       ),
     );
