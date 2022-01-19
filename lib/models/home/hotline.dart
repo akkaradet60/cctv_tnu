@@ -5,15 +5,15 @@ class Hotline {
   });
   late final List<Data> data;
   late final bool error;
-  
-  Hotline.fromJson(Map<String, dynamic> json){
-    data = List.from(json['data']).map((e)=>Data.fromJson(e)).toList();
+
+  Hotline.fromJson(Map<String, dynamic> json) {
+    data = List.from(json['data']).map((e) => Data.fromJson(e)).toList();
     error = json['error'];
   }
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
-    _data['data'] = data.map((e)=>e.toJson()).toList();
+    _data['data'] = data.map((e) => e.toJson()).toList();
     _data['error'] = error;
     return _data;
   }
@@ -44,8 +44,8 @@ class Data {
   late final String hotlinePhone;
   late final String hotlineUpdateDate;
   late final String hotlineCreateDate;
-  
-  Data.fromJson(Map<String, dynamic> json){
+
+  Data.fromJson(Map<String, dynamic> json) {
     hotlineId = json['hotline_id'];
     hotlineAppId = json['hotline_app_id'];
     hotlineUserId = json['hotline_user_id'];

@@ -6,7 +6,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-//alert
+
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class register_page extends StatefulWidget {
@@ -235,7 +235,7 @@ class _RegisterPageState extends State<register_page> {
                           ),
                           onPressed: () {
                             if (_fbKey.currentState!.saveAndValidate()) {
-                              // print(_fbKey.currentState.value);
+                              print(_fbKey.currentState!.value);
                               register(_fbKey.currentState!.value);
                             }
                           },

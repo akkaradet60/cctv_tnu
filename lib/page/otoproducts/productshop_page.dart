@@ -1,6 +1,9 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/shared/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -15,28 +18,24 @@ class _productsState extends State<productshop_page> {
   var productt;
   var detail;
   bool isLoading = true;
+  late Map<String, dynamic> imgSlide;
 
-  get defaultMargin => null;
-  Future<void> getData(String picture) async {
-    var url = Uri.parse('https://api.codingthailand.com/api/course/');
-    var response = await http.get(url);
+  int _currentIndex = 0;
+  Future<Map<String, dynamic>> getDataSlide() async {
+    var url =
+        'https://www.bc-official.com/api/app_nt/api/app/otop/product/image/restful/?producti_product_id=${productt['productiproductid']}';
+    var response = await http.get(Uri.parse(url), headers: {
+      'Authorization':
+          'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
+    });
+
     if (response.statusCode == 200) {
-      // print(json.decode(response.body));
-      //นำ json ใส่ที่โมเมล product
-      detail = json.decode(response.body);
-      return detail;
-      // final product paroduct = product.fromJson(json.decode(response.body));
-      // print(paroduct.data);
-      //setState(() {
-      //   data = paroduct.data!;
-      //   isLoading = false;
-      // });
+      imgSlide = json.decode(response.body);
+
+      // print(imgSlide['data'].length);
+      return imgSlide;
     } else {
-      // setState(() {
-      //    isLoading = false;
-      //  });
-      //  print('error 400');
-      throw Exception('erroe');
+      throw Exception('$response.statusCode');
     }
   }
 
@@ -114,24 +113,93 @@ class _productsState extends State<productshop_page> {
                             end: Alignment.bottomLeft)),
                     child: Column(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Card(
-                            child: Column(
-                              children: [
-                                Container(
-                                  width: 300,
-                                  height: 300,
-                                  child: Image.network(
-                                      '${productt['productiPathName']}'),
-                                  // decoration: BoxDecoration(
-                                  //   image: DecorationImage(
-                                  //       image: NetworkImage(
-                                  //           '${productt['productiPathName']}')),
-                                  // ),
+                        Card(
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 300,
+                                child: FutureBuilder<Map<String, dynamic>>(
+                                  future: getDataSlide(),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData) {
+                                      // return ListView.separated(
+                                      //     itemBuilder: (context, index) {
+                                      // return Text('3232');
+                                      return CarouselSlider.builder(
+                                        itemCount:
+                                            snapshot.data!['data'].length,
+                                        options: CarouselOptions(
+                                          autoPlay: true,
+                                          enlargeCenterPage: true,
+                                          viewportFraction: 0.9,
+                                          aspectRatio: 2.0,
+                                          initialPage: 2,
+                                          onPageChanged: (index, reason) {
+                                            setState(
+                                              () {
+                                                _currentIndex = index;
+                                              },
+                                            );
+                                          },
+                                        ),
+                                        itemBuilder: (BuildContext context,
+                                                int item, int pageViewIndex) =>
+
+                                            // Text('${snapshot.data!['data'][item]['blog_id']}');
+                                            //     Container(
+                                            //   child: Center(child: Text(item.toString())),
+                                            //   color: Colors.green,
+                                            // ),
+                                            NeumorphicButton(
+                                          style: const NeumorphicStyle(
+                                            shape: NeumorphicShape.flat,
+                                            // boxShape:
+                                            //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
+                                            // boxShape: NeumorphicBoxShape.circle(),
+                                            color: Colors.white,
+                                          ),
+                                          padding: const EdgeInsets.all(0),
+                                          child: Card(
+                                            margin: const EdgeInsets.only(
+                                              top: 10.0,
+                                              bottom: 10.0,
+                                            ),
+                                            elevation: 6.0,
+                                            // shadowColor: Colors.redAccent,
+                                            // shape: RoundedRectangleBorder(
+                                            //     // borderRadius: BorderRadius.circular(30.0),
+                                            //     ),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  const BorderRadius.all(
+                                                Radius.circular(3.0),
+                                              ),
+                                              child: Stack(
+                                                children: <Widget>[
+                                                  Image.network(
+                                                    snapshot.data!['data'][item]
+                                                        ['producti_path_name'],
+                                                    fit: BoxFit.cover,
+                                                    width: double.infinity,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    } else if (snapshot.hasError) {
+                                      return Center(
+                                          child: Text(
+                                              'เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
+                                    }
+
+                                    return const Center(
+                                        child: CircularProgressIndicator());
+                                  },
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                         Container(
@@ -288,9 +356,6 @@ class _productsState extends State<productshop_page> {
                               ),
                             ),
                           ),
-                          height: 300,
-                          width: 400,
-                          margin: EdgeInsets.only(top: 0),
                         ),
                       ],
                     ),

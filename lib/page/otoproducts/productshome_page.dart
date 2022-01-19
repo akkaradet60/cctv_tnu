@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:cctv_tun/models/product/bestseller.dart';
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/shared/theme.dart';
@@ -19,30 +17,30 @@ class productshome_page extends StatefulWidget {
 }
 
 class _nameState extends State<productshome_page> {
-  List<Data> data = [];
-  bool isLoading = true;
-  Future<void> getData() async {
-    var url =
-        'https://www.bc-official.com/api/app_nt/api/app/otop/best-seller-product/restful/?product_app_id=${Global.app_id}';
-    var response = await http.get(Uri.parse(url),
-        headers: {'Authorization': 'Bearer ${Global.token}'});
-    if (response.statusCode == 200) {
-      // print(json.decode(response.body));
-      //นำ json ใส่ที่โมเมล product
-      final BestSeller paroduct =
-          BestSeller.fromJson(json.decode(response.body));
-      print(paroduct.data);
-      setState(() {
-        data = paroduct.data!;
-        isLoading = false;
-      });
-    } else {
-      setState(() {
-        isLoading = false;
-      });
-      print('error 400');
-    }
-  }
+  // List<Data> data = [];
+  // bool isLoading = true;
+  // Future<void> getData() async {
+  //   var url =
+  //       'https://www.bc-official.com/api/app_nt/api/app/otop/best-seller-product/restful/?product_app_id=${Global.app_id}';
+  //   var response = await http.get(Uri.parse(url),
+  //       headers: {'Authorization': 'Bearer ${Global.token}'});
+  //   if (response.statusCode == 200) {
+  //     // print(json.decode(response.body));
+  //     //นำ json ใส่ที่โมเมล product
+  //     final BestSeller paroduct =
+  //         BestSeller.fromJson(json.decode(response.body));
+  //     print(paroduct.data);
+  //     setState(() {
+  //       data = paroduct.data!;
+  //       isLoading = false;
+  //     });
+  //   } else {
+  //     setState(() {
+  //       isLoading = false;
+  //     });
+  //     print('error 400');
+  //   }
+  // }
 
   Future<void> getProfile() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -68,7 +66,7 @@ class _nameState extends State<productshome_page> {
   @override
   void initState() {
     super.initState();
-    getData();
+
     getProfile();
   }
 

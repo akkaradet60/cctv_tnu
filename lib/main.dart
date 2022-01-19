@@ -10,6 +10,7 @@ import 'package:cctv_tun/page/login_apply_page/register_page.dart';
 import 'package:cctv_tun/page/map/map_page%20copy%202.dart';
 
 import 'package:cctv_tun/page/map/map_page.dart';
+import 'package:cctv_tun/page/message/message_page.dart';
 import 'package:cctv_tun/page/otoproducts/probestseller_page.dart';
 
 import 'package:cctv_tun/page/otoproducts/productshome_page.dart';
@@ -25,6 +26,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
+var filePath;
 var token;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -69,6 +71,7 @@ class MyApp extends StatelessWidget {
           '/ProductPage': (context) => products_page(),
           '/appeal_page': (context) => appeal_page(),
           '/Manual_page': (context) => manual_page(),
+          '/messge_page': (context) => messge_page(),
         },
       ),
     );

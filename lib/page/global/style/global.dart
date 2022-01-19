@@ -7,16 +7,15 @@ double defaultMargin = 24.0;
 //appBar
 class ThemeBc {
 //bg
-static const orange = Colors.orange;
-static const whiteBg = Color(0xFFFFF9EC);
-static const white = Color(0xffF1EFE3);
-static const black = Color(0xff1B2836);
-static const green = Color(0xff02d667);
-static const greens = Colors.green;
-
-
+  static const orange = Colors.orange;
+  static const whiteBg = Color(0xFFFFF9EC);
+  static const white = Color(0xffF1EFE3);
+  static const black = Color(0xff1B2836);
+  static const green = Color(0xff02d667);
+  static const greens = Colors.green;
 }
-TextStyle primaryTextStyle = GoogleFonts.poppins(
+
+TextStyle primaryTextStyle1 = GoogleFonts.poppins(
   color: ThemeBc.black,
 );
 //bg
@@ -49,7 +48,7 @@ TextStyle whiteTextStyle = GoogleFonts.poppins(color: ThemeBc.white);
 
 FontWeight light = FontWeight.w300;
 FontWeight regular = FontWeight.w400;
-FontWeight medium = FontWeight.w500;
+FontWeight medium1 = FontWeight.w500;
 FontWeight semiBold = FontWeight.w600;
 FontWeight bold = FontWeight.w700;
 

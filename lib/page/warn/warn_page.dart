@@ -51,6 +51,7 @@ class _warn1State extends State<warn_page> {
   }
 
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +81,7 @@ class _warn1State extends State<warn_page> {
             padding: const EdgeInsets.all(8.0),
             child: FormBuilder(
               key: _fbKey,
-              initialValue: {'name': '', 'email': '', 'password': ''},
+              initialValue: {'name': '', 'password': ''},
               autovalidateMode: AutovalidateMode.always,
               child: Column(
                 children: [
@@ -157,7 +158,7 @@ class _warn1State extends State<warn_page> {
                     elevation: 18,
                     shadowColor: Colors.grey.withOpacity(0.5),
                     child: FormBuilderTextField(
-                      name: "name",
+                      name: "name1",
                       maxLines: 1,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
@@ -173,7 +174,7 @@ class _warn1State extends State<warn_page> {
                     elevation: 18,
                     shadowColor: Colors.grey.withOpacity(0.5),
                     child: FormBuilderTextField(
-                      name: "name",
+                      name: "name2",
                       maxLines: 1,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
@@ -262,8 +263,9 @@ class _warn1State extends State<warn_page> {
                       children: [
                         CustomButton(
                           title: 'แจ้งเหตุฉุกเฉิน',
-                          onPressed: () =>
-                              Navigator.pushNamed(context, '/warn'),
+                          onPressed: () {
+                            print(_fbKey.currentState!.value);
+                          },
                           colorButton: buttonGreyColor,
                           textStyle: secondaryTextStyle.copyWith(
                               fontWeight: medium, fontSize: 16),

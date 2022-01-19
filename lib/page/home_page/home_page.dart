@@ -1,10 +1,12 @@
 import 'dart:convert';
-import 'dart:ffi';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cctv_tun/page/global/global.dart';
+import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:cctv_tun/page/manu/manu.dart';
 import 'package:cctv_tun/page/otoproducts/products_page.dart';
-
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:http/http.dart' as http;
 import 'package:cctv_tun/shared/theme.dart';
 
 import 'package:cctv_tun/widgets/menus_custom.dart';
@@ -19,6 +21,8 @@ class home_page extends StatefulWidget {
 }
 
 class _home_pageState extends State<home_page> {
+  late Map<String, dynamic> imgSlide;
+  int _currentIndex = 0;
   Future<void> getProfile() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -40,16 +44,34 @@ class _home_pageState extends State<home_page> {
     store.dispatch(updateApplicationAction(newApplication));*/
   }
 
+  // Future<Map<String, dynamic>> getDataSlide() async {
+  //   var url =
+  //       'https://www.bc-official.com/api/app_nt/api/app/otop/product/image/restful/?producti_product_id=6';
+  //   var response = await http.get(Uri.parse(url), headers: {
+  //     'Authorization':
+  //         'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
+  //   });
+
+  //   if (response.statusCode == 200) {
+  //     imgSlide = json.decode(response.body);
+
+  //     // print(imgSlide['data'].length);
+  //     return imgSlide;
+  //   } else {
+  //     throw Exception('$response.statusCode');
+  //   }
+  // }
+
   @override
   var porfile;
   @override
   void initState() {
     super.initState();
-    getprofile();
+    getprofile1();
     getProfile();
   }
 
-  Future<void> getprofile() async {
+  Future<void> getprofile1() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       porfile = json.decode(prefs.getString('profile').toString());
@@ -129,11 +151,14 @@ class _home_pageState extends State<home_page> {
     }
 
     Widget titleMenus() {
-      return Container(
-        margin: EdgeInsets.only(top: 30, left: defaultMargin),
-        child: Text(
-          'เมนู',
-          style: primaryTextStyle.copyWith(fontSize: 18, fontWeight: medium),
+      return Padding(
+        padding: const EdgeInsets.all(10),
+        child: Container(
+          margin: EdgeInsets.only(top: 30, left: 5),
+          child: Text(
+            'เมนู',
+            style: primaryTextStyle.copyWith(fontSize: 25, fontWeight: medium),
+          ),
         ),
       );
     }
@@ -178,7 +203,7 @@ class _home_pageState extends State<home_page> {
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_4.png',
                       titleMenus: 'ข่าวสาร',
-                      pathName: '/message',
+                      pathName: '/messge_page',
                       titleMenus1: '',
                       titleMenus2: '',
                     ),

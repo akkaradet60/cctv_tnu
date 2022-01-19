@@ -104,7 +104,7 @@ class _otopproductsState extends State<probestseller_page> {
             : ListView.builder(
                 // scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  var app_image = data[index].productImage![0] != null
+                  var app_image = data[index].productImage?[0] != null
                       ? data[index].productImage![0].productiPathName
                       : 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg';
 
@@ -122,9 +122,12 @@ class _otopproductsState extends State<probestseller_page> {
                                   'productName': data[index].productName,
                                   'productPrice': data[index].productPrice,
                                   'productiPathName': data[index]
-                                          .productImage![0]
+                                          .productImage?[0]
                                           .productiPathName ??
                                       'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
+                                  'productiproductid': data[index]
+                                      .productImage![0]
+                                      .productiProductId,
 
                                   /*   'id': data[index].id,
                               'detail': data[index].detail,
@@ -167,7 +170,7 @@ class _otopproductsState extends State<probestseller_page> {
                                             child: Container(
                                                 child: Image.network(
                                               app_image!,
-                                              width: 200,
+                                              width: 220,
                                             )),
                                           ),
                                           SizedBox(height: 15),

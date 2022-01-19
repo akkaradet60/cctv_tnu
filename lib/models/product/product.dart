@@ -5,15 +5,15 @@ class Product {
   });
   late final List<Data> data;
   late final Meta meta;
-  
-  Product.fromJson(Map<String, dynamic> json){
-    data = List.from(json['data']).map((e)=>Data.fromJson(e)).toList();
+
+  Product.fromJson(Map<String, dynamic> json) {
+    data = List.from(json['data']).map((e) => Data.fromJson(e)).toList();
     meta = Meta.fromJson(json['meta']);
   }
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
-    _data['data'] = data.map((e)=>e.toJson()).toList();
+    _data['data'] = data.map((e) => e.toJson()).toList();
     _data['meta'] = meta.toJson();
     return _data;
   }
@@ -34,8 +34,8 @@ class Data {
   late final String date;
   late final int view;
   late final String picture;
-  
-  Data.fromJson(Map<String, dynamic> json){
+
+  Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
     detail = json['detail'];
@@ -63,8 +63,8 @@ class Meta {
   });
   late final String status;
   late final int statusCode;
-  
-  Meta.fromJson(Map<String, dynamic> json){
+
+  Meta.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     statusCode = json['status_code'];
   }
