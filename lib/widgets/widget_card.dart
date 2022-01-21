@@ -5,7 +5,7 @@ class WidgetBalanceCard extends StatelessWidget {
   final String currentBalance;
   final String image;
 
-  const WidgetBalanceCard({
+  WidgetBalanceCard({
     Key? key,
     required this.currentBalance,
     required this.image,

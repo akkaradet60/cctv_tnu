@@ -81,12 +81,12 @@ class _LoginPageState extends State<login_page> {
         desc: '${token['message']}',
         buttons: [
           DialogButton(
-            child: const Text(
+            child: Text(
               "ปิด",
               style: TextStyle(color: Colors.white, fontSize: 18),
             ),
             onPressed: () => Navigator.pop(context),
-            gradient: const LinearGradient(colors: [
+            gradient: LinearGradient(colors: [
               Color.fromRGBO(116, 116, 191, 1.0),
               Color.fromRGBO(52, 138, 199, 1.0),
             ]),
@@ -126,7 +126,7 @@ class _LoginPageState extends State<login_page> {
                     child: Column(
                       children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.all(30),
+                          padding: EdgeInsets.all(30),
                           child: Column(
                             children: [
                               Material(
@@ -307,7 +307,7 @@ class _LoginPageState extends State<login_page> {
                                 onPrimary: Colors.white,
                                 shadowColor: Colors.grey[700],
                                 elevation: 30,
-                                shape: const RoundedRectangleBorder(
+                                shape: RoundedRectangleBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(40))),
                               ),

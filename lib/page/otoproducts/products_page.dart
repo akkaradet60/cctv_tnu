@@ -22,8 +22,8 @@ class _otopproductsState extends State<products_page> {
   bool isLoading = true;
   var productt;
   Future<void> getData() async {
-    var url =
-        'https://www.bc-official.com/api/app_nt/api/app/otop/new-product/restful/?product_app_id=${Global.app_id}';
+    var url = (Global.urlWeb +
+        'api/app/otop/new-product/restful/?product_app_id=${Global.app_id}');
     var response = await http.get(Uri.parse(url),
         headers: {'Authorization': 'Bearer ${Global.token}'});
     // print(json.decode(response.body));
@@ -79,14 +79,14 @@ class _otopproductsState extends State<products_page> {
     return Scaffold(
       bottomNavigationBar: customBottomNav(),
       appBar: AppBar(
-        title: const Text('สินค้า OTOP'),
+        title: Text('สินค้า OTOP'),
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/logo.png', scale: 15),
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+                  SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
             },
           ),
         ],
@@ -101,128 +101,152 @@ class _otopproductsState extends State<products_page> {
             ? Center(
                 child: CircularProgressIndicator(),
               )
-            : ListView.builder(
-                // scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  var app_image = data[index].productImage?[0] != null
-                      ? data[index].productImage![0].productiPathName
-                      : 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg';
+            : Container(
+                height: 500,
+                child: ListView(
+                  children: [
+                    Container(
+                      width: 600,
+                      height: 500,
+                      child: ListView.separated(
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            var app_image = data[index].productImage?[0] != null
+                                ? data[index].productImage![0].productiPathName
+                                : 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg';
 
-                  //  var   app_image = data[index].productImage![0].productiPathName ??
-                  //         'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg';
+                            //  var   app_image = data[index].productImage![0].productiPathName ??
+                            //         'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg';
 
-                  return Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/productshop_page',
-                                arguments: {
-                                  'productName': data[index].productName,
-                                  'productPrice': data[index].productPrice,
-                                  'productiPathName': data[index]
-                                          .productImage?[0]
-                                          .productiPathName ??
-                                      'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
-                                  'productiproductid': data[index]
-                                      .productImage?[0]
-                                      .productiProductId,
+                            return Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                          context, '/productshop_page',
+                                          arguments: {
+                                            'productName':
+                                                data[index].productName,
+                                            'productPrice':
+                                                data[index].productPrice,
+                                            'productiPathName': data[index]
+                                                    .productImage?[0]
+                                                    .productiPathName ??
+                                                'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
+                                            'productiproductid': data[index]
+                                                .productImage?[0]
+                                                .productiProductId,
 
-                                  /*   'id': data[index].id,
-                              'detail': data[index].detail,
-                              'picture': data[index].picture,
-                              'view': data[index].view,*/
-                                });
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(top: 20, bottom: 0),
-                            child: Row(
-                              children: [
-                                SizedBox(width: defaultMargin),
-                                Container(
-                                  height: 400,
-                                  width: 365,
-                                  decoration: BoxDecoration(
-                                      color: secondaryTextColor,
-                                      borderRadius: BorderRadius.circular(
-                                        24,
-                                      ),
-                                      boxShadow: [
-                                        BoxShadow(
-                                            color: Colors.grey.withOpacity(0.5),
-                                            offset: Offset(2, 2),
-                                            blurRadius: 7,
-                                            spreadRadius: 1.0),
-                                        BoxShadow(
-                                            color: Colors.grey.withOpacity(0.5),
-                                            offset: Offset(2, 4),
-                                            blurRadius: 7.0,
-                                            spreadRadius: 1.0),
-                                      ]),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Column(
+                                            /*   'id': data[index].id,
+                                      'detail': data[index].detail,
+                                      'picture': data[index].picture,
+                                      'view': data[index].view,*/
+                                          });
+                                    },
+                                    child: Container(
+                                      margin:
+                                          EdgeInsets.only(top: 20, bottom: 0),
+                                      child: Row(
                                         children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(10.0),
-                                            child: Container(
-                                                child: Image.network(
-                                              app_image!,
-                                              width: 220,
-                                            )),
-                                          ),
-                                          SizedBox(height: 15),
+                                          SizedBox(width: defaultMargin),
                                           Container(
-                                            width: 340,
-                                            color: Colors.grey[200],
-                                            height: 100,
+                                            height: 400,
+                                            width: 365,
+                                            decoration: BoxDecoration(
+                                                color: secondaryTextColor,
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                  24,
+                                                ),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                      color: Colors.grey
+                                                          .withOpacity(0.5),
+                                                      offset: Offset(2, 2),
+                                                      blurRadius: 7,
+                                                      spreadRadius: 1.0),
+                                                  BoxShadow(
+                                                      color: Colors.grey
+                                                          .withOpacity(0.5),
+                                                      offset: Offset(2, 4),
+                                                      blurRadius: 7.0,
+                                                      spreadRadius: 1.0),
+                                                ]),
                                             child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
                                               children: [
-                                                SizedBox(height: 15),
-                                                Container(
-                                                  child: Text(
-                                                    'ชื่อสินค้า: ',
-                                                    style: primaryTextStyle
-                                                        .copyWith(
-                                                            fontSize: 18,
-                                                            fontWeight: medium),
-                                                  ),
-                                                ),
-                                                SizedBox(height: 15),
-                                                Text(
-                                                  'ราคาสินค้า : ${data[index].productPrice} บาท',
-                                                  style:
-                                                      primaryTextStyle.copyWith(
-                                                          fontSize: 20,
-                                                          fontWeight: medium),
-                                                ),
+                                                Column(
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsets.all(10.0),
+                                                      child: Container(
+                                                          child: Image.network(
+                                                        app_image!,
+                                                        width: 220,
+                                                      )),
+                                                    ),
+                                                    SizedBox(height: 15),
+                                                    Container(
+                                                      width: 340,
+                                                      color: Colors.grey[200],
+                                                      height: 100,
+                                                      child: Column(
+                                                        children: [
+                                                          SizedBox(height: 15),
+                                                          Container(
+                                                            child: Text(
+                                                              'ชื่อสินค้า:${data[index].productName} ',
+                                                              style: primaryTextStyle
+                                                                  .copyWith(
+                                                                      fontSize:
+                                                                          18,
+                                                                      fontWeight:
+                                                                          medium),
+                                                            ),
+                                                          ),
+                                                          SizedBox(height: 15),
+                                                          Text(
+                                                            'ราคาสินค้า : ${data[index].productPrice} บาท',
+                                                            style: primaryTextStyle
+                                                                .copyWith(
+                                                                    fontSize:
+                                                                        20,
+                                                                    fontWeight:
+                                                                        medium),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    )
+                                                  ],
+                                                )
                                               ],
                                             ),
-                                          )
+                                          ),
                                         ],
-                                      )
-                                    ],
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
+                                ],
+                              ),
+                            );
+                          },
+                          separatorBuilder: (context, index) => Divider(),
+                          itemCount: data.length),
                     ),
-                  );
-                },
-                // separatorBuilder: (context, index) => Divider(),
-                itemCount: data.length),
+                  ],
+                ),
+              ),
       ),
     );
   }
 
   Widget customBottomNav() {
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(8.0),
       child: Container(
         height: 100,
         child: BottomAppBar(

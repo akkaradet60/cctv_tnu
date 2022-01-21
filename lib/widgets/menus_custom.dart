@@ -9,7 +9,7 @@ class MenusCustom extends StatelessWidget {
   final String titleMenus2;
   final int ss = 0;
 
-  const MenusCustom({
+  MenusCustom({
     Key? key,
     required this.iconMenus,
     required this.titleMenus,
@@ -21,7 +21,7 @@ class MenusCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 0, bottom: 10),
+      margin: EdgeInsets.only(top: 0, bottom: 0),
       child: InkWell(
         onTap: () => Navigator.pushNamed(context, pathName),
         child: Column(
@@ -51,7 +51,7 @@ class MenusCustom extends StatelessWidget {
                 children: [
                   Image.asset(
                     iconMenus,
-                    width: 50,
+                    width: 60,
                   )
                 ],
               ),

@@ -8,7 +8,7 @@ class MenusCustom2 extends StatelessWidget {
   final String titleMenus1;
   final String titleMenus2;
 
-  const MenusCustom2({
+  MenusCustom2({
     Key? key,
     required this.iconMenus,
     required this.titleMenus,

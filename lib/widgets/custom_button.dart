@@ -7,7 +7,7 @@ class CustomButton extends StatelessWidget {
 
   final Color colorButton;
   final TextStyle textStyle;
-  const CustomButton({
+  CustomButton({
     Key? key,
     required this.title,
     required this.onPressed,

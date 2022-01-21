@@ -5,15 +5,15 @@ class Messages {
   });
   late final List<Data> data;
   late final bool error;
-  
-  Messages.fromJson(Map<String, dynamic> json){
-    data = List.from(json['data']).map((e)=>Data.fromJson(e)).toList();
+
+  Messages.fromJson(Map<String, dynamic> json) {
+    data = List.from(json['data']).map((e) => Data.fromJson(e)).toList();
     error = json['error'];
   }
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
-    _data['data'] = data.map((e)=>e.toJson()).toList();
+    _data['data'] = data.map((e) => e.toJson()).toList();
     _data['error'] = error;
     return _data;
   }
@@ -25,20 +25,20 @@ class Data {
     required this.blogName,
     required this.blogDetail,
     required this.blogUpdateDate,
-    required this.blogImages,
+    this.blogImages,
   });
   late final String blogId;
   late final String blogName;
   late final String blogDetail;
   late final String blogUpdateDate;
-  late final List<BlogImages> blogImages;
-  
-  Data.fromJson(Map<String, dynamic> json){
+  late final List<BlogImages>? blogImages;
+
+  Data.fromJson(Map<String, dynamic> json) {
     blogId = json['blog_id'];
     blogName = json['blog_name'];
     blogDetail = json['blog_detail'];
     blogUpdateDate = json['blog_update_date'];
-    blogImages = List.from(json['blog_images']).map((e)=>BlogImages.fromJson(e)).toList();
+    blogImages = null;
   }
 
   Map<String, dynamic> toJson() {
@@ -47,7 +47,7 @@ class Data {
     _data['blog_name'] = blogName;
     _data['blog_detail'] = blogDetail;
     _data['blog_update_date'] = blogUpdateDate;
-    _data['blog_images'] = blogImages.map((e)=>e.toJson()).toList();
+    _data['blog_images'] = blogImages;
     return _data;
   }
 }
@@ -65,8 +65,8 @@ class BlogImages {
   late final String blogiPathName;
   late final String blogiUpdateDate;
   late final String blogiCreateDate;
-  
-  BlogImages.fromJson(Map<String, dynamic> json){
+
+  BlogImages.fromJson(Map<String, dynamic> json) {
     blogiId = json['blogi_id'];
     blogiBlogId = json['blogi_blog_id'];
     blogiPathName = json['blogi_path_name'];

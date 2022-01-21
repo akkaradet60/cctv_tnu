@@ -56,14 +56,14 @@ class _warn1State extends State<warn_page> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('เแจ้งเหตุฉุกเฉิน'),
+        title: Text('เแจ้งเหตุฉุกเฉิน'),
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/logo.png', scale: 15),
             tooltip: 'Show Snackbar',
             onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('แจ้งเหตุฉุกเฉิน')));
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text('แจ้งเหตุฉุกเฉิน')));
             },
           ),
         ],
@@ -76,9 +76,9 @@ class _warn1State extends State<warn_page> {
               end: Alignment.bottomLeft),
         ),
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(8.0),
           child: Container(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: FormBuilder(
               key: _fbKey,
               initialValue: {'name': '', 'password': ''},
@@ -250,7 +250,7 @@ class _warn1State extends State<warn_page> {
                       onPrimary: Colors.white,
                       shadowColor: Colors.grey[700],
                       elevation: 30,
-                      shape: const RoundedRectangleBorder(
+                      shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(40))),
                     ),
                   ),
@@ -343,7 +343,7 @@ class _warn1State extends State<warn_page> {
       return FormBuilder(
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding:  EdgeInsets.all(8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[

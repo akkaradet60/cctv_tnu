@@ -22,8 +22,8 @@ class _productsState extends State<productshop_page> {
 
   int _currentIndex = 0;
   Future<Map<String, dynamic>> getDataSlide() async {
-    var url =
-        'https://www.bc-official.com/api/app_nt/api/app/otop/product/image/restful/?producti_product_id=${productt['productiproductid']}';
+    var url = (Global.urlWeb +
+        'api/app/otop/product/image/restful/?producti_product_id=${productt['productiproductid']}');
     var response = await http.get(Uri.parse(url), headers: {
       'Authorization':
           'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
@@ -79,17 +79,18 @@ class _productsState extends State<productshop_page> {
       });
     }
 
+    print(_product1);
     productt = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
         appBar: AppBar(
-          title: const Text('สินค้า'),
+          title: Text('สินค้า'),
           actions: <Widget>[
             IconButton(
               icon: Image.asset('assets/logo.png', scale: 15),
               tooltip: 'Show Snackbar',
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+                    SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
               },
             ),
           ],
@@ -101,7 +102,7 @@ class _productsState extends State<productshop_page> {
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft)),
           child: Padding(
-            padding: const EdgeInsets.all(10),
+            padding: EdgeInsets.all(10),
             child: Card(
               child: ListView(
                 children: [
@@ -151,16 +152,16 @@ class _productsState extends State<productshop_page> {
                                             //   color: Colors.green,
                                             // ),
                                             NeumorphicButton(
-                                          style: const NeumorphicStyle(
+                                          style: NeumorphicStyle(
                                             shape: NeumorphicShape.flat,
                                             // boxShape:
                                             //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
                                             // boxShape: NeumorphicBoxShape.circle(),
                                             color: Colors.white,
                                           ),
-                                          padding: const EdgeInsets.all(0),
+                                          padding: EdgeInsets.all(0),
                                           child: Card(
-                                            margin: const EdgeInsets.only(
+                                            margin: EdgeInsets.only(
                                               top: 10.0,
                                               bottom: 10.0,
                                             ),
@@ -170,15 +171,14 @@ class _productsState extends State<productshop_page> {
                                             //     // borderRadius: BorderRadius.circular(30.0),
                                             //     ),
                                             child: ClipRRect(
-                                              borderRadius:
-                                                  const BorderRadius.all(
+                                              borderRadius: BorderRadius.all(
                                                 Radius.circular(3.0),
                                               ),
                                               child: Stack(
                                                 children: <Widget>[
                                                   Image.network(
-                                                    snapshot.data!['data'][item]
-                                                        ['producti_path_name'],
+                                                    productt[
+                                                        'productiPathName'],
                                                     fit: BoxFit.cover,
                                                     width: double.infinity,
                                                   ),
@@ -194,7 +194,7 @@ class _productsState extends State<productshop_page> {
                                               'เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
                                     }
 
-                                    return const Center(
+                                    return Center(
                                         child: CircularProgressIndicator());
                                   },
                                 ),
@@ -233,7 +233,7 @@ class _productsState extends State<productshop_page> {
                                           ),
                                           child: Text('ดูร้านค้า'),
                                           onPressed: () => Navigator.pushNamed(
-                                              context, '/shop'),
+                                              context, '/products_page'),
                                         )
                                       ],
                                     ),
@@ -247,7 +247,7 @@ class _productsState extends State<productshop_page> {
                                           size: 40,
                                         ),
                                         Text(
-                                          '   ชื่อสินค้า :  ',
+                                          '   ชื่อสินค้า :  ${productt['productName']}',
                                           style: primaryTextStyle.copyWith(
                                             fontSize: 15,
                                           ),
@@ -340,7 +340,7 @@ class _productsState extends State<productshop_page> {
                                         Container(
                                           width: 350,
                                           child: Padding(
-                                            padding: const EdgeInsets.all(8.0),
+                                            padding: EdgeInsets.all(8.0),
                                             child: Text(
                                               '   รายละเอียดสินค้า : ',
                                               style: primaryTextStyle.copyWith(

@@ -71,14 +71,14 @@ class _map_pageState extends State<map_page> {
     );
     return Scaffold(
       appBar: AppBar(
-        title: const Text('สถานที่ราชการ'),
+        title: Text('สถานที่ราชการ'),
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/logo.png', scale: 15),
             tooltip: 'Show Snackbar',
             onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('แจ้งเหตุฉุกเฉิน')));
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text('แจ้งเหตุฉุกเฉิน')));
             },
           ),
         ],

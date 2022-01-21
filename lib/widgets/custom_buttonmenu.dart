@@ -6,7 +6,7 @@ class CustomButtonmenu extends StatelessWidget {
 
   final Color colorButton;
   final TextStyle textStyle;
-  const CustomButtonmenu({
+  CustomButtonmenu({
     Key? key,
     required this.title,
     required this.onPressed,

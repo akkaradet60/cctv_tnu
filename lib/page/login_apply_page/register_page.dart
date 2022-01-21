@@ -10,7 +10,7 @@ import 'dart:convert';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class register_page extends StatefulWidget {
-  const register_page({Key? key}) : super(key: key);
+  register_page({Key? key}) : super(key: key);
 
   @override
   _RegisterPageState createState() => _RegisterPageState();
@@ -51,12 +51,12 @@ class _RegisterPageState extends State<register_page> {
           desc: '${feedback['data']}',
           buttons: [
             DialogButton(
-              child: const Text(
+              child: Text(
                 "ปิด",
                 style: TextStyle(color: ThemeBc.white, fontSize: 18),
               ),
               onPressed: () => Navigator.pushNamed(context, '/login_page'),
-              gradient: const LinearGradient(colors: [
+              gradient: LinearGradient(colors: [
                 Color.fromRGBO(116, 116, 191, 1.0),
                 Color.fromRGBO(52, 138, 199, 1.0),
               ]),
@@ -77,12 +77,12 @@ class _RegisterPageState extends State<register_page> {
           desc: '${feedback['data']}',
           buttons: [
             DialogButton(
-              child: const Text(
+              child: Text(
                 "ปิด",
                 style: TextStyle(color: ThemeBc.white, fontSize: 18),
               ),
               onPressed: () => Navigator.pop(context),
-              gradient: const LinearGradient(colors: [
+              gradient: LinearGradient(colors: [
                 Color.fromRGBO(116, 116, 191, 1.0),
                 Color.fromRGBO(52, 138, 199, 1.0),
               ]),
@@ -112,14 +112,14 @@ class _RegisterPageState extends State<register_page> {
       child: Center(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(40),
+            padding: EdgeInsets.all(40),
             child: Column(
               children: [
-                const Text('ลงทะเบียน', style: TextStyle(fontSize: 40)),
-                const SizedBox(height: 40),
+                Text('ลงทะเบียน', style: TextStyle(fontSize: 40)),
+                SizedBox(height: 40),
                 FormBuilder(
                   key: _fbKey,
-                  initialValue: const {
+                  initialValue: {
                     'firstname': '',
                     'lastname': '',
                     'email': '',
@@ -147,7 +147,7 @@ class _RegisterPageState extends State<register_page> {
                           ]),
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      SizedBox(height: 20),
                       Material(
                         elevation: 18,
                         shadowColor: Colors.grey[700],
@@ -166,7 +166,7 @@ class _RegisterPageState extends State<register_page> {
                           ]),
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      SizedBox(height: 20),
                       Material(
                         elevation: 18,
                         shadowColor: Colors.grey[700],
@@ -186,7 +186,7 @@ class _RegisterPageState extends State<register_page> {
                           ]),
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      SizedBox(height: 20),
                       Material(
                         elevation: 18,
                         shadowColor: Colors.grey[700],
@@ -212,7 +212,7 @@ class _RegisterPageState extends State<register_page> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
@@ -221,14 +221,14 @@ class _RegisterPageState extends State<register_page> {
                       height: 60,
                       child: Expanded(
                         child: ElevatedButton.icon(
-                          label: const Text('ลงทะเบียน'),
-                          icon: const Icon(Icons.login_rounded),
+                          label: Text('ลงทะเบียน'),
+                          icon: Icon(Icons.login_rounded),
                           style: ElevatedButton.styleFrom(
                             primary: ThemeBc.green,
                             //side: BorderSide(color: Colors.red, width: 5),
-                            textStyle: const TextStyle(fontSize: 15),
-                            padding: const EdgeInsets.all(15),
-                            shape: const RoundedRectangleBorder(
+                            textStyle: TextStyle(fontSize: 15),
+                            padding: EdgeInsets.all(15),
+                            shape: RoundedRectangleBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10))),
                             // shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -244,7 +244,7 @@ class _RegisterPageState extends State<register_page> {
                     ),
                     Expanded(
                       child: FlatButton(
-                        child: const Text("ย้อนกลับ",
+                        child: Text("ย้อนกลับ",
                             style: TextStyle(
                                 decoration: TextDecoration.underline)),
                         textColor: ThemeBc.black,

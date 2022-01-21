@@ -77,14 +77,14 @@ class _nameState extends State<productshome_page> {
     return Scaffold(
       bottomNavigationBar: customBottomNav(),
       appBar: AppBar(
-        title: const Text('สินค้า OTOP'),
+        title: Text('สินค้า OTOP'),
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/logo.png', scale: 15),
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+                  SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
             },
           ),
         ],
@@ -113,13 +113,13 @@ class _nameState extends State<productshome_page> {
                   color: Colors.orange,
                   child: SafeArea(
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(8.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Padding(
-                            padding: const EdgeInsets.symmetric(
+                          Padding(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 0, vertical: 0),
                           ),
                           Material(
@@ -172,7 +172,7 @@ class _nameState extends State<productshome_page> {
                         onPrimary: Colors.white,
                         shadowColor: Colors.grey[700],
                         elevation: 30,
-                        shape: const RoundedRectangleBorder(
+                        shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(40))),
                       ),
@@ -209,7 +209,7 @@ class _nameState extends State<productshome_page> {
                         onPrimary: Colors.white,
                         shadowColor: Colors.grey[700],
                         elevation: 30,
-                        shape: const RoundedRectangleBorder(
+                        shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(40))),
                       ),
@@ -240,7 +240,7 @@ class _nameState extends State<productshome_page> {
                         onPrimary: Colors.white,
                         shadowColor: Colors.grey[700],
                         elevation: 30,
-                        shape: const RoundedRectangleBorder(
+                        shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(40))),
                       ),

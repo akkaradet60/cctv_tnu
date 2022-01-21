@@ -9,14 +9,14 @@ import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class hotline_page extends StatefulWidget {
-  hotline_page({Key? key}) : super(key: key);
+class compose_page extends StatefulWidget {
+  compose_page({Key? key}) : super(key: key);
 
   @override
   _warn1State createState() => _warn1State();
 }
 
-class _warn1State extends State<hotline_page> {
+class _warn1State extends State<compose_page> {
   late Position userLocation;
   late GoogleMapController mapController;
 
@@ -55,14 +55,14 @@ class _warn1State extends State<hotline_page> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ร้องเรียน'),
+        title: Text('ร้องเรียน'),
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/logo.png', scale: 15),
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context)
-                  .showSnackBar(const SnackBar(content: Text('ร้องเรียน')));
+                  .showSnackBar(SnackBar(content: Text('ร้องเรียน')));
             },
           ),
         ],
@@ -75,9 +75,9 @@ class _warn1State extends State<hotline_page> {
               end: Alignment.bottomLeft),
         ),
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(8.0),
           child: Container(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: FormBuilder(
               key: _fbKey,
               initialValue: {'name': '', 'email': '', 'password': ''},
@@ -259,7 +259,7 @@ class _warn1State extends State<hotline_page> {
                       onPrimary: Colors.white,
                       shadowColor: Colors.grey[700],
                       elevation: 30,
-                      shape: const RoundedRectangleBorder(
+                      shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(40))),
                     ),
                   ),
@@ -351,7 +351,7 @@ class _warn1State extends State<hotline_page> {
       return FormBuilder(
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding:  EdgeInsets.all(8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[

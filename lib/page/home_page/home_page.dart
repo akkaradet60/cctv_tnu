@@ -44,6 +44,24 @@ class _home_pageState extends State<home_page> {
     store.dispatch(updateApplicationAction(newApplication));*/
   }
 
+  Future<Map<String, dynamic>> getDataSlide() async {
+    var url =
+        'https://www.bc-official.com/api/app_nt/api/app/blog/restful/?app_id=${Global.app_id}';
+    var response = await http.get(Uri.parse(url), headers: {
+      'Authorization':
+          'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
+    });
+
+    if (response.statusCode == 200) {
+      imgSlide = json.decode(response.body);
+
+      // print(imgSlide['data'].length);
+      return imgSlide;
+    } else {
+      throw Exception('$response.statusCode');
+    }
+  }
+
   // Future<Map<String, dynamic>> getDataSlide() async {
   //   var url =
   //       'https://www.bc-official.com/api/app_nt/api/app/otop/product/image/restful/?producti_product_id=6';
@@ -69,6 +87,7 @@ class _home_pageState extends State<home_page> {
     super.initState();
     getprofile1();
     getProfile();
+    getDataSlide();
   }
 
   Future<void> getprofile1() async {
@@ -150,6 +169,126 @@ class _home_pageState extends State<home_page> {
       );
     }
 
+    Widget slide(BuildContext context) {
+      return Container(
+        child: FutureBuilder<Map<String, dynamic>>(
+          future: getDataSlide(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              // return ListView.separated(
+              //     itemBuilder: (context, index) {
+              // return Text('3232');
+              return CarouselSlider.builder(
+                itemCount: snapshot.data!['data'].length,
+                options: CarouselOptions(
+                  autoPlay: true,
+                  enlargeCenterPage: true,
+                  viewportFraction: 0.9,
+                  aspectRatio: 2.0,
+                  initialPage: 2,
+                  onPageChanged: (index, reason) {
+                    setState(
+                      () {
+                        _currentIndex = index;
+                      },
+                    );
+                  },
+                ),
+                itemBuilder:
+                    (BuildContext context, int item, int pageViewIndex) =>
+
+                        // Text('${snapshot.data!['data'][item]['blog_id']}');
+                        //     Container(
+                        //   child: Center(child: Text(item.toString())),
+                        //   color: Colors.green,
+                        // ),
+                        NeumorphicButton(
+                  style: NeumorphicStyle(
+                    shape: NeumorphicShape.flat,
+                    // boxShape:
+                    //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
+                    // boxShape: NeumorphicBoxShape.circle(),
+                    color: Colors.white,
+                  ),
+                  padding: EdgeInsets.all(0),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/messagemdetail_page',
+                          arguments: {
+                            'blog_images': snapshot.data!['data'][item]
+                                        ['blog_images'] !=
+                                    null
+                                ? Global.domainImage +
+                                    snapshot.data!['data'][item]['blog_images']
+                                        [0]['blogi_path_name']
+                                : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                            'blog_name': snapshot.data!['data'][item]
+                                ['blog_name'],
+                            'blog_detail': snapshot.data!['data'][item]
+                                ['blog_detail']
+
+                            /*   'id': data[index].id,
+                                'detail': data[index].detail,
+                                'picture': data[index].picture,
+                                'view': data[index].view,*/
+                          });
+                    },
+                    child: Card(
+                      margin: EdgeInsets.only(
+                        top: 10.0,
+                        bottom: 10.0,
+                      ),
+                      elevation: 6.0,
+                      // shadowColor: Colors.redAccent,
+                      // shape: RoundedRectangleBorder(
+                      //     // borderRadius: BorderRadius.circular(30.0),
+                      //     ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(3.0),
+                        ),
+                        child: Stack(
+                          children: <Widget>[
+                            Image.network(
+                              snapshot.data!['data'][item]['blog_images'] !=
+                                      null
+                                  ? Global.domainImage +
+                                      snapshot.data!['data'][item]
+                                          ['blog_images'][0]['blogi_path_name']
+                                  : 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
+                              fit: BoxFit.cover,
+                              width: double.infinity,
+                            ),
+                            Center(
+                              child: Text(
+                                // '${titles[_currentIndex]}',
+                                '${snapshot.data!['data'][item]['blog_name']}',
+                                style: TextStyle(
+                                  fontSize: 24.0,
+                                  fontWeight: FontWeight.bold,
+                                  backgroundColor: Colors.black45,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            } else if (snapshot.hasError) {
+              return Center(
+                  child: Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
+            }
+
+            return Center(child: CircularProgressIndicator());
+          },
+        ),
+      );
+    }
+
     Widget titleMenus() {
       return Padding(
         padding: const EdgeInsets.all(10),
@@ -183,14 +322,14 @@ class _home_pageState extends State<home_page> {
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_2.png',
                       titleMenus: 'ร้องเรียน',
-                      pathName: '/hotline_page',
+                      pathName: '/compose_page',
                       titleMenus1: '',
                       titleMenus2: '',
                     ),
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_3.png',
                       titleMenus: 'สายด่วน',
-                      pathName: '/appeal_page',
+                      pathName: '/hotlinee_page',
                       titleMenus1: '',
                       titleMenus2: '',
                     ),
@@ -203,14 +342,14 @@ class _home_pageState extends State<home_page> {
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_4.png',
                       titleMenus: 'ข่าวสาร',
-                      pathName: '/messge_page',
+                      pathName: '/message_page',
                       titleMenus1: '',
                       titleMenus2: '',
                     ),
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_5.png',
                       titleMenus: 'ปฎิทินการอบรม',
-                      pathName: '/trainingcalendar',
+                      pathName: '/trainingcalendar_page',
                       titleMenus1: '',
                       titleMenus2: '',
                     ),
@@ -242,14 +381,14 @@ class _home_pageState extends State<home_page> {
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_7.png',
                       titleMenus: 'รางวัล',
-                      pathName: '/reward',
+                      pathName: '/award_page',
                       titleMenus1: '',
                       titleMenus2: '',
                     ),
                     MenusCustom(
-                      iconMenus: 'assets/homepage/icon_8.png',
-                      titleMenus: 'YOUTUBE',
-                      pathName: '/youtube',
+                      iconMenus: 'assets/homepage/icon_10.png',
+                      titleMenus: 'ท่องเที่ยว',
+                      pathName: '/travel_page',
                       titleMenus1: '',
                       titleMenus2: '',
                     ),
@@ -267,13 +406,6 @@ class _home_pageState extends State<home_page> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  MenusCustom(
-                    iconMenus: 'assets/homepage/icon_10.png',
-                    titleMenus: 'ท่องเที่ยว',
-                    pathName: '/travel',
-                    titleMenus1: '',
-                    titleMenus2: '',
-                  ),
                   MenusCustom(
                     iconMenus: 'assets/homepage/icon_11.png',
                     titleMenus: 'สินค้า OTOP',
@@ -308,7 +440,7 @@ class _home_pageState extends State<home_page> {
     return Scaffold(
       drawer: manu(),
       appBar: AppBar(
-        title: const Text('เทศบาลเมืองมหาสารคาม'),
+        title: Center(child: const Text('เทศบาลเมืองมหาสารคาม')),
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/logo.png', scale: 15),
@@ -330,7 +462,8 @@ class _home_pageState extends State<home_page> {
           ),
           child: ListView(
             children: <Widget>[
-              slider(),
+              SizedBox(height: 15),
+              slide(context), // slider(),
               titleMenus(),
               cardMenus(),
               cardMenus1(),

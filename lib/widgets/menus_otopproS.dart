@@ -6,7 +6,7 @@ class MenusCustomS extends StatelessWidget {
 
   final int ss = 0;
 
-  const MenusCustomS({
+  MenusCustomS({
     Key? key,
     required this.SOS,
   }) : super(key: key);
@@ -19,14 +19,13 @@ class MenusCustomS extends StatelessWidget {
       width: 365,
       child: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(8.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               ),
               Material(
                 elevation: 18,

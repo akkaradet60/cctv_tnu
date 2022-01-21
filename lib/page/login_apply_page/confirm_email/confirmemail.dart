@@ -1,10 +1,10 @@
 import 'package:cctv_tun/shared/theme.dart';
 
-import 'package:cctv_tun/widgets/widget_card.dart';
 import 'package:flutter/material.dart';
+import 'package:cctv_tun/widgets/widget_card.dart';
 
 class confirmemail extends StatelessWidget {
-  const confirmemail({Key? key}) : super(key: key);
+  confirmemail({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,14 +44,14 @@ class confirmemail extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('เทศบาลเมืองมหาสารคาม'),
+        title: Text('เทศบาลเมืองมหาสารคาม'),
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/logo.png', scale: 15),
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+                  SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
             },
           ),
         ],
