@@ -133,7 +133,7 @@ class _LoginPageState extends State<login_page> {
                                 elevation: 18,
                                 shadowColor: Colors.grey[700],
                                 child: FormBuilderTextField(
-                                  initialValue: 'ghame123@gmail.com',
+                                  initialValue: 'akkaradet.ko60@snru.ac.th',
                                   name: "email",
                                   maxLines: 1,
                                   keyboardType: TextInputType.emailAddress,

@@ -9,17 +9,17 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:cctv_tun/widgets/custom_button.dart';
 
-class trainingcalendar_page extends StatefulWidget {
-  trainingcalendar_page({Key? key}) : super(key: key);
+class trainingcalendardetail_page extends StatefulWidget {
+  trainingcalendardetail_page({Key? key}) : super(key: key);
 
   @override
   _hotlinee_pageState createState() => _hotlinee_pageState();
 }
 
-class _hotlinee_pageState extends State<trainingcalendar_page> {
+class _hotlinee_pageState extends State<trainingcalendardetail_page> {
   List<Data> data = [];
   bool isLoading = true;
-
+  var trainingcalendardetail;
   Future<void> getData() async {
     var url =
         ('https://www.bc-official.com/api/app_nt/api/app/train/restful/?train_id=8&train_app_id=1');
@@ -75,9 +75,11 @@ class _hotlinee_pageState extends State<trainingcalendar_page> {
 
   @override
   Widget build(BuildContext context) {
+    trainingcalendardetail = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('การฝึกอบรม')),
+        title: Center(
+            child: Text('การฝึกอบรม ${trainingcalendardetail['trainName']}')),
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/logo.png', scale: 15),
@@ -113,10 +115,11 @@ class _hotlinee_pageState extends State<trainingcalendar_page> {
   }
 
   Widget hotlineee(BuildContext context) {
+    trainingcalendardetail = ModalRoute.of(context)!.settings.arguments;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        height: 600,
+        height: 800,
         child: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -132,64 +135,54 @@ class _hotlinee_pageState extends State<trainingcalendar_page> {
                   itemBuilder: (context, index) {
                     return Center(
                       child: Container(
-                        height: 500,
+                        height: 600,
                         child: ListView(
                           children: [
                             Card(
                               child: Row(
-                                // mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   InkWell(
-                                    onTap: () {
-                                      Navigator.pushNamed(context,
-                                          '/trainingcalendardetail_page',
-                                          arguments: {
-                                            'trainName': data[index].trainName,
-                                            'trainDetail':
-                                                data[index].trainDetail,
-                                            'trainImages': data[index]
-                                                        .trainImages !=
-                                                    null
-                                                ? Global.domainImage +
-                                                    data[index]
-                                                        .trainImages[index]
-                                                        .trainiPathName
-                                                : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
-                                          });
-                                    },
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: Row(
+                                      child: Column(
                                         children: [
-                                          Container(
-                                            height: 200,
-                                            child: Image.network(
-                                              data[index].trainImages != null
-                                                  ? Global.domainImage +
-                                                      data[index]
-                                                          .trainImages[index]
-                                                          .trainiPathName
-                                                  : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
-                                            ),
+                                          Row(
+                                            children: [
+                                              Container(
+                                                  width: 360,
+                                                  height: 300,
+                                                  child: Image.network(
+                                                      '${trainingcalendardetail['trainImages']}')),
+                                            ],
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Column(
                                               children: [
+                                                SizedBox(height: 5),
                                                 Text(
-                                                  'การอบรม : ${data[index].trainName}',
+                                                  'การอบรบ : ${trainingcalendardetail['trainName']}',
+                                                  style:
+                                                      primaryTextStyle.copyWith(
+                                                          fontSize: 18,
+                                                          fontWeight: medium),
+                                                ),
+                                                SizedBox(height: 12),
+                                                Text(
+                                                  'เนื้อหาการการอบรบ : ${trainingcalendardetail['trainDetail']}',
                                                   style:
                                                       primaryTextStyle.copyWith(
                                                           fontSize: 15,
                                                           fontWeight: medium),
                                                 ),
-                                                Text(
-                                                  'วันที่จัดการอบรม : ${data[index].trainDetail}',
-                                                  style:
-                                                      primaryTextStyle.copyWith(
-                                                          fontSize: 13,
-                                                          fontWeight: medium),
-                                                ),
+                                                // Text(
+                                                //   '${data[index].trainDetail}',
+                                                //   style:
+                                                //       primaryTextStyle.copyWith(
+                                                //           fontSize: 18,
+                                                //           fontWeight: medium),
+                                                // ),
                                               ],
                                             ),
                                           ),

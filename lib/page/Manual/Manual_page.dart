@@ -31,10 +31,10 @@ class _manual_paState extends State<manual_page> {
     if (response.statusCode == 200) {
       // print(json.decode(response.body));
       //นำ json ใส่ที่โมเมล product
-      final Manuals paroduct = Manuals.fromJson(json.decode(response.body));
-      print(paroduct.data);
+      final Manuals manuals = Manuals.fromJson(json.decode(response.body));
+      print(manuals.data);
       setState(() {
-        data = paroduct.data!;
+        data = manuals.data;
         isLoading = false;
       });
     } else {

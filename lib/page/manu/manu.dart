@@ -65,8 +65,10 @@ class _manuState extends State<manu> {
                               backgroundImage: AssetImage('assets/logo.png'),
                               backgroundColor: Colors.pink,
                             ),
-                            accountEmail: Text('สวัสดีคุณ ${profile['name']}'),
-                            accountName: Text('Email: ${profile['email']} '),
+                            accountEmail:
+                                Text('สวัสดีคุณ ${profile['user_firstname']}'),
+                            accountName:
+                                Text('Email: ${profile['user_email']} '),
                           ),
                         ],
                       );

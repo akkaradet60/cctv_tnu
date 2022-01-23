@@ -186,7 +186,6 @@ class _otopproductsState extends State<products_page> {
                                                       child: Container(
                                                           child: Image.network(
                                                         app_image!,
-                                                        width: 220,
                                                       )),
                                                     ),
                                                     SizedBox(height: 15),

@@ -188,12 +188,16 @@ class _otopproductsState extends State<propopular_page> {
                                                       ),
                                                       child: Stack(
                                                         children: <Widget>[
-                                                          Container(
-                                                              child:
-                                                                  Image.network(
-                                                            app_image!,
-                                                            width: 200,
-                                                          )),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(10),
+                                                            child: Container(
+                                                                child: Image
+                                                                    .network(
+                                                              app_image!,
+                                                            )),
+                                                          ),
                                                         ],
                                                       ),
                                                     ),

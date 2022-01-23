@@ -38,9 +38,9 @@ class _productsState extends State<messagemdetail_page> {
     }
   }
 
-  var _counter = 1;
-  var _product = int.parse('0');
-  var _product1 = int.parse('0');
+  // var _counter = 1;
+  // var _product = int.parse('0');
+  // var _product1 = int.parse('0');
 
   /* void _incrementCounter() {
     setState(() {
@@ -100,101 +100,92 @@ class _productsState extends State<messagemdetail_page> {
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft)),
           child: Padding(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(0),
             child: Card(
               child: Container(
-                height: 1000,
                 child: ListView(
                   children: [
                     Container(
-                      decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                              colors: [Colors.pinkAccent, Colors.orangeAccent],
-                              begin: Alignment.topRight,
-                              end: Alignment.bottomLeft)),
                       child: Column(
                         children: [
-                          Card(
-                            child: Column(
-                              children: [
-                                Container(
-                                  height: 300,
-                                  child: FutureBuilder<Map<String, dynamic>>(
-                                    future: getDataSlide(),
-                                    builder: (context, snapshot) {
-                                      if (snapshot.hasData) {
-                                        // return ListView.separated(
-                                        //     itemBuilder: (context, index) {
-                                        // return Text('3232');
-                                        return CarouselSlider.builder(
-                                          itemCount:
-                                              snapshot.data!['data'].length,
-                                          options: CarouselOptions(
-                                            autoPlay: true,
-                                            enlargeCenterPage: true,
-                                            viewportFraction: 0.9,
-                                            aspectRatio: 2.0,
-                                            initialPage: 2,
-                                            onPageChanged: (index, reason) {
-                                              setState(
-                                                () {
-                                                  _currentIndex = index;
-                                                },
-                                              );
-                                            },
-                                          ),
-                                          itemBuilder: (BuildContext context,
-                                                  int item,
-                                                  int pageViewIndex) =>
-
-                                              // Text('${snapshot.data!['data'][item]['blog_id']}');
-                                              //     Container(
-                                              //   child: Center(child: Text(item.toString())),
-                                              //   color: Colors.green,
-                                              // ),
-                                              NeumorphicButton(
-                                            style: NeumorphicStyle(
-                                              shape: NeumorphicShape.flat,
-                                              // boxShape:
-                                              //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                                              // boxShape: NeumorphicBoxShape.circle(),
-                                              color: Colors.white,
-                                            ),
-                                            child: Card(
-                                              elevation: 6.0,
-                                              // shadowColor: Colors.redAccent,
-                                              // shape: RoundedRectangleBorder(
-                                              //blog_images//     // borderRadius: BorderRadius.circular(30.0),
-                                              //     ),
-                                              child: ClipRRect(
-                                                borderRadius: BorderRadius.all(
-                                                  Radius.circular(3.0),
-                                                ),
-                                                child: Stack(
-                                                  children: <Widget>[
-                                                    Image.network(
-                                                      productt['blog_images'],
-                                                      fit: BoxFit.cover,
-                                                      width: double.infinity,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                    colors: [
+                                  Colors.pinkAccent,
+                                  Colors.orangeAccent
+                                ],
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft)),
+                            height: 300,
+                            width: 1000,
+                            child: FutureBuilder<Map<String, dynamic>>(
+                              future: getDataSlide(),
+                              builder: (context, snapshot) {
+                                if (snapshot.hasData) {
+                                  // return ListView.separated(
+                                  //     itemBuilder: (context, index) {
+                                  // return Text('3232');
+                                  return CarouselSlider.builder(
+                                    itemCount: snapshot.data!['data'].length,
+                                    options: CarouselOptions(
+                                      autoPlay: true,
+                                      enlargeCenterPage: true,
+                                      viewportFraction: 0.9,
+                                      aspectRatio: 2.0,
+                                      initialPage: 2,
+                                      onPageChanged: (index, reason) {
+                                        setState(
+                                          () {
+                                            _currentIndex = index;
+                                          },
                                         );
-                                      } else if (snapshot.hasError) {
-                                        return Center(
-                                            child: Text(
-                                                'เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
-                                      }
+                                      },
+                                    ),
+                                    itemBuilder: (BuildContext context,
+                                            int item, int pageViewIndex) =>
 
-                                      return Center(
-                                          child: CircularProgressIndicator());
-                                    },
-                                  ),
-                                ),
-                              ],
+                                        // Text('${snapshot.data!['data'][item]['blog_id']}');
+                                        //     Container(
+                                        //   child: Center(child: Text(item.toString())),
+                                        //   color: Colors.green,
+                                        // ),
+                                        ListView(
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(8.0),
+                                          ),
+                                          child: Stack(
+                                            children: <Widget>[
+                                              Image.network(
+                                                productt['blog_images'],
+                                                fit: BoxFit.cover,
+                                                width: double.infinity,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+
+                                      //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
+                                      // boxShape: NeumorphicBoxShape.circle(),
+                                    ),
+
+                                    // shadowColor: Colors.redAccent,
+                                    // shape: RoundedRectangleBorder(
+                                    //blog_images//     // borderRadius: BorderRadius.circular(30.0),
+                                    //     ),
+                                  );
+                                } else if (snapshot.hasError) {
+                                  return Center(
+                                      child: Text(
+                                          'เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
+                                }
+
+                                return Center(
+                                    child: CircularProgressIndicator());
+                              },
                             ),
                           ),
                         ],

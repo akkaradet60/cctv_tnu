@@ -2,7 +2,7 @@ import 'package:cctv_tun/models/message/message.dart';
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/shared/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -142,7 +142,7 @@ class _hotlinee_pageState extends State<hotlinee_page1> {
                                               padding: EdgeInsets.all(10.0),
                                               child: Container(
                                                   child: Image.network(
-                                                app_image!,
+                                                app_image,
                                                 width: 220,
                                               )),
                                             ),

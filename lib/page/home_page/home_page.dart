@@ -348,7 +348,7 @@ class _home_pageState extends State<home_page> {
                     ),
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_5.png',
-                      titleMenus: 'ปฎิทินการอบรม',
+                      titleMenus: 'การฝึกอบรม',
                       pathName: '/trainingcalendar_page',
                       titleMenus1: '',
                       titleMenus2: '',
@@ -404,7 +404,7 @@ class _home_pageState extends State<home_page> {
               ),
               SizedBox(height: 18),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   MenusCustom(
                     iconMenus: 'assets/homepage/icon_11.png',
@@ -413,6 +413,7 @@ class _home_pageState extends State<home_page> {
                     titleMenus1: '',
                     titleMenus2: '',
                   ),
+                  SizedBox(width: 48),
                   MenusCustom(
                     iconMenus: 'assets/homepage/icon_12.png',
                     titleMenus: 'สถานที่ราชการ',

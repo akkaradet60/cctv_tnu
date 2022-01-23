@@ -26,8 +26,12 @@ import 'package:cctv_tun/page/otoproducts/productshop_page.dart';
 import 'package:cctv_tun/page/otoproducts/propopular_page.dart';
 import 'package:cctv_tun/page/profile/app_reducer.dart';
 
+import 'package:cctv_tun/page/trainingcalendar/oi.dart';
+import 'package:cctv_tun/page/trainingcalendar/trainingcalendardetail_page.dart';
 import 'package:cctv_tun/page/trainingcalendar/trainingcalendar.dart';
+import 'package:cctv_tun/page/travel/messagemdetail_page.dart';
 import 'package:cctv_tun/page/travel/travel_page.dart';
+import 'package:cctv_tun/page/travel/travelmap_page.dart';
 import 'package:cctv_tun/page/warn/warn_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -92,6 +96,9 @@ class MyApp extends StatelessWidget {
             '/awarddetail_page': (context) => awarddetail_page(),
             '/trainingcalendar_page': (context) => trainingcalendar_page(),
             '/travel_page': (context) => travel_page(),
+            '/travelmap_page': (context) => travelmap_page(),
+            '/trainingcalendardetail_page': (context) =>
+                trainingcalendardetail_page(),
             //   '/messagem2': (context) => messagem2()
           },
         ),

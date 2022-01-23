@@ -35,11 +35,9 @@ class _message_pageState extends State<travel_page> {
 
   late Map<String, dynamic> imgSlide;
 
-  int _currentIndex = 0;
-
   Future<Map<String, dynamic>> getDataSlide() async {
     var url =
-        ('https://www.bc-official.com/api/app_nt/api/app/travel/restful/?travel_id=8&travel_app_id=1');
+        ('https://www.bc-official.com/api/app_nt/api/app/travel/restful/?travel_id=8&travel_app_id=${Global.app_id}');
     var response = await http.get(Uri.parse(url), headers: {
       'Authorization':
           'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
@@ -55,10 +53,6 @@ class _message_pageState extends State<travel_page> {
     }
   }
 
-  var _counter = 1;
-  var _product = int.parse('0');
-  var _product1 = int.parse('0');
-
   /* void _incrementCounter() {
     setState(() {
       _counter++;
@@ -69,76 +63,76 @@ class _message_pageState extends State<travel_page> {
   @override
   Widget build(BuildContext context) {
     Widget ss1(BuildContext context) {
-      return Container(
-        height: 310,
-        margin: EdgeInsets.only(top: 10, bottom: 10),
-        child: FutureBuilder<Map<String, dynamic>>(
-          future: getDataSlide(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return ListView.builder(
-                itemCount: snapshot.data!['data'].length,
-                itemBuilder: (context, index) {
-                  return Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/messagemdetail_page',
-                                arguments: {
-                                  // 'blog_images': snapshot.data!['data'][index]
-                                  //             ['blog_images'] !=
-                                  //         null
-                                  //     ? Global.domainImage +
-                                  //         snapshot.data!['data'][index]
-                                  //                 ['blog_images'][0]
-                                  //             ['blogi_path_name']
-                                  //     : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
-                                  // 'blog_name': snapshot.data!['data'][index]
-                                  //     ['blog_name'],
-                                  // 'blog_detail': snapshot.data!['data'][index]
-                                  //     ['blog_detail']
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          // decoration: BoxDecoration(
+          //   color: secondaryTextColor,
+          //   borderRadius: BorderRadius.circular(
+          //     40,
+          //   ),
+          // ),
+          height: 500,
+          margin: EdgeInsets.only(
+            top: 10,
+          ),
+          child: FutureBuilder<Map<String, dynamic>>(
+            future: getDataSlide(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return ListView.builder(
+                  //scrollDirection: Axis.horizontal,
+                  itemCount: snapshot.data!['data'].length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      height: 480,
+                      decoration: BoxDecoration(
+                        color: secondaryTextColor,
+                        borderRadius: BorderRadius.circular(
+                          30,
+                        ),
+                      ),
+                      child: Center(
+                        child: ListView(
+                          // scrollDirection: Axis.horizontal,
+                          // mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Navigator.pushNamed(context, '/travelmap_page',
+                                    arguments: {
+                                      'travel_name': snapshot.data!['data']
+                                          [index]['travel_name']
+                                      // 'blog_images': snapshot.data!['data'][index]
+                                      //             ['blog_images'] !=
+                                      //         null
+                                      //     ? Global.domainImage +
+                                      //         snapshot.data!['data'][index]
+                                      //                 ['blog_images'][0]
+                                      //             ['blogi_path_name']
+                                      //     : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
 
-                                  /*   'id': data[index].id,
-                                'detail': data[index].detail,
-                                'picture': data[index].picture,
-                                'view': data[index].view,*/
-                                });
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(top: 20, bottom: 0),
-                            child: Column(
-                              children: [
-                                SizedBox(width: defaultMargin),
-                                Container(
-                                  height: 400,
-                                  width: 300,
-                                  decoration: BoxDecoration(
-                                      color: secondaryTextColor,
-                                      borderRadius: BorderRadius.circular(
-                                        10,
-                                      ),
-                                      boxShadow: [
-                                        BoxShadow(
-                                            color: Colors.grey.withOpacity(0.5),
-                                            offset: Offset(2, 2),
-                                            blurRadius: 7,
-                                            spreadRadius: 1.0),
-                                        BoxShadow(
-                                            color: Colors.grey.withOpacity(0.5),
-                                            offset: Offset(2, 4),
-                                            blurRadius: 7.0,
-                                            spreadRadius: 1.0),
-                                      ]),
-                                  child: Column(
-                                    children: [
-                                      Column(
-                                        children: [
-                                          Padding(
-                                            padding: EdgeInsets.all(5.0),
-                                            child: Container(
-                                                height: 200,
+                                      // 'blog_detail': snapshot.data!['data'][index]
+                                      //     ['blog_detail']
+
+                                      /*   'id': data[index].id,
+                                    'detail': data[index].detail,
+                                    'picture': data[index].picture,
+                                    'view': data[index].view,*/
+                                    });
+                              },
+                              child: Container(
+                                child: Column(
+                                  children: [
+                                    SizedBox(width: defaultMargin),
+                                    Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: Container(
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                                width: 320,
+                                                height: 250,
                                                 child: Image.network(
                                                   snapshot.data!['data'][index][
                                                               'travel_images'] !=
@@ -153,152 +147,155 @@ class _message_pageState extends State<travel_page> {
                                                   fit: BoxFit.cover,
                                                   width: double.infinity,
                                                 )),
-                                          ),
-                                          SizedBox(height: 15),
-                                          Container(
-                                            width: 340,
-                                            color: Colors.grey[200],
-                                            height: 160,
-                                            child: ListView(
-                                              children: [
-                                                SizedBox(height: 15),
-                                                Center(
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
-                                                    child: Text(
-                                                      'ข่าว: ${snapshot.data!['data'][index]['travel_name']}',
-                                                      style: primaryTextStyle
-                                                          .copyWith(
-                                                              fontSize: 16,
-                                                              fontWeight:
-                                                                  medium),
+                                            SizedBox(height: 1),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Container(
+                                                color: Colors.grey[200],
+                                                width: 320,
+                                                height: 170,
+                                                child: Column(
+                                                  children: [
+                                                    SizedBox(height: 5),
+                                                    Center(
+                                                      child: Text(
+                                                        'เที่ยว: ${snapshot.data!['data'][index]['travel_name']}',
+                                                        style: primaryTextStyle
+                                                            .copyWith(
+                                                          fontSize: 16,
+                                                        ),
+                                                      ),
                                                     ),
-                                                  ),
-                                                ),
-                                                SizedBox(height: 0),
-                                                Center(
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
-                                                    child: Text(
-                                                      'เนื้อหาข่าว : ${snapshot.data!['data'][index]['travel_detail']}',
-                                                      style: primaryTextStyle
-                                                          .copyWith(
-                                                              fontSize: 15,
-                                                              fontWeight:
-                                                                  medium),
+                                                    Container(
+                                                      height: 100,
+                                                      child: ListView(
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(8.0),
+                                                            child: Text(
+                                                              'ที่นี้คือ : ${snapshot.data!['data'][index]['travel_detail']}',
+                                                              style: primaryTextStyle
+                                                                  .copyWith(
+                                                                      fontSize:
+                                                                          15,
+                                                                      fontWeight:
+                                                                          medium),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
-                                                  ),
+                                                  ],
                                                 ),
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      )
-                                    ],
-                                  ),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
+                          ],
                         ),
-                      ],
-                    ),
-                  );
-                },
-              );
-              // return ListView.separated(
-              //     itemBuilder: (context, index) {
-              // return Text('3232');
-              // return CarouselSlider.builder(
-              //   itemCount: snapshot.data!['data'].length,
-              //   options: CarouselOptions(
-              //     autoPlay: true,
-              //     enlargeCenterPage: true,
-              //     viewportFraction: 0.9,
-              //     aspectRatio: 2.0,
-              //     initialPage: 2,
-              //     onPageChanged: (index, reason) {
-              //       setState(
-              //         () {
-              //           _currentIndex = index;
-              //         },
-              //       );
-              //     },
-              //   ),
-              //   itemBuilder:
-              //       (BuildContext context, int item, int pageViewIndex) =>
+                      ),
+                    );
+                  },
+                );
+                // return ListView.separated(
+                //     itemBuilder: (context, index) {
+                // return Text('3232');
+                // return CarouselSlider.builder(
+                //   itemCount: snapshot.data!['data'].length,
+                //   options: CarouselOptions(
+                //     autoPlay: true,
+                //     enlargeCenterPage: true,
+                //     viewportFraction: 0.9,
+                //     aspectRatio: 2.0,
+                //     initialPage: 2,
+                //     onPageChanged: (index, reason) {
+                //       setState(
+                //         () {
+                //           _currentIndex = index;
+                //         },
+                //       );
+                //     },
+                //   ),
+                //   itemBuilder:
+                //       (BuildContext context, int item, int pageViewIndex) =>
 
-              //           // Text('${snapshot.data!['data'][item]['blog_id']}');
-              //           //     Container(
-              //           //   child: Center(child: Text(item.toString())),
-              //           //   color: Colors.green,
-              //           // ),
-              //           NeumorphicButton(
-              //     style: NeumorphicStyle(
-              //       shape: NeumorphicShape.flat,
-              //       // boxShape:
-              //       //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-              //       // boxShape: NeumorphicBoxShape.circle(),
-              //       color: Colors.white,
-              //     ),
-              //     padding: EdgeInsets.all(0),
-              //     child: Container(
-              //       height: 20,
-              //       child: Card(
-              //         margin: EdgeInsets.only(
-              //           top: 10.0,
-              //           bottom: 10.0,
-              //         ),
-              //         elevation: 6.0,
-              //         // shadowColor: Colors.redAccent,
-              //         // shape: RoundedRectangleBorder(
-              //         //     // borderRadius: BorderRadius.circular(30.0),
-              //         //     ),
-              //         child: ClipRRect(
-              //           borderRadius: BorderRadius.all(
-              //             Radius.circular(3.0),
-              //           ),
-              //           child: Stack(
-              //             children: <Widget>[
-              //               Image.network(
-              //                 snapshot.data!['data'][item]['blog_images'] !=
-              //                         null
-              //                     ? snapshot.data!['data'][item]['blog_images']
-              //                         [0]['blogi_path_name']
-              //                     : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
-              //                 fit: BoxFit.cover,
-              //                 width: double.infinity,
-              //               ),
-              //               Center(
-              //                 child: Text(
-              //                   // '${titles[_currentIndex]}',
-              //                   '${snapshot.data!['data'][item]['blog_name']}',
-              //                   style: TextStyle(
-              //                     fontSize: 24.0,
-              //                     fontWeight: FontWeight.bold,
-              //                     backgroundColor: Colors.black45,
-              //                     color: Colors.white,
-              //                   ),
-              //                 ),
-              //               ),
-              //             ],
-              //           ),
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // );
-            } else if (snapshot.hasError) {
-              return Center(
-                  child: Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
-            }
+                //           // Text('${snapshot.data!['data'][item]['blog_id']}');
+                //           //     Container(
+                //           //   child: Center(child: Text(item.toString())),
+                //           //   color: Colors.green,
+                //           // ),
+                //           NeumorphicButton(
+                //     style: NeumorphicStyle(
+                //       shape: NeumorphicShape.flat,
+                //       // boxShape:
+                //       //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
+                //       // boxShape: NeumorphicBoxShape.circle(),
+                //       color: Colors.white,
+                //     ),
+                //     padding: EdgeInsets.all(0),
+                //     child: Container(
+                //       height: 20,
+                //       child: Card(
+                //         margin: EdgeInsets.only(
+                //           top: 10.0,
+                //           bottom: 10.0,
+                //         ),
+                //         elevation: 6.0,
+                //         // shadowColor: Colors.redAccent,
+                //         // shape: RoundedRectangleBorder(
+                //         //     // borderRadius: BorderRadius.circular(30.0),
+                //         //     ),
+                //         child: ClipRRect(
+                //           borderRadius: BorderRadius.all(
+                //             Radius.circular(3.0),
+                //           ),
+                //           child: Stack(
+                //             children: <Widget>[
+                //               Image.network(
+                //                 snapshot.data!['data'][item]['blog_images'] !=
+                //                         null
+                //                     ? snapshot.data!['data'][item]['blog_images']
+                //                         [0]['blogi_path_name']
+                //                     : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                //                 fit: BoxFit.cover,
+                //                 width: double.infinity,
+                //               ),
+                //               Center(
+                //                 child: Text(
+                //                   // '${titles[_currentIndex]}',
+                //                   '${snapshot.data!['data'][item]['blog_name']}',
+                //                   style: TextStyle(
+                //                     fontSize: 24.0,
+                //                     fontWeight: FontWeight.bold,
+                //                     backgroundColor: Colors.black45,
+                //                     color: Colors.white,
+                //                   ),
+                //                 ),
+                //               ),
+                //             ],
+                //           ),
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // );
+              } else if (snapshot.hasError) {
+                return Center(
+                    child: Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
+              }
 
-            return Center(child: CircularProgressIndicator());
-          },
+              return Center(child: CircularProgressIndicator());
+            },
+          ),
         ),
       );
     }
@@ -307,24 +304,28 @@ class _message_pageState extends State<travel_page> {
       return Padding(
         padding: const EdgeInsets.all(10),
         child: Container(
-          margin: EdgeInsets.only(top: 30, left: 5),
-          child: Text(
-            'เทียว',
-            style: primaryTextStyle.copyWith(fontSize: 20, fontWeight: medium),
+          height: 60,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [Colors.white, Colors.orangeAccent],
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft),
+            borderRadius: BorderRadius.circular(
+              30,
+            ),
           ),
-        ),
-      );
-    }
-
-    Widget titleMenus1() {
-      return Container(
-        margin: EdgeInsets.only(
-          top: 0,
-          left: 20,
-        ),
-        child: Text(
-          'มีอะไรกัน :',
-          style: primaryTextStyle.copyWith(fontSize: 20, fontWeight: medium),
+          child: Column(
+            children: [
+              SizedBox(height: 10),
+              Container(
+                child: Text(
+                  'แนะนำที่ท่องเที่ยวในมหาสารคาม',
+                  style: primaryTextStyle.copyWith(
+                      fontSize: 25, fontWeight: medium),
+                ),
+              ),
+            ],
+          ),
         ),
       );
     }
@@ -353,8 +354,8 @@ class _message_pageState extends State<travel_page> {
           child: ListView(
             children: [
               // titleMenus(),
-
-              titleMenus1(),
+              titleMenus(),
+              SizedBox(height: 0),
               ss1(context),
 
               //  sss2(context),
