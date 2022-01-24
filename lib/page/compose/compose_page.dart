@@ -1,3 +1,5 @@
+import 'package:cctv_tun/page/global/global.dart';
+import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:cctv_tun/shared/theme.dart';
 import 'package:cctv_tun/shared/theme.dart';
 import 'package:cctv_tun/widgets/custom_button.dart';
@@ -8,6 +10,10 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class compose_page extends StatefulWidget {
   compose_page({Key? key}) : super(key: key);
@@ -17,6 +23,96 @@ class compose_page extends StatefulWidget {
 }
 
 class _warn1State extends State<compose_page> {
+  final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
+  Future<void> compose_page(Map formValues) async {
+    //formValues['name']
+    // print(formValues);
+    try {
+      var url =
+          'https://www.bc-official.com/api/app_nt/api/app/emergency/restful/';
+      var response = await http.post(Uri.parse(url), headers: {
+        "Accept": "application/json",
+        'Authorization': 'Bearer ${Global.token}'
+      },
+          // body: json.encode({
+          //   "firstname": formValues['firstname'],
+          //   "lastname": formValues['lastname'],
+          //   "email": formValues['email'],
+          //   "password": formValues['password']
+          // }));
+          body: {
+            "em_app_id": Global.app_id,
+            "em_user_id": '1',
+            "em_detail": formValues['em_detail'],
+            "em_phone": formValues['em_phone'],
+            "em_type": formValues['em_type'],
+            "em_owner": formValues['em_owner'],
+            "em_lat": '12.00',
+            "em_lng": '13',
+            "em_location": '12-13',
+            "em_category": '1',
+            // "emi_path_name[]": formValues['emi_path_name']
+            // "user_app_id": Global.app_id,
+            // "user_card_id": '1471200',
+            // "user_firstname": formValues['firstname'],
+            // "user_lastname": formValues['lastname'],
+            // "user_email": formValues['email'],
+            // "user_pass": formValues['password']
+          });
+      Map<String, dynamic> feedback = json.decode(response.body);
+
+      if (response.statusCode == 201) {
+        Alert(
+          context: context,
+          // title: "แจ้งเตือน",
+          type: AlertType.success,
+          desc: '${feedback['data']}',
+          buttons: [
+            DialogButton(
+              child: Text(
+                "ปิด",
+                style: TextStyle(color: ThemeBc.white, fontSize: 18),
+              ),
+              onPressed: () => Navigator.pushNamed(context, '/login_page'),
+              gradient: LinearGradient(colors: [
+                Color.fromRGBO(116, 116, 191, 1.0),
+                Color.fromRGBO(52, 138, 199, 1.0),
+              ]),
+            )
+          ],
+        ).show();
+
+        //กลับไปที่หน้า LoginPage
+        // Future.delayed(const Duration(seconds: 5), () {
+        //   // Navigator.pop(context);
+        //    Navigator.pop(context, '/login');
+        // });
+      } else {
+        Alert(
+          context: context,
+          type: AlertType.warning,
+          // title: "แจ้งเตือน",
+          desc: '${feedback['data']}',
+          buttons: [
+            DialogButton(
+              child: Text(
+                "ปิด",
+                style: TextStyle(color: ThemeBc.white, fontSize: 18),
+              ),
+              onPressed: () => Navigator.pop(context),
+              gradient: LinearGradient(colors: [
+                Color.fromRGBO(116, 116, 191, 1.0),
+                Color.fromRGBO(52, 138, 199, 1.0),
+              ]),
+            )
+          ],
+        ).show();
+      }
+    } catch (e) {
+      // print(e);
+    }
+  }
+
   late Position userLocation;
   late GoogleMapController mapController;
 
@@ -50,7 +146,6 @@ class _warn1State extends State<compose_page> {
     return userLocation;
   }
 
-  final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +175,7 @@ class _warn1State extends State<compose_page> {
             padding: EdgeInsets.all(8.0),
             child: FormBuilder(
               key: _fbKey,
-              initialValue: {'name': '', 'email': '', 'password': ''},
+              // initialValue: {'name': '', 'email': '', 'password': ''},
               autovalidateMode: AutovalidateMode.always,
               child: Column(
                 children: [
@@ -111,7 +206,7 @@ class _warn1State extends State<compose_page> {
                     color: Colors.white,
                     shadowColor: Colors.grey.withOpacity(0.5),
                     child: FormBuilderDropdown(
-                      name: "type",
+                      name: "em_type",
 
                       decoration: InputDecoration(
                         suffixIcon: Icon(Icons.article),
@@ -151,7 +246,7 @@ class _warn1State extends State<compose_page> {
                   Material(
                     shadowColor: Colors.grey.withOpacity(0.5),
                     child: FormBuilderTextField(
-                      name: "name",
+                      name: "em_owner",
                       maxLines: 1,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
@@ -167,11 +262,11 @@ class _warn1State extends State<compose_page> {
                     elevation: 18,
                     shadowColor: Colors.grey.withOpacity(0.5),
                     child: FormBuilderTextField(
-                      name: "name",
+                      name: "em_phone",
                       maxLines: 1,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        suffixIcon: Icon(Icons.email),
+                        suffixIcon: Icon(Icons.phone_android),
                         labelText: 'เบอร์โทรศัพท์',
                         fillColor: Colors.white,
                         filled: true,
@@ -183,11 +278,11 @@ class _warn1State extends State<compose_page> {
                     elevation: 18,
                     shadowColor: Colors.grey.withOpacity(0.5),
                     child: FormBuilderTextField(
-                      name: "name",
+                      name: "em_detail",
                       maxLines: 1,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        suffixIcon: Icon(Icons.email),
+                        suffixIcon: Icon(Icons.description),
                         labelText: 'รายละเอียดเหตุการณ์',
                         fillColor: Colors.white,
                         filled: true,
@@ -196,7 +291,7 @@ class _warn1State extends State<compose_page> {
                   ),
                   SizedBox(height: 18),
                   FormBuilderImagePicker(
-                    name: 'photos',
+                    name: 'emi_path_name',
                     iconColor: Colors.white70,
                     decoration: InputDecoration(
                       labelText: 'ภาพประกอบเหตุการ',
@@ -271,9 +366,13 @@ class _warn1State extends State<compose_page> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CustomButton(
-                          title: 'แจ้งเหตุฉุกเฉิน',
-                          onPressed: () =>
-                              Navigator.pushNamed(context, '/warn'),
+                          title: 'แจ้งเหตุร้องเรียง',
+                          onPressed: () {
+                            if (_fbKey.currentState!.saveAndValidate()) {
+                              //  print(_fbKey.currentState!.value);
+                              compose_page(_fbKey.currentState!.value);
+                            }
+                          },
                           colorButton: buttonGreyColor,
                           textStyle: secondaryTextStyle.copyWith(
                               fontWeight: medium, fontSize: 16),

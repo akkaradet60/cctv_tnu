@@ -1,12 +1,12 @@
-class Messages {
-  Messages({
+class Blogs {
+  Blogs({
     required this.data,
     required this.error,
   });
   late final List<Data> data;
   late final bool error;
 
-  Messages.fromJson(Map<String, dynamic> json) {
+  Blogs.fromJson(Map<String, dynamic> json) {
     data = List.from(json['data']).map((e) => Data.fromJson(e)).toList();
     error = json['error'];
   }

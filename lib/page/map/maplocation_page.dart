@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class map_page extends StatefulWidget {
-  map_page({Key? key}) : super(key: key);
+class maplocation_page extends StatefulWidget {
+  maplocation_page({Key? key}) : super(key: key);
 
   @override
   _map_pageState createState() => _map_pageState();
 }
 
-class _map_pageState extends State<map_page> {
+class _map_pageState extends State<maplocation_page> {
   Future<Position> _getLocation() async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -69,8 +69,8 @@ class _map_pageState extends State<map_page> {
   @override
   Widget build(BuildContext context) {
     hotlinee = ModalRoute.of(context)!.settings.arguments;
-    var app_lat = double.parse(hotlinee['hotlineLat'] ?? "102.83473877038512");
-    var app_lng = double.parse(hotlinee['hotlineLng'] ?? "102.83473877038512");
+    var app_lat = double.parse(hotlinee['travelLat'] ?? "102.83473877038512");
+    var app_lng = double.parse(hotlinee['travelLng'] ?? "102.83473877038512");
 
     CameraPosition cameraPosition = CameraPosition(
       target: LatLng(app_lat, app_lng),
@@ -78,7 +78,12 @@ class _map_pageState extends State<map_page> {
     );
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('${hotlinee['hotlineName']}')),
+        title: Column(
+          children: [
+            SizedBox(height: 18),
+            Center(child: Text('${hotlinee['travelName']}')),
+          ],
+        ),
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/logo.png', scale: 15),
@@ -90,38 +95,85 @@ class _map_pageState extends State<map_page> {
           ),
         ],
       ),
-      body: FutureBuilder(
-        future: _getLocation(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            return GoogleMap(
-              markers: <Marker>[
-                Marker(
-                    markerId: const MarkerId('100'),
-                    position: LatLng(app_lat, app_lng),
-                    infoWindow: InfoWindow(
-                        title: 'ตำแหน่งของศูนย์ ${hotlinee['hotlineName']}',
-                        //   snippet: '-------------------',
-                        onTap: () {})),
-              ].toSet(),
-              mapType: MapType.normal,
-              onMapCreated: (GoogleMapController controller) {
-                _controller.complete(controller);
-              },
-              myLocationEnabled: true,
-              initialCameraPosition: cameraPosition,
-            );
-          } else {
-            return Center(
-              child: Column(
-                  // mainAxisAlignment: MainAxisAlignment.center,
-                  //   children: <Widget>[
-                  //     CircularProgressIndicator(),
-                  //    ],
-                  ),
-            );
-          }
-        },
+      body: Container(
+        height: 1000,
+        child: FutureBuilder(
+          future: _getLocation(),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (snapshot.hasData) {
+              return Container(
+                height: 500,
+                child: ListView(
+                  children: [
+                    Container(
+                      height: 400,
+                      child: GoogleMap(
+                        markers: <Marker>[
+                          Marker(
+                              markerId: const MarkerId('100'),
+                              position: LatLng(app_lat, app_lng),
+                              infoWindow: InfoWindow(
+                                  title:
+                                      'ตำแหน่งของศูนย์ ${hotlinee['travelName']}',
+                                  //   snippet: '-------------------',
+                                  onTap: () {})),
+                        ].toSet(),
+                        mapType: MapType.normal,
+                        onMapCreated: (GoogleMapController controller) {
+                          _controller.complete(controller);
+                        },
+                        myLocationEnabled: true,
+                        initialCameraPosition: cameraPosition,
+                      ),
+                    ),
+                    Container(
+                      height: 300,
+                      color: Colors.green,
+                      child: Column(
+                        children: [
+                          SizedBox(height: 5),
+                          Text(
+                            'ชื่อสถานที่ : ${hotlinee['travelName']}',
+                            style: primaryTextStyle.copyWith(
+                                fontSize: 18, fontWeight: medium),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              height: 220,
+                              child: ListView(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      'ชื่อสถานที่ : ${hotlinee['travelDetail']}',
+                                      style: primaryTextStyle.copyWith(
+                                          fontSize: 18, fontWeight: medium),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            } else {
+              return Center(
+                child: Column(
+
+                    // mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: <Widget>[
+                    //     CircularProgressIndicator(),
+                    //    ],
+                    ),
+              );
+            }
+          },
+        ),
       ),
       /* Column(
         children: [

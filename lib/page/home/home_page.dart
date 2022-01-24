@@ -356,7 +356,7 @@ class _home_pageState extends State<home_page> {
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_6.png',
                       titleMenus: 'CCTV',
-                      pathName: '/cctv',
+                      pathName: '/cctv_page',
                       titleMenus2: '',
                       titleMenus1: '',
                     ),
@@ -417,7 +417,7 @@ class _home_pageState extends State<home_page> {
                   MenusCustom(
                     iconMenus: 'assets/homepage/icon_12.png',
                     titleMenus: 'สถานที่ราชการ',
-                    pathName: '/map_page',
+                    pathName: '/location_page',
                     titleMenus1: '',
                     titleMenus2: '',
                   ),

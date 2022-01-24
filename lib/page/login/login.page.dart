@@ -31,6 +31,7 @@ class _LoginPageState extends State<login_page> {
           "Accept": "application/json",
         },
         body: json.encode({
+          //  "app_id": Global.app_id,
           "email": formValues['email'],
           "password": formValues['password']
         }));

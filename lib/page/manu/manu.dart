@@ -83,7 +83,7 @@ class _manuState extends State<manu> {
               selected: ModalRoute.of(context)?.settings.name == '/home_page'
                   ? true
                   : false,
-              iconColor: Colors.orange,
+              //  iconColor: Colors.orange,
               onTap: () {
                 Navigator.of(context, rootNavigator: true)
                     .pushNamedAndRemoveUntil('/home_page', (route) => false);
@@ -93,9 +93,12 @@ class _manuState extends State<manu> {
               leading: Icon(Icons.settings),
               title: Text('ตั้งค่า'),
               trailing: Icon(Icons.double_arrow),
+              selected: ModalRoute.of(context)?.settings.name == '/settings'
+                  ? true
+                  : false,
               onTap: () {
                 Navigator.of(context, rootNavigator: true)
-                    .pushNamedAndRemoveUntil('/SplashPage', (route) => false);
+                    .pushNamedAndRemoveUntil('/settings', (route) => false);
               },
             ),
 

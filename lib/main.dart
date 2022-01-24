@@ -1,18 +1,23 @@
+import 'package:cctv_tun/models/settings/settingpro.dart';
+import 'package:cctv_tun/models/settings/settingprodot.dart';
+import 'package:cctv_tun/models/settings/settingprofile.dart';
+import 'package:cctv_tun/models/settings/settings.dart';
+import 'package:cctv_tun/models/settings/settingshop.dart';
 import 'package:cctv_tun/page/Manual/Manual_page.dart';
 import 'package:cctv_tun/page/award/award_page.dart';
 import 'package:cctv_tun/page/award/awarddetail_page.dart';
+import 'package:cctv_tun/page/cctv/cctv_page.dart';
 import 'package:cctv_tun/page/compose/compose_page.dart';
+import 'package:cctv_tun/page/home/home_page.dart';
+import 'package:cctv_tun/page/hotline/hotlinee_page.dart';
+import 'package:cctv_tun/page/location/location_page.dart';
 
-import 'package:cctv_tun/page/home_page/home_page.dart';
-import 'package:cctv_tun/page/hotlinee/hotlinee_page%20copy.dart';
-import 'package:cctv_tun/page/hotlinee/hotlinee_page.dart';
-import 'package:cctv_tun/page/login_apply_page/confirm_email/confirmemail.dart';
-
-import 'package:cctv_tun/page/login_apply_page/login.page.dart';
-
-import 'package:cctv_tun/page/login_apply_page/register_page.dart';
-
+import 'package:cctv_tun/page/login/confirm_email/confirmemail.dart';
+import 'package:cctv_tun/page/login/login.page.dart';
+import 'package:cctv_tun/page/login/register_page.dart';
 import 'package:cctv_tun/page/map/map_page.dart';
+import 'package:cctv_tun/page/map/maplocation_page.dart';
+
 import 'package:cctv_tun/page/message/messagem_page.dart';
 import 'package:cctv_tun/page/message/messagemdetail_page.dart';
 import 'package:cctv_tun/page/oobk.dart';
@@ -29,7 +34,7 @@ import 'package:cctv_tun/page/profile/app_reducer.dart';
 import 'package:cctv_tun/page/trainingcalendar/oi.dart';
 import 'package:cctv_tun/page/trainingcalendar/trainingcalendardetail_page.dart';
 import 'package:cctv_tun/page/trainingcalendar/trainingcalendar.dart';
-import 'package:cctv_tun/page/travel/messagemdetail_page.dart';
+
 import 'package:cctv_tun/page/travel/travel_page.dart';
 import 'package:cctv_tun/page/travel/travelmap_page.dart';
 import 'package:cctv_tun/page/warn/warn_page.dart';
@@ -88,7 +93,7 @@ class MyApp extends StatelessWidget {
             '/compose_page': (context) => compose_page(),
             '/ProductPage': (context) => products_page(),
             '/hotlinee_page': (context) => hotlinee_page(),
-            '/hotlinee_page1': (context) => hotlinee_page1(),
+            //  '/hotlinee_page1': (context) => hotlinee_page1(),
             '/Manual_page': (context) => manual_page(),
             // '/Manual_page1': (context) => manual_page1(),
             '/message_page': (context) => message_page(),
@@ -99,6 +104,15 @@ class MyApp extends StatelessWidget {
             '/travelmap_page': (context) => travelmap_page(),
             '/trainingcalendardetail_page': (context) =>
                 trainingcalendardetail_page(),
+            '/location_page': (context) => location_page(),
+            '/cctv_page': (context) => cctv_page(),
+            '/settingpro': (context) => settingpro(),
+            '/settingprodot': (context) => settingprodot(),
+            '/settingprofile': (context) => settingprofile(),
+            '/settings': (context) => settings(),
+            '/settingshop': (context) => settingshop(),
+            '/maplocation_page': (context) => maplocation_page(),
+
             //   '/messagem2': (context) => messagem2()
           },
         ),

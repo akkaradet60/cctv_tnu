@@ -24,7 +24,7 @@ class warn_page extends StatefulWidget {
 
 class _warn1State extends State<warn_page> {
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
-  Future<void> register(Map formValues) async {
+  Future<void> warn_page(Map formValues) async {
     //formValues['name']
     // print(formValues);
     try {
@@ -51,7 +51,7 @@ class _warn1State extends State<warn_page> {
             "em_lng": '13',
             "em_location": '12-13',
             "em_category": '0',
-            "emi_path_name[]": formValues['emi_path_name']
+            // "emi_path_name[]": formValues['emi_path_name']
             // "user_app_id": Global.app_id,
             // "user_card_id": '1471200',
             // "user_firstname": formValues['firstname'],
@@ -262,7 +262,7 @@ class _warn1State extends State<warn_page> {
                       maxLines: 1,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        suffixIcon: Icon(Icons.email),
+                        suffixIcon: Icon(Icons.phone_android),
                         labelText: 'เบอร์โทรศัพท์',
                         fillColor: Colors.white,
                         filled: true,
@@ -278,7 +278,7 @@ class _warn1State extends State<warn_page> {
                       maxLines: 1,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        suffixIcon: Icon(Icons.email),
+                        suffixIcon: Icon(Icons.description),
                         labelText: 'รายละเอียดเหตุการณ์',
                         fillColor: Colors.white,
                         filled: true,
@@ -366,7 +366,7 @@ class _warn1State extends State<warn_page> {
                           onPressed: () {
                             if (_fbKey.currentState!.saveAndValidate()) {
                               //  print(_fbKey.currentState!.value);
-                              register(_fbKey.currentState!.value);
+                              warn_page(_fbKey.currentState!.value);
                             }
                           },
                           colorButton: buttonGreyColor,

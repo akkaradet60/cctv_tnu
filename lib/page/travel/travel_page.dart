@@ -1,5 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:cctv_tun/models/message/message.dart';
 
 import 'package:cctv_tun/page/global/global.dart';
 
@@ -21,7 +20,6 @@ class travel_page extends StatefulWidget {
 }
 
 class _message_pageState extends State<travel_page> {
-  List<Data> data = [];
   bool isLoading = true;
   var hotlinee;
 
