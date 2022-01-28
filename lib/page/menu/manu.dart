@@ -46,7 +46,7 @@ class _menu_pangState extends State<menu_pang> {
       child: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors: [ThemeBc.orange, ThemeBc.pinkAccent],
+                colors: [ThemeBc.black, ThemeBc.black],
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft)),
         child: ListView(

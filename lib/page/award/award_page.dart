@@ -514,7 +514,7 @@ class _award_pageState extends State<award_page> {
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors: [Colors.pinkAccent, Colors.orangeAccent],
+                colors: [ThemeBc.orange, ThemeBc.pinkAccent],
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft),
           ),

@@ -458,7 +458,7 @@ class _compose_page extends State<compose_page>
                       );
                     },
                     icon: Icon(Icons.gps_fixed),
-                    label: Text('ล็อกอินด้วย facebook'),
+                    label: Text('ตำแหน่งของคุณ'),
                     style: ElevatedButton.styleFrom(
                       primary: ThemeBc.black,
                       onPrimary: Colors.white,
@@ -502,7 +502,7 @@ class _compose_page extends State<compose_page>
       return Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [ThemeBc.white, ThemeBc.white],
+              colors: [ThemeBc.orange, ThemeBc.pinkAccent],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft),
         ),

@@ -99,7 +99,7 @@ class _hotlinee_pageState extends State<hotlinee_page> {
         child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors: [ThemeBc.orange, ThemeBc.pinkAccent],
+                colors: [ThemeBc.whiteBg, ThemeBc.whiteBg],
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft),
           ),
@@ -172,7 +172,7 @@ class _hotlinee_pageState extends State<hotlinee_page> {
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [ThemeBc.orange, ThemeBc.pinkAccent],
+              colors: [ThemeBc.whiteBg, ThemeBc.whiteBg],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft),
         ),

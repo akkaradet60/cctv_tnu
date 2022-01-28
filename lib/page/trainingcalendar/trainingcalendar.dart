@@ -292,7 +292,7 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
                                                           const EdgeInsets.all(
                                                               8.0),
                                                       child: Text(
-                                                        'ข่าว: ${snapshot.data!['data'][index]['train_name']}',
+                                                        'อบรม: ${snapshot.data!['data'][index]['train_name']}',
                                                         style: primaryTextStyle
                                                             .copyWith(
                                                                 fontSize: 16,
@@ -311,7 +311,7 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
                                                                 const EdgeInsets
                                                                     .all(0.0),
                                                             child: Text(
-                                                              'เนื้อหาข่าว : ${snapshot.data!['data'][index]['train_detail']}',
+                                                              'เนื้อหาอบรม : ${snapshot.data!['data'][index]['train_detail']}',
                                                               style: primaryTextStyle
                                                                   .copyWith(
                                                                       fontSize:

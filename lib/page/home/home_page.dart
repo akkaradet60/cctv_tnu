@@ -488,7 +488,7 @@ class _home_pageState extends State<home_page> {
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                  colors: [ThemeBc.white, ThemeBc.white],
+                  colors: [ThemeBc.orange, ThemeBc.pinkAccent],
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft),
             ),

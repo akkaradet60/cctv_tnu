@@ -123,20 +123,41 @@ class _RegisterPageState extends State<register_page> {
                     'firstname': '',
                     'lastname': '',
                     'email': '',
-                    'password': ''
+                    'password': '',
+                    'ro': '',
                   },
                   autovalidateMode: AutovalidateMode
                       .always, //ถ้าไม่ใส่ต้อง submit ก่อนถึงจะตรวจสอบ validation
                   child: Column(
                     children: <Widget>[
-                      Material(
-                        elevation: 18,
-                        shadowColor: Colors.grey[700],
+                      Container(
+                        decoration: BoxDecoration(
+                            color: secondaryTextColor,
+                            borderRadius: BorderRadius.circular(
+                              20,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  offset: Offset(2, 2),
+                                  blurRadius: 7,
+                                  spreadRadius: 1.0),
+                              BoxShadow(
+                                  color: Colors.black.withOpacity(0.5),
+                                  offset: Offset(2, 4),
+                                  blurRadius: 7.0,
+                                  spreadRadius: 1.0),
+                            ]),
                         child: FormBuilderTextField(
                           name: "firstname",
                           maxLines: 1,
                           keyboardType: TextInputType.text,
                           decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                20.0,
+                              ),
+                            ),
                             suffixIcon: Icon(Icons.badge),
                             labelText: 'ชื่อ',
                             fillColor: Colors.white,
@@ -148,14 +169,34 @@ class _RegisterPageState extends State<register_page> {
                         ),
                       ),
                       SizedBox(height: 20),
-                      Material(
-                        elevation: 18,
-                        shadowColor: Colors.grey[700],
+                      Container(
+                        decoration: BoxDecoration(
+                            color: secondaryTextColor,
+                            borderRadius: BorderRadius.circular(
+                              20,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  offset: Offset(2, 2),
+                                  blurRadius: 7,
+                                  spreadRadius: 1.0),
+                              BoxShadow(
+                                  color: Colors.black.withOpacity(0.5),
+                                  offset: Offset(2, 4),
+                                  blurRadius: 7.0,
+                                  spreadRadius: 1.0),
+                            ]),
                         child: FormBuilderTextField(
                           name: "lastname",
                           maxLines: 1,
                           keyboardType: TextInputType.text,
                           decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                20.0,
+                              ),
+                            ),
                             suffixIcon: Icon(Icons.badge_sharp),
                             labelText: 'นามสกุล',
                             fillColor: Colors.white,
@@ -167,14 +208,34 @@ class _RegisterPageState extends State<register_page> {
                         ),
                       ),
                       SizedBox(height: 20),
-                      Material(
-                        elevation: 18,
-                        shadowColor: Colors.grey[700],
+                      Container(
+                        decoration: BoxDecoration(
+                            color: secondaryTextColor,
+                            borderRadius: BorderRadius.circular(
+                              20,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  offset: Offset(2, 2),
+                                  blurRadius: 7,
+                                  spreadRadius: 1.0),
+                              BoxShadow(
+                                  color: Colors.black.withOpacity(0.5),
+                                  offset: Offset(2, 4),
+                                  blurRadius: 7.0,
+                                  spreadRadius: 1.0),
+                            ]),
                         child: FormBuilderTextField(
                           name: "email",
                           maxLines: 1,
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                20.0,
+                              ),
+                            ),
                             suffixIcon: Icon(Icons.email),
                             labelText: 'อีเมล',
                             fillColor: Colors.white,
@@ -187,15 +248,35 @@ class _RegisterPageState extends State<register_page> {
                         ),
                       ),
                       SizedBox(height: 20),
-                      Material(
-                        elevation: 18,
-                        shadowColor: Colors.grey[700],
+                      Container(
+                        decoration: BoxDecoration(
+                            color: secondaryTextColor,
+                            borderRadius: BorderRadius.circular(
+                              20,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  offset: Offset(2, 2),
+                                  blurRadius: 7,
+                                  spreadRadius: 1.0),
+                              BoxShadow(
+                                  color: Colors.black.withOpacity(0.5),
+                                  offset: Offset(2, 4),
+                                  blurRadius: 7.0,
+                                  spreadRadius: 1.0),
+                            ]),
                         child: FormBuilderTextField(
                           name: "password",
                           maxLines: 1,
                           keyboardType: TextInputType.visiblePassword,
                           obscureText: true,
                           decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                20.0,
+                              ),
+                            ),
                             suffixIcon: Icon(Icons.vpn_key),
                             labelText: 'รหัสผ่าน',
                             fillColor: Colors.white,
@@ -206,6 +287,46 @@ class _RegisterPageState extends State<register_page> {
                                 errorText: "ป้อนข้อมูลรหัสผ่านด้วย"),
                             MinLengthValidator(6,
                                 errorText: "รหัสผ่านต้อง 6 ตัวอักษรขึ้นไป"),
+                          ]),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Container(
+                        decoration: BoxDecoration(
+                            color: secondaryTextColor,
+                            borderRadius: BorderRadius.circular(
+                              20,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  offset: Offset(2, 2),
+                                  blurRadius: 7,
+                                  spreadRadius: 1.0),
+                              BoxShadow(
+                                  color: Colors.black.withOpacity(0.5),
+                                  offset: Offset(2, 4),
+                                  blurRadius: 7.0,
+                                  spreadRadius: 1.0),
+                            ]),
+                        child: FormBuilderTextField(
+                          name: "ro",
+                          maxLines: 1,
+                          keyboardType: TextInputType.text,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                20.0,
+                              ),
+                            ),
+                            suffixIcon: Icon(Icons.badge),
+                            labelText: 'เลขบัตรประชาชน',
+                            fillColor: Colors.white,
+                            filled: true,
+                          ),
+                          validator: MultiValidator([
+                            RequiredValidator(
+                                errorText: "ป้อนเลขบัตรประชาชนด้วย"),
                           ]),
                         ),
                       ),
@@ -224,7 +345,7 @@ class _RegisterPageState extends State<register_page> {
                           label: Text('ลงทะเบียน'),
                           icon: Icon(Icons.login_rounded),
                           style: ElevatedButton.styleFrom(
-                            primary: ThemeBc.green,
+                            primary: ThemeBc.black,
                             //side: BorderSide(color: Colors.red, width: 5),
                             textStyle: TextStyle(fontSize: 15),
                             padding: EdgeInsets.all(15),
