@@ -1,3 +1,4 @@
+import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
@@ -32,7 +33,7 @@ class CustomButton extends StatelessWidget {
                 style: textStyle,
               ),
               style: ElevatedButton.styleFrom(
-                primary: Colors.pink[500],
+                primary: colorButton,
                 onPrimary: Colors.white,
                 shadowColor: Colors.grey[700],
                 elevation: 30,

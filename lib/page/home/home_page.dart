@@ -6,7 +6,6 @@ import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:cctv_tun/page/login/login.page.dart';
 import 'package:cctv_tun/page/menu/manu.dart';
 
-import 'package:cctv_tun/page/otoproducts/products_page.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:http/http.dart' as http;
 
@@ -236,46 +235,67 @@ class _home_pageState extends State<home_page> {
                                 'view': data[index].view,*/
                           });
                     },
-                    child: Card(
-                      margin: EdgeInsets.only(
-                        top: 10.0,
-                        bottom: 10.0,
-                      ),
-                      elevation: 6.0,
-                      // shadowColor: Colors.redAccent,
-                      // shape: RoundedRectangleBorder(
-                      //     // borderRadius: BorderRadius.circular(30.0),
-                      //     ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(3.0),
-                        ),
-                        child: Stack(
-                          children: <Widget>[
-                            Image.network(
-                              snapshot.data!['data'][item]['blog_images'][0]
-                                          ['blogi_path_name'] !=
-                                      null
-                                  ? Global.domainImage +
-                                      snapshot.data!['data'][item]
-                                          ['blog_images'][0]['blogi_path_name']
-                                  : 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
-                              fit: BoxFit.cover,
-                              width: double.infinity,
-                            ),
-                            Center(
-                              child: Text(
-                                // '${titles[_currentIndex]}',
-                                '${snapshot.data!['data'][item]['blog_name']}',
-                                style: TextStyle(
-                                  fontSize: 24.0,
-                                  fontWeight: FontWeight.bold,
-                                  backgroundColor: Colors.black45,
-                                  color: Colors.white,
+                    // child: Card(
+                    //   margin: EdgeInsets.only(
+                    //     top: 10.0,
+                    //     bottom: 10.0,
+                    //   ),
+                    //   elevation: 6.0,
+                    // shadowColor: Colors.redAccent,
+                    // shape: RoundedRectangleBorder(
+                    //     // borderRadius: BorderRadius.circular(30.0),
+                    //     ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: secondaryTextColor,
+                          borderRadius: BorderRadius.circular(
+                            8,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                offset: Offset(2, 2),
+                                blurRadius: 7,
+                                spreadRadius: 1.0),
+                            BoxShadow(
+                                color: Colors.black.withOpacity(0.5),
+                                offset: Offset(2, 4),
+                                blurRadius: 7.0,
+                                spreadRadius: 1.0),
+                          ]),
+                      child: Card(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(8.0),
+                          ),
+                          child: Stack(
+                            children: <Widget>[
+                              Image.network(
+                                snapshot.data!['data'][item]['blog_images'][0]
+                                            ['blogi_path_name'] !=
+                                        null
+                                    ? Global.domainImage +
+                                        snapshot.data!['data'][item]
+                                                ['blog_images'][0]
+                                            ['blogi_path_name']
+                                    : 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
+                                fit: BoxFit.cover,
+                                width: double.infinity,
+                              ),
+                              Center(
+                                child: Text(
+                                  // '${titles[_currentIndex]}',
+                                  '${snapshot.data!['data'][item]['blog_name']}',
+                                  style: TextStyle(
+                                    fontSize: 24.0,
+                                    fontWeight: FontWeight.bold,
+                                    backgroundColor: Colors.black45,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -468,7 +488,7 @@ class _home_pageState extends State<home_page> {
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                  colors: [ThemeBc.orange, ThemeBc.pinkAccent],
+                  colors: [ThemeBc.white, ThemeBc.white],
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft),
             ),

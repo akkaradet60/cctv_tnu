@@ -42,7 +42,7 @@ class MenusCustom extends StatelessWidget {
                         blurRadius: 7,
                         spreadRadius: 1.0),
                     BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
+                        color: Colors.black.withOpacity(0.5),
                         offset: Offset(2, 4),
                         blurRadius: 7.0,
                         spreadRadius: 1.0),

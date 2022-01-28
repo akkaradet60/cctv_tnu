@@ -171,10 +171,11 @@ class _hotlinee_pageState extends State<hotlinee_page> {
       height: 700,
       child: Container(
         decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [ThemeBc.black, ThemeBc.black],
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft)),
+          gradient: LinearGradient(
+              colors: [ThemeBc.orange, ThemeBc.pinkAccent],
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft),
+        ),
         child: isLoading == true
             ? Center(
                 child: CircularProgressIndicator(),
@@ -183,124 +184,140 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                 child: ListView.separated(
                     itemBuilder: (context, index) {
                       final number = '${data[index].hotlinePhone}';
-                      return Center(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          height: 80,
+                          decoration: BoxDecoration(
+                              color: secondaryTextColor,
+                              borderRadius: BorderRadius.circular(
+                                30,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    offset: Offset(2, 2),
+                                    blurRadius: 7,
+                                    spreadRadius: 1.0),
+                                BoxShadow(
+                                    color: Colors.black.withOpacity(0.5),
+                                    offset: Offset(2, 4),
+                                    blurRadius: 7.0,
+                                    spreadRadius: 1.0),
+                              ]),
                           child: Container(
                             child: Column(
                               // mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Card(
-                                  child: ListTile(
-                                    title: Text(
-                                      '${data[index].hotlineName}',
-                                      style: primaryTextStyle.copyWith(
-                                          fontSize: 18, fontWeight: medium),
-                                    ),
-                                    subtitle: Text(number),
-                                    trailing: Container(
-                                      width: 150,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(5.0),
-                                        child: Row(
-                                          children: [
-                                            //         .callNumber(number);},
-                                            Container(
-                                              height: 50,
-                                              child: ElevatedButton.icon(
-                                                onPressed: () async {
-                                                  await FlutterPhoneDirectCaller
-                                                      .callNumber(number);
-                                                },
-                                                icon: Icon(
-                                                  Icons.phone,
-                                                  color: Colors.pink,
-                                                  size: 30,
-                                                ),
-                                                label: Text(''),
-                                                style: ElevatedButton.styleFrom(
-                                                  primary: Colors.orange,
-                                                  elevation: 10,
-                                                  shape: RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                              Radius.circular(
-                                                                  20))),
-                                                ),
+                                ListTile(
+                                  title: Text(
+                                    '${data[index].hotlineName}',
+                                    style: primaryTextStyle.copyWith(
+                                        fontSize: 18, fontWeight: medium),
+                                  ),
+                                  subtitle: Text(number),
+                                  trailing: Container(
+                                    width: 150,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: Row(
+                                        children: [
+                                          //         .callNumber(number);},
+                                          Container(
+                                            height: 50,
+                                            child: ElevatedButton.icon(
+                                              onPressed: () async {
+                                                await FlutterPhoneDirectCaller
+                                                    .callNumber(number);
+                                              },
+                                              icon: Icon(
+                                                Icons.phone,
+                                                color: Colors.pink,
+                                                size: 30,
+                                              ),
+                                              label: Text(''),
+                                              style: ElevatedButton.styleFrom(
+                                                primary: Colors.orange,
+                                                elevation: 10,
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                20))),
                                               ),
                                             ),
-                                            SizedBox(width: 5),
-                                            Container(
-                                              height: 50,
-                                              child: ElevatedButton.icon(
-                                                onPressed: () =>
-                                                    Navigator.pushNamed(
-                                                        context, '/map_page',
-                                                        arguments: {
-                                                      'hotlineLat': data[index]
-                                                          .hotlineLat,
-                                                      'hotlineLng': data[index]
-                                                          .hotlineLng,
-                                                      'hotlineName': data[index]
-                                                          .hotlineName,
-                                                      // 'productName':
-                                                      //     data[index].productName,
-                                                      // 'productPrice':
-                                                      //     data[index].productPrice,
-                                                      // 'productiPathName': data[index]
-                                                      //         .productImage?[0]
-                                                      //         .productiPathName ??
-                                                      //     'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
-                                                      // 'productiproductid': data[index]
-                                                      //     .productImage?[0]
-                                                      //     .productiProductId,
+                                          ),
+                                          SizedBox(width: 5),
+                                          Container(
+                                            height: 50,
+                                            child: ElevatedButton.icon(
+                                              onPressed: () =>
+                                                  Navigator.pushNamed(
+                                                      context, '/map_page',
+                                                      arguments: {
+                                                    'hotlineLat':
+                                                        data[index].hotlineLat,
+                                                    'hotlineLng':
+                                                        data[index].hotlineLng,
+                                                    'hotlineName':
+                                                        data[index].hotlineName,
+                                                    // 'productName':
+                                                    //     data[index].productName,
+                                                    // 'productPrice':
+                                                    //     data[index].productPrice,
+                                                    // 'productiPathName': data[index]
+                                                    //         .productImage?[0]
+                                                    //         .productiPathName ??
+                                                    //     'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
+                                                    // 'productiproductid': data[index]
+                                                    //     .productImage?[0]
+                                                    //     .productiProductId,
 
-                                                      /*   'id': data[index].id,
-                                      'detail': data[index].detail,
-                                      'picture': data[index].picture,
-                                      'view': data[index].view,*/
-                                                    }),
-                                                icon: Icon(
-                                                  Icons.maps_home_work,
-                                                  color: Colors.pink,
-                                                  size: 30,
-                                                ),
-                                                label: Text(''),
-                                                style: ElevatedButton.styleFrom(
-                                                  primary: Colors.orange,
-                                                  elevation: 10,
-                                                  shape: RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                              Radius.circular(
-                                                                  20))),
-                                                ),
+                                                    /*   'id': data[index].id,
+                                        'detail': data[index].detail,
+                                        'picture': data[index].picture,
+                                        'view': data[index].view,*/
+                                                  }),
+                                              icon: Icon(
+                                                Icons.maps_home_work,
+                                                color: Colors.pink,
+                                                size: 30,
+                                              ),
+                                              label: Text(''),
+                                              style: ElevatedButton.styleFrom(
+                                                primary: Colors.orange,
+                                                elevation: 10,
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                20))),
                                               ),
                                             ),
+                                          ),
 
-                                            // child: TextButton(
-                                            //   style: TextButton.styleFrom(
-                                            //       backgroundColor:
-                                            //           Colors.orange,
-                                            //       padding:
-                                            //           EdgeInsets.symmetric(
-                                            //               horizontal: 0,
-                                            //               vertical: 0),
-                                            //       shape:
-                                            //           RoundedRectangleBorder(
-                                            //               side: BorderSide(
-                                            //                   color: Colors
-                                            //                       .orange))),
-                                            //   child: Text(
-                                            //     'call',
-                                            //   ),
-                                            // onPressed: () async {
-                                            // await FlutterPhoneDirectCaller
-                                            //       .callNumber(number);
-                                            // },
-                                            // ),
-                                          ],
-                                        ),
+                                          // child: TextButton(
+                                          //   style: TextButton.styleFrom(
+                                          //       backgroundColor:
+                                          //           Colors.orange,
+                                          //       padding:
+                                          //           EdgeInsets.symmetric(
+                                          //               horizontal: 0,
+                                          //               vertical: 0),
+                                          //       shape:
+                                          //           RoundedRectangleBorder(
+                                          //               side: BorderSide(
+                                          //                   color: Colors
+                                          //                       .orange))),
+                                          //   child: Text(
+                                          //     'call',
+                                          //   ),
+                                          // onPressed: () async {
+                                          // await FlutterPhoneDirectCaller
+                                          //       .callNumber(number);
+                                          // },
+                                          // ),
+                                        ],
                                       ),
                                     ),
                                   ),

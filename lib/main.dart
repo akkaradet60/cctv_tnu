@@ -11,19 +11,17 @@ import 'package:cctv_tun/page/location/location_page.dart';
 import 'package:cctv_tun/page/login/login.page.dart';
 import 'package:cctv_tun/page/login/register_page.dart';
 import 'package:cctv_tun/page/map/map_page.dart';
+import 'package:cctv_tun/page/map/map_prod.dart';
 import 'package:cctv_tun/page/map/maplocation_page.dart';
 
 import 'package:cctv_tun/page/message/messagem_page.dart';
 import 'package:cctv_tun/page/message/messagemdetail_page.dart';
 import 'package:cctv_tun/page/oobk.dart';
 
-import 'package:cctv_tun/page/otoproducts/probestseller_page.dart';
-
 import 'package:cctv_tun/page/otoproducts/productshome_page.dart';
 
-import 'package:cctv_tun/page/otoproducts/products_page.dart';
 import 'package:cctv_tun/page/otoproducts/productshop_page.dart';
-import 'package:cctv_tun/page/otoproducts/propopular_page.dart';
+
 import 'package:cctv_tun/page/profile/app_reducer.dart';
 import 'package:cctv_tun/page/settings/settingpolicy.dart';
 import 'package:cctv_tun/page/settings/settingpro.dart';
@@ -79,23 +77,24 @@ class MyApp extends StatelessWidget {
               scaffoldBackgroundColor: Colors.pinkAccent),
           routes: {
             '/': (context) => token == null ? login_page() : home_page(),
+            '/map_prod': (context) => map_prod(),
             //  '/confirmemail': (context) => confirmemail(),
             '/home_page': (context) => home_page(), //home_page
             '/register_page': (context) => register_page(),
             '/messagemdetail_page': (context) => messagemdetail_page(),
             '/login_page': (context) => login_page(),
-            '/products_page': (context) => products_page(),
+            // '/products_page': (context) => products_page(),
             '/productshop_page': (context) => productshop_page(),
             '/productshome_page': (context) => productshome_page(),
-            '/probestseller_page': (context) => probestseller_page(),
-            '/propopular_page': (context) => propopular_page(),
+            // '/probestseller_page': (context) => probestseller_page(),
+            // '/propopular_page': (context) => propopular_page(),
             '/map_page': (context) => map_page(),
             '/composedetail_page': (context) => composedetail_page(),
             // '/warndetail_pang': (context) => warndetail_pang(),
             // '/map_page1': (context) => map_page1(),
             '/warn_page': (context) => warn_page(),
             '/compose_page': (context) => compose_page(),
-            '/ProductPage': (context) => products_page(),
+            // '/ProductPage': (context) => products_page(),
             '/hotlinee_page': (context) => hotlinee_page(),
             //  '/hotlinee_page1': (context) => hotlinee_page1(),
             '/Manual_page': (context) => manual_page(),

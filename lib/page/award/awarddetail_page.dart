@@ -17,7 +17,7 @@ class awarddetail_page extends StatefulWidget {
 
 class _awarddetail_page extends State<awarddetail_page> {
   var productt;
-  var detail;
+
   bool isLoading = true;
   late Map<String, dynamic> imgSlide;
 
@@ -38,10 +38,6 @@ class _awarddetail_page extends State<awarddetail_page> {
       throw Exception('$response.statusCode');
     }
   }
-
-  var _counter = 1;
-  var _product = int.parse('0');
-  var _product1 = int.parse('0');
 
   /* void _incrementCounter() {
     setState(() {
@@ -88,7 +84,7 @@ class _awarddetail_page extends State<awarddetail_page> {
           shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.black,
-          title: Text('${productt['blog_name']}'),
+          title: Text('${productt['award_name']}'),
           actions: <Widget>[
             IconButton(
               icon: Image.asset('assets/logo.png', scale: 15),
@@ -155,27 +151,58 @@ class _awarddetail_page extends State<awarddetail_page> {
                                     //   child: Center(child: Text(item.toString())),
                                     //   color: Colors.green,
                                     // ),
-                                    ListView(
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(8.0),
-                                      ),
-                                      child: Stack(
-                                        children: <Widget>[
-                                          Image.network(
+                                    Card(
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(8.0),
+                                    ),
+                                    child: Stack(
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: const EdgeInsets.all(3.0),
+                                          child: Image.network(
                                             productt['awardi_path_name'],
                                             fit: BoxFit.cover,
                                             width: double.infinity,
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                        // Center(
+                                        //   child: Text(
+                                        //     // '${titles[_currentIndex]}',
+                                        //     productt['awardi_path_name'],
+                                        //     style: TextStyle(
+                                        //       fontSize: 24.0,
+                                        //       fontWeight: FontWeight.bold,
+                                        //       backgroundColor: Colors.black45,
+                                        //       color: Colors.white,
+                                        //     ),
+                                        //   ),
+                                        // ),
+                                      ],
                                     ),
-                                  ],
-
-                                  //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                                  // boxShape: NeumorphicBoxShape.circle(),
+                                  ),
                                 ),
+                                //     ListView(
+                                //   children: [
+                                //     ClipRRect(
+                                //       borderRadius: BorderRadius.all(
+                                //         Radius.circular(8.0),
+                                //       ),
+                                //       child: Stack(
+                                //         children: <Widget>[
+                                //           Image.network(
+                                //             productt['awardi_path_name'],
+                                //             fit: BoxFit.cover,
+                                //             width: double.infinity,
+                                //           ),
+                                //         ],
+                                //       ),
+                                //     ),
+                                //   ],
+
+                                //   //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
+                                //   // boxShape: NeumorphicBoxShape.circle(),
+                                // ),
 
                                 // shadowColor: Colors.redAccent,
                                 // shape: RoundedRectangleBorder(
@@ -196,30 +223,49 @@ class _awarddetail_page extends State<awarddetail_page> {
                   ),
                 ),
                 Container(
-                  height: 500,
+                  height: 300,
                   child: ListView(
                     children: [
-                      Row(
+                      SizedBox(height: 10),
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            width: 410,
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    'ชื่อข่าว ${productt['award_name']}',
-                                    style: TextStyle(
-                                      fontSize: 15.0,
-                                      fontWeight: FontWeight.bold,
-                                      // backgroundColor: Colors.black45,
-                                      color: Colors.white,
-                                    ),
-                                  ),
+                            decoration: BoxDecoration(
+                                color: ThemeBc.white,
+                                borderRadius: BorderRadius.circular(
+                                  20,
                                 ),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey.withOpacity(0.5),
+                                      offset: Offset(2, 2),
+                                      blurRadius: 7,
+                                      spreadRadius: 1.0),
+                                  BoxShadow(
+                                      color: Colors.black.withOpacity(0.5),
+                                      offset: Offset(2, 4),
+                                      blurRadius: 7.0,
+                                      spreadRadius: 1.0),
+                                ]),
+                            width: 410,
+                            height: 280,
+                            child: ListView(
+                              children: [
                                 Column(
                                   children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        'ชื่อข่าว ${productt['award_name']}',
+                                        style: TextStyle(
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.bold,
+                                          // backgroundColor: Colors.black45,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
@@ -228,7 +274,7 @@ class _awarddetail_page extends State<awarddetail_page> {
                                           fontSize: 15.0,
                                           fontWeight: FontWeight.bold,
                                           // backgroundColor: Colors.black45,
-                                          color: Colors.white,
+                                          color: Colors.black,
                                         ),
                                       ),
                                     ),

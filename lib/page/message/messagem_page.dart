@@ -21,15 +21,11 @@ class message_page extends StatefulWidget {
 
 class _message_pageState extends State<message_page> {
   bool isLoading = true;
-  var hotlinee;
 
   @override
   void initState() {
     super.initState();
   }
-
-  var productt;
-  var detail;
 
   late Map<String, dynamic> imgSlide;
 
@@ -127,46 +123,67 @@ class _message_pageState extends State<message_page> {
                                 'view': data[index].view,*/
                           });
                     },
-                    child: Card(
-                      margin: EdgeInsets.only(
-                        top: 10.0,
-                        bottom: 10.0,
-                      ),
-                      elevation: 6.0,
-                      // shadowColor: Colors.redAccent,
-                      // shape: RoundedRectangleBorder(
-                      //     // borderRadius: BorderRadius.circular(30.0),
-                      //     ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(8.0),
-                        ),
-                        child: Stack(
-                          children: <Widget>[
-                            Image.network(
-                              snapshot.data!['data'][item]['blog_images'][0]
-                                          ['blogi_path_name'] !=
-                                      null
-                                  ? Global.domainImage +
-                                      snapshot.data!['data'][item]
-                                          ['blog_images'][0]['blogi_path_name']
-                                  : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
-                              fit: BoxFit.cover,
-                              width: double.infinity,
-                            ),
-                            Center(
-                              child: Text(
-                                // '${titles[_currentIndex]}',
-                                '${snapshot.data!['data'][item]['blog_name']}',
-                                style: TextStyle(
-                                  fontSize: 24.0,
-                                  fontWeight: FontWeight.bold,
-                                  backgroundColor: Colors.black45,
-                                  color: Colors.white,
+                    // child: Card(
+                    //   margin: EdgeInsets.only(
+                    //     top: 10.0,
+                    //     bottom: 10.0,
+                    //   ),
+                    //   elevation: 10.0,
+                    // shadowColor: Colors.redAccent,
+                    // shape: RoundedRectangleBorder(
+                    //     // borderRadius: BorderRadius.circular(30.0),
+                    //     ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: secondaryTextColor,
+                          borderRadius: BorderRadius.circular(
+                            8,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                offset: Offset(2, 2),
+                                blurRadius: 7,
+                                spreadRadius: 1.0),
+                            BoxShadow(
+                                color: Colors.black.withOpacity(0.5),
+                                offset: Offset(2, 4),
+                                blurRadius: 7.0,
+                                spreadRadius: 1.0),
+                          ]),
+                      child: Card(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(8.0),
+                          ),
+                          child: Stack(
+                            children: <Widget>[
+                              Image.network(
+                                snapshot.data!['data'][item]['blog_images'][0]
+                                            ['blogi_path_name'] !=
+                                        null
+                                    ? Global.domainImage +
+                                        snapshot.data!['data'][item]
+                                                ['blog_images'][0]
+                                            ['blogi_path_name']
+                                    : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                fit: BoxFit.cover,
+                                width: double.infinity,
+                              ),
+                              Center(
+                                child: Text(
+                                  // '${titles[_currentIndex]}',
+                                  '${snapshot.data!['data'][item]['blog_name']}',
+                                  style: TextStyle(
+                                    fontSize: 24.0,
+                                    fontWeight: FontWeight.bold,
+                                    backgroundColor: Colors.black45,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -249,7 +266,7 @@ class _message_pageState extends State<message_page> {
                                               spreadRadius: 1.0),
                                           BoxShadow(
                                               color:
-                                                  Colors.grey.withOpacity(0.5),
+                                                  Colors.black.withOpacity(0.5),
                                               offset: Offset(2, 4),
                                               blurRadius: 7.0,
                                               spreadRadius: 1.0),
@@ -258,32 +275,63 @@ class _message_pageState extends State<message_page> {
                                       children: [
                                         Column(
                                           children: [
-                                            Padding(
-                                              padding: EdgeInsets.all(5.0),
-                                              child: Container(
-                                                  height: 200,
-                                                  child: Image.network(
-                                                    snapshot.data!['data']
-                                                                        [index]
-                                                                    ['blog_images'][0]
-                                                                [
-                                                                'blogi_path_name'] !=
-                                                            null
-                                                        ? Global.domainImage +
-                                                            snapshot.data!['data']
-                                                                        [index][
-                                                                    'blog_images'][0]
-                                                                [
-                                                                'blogi_path_name']
-                                                        : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
-                                                    fit: BoxFit.cover,
-                                                    width: double.infinity,
-                                                  )),
+                                            ClipRRect(
+                                              borderRadius: BorderRadius.all(
+                                                Radius.circular(8.0),
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsets.all(5.0),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                    Radius.circular(10.0),
+                                                  ),
+                                                  child: Container(
+                                                      height: 220,
+                                                      child: Image.network(
+                                                        snapshot.data!['data']
+                                                                            [index]
+                                                                        ['blog_images'][0]
+                                                                    [
+                                                                    'blogi_path_name'] !=
+                                                                null
+                                                            ? Global.domainImage +
+                                                                snapshot.data!['data']
+                                                                            [index]
+                                                                        [
+                                                                        'blog_images'][0]
+                                                                    [
+                                                                    'blogi_path_name']
+                                                            : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                                        fit: BoxFit.cover,
+                                                        width: double.infinity,
+                                                      )),
+                                                ),
+                                              ),
                                             ),
-                                            SizedBox(height: 15),
+                                            SizedBox(height: 5),
                                             Container(
+                                              decoration: BoxDecoration(
+                                                  color: Colors.grey[200],
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                    20,
+                                                  ),
+                                                  boxShadow: [
+                                                    // BoxShadow(
+                                                    //     color: Colors.grey
+                                                    //         .withOpacity(0.5),
+                                                    //     offset: Offset(2, 2),
+                                                    //     blurRadius: 7,
+                                                    //     spreadRadius: 1.0),
+                                                    // BoxShadow(
+                                                    //     color: Colors.black
+                                                    //         .withOpacity(0.5),
+                                                    //     offset: Offset(2, 4),
+                                                    //     blurRadius: 7.0,
+                                                    //     spreadRadius: 1.0),
+                                                  ]),
                                               width: 340,
-                                              color: Colors.grey[200],
                                               height: 160,
                                               child: ListView(
                                                 children: [
@@ -437,7 +485,12 @@ class _message_pageState extends State<message_page> {
           margin: EdgeInsets.only(top: 30, left: 5),
           child: Text(
             'ข่าวสาร',
-            style: primaryTextStyle.copyWith(fontSize: 20, fontWeight: medium),
+            style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold,
+              // backgroundColor: Colors.black45,
+              color: Colors.white,
+            ),
           ),
         ),
       );
@@ -451,7 +504,12 @@ class _message_pageState extends State<message_page> {
         ),
         child: Text(
           'ข่าวทั้งหมด',
-          style: primaryTextStyle.copyWith(fontSize: 20, fontWeight: medium),
+          style: TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+            // backgroundColor: Colors.black45,
+            color: Colors.white,
+          ),
         ),
       );
     }

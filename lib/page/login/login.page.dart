@@ -178,33 +178,74 @@ class _LoginPageState extends State<login_page> {
                           padding: EdgeInsets.all(30),
                           child: Column(
                             children: [
-                              Material(
-                                elevation: 18,
-                                shadowColor: Colors.grey[700],
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: secondaryTextColor,
+                                    borderRadius: BorderRadius.circular(
+                                      20,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          offset: Offset(2, 2),
+                                          blurRadius: 7,
+                                          spreadRadius: 1.0),
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.5),
+                                          offset: Offset(2, 4),
+                                          blurRadius: 7.0,
+                                          spreadRadius: 1.0),
+                                    ]),
                                 child: FormBuilderTextField(
-                                  initialValue: 'akkaradet.ko60@snru.ac.th',
+                                  //   initialValue: 'akkaradet.ko60@snru.ac.th',
                                   name: "email",
                                   maxLines: 1,
                                   keyboardType: TextInputType.emailAddress,
                                   decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        20.0,
+                                      ),
+                                    ),
                                     suffixIcon: Icon(Icons.email),
                                     labelText: 'อีเมล',
+                                    // helperText: '555',
                                     fillColor: Colors.white,
                                     filled: true,
                                   ),
                                 ),
                               ),
                               SizedBox(height: 5),
-                              Material(
-                                elevation: 18,
-                                shadowColor: Colors.grey[700],
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: secondaryTextColor,
+                                    borderRadius: BorderRadius.circular(
+                                      20,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          offset: Offset(2, 2),
+                                          blurRadius: 7,
+                                          spreadRadius: 1.0),
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.5),
+                                          offset: Offset(2, 4),
+                                          blurRadius: 7.0,
+                                          spreadRadius: 1.0),
+                                    ]),
                                 child: FormBuilderTextField(
-                                  initialValue: '123456',
+                                  //    initialValue: '123456',
                                   name: "password",
                                   maxLines: 1,
                                   keyboardType: TextInputType.visiblePassword,
                                   obscureText: true,
                                   decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        20.0,
+                                      ),
+                                    ),
                                     suffixIcon: Icon(Icons.vpn_key),
                                     labelText: 'รหัสผ่าน',
                                     fillColor: Colors.white,
@@ -220,7 +261,7 @@ class _LoginPageState extends State<login_page> {
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                      top: 20,
+                      top: 0,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -327,7 +368,7 @@ class _LoginPageState extends State<login_page> {
                                 login(_fbKey.currentState!.value);
                               }
                             },
-                            colorButton: primaryColor,
+                            colorButton: ThemeBc.black,
                             textStyle: secondaryTextStyle.copyWith(
                                 fontWeight: medium, fontSize: 16),
                           ),
@@ -376,7 +417,7 @@ class _LoginPageState extends State<login_page> {
                           title: 'ทดลองใช้ในฐานะผู้เยี่ยมชม',
                           onPressed: () =>
                               Navigator.pushNamed(context, '/home_page'),
-                          colorButton: buttonGreyColor,
+                          colorButton: ThemeBc.black,
                           textStyle: secondaryTextStyle.copyWith(
                               fontWeight: medium, fontSize: 16),
                         ),

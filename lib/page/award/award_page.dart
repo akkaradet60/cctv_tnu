@@ -29,9 +29,6 @@ class _award_pageState extends State<award_page> {
     super.initState();
   }
 
-  var productt;
-  var detail;
-
   late Map<String, dynamic> imgSlide;
 
   int _currentIndex = 0;
@@ -53,10 +50,6 @@ class _award_pageState extends State<award_page> {
       throw Exception('$response.statusCode');
     }
   }
-
-  var _counter = 1;
-  var _product = int.parse('0');
-  var _product1 = int.parse('0');
 
   /* void _incrementCounter() {
     setState(() {
@@ -133,47 +126,57 @@ class _award_pageState extends State<award_page> {
                                 'view': data[index].view,*/
                           });
                     },
-                    child: Card(
-                      margin: EdgeInsets.only(
-                        top: 10.0,
-                        bottom: 10.0,
-                      ),
-                      elevation: 6.0,
-                      // shadowColor: Colors.redAccent,
-                      // shape: RoundedRectangleBorder(
-                      //     // borderRadius: BorderRadius.circular(30.0),
-                      //     ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(8.0),
-                        ),
-                        child: Stack(
-                          children: <Widget>[
-                            Image.network(
-                              snapshot.data!['data'][item]['award_images'][0]
-                                          ['awardi_path_name'] !=
-                                      null
-                                  ? Global.domainImage +
-                                      snapshot.data!['data'][item]
-                                              ['award_images'][0]
-                                          ['awardi_path_name']
-                                  : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
-                              fit: BoxFit.cover,
-                              width: double.infinity,
-                            ),
-                            Center(
-                              child: Text(
-                                // '${titles[_currentIndex]}',
-                                '${snapshot.data!['data'][item]['award_name']}',
-                                style: TextStyle(
-                                  fontSize: 24.0,
-                                  fontWeight: FontWeight.bold,
-                                  backgroundColor: Colors.black45,
-                                  color: Colors.white,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: secondaryTextColor,
+                          borderRadius: BorderRadius.circular(
+                            8,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                offset: Offset(2, 2),
+                                blurRadius: 7,
+                                spreadRadius: 1.0),
+                            BoxShadow(
+                                color: Colors.black.withOpacity(0.5),
+                                offset: Offset(2, 4),
+                                blurRadius: 7.0,
+                                spreadRadius: 1.0),
+                          ]),
+                      child: Card(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(8.0),
+                          ),
+                          child: Stack(
+                            children: <Widget>[
+                              Image.network(
+                                snapshot.data!['data'][item]['award_images'][0]
+                                            ['awardi_path_name'] !=
+                                        null
+                                    ? Global.domainImage +
+                                        snapshot.data!['data'][item]
+                                                ['award_images'][0]
+                                            ['awardi_path_name']
+                                    : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                fit: BoxFit.cover,
+                                width: double.infinity,
+                              ),
+                              Center(
+                                child: Text(
+                                  // '${titles[_currentIndex]}',
+                                  '${snapshot.data!['data'][item]['award_name']}',
+                                  style: TextStyle(
+                                    fontSize: 24.0,
+                                    fontWeight: FontWeight.bold,
+                                    backgroundColor: Colors.black45,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -215,7 +218,8 @@ class _award_pageState extends State<award_page> {
                               Navigator.pushNamed(context, '/awarddetail_page',
                                   arguments: {
                                     'awardi_path_name': snapshot.data!['data']
-                                                [index]['award_images'] !=
+                                                    [index]['award_images'][0]
+                                                ['awardi_path_name'] !=
                                             null
                                         ? Global.domainImage +
                                             snapshot.data!['data'][index]
@@ -255,7 +259,7 @@ class _award_pageState extends State<award_page> {
                                               spreadRadius: 1.0),
                                           BoxShadow(
                                               color:
-                                                  Colors.grey.withOpacity(0.5),
+                                                  Colors.black.withOpacity(0.5),
                                               offset: Offset(2, 4),
                                               blurRadius: 7.0,
                                               spreadRadius: 1.0),
@@ -266,34 +270,59 @@ class _award_pageState extends State<award_page> {
                                           children: [
                                             Padding(
                                               padding: EdgeInsets.all(5.0),
-                                              child: Container(
-                                                  height: 200,
-                                                  child: Image.network(
-                                                    snapshot.data!['data']
-                                                                        [index]
-                                                                    ['award_images'][0]
-                                                                [
-                                                                'awardi_path_name'] !=
-                                                            null
-                                                        ? Global.domainImage +
-                                                            snapshot.data!['data']
-                                                                        [index][
-                                                                    'award_images'][0]
-                                                                [
-                                                                'awardi_path_name']
-                                                        : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
-                                                    fit: BoxFit.cover,
-                                                    width: double.infinity,
-                                                  )),
+                                              child: ClipRRect(
+                                                borderRadius: BorderRadius.all(
+                                                  Radius.circular(10.0),
+                                                ),
+                                                child: Container(
+                                                    height: 200,
+                                                    child: Image.network(
+                                                      snapshot.data!['data']
+                                                                          [index]
+                                                                      ['award_images'][0]
+                                                                  [
+                                                                  'awardi_path_name'] !=
+                                                              null
+                                                          ? Global.domainImage +
+                                                              snapshot.data!['data']
+                                                                          [index]
+                                                                      [
+                                                                      'award_images'][0]
+                                                                  [
+                                                                  'awardi_path_name']
+                                                          : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                                      fit: BoxFit.cover,
+                                                      width: double.infinity,
+                                                    )),
+                                              ),
                                             ),
                                             SizedBox(height: 15),
                                             Container(
+                                              decoration: BoxDecoration(
+                                                  color: Colors.grey[200],
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                    20,
+                                                  ),
+                                                  boxShadow: [
+                                                    // BoxShadow(
+                                                    //     color: Colors.grey
+                                                    //         .withOpacity(0.5),
+                                                    //     offset: Offset(2, 2),
+                                                    //     blurRadius: 7,
+                                                    //     spreadRadius: 1.0),
+                                                    // BoxShadow(
+                                                    //     color: Colors.black
+                                                    //         .withOpacity(0.5),
+                                                    //     offset: Offset(2, 4),
+                                                    //     blurRadius: 7.0,
+                                                    //     spreadRadius: 1.0),
+                                                  ]),
                                               width: 340,
-                                              color: Colors.grey[200],
                                               height: 160,
                                               child: ListView(
                                                 children: [
-                                                  SizedBox(height: 15),
+                                                  SizedBox(height: 5),
                                                   Center(
                                                     child: Padding(
                                                       padding:

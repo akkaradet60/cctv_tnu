@@ -222,7 +222,7 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
                                               spreadRadius: 1.0),
                                           BoxShadow(
                                               color:
-                                                  Colors.grey.withOpacity(0.5),
+                                                  Colors.black.withOpacity(0.5),
                                               offset: Offset(2, 4),
                                               blurRadius: 7.0,
                                               spreadRadius: 1.0),
@@ -233,30 +233,55 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
                                           children: [
                                             Padding(
                                               padding: EdgeInsets.all(5.0),
-                                              child: Container(
-                                                  height: 170,
-                                                  child: Image.network(
-                                                    snapshot.data!['data']
-                                                                        [index]
-                                                                    ['train_images'][0]
-                                                                [
-                                                                'traini_path_name'] !=
-                                                            null
-                                                        ? Global.domainImage +
-                                                            snapshot.data!['data']
-                                                                        [index][
-                                                                    'train_images'][0]
-                                                                [
-                                                                'traini_path_name']
-                                                        : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
-                                                    fit: BoxFit.cover,
-                                                    width: double.infinity,
-                                                  )),
+                                              child: ClipRRect(
+                                                borderRadius: BorderRadius.all(
+                                                  Radius.circular(8.0),
+                                                ),
+                                                child: Container(
+                                                    height: 170,
+                                                    child: Image.network(
+                                                      snapshot.data!['data']
+                                                                          [index]
+                                                                      ['train_images'][0]
+                                                                  [
+                                                                  'traini_path_name'] !=
+                                                              null
+                                                          ? Global.domainImage +
+                                                              snapshot.data!['data']
+                                                                          [index]
+                                                                      [
+                                                                      'train_images'][0]
+                                                                  [
+                                                                  'traini_path_name']
+                                                          : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                                      fit: BoxFit.cover,
+                                                      width: double.infinity,
+                                                    )),
+                                              ),
                                             ),
-                                            SizedBox(height: 15),
+                                            SizedBox(height: 5),
                                             Container(
+                                              decoration: BoxDecoration(
+                                                  color: Colors.grey[200],
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                    10,
+                                                  ),
+                                                  boxShadow: [
+                                                    // BoxShadow(
+                                                    //     color: Colors.grey
+                                                    //         .withOpacity(0.5),
+                                                    //     offset: Offset(2, 2),
+                                                    //     blurRadius: 7,
+                                                    //     spreadRadius: 1.0),
+                                                    // BoxShadow(
+                                                    //     color: Colors.black
+                                                    //         .withOpacity(0.5),
+                                                    //     offset: Offset(2, 4),
+                                                    //     blurRadius: 7.0,
+                                                    //     spreadRadius: 1.0),
+                                                  ]),
                                               width: 340,
-                                              color: Colors.grey[200],
                                               height: 100,
                                               child: ListView(
                                                 children: [
@@ -276,20 +301,16 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
                                                       ),
                                                     ),
                                                   ),
-                                                  SizedBox(height: 0),
-                                                  Center(
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child: Container(
-                                                        height: 50,
-                                                        child: ListView(
-                                                          dragStartBehavior:
-                                                              DragStartBehavior
-                                                                  .down,
-                                                          children: [
-                                                            Text(
+                                                  Container(
+                                                    height: 60,
+                                                    child: ListView(
+                                                      children: [
+                                                        Center(
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(0.0),
+                                                            child: Text(
                                                               'เนื้อหาข่าว : ${snapshot.data!['data'][index]['train_detail']}',
                                                               style: primaryTextStyle
                                                                   .copyWith(
@@ -298,9 +319,9 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
                                                                       fontWeight:
                                                                           medium),
                                                             ),
-                                                          ],
+                                                          ),
                                                         ),
-                                                      ),
+                                                      ],
                                                     ),
                                                   ),
                                                 ],

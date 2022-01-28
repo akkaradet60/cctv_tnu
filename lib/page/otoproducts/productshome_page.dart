@@ -88,174 +88,22 @@ class _productshome_page extends State<productshome_page> {
             ),
           ],
         ),
-        body: ListView(
-          children: [
-            sso(context),
-            propopular_page(context),
-            probestseller_page(context),
-            probestss(context),
-          ],
-        ));
-  }
-
-  Widget ui(BuildContext context) {
-    return Container(
-      height: 500,
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [Colors.pinkAccent, Colors.orangeAccent],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft)),
-      child: FormBuilder(
-        child: SafeArea(
-          child: Container(
-            margin: EdgeInsets.only(top: 15),
-            child: ListView(
-              children: [
-                Container(
-                  child: SafeArea(
-                    child: Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 0, vertical: 0),
-                          ),
-                          Material(
-                            elevation: 18,
-                            shadowColor: Colors.grey.withOpacity(0.5),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                suffixIcon: IconButton(
-                                  icon: Icon(Icons.search),
-                                  onPressed: () => Navigator.pushNamed(
-                                      context, '/otopproductssearch'),
-                                ),
-                                labelText: 'ค้นหา',
-                                fillColor: Colors.white,
-                                filled: true,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(
-                      top: 5, left: defaultMargin, right: defaultMargin),
-                  width: 300,
-                  child: Image.network(
-                      'https://district.cdd.go.th/bangkruai/wp-content/uploads/sites/308/2021/02/logo_img1599704122.png'),
-                ),
-                Container(
-                  margin: EdgeInsets.only(
-                      top: 5, left: defaultMargin, right: defaultMargin),
-                  color: Colors.transparent,
-                  width: 342,
-                  height: 50,
-                  child: Container(
-                    child: ElevatedButton(
-                      onPressed: () =>
-                          Navigator.pushNamed(context, '/products_page'),
-                      child: Text(
-                        'สินค้า OTOP',
-                        style: primaryTextStyle.copyWith(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.brown[900],
-                        onPrimary: Colors.white,
-                        shadowColor: Colors.grey[700],
-                        elevation: 30,
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(40))),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 5),
-                Container(
-                  margin: EdgeInsets.only(
-                      top: 5, left: defaultMargin, right: defaultMargin),
-                  color: Colors.transparent,
-                  width: 342,
-                  height: 50,
-
-                  //    decoration: BoxDecoration(
-                  //  color: secondaryTextColor,
-                  //  borderRadius: BorderRadius.circular(
-                  //  40,
-                  //  ),
-                  child: Container(
-                    child: ElevatedButton(
-                      //probestseller_page
-                      onPressed: () =>
-                          Navigator.pushNamed(context, '/probestseller_page'),
-                      child: Text(
-                        'สินค้าขายดีอาทิตย์นี้',
-                        style: primaryTextStyle.copyWith(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.brown[900],
-                        onPrimary: Colors.white,
-                        shadowColor: Colors.grey[700],
-                        elevation: 30,
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(40))),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 5),
-                Container(
-                  margin: EdgeInsets.only(
-                      top: 5, left: defaultMargin, right: defaultMargin),
-                  color: Colors.transparent,
-                  width: 342,
-                  height: 50,
-                  child: Container(
-                    child: ElevatedButton(
-                      //propopular_page
-                      onPressed: () =>
-                          Navigator.pushNamed(context, '/propopular_page'),
-                      child: Text(
-                        'ยอดนิยมประจำสัปดาห์',
-                        style: primaryTextStyle.copyWith(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.brown[900],
-                        onPrimary: Colors.white,
-                        shadowColor: Colors.grey[700],
-                        elevation: 30,
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(40))),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 10),
-              ],
-            ),
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [ThemeBc.orange, ThemeBc.pinkAccent],
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft),
           ),
-        ),
-      ),
-    );
+          child: ListView(
+            children: [
+              sso(context),
+              propopular_page(context),
+              probestseller_page(context),
+              probestss(context),
+            ],
+          ),
+        ));
   }
 
   Widget sso(BuildContext context) {
@@ -271,20 +119,20 @@ class _productshome_page extends State<productshome_page> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
               ),
-              Material(
-                elevation: 18,
-                shadowColor: Colors.grey.withOpacity(0.5),
-                child: TextField(
-                  decoration: InputDecoration(
-                    suffixIcon: IconButton(
-                      icon: Icon(Icons.search),
-                      onPressed: () =>
-                          Navigator.pushNamed(context, '/otopproductssearch'),
+              TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(
+                      20.0,
                     ),
-                    labelText: 'ค้นหา',
-                    fillColor: Colors.white,
-                    filled: true,
                   ),
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.search),
+                    onPressed: () => Navigator.pushNamed(context, '/map_prod'),
+                  ),
+                  labelText: 'ค้นหา',
+                  fillColor: Colors.white,
+                  filled: true,
                 ),
               ),
             ],
@@ -332,21 +180,25 @@ class _productshome_page extends State<productshome_page> {
     return Container(
       color: ThemeBc.black,
       width: 1000,
-      height: 250,
+      height: 430,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 5),
-          Text(
-            'สินค้าขายดีอาทิตย์นี้',
-            style: TextStyle(
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold,
-              // backgroundColor: Colors.black45,
-              color: Colors.white,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'สินค้าขายดีอาทิตย์นี้',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                // backgroundColor: Colors.black45,
+                color: Colors.white,
+              ),
             ),
           ),
+          SizedBox(height: 5),
           Container(
-            height: 200,
+            height: 380,
             child: FutureBuilder<Map<String, dynamic>>(
               future: probests(),
               builder: (context, snapshot) {
@@ -356,7 +208,8 @@ class _productshome_page extends State<productshome_page> {
                     itemCount: snapshot.data!['data'].length,
                     itemBuilder: (context, index) {
                       return Container(
-                        width: 190,
+                        width: 320,
+                        height: 500,
                         child: Center(
                           child: Column(
                             children: [
@@ -382,9 +235,6 @@ class _productshome_page extends State<productshome_page> {
                                             snapshot.data!['data'][index]
                                                     ['product_images'][0]
                                                 ['producti_product_id'],
-                                        // data[index]
-                                        //     .productImage![0]
-                                        //     .productiProductId,
                                       });
                                 },
                                 child: Container(
@@ -392,26 +242,26 @@ class _productshome_page extends State<productshome_page> {
                                     children: [
                                       SizedBox(height: 5),
                                       Container(
-                                        height: 190,
-                                        width: 175,
+                                        height: 350,
+                                        width: 300,
                                         decoration: BoxDecoration(
                                             color: secondaryTextColor,
                                             borderRadius: BorderRadius.circular(
-                                              10,
+                                              20,
                                             ),
                                             boxShadow: [
-                                              BoxShadow(
-                                                  color: Colors.grey
-                                                      .withOpacity(0.5),
-                                                  offset: Offset(2, 2),
-                                                  blurRadius: 7,
-                                                  spreadRadius: 1.0),
-                                              BoxShadow(
-                                                  color: Colors.grey
-                                                      .withOpacity(0.5),
-                                                  offset: Offset(2, 4),
-                                                  blurRadius: 7.0,
-                                                  spreadRadius: 1.0),
+                                              // BoxShadow(
+                                              //     color: Colors.grey
+                                              //         .withOpacity(0.5),
+                                              //     offset: Offset(2, 2),
+                                              //     blurRadius: 7,
+                                              //     spreadRadius: 1.0),
+                                              // BoxShadow(
+                                              //     color: Colors.grey
+                                              //         .withOpacity(0.5),
+                                              //     offset: Offset(2, 4),
+                                              //     blurRadius: 7.0,
+                                              //     spreadRadius: 1.0),
                                             ]),
                                         child: Column(
                                           children: [
@@ -420,31 +270,56 @@ class _productshome_page extends State<productshome_page> {
                                                 Padding(
                                                   padding: EdgeInsets.all(5.0),
                                                   child: Container(
-                                                      height: 100,
-                                                      child: Image.network(
-                                                        snapshot.data!['data']
-                                                                        [index]
-                                                                    [
-                                                                    'product_images'] !=
-                                                                null
-                                                            ? Global.domainImage +
-                                                                snapshot.data!['data']
-                                                                            [
-                                                                            index]
-                                                                        [
-                                                                        'product_images'][0]
-                                                                    [
-                                                                    'producti_path_name']
-                                                            : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
-                                                        fit: BoxFit.cover,
-                                                        width: double.infinity,
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                            20,
+                                                          ),
+                                                          boxShadow: [
+                                                            //     spreadRadius: 1.0),
+                                                          ]),
+                                                      height: 230,
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                                Radius.circular(
+                                                                    20.0)),
+                                                        child: Image.network(
+                                                          snapshot.data!['data']
+                                                                          [
+                                                                          index]
+                                                                      [
+                                                                      'product_images'] !=
+                                                                  null
+                                                              ? Global.domainImage +
+                                                                  snapshot.data!['data']
+                                                                              [
+                                                                              index]
+                                                                          [
+                                                                          'product_images'][0]
+                                                                      [
+                                                                      'producti_path_name']
+                                                              : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                                          fit: BoxFit.cover,
+                                                          width:
+                                                              double.infinity,
+                                                        ),
                                                       )),
                                                 ),
                                                 SizedBox(height: 15),
                                                 Container(
-                                                  width: 170,
-                                                  color: Colors.grey[200],
-                                                  height: 60,
+                                                  decoration: BoxDecoration(
+                                                      color: Colors.grey[200],
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                        20,
+                                                      ),
+                                                      boxShadow: [
+                                                        //     spreadRadius: 1.0),
+                                                      ]),
+                                                  width: 280,
+                                                  height: 80,
                                                   child: ListView(
                                                     children: [
                                                       Center(
@@ -467,18 +342,20 @@ class _productshome_page extends State<productshome_page> {
                                                         height: 60,
                                                         child: ListView(
                                                           children: [
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .all(8.0),
-                                                              child: Text(
-                                                                'ราคา : ${snapshot.data!['data'][index]['product_price']}',
-                                                                style: primaryTextStyle
-                                                                    .copyWith(
-                                                                        fontSize:
-                                                                            12,
-                                                                        fontWeight:
-                                                                            medium),
+                                                            Center(
+                                                              child: Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        0.0),
+                                                                child: Text(
+                                                                  'ราคา : ${snapshot.data!['data'][index]['product_price']}',
+                                                                  style: primaryTextStyle.copyWith(
+                                                                      fontSize:
+                                                                          12,
+                                                                      fontWeight:
+                                                                          medium),
+                                                                ),
                                                               ),
                                                             ),
                                                           ],
@@ -548,21 +425,25 @@ class _productshome_page extends State<productshome_page> {
     return Container(
       color: ThemeBc.black,
       width: 1000,
-      height: 250,
+      height: 430,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 5),
-          Text(
-            'ยอดนิยมประจำสัมปดาห์',
-            style: TextStyle(
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold,
-              // backgroundColor: Colors.black45,
-              color: Colors.white,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'ยอดนิยมประจำสัมปดาห์',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                // backgroundColor: Colors.black45,
+                color: Colors.white,
+              ),
             ),
           ),
+          SizedBox(height: 5),
           Container(
-            height: 200,
+            height: 380,
             child: FutureBuilder<Map<String, dynamic>>(
               future: probests(),
               builder: (context, snapshot) {
@@ -572,7 +453,8 @@ class _productshome_page extends State<productshome_page> {
                     itemCount: snapshot.data!['data'].length,
                     itemBuilder: (context, index) {
                       return Container(
-                        width: 190,
+                        width: 320,
+                        height: 500,
                         child: Center(
                           child: Column(
                             children: [
@@ -605,26 +487,26 @@ class _productshome_page extends State<productshome_page> {
                                     children: [
                                       SizedBox(height: 5),
                                       Container(
-                                        height: 190,
-                                        width: 175,
+                                        height: 350,
+                                        width: 300,
                                         decoration: BoxDecoration(
                                             color: secondaryTextColor,
                                             borderRadius: BorderRadius.circular(
-                                              10,
+                                              20,
                                             ),
                                             boxShadow: [
-                                              BoxShadow(
-                                                  color: Colors.grey
-                                                      .withOpacity(0.5),
-                                                  offset: Offset(2, 2),
-                                                  blurRadius: 7,
-                                                  spreadRadius: 1.0),
-                                              BoxShadow(
-                                                  color: Colors.grey
-                                                      .withOpacity(0.5),
-                                                  offset: Offset(2, 4),
-                                                  blurRadius: 7.0,
-                                                  spreadRadius: 1.0),
+                                              // BoxShadow(
+                                              //     color: Colors.grey
+                                              //         .withOpacity(0.5),
+                                              //     offset: Offset(2, 2),
+                                              //     blurRadius: 7,
+                                              //     spreadRadius: 1.0),
+                                              // BoxShadow(
+                                              //     color: Colors.grey
+                                              //         .withOpacity(0.5),
+                                              //     offset: Offset(2, 4),
+                                              //     blurRadius: 7.0,
+                                              //     spreadRadius: 1.0),
                                             ]),
                                         child: Column(
                                           children: [
@@ -633,31 +515,56 @@ class _productshome_page extends State<productshome_page> {
                                                 Padding(
                                                   padding: EdgeInsets.all(5.0),
                                                   child: Container(
-                                                      height: 100,
-                                                      child: Image.network(
-                                                        snapshot.data!['data']
-                                                                        [index]
-                                                                    [
-                                                                    'product_images'] !=
-                                                                null
-                                                            ? Global.domainImage +
-                                                                snapshot.data!['data']
-                                                                            [
-                                                                            index]
-                                                                        [
-                                                                        'product_images'][0]
-                                                                    [
-                                                                    'producti_path_name']
-                                                            : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
-                                                        fit: BoxFit.cover,
-                                                        width: double.infinity,
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                            20,
+                                                          ),
+                                                          boxShadow: [
+                                                            //     spreadRadius: 1.0),
+                                                          ]),
+                                                      height: 230,
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                                Radius.circular(
+                                                                    20.0)),
+                                                        child: Image.network(
+                                                          snapshot.data!['data']
+                                                                          [
+                                                                          index]
+                                                                      [
+                                                                      'product_images'] !=
+                                                                  null
+                                                              ? Global.domainImage +
+                                                                  snapshot.data!['data']
+                                                                              [
+                                                                              index]
+                                                                          [
+                                                                          'product_images'][0]
+                                                                      [
+                                                                      'producti_path_name']
+                                                              : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                                          fit: BoxFit.cover,
+                                                          width:
+                                                              double.infinity,
+                                                        ),
                                                       )),
                                                 ),
                                                 SizedBox(height: 15),
                                                 Container(
-                                                  width: 170,
-                                                  color: Colors.grey[200],
-                                                  height: 60,
+                                                  decoration: BoxDecoration(
+                                                      color: Colors.grey[200],
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                        20,
+                                                      ),
+                                                      boxShadow: [
+                                                        //     spreadRadius: 1.0),
+                                                      ]),
+                                                  width: 280,
+                                                  height: 80,
                                                   child: ListView(
                                                     children: [
                                                       Center(
@@ -761,21 +668,24 @@ class _productshome_page extends State<productshome_page> {
     }
 
     return Container(
-      color: ThemeBc.black,
       width: 1000,
       height: 250,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 5),
-          Text(
-            'ใหม่ล่าสุด',
-            style: TextStyle(
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold,
-              // backgroundColor: Colors.black45,
-              color: Colors.white,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'ใหม่ล่าสุด',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                // backgroundColor: Colors.black45,
+                color: Colors.white,
+              ),
             ),
           ),
+          SizedBox(height: 5),
           Container(
             height: 200,
             child: FutureBuilder<Map<String, dynamic>>(
@@ -813,6 +723,9 @@ class _productshome_page extends State<productshome_page> {
                                             snapshot.data!['data'][index]
                                                     ['product_images'][0]
                                                 ['producti_product_id'],
+                                        // data[index]
+                                        //     .productImage![0]
+                                        //     .productiProductId,
                                       });
                                 },
                                 child: Container(
@@ -825,21 +738,21 @@ class _productshome_page extends State<productshome_page> {
                                         decoration: BoxDecoration(
                                             color: secondaryTextColor,
                                             borderRadius: BorderRadius.circular(
-                                              10,
+                                              20,
                                             ),
                                             boxShadow: [
-                                              BoxShadow(
-                                                  color: Colors.grey
-                                                      .withOpacity(0.5),
-                                                  offset: Offset(2, 2),
-                                                  blurRadius: 7,
-                                                  spreadRadius: 1.0),
-                                              BoxShadow(
-                                                  color: Colors.grey
-                                                      .withOpacity(0.5),
-                                                  offset: Offset(2, 4),
-                                                  blurRadius: 7.0,
-                                                  spreadRadius: 1.0),
+                                              // BoxShadow(
+                                              //     color: Colors.grey
+                                              //         .withOpacity(0.5),
+                                              //     offset: Offset(2, 2),
+                                              //     blurRadius: 7,
+                                              //     spreadRadius: 1.0),
+                                              // BoxShadow(
+                                              //     color: Colors.grey
+                                              //         .withOpacity(0.5),
+                                              //     offset: Offset(2, 4),
+                                              //     blurRadius: 7.0,
+                                              //     spreadRadius: 1.0),
                                             ]),
                                         child: Column(
                                           children: [
@@ -849,29 +762,57 @@ class _productshome_page extends State<productshome_page> {
                                                   padding: EdgeInsets.all(5.0),
                                                   child: Container(
                                                       height: 100,
-                                                      child: Image.network(
-                                                        snapshot.data!['data']
-                                                                        [index]
-                                                                    [
-                                                                    'product_images'] !=
-                                                                null
-                                                            ? Global.domainImage +
-                                                                snapshot.data!['data']
-                                                                            [
-                                                                            index]
-                                                                        [
-                                                                        'product_images'][0]
-                                                                    [
-                                                                    'producti_path_name']
-                                                            : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
-                                                        fit: BoxFit.cover,
-                                                        width: double.infinity,
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                                Radius.circular(
+                                                                    20.0)),
+                                                        child: Image.network(
+                                                          snapshot.data!['data']
+                                                                          [
+                                                                          index]
+                                                                      [
+                                                                      'product_images'] !=
+                                                                  null
+                                                              ? Global.domainImage +
+                                                                  snapshot.data!['data']
+                                                                              [
+                                                                              index]
+                                                                          [
+                                                                          'product_images'][0]
+                                                                      [
+                                                                      'producti_path_name']
+                                                              : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                                          fit: BoxFit.cover,
+                                                          width:
+                                                              double.infinity,
+                                                        ),
                                                       )),
                                                 ),
                                                 SizedBox(height: 15),
                                                 Container(
+                                                  decoration: BoxDecoration(
+                                                      color: Colors.grey[200],
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                        20,
+                                                      ),
+                                                      boxShadow: [
+                                                        // BoxShadow(
+                                                        //     color: Colors.grey
+                                                        //         .withOpacity(0.5),
+                                                        //     offset: Offset(2, 2),
+                                                        //     blurRadius: 7,
+                                                        //     spreadRadius: 1.0),
+                                                        // BoxShadow(
+                                                        //     color: Colors.grey
+                                                        //         .withOpacity(0.5),
+                                                        //     offset: Offset(2, 4),
+                                                        //     blurRadius: 7.0,
+                                                        //     spreadRadius: 1.0),
+                                                      ]),
                                                   width: 170,
-                                                  color: Colors.grey[200],
+                                                  // color: Colors.grey[200],
                                                   height: 60,
                                                   child: ListView(
                                                     children: [
