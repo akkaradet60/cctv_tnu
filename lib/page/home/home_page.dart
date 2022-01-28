@@ -3,11 +3,12 @@ import 'dart:convert';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
-import 'package:cctv_tun/page/manu/manu.dart';
+import 'package:cctv_tun/page/login/login.page.dart';
+import 'package:cctv_tun/page/menu/manu.dart';
+
 import 'package:cctv_tun/page/otoproducts/products_page.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:http/http.dart' as http;
-import 'package:cctv_tun/shared/theme.dart';
 
 import 'package:cctv_tun/widgets/menus_custom.dart';
 import 'package:flutter/material.dart';
@@ -29,9 +30,11 @@ class _home_pageState extends State<home_page> {
     Map<String, dynamic> appToken =
         json.decode(prefs.getString('token').toString());
     // print(appToken['access_token']);
-
+    Map<String, dynamic> appuser_id =
+        json.decode(prefs.getString('user_id').toString());
     setState(() {
       Global.token = appToken['access_token'];
+      Global.user_id = appuser_id['access_id'];
     });
 
     var newProfile = json.decode(prefs.getString('profile').toString());
@@ -45,8 +48,8 @@ class _home_pageState extends State<home_page> {
   }
 
   Future<Map<String, dynamic>> getDataSlide() async {
-    var url =
-        'https://www.bc-official.com/api/app_nt/api/app/blog/restful/?app_id=${Global.app_id}';
+    var url = Global.urlWeb +
+        'api/app/blog/restful/?blog_app_id=${Global.app_id}&blog_cat_id=1';
     var response = await http.get(Uri.parse(url), headers: {
       'Authorization':
           'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
@@ -250,7 +253,8 @@ class _home_pageState extends State<home_page> {
                         child: Stack(
                           children: <Widget>[
                             Image.network(
-                              snapshot.data!['data'][item]['blog_images'] !=
+                              snapshot.data!['data'][item]['blog_images'][0]
+                                          ['blogi_path_name'] !=
                                       null
                                   ? Global.domainImage +
                                       snapshot.data!['data'][item]
@@ -439,8 +443,14 @@ class _home_pageState extends State<home_page> {
     }
 
     return Scaffold(
-      drawer: manu(),
+      drawer: menu_pang(),
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: ThemeBc.white, //change your color here
+        ),
+        shadowColor: ThemeBc.white,
+        foregroundColor: ThemeBc.white,
+        backgroundColor: ThemeBc.black,
         title: Center(child: const Text('เทศบาลเมืองมหาสารคาม')),
         actions: <Widget>[
           IconButton(
@@ -453,23 +463,25 @@ class _home_pageState extends State<home_page> {
           ),
         ],
       ),
-      body: SafeArea(
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [Colors.pinkAccent, Colors.orangeAccent],
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft),
-          ),
-          child: ListView(
-            children: <Widget>[
-              SizedBox(height: 15),
-              slide(context), // slider(),
-              titleMenus(),
-              cardMenus(),
-              cardMenus1(),
-              SizedBox(height: 111),
-            ],
+      body: Center(
+        child: SafeArea(
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [ThemeBc.orange, ThemeBc.pinkAccent],
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft),
+            ),
+            child: ListView(
+              children: <Widget>[
+                SizedBox(height: 15),
+                slide(context), // slider(),
+                titleMenus(),
+                cardMenus(),
+                cardMenus1(),
+                SizedBox(height: 111),
+              ],
+            ),
           ),
         ),
       ),

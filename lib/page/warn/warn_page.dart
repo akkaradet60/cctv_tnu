@@ -1,12 +1,14 @@
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
-import 'package:cctv_tun/shared/theme.dart';
-import 'package:cctv_tun/shared/theme.dart';
+import 'package:cctv_tun/page/profile/app_reducer.dart';
+import 'package:cctv_tun/page/profile/profile_action.dart';
+
 import 'package:cctv_tun/widgets/custom_button.dart';
 import 'package:cctv_tun/widgets/custom_buttonmenu.dart';
 import 'package:cctv_tun/widgets/menus_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -14,6 +16,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class warn_page extends StatefulWidget {
   warn_page({Key? key}) : super(key: key);
@@ -22,8 +25,68 @@ class warn_page extends StatefulWidget {
   _warn1State createState() => _warn1State();
 }
 
-class _warn1State extends State<warn_page> {
+class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
+  final tabList = [
+    'แจ้งเหตุฉุกเฉิน',
+    'เหตุฉุกเฉินของท่าน',
+  ];
+  late TabController _tabController;
+
+  var em_user_id;
+  var id;
+  bool _condition = true;
+
+  double? lat, lng;
+
+  var application;
+  var app_agreement;
+  var app_agreement_en;
+  var app_agreement_cn;
+  @override
+  void initState() {
+    _tabController = TabController(vsync: this, length: tabList.length);
+    super.initState();
+  }
+
+  var profilee;
+  var newProfile;
+  Future<void> getProfile() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    newProfile = json.decode(prefs.getString('profile').toString());
+    //call redux action
+    final store = StoreProvider.of<AppState>(context);
+    store.dispatch(updateProfileAction(newProfile));
+  }
+
+  Future<void> logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove('token');
+    await prefs.remove('profile');
+    //กลับไปที่หน้า Login
+    Navigator.of(context, rootNavigator: true)
+        .pushNamedAndRemoveUntil('/login_page', (route) => false);
+  }
+
+  late Map<String, dynamic> imgSlide;
+  Future<Map<String, dynamic>> getDataSlide() async {
+    var url = (Global.urlWeb +
+        'api/app/emergency/restful/?em_user_id=${Global.user_id}&em_app_id=${Global.app_id}&em_category=0');
+    var response = await http.get(Uri.parse(url), headers: {
+      'Authorization':
+          'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
+    });
+
+    if (response.statusCode == 200) {
+      imgSlide = json.decode(response.body);
+
+      // print(imgSlide['data'].length);
+      return imgSlide;
+    } else {
+      throw Exception('$response.statusCode');
+    }
+  }
+
   Future<void> warn_page(Map formValues) async {
     //formValues['name']
     // print(formValues);
@@ -42,7 +105,7 @@ class _warn1State extends State<warn_page> {
           // }));
           body: {
             "em_app_id": Global.app_id,
-            "em_user_id": '1',
+            "em_user_id": '${profilee['user_id']}',
             "em_detail": formValues['em_detail'],
             "em_phone": formValues['em_phone'],
             "em_type": formValues['em_type'],
@@ -51,7 +114,7 @@ class _warn1State extends State<warn_page> {
             "em_lng": '13',
             "em_location": '12-13',
             "em_category": '0',
-            // "emi_path_name[]": formValues['emi_path_name']
+            "emi_path_name[]": formValues['emi_path_name']
             // "user_app_id": Global.app_id,
             // "user_card_id": '1471200',
             // "user_firstname": formValues['firstname'],
@@ -59,14 +122,14 @@ class _warn1State extends State<warn_page> {
             // "user_email": formValues['email'],
             // "user_pass": formValues['password']
           });
-      Map<String, dynamic> feedback = json.decode(response.body);
+      Map<String, dynamic> warnpage = json.decode(response.body);
 
       if (response.statusCode == 201) {
         Alert(
           context: context,
           // title: "แจ้งเตือน",
           type: AlertType.success,
-          desc: '${feedback['data']}',
+          desc: '${warnpage['data']}',
           buttons: [
             DialogButton(
               child: Text(
@@ -92,7 +155,7 @@ class _warn1State extends State<warn_page> {
           context: context,
           type: AlertType.warning,
           // title: "แจ้งเตือน",
-          desc: '${feedback['data']}',
+          desc: '${warnpage['data']}',
           buttons: [
             DialogButton(
               child: Text(
@@ -148,24 +211,13 @@ class _warn1State extends State<warn_page> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Center(child: Text('เแจ้งเหตุฉุกเฉิน')),
-        actions: <Widget>[
-          IconButton(
-            icon: Image.asset('assets/logo.png', scale: 15),
-            tooltip: 'Show Snackbar',
-            onPressed: () {
-              ScaffoldMessenger.of(context)
-                  .showSnackBar(SnackBar(content: Text('แจ้งเหตุฉุกเฉิน')));
-            },
-          ),
-        ],
-      ),
-      body: Container(
+    Widget warnpage() {
+      return Container(
+        height: 1000,
+        width: 1000,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [Colors.pinkAccent, Colors.orangeAccent],
+              colors: [ThemeBc.orange, ThemeBc.pinkAccent],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft),
         ),
@@ -185,27 +237,6 @@ class _warn1State extends State<warn_page> {
               autovalidateMode: AutovalidateMode.always,
               child: Column(
                 children: [
-                  SizedBox(height: 18),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CustomButtonmenu(
-                        title: 'แจ้งเหตุฉุกเฉิน',
-                        onPressed: () => Navigator.pushNamed(context, '/warn'),
-                        colorButton: buttonGreyColor,
-                        textStyle: secondaryTextStyle.copyWith(
-                            fontWeight: medium, fontSize: 16),
-                      ),
-                      SizedBox(width: 10),
-                      CustomButtonmenu(
-                        title: 'เหตุฉุกเฉินของท่าน',
-                        onPressed: () => Navigator.pushNamed(context, '/warn'),
-                        colorButton: primaryColor,
-                        textStyle: secondaryTextStyle.copyWith(
-                            fontWeight: medium, fontSize: 16),
-                      ),
-                    ],
-                  ),
                   SizedBox(height: 18),
                   Material(
                     elevation: 18,
@@ -381,6 +412,224 @@ class _warn1State extends State<warn_page> {
             ),
           ),
         ),
+      );
+    }
+
+    Widget warndetaikpage() {
+      return Container(
+        color: ThemeBc.black,
+        width: 1000,
+        height: 500,
+        child: FutureBuilder<Map<String, dynamic>>(
+          future: getDataSlide(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.builder(
+                itemCount: snapshot.data!['data'].length,
+                itemBuilder: (context, index) {
+                  var datanill = snapshot.data!['data'];
+                  var em_detaail;
+                  if (datanill == 'ไม่พบข้อมูล') {
+                    em_detaail = 'ไม่พบข้อมูล';
+                    return Text('');
+                  } else {
+                    return Container(
+                      height: 100,
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            child: Column(
+                              // mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  height: 80,
+                                  child: Card(
+                                    child: Column(
+                                      children: [
+                                        ListTile(
+                                          title: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              SizedBox(height: 10),
+                                              Text(
+                                                '${snapshot.data!['data'][index]['em_type']}',
+                                                style:
+                                                    primaryTextStyle.copyWith(
+                                                        fontSize: 18,
+                                                        fontWeight: medium),
+                                              ),
+                                            ],
+                                          ),
+                                          trailing: Container(
+                                            width: 80,
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(0.0),
+                                              child: Row(
+                                                children: [
+                                                  //         .callNumber(number);},
+
+                                                  SizedBox(width: 5),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(3),
+                                                    child: Container(
+                                                      height: 50,
+                                                      child:
+                                                          ElevatedButton.icon(
+                                                        onPressed: () =>
+                                                            Navigator.pushNamed(
+                                                                context,
+                                                                '/maplocation_page',
+                                                                arguments: {
+                                                              'em_owner': snapshot
+                                                                          .data![
+                                                                      'data'][index]
+                                                                  ['em_owner'],
+                                                              'em_detail': snapshot
+                                                                          .data![
+                                                                      'data'][index]
+                                                                  ['em_detail'],
+                                                              'em_images': snapshot.data!['data']
+                                                                              [
+                                                                              index]
+                                                                          [
+                                                                          'em_images'] !=
+                                                                      null
+                                                                  ? Global.domainImage +
+                                                                      snapshot.data!['data']
+                                                                              [
+                                                                              index]['em_images'][0]
+                                                                          [
+                                                                          'emi_path_name']
+                                                                  : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                                              'em_phone': snapshot
+                                                                          .data![
+                                                                      'data'][index]
+                                                                  ['em_phone'],
+                                                              'em_lat': snapshot
+                                                                          .data![
+                                                                      'data'][
+                                                                  index]['em_lat'],
+                                                              'em_lng': snapshot
+                                                                          .data![
+                                                                      'data'][
+                                                                  index]['em_lng'],
+                                                              'em_location': snapshot
+                                                                          .data![
+                                                                      'data'][index]
+                                                                  [
+                                                                  'em_location'],
+                                                              'em_type': snapshot
+                                                                          .data![
+                                                                      'data'][index]
+                                                                  ['em_type'],
+                                                            }),
+                                                        icon: Icon(
+                                                          Icons.maps_home_work,
+                                                          color: Colors.pink,
+                                                          size: 30,
+                                                        ),
+                                                        label: Text(''),
+                                                        style: ElevatedButton
+                                                            .styleFrom(
+                                                          primary:
+                                                              Colors.orange,
+                                                          elevation: 10,
+                                                          shape: RoundedRectangleBorder(
+                                                              borderRadius: BorderRadius
+                                                                  .all(Radius
+                                                                      .circular(
+                                                                          20))),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  }
+                },
+              );
+            } else if (snapshot.hasError) {
+              return Center(
+                  child: Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
+            }
+
+            return Center(child: CircularProgressIndicator());
+          },
+        ),
+      );
+    }
+
+    return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: ThemeBc.white, //change your color here
+        ),
+        shadowColor: ThemeBc.white,
+        foregroundColor: ThemeBc.white,
+        backgroundColor: ThemeBc.black,
+        title: Center(child: const Text('แจ้งเหตุฉุกเฉิน')),
+        actions: <Widget>[
+          IconButton(
+            icon: Image.asset('assets/logo.png', scale: 15),
+            tooltip: 'Show Snackbar',
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+            },
+          ),
+        ],
+        centerTitle: true,
+        bottom: TabBar(
+          controller: _tabController,
+          // indicator: PointTabIndicator(
+          //   position: PointTabIndicatorPosition.bottom,
+          //   color: white,
+          //   insets: EdgeInsets.only(bottom: 6),
+          // ),
+          tabs: tabList.map((item) {
+            return Tab(
+              text: item,
+            );
+          }).toList(),
+        ),
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              colors: [Colors.pinkAccent, Colors.orangeAccent],
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft),
+        ),
+        child: TabBarView(
+          controller: _tabController,
+          children: tabList.map((item) {
+            if (item == 'แจ้งเหตุฉุกเฉิน') {
+              return warnpage();
+            } else {
+              return warndetaikpage();
+            }
+
+            // print(item);
+            // return Center(child: Text(item));
+          }).toList(),
+        ),
       ),
     );
     /* Widget imageSplash() {
@@ -400,13 +649,7 @@ class _warn1State extends State<warn_page> {
                 decoration: InputDecoration(
                   suffixIcon: Icon(Icons.account_box_outlined),
                   labelText: 'ชื่อผู้แจ้ง',
-                  fillColor: Colors.white,
-                  filled: true,
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                  fillCsEdgeInsets.symmetric(horizontal: 0, vertical: 0),
               child: Text(''),
             ),
             Material(

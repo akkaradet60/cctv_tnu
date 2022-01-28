@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cctv_tun/page/global/global.dart';
-import 'package:cctv_tun/shared/theme.dart';
+import 'package:cctv_tun/page/global/style/global.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -11,10 +12,10 @@ class productshop_page extends StatefulWidget {
   productshop_page({Key? key}) : super(key: key);
 
   @override
-  _productsState createState() => _productsState();
+  _productshop_page createState() => _productshop_page();
 }
 
-class _productsState extends State<productshop_page> {
+class _productshop_page extends State<productshop_page> {
   var productt;
   var detail;
   bool isLoading = true;
@@ -83,6 +84,12 @@ class _productsState extends State<productshop_page> {
     productt = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
         appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: ThemeBc.white, //change your color here
+          ),
+          shadowColor: ThemeBc.white,
+          foregroundColor: ThemeBc.white,
+          backgroundColor: ThemeBc.black,
           title: Text('สินค้า'),
           actions: <Widget>[
             IconButton(

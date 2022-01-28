@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:cctv_tun/models/hotlinee/hotlinee.dart';
-import 'package:cctv_tun/shared/theme.dart';
+import 'package:cctv_tun/page/global/style/global.dart';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -78,6 +79,12 @@ class _map_pageState extends State<map_page> {
     );
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: ThemeBc.white, //change your color here
+        ),
+        shadowColor: ThemeBc.white,
+        foregroundColor: ThemeBc.white,
+        backgroundColor: ThemeBc.black,
         title: Center(child: Text('${hotlinee['hotlineName']}')),
         actions: <Widget>[
           IconButton(

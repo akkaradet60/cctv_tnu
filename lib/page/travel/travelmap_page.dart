@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:cctv_tun/page/global/global.dart';
-import 'package:cctv_tun/shared/theme.dart';
+import 'package:cctv_tun/page/global/style/global.dart';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -13,10 +14,10 @@ class travelmap_page extends StatefulWidget {
   travelmap_page({Key? key}) : super(key: key);
 
   @override
-  _map_pageState createState() => _map_pageState();
+  _travelmap_page createState() => _travelmap_page();
 }
 
-class _map_pageState extends State<travelmap_page> {
+class _travelmap_page extends State<travelmap_page> {
   late Map<String, dynamic> imgSlide;
 
   Future<Map<String, dynamic>> getDataSlide() async {
@@ -92,6 +93,12 @@ class _map_pageState extends State<travelmap_page> {
     );
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: ThemeBc.white, //change your color here
+        ),
+        shadowColor: ThemeBc.white,
+        foregroundColor: ThemeBc.white,
+        backgroundColor: ThemeBc.black,
         title: Column(
           children: [
             SizedBox(height: 18),

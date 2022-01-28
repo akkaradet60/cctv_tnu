@@ -22,7 +22,7 @@ class _RegisterPageState extends State<register_page> {
     //formValues['name']
     //print(formValues);
     try {
-      var url = Global.urlWeb + 'api/register/restful';
+      var url = Global.urlWeb + 'api/register/restful/${Global.app_id}';
       var response = await http.post(Uri.parse(url), headers: {
         "Accept": "application/json"
       },

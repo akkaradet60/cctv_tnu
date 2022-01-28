@@ -1,9 +1,13 @@
 import 'package:cctv_tun/main.dart';
 import 'package:cctv_tun/page/global/global.dart';
-import 'package:cctv_tun/shared/theme.dart';
+import 'package:cctv_tun/page/global/style/global.dart';
+import 'package:cctv_tun/page/profile/app_reducer.dart';
+import 'package:cctv_tun/page/profile/profile_action.dart';
+
 import 'package:cctv_tun/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:http/http.dart' as http;
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'dart:convert';
@@ -25,22 +29,26 @@ class _LoginPageState extends State<login_page> {
   Future<void> login(Map formValues) async {
     //formValues['name']
     //print(formValues);
+
     var url = Uri.parse(Global.urlWeb + 'api/login/restful');
     var response = await http.post(url,
         headers: {
           "Accept": "application/json",
         },
         body: json.encode({
-          //  "app_id": Global.app_id,
+          "app_id": Global.app_id,
           "email": formValues['email'],
           "password": formValues['password']
         }));
+
     Map<String, dynamic> token = json.decode(response.body);
+    var user_id = json.decode(response.body);
     if (response.statusCode == 200) {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString('token', response.body);
+      await prefs.setString('user_id', response.body);
       var profileUrl = Global.urlWeb +
-          'api/profile/restful?user_id=${token['access_id']}&user_app_id=${Global.app_id}';
+          'api/profile/restful?user_id=${user_id['access_id']}&user_app_id=${Global.app_id}';
       var responseProfile = await http.get(Uri.parse(profileUrl),
           headers: {'Authorization': 'Bearer ${token['access_token']}'});
       var profile = json.decode(responseProfile.body);
@@ -48,7 +56,7 @@ class _LoginPageState extends State<login_page> {
           profile['data'][0]; // { id: 111, name: john ....}
       await prefs.setString('profile', jsonEncode(user));
       print('profile: $user');
-
+      print(user_id['access_id']);
       var appUrl = Global.urlWeb +
           'api/app/application/restful/?app_id=${Global.app_id}';
       var responseApp = await http.get(Uri.parse(appUrl),
@@ -58,7 +66,12 @@ class _LoginPageState extends State<login_page> {
           application_data['data'][0]; // { id: 111, name: john ....}
       await prefs.setString('application', jsonEncode(app_data));
       //print(app_data);
+      //Global.user_id = token['access_id'];
       print('app: $app_data');
+      //user_id = token['access_id'];
+
+      // print(Global.usi_id);
+      // print(user_id);
 
       //get Profile
       /* var profileUrl = Uri.parse('https://api.codingthailand.com/api/profile');
@@ -95,6 +108,41 @@ class _LoginPageState extends State<login_page> {
         ],
       ).show();
     }
+  }
+
+  var newProfile;
+  Future<void> getProfile() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    newProfile = json.decode(prefs.getString('profile').toString());
+    //call redux action
+    final store = StoreProvider.of<AppState>(context);
+    store.dispatch(updateProfileAction(newProfile));
+  }
+
+  Future<void> logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove('user_id');
+    await prefs.remove('token');
+    await prefs.remove('profile');
+    //กลับไปที่หน้า Login
+    Navigator.of(context, rootNavigator: true)
+        .pushNamedAndRemoveUntil('/login_page', (route) => false);
+  }
+
+  // var newProfile;
+  // Future<void> getProfile() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   newProfile = json.decode(prefs.getString('profile').toString());
+  //   //call redux action
+  //   final store = StoreProvider.of<AppState>(context);
+  //   store.dispatch(updateProfileAction(newProfile));
+  // }
+
+  @override
+  void initState() {
+    super.initState();
+    getProfile;
+    //getProfile();
   }
 
   @override

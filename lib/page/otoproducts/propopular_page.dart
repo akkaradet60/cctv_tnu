@@ -1,7 +1,6 @@
 import 'package:cctv_tun/models/product/bestseller.dart';
 import 'package:cctv_tun/page/global/global.dart';
-
-import 'package:cctv_tun/shared/theme.dart';
+import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:flutter/material.dart';
 
@@ -14,10 +13,10 @@ class propopular_page extends StatefulWidget {
   propopular_page({Key? key}) : super(key: key);
 
   @override
-  _otopproductsState createState() => _otopproductsState();
+  _propopular_page createState() => _propopular_page();
 }
 
-class _otopproductsState extends State<propopular_page> {
+class _propopular_page extends State<propopular_page> {
   List<Data> data = [];
   bool isLoading = true;
   var productt;
@@ -79,6 +78,12 @@ class _otopproductsState extends State<propopular_page> {
     return Scaffold(
       bottomNavigationBar: customBottomNav(),
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: ThemeBc.white, //change your color here
+        ),
+        shadowColor: ThemeBc.white,
+        foregroundColor: ThemeBc.white,
+        backgroundColor: ThemeBc.black,
         title: const Text('สินค้า OTOP'),
         actions: <Widget>[
           IconButton(

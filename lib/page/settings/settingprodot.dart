@@ -1,3 +1,4 @@
+import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:form_builder_image_picker/form_builder_image_picker.dart';
@@ -210,11 +211,18 @@ class _warn1State extends State<settingprodot> {
     }
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: ThemeBc.white, //change your color here
+        ),
+        shadowColor: ThemeBc.white,
+        foregroundColor: ThemeBc.white,
+        backgroundColor: ThemeBc.black,
+      ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [Colors.pinkAccent, Colors.orangeAccent],
+              colors: [ThemeBc.orange, ThemeBc.pinkAccent],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft),
         ),

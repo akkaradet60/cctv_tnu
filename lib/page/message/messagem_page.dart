@@ -2,8 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cctv_tun/models/blogs/blogs.dart';
 
 import 'package:cctv_tun/page/global/global.dart';
-
-import 'package:cctv_tun/shared/theme.dart';
+import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -37,7 +36,8 @@ class _message_pageState extends State<message_page> {
   int _currentIndex = 0;
 
   Future<Map<String, dynamic>> getDataSlide() async {
-    var url = (Global.urlWeb + 'api/app/blog/restful/?app_id=${Global.app_id}');
+    var url = (Global.urlWeb +
+        'api/app/blog/restful/?blog_app_id=${Global.app_id}&blog_cat_id=${Global.glog_catid}');
     var response = await http.get(Uri.parse(url), headers: {
       'Authorization':
           'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
@@ -52,10 +52,6 @@ class _message_pageState extends State<message_page> {
       throw Exception('$response.statusCode');
     }
   }
-
-  var _counter = 1;
-  var _product = int.parse('0');
-  var _product1 = int.parse('0');
 
   /* void _incrementCounter() {
     setState(() {
@@ -114,7 +110,7 @@ class _message_pageState extends State<message_page> {
                       Navigator.pushNamed(context, '/messagemdetail_page',
                           arguments: {
                             'blog_images': snapshot.data!['data'][item]
-                                        ['blog_images'] !=
+                                        ['blog_images'][0]['blogi_path_name'] !=
                                     null
                                 ? Global.domainImage +
                                     snapshot.data!['data'][item]['blog_images']
@@ -148,7 +144,8 @@ class _message_pageState extends State<message_page> {
                         child: Stack(
                           children: <Widget>[
                             Image.network(
-                              snapshot.data!['data'][item]['blog_images'] !=
+                              snapshot.data!['data'][item]['blog_images'][0]
+                                          ['blogi_path_name'] !=
                                       null
                                   ? Global.domainImage +
                                       snapshot.data!['data'][item]
@@ -189,7 +186,7 @@ class _message_pageState extends State<message_page> {
 
     Widget ss1(BuildContext context) {
       return Container(
-        color: Colors.white,
+        color: ThemeBc.black,
         margin: EdgeInsets.only(top: 10, bottom: 0),
         width: 1000,
         height: 500,
@@ -267,8 +264,10 @@ class _message_pageState extends State<message_page> {
                                                   height: 200,
                                                   child: Image.network(
                                                     snapshot.data!['data']
-                                                                    [index][
-                                                                'blog_images'] !=
+                                                                        [index]
+                                                                    ['blog_images'][0]
+                                                                [
+                                                                'blogi_path_name'] !=
                                                             null
                                                         ? Global.domainImage +
                                                             snapshot.data!['data']
@@ -459,6 +458,12 @@ class _message_pageState extends State<message_page> {
 
     return Scaffold(
         appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: ThemeBc.white, //change your color here
+          ),
+          shadowColor: ThemeBc.white,
+          foregroundColor: ThemeBc.white,
+          backgroundColor: ThemeBc.black,
           title: Center(child: const Text('ข่าวสาร')),
           actions: <Widget>[
             IconButton(
@@ -474,7 +479,7 @@ class _message_pageState extends State<message_page> {
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors: [Colors.pinkAccent, Colors.orangeAccent],
+                colors: [ThemeBc.orange, ThemeBc.pinkAccent],
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft),
           ),

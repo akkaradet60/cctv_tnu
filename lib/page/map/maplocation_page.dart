@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:cctv_tun/models/hotlinee/hotlinee.dart';
-import 'package:cctv_tun/shared/theme.dart';
+import 'package:cctv_tun/page/global/style/global.dart';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -11,10 +12,10 @@ class maplocation_page extends StatefulWidget {
   maplocation_page({Key? key}) : super(key: key);
 
   @override
-  _map_pageState createState() => _map_pageState();
+  _maplocation_page createState() => _maplocation_page();
 }
 
-class _map_pageState extends State<maplocation_page> {
+class _maplocation_page extends State<maplocation_page> {
   Future<Position> _getLocation() async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -78,11 +79,21 @@ class _map_pageState extends State<maplocation_page> {
     );
     return Scaffold(
       appBar: AppBar(
-        title: Column(
-          children: [
-            SizedBox(height: 18),
-            Center(child: Text('${hotlinee['travelName']}')),
-          ],
+        iconTheme: IconThemeData(
+          color: ThemeBc.white, //change your color here
+        ),
+        shadowColor: ThemeBc.white,
+        foregroundColor: ThemeBc.white,
+        backgroundColor: ThemeBc.black,
+        title: Container(
+          height: 50,
+          width: 300,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [
+              Center(child: Text('${hotlinee['travelName']}')),
+            ],
+          ),
         ),
         actions: <Widget>[
           IconButton(
@@ -138,7 +149,7 @@ class _map_pageState extends State<maplocation_page> {
                                 fontSize: 18, fontWeight: medium),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(0),
                             child: Container(
                               height: 220,
                               child: ListView(
@@ -146,7 +157,15 @@ class _map_pageState extends State<maplocation_page> {
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(
-                                      'ชื่อสถานที่ : ${hotlinee['travelDetail']}',
+                                      '${hotlinee['detail']}',
+                                      style: primaryTextStyle.copyWith(
+                                          fontSize: 18, fontWeight: medium),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      '${hotlinee['travelName']} คือ : ${hotlinee['travelDetail']}',
                                       style: primaryTextStyle.copyWith(
                                           fontSize: 18, fontWeight: medium),
                                     ),

@@ -1,12 +1,13 @@
-import 'package:flutter/material.dart';
+import 'package:cctv_tun/page/global/style/global.dart';
+
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:form_builder_image_picker/form_builder_image_picker.dart';
+
 import 'package:form_field_validator/form_field_validator.dart';
 
 class settingshop extends StatefulWidget {
   @override
-  _EmergecyPageState createState() => _EmergecyPageState();
+  _settingshopState createState() => _settingshopState();
 }
 
 class ApiImage {
@@ -18,7 +19,7 @@ class ApiImage {
   });
 }
 
-class _EmergecyPageState extends State<settingshop>
+class _settingshopState extends State<settingshop>
     with SingleTickerProviderStateMixin {
   final tabList = ['แจ้งเหตุฉุกเฉิน', 'เหตุฉุกเฉินของท่าน'];
   late TabController _tabController;
@@ -476,6 +477,12 @@ class _EmergecyPageState extends State<settingshop>
     return Scaffold(
       // drawer: Icon(Icons.ac_unit, color: white),
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: ThemeBc.white, //change your color here
+        ),
+        shadowColor: ThemeBc.white,
+        foregroundColor: ThemeBc.white,
+        backgroundColor: ThemeBc.black,
         title: Center(child: const Text('ร้านค้า')),
         actions: <Widget>[
           IconButton(
@@ -491,7 +498,7 @@ class _EmergecyPageState extends State<settingshop>
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [Colors.pinkAccent, Colors.orangeAccent],
+              colors: [ThemeBc.orange, ThemeBc.pinkAccent],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft),
         ),

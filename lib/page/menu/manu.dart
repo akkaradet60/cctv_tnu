@@ -1,19 +1,20 @@
 import 'dart:convert';
 
+import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:cctv_tun/page/profile/app_reducer.dart';
 import 'package:cctv_tun/page/profile/profile_action.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class manu extends StatefulWidget {
-  manu({Key? key}) : super(key: key);
+class menu_pang extends StatefulWidget {
+  menu_pang({Key? key}) : super(key: key);
 
   @override
-  _manuState createState() => _manuState();
+  _menu_pangState createState() => _menu_pangState();
 }
 
-class _manuState extends State<manu> {
+class _menu_pangState extends State<menu_pang> {
   var newProfile;
   @override
   void initState() {
@@ -45,7 +46,7 @@ class _manuState extends State<manu> {
       child: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors: [Colors.pinkAccent, Colors.orangeAccent],
+                colors: [ThemeBc.orange, ThemeBc.pinkAccent],
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft)),
         child: ListView(
@@ -61,9 +62,11 @@ class _manuState extends State<manu> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           UserAccountsDrawerHeader(
+                            arrowColor: ThemeBc.black,
                             currentAccountPicture: CircleAvatar(
+                              foregroundColor: ThemeBc.black,
                               backgroundImage: AssetImage('assets/logo.png'),
-                              backgroundColor: Colors.pink,
+                              backgroundColor: ThemeBc.black,
                             ),
                             accountEmail:
                                 Text('สวัสดีคุณ ${profile['user_firstname']}'),

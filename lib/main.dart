@@ -1,18 +1,13 @@
-import 'package:cctv_tun/models/settings/settingpro.dart';
-import 'package:cctv_tun/models/settings/settingprodot.dart';
-import 'package:cctv_tun/models/settings/settingprofile.dart';
-import 'package:cctv_tun/models/settings/settings.dart';
-import 'package:cctv_tun/models/settings/settingshop.dart';
 import 'package:cctv_tun/page/Manual/Manual_page.dart';
 import 'package:cctv_tun/page/award/award_page.dart';
 import 'package:cctv_tun/page/award/awarddetail_page.dart';
 import 'package:cctv_tun/page/cctv/cctv_page.dart';
 import 'package:cctv_tun/page/compose/compose_page.dart';
+import 'package:cctv_tun/page/compose/composedetail_page.dart';
 import 'package:cctv_tun/page/home/home_page.dart';
 import 'package:cctv_tun/page/hotline/hotlinee_page.dart';
 import 'package:cctv_tun/page/location/location_page.dart';
 
-import 'package:cctv_tun/page/login/confirm_email/confirmemail.dart';
 import 'package:cctv_tun/page/login/login.page.dart';
 import 'package:cctv_tun/page/login/register_page.dart';
 import 'package:cctv_tun/page/map/map_page.dart';
@@ -30,14 +25,20 @@ import 'package:cctv_tun/page/otoproducts/products_page.dart';
 import 'package:cctv_tun/page/otoproducts/productshop_page.dart';
 import 'package:cctv_tun/page/otoproducts/propopular_page.dart';
 import 'package:cctv_tun/page/profile/app_reducer.dart';
+import 'package:cctv_tun/page/settings/settingpolicy.dart';
+import 'package:cctv_tun/page/settings/settingpro.dart';
+import 'package:cctv_tun/page/settings/settingprodot.dart';
+import 'package:cctv_tun/page/settings/settingprofile.dart';
+import 'package:cctv_tun/page/settings/settings.dart';
+import 'package:cctv_tun/page/settings/settingshop.dart';
 
-import 'package:cctv_tun/page/trainingcalendar/oi.dart';
 import 'package:cctv_tun/page/trainingcalendar/trainingcalendardetail_page.dart';
 import 'package:cctv_tun/page/trainingcalendar/trainingcalendar.dart';
 
 import 'package:cctv_tun/page/travel/travel_page.dart';
 import 'package:cctv_tun/page/travel/travelmap_page.dart';
 import 'package:cctv_tun/page/warn/warn_page.dart';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:redux/redux.dart';
@@ -45,6 +46,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 
 var filePath;
 var token;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -72,12 +74,12 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-              primarySwatch: Colors.pink,
+              primarySwatch: Colors.brown,
               // canvasColor: Colors.pinkAccent,
               scaffoldBackgroundColor: Colors.pinkAccent),
           routes: {
             '/': (context) => token == null ? login_page() : home_page(),
-            '/confirmemail': (context) => confirmemail(),
+            //  '/confirmemail': (context) => confirmemail(),
             '/home_page': (context) => home_page(), //home_page
             '/register_page': (context) => register_page(),
             '/messagemdetail_page': (context) => messagemdetail_page(),
@@ -88,6 +90,8 @@ class MyApp extends StatelessWidget {
             '/probestseller_page': (context) => probestseller_page(),
             '/propopular_page': (context) => propopular_page(),
             '/map_page': (context) => map_page(),
+            '/composedetail_page': (context) => composedetail_page(),
+            // '/warndetail_pang': (context) => warndetail_pang(),
             // '/map_page1': (context) => map_page1(),
             '/warn_page': (context) => warn_page(),
             '/compose_page': (context) => compose_page(),
@@ -112,6 +116,8 @@ class MyApp extends StatelessWidget {
             '/settings': (context) => settings(),
             '/settingshop': (context) => settingshop(),
             '/maplocation_page': (context) => maplocation_page(),
+            '/settingpolicy': (context) => settingpolicy(),
+            // '/EmergecyPage': (context) => EmergecyPage(),
 
             //   '/messagem2': (context) => messagem2()
           },

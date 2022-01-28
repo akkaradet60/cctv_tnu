@@ -4,10 +4,43 @@ import 'package:google_fonts/google_fonts.dart';
 int currentIndex = 0;
 double defaultMargin = 24.0;
 
+double defaultMargin1 = 24.0;
+
+Color primaryColor = Color(0xff5F59E1);
+Color secondaryColor = Color(0xff38ABBE);
+Color backgroundColor1 = Color(0xffff4081);
+Color backgroundColor2 = Color(0xffff9100);
+Color backgroundColor3 = Color(0xffffe0b2);
+Color primaryTextColor = Color(0xff111111);
+Color secondaryTextColor = Color(0xffFFFFFF);
+Color buttonGreyColor = Color(0xffffa726);
+Color transparentColor = Colors.transparent;
+Color transparentColor1 = Colors.orange;
+Color COLOR_BLACK = Colors.black;
+Color COLOR_ORANGE = Color(0xff111111);
+Color COLOR_GREY = Color(0xffFFFFFF);
+Color COLOR_WHITE = Color(0xffffa726);
+Color COLOR_GREEN = Color(0xffffa726);
+
+TextTheme defaultText = TextTheme(
+    headline1: GoogleFonts.nunito(
+  fontWeight: FontWeight.bold,
+));
+
+// TextStyle primaryTextStyle = GoogleFonts.poppins(
+//   color: primaryTextColor,
+// );
+
+TextStyle secondaryTextStyle = GoogleFonts.poppins(
+  color: secondaryTextColor,
+);
+
+TextStyle whiteTextStyle1 = GoogleFonts.poppins(color: backgroundColor1);
+
 //appBar
 class ThemeBc {
-//bg
-  static const orange = Colors.orange;
+  static const orange = Colors.orangeAccent;
+  static const pinkAccent = Colors.pinkAccent;
   static const whiteBg = Color(0xFFFFF9EC);
   static const white = Color(0xffF1EFE3);
   static const black = Color(0xff1B2836);
@@ -15,7 +48,7 @@ class ThemeBc {
   static const greens = Colors.green;
 }
 
-TextStyle primaryTextStyle1 = GoogleFonts.poppins(
+TextStyle primaryTextStyle = GoogleFonts.poppins(
   color: ThemeBc.black,
 );
 //bg
@@ -51,6 +84,8 @@ FontWeight regular = FontWeight.w400;
 FontWeight medium1 = FontWeight.w500;
 FontWeight semiBold = FontWeight.w600;
 FontWeight bold = FontWeight.w700;
+
+FontWeight medium = FontWeight.w500;
 
 //new
 

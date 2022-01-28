@@ -1,4 +1,5 @@
-import 'package:cctv_tun/shared/theme.dart';
+import 'package:cctv_tun/page/global/style/global.dart';
+
 import 'package:flutter/material.dart';
 
 class MenusCustom2 extends StatelessWidget {

@@ -1,82 +1,106 @@
-import 'package:cctv_tun/models/trainingcalendar/trainingcalendar.dart';
 import 'package:cctv_tun/page/global/global.dart';
-import 'package:cctv_tun/page/trainingcalendar/oi.dart';
-import 'package:cctv_tun/shared/theme.dart';
+import 'package:cctv_tun/page/global/style/global.dart';
+import 'package:flutter/gestures.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:cctv_tun/widgets/custom_button.dart';
 
 class trainingcalendar_page extends StatefulWidget {
   trainingcalendar_page({Key? key}) : super(key: key);
 
   @override
-  _hotlinee_pageState createState() => _hotlinee_pageState();
+  _trainingcalendar_page createState() => _trainingcalendar_page();
 }
 
-class _hotlinee_pageState extends State<trainingcalendar_page> {
-  List<Data> data = [];
-  bool isLoading = true;
+class _trainingcalendar_page extends State<trainingcalendar_page> {
+  late Map<String, dynamic> imgSlide;
 
-  Future<void> getData() async {
+  int _currentIndex = 0;
+
+  Future<Map<String, dynamic>> getDataSlide() async {
     var url =
-        ('https://www.bc-official.com/api/app_nt/api/app/train/restful/?train_id=8&train_app_id=1');
-    var response = await http.get(Uri.parse(url),
-        headers: {'Authorization': 'Bearer ${Global.token}'});
-    // print(json.decode(response.body));
+        ('https://www.bc-official.com/api/app_nt/api/app/train/restful/?train_app_id=1');
+    var response = await http.get(Uri.parse(url), headers: {
+      'Authorization':
+          'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
+    });
 
     if (response.statusCode == 200) {
-      // print(json.decode(response.body));
-      //นำ json ใส่ที่โมเมล product
-      final Trainingcalendar trainingcalendar =
-          Trainingcalendar.fromJson(json.decode(response.body));
-      print(trainingcalendar.data);
-      setState(() {
-        data = trainingcalendar.data;
-        isLoading = false;
-      });
+      imgSlide = json.decode(response.body);
+
+      // print(imgSlide['data'].length);
+      return imgSlide;
     } else {
-      setState(() {
-        isLoading = false;
-      });
-      print('error 400');
+      throw Exception('$response.statusCode');
     }
   }
 
-  Future<void> getProfile() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+  // List<Data> data = [];
+  // bool isLoading = true;
 
-    Map<String, dynamic> appToken =
-        json.decode(prefs.getString('token').toString());
-    // print(appToken['access_token']);
+  // Future<void> getData() async {
+  //   var url =
+  //       (https://bc-official.com/api/app_nt/api/app/train/restful/?train_app_id=1);
+  //   var response = await http.get(Uri.parse(url),
+  //       headers: {'Authorization': 'Bearer ${Global.token}'});
+  //   // print(json.decode(response.body));
 
-    setState(() {
-      Global.token = appToken['access_token'];
-    });
+  //   if (response.statusCode == 200) {
+  //     // print(json.decode(response.body));
+  //     //นำ json ใส่ที่โมเมล product
+  //     final Trainingcalendar trainingcalendar =
+  //         Trainingcalendar.fromJson(json.decode(response.body));
+  //     print(trainingcalendar.data);
+  //     setState(() {
+  //       data = trainingcalendar.data;
+  //       isLoading = false;
+  //     });
+  //   } else {
+  //     setState(() {
+  //       isLoading = false;
+  //     });
+  //     print('error 400');
+  //   }
+  // }
 
-    var newProfile = json.decode(prefs.getString('profile').toString());
-    var newApplication = json.decode(prefs.getString('application').toString());
-    // print(newProfile);
-    // print(newApplication);
-    //call redux action
-    /* final store = StoreProvider.of<AppState>(context);
-    store.dispatch(updateProfileAction(newProfile));
-    store.dispatch(updateApplicationAction(newApplication));*/
-  }
+  // Future<void> getProfile() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+
+  //   Map<String, dynamic> appToken =
+  //       json.decode(prefs.getString('token').toString());
+  //   // print(appToken['access_token']);
+
+  //   setState(() {
+  //     Global.token = appToken['access_token'];
+  //   });
+
+  //   var newProfile = json.decode(prefs.getString('profile').toString());
+  //   var newApplication = json.decode(prefs.getString('application').toString());
+  //   // print(newProfile);
+  //   // print(newApplication);
+  //   //call redux action
+  //   /* final store = StoreProvider.of<AppState>(context);
+  //   store.dispatch(updateProfileAction(newProfile));
+  //   store.dispatch(updateApplicationAction(newApplication));*/
+  // }
 
   @override
   void initState() {
     super.initState();
-    getData();
-    getProfile();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: ThemeBc.white, //change your color here
+        ),
+        shadowColor: ThemeBc.white,
+        foregroundColor: ThemeBc.white,
+        backgroundColor: ThemeBc.black,
         title: Center(child: Text('การฝึกอบรม')),
         actions: <Widget>[
           IconButton(
@@ -93,7 +117,7 @@ class _hotlinee_pageState extends State<trainingcalendar_page> {
         child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors: [Colors.pinkAccent, Colors.orangeAccent],
+                colors: [ThemeBc.black, ThemeBc.black],
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft),
           ),
@@ -113,104 +137,285 @@ class _hotlinee_pageState extends State<trainingcalendar_page> {
   }
 
   Widget hotlineee(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
+    return Container(
+      // decoration: BoxDecoration(
+      //     gradient: LinearGradient(
+      //         colors: [ThemeBc.black, Colors.orangeAccent],
+      //         begin: Alignment.topRight,
+      //         end: Alignment.bottomLeft)),
+      height: 600,
       child: Container(
-        height: 600,
-        child: Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [Colors.pinkAccent, Colors.orangeAccent],
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft)),
-          child: isLoading == true
-              ? Center(
-                  child: CircularProgressIndicator(),
-                )
-              : ListView.separated(
-                  // scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return Center(
-                      child: Container(
-                        height: 500,
-                        child: ListView(
-                          children: [
-                            Card(
-                              child: Row(
-                                // mainAxisAlignment: MainAxisAlignment.center,
+        //  color: ThemeBc.black,
+        width: 1000,
+        height: 500,
+        child: FutureBuilder<Map<String, dynamic>>(
+          future: getDataSlide(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.builder(
+                itemCount: snapshot.data!['data'].length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    width: 200,
+                    height: 330,
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context, '/trainingcalendardetail_page',
+                                  arguments: {
+                                    'trainName': snapshot.data!['data'][index]
+                                        ['train_name'],
+                                    'trainDetail': snapshot.data!['data'][index]
+                                        ['train_detail'],
+
+                                    'trainImages': snapshot.data!['data'][index]
+                                                    ['train_images'][0]
+                                                ['traini_path_name'] !=
+                                            null
+                                        ? Global.domainImage +
+                                            snapshot.data!['data'][index]
+                                                    ['train_images'][0]
+                                                ['traini_path_name']
+                                        : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                    //   'blog_images': snapshot.data!['data'][index]
+                                    //               ['blog_images'] !=
+                                    //           null
+                                    //       ? Global.domainImage +
+                                    //           snapshot.data!['data'][index]
+                                    //                   ['blog_images'][0]
+                                    //               ['blogi_path_name']
+                                    //       : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                    //   'blog_name': snapshot.data!['data'][index]
+                                    //       ['blog_name'],
+                                    //   'blog_detail': snapshot.data!['data'][index]
+                                    //       ['blog_detail']
+
+                                    //   /*   'id': data[index].id,
+                                    // 'detail': data[index].detail,
+                                    // 'picture': data[index].picture,
+                                    // 'view': data[index].view,*/
+                                  });
+                            },
+                            child: Container(
+                              margin: EdgeInsets.only(top: 20, bottom: 0),
+                              child: Column(
                                 children: [
-                                  InkWell(
-                                    onTap: () {
-                                      Navigator.pushNamed(context,
-                                          '/trainingcalendardetail_page',
-                                          arguments: {
-                                            'trainName': data[index].trainName,
-                                            'trainDetail':
-                                                data[index].trainDetail,
-                                            'trainImages': data[index]
-                                                        .trainImages !=
-                                                    null
-                                                ? Global.domainImage +
-                                                    data[index]
-                                                        .trainImages[index]
-                                                        .trainiPathName
-                                                : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
-                                          });
-                                    },
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                            height: 200,
-                                            child: Image.network(
-                                              data[index].trainImages != null
-                                                  ? Global.domainImage +
-                                                      data[index]
-                                                          .trainImages[index]
-                                                          .trainiPathName
-                                                  : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                  SizedBox(width: defaultMargin),
+                                  Container(
+                                    height: 300,
+                                    width: 370,
+                                    decoration: BoxDecoration(
+                                        color: secondaryTextColor,
+                                        borderRadius: BorderRadius.circular(
+                                          10,
+                                        ),
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color:
+                                                  Colors.grey.withOpacity(0.5),
+                                              offset: Offset(2, 2),
+                                              blurRadius: 7,
+                                              spreadRadius: 1.0),
+                                          BoxShadow(
+                                              color:
+                                                  Colors.grey.withOpacity(0.5),
+                                              offset: Offset(2, 4),
+                                              blurRadius: 7.0,
+                                              spreadRadius: 1.0),
+                                        ]),
+                                    child: Column(
+                                      children: [
+                                        Column(
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsets.all(5.0),
+                                              child: Container(
+                                                  height: 170,
+                                                  child: Image.network(
+                                                    snapshot.data!['data']
+                                                                        [index]
+                                                                    ['train_images'][0]
+                                                                [
+                                                                'traini_path_name'] !=
+                                                            null
+                                                        ? Global.domainImage +
+                                                            snapshot.data!['data']
+                                                                        [index][
+                                                                    'train_images'][0]
+                                                                [
+                                                                'traini_path_name']
+                                                        : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                                    fit: BoxFit.cover,
+                                                    width: double.infinity,
+                                                  )),
                                             ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Column(
-                                              children: [
-                                                Text(
-                                                  'การอบรม : ${data[index].trainName}',
-                                                  style:
-                                                      primaryTextStyle.copyWith(
-                                                          fontSize: 15,
-                                                          fontWeight: medium),
-                                                ),
-                                                Text(
-                                                  'วันที่จัดการอบรม : ${data[index].trainDetail}',
-                                                  style:
-                                                      primaryTextStyle.copyWith(
-                                                          fontSize: 13,
-                                                          fontWeight: medium),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                            SizedBox(height: 15),
+                                            Container(
+                                              width: 340,
+                                              color: Colors.grey[200],
+                                              height: 100,
+                                              child: ListView(
+                                                children: [
+                                                  SizedBox(height: 15),
+                                                  Center(
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Text(
+                                                        'ข่าว: ${snapshot.data!['data'][index]['train_name']}',
+                                                        style: primaryTextStyle
+                                                            .copyWith(
+                                                                fontSize: 16,
+                                                                fontWeight:
+                                                                    medium),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(height: 0),
+                                                  Center(
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Container(
+                                                        height: 50,
+                                                        child: ListView(
+                                                          dragStartBehavior:
+                                                              DragStartBehavior
+                                                                  .down,
+                                                          children: [
+                                                            Text(
+                                                              'เนื้อหาข่าว : ${snapshot.data!['data'][index]['train_detail']}',
+                                                              style: primaryTextStyle
+                                                                  .copyWith(
+                                                                      fontSize:
+                                                                          15,
+                                                                      fontWeight:
+                                                                          medium),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        )
+                                      ],
                                     ),
                                   ),
                                 ],
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    );
-                  },
-                  separatorBuilder: (context, index) => Divider(),
-                  itemCount: data.length),
+                    ),
+                  );
+                },
+              );
+            } else if (snapshot.hasError) {
+              return Center(
+                  child: Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
+            }
+
+            return Center(child: CircularProgressIndicator());
+          },
         ),
       ),
     );
   }
+  // child: isLoading == true
+  //     ? Center(
+  //         child: CircularProgressIndicator(),
+  //       )
+  //     : ListView.separated(
+  //         // scrollDirection: Axis.horizontal,
+  //         itemBuilder: (context, index) {
+  //           return Center(
+  //             child: Container(
+  //               height: 500,
+  //               child: ListView(
+  //                 children: [
+  //                   Card(
+  //                     child: Row(
+  //                       // mainAxisAlignment: MainAxisAlignment.center,
+  //                       children: [
+  //                         InkWell(
+  //                           onTap: () {
+  //                             Navigator.pushNamed(context,
+  //                                 '/trainingcalendardetail_page',
+  //                                 arguments: {
+  //                                   'trainName': data[index].trainName,
+  //                                   'trainDetail':
+  //                                       data[index].trainDetail,
+  //                                   'trainImages': data[index]
+  //                                               .trainImages !=
+  //                                           null
+  //                                       ? Global.domainImage +
+  //                                           data[index]
+  //                                               .trainImages[index]
+  //                                               .trainiPathName
+  //                                       : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+  //                                 });
+  //                           },
+  //                           child: Padding(
+  //                             padding: const EdgeInsets.all(8.0),
+  //                             child: Row(
+  //                               children: [
+  //                                 Container(
+  //                                   height: 200,
+  //                                   child: Image.network(
+  //                                     data[index].trainImages != null
+  //                                         ? Global.domainImage +
+  //                                             data[index]
+  //                                                 .trainImages[index]
+  //                                                 .trainiPathName
+  //                                         : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+  //                                   ),
+  //                                 ),
+  //                                 Padding(
+  //                                   padding: const EdgeInsets.all(8.0),
+  //                                   child: Column(
+  //                                     children: [
+  //                                       Text(
+  //                                         'การอบรม : ${data[index].trainName}',
+  //                                         style:
+  //                                             primaryTextStyle.copyWith(
+  //                                                 fontSize: 15,
+  //                                                 fontWeight: medium),
+  //                                       ),
+  //                                       Text(
+  //                                         'วันที่จัดการอบรม : ${data[index].trainDetail}',
+  //                                         style:
+  //                                             primaryTextStyle.copyWith(
+  //                                                 fontSize: 13,
+  //                                                 fontWeight: medium),
+  //                                       ),
+  //                                     ],
+  //                                   ),
+  //                                 ),
+  //                               ],
+  //                             ),
+  //                           ),
+  //                         ),
+  //                       ],
+  //                     ),
+  //                   ),
+  //                 ],
+  //               ),
+  //             ),
+  //           );
+  //         },
+  //         separatorBuilder: (context, index) => Divider(),
+  //         itemCount: data.length),
 
   // Widget sss(BuildContext context) {
   //   return Container(

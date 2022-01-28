@@ -163,6 +163,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  fluttertoast:
+    dependency: "direct main"
+    description:
+      name: fluttertoast
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "8.0.8"
   font_awesome_flutter:
     dependency: transitive
     description:
@@ -276,7 +283,7 @@ packages:
     source: hosted
     version: "2.4.3"
   intl:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: intl
       url: "https://pub.dartlang.org"
@@ -476,6 +483,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  slide_to_act:
+    dependency: "direct main"
+    description:
+      name: slide_to_act
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
   source_span:
     dependency: transitive
     description:

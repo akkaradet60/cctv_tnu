@@ -1,8 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 
 import 'package:cctv_tun/page/global/global.dart';
-
-import 'package:cctv_tun/shared/theme.dart';
+import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -16,10 +15,10 @@ class travel_page extends StatefulWidget {
   travel_page({Key? key}) : super(key: key);
 
   @override
-  _message_pageState createState() => _message_pageState();
+  _travel_page createState() => _travel_page();
 }
 
-class _message_pageState extends State<travel_page> {
+class _travel_page extends State<travel_page> {
   bool isLoading = true;
   var hotlinee;
 
@@ -35,7 +34,7 @@ class _message_pageState extends State<travel_page> {
 
   Future<Map<String, dynamic>> getDataSlide() async {
     var url =
-        ('https://www.bc-official.com/api/app_nt/api/app/travel/restful/?travel_id=8&travel_app_id=${Global.app_id}');
+        ('https://www.bc-official.com/api/app_nt/api/app/travel/restful/?travel_app_id=1&travel_cat=1');
     var response = await http.get(Uri.parse(url), headers: {
       'Authorization':
           'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
@@ -71,6 +70,7 @@ class _message_pageState extends State<travel_page> {
           //   ),
           // ),
           height: 500,
+          width: 500,
           margin: EdgeInsets.only(
             top: 10,
           ),
@@ -79,126 +79,134 @@ class _message_pageState extends State<travel_page> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return ListView.builder(
-                  //scrollDirection: Axis.horizontal,
+                  scrollDirection: Axis.horizontal,
                   itemCount: snapshot.data!['data'].length,
                   itemBuilder: (context, index) {
-                    return Container(
-                      height: 480,
-                      decoration: BoxDecoration(
-                        color: secondaryTextColor,
-                        borderRadius: BorderRadius.circular(
-                          30,
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        height: 480,
+                        decoration: BoxDecoration(
+                          color: ThemeBc.black,
+                          borderRadius: BorderRadius.circular(
+                            30,
+                          ),
                         ),
-                      ),
-                      child: Center(
-                        child: ListView(
-                          // scrollDirection: Axis.horizontal,
-                          // mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(context, '/travelmap_page',
-                                    arguments: {
-                                      'travel_name': snapshot.data!['data']
-                                          [index]['travel_name']
-                                      // 'blog_images': snapshot.data!['data'][index]
-                                      //             ['blog_images'] !=
-                                      //         null
-                                      //     ? Global.domainImage +
-                                      //         snapshot.data!['data'][index]
-                                      //                 ['blog_images'][0]
-                                      //             ['blogi_path_name']
-                                      //     : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                        child: Center(
+                          child: Column(
+                            // scrollDirection: Axis.horizontal,
+                            // mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, '/travelmap_page',
+                                      arguments: {
+                                        'travel_name': snapshot.data!['data']
+                                            [index]['travel_name']
+                                        // 'blog_images': snapshot.data!['data'][index]
+                                        //             ['blog_images'] !=
+                                        //         null
+                                        //     ? Global.domainImage +
+                                        //         snapshot.data!['data'][index]
+                                        //                 ['blog_images'][0]
+                                        //             ['blogi_path_name']
+                                        //     : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
 
-                                      // 'blog_detail': snapshot.data!['data'][index]
-                                      //     ['blog_detail']
+                                        // 'blog_detail': snapshot.data!['data'][index]
+                                        //     ['blog_detail']
 
-                                      /*   'id': data[index].id,
-                                    'detail': data[index].detail,
-                                    'picture': data[index].picture,
-                                    'view': data[index].view,*/
-                                    });
-                              },
-                              child: Container(
-                                child: Column(
-                                  children: [
-                                    SizedBox(width: defaultMargin),
-                                    Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: Container(
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                                width: 320,
-                                                height: 250,
-                                                child: Image.network(
-                                                  snapshot.data!['data'][index][
-                                                              'travel_images'] !=
-                                                          null
-                                                      ? Global.domainImage +
-                                                          snapshot.data!['data']
-                                                                      [index][
-                                                                  'travel_images'][0]
-                                                              [
-                                                              'traveli_path_name']
-                                                      : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
-                                                  fit: BoxFit.cover,
-                                                  width: double.infinity,
-                                                )),
-                                            SizedBox(height: 1),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Container(
-                                                color: Colors.grey[200],
-                                                width: 320,
-                                                height: 170,
-                                                child: Column(
-                                                  children: [
-                                                    SizedBox(height: 5),
-                                                    Center(
-                                                      child: Text(
-                                                        'เที่ยว: ${snapshot.data!['data'][index]['travel_name']}',
-                                                        style: primaryTextStyle
-                                                            .copyWith(
-                                                          fontSize: 16,
+                                        /*   'id': data[index].id,
+                                        'detail': data[index].detail,
+                                        'picture': data[index].picture,
+                                        'view': data[index].view,*/
+                                      });
+                                },
+                                child: Container(
+                                  child: Column(
+                                    children: [
+                                      SizedBox(width: defaultMargin),
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Container(
+                                          child: Column(
+                                            children: [
+                                              Container(
+                                                  width: 320,
+                                                  height: 250,
+                                                  child: Image.network(
+                                                    snapshot.data!['data']
+                                                                        [index]
+                                                                    ['travel_images'][0]
+                                                                [
+                                                                'traveli_path_name'] !=
+                                                            null
+                                                        ? Global.domainImage +
+                                                            snapshot.data!['data']
+                                                                        [index][
+                                                                    'travel_images'][0]
+                                                                [
+                                                                'traveli_path_name']
+                                                        : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                                    fit: BoxFit.cover,
+                                                    width: double.infinity,
+                                                  )),
+                                              SizedBox(height: 1),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Container(
+                                                  color: Colors.grey[200],
+                                                  width: 320,
+                                                  height: 170,
+                                                  child: Column(
+                                                    children: [
+                                                      SizedBox(height: 5),
+                                                      Center(
+                                                        child: Text(
+                                                          'เที่ยว: ${snapshot.data!['data'][index]['travel_name']}',
+                                                          style:
+                                                              primaryTextStyle
+                                                                  .copyWith(
+                                                            fontSize: 16,
+                                                          ),
                                                         ),
                                                       ),
-                                                    ),
-                                                    Container(
-                                                      height: 100,
-                                                      child: ListView(
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .all(8.0),
-                                                            child: Text(
-                                                              'ที่นี้คือ : ${snapshot.data!['data'][index]['travel_detail']}',
-                                                              style: primaryTextStyle
-                                                                  .copyWith(
-                                                                      fontSize:
-                                                                          15,
-                                                                      fontWeight:
-                                                                          medium),
+                                                      Container(
+                                                        height: 100,
+                                                        child: ListView(
+                                                          children: [
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child: Text(
+                                                                'ที่นี้คือ : ${snapshot.data!['data'][index]['travel_detail']}',
+                                                                style: primaryTextStyle
+                                                                    .copyWith(
+                                                                        fontSize:
+                                                                            15,
+                                                                        fontWeight:
+                                                                            medium),
+                                                              ),
                                                             ),
-                                                          ),
-                                                        ],
+                                                          ],
+                                                        ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
-                                              ),
-                                            )
-                                          ],
+                                              )
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     );
@@ -305,7 +313,7 @@ class _message_pageState extends State<travel_page> {
           height: 60,
           decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors: [Colors.white, Colors.orangeAccent],
+                colors: [ThemeBc.black, ThemeBc.black],
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft),
             borderRadius: BorderRadius.circular(
@@ -318,8 +326,12 @@ class _message_pageState extends State<travel_page> {
               Container(
                 child: Text(
                   'แนะนำที่ท่องเที่ยวในมหาสารคาม',
-                  style: primaryTextStyle.copyWith(
-                      fontSize: 25, fontWeight: medium),
+                  style: TextStyle(
+                    fontSize: 22.0,
+                    fontWeight: FontWeight.bold,
+                    // backgroundColor: Colors.black45,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ],
@@ -330,6 +342,12 @@ class _message_pageState extends State<travel_page> {
 
     return Scaffold(
         appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: ThemeBc.white, //change your color here
+          ),
+          shadowColor: ThemeBc.white,
+          foregroundColor: ThemeBc.white,
+          backgroundColor: ThemeBc.black,
           title: Center(child: const Text('ท่องเที่ยว')),
           actions: <Widget>[
             IconButton(

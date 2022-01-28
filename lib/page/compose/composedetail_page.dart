@@ -1,30 +1,26 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class messagemdetail_page extends StatefulWidget {
-  messagemdetail_page({Key? key}) : super(key: key);
+class composedetail_page extends StatefulWidget {
+  composedetail_page({Key? key}) : super(key: key);
 
   @override
-  _messagemdetail_page createState() => _messagemdetail_page();
+  State<composedetail_page> createState() => _composedetail_page();
 }
 
-class _messagemdetail_page extends State<messagemdetail_page> {
-  var productt;
-  var detail;
+class _composedetail_page extends State<composedetail_page> {
+  var datail_blogpose;
   bool isLoading = true;
   late Map<String, dynamic> imgSlide;
 
   int _currentIndex = 0;
   Future<Map<String, dynamic>> getDataSlide() async {
     var url = (Global.urlWeb +
-        'api/app/blog/restful/?blog_app_id=${Global.app_id}&blog_cat_id=${Global.glog_catid}');
+        'api/app/emergency/restful/?em_app_id=${Global.app_id}&em_category=1&em_user_id=${Global.user_id}');
     var response = await http.get(Uri.parse(url), headers: {
       'Authorization':
           'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
@@ -40,27 +36,9 @@ class _messagemdetail_page extends State<messagemdetail_page> {
     }
   }
 
-  // var _counter = 1;
-  // var _product = int.parse('0');
-  // var _product1 = int.parse('0');
-
-  /* void _incrementCounter() {
-    setState(() {
-      _counter++;
-      _product = _product + _product1;
-    });
-  }*/
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
-    // }
-
-    productt = ModalRoute.of(context)!.settings.arguments;
+    datail_blogpose = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
@@ -69,7 +47,7 @@ class _messagemdetail_page extends State<messagemdetail_page> {
           shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.black,
-          title: Text('${productt['blog_name']}'),
+          title: Text('${datail_blogpose['em_owner']}'),
           actions: <Widget>[
             IconButton(
               icon: Image.asset('assets/logo.png', scale: 15),
@@ -145,7 +123,7 @@ class _messagemdetail_page extends State<messagemdetail_page> {
                                       child: Stack(
                                         children: <Widget>[
                                           Image.network(
-                                            productt['blog_images'],
+                                            datail_blogpose['em_images'],
                                             fit: BoxFit.cover,
                                             width: double.infinity,
                                           ),
@@ -176,6 +154,19 @@ class _messagemdetail_page extends State<messagemdetail_page> {
                     ],
                   ),
                 ),
+                // Container(
+                //   child: Column(
+                //     children: [
+                //       Container(
+                //         height: 300,
+                //         child: Card(
+                //           child:
+                //               Image.network('${datail_blogpose['em_images']}'),
+                //         ),
+                //       ),
+                //     ],
+                //   ),
+                // ),
                 Container(
                   height: 500,
                   child: ListView(
@@ -190,7 +181,7 @@ class _messagemdetail_page extends State<messagemdetail_page> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    'ชื่อข่าว ${productt['blog_name']}',
+                                    'เรื่องร้องเรียน : ${datail_blogpose['em_owner']}',
                                     style: TextStyle(
                                       fontSize: 15.0,
                                       fontWeight: FontWeight.bold,
@@ -199,21 +190,51 @@ class _messagemdetail_page extends State<messagemdetail_page> {
                                     ),
                                   ),
                                 ),
-                                Column(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        'เนื้อข่าว ${productt['blog_detail']}',
-                                        style: TextStyle(
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.bold,
-                                          // backgroundColor: Colors.black45,
-                                          color: Colors.white,
+                                Text(
+                                  'ประเภทที่ร้องเรียน : ${datail_blogpose['em_type']}',
+                                  style: TextStyle(
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.bold,
+                                    // backgroundColor: Colors.black45,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                Container(
+                                  height: 200,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: ListView(
+                                      children: [
+                                        Text(
+                                          'เนื้อหาที่ได้ร้องเรียน : ${datail_blogpose['em_detail']}',
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                            fontWeight: FontWeight.bold,
+                                            // backgroundColor: Colors.black45,
+                                            color: Colors.white,
+                                          ),
                                         ),
-                                      ),
+                                        Text(
+                                          'เบอร์โทรติดต่อที่คุณแจ้ง : ${datail_blogpose['em_phone']}',
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                            fontWeight: FontWeight.bold,
+                                            // backgroundColor: Colors.black45,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        Text(
+                                          'จุดเกิดเหตุ : ${datail_blogpose['em_lat']} ${datail_blogpose['em_lng']}',
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                            fontWeight: FontWeight.bold,
+                                            // backgroundColor: Colors.black45,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                  ],
+                                  ),
                                 ),
                               ],
                             ),

@@ -1,5 +1,6 @@
-import 'package:cctv_tun/page/manu/manu.dart';
-import 'package:cctv_tun/shared/theme.dart';
+import 'package:cctv_tun/page/global/style/global.dart';
+import 'package:cctv_tun/page/menu/manu.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_builder.dart';
 
@@ -14,15 +15,18 @@ class settings extends StatelessWidget {
         width: 10,
         margin: EdgeInsets.only(top: 20),
         child: Card(
-          color: Colors.white,
+          color: ThemeBc.black,
           margin: const EdgeInsets.symmetric(horizontal: 15),
           child: Column(
             children: [
               SizedBox(height: 18),
               Text(
                 'ข้อมูล',
-                style: primaryTextStyle.copyWith(
-                  fontSize: 20,
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  // backgroundColor: Colors.black45,
+                  color: Colors.white,
                 ),
               ),
               SizedBox(height: 5),
@@ -53,7 +57,7 @@ class settings extends StatelessWidget {
                       text: 'ข้อตกลงและเงื่อนไข',
                       icon: Icons.view_headline,
                       onPressed: () =>
-                          Navigator.pushNamed(context, '/settingprofile'),
+                          Navigator.pushNamed(context, '/settingpolicy'),
                       backgroundColor: Colors.blueGrey[700]!,
                     ),
                   ],
@@ -70,14 +74,18 @@ class settings extends StatelessWidget {
         height: 175,
         margin: EdgeInsets.only(top: 15),
         child: Card(
+          color: ThemeBc.black,
           margin: const EdgeInsets.symmetric(horizontal: 15),
           child: Column(
             children: [
               SizedBox(height: 18),
               Text(
                 'ตั้งค่า',
-                style: primaryTextStyle.copyWith(
-                  fontSize: 20,
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  // backgroundColor: Colors.black45,
+                  color: Colors.white,
                 ),
               ),
               SizedBox(height: 5),
@@ -104,8 +112,14 @@ class settings extends StatelessWidget {
     }
 
     return Scaffold(
-      drawer: manu(),
+      drawer: menu_pang(),
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: ThemeBc.white, //change your color here
+        ),
+        shadowColor: ThemeBc.white,
+        foregroundColor: ThemeBc.white,
+        backgroundColor: ThemeBc.black,
         title: Center(child: const Text('ตั้งค่า')),
         actions: <Widget>[
           IconButton(
@@ -121,7 +135,7 @@ class settings extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [Colors.pinkAccent, Colors.orangeAccent],
+              colors: [ThemeBc.orange, ThemeBc.pinkAccent],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft),
         ),

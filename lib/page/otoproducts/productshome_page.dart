@@ -1,6 +1,6 @@
 import 'package:cctv_tun/models/product/bestseller.dart';
 import 'package:cctv_tun/page/global/global.dart';
-import 'package:cctv_tun/shared/theme.dart';
+import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -13,10 +13,10 @@ class productshome_page extends StatefulWidget {
   productshome_page({Key? key}) : super(key: key);
 
   @override
-  _nameState createState() => _nameState();
+  _productshome_page createState() => _productshome_page();
 }
 
-class _nameState extends State<productshome_page> {
+class _productshome_page extends State<productshome_page> {
   // List<Data> data = [];
   // bool isLoading = true;
   // Future<void> getData() async {
@@ -42,75 +42,77 @@ class _nameState extends State<productshome_page> {
   //   }
   // }
 
-  Future<void> getProfile() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+  // Future<void> probests() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    Map<String, dynamic> appToken =
-        json.decode(prefs.getString('token').toString());
-    // print(appToken['access_token']);
+  //   Map<String, dynamic> appToken =
+  //       json.decode(prefs.getString('token').toString());
+  //   // print(appToken['access_token']);
 
-    setState(() {
-      Global.token = appToken['access_token'];
-    });
+  //   setState(() {
+  //     Global.token = appToken['access_token'];
+  //   });
 
-    var newProfile = json.decode(prefs.getString('profile').toString());
-    var newApplication = json.decode(prefs.getString('application').toString());
-    // print(newProfile);
-    // print(newApplication);
-    //call redux action
-    /* final store = StoreProvider.of<AppState>(context);
-    store.dispatch(updateProfileAction(newProfile));
-    store.dispatch(updateApplicationAction(newApplication));*/
-  }
-
-  @override
-  void initState() {
-    super.initState();
-
-    getProfile();
-  }
+  //   var newProfile = json.decode(prefs.getString('profile').toString());
+  //   var newApplication = json.decode(prefs.getString('application').toString());
+  //   // print(newProfile);
+  //   // print(newApplication);
+  //   //call redux action
+  //   /* final store = StoreProvider.of<AppState>(context);
+  //   store.dispatch(updateProfileAction(newProfile));
+  //   store.dispatch(updateApplicationAction(newApplication));*/
+  // }
 
   // late Map< String,dynamic> profile;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: customBottomNav(),
-      appBar: AppBar(
-        title: Text('สินค้า OTOP'),
-        actions: <Widget>[
-          IconButton(
-            icon: Image.asset('assets/logo.png', scale: 15),
-            tooltip: 'Show Snackbar',
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
-            },
+        // bottomNavigationBar: customBottomNav(),
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: ThemeBc.white, //change your color here
           ),
-        ],
-      ),
-      body: FormBuilder(
+          shadowColor: ThemeBc.white,
+          foregroundColor: ThemeBc.white,
+          backgroundColor: ThemeBc.black,
+          title: Center(child: Text('สินค้า OTOP')),
+          actions: <Widget>[
+            IconButton(
+              icon: Image.asset('assets/logo.png', scale: 15),
+              tooltip: 'Show Snackbar',
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+              },
+            ),
+          ],
+        ),
+        body: ListView(
+          children: [
+            sso(context),
+            propopular_page(context),
+            probestseller_page(context),
+            probestss(context),
+          ],
+        ));
+  }
+
+  Widget ui(BuildContext context) {
+    return Container(
+      height: 500,
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+              colors: [Colors.pinkAccent, Colors.orangeAccent],
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft)),
+      child: FormBuilder(
         child: SafeArea(
           child: Container(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    colors: [Colors.pinkAccent, Colors.orangeAccent],
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft)),
             margin: EdgeInsets.only(top: 15),
             child: ListView(
               children: [
-                /* ListView.builder(
-                    itemBuilder: (context, index) {
-                      return Center(
-                        child: Column(
-                          children: [],
-                        ),
-                      );
-                    },
-                    itemCount: data.length),*/
                 Container(
-                  color: Colors.orange,
                   child: SafeArea(
                     child: Padding(
                       padding: EdgeInsets.all(8.0),
@@ -256,47 +258,731 @@ class _nameState extends State<productshome_page> {
     );
   }
 
-  Widget customBottomNav() {
+  Widget sso(BuildContext context) {
     return Container(
-      height: 60,
-      child: BottomAppBar(
-          shape: CircularNotchedRectangle(),
-          notchMargin: 5,
-          color: Colors.pink,
-          clipBehavior: Clip.antiAlias,
+      color: ThemeBc.black,
+      child: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(8.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  SizedBox(
-                    width: 20,
-                  ),
-                  IconButton(
-                    icon: Image.asset(
-                      'assets/fi_home.png',
-                      scale: 1,
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+              ),
+              Material(
+                elevation: 18,
+                shadowColor: Colors.grey.withOpacity(0.5),
+                child: TextField(
+                  decoration: InputDecoration(
+                    suffixIcon: IconButton(
+                      icon: Icon(Icons.search),
+                      onPressed: () =>
+                          Navigator.pushNamed(context, '/otopproductssearch'),
                     ),
-                    tooltip: 'Show Snackbar',
-                    onPressed: () => Navigator.pushNamed(
-                        context, '/productshome_page'), //productshome_page
+                    labelText: 'ค้นหา',
+                    fillColor: Colors.white,
+                    filled: true,
                   ),
-                  SizedBox(
-                    width: 260,
-                  ),
-                  IconButton(
-                    icon: Image.asset(
-                      'assets/10.png',
-                      scale: 1,
-                      color: Colors.red[900],
-                    ),
-                    tooltip: 'Show Snackbar',
-                    onPressed: () =>
-                        Navigator.pushNamed(context, '/otopproductslike'),
-                  ),
-                ],
+                ),
               ),
             ],
-          )),
+          ),
+        ),
+      ),
     );
   }
+
+  Widget probestss(BuildContext context) {
+    bool isLoading = true;
+    var hotlinee;
+    var productt;
+    var detail;
+
+    late Map<String, dynamic> imgSlide;
+
+    int _currentIndex = 0;
+
+    Future<Map<String, dynamic>> probests() async {
+      var url = (Global.urlWeb +
+          'api/app/otop/new-product/restful/?product_app_id=${Global.app_id}');
+      var response = await http.get(Uri.parse(url), headers: {
+        'Authorization':
+            'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
+      });
+
+      if (response.statusCode == 200) {
+        imgSlide = json.decode(response.body);
+
+        // print(imgSlide['data'].length);
+        return imgSlide;
+      } else {
+        throw Exception('$response.statusCode');
+      }
+    }
+
+    @override
+    void initState() {
+      super.initState();
+
+      probests();
+    }
+
+    return Container(
+      color: ThemeBc.black,
+      width: 1000,
+      height: 250,
+      child: Column(
+        children: [
+          SizedBox(height: 5),
+          Text(
+            'สินค้าขายดีอาทิตย์นี้',
+            style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold,
+              // backgroundColor: Colors.black45,
+              color: Colors.white,
+            ),
+          ),
+          Container(
+            height: 200,
+            child: FutureBuilder<Map<String, dynamic>>(
+              future: probests(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: snapshot.data!['data'].length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        width: 190,
+                        child: Center(
+                          child: Column(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, '/productshop_page',
+                                      arguments: {
+                                        'productName': snapshot.data!['data']
+                                            [index]['product_name'],
+                                        'productPrice': snapshot.data!['data']
+                                            [index]['product_price'],
+                                        'productiPathName': snapshot
+                                                        .data!['data'][index]
+                                                    ['product_images'] !=
+                                                null
+                                            ? Global.domainImage +
+                                                snapshot.data!['data'][index]
+                                                        ['product_images'][0]
+                                                    ['producti_path_name']
+                                            : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                        'productiproductid':
+                                            snapshot.data!['data'][index]
+                                                    ['product_images'][0]
+                                                ['producti_product_id'],
+                                        // data[index]
+                                        //     .productImage![0]
+                                        //     .productiProductId,
+                                      });
+                                },
+                                child: Container(
+                                  child: Column(
+                                    children: [
+                                      SizedBox(height: 5),
+                                      Container(
+                                        height: 190,
+                                        width: 175,
+                                        decoration: BoxDecoration(
+                                            color: secondaryTextColor,
+                                            borderRadius: BorderRadius.circular(
+                                              10,
+                                            ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  color: Colors.grey
+                                                      .withOpacity(0.5),
+                                                  offset: Offset(2, 2),
+                                                  blurRadius: 7,
+                                                  spreadRadius: 1.0),
+                                              BoxShadow(
+                                                  color: Colors.grey
+                                                      .withOpacity(0.5),
+                                                  offset: Offset(2, 4),
+                                                  blurRadius: 7.0,
+                                                  spreadRadius: 1.0),
+                                            ]),
+                                        child: Column(
+                                          children: [
+                                            Column(
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsets.all(5.0),
+                                                  child: Container(
+                                                      height: 100,
+                                                      child: Image.network(
+                                                        snapshot.data!['data']
+                                                                        [index]
+                                                                    [
+                                                                    'product_images'] !=
+                                                                null
+                                                            ? Global.domainImage +
+                                                                snapshot.data!['data']
+                                                                            [
+                                                                            index]
+                                                                        [
+                                                                        'product_images'][0]
+                                                                    [
+                                                                    'producti_path_name']
+                                                            : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                                        fit: BoxFit.cover,
+                                                        width: double.infinity,
+                                                      )),
+                                                ),
+                                                SizedBox(height: 15),
+                                                Container(
+                                                  width: 170,
+                                                  color: Colors.grey[200],
+                                                  height: 60,
+                                                  child: ListView(
+                                                    children: [
+                                                      Center(
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(8.0),
+                                                          child: Text(
+                                                            'ชื่อสินค้า : ${snapshot.data!['data'][index]['product_name']}',
+                                                            style: primaryTextStyle
+                                                                .copyWith(
+                                                                    fontSize:
+                                                                        12,
+                                                                    fontWeight:
+                                                                        medium),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        height: 60,
+                                                        child: ListView(
+                                                          children: [
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child: Text(
+                                                                'ราคา : ${snapshot.data!['data'][index]['product_price']}',
+                                                                style: primaryTextStyle
+                                                                    .copyWith(
+                                                                        fontSize:
+                                                                            12,
+                                                                        fontWeight:
+                                                                            medium),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                } else if (snapshot.hasError) {}
+
+                return Center(child: CircularProgressIndicator());
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget probestseller_page(BuildContext context) {
+    bool isLoading = true;
+
+    late Map<String, dynamic> imgSlide;
+
+    int _currentIndex = 0;
+
+    Future<Map<String, dynamic>> probests() async {
+      var url = (Global.urlWeb +
+          'api/app/otop/best-seller-product/restful/?product_app_id=${Global.app_id}');
+      var response = await http.get(Uri.parse(url), headers: {
+        'Authorization':
+            'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
+      });
+
+      if (response.statusCode == 200) {
+        imgSlide = json.decode(response.body);
+
+        // print(imgSlide['data'].length);
+        return imgSlide;
+      } else {
+        throw Exception('$response.statusCode');
+      }
+    }
+
+    @override
+    void initState() {
+      super.initState();
+
+      probests();
+    }
+
+    return Container(
+      color: ThemeBc.black,
+      width: 1000,
+      height: 250,
+      child: Column(
+        children: [
+          SizedBox(height: 5),
+          Text(
+            'ยอดนิยมประจำสัมปดาห์',
+            style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold,
+              // backgroundColor: Colors.black45,
+              color: Colors.white,
+            ),
+          ),
+          Container(
+            height: 200,
+            child: FutureBuilder<Map<String, dynamic>>(
+              future: probests(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: snapshot.data!['data'].length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        width: 190,
+                        child: Center(
+                          child: Column(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, '/productshop_page',
+                                      arguments: {
+                                        'productName': snapshot.data!['data']
+                                            [index]['product_name'],
+                                        'productPrice': snapshot.data!['data']
+                                            [index]['product_price'],
+                                        'productiPathName': snapshot
+                                                        .data!['data'][index]
+                                                    ['product_images'] !=
+                                                null
+                                            ? Global.domainImage +
+                                                snapshot.data!['data'][index]
+                                                        ['product_images'][0]
+                                                    ['producti_path_name']
+                                            : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                        'productiproductid':
+                                            snapshot.data!['data'][index]
+                                                    ['product_images'][0]
+                                                ['producti_product_id'],
+                                      });
+                                },
+                                child: Container(
+                                  child: Column(
+                                    children: [
+                                      SizedBox(height: 5),
+                                      Container(
+                                        height: 190,
+                                        width: 175,
+                                        decoration: BoxDecoration(
+                                            color: secondaryTextColor,
+                                            borderRadius: BorderRadius.circular(
+                                              10,
+                                            ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  color: Colors.grey
+                                                      .withOpacity(0.5),
+                                                  offset: Offset(2, 2),
+                                                  blurRadius: 7,
+                                                  spreadRadius: 1.0),
+                                              BoxShadow(
+                                                  color: Colors.grey
+                                                      .withOpacity(0.5),
+                                                  offset: Offset(2, 4),
+                                                  blurRadius: 7.0,
+                                                  spreadRadius: 1.0),
+                                            ]),
+                                        child: Column(
+                                          children: [
+                                            Column(
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsets.all(5.0),
+                                                  child: Container(
+                                                      height: 100,
+                                                      child: Image.network(
+                                                        snapshot.data!['data']
+                                                                        [index]
+                                                                    [
+                                                                    'product_images'] !=
+                                                                null
+                                                            ? Global.domainImage +
+                                                                snapshot.data!['data']
+                                                                            [
+                                                                            index]
+                                                                        [
+                                                                        'product_images'][0]
+                                                                    [
+                                                                    'producti_path_name']
+                                                            : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                                        fit: BoxFit.cover,
+                                                        width: double.infinity,
+                                                      )),
+                                                ),
+                                                SizedBox(height: 15),
+                                                Container(
+                                                  width: 170,
+                                                  color: Colors.grey[200],
+                                                  height: 60,
+                                                  child: ListView(
+                                                    children: [
+                                                      Center(
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(8.0),
+                                                          child: Text(
+                                                            'ชื่อสินค้า : ${snapshot.data!['data'][index]['product_name']}',
+                                                            style: primaryTextStyle
+                                                                .copyWith(
+                                                                    fontSize:
+                                                                        12,
+                                                                    fontWeight:
+                                                                        medium),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        height: 60,
+                                                        child: ListView(
+                                                          children: [
+                                                            Center(
+                                                              child: Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        0.0),
+                                                                child: Text(
+                                                                  'ราคา : ${snapshot.data!['data'][index]['product_price']}',
+                                                                  style: primaryTextStyle.copyWith(
+                                                                      fontSize:
+                                                                          12,
+                                                                      fontWeight:
+                                                                          medium),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                } else if (snapshot.hasError) {}
+
+                return Center(child: CircularProgressIndicator());
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget propopular_page(BuildContext context) {
+    bool isLoading = true;
+
+    late Map<String, dynamic> imgSlide;
+
+    int _currentIndex = 0;
+
+    Future<Map<String, dynamic>> probests() async {
+      var url = (Global.urlWeb +
+          '/api/app/otop/popular-product/restful/?product_app_id=${Global.app_id}');
+      var response = await http.get(Uri.parse(url), headers: {
+        'Authorization':
+            'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
+      });
+
+      if (response.statusCode == 200) {
+        imgSlide = json.decode(response.body);
+
+        // print(imgSlide['data'].length);
+        return imgSlide;
+      } else {
+        throw Exception('$response.statusCode');
+      }
+    }
+
+    @override
+    void initState() {
+      super.initState();
+
+      probests();
+    }
+
+    return Container(
+      color: ThemeBc.black,
+      width: 1000,
+      height: 250,
+      child: Column(
+        children: [
+          SizedBox(height: 5),
+          Text(
+            'ใหม่ล่าสุด',
+            style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold,
+              // backgroundColor: Colors.black45,
+              color: Colors.white,
+            ),
+          ),
+          Container(
+            height: 200,
+            child: FutureBuilder<Map<String, dynamic>>(
+              future: probests(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: snapshot.data!['data'].length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        width: 190,
+                        child: Center(
+                          child: Column(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, '/productshop_page',
+                                      arguments: {
+                                        'productName': snapshot.data!['data']
+                                            [index]['product_name'],
+                                        'productPrice': snapshot.data!['data']
+                                            [index]['product_price'],
+                                        'productiPathName': snapshot
+                                                        .data!['data'][index]
+                                                    ['product_images'] !=
+                                                null
+                                            ? Global.domainImage +
+                                                snapshot.data!['data'][index]
+                                                        ['product_images'][0]
+                                                    ['producti_path_name']
+                                            : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                        'productiproductid':
+                                            snapshot.data!['data'][index]
+                                                    ['product_images'][0]
+                                                ['producti_product_id'],
+                                      });
+                                },
+                                child: Container(
+                                  child: Column(
+                                    children: [
+                                      SizedBox(height: 5),
+                                      Container(
+                                        height: 190,
+                                        width: 175,
+                                        decoration: BoxDecoration(
+                                            color: secondaryTextColor,
+                                            borderRadius: BorderRadius.circular(
+                                              10,
+                                            ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  color: Colors.grey
+                                                      .withOpacity(0.5),
+                                                  offset: Offset(2, 2),
+                                                  blurRadius: 7,
+                                                  spreadRadius: 1.0),
+                                              BoxShadow(
+                                                  color: Colors.grey
+                                                      .withOpacity(0.5),
+                                                  offset: Offset(2, 4),
+                                                  blurRadius: 7.0,
+                                                  spreadRadius: 1.0),
+                                            ]),
+                                        child: Column(
+                                          children: [
+                                            Column(
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsets.all(5.0),
+                                                  child: Container(
+                                                      height: 100,
+                                                      child: Image.network(
+                                                        snapshot.data!['data']
+                                                                        [index]
+                                                                    [
+                                                                    'product_images'] !=
+                                                                null
+                                                            ? Global.domainImage +
+                                                                snapshot.data!['data']
+                                                                            [
+                                                                            index]
+                                                                        [
+                                                                        'product_images'][0]
+                                                                    [
+                                                                    'producti_path_name']
+                                                            : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                                        fit: BoxFit.cover,
+                                                        width: double.infinity,
+                                                      )),
+                                                ),
+                                                SizedBox(height: 15),
+                                                Container(
+                                                  width: 170,
+                                                  color: Colors.grey[200],
+                                                  height: 60,
+                                                  child: ListView(
+                                                    children: [
+                                                      Center(
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(8.0),
+                                                          child: Text(
+                                                            'ชื่อสินค้า : ${snapshot.data!['data'][index]['product_name']}',
+                                                            style: primaryTextStyle
+                                                                .copyWith(
+                                                                    fontSize:
+                                                                        12,
+                                                                    fontWeight:
+                                                                        medium),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        height: 60,
+                                                        child: ListView(
+                                                          children: [
+                                                            Center(
+                                                              child: Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        0.0),
+                                                                child: Text(
+                                                                  'ราคา : ${snapshot.data!['data'][index]['product_price']}',
+                                                                  style: primaryTextStyle.copyWith(
+                                                                      fontSize:
+                                                                          12,
+                                                                      fontWeight:
+                                                                          medium),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                } else if (snapshot.hasError) {}
+
+                return Center(child: CircularProgressIndicator());
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+  // Widget customBottomNav() {
+  //   return Container(
+  //     height: 60,
+  //     child: BottomAppBar(
+  //         shape: CircularNotchedRectangle(),
+  //         notchMargin: 5,
+  //         color: Colors.pink,
+  //         clipBehavior: Clip.antiAlias,
+  //         child: Column(
+  //           children: [
+  //             Row(
+  //               children: [
+  //                 SizedBox(
+  //                   width: 20,
+  //                 ),
+  //                 IconButton(
+  //                   icon: Image.asset(
+  //                     'assets/fi_home.png',
+  //                     scale: 1,
+  //                   ),
+  //                   tooltip: 'Show Snackbar',
+  //                   onPressed: () => Navigator.pushNamed(
+  //                       context, '/productshome_page'), //productshome_page
+  //                 ),
+  //                 SizedBox(
+  //                   width: 260,
+  //                 ),
+  //                 IconButton(
+  //                   icon: Image.asset(
+  //                     'assets/10.png',
+  //                     scale: 1,
+  //                     color: Colors.red[900],
+  //                   ),
+  //                   tooltip: 'Show Snackbar',
+  //                   onPressed: () =>
+  //                       Navigator.pushNamed(context, '/otopproductslike'),
+  //                 ),
+  //               ],
+  //             ),
+  //           ],
+  //         )),
+  //   );
+  // }
 }

@@ -2,8 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cctv_tun/models/blogs/blogs.dart';
 
 import 'package:cctv_tun/page/global/global.dart';
-
-import 'package:cctv_tun/shared/theme.dart';
+import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -17,10 +16,10 @@ class award_page extends StatefulWidget {
   award_page({Key? key}) : super(key: key);
 
   @override
-  _message_pageState createState() => _message_pageState();
+  _award_pageState createState() => _award_pageState();
 }
 
-class _message_pageState extends State<award_page> {
+class _award_pageState extends State<award_page> {
   List<Data> data = [];
   bool isLoading = true;
   var hotlinee;
@@ -68,7 +67,7 @@ class _message_pageState extends State<award_page> {
 
   @override
   Widget build(BuildContext context) {
-    Widget ssss(BuildContext context) {
+    Widget award_pageSlide(BuildContext context) {
       return Container(
         margin: EdgeInsets.only(top: 10, bottom: 10),
         child: FutureBuilder<Map<String, dynamic>>(
@@ -116,7 +115,8 @@ class _message_pageState extends State<award_page> {
                       Navigator.pushNamed(context, '/awarddetail_page',
                           arguments: {
                             'awardi_path_name': snapshot.data!['data'][item]
-                                        ['award_images'] !=
+                                            ['award_images'][0]
+                                        ['awardi_path_name'] !=
                                     null
                                 ? Global.domainImage +
                                     snapshot.data!['data'][item]['award_images']
@@ -150,7 +150,8 @@ class _message_pageState extends State<award_page> {
                         child: Stack(
                           children: <Widget>[
                             Image.network(
-                              snapshot.data!['data'][item]['award_images'] !=
+                              snapshot.data!['data'][item]['award_images'][0]
+                                          ['awardi_path_name'] !=
                                       null
                                   ? Global.domainImage +
                                       snapshot.data!['data'][item]
@@ -190,9 +191,9 @@ class _message_pageState extends State<award_page> {
       );
     }
 
-    Widget ss1(BuildContext context) {
+    Widget award_page(BuildContext context) {
       return Container(
-        color: Colors.white,
+        color: ThemeBc.black,
         margin: EdgeInsets.only(top: 10, bottom: 0),
         width: 1000,
         height: 500,
@@ -221,10 +222,10 @@ class _message_pageState extends State<award_page> {
                                                     ['award_images'][0]
                                                 ['awardi_path_name']
                                         : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
-                                    'blog_name': snapshot.data!['data'][index]
+                                    'award_name': snapshot.data!['data'][index]
                                         ['award_name'],
-                                    'blog_detail': snapshot.data!['data'][index]
-                                        ['award_detail']
+                                    'award_detail': snapshot.data!['data']
+                                        [index]['award_detail']
 
                                     /*   'id': data[index].id,
                                   'detail': data[index].detail,
@@ -269,8 +270,10 @@ class _message_pageState extends State<award_page> {
                                                   height: 200,
                                                   child: Image.network(
                                                     snapshot.data!['data']
-                                                                    [index][
-                                                                'award_images'] !=
+                                                                        [index]
+                                                                    ['award_images'][0]
+                                                                [
+                                                                'awardi_path_name'] !=
                                                             null
                                                         ? Global.domainImage +
                                                             snapshot.data!['data']
@@ -461,6 +464,12 @@ class _message_pageState extends State<award_page> {
 
     return Scaffold(
         appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: ThemeBc.white, //change your color here
+          ),
+          shadowColor: ThemeBc.white,
+          foregroundColor: ThemeBc.white,
+          backgroundColor: ThemeBc.black,
           title: Center(child: const Text('รางวัล')),
           actions: <Widget>[
             IconButton(
@@ -483,9 +492,9 @@ class _message_pageState extends State<award_page> {
           child: ListView(
             children: [
               // titleMenus(),
-              ssss(context),
+              award_pageSlide(context),
               titleMenus1(),
-              ss1(context),
+              award_page(context),
 
               //  sss2(context),
             ],

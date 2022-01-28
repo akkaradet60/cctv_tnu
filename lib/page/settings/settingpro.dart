@@ -1,4 +1,5 @@
-import 'package:cctv_tun/shared/theme.dart';
+import 'package:cctv_tun/page/global/style/global.dart';
+
 import 'package:flutter/material.dart';
 
 class settingpro extends StatefulWidget {
@@ -79,6 +80,12 @@ class _warn1State extends State<settingpro> {
 
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: ThemeBc.white, //change your color here
+        ),
+        shadowColor: ThemeBc.white,
+        foregroundColor: ThemeBc.white,
+        backgroundColor: ThemeBc.black,
         title: Center(child: const Text('จัดการสินค้า')),
         actions: <Widget>[
           IconButton(
@@ -94,7 +101,7 @@ class _warn1State extends State<settingpro> {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [Colors.pinkAccent, Colors.orangeAccent],
+              colors: [ThemeBc.orange, ThemeBc.pinkAccent],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft),
         ),
