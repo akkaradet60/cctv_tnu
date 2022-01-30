@@ -83,7 +83,7 @@ class _manual_pageState extends State<manual_page> {
           ),
           shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.black,
+          backgroundColor: ThemeBc.background,
           title: Center(child: const Text('คู่มือการใช้งาน')),
           actions: <Widget>[
             IconButton(
@@ -97,7 +97,7 @@ class _manual_pageState extends State<manual_page> {
           ],
         ),
         body: Container(
-          color: ThemeBc.black,
+          color: ThemeBc.background,
           width: 1000,
           height: 1000,
           child: FutureBuilder<Map<String, dynamic>>(

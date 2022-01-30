@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:cctv_tun/models/hotlinee/hotlinee.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:flutter/foundation.dart';
@@ -84,7 +83,7 @@ class _maplocation_page extends State<maplocation_page> {
         ),
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.black,
+        backgroundColor: ThemeBc.background,
         title: Container(
           height: 50,
           width: 300,
@@ -113,68 +112,114 @@ class _maplocation_page extends State<maplocation_page> {
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
               return Container(
+                color: ThemeBc.background,
                 height: 500,
                 child: ListView(
                   children: [
-                    Container(
-                      height: 400,
-                      child: GoogleMap(
-                        markers: <Marker>[
-                          Marker(
-                              markerId: const MarkerId('100'),
-                              position: LatLng(app_lat, app_lng),
-                              infoWindow: InfoWindow(
-                                  title:
-                                      'ตำแหน่งของศูนย์ ${hotlinee['travelName']}',
-                                  //   snippet: '-------------------',
-                                  onTap: () {})),
-                        ].toSet(),
-                        mapType: MapType.normal,
-                        onMapCreated: (GoogleMapController controller) {
-                          _controller.complete(controller);
-                        },
-                        myLocationEnabled: true,
-                        initialCameraPosition: cameraPosition,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: secondaryTextColor,
+                            borderRadius: BorderRadius.circular(
+                              20,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  offset: Offset(2, 2),
+                                  blurRadius: 7,
+                                  spreadRadius: 1.0),
+                              BoxShadow(
+                                  color: Colors.black.withOpacity(0.5),
+                                  offset: Offset(2, 4),
+                                  blurRadius: 7.0,
+                                  spreadRadius: 1.0),
+                            ]),
+                        height: 400,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: GoogleMap(
+                            markers: <Marker>[
+                              Marker(
+                                  markerId: const MarkerId('100'),
+                                  position: LatLng(app_lat, app_lng),
+                                  infoWindow: InfoWindow(
+                                      title:
+                                          'ตำแหน่งของศูนย์ ${hotlinee['travelName']}',
+                                      //   snippet: '-------------------',
+                                      onTap: () {})),
+                            ].toSet(),
+                            mapType: MapType.normal,
+                            onMapCreated: (GoogleMapController controller) {
+                              _controller.complete(controller);
+                            },
+                            myLocationEnabled: true,
+                            initialCameraPosition: cameraPosition,
+                          ),
+                        ),
                       ),
                     ),
                     Container(
-                      height: 300,
-                      color: Colors.green,
-                      child: Column(
-                        children: [
-                          SizedBox(height: 5),
-                          Text(
-                            'ชื่อสถานที่ : ${hotlinee['travelName']}',
-                            style: primaryTextStyle.copyWith(
-                                fontSize: 18, fontWeight: medium),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(0),
-                            child: Container(
-                              height: 220,
-                              child: ListView(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      '${hotlinee['detail']}',
-                                      style: primaryTextStyle.copyWith(
-                                          fontSize: 18, fontWeight: medium),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      '${hotlinee['travelName']} คือ : ${hotlinee['travelDetail']}',
-                                      style: primaryTextStyle.copyWith(
-                                          fontSize: 18, fontWeight: medium),
-                                    ),
-                                  ),
-                                ],
+                      color: ThemeBc.background,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: secondaryTextColor,
+                              borderRadius: BorderRadius.circular(
+                                30,
                               ),
-                            ),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    offset: Offset(2, 2),
+                                    blurRadius: 7,
+                                    spreadRadius: 1.0),
+                                BoxShadow(
+                                    color: Colors.black.withOpacity(0.5),
+                                    offset: Offset(2, 4),
+                                    blurRadius: 7.0,
+                                    spreadRadius: 1.0),
+                              ]),
+                          height: 300,
+                          child: Column(
+                            children: [
+                              SizedBox(height: 5),
+                              Text(
+                                'ชื่อสถานที่ : ${hotlinee['travelName']}',
+                                style: primaryTextStyle.copyWith(
+                                    fontSize: 18, fontWeight: medium),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(0),
+                                child: Container(
+                                  height: 220,
+                                  child: ListView(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          '${hotlinee['detail']}',
+                                          style: primaryTextStyle.copyWith(
+                                              fontSize: 18, fontWeight: medium),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          '${hotlinee['travelName']} คือ : ${hotlinee['travelDetail']}',
+                                          style: primaryTextStyle.copyWith(
+                                              fontSize: 18, fontWeight: medium),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                     ),
                   ],

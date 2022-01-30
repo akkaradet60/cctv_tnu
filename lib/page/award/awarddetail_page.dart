@@ -83,7 +83,7 @@ class _awarddetail_page extends State<awarddetail_page> {
           ),
           shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.black,
+          backgroundColor: ThemeBc.background,
           title: Text('${productt['award_name']}'),
           actions: <Widget>[
             IconButton(
@@ -103,7 +103,7 @@ class _awarddetail_page extends State<awarddetail_page> {
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft)),
           child: Container(
-            color: ThemeBc.black,
+            color: ThemeBc.background,
             child: ListView(
               children: [
                 Container(
@@ -299,7 +299,7 @@ class _awarddetail_page extends State<awarddetail_page> {
     //       ),
     //       shadowColor: ThemeBc.white,
     //       foregroundColor: ThemeBc.white,
-    //       backgroundColor: ThemeBc.black,
+    //       backgroundColor: ThemeBc.background,
     //       title: Text('${productt['award_name']}'),
     //       actions: <Widget>[
     //         IconButton(
@@ -332,7 +332,7 @@ class _awarddetail_page extends State<awarddetail_page> {
     //                           begin: Alignment.topRight,
     //                           end: Alignment.bottomLeft)),
     //                   child: Container(
-    //                      color: ThemeBc.black,
+    //                      color: ThemeBc.background,
     //                         child: ListView(
     //                           children: [
     //                             Container(

@@ -99,7 +99,7 @@ class _location_page extends State<location_page> {
         ),
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.black,
+        backgroundColor: ThemeBc.background,
         title: Center(child: Text('สถานที่ราชการ')),
         actions: <Widget>[
           IconButton(
@@ -138,7 +138,7 @@ class _location_page extends State<location_page> {
 
   Widget hotlineee(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 10, bottom: 0),
+      margin: EdgeInsets.only(top: 5, bottom: 0),
       width: 1000,
       height: 1000,
       child: FutureBuilder<Map<String, dynamic>>(
@@ -264,125 +264,137 @@ class _location_page extends State<location_page> {
                       child: Column(
                         // mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          SizedBox(height: 5),
                           Container(
+                            decoration: BoxDecoration(
+                                color: secondaryTextColor,
+                                borderRadius: BorderRadius.circular(
+                                  30,
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey.withOpacity(0.5),
+                                      offset: Offset(2, 2),
+                                      blurRadius: 7,
+                                      spreadRadius: 1.0),
+                                  BoxShadow(
+                                      color: Colors.black.withOpacity(0.5),
+                                      offset: Offset(2, 4),
+                                      blurRadius: 7.0,
+                                      spreadRadius: 1.0),
+                                ]),
                             height: 80,
-                            child: Card(
-                              child: Column(
-                                children: [
-                                  ListTile(
-                                    title: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(height: 10),
-                                        Text(
-                                          ' ${snapshot.data!['data'][index]['travel_name']}',
-                                          style: primaryTextStyle.copyWith(
-                                              fontSize: 18, fontWeight: medium),
-                                        ),
-                                      ],
-                                    ),
-                                    trailing: Container(
-                                      width: 80,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(0.0),
-                                        child: Row(
-                                          children: [
-                                            //         .callNumber(number);},
+                            child: Column(
+                              children: [
+                                ListTile(
+                                  title: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(height: 10),
+                                      Text(
+                                        '${snapshot.data!['data'][index]['travel_name']}',
+                                        style: primaryTextStyle.copyWith(
+                                            fontSize: 18, fontWeight: medium),
+                                      ),
+                                    ],
+                                  ),
+                                  trailing: Container(
+                                    width: 80,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0.0),
+                                      child: Row(
+                                        children: [
+                                          //         .callNumber(number);},
 
-                                            SizedBox(width: 5),
-                                            Padding(
-                                              padding: const EdgeInsets.all(3),
-                                              child: Container(
-                                                height: 50,
-                                                child: ElevatedButton.icon(
-                                                  onPressed: () =>
-                                                      Navigator.pushNamed(
-                                                          context,
-                                                          '/maplocation_page',
-                                                          arguments: {
-                                                        'detail': detail,
-                                                        'travelLat': snapshot
-                                                                    .data![
-                                                                'data'][index]
-                                                            ['travel_lat'],
-                                                        'travelLng': snapshot
-                                                                    .data![
-                                                                'data'][index]
-                                                            ['travel_lng'],
-                                                        'travelName': snapshot
-                                                                    .data![
-                                                                'data'][index]
-                                                            ['travel_name'],
-                                                        'travelDetail': snapshot
-                                                                    .data![
-                                                                'data'][index]
-                                                            ['travel_detail'],
-                                                        // 'productName':
-                                                        //     data[index].productName,
-                                                        // 'productPrice':
-                                                        //     data[index].productPrice,
-                                                        // 'productiPathName': data[index]
-                                                        //         .productImage?[0]
-                                                        //         .productiPathName ??
-                                                        //     'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
-                                                        // 'productiproductid': data[index]
-                                                        //     .productImage?[0]
-                                                        //     .productiProductId,
+                                          SizedBox(width: 5),
+                                          Padding(
+                                            padding: const EdgeInsets.all(3),
+                                            child: Container(
+                                              height: 50,
+                                              child: ElevatedButton.icon(
+                                                onPressed: () =>
+                                                    Navigator.pushNamed(context,
+                                                        '/maplocation_page',
+                                                        arguments: {
+                                                      'detail': detail,
+                                                      'travelLat': snapshot
+                                                              .data!['data']
+                                                          [index]['travel_lat'],
+                                                      'travelLng': snapshot
+                                                              .data!['data']
+                                                          [index]['travel_lng'],
+                                                      'travelName':
+                                                          snapshot.data!['data']
+                                                                  [index]
+                                                              ['travel_name'],
+                                                      'travelDetail':
+                                                          snapshot.data!['data']
+                                                                  [index]
+                                                              ['travel_detail'],
+                                                      // 'productName':
+                                                      //     data[index].productName,
+                                                      // 'productPrice':
+                                                      //     data[index].productPrice,
+                                                      // 'productiPathName': data[index]
+                                                      //         .productImage?[0]
+                                                      //         .productiPathName ??
+                                                      //     'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
+                                                      // 'productiproductid': data[index]
+                                                      //     .productImage?[0]
+                                                      //     .productiProductId,
 
-                                                        /*   'id': data[index].id,
+                                                      /*   'id': data[index].id,
                                             'detail': data[index].detail,
                                             'picture': data[index].picture,
                                             'view': data[index].view,*/
-                                                      }),
-                                                  icon: Icon(
-                                                    Icons.maps_home_work,
-                                                    color: Colors.pink,
-                                                    size: 30,
-                                                  ),
-                                                  label: Text(''),
-                                                  style:
-                                                      ElevatedButton.styleFrom(
-                                                    primary: Colors.orange,
-                                                    elevation: 10,
-                                                    shape: RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                                Radius.circular(
-                                                                    20))),
-                                                  ),
+                                                    }),
+                                                icon: Icon(
+                                                  Icons.maps_home_work,
+                                                  color: Colors.pink,
+                                                  size: 30,
+                                                ),
+                                                label: Text(''),
+                                                style: ElevatedButton.styleFrom(
+                                                  primary: Colors.orange,
+                                                  elevation: 10,
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  20))),
                                                 ),
                                               ),
                                             ),
+                                          ),
 
-                                            // child: TextButton(
-                                            //   style: TextButton.styleFrom(
-                                            //       backgroundColor:
-                                            //           Colors.orange,
-                                            //       padding:
-                                            //           EdgeInsets.symmetric(
-                                            //               horizontal: 0,
-                                            //               vertical: 0),
-                                            //       shape:
-                                            //           RoundedRectangleBorder(
-                                            //               side: BorderSide(
-                                            //                   color: Colors
-                                            //                       .orange))),
-                                            //   child: Text(
-                                            //     'call',
-                                            //   ),
-                                            // onPressed: () async {
-                                            // await FlutterPhoneDirectCaller
-                                            //       .callNumber(number);
-                                            // },
-                                            // ),
-                                          ],
-                                        ),
+                                          // child: TextButton(
+                                          //   style: TextButton.styleFrom(
+                                          //       backgroundColor:
+                                          //           Colors.orange,
+                                          //       padding:
+                                          //           EdgeInsets.symmetric(
+                                          //               horizontal: 0,
+                                          //               vertical: 0),
+                                          //       shape:
+                                          //           RoundedRectangleBorder(
+                                          //               side: BorderSide(
+                                          //                   color: Colors
+                                          //                       .orange))),
+                                          //   child: Text(
+                                          //     'call',
+                                          //   ),
+                                          // onPressed: () async {
+                                          // await FlutterPhoneDirectCaller
+                                          //       .callNumber(number);
+                                          // },
+                                          // ),
+                                        ],
                                       ),
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         ],

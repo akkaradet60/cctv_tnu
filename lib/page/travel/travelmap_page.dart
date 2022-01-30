@@ -98,7 +98,7 @@ class _travelmap_page extends State<travelmap_page> {
         ),
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.black,
+        backgroundColor: ThemeBc.background,
         title: Column(
           children: [
             SizedBox(height: 18),

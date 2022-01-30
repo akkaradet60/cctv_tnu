@@ -89,7 +89,7 @@ class _productshop_page extends State<productshop_page> {
           ),
           shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.black,
+          backgroundColor: ThemeBc.background,
           title: Text('สินค้า'),
           actions: <Widget>[
             IconButton(
@@ -105,7 +105,7 @@ class _productshop_page extends State<productshop_page> {
         body: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
-                  colors: [ThemeBc.black, ThemeBc.black],
+                  colors: [ThemeBc.background, ThemeBc.background],
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft)),
           child: Padding(

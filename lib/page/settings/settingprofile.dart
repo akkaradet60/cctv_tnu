@@ -193,183 +193,347 @@ class _EmergecyPageState extends State<settingprofile>
                                 ),
                               ),
                               const SizedBox(height: 20),
-                              NeumorphicButton(
-                                style: const NeumorphicStyle(
-                                  shape: NeumorphicShape.flat,
-                                  color: Colors.white,
-                                ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: secondaryTextColor,
+                                    borderRadius: BorderRadius.circular(
+                                      20,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          offset: Offset(2, 2),
+                                          blurRadius: 7,
+                                          spreadRadius: 1.0),
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.5),
+                                          offset: Offset(2, 4),
+                                          blurRadius: 7.0,
+                                          spreadRadius: 1.0),
+                                    ]),
                                 child: FormBuilderTextField(
                                   initialValue: '${profile['user_firstname']}',
                                   name: "user_firstname",
                                   maxLines: 1,
-                                  keyboardType: TextInputType.text,
-                                  decoration: const InputDecoration(
-                                    helperText: 'ชื่อ',
-                                    filled: true,
+                                  keyboardType: TextInputType.emailAddress,
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        20.0,
+                                      ),
+                                    ),
+                                    suffixIcon: Icon(Icons.description),
+                                    labelText: 'ชื่อ',
                                     fillColor: Colors.white,
+                                    filled: true,
                                   ),
-                                ),
+                                ), //รายละเอียดเหตุการณ์
                               ),
-                              const SizedBox(height: 5),
-                              NeumorphicButton(
-                                style: const NeumorphicStyle(
-                                  shape: NeumorphicShape.flat,
-                                  color: Colors.white,
-                                ),
+
+                              const SizedBox(height: 10),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: secondaryTextColor,
+                                    borderRadius: BorderRadius.circular(
+                                      20,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          offset: Offset(2, 2),
+                                          blurRadius: 7,
+                                          spreadRadius: 1.0),
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.5),
+                                          offset: Offset(2, 4),
+                                          blurRadius: 7.0,
+                                          spreadRadius: 1.0),
+                                    ]),
                                 child: FormBuilderTextField(
                                   initialValue: '${profile['user_lastname']}',
                                   name: "user_lastname",
                                   maxLines: 1,
                                   keyboardType: TextInputType.emailAddress,
                                   decoration: InputDecoration(
-                                    helperText: 'นามสกุล',
-
-                                    // hintText: 'อีเมล',
-                                    filled: true,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        20.0,
+                                      ),
+                                    ),
+                                    suffixIcon: Icon(Icons.description),
+                                    labelText: 'นามสกุล',
                                     fillColor: Colors.white,
+                                    filled: true,
                                   ),
-                                ),
+                                ), //รายละเอียดเหตุการณ์
                               ),
-                              const SizedBox(height: 5),
-                              NeumorphicButton(
-                                style: const NeumorphicStyle(
-                                  shape: NeumorphicShape.flat,
-                                  color: Colors.white,
-                                ),
+
+                              const SizedBox(height: 10),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: secondaryTextColor,
+                                    borderRadius: BorderRadius.circular(
+                                      20,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          offset: Offset(2, 2),
+                                          blurRadius: 7,
+                                          spreadRadius: 1.0),
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.5),
+                                          offset: Offset(2, 4),
+                                          blurRadius: 7.0,
+                                          spreadRadius: 1.0),
+                                    ]),
                                 child: FormBuilderTextField(
                                   initialValue: '${profile['user_card_id']}',
                                   name: "user_card_id",
                                   maxLines: 1,
                                   keyboardType: TextInputType.emailAddress,
                                   decoration: InputDecoration(
-                                    helperText: 'รหัสบัตรประจำประชาชน',
-
-                                    // hintText: 'อีเมล',
-                                    filled: true,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        20.0,
+                                      ),
+                                    ),
+                                    suffixIcon: Icon(Icons.description),
+                                    labelText: 'รหัสบัตรประจำประชาชน',
                                     fillColor: Colors.white,
+                                    filled: true,
                                   ),
-                                ),
+                                ), //รายละเอียดเหตุการณ์
                               ),
-                              const SizedBox(height: 5),
-                              NeumorphicButton(
-                                style: const NeumorphicStyle(
-                                  shape: NeumorphicShape.flat,
-                                  color: Colors.white,
-                                ),
+
+                              const SizedBox(height: 10),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: secondaryTextColor,
+                                    borderRadius: BorderRadius.circular(
+                                      20,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          offset: Offset(2, 2),
+                                          blurRadius: 7,
+                                          spreadRadius: 1.0),
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.5),
+                                          offset: Offset(2, 4),
+                                          blurRadius: 7.0,
+                                          spreadRadius: 1.0),
+                                    ]),
                                 child: FormBuilderTextField(
                                   initialValue: '${profile['user_email']}',
                                   name: "user_email",
                                   maxLines: 1,
-                                  keyboardType: TextInputType.text,
+                                  keyboardType: TextInputType.emailAddress,
                                   decoration: InputDecoration(
-                                    helperText: 'อีเมล',
-
-                                    // hintText: 'เบอร์โทรศัพท์',
-                                    filled: true,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        20.0,
+                                      ),
+                                    ),
+                                    suffixIcon: Icon(Icons.description),
+                                    labelText: 'อีเมล',
                                     fillColor: Colors.white,
+                                    filled: true,
                                   ),
-                                ),
+                                ), //รายละเอียดเหตุการณ์
                               ),
-                              const SizedBox(height: 5),
-                              NeumorphicButton(
-                                style: const NeumorphicStyle(
-                                  shape: NeumorphicShape.flat,
-                                  color: Colors.white,
-                                ),
+
+                              const SizedBox(height: 10),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: secondaryTextColor,
+                                    borderRadius: BorderRadius.circular(
+                                      20,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          offset: Offset(2, 2),
+                                          blurRadius: 7,
+                                          spreadRadius: 1.0),
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.5),
+                                          offset: Offset(2, 4),
+                                          blurRadius: 7.0,
+                                          spreadRadius: 1.0),
+                                    ]),
                                 child: FormBuilderTextField(
                                   initialValue: '',
-                                  name: "province",
+                                  name: "ss",
                                   maxLines: 1,
-                                  keyboardType: TextInputType.text,
+                                  keyboardType: TextInputType.emailAddress,
                                   decoration: InputDecoration(
-                                    helperText: 'จังหวัด',
-
-                                    // hintText: 'เบอร์โทรศัพท์',
-                                    filled: true,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        20.0,
+                                      ),
+                                    ),
+                                    suffixIcon: Icon(Icons.description),
+                                    labelText: 'จังหวัด',
                                     fillColor: Colors.white,
+                                    filled: true,
                                   ),
-                                ),
+                                ), //รายละเอียดเหตุการณ์
                               ),
-                              const SizedBox(height: 5),
-                              NeumorphicButton(
-                                style: const NeumorphicStyle(
-                                  shape: NeumorphicShape.flat,
-                                  color: Colors.white,
-                                ),
+
+                              const SizedBox(height: 10),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: secondaryTextColor,
+                                    borderRadius: BorderRadius.circular(
+                                      20,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          offset: Offset(2, 2),
+                                          blurRadius: 7,
+                                          spreadRadius: 1.0),
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.5),
+                                          offset: Offset(2, 4),
+                                          blurRadius: 7.0,
+                                          spreadRadius: 1.0),
+                                    ]),
                                 child: FormBuilderTextField(
                                   initialValue: '',
                                   name: "district",
                                   maxLines: 1,
-                                  keyboardType: TextInputType.text,
+                                  keyboardType: TextInputType.emailAddress,
                                   decoration: InputDecoration(
-                                    helperText: 'อำเภอ',
-
-                                    // hintText: 'เบอร์โทรศัพท์',
-                                    filled: true,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        20.0,
+                                      ),
+                                    ),
+                                    suffixIcon: Icon(Icons.description),
+                                    labelText: 'อำเภอ',
                                     fillColor: Colors.white,
+                                    filled: true,
                                   ),
-                                ),
+                                ), //รายละเอียดเหตุการณ์
                               ),
-                              const SizedBox(height: 5),
-                              NeumorphicButton(
-                                style: const NeumorphicStyle(
-                                  shape: NeumorphicShape.flat,
-                                  color: Colors.white,
-                                ),
+
+                              const SizedBox(height: 10),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: secondaryTextColor,
+                                    borderRadius: BorderRadius.circular(
+                                      20,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          offset: Offset(2, 2),
+                                          blurRadius: 7,
+                                          spreadRadius: 1.0),
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.5),
+                                          offset: Offset(2, 4),
+                                          blurRadius: 7.0,
+                                          spreadRadius: 1.0),
+                                    ]),
                                 child: FormBuilderTextField(
                                   initialValue: '',
                                   name: "district",
                                   maxLines: 1,
-                                  keyboardType: TextInputType.text,
+                                  keyboardType: TextInputType.emailAddress,
                                   decoration: InputDecoration(
-                                    helperText: 'ตำบล',
-
-                                    // hintText: 'เบอร์โทรศัพท์',
-                                    filled: true,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        20.0,
+                                      ),
+                                    ),
+                                    suffixIcon: Icon(Icons.description),
+                                    labelText: 'ตำบล',
                                     fillColor: Colors.white,
+                                    filled: true,
                                   ),
-                                ),
+                                ), //รายละเอียดเหตุการณ์
                               ),
-                              const SizedBox(height: 5),
-                              NeumorphicButton(
-                                style: const NeumorphicStyle(
-                                  shape: NeumorphicShape.flat,
-                                  color: Colors.white,
-                                ),
+
+                              const SizedBox(height: 10),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: secondaryTextColor,
+                                    borderRadius: BorderRadius.circular(
+                                      20,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          offset: Offset(2, 2),
+                                          blurRadius: 7,
+                                          spreadRadius: 1.0),
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.5),
+                                          offset: Offset(2, 4),
+                                          blurRadius: 7.0,
+                                          spreadRadius: 1.0),
+                                    ]),
                                 child: FormBuilderTextField(
                                   initialValue: '',
-                                  name: "address",
+                                  name: "district",
                                   maxLines: 1,
-                                  keyboardType: TextInputType.text,
+                                  keyboardType: TextInputType.emailAddress,
                                   decoration: InputDecoration(
-                                    helperText: 'ที่อยู่',
-
-                                    // hintText: 'เบอร์โทรศัพท์',
-                                    filled: true,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        20.0,
+                                      ),
+                                    ),
+                                    suffixIcon: Icon(Icons.description),
+                                    labelText: 'ที่อยู่',
                                     fillColor: Colors.white,
+                                    filled: true,
                                   ),
-                                ),
+                                ), //รายละเอียดเหตุการณ์
                               ),
-                              const SizedBox(height: 5),
-                              NeumorphicButton(
-                                style: const NeumorphicStyle(
-                                  shape: NeumorphicShape.flat,
-                                  color: Colors.white,
-                                ),
+
+                              const SizedBox(height: 10),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: secondaryTextColor,
+                                    borderRadius: BorderRadius.circular(
+                                      20,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          offset: Offset(2, 2),
+                                          blurRadius: 7,
+                                          spreadRadius: 1.0),
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.5),
+                                          offset: Offset(2, 4),
+                                          blurRadius: 7.0,
+                                          spreadRadius: 1.0),
+                                    ]),
                                 child: FormBuilderTextField(
                                   initialValue: '',
-                                  name: "zipcode",
+                                  name: "district",
                                   maxLines: 1,
-                                  keyboardType: TextInputType.text,
+                                  keyboardType: TextInputType.emailAddress,
                                   decoration: InputDecoration(
-                                    helperText: 'รหัสไปรษณีย์',
-
-                                    // hintText: 'เบอร์โทรศัพท์',
-                                    filled: true,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        20.0,
+                                      ),
+                                    ),
+                                    suffixIcon: Icon(Icons.description),
+                                    labelText: 'รหัสไปรษณีย์',
                                     fillColor: Colors.white,
+                                    filled: true,
                                   ),
-                                ),
+                                ), //รายละเอียดเหตุการณ์
                               ),
+
                               SizedBox(height: 20),
                               Container(
                                 width: 390,
@@ -388,9 +552,9 @@ class _EmergecyPageState extends State<settingprofile>
                                       }
                                     },
                                     icon: Icon(Icons.description),
-                                    label: Text('ล็อกอินด้วย facebook'),
+                                    label: Text('แก้ไขข้อมูล'),
                                     style: ElevatedButton.styleFrom(
-                                      primary: Colors.blue[900],
+                                      primary: ThemeBc.black,
                                       onPrimary: Colors.white,
                                       shadowColor: Colors.grey[700],
                                       elevation: 30,

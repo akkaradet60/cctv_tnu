@@ -8,7 +8,8 @@ class Global {
   static String domainImage = 'https://www.bc-official.com/api/app_nt/1/2/3/';
   static String files = 'https://www.bc-official.com/api/app_nt/1/2/3/';
   static String? user_id;
-  static String glog_catid = '1';
+  static String glog_catid = '2';
+  // static String glogg_catid = '2';
 
   // static List<Covid> CovidListGlobal = [];
 }

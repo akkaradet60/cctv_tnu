@@ -48,7 +48,7 @@ class _home_pageState extends State<home_page> {
 
   Future<Map<String, dynamic>> getDataSlide() async {
     var url = Global.urlWeb +
-        'api/app/blog/restful/?blog_app_id=${Global.app_id}&blog_cat_id=1';
+        'api/app/blog/restful/?blog_app_id=${Global.app_id}&blog_cat_id=${Global.glog_catid}';
     var response = await http.get(Uri.parse(url), headers: {
       'Authorization':
           'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
@@ -218,7 +218,7 @@ class _home_pageState extends State<home_page> {
                       Navigator.pushNamed(context, '/messagemdetail_page',
                           arguments: {
                             'blog_images': snapshot.data!['data'][item]
-                                        ['blog_images'] !=
+                                        ['blog_images'][0]['blogi_path_name'] !=
                                     null
                                 ? Global.domainImage +
                                     snapshot.data!['data'][item]['blog_images']
@@ -470,7 +470,7 @@ class _home_pageState extends State<home_page> {
         ),
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.black,
+        backgroundColor: ThemeBc.background,
         title: Center(child: const Text('เทศบาลเมืองมหาสารคาม')),
         actions: <Widget>[
           IconButton(

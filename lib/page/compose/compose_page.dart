@@ -39,7 +39,7 @@ class _compose_page extends State<compose_page>
   late Map<String, dynamic> imgSlide;
   Future<Map<String, dynamic>> getDataSlide() async {
     var url = (Global.urlWeb +
-        'api/app/emergency/restful/?em_app_id=${Global.app_id}&em_category=1&em_user_id=${Global.user_id}');
+        'api/app/emergency/restful/?em_app_id=${Global.app_id}&em_category=2&em_user_id=${Global.user_id}');
     var response = await http.get(Uri.parse(url), headers: {
       'Authorization':
           'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
@@ -460,7 +460,7 @@ class _compose_page extends State<compose_page>
                     icon: Icon(Icons.gps_fixed),
                     label: Text('ตำแหน่งของคุณ'),
                     style: ElevatedButton.styleFrom(
-                      primary: ThemeBc.black,
+                      primary: ThemeBc.background,
                       onPrimary: Colors.white,
                       shadowColor: Colors.grey[700],
                       elevation: 30,
@@ -483,7 +483,7 @@ class _compose_page extends State<compose_page>
                               compose_page(_fbKey.currentState!.value);
                             }
                           },
-                          colorButton: ThemeBc.black,
+                          colorButton: ThemeBc.background,
                           textStyle: secondaryTextStyle.copyWith(
                               fontWeight: medium, fontSize: 16),
                         ),
@@ -710,7 +710,7 @@ class _compose_page extends State<compose_page>
         ),
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.black,
+        backgroundColor: ThemeBc.background,
         title: Center(child: const Text('ร้องเรียน')),
         actions: <Widget>[
           IconButton(

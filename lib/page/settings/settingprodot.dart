@@ -217,7 +217,7 @@ class _warn1State extends State<settingprodot> {
         ),
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.black,
+        backgroundColor: ThemeBc.background,
       ),
       body: Container(
         decoration: BoxDecoration(

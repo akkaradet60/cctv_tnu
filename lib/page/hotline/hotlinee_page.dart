@@ -1,14 +1,11 @@
-import 'package:cctv_tun/models/hotlinee/hotlinee.dart';
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 
-import 'package:cctv_tun/widgets/custom_buttonmenu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:cctv_tun/widgets/custom_button.dart';
 
 class hotlinee_page extends StatefulWidget {
   hotlinee_page({Key? key}) : super(key: key);
@@ -18,59 +15,57 @@ class hotlinee_page extends StatefulWidget {
 }
 
 class _hotlinee_pageState extends State<hotlinee_page> {
-  List<Data> data = [];
-  bool isLoading = true;
-  var hotlinee;
-  Future<void> getData() async {
+  late Map<String, dynamic> imgSlide;
+
+  Future<Map<String, dynamic>> getDataSlide() async {
     var url = (Global.urlWeb +
         'api/app/hotline/restful/?hotline_app_id=${Global.app_id}');
-    var response = await http.get(Uri.parse(url),
-        headers: {'Authorization': 'Bearer ${Global.token}'});
-    // print(json.decode(response.body));
+    var response = await http.get(Uri.parse(url), headers: {
+      'Authorization':
+          'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
+    });
 
     if (response.statusCode == 200) {
-      // print(json.decode(response.body));
-      //นำ json ใส่ที่โมเมล product
-      final Hotlinee hotlinee = Hotlinee.fromJson(json.decode(response.body));
-      print(hotlinee.data);
-      setState(() {
-        data = hotlinee.data!;
-        isLoading = false;
-      });
+      imgSlide = json.decode(response.body);
+
+      // print(imgSlide['data'].length);
+      return imgSlide;
     } else {
-      setState(() {
-        isLoading = false;
-      });
-      print('error 400');
+      throw Exception('$response.statusCode');
     }
   }
 
-  Future<void> getProfile() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+  // List<Data> data = [];
+  // bool isLoading = true;
+  // var hotlinee;
+  // Future<void> getData() async {
+  // var url = (Global.urlWeb +
+  //     'api/app/hotline/restful/?hotline_app_id=${Global.app_id}');
+  //   var response = await http.get(Uri.parse(url),
+  //       headers: {'Authorization': 'Bearer ${Global.token}'});
+  //   // print(json.decode(response.body));
 
-    Map<String, dynamic> appToken =
-        json.decode(prefs.getString('token').toString());
-    // print(appToken['access_token']);
-
-    setState(() {
-      Global.token = appToken['access_token'];
-    });
-
-    var newProfile = json.decode(prefs.getString('profile').toString());
-    var newApplication = json.decode(prefs.getString('application').toString());
-    // print(newProfile);
-    // print(newApplication);
-    //call redux action
-    /* final store = StoreProvider.of<AppState>(context);
-    store.dispatch(updateProfileAction(newProfile));
-    store.dispatch(updateApplicationAction(newApplication));*/
-  }
+  //   if (response.statusCode == 200) {
+  //     // print(json.decode(response.body));
+  //     //นำ json ใส่ที่โมเมล product
+  //     final Hotlinee hotlinee = Hotlinee.fromJson(json.decode(response.body));
+  //     print(hotlinee.data);
+  //     setState(() {
+  //       data = hotlinee.data!;
+  //       isLoading = false;
+  //     });
+  //   } else {
+  //     setState(() {
+  //       isLoading = false;
+  //     });
+  //     print('error 400');
+  //   }
+  // }
 
   @override
   void initState() {
     super.initState();
-    getData();
-    getProfile();
+    // getData();
   }
 
   @override
@@ -82,7 +77,7 @@ class _hotlinee_pageState extends State<hotlinee_page> {
         ),
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.black,
+        backgroundColor: ThemeBc.background,
         title: Center(child: Text('สายด่วน')),
         actions: <Widget>[
           IconButton(
@@ -168,7 +163,6 @@ class _hotlinee_pageState extends State<hotlinee_page> {
 
   Widget hotlineee(BuildContext context) {
     return Container(
-      height: 700,
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -176,161 +170,366 @@ class _hotlinee_pageState extends State<hotlinee_page> {
               begin: Alignment.topRight,
               end: Alignment.bottomLeft),
         ),
-        child: isLoading == true
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
-            : Container(
-                child: ListView.separated(
-                    itemBuilder: (context, index) {
-                      final number = '${data[index].hotlinePhone}';
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: 80,
-                          decoration: BoxDecoration(
-                              color: secondaryTextColor,
-                              borderRadius: BorderRadius.circular(
-                                30,
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
-                                    offset: Offset(2, 2),
-                                    blurRadius: 7,
-                                    spreadRadius: 1.0),
-                                BoxShadow(
-                                    color: Colors.black.withOpacity(0.5),
-                                    offset: Offset(2, 4),
-                                    blurRadius: 7.0,
-                                    spreadRadius: 1.0),
-                              ]),
-                          child: Container(
-                            child: Column(
-                              // mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                ListTile(
-                                  title: Text(
-                                    '${data[index].hotlineName}',
-                                    style: primaryTextStyle.copyWith(
-                                        fontSize: 18, fontWeight: medium),
-                                  ),
-                                  subtitle: Text(number),
-                                  trailing: Container(
-                                    width: 150,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(5.0),
-                                      child: Row(
+        child: Column(
+          children: [
+            SizedBox(height: 5),
+            Container(
+              height: 700,
+              child: FutureBuilder<Map<String, dynamic>>(
+                future: getDataSlide(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    // return ListView.separated(
+                    //     itemBuilder: (context, index) {
+                    // return Text('3232');
+                    return ListView.builder(
+                      itemCount: snapshot.data!['data'].length,
+                      itemBuilder: (context, index) {
+                        final number =
+                            '${snapshot.data!['data'][index]['hotline_phone']}';
+                        return Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Container(
+                              child: Column(
+                                // mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(height: 5),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color: secondaryTextColor,
+                                        borderRadius: BorderRadius.circular(
+                                          30,
+                                        ),
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color:
+                                                  Colors.grey.withOpacity(0.5),
+                                              offset: Offset(2, 2),
+                                              blurRadius: 7,
+                                              spreadRadius: 1.0),
+                                          BoxShadow(
+                                              color:
+                                                  Colors.black.withOpacity(0.5),
+                                              offset: Offset(2, 4),
+                                              blurRadius: 7.0,
+                                              spreadRadius: 1.0),
+                                        ]),
+                                    height: 80,
+                                    child: Container(
+                                      child: Column(
+                                        // mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
-                                          //         .callNumber(number);},
-                                          Container(
-                                            height: 50,
-                                            child: ElevatedButton.icon(
-                                              onPressed: () async {
-                                                await FlutterPhoneDirectCaller
-                                                    .callNumber(number);
-                                              },
-                                              icon: Icon(
-                                                Icons.phone,
-                                                color: Colors.pink,
-                                                size: 30,
+                                          ListTile(
+                                            title: Container(
+                                              width: 300,
+                                              height: 20,
+                                              child: ListView(
+                                                scrollDirection:
+                                                    Axis.horizontal,
+                                                children: [
+                                                  SizedBox(height: 20),
+                                                  Text(
+                                                    '${snapshot.data!['data'][index]['hotline_name']}',
+                                                    style: primaryTextStyle
+                                                        .copyWith(
+                                                            fontSize: 18,
+                                                            fontWeight: medium),
+                                                  ),
+                                                ],
                                               ),
-                                              label: Text(''),
-                                              style: ElevatedButton.styleFrom(
-                                                primary: Colors.orange,
-                                                elevation: 10,
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                            Radius.circular(
-                                                                20))),
+                                            ),
+                                            subtitle: Text(number),
+                                            trailing: Container(
+                                              width: 150,
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(5.0),
+                                                child: Row(
+                                                  children: [
+                                                    //         .callNumber(number);},
+                                                    Container(
+                                                      height: 50,
+                                                      child:
+                                                          ElevatedButton.icon(
+                                                        onPressed: () async {
+                                                          await FlutterPhoneDirectCaller
+                                                              .callNumber(
+                                                                  number);
+                                                        },
+                                                        icon: Icon(
+                                                          Icons.phone,
+                                                          color: Colors.pink,
+                                                          size: 30,
+                                                        ),
+                                                        label: Text(''),
+                                                        style: ElevatedButton
+                                                            .styleFrom(
+                                                          primary:
+                                                              Colors.orange,
+                                                          elevation: 10,
+                                                          shape: RoundedRectangleBorder(
+                                                              borderRadius: BorderRadius
+                                                                  .all(Radius
+                                                                      .circular(
+                                                                          20))),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    SizedBox(width: 5),
+                                                    Container(
+                                                      height: 50,
+                                                      child:
+                                                          ElevatedButton.icon(
+                                                        onPressed: () =>
+                                                            Navigator.pushNamed(
+                                                                context,
+                                                                '/map_page',
+                                                                arguments: {
+                                                              'hotlineLat': snapshot
+                                                                          .data![
+                                                                      'data'][index]
+                                                                  [
+                                                                  'hotline_lat'],
+                                                              'hotlineLng': snapshot
+                                                                          .data![
+                                                                      'data'][index]
+                                                                  [
+                                                                  'hotline_lng'],
+                                                              'hotlineName': snapshot
+                                                                          .data![
+                                                                      'data'][index]
+                                                                  [
+                                                                  'hotline_name'],
+                                                              // 'productName':
+                                                              //     data[index].productName,
+                                                              // 'productPrice':
+                                                              //     data[index].productPrice,
+                                                              // 'productiPathName': data[index]
+                                                              //         .productImage?[0]
+                                                              //         .productiPathName ??
+                                                              //     'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
+                                                              // 'productiproductid': data[index]
+                                                              //     .productImage?[0]
+                                                              //     .productiProductId,
+
+                                                              /*   'id': data[index].id,
+                                              'detail': data[index].detail,
+                                              'picture': data[index].picture,
+                                              'view': data[index].view,*/
+                                                            }),
+                                                        icon: Icon(
+                                                          Icons.maps_home_work,
+                                                          color: Colors.pink,
+                                                          size: 30,
+                                                        ),
+                                                        label: Text(''),
+                                                        style: ElevatedButton
+                                                            .styleFrom(
+                                                          primary:
+                                                              Colors.orange,
+                                                          elevation: 10,
+                                                          shape: RoundedRectangleBorder(
+                                                              borderRadius: BorderRadius
+                                                                  .all(Radius
+                                                                      .circular(
+                                                                          20))),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
-                                          SizedBox(width: 5),
-                                          Container(
-                                            height: 50,
-                                            child: ElevatedButton.icon(
-                                              onPressed: () =>
-                                                  Navigator.pushNamed(
-                                                      context, '/map_page',
-                                                      arguments: {
-                                                    'hotlineLat':
-                                                        data[index].hotlineLat,
-                                                    'hotlineLng':
-                                                        data[index].hotlineLng,
-                                                    'hotlineName':
-                                                        data[index].hotlineName,
-                                                    // 'productName':
-                                                    //     data[index].productName,
-                                                    // 'productPrice':
-                                                    //     data[index].productPrice,
-                                                    // 'productiPathName': data[index]
-                                                    //         .productImage?[0]
-                                                    //         .productiPathName ??
-                                                    //     'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
-                                                    // 'productiproductid': data[index]
-                                                    //     .productImage?[0]
-                                                    //     .productiProductId,
-
-                                                    /*   'id': data[index].id,
-                                        'detail': data[index].detail,
-                                        'picture': data[index].picture,
-                                        'view': data[index].view,*/
-                                                  }),
-                                              icon: Icon(
-                                                Icons.maps_home_work,
-                                                color: Colors.pink,
-                                                size: 30,
-                                              ),
-                                              label: Text(''),
-                                              style: ElevatedButton.styleFrom(
-                                                primary: Colors.orange,
-                                                elevation: 10,
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                            Radius.circular(
-                                                                20))),
-                                              ),
-                                            ),
-                                          ),
-
-                                          // child: TextButton(
-                                          //   style: TextButton.styleFrom(
-                                          //       backgroundColor:
-                                          //           Colors.orange,
-                                          //       padding:
-                                          //           EdgeInsets.symmetric(
-                                          //               horizontal: 0,
-                                          //               vertical: 0),
-                                          //       shape:
-                                          //           RoundedRectangleBorder(
-                                          //               side: BorderSide(
-                                          //                   color: Colors
-                                          //                       .orange))),
-                                          //   child: Text(
-                                          //     'call',
-                                          //   ),
-                                          // onPressed: () async {
-                                          // await FlutterPhoneDirectCaller
-                                          //       .callNumber(number);
-                                          // },
-                                          // ),
                                         ],
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    },
-                    separatorBuilder: (context, index) => Divider(),
-                    itemCount: data.length),
+                        );
+                      },
+                    );
+                  } else if (snapshot.hasError) {
+                    return Center(
+                        child:
+                            Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
+                  }
+
+                  return Center(child: CircularProgressIndicator());
+                },
               ),
+            ),
+          ],
+        ),
+        // child: isLoading == true
+        //     ? Center(
+        //         child: CircularProgressIndicator(),
+        //       )
+        //     : Container(
+        //         child: ListView.separated(
+        //             itemBuilder: (context, index) {
+        //               final number = '${data[index].hotlinePhone}';
+        //               return Padding(
+        //                 padding: const EdgeInsets.all(8.0),
+        //                 child: Container(
+        //                   height: 80,
+        //                   decoration: BoxDecoration(
+        //                       color: secondaryTextColor,
+        //                       borderRadius: BorderRadius.circular(
+        //                         30,
+        //                       ),
+        //                       boxShadow: [
+        //                         BoxShadow(
+        //                             color: Colors.grey.withOpacity(0.5),
+        //                             offset: Offset(2, 2),
+        //                             blurRadius: 7,
+        //                             spreadRadius: 1.0),
+        //                         BoxShadow(
+        //                             color: Colors.black.withOpacity(0.5),
+        //                             offset: Offset(2, 4),
+        //                             blurRadius: 7.0,
+        //                             spreadRadius: 1.0),
+        //                       ]),
+        //     child: Container(
+        //       child: Column(
+        //         // mainAxisAlignment: MainAxisAlignment.center,
+        //         children: [
+        //           ListTile(
+        //             title: Container(
+        //               width: 300,
+        //               height: 20,
+        //               child: ListView(
+        //                 scrollDirection: Axis.horizontal,
+        //                 children: [
+        //                   SizedBox(height: 20),
+        //                   Text(
+        //                     '${data[index].hotlineName}',
+        //                     style: primaryTextStyle.copyWith(
+        //                         fontSize: 18, fontWeight: medium),
+        //                   ),
+        //                 ],
+        //               ),
+        //             ),
+        //             subtitle: Text(number),
+        //             trailing: Container(
+        //               width: 150,
+        //               child: Padding(
+        //                 padding: const EdgeInsets.all(5.0),
+        //                 child: Row(
+        //                   children: [
+        //                     //         .callNumber(number);},
+        //                     Container(
+        //                       height: 50,
+        //                       child: ElevatedButton.icon(
+        //                         onPressed: () async {
+        //                           await FlutterPhoneDirectCaller
+        //                               .callNumber(number);
+        //                         },
+        //                         icon: Icon(
+        //                           Icons.phone,
+        //                           color: Colors.pink,
+        //                           size: 30,
+        //                         ),
+        //                         label: Text(''),
+        //                         style: ElevatedButton.styleFrom(
+        //                           primary: Colors.orange,
+        //                           elevation: 10,
+        //                           shape: RoundedRectangleBorder(
+        //                               borderRadius:
+        //                                   BorderRadius.all(
+        //                                       Radius.circular(
+        //                                           20))),
+        //                         ),
+        //                       ),
+        //                     ),
+        //                     SizedBox(width: 5),
+        //                     Container(
+        //                       height: 50,
+        //                       child: ElevatedButton.icon(
+        //                         onPressed: () =>
+        //                             Navigator.pushNamed(
+        //                                 context, '/map_page',
+        //                                 arguments: {
+        //                               'hotlineLat':
+        //                                   data[index].hotlineLat,
+        //                               'hotlineLng':
+        //                                   data[index].hotlineLng,
+        //                               'hotlineName':
+        //                                   data[index].hotlineName,
+        //                               // 'productName':
+        //                               //     data[index].productName,
+        //                               // 'productPrice':
+        //                               //     data[index].productPrice,
+        //                               // 'productiPathName': data[index]
+        //                               //         .productImage?[0]
+        //                               //         .productiPathName ??
+        //                               //     'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
+        //                               // 'productiproductid': data[index]
+        //                               //     .productImage?[0]
+        //                               //     .productiProductId,
+
+        //                               /*   'id': data[index].id,
+        //                   'detail': data[index].detail,
+        //                   'picture': data[index].picture,
+        //                   'view': data[index].view,*/
+        //                             }),
+        //                         icon: Icon(
+        //                           Icons.maps_home_work,
+        //                           color: Colors.pink,
+        //                           size: 30,
+        //                         ),
+        //                         label: Text(''),
+        //                         style: ElevatedButton.styleFrom(
+        //                           primary: Colors.orange,
+        //                           elevation: 10,
+        //                           shape: RoundedRectangleBorder(
+        //                               borderRadius:
+        //                                   BorderRadius.all(
+        //                                       Radius.circular(
+        //                                           20))),
+        //                         ),
+        //                       ),
+        //                     ),
+
+        //                     // child: TextButton(
+        //                     //   style: TextButton.styleFrom(
+        //                     //       backgroundColor:
+        //                     //           Colors.orange,
+        //                     //       padding:
+        //                     //           EdgeInsets.symmetric(
+        //                     //               horizontal: 0,
+        //                     //               vertical: 0),
+        //                     //       shape:
+        //                     //           RoundedRectangleBorder(
+        //                     //               side: BorderSide(
+        //                     //                   color: Colors
+        //                     //                       .orange))),
+        //                     //   child: Text(
+        //                     //     'call',
+        //                     //   ),
+        //                     // onPressed: () async {
+        //                     // await FlutterPhoneDirectCaller
+        //                     //       .callNumber(number);
+        //                     // },
+        //                     // ),
+        //                   ],
+        //                 ),
+        //               ),
+        //             ),
+        //           ),
+        //         ],
+        //       ),
+        //     ),
+        //   ),
+        // );
+        //             },
+        //             separatorBuilder: (context, index) => Divider(),
+        //             itemCount: data.length),
+        //       ),
       ),
     );
   }

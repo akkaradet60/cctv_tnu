@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:cctv_tun/models/hotlinee/hotlinee.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:flutter/foundation.dart';
@@ -84,7 +83,7 @@ class _map_prod extends State<map_prod> {
         ),
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.black,
+        backgroundColor: ThemeBc.background,
         title: Container(
           height: 50,
           width: 300,

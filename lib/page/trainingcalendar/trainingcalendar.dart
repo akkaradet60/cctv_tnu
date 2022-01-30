@@ -100,7 +100,7 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
         ),
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.black,
+        backgroundColor: ThemeBc.background,
         title: Center(child: Text('การฝึกอบรม')),
         actions: <Widget>[
           IconButton(
@@ -117,7 +117,7 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
         child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors: [ThemeBc.black, ThemeBc.black],
+                colors: [ThemeBc.background, ThemeBc.background],
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft),
           ),
@@ -140,12 +140,12 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
     return Container(
       // decoration: BoxDecoration(
       //     gradient: LinearGradient(
-      //         colors: [ThemeBc.black, Colors.orangeAccent],
+      //         colors: [ThemeBc.background, Colors.orangeAccent],
       //         begin: Alignment.topRight,
       //         end: Alignment.bottomLeft)),
       height: 600,
       child: Container(
-        //  color: ThemeBc.black,
+        //  color: ThemeBc.background,
         width: 1000,
         height: 500,
         child: FutureBuilder<Map<String, dynamic>>(

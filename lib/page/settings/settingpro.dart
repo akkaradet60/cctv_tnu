@@ -85,7 +85,7 @@ class _warn1State extends State<settingpro> {
         ),
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.black,
+        backgroundColor: ThemeBc.background,
         title: Center(child: const Text('จัดการสินค้า')),
         actions: <Widget>[
           IconButton(

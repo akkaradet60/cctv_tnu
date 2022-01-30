@@ -16,6 +16,7 @@ class menu_pang extends StatefulWidget {
 
 class _menu_pangState extends State<menu_pang> {
   var newProfile;
+  var profile;
   @override
   void initState() {
     super.initState();
@@ -42,78 +43,189 @@ class _menu_pangState extends State<menu_pang> {
   @override
   Widget build(BuildContext context) {
     var isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
-    return Drawer(
-      child: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [ThemeBc.black, ThemeBc.black],
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft)),
-        child: ListView(
-          children: [
-            Expanded(
-                flex: isPortrait ? 1 : 3,
-                child: Center(
-                  child: StoreConnector<AppState, Map<String, dynamic>>(
-                    distinct: true,
-                    converter: (store) => store.state.profileState.profile,
-                    builder: (context, profile) {
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          UserAccountsDrawerHeader(
-                            arrowColor: ThemeBc.black,
-                            currentAccountPicture: CircleAvatar(
-                              foregroundColor: ThemeBc.black,
-                              backgroundImage: AssetImage('assets/logo.png'),
-                              backgroundColor: ThemeBc.black,
+    return Container(
+      decoration: BoxDecoration(
+          color: ThemeBc.background,
+          borderRadius: BorderRadius.circular(
+            20,
+          ),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.black.withOpacity(0.5),
+                offset: Offset(2, 4),
+                blurRadius: 7.0,
+                spreadRadius: 1.0),
+          ]),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Drawer(
+          backgroundColor: ThemeBc.background,
+          child: Container(
+            child: ListView(
+              children: [
+                Expanded(
+                    flex: isPortrait ? 1 : 3,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.circular(
+                              20,
                             ),
-                            accountEmail:
-                                Text('สวัสดีคุณ ${profile['user_firstname']}'),
-                            accountName:
-                                Text('Email: ${profile['user_email']} '),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  offset: Offset(2, 2),
+                                  blurRadius: 7,
+                                  spreadRadius: 1.0),
+                              BoxShadow(
+                                  color: Colors.black.withOpacity(0.5),
+                                  offset: Offset(2, 4),
+                                  blurRadius: 7.0,
+                                  spreadRadius: 1.0),
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Center(
+                            child:
+                                StoreConnector<AppState, Map<String, dynamic>>(
+                              distinct: true,
+                              converter: (store) =>
+                                  store.state.profileState.profile,
+                              builder: (context, profile) {
+                                return Container(
+                                  child: UserAccountsDrawerHeader(
+                                    currentAccountPicture: CircleAvatar(
+                                      foregroundColor: ThemeBc.background,
+                                      backgroundImage:
+                                          AssetImage('assets/logo.png'),
+                                      backgroundColor: ThemeBc.background,
+                                    ),
+                                    accountEmail: Text(
+                                        'สวัสดีคุณ ${profile['user_firstname']}'),
+                                    accountName: Text(
+                                        'Email: ${profile['user_email']} '),
+                                  ),
+                                );
+                              },
+                            ),
                           ),
-                        ],
-                      );
-                    },
-                  ),
-                )),
-            //theproduct
-            ListTile(
-              leading: Icon(Icons.stairs),
-              title: Text('หน้าหลัก'),
-              trailing: Icon(Icons.double_arrow),
-              selected: ModalRoute.of(context)?.settings.name == '/home_page'
-                  ? true
-                  : false,
-              //  iconColor: Colors.orange,
-              onTap: () {
-                Navigator.of(context, rootNavigator: true)
-                    .pushNamedAndRemoveUntil('/home_page', (route) => false);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('ตั้งค่า'),
-              trailing: Icon(Icons.double_arrow),
-              selected: ModalRoute.of(context)?.settings.name == '/settings'
-                  ? true
-                  : false,
-              onTap: () {
-                Navigator.of(context, rootNavigator: true)
-                    .pushNamedAndRemoveUntil('/settings', (route) => false);
-              },
-            ),
+                        ),
+                      ),
+                    )),
+                //theproduct
 
-            ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('ออกจากระบบ'),
-              trailing: Icon(Icons.double_arrow),
-              onTap: () {
-                logout();
-              },
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: secondaryTextColor,
+                        borderRadius: BorderRadius.circular(
+                          20,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              offset: Offset(2, 2),
+                              blurRadius: 7,
+                              spreadRadius: 1.0),
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.5),
+                              offset: Offset(2, 4),
+                              blurRadius: 7.0,
+                              spreadRadius: 1.0),
+                        ]),
+                    height: 50,
+                    child: ListTile(
+                      leading: Icon(Icons.stairs),
+                      title: Text('หน้าหลัก'),
+                      trailing: Icon(Icons.double_arrow),
+                      selected:
+                          ModalRoute.of(context)?.settings.name == '/home_page'
+                              ? true
+                              : false,
+                      //  iconColor: Colors.orange,
+                      onTap: () {
+                        Navigator.of(context, rootNavigator: true)
+                            .pushNamedAndRemoveUntil(
+                                '/home_page', (route) => false);
+                      },
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: secondaryTextColor,
+                        borderRadius: BorderRadius.circular(
+                          20,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              offset: Offset(2, 2),
+                              blurRadius: 7,
+                              spreadRadius: 1.0),
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.5),
+                              offset: Offset(2, 4),
+                              blurRadius: 7.0,
+                              spreadRadius: 1.0),
+                        ]),
+                    height: 50,
+                    child: ListTile(
+                      leading: Icon(Icons.settings),
+                      title: Text('ตั้งค่า'),
+                      trailing: Icon(Icons.double_arrow),
+                      selected:
+                          ModalRoute.of(context)?.settings.name == '/settings'
+                              ? true
+                              : false,
+                      onTap: () {
+                        Navigator.of(context, rootNavigator: true)
+                            .pushNamedAndRemoveUntil(
+                                '/settings', (route) => false);
+                      },
+                    ),
+                  ),
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: secondaryTextColor,
+                        borderRadius: BorderRadius.circular(
+                          20,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              offset: Offset(2, 2),
+                              blurRadius: 7,
+                              spreadRadius: 1.0),
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.5),
+                              offset: Offset(2, 4),
+                              blurRadius: 7.0,
+                              spreadRadius: 1.0),
+                        ]),
+                    height: 50,
+                    child: ListTile(
+                      leading: Icon(Icons.logout),
+                      title: Text('ออกจากระบบ'),
+                      trailing: Icon(Icons.double_arrow),
+                      onTap: () {
+                        logout();
+                      },
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

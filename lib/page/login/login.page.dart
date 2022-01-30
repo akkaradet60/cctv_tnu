@@ -368,7 +368,7 @@ class _LoginPageState extends State<login_page> {
                                 login(_fbKey.currentState!.value);
                               }
                             },
-                            colorButton: ThemeBc.black,
+                            colorButton: ThemeBc.background,
                             textStyle: secondaryTextStyle.copyWith(
                                 fontWeight: medium, fontSize: 16),
                           ),
@@ -417,7 +417,7 @@ class _LoginPageState extends State<login_page> {
                           title: 'ทดลองใช้ในฐานะผู้เยี่ยมชม',
                           onPressed: () =>
                               Navigator.pushNamed(context, '/home_page'),
-                          colorButton: ThemeBc.black,
+                          colorButton: ThemeBc.background,
                           textStyle: secondaryTextStyle.copyWith(
                               fontWeight: medium, fontSize: 16),
                         ),

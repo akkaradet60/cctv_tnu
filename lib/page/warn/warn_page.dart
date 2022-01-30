@@ -31,6 +31,7 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
     'แจ้งเหตุฉุกเฉิน',
     'เหตุฉุกเฉินของท่าน',
   ];
+
   late TabController _tabController;
 
   var em_user_id;
@@ -71,7 +72,7 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
   late Map<String, dynamic> imgSlide;
   Future<Map<String, dynamic>> getDataSlide() async {
     var url = (Global.urlWeb +
-        'api/app/emergency/restful/?em_user_id=${Global.user_id}&em_app_id=${Global.app_id}&em_category=0');
+        'api/app/emergency/restful/?em_user_id=${Global.user_id}&em_app_id=${Global.app_id}&em_category=1');
     var response = await http.get(Uri.parse(url), headers: {
       'Authorization':
           'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
@@ -496,7 +497,7 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
                     icon: Icon(Icons.gps_fixed),
                     label: Text('ตำแหน่งของคุณ'),
                     style: ElevatedButton.styleFrom(
-                      primary: ThemeBc.black,
+                      primary: ThemeBc.background,
                       onPrimary: Colors.white,
                       elevation: 30,
                       shape: RoundedRectangleBorder(
@@ -518,7 +519,7 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
                               warn_page(_fbKey.currentState!.value);
                             }
                           },
-                          colorButton: ThemeBc.black,
+                          colorButton: ThemeBc.background,
                           textStyle: secondaryTextStyle.copyWith(
                               fontWeight: medium, fontSize: 16),
                         ),
@@ -745,7 +746,7 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
         ),
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.black,
+        backgroundColor: ThemeBc.background,
         title: Center(child: const Text('แจ้งเหตุฉุกเฉิน')),
         actions: <Widget>[
           IconButton(

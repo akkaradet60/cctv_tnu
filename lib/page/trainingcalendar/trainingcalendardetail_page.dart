@@ -105,7 +105,7 @@ class _trainingcalendardetail_page extends State<trainingcalendardetail_page> {
         ),
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.black,
+        backgroundColor: ThemeBc.background,
         title: Center(
             child: Text('การฝึกอบรม ${trainingcalendardetail['trainName']}')),
         actions: <Widget>[
@@ -153,7 +153,7 @@ class _trainingcalendardetail_page extends State<trainingcalendardetail_page> {
               begin: Alignment.topRight,
               end: Alignment.bottomLeft)),
       child: Container(
-        color: ThemeBc.black,
+        color: ThemeBc.background,
         child: ListView(
           children: [
             Container(

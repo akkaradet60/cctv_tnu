@@ -18,7 +18,7 @@ class _cctv_pageState extends State<cctv_page> {
         ),
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.black,
+        backgroundColor: ThemeBc.background,
         title: Center(child: const Text('CCTV มหาสารคาม')),
         actions: <Widget>[
           IconButton(

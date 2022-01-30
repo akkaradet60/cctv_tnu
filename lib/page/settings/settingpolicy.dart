@@ -92,8 +92,8 @@ class _settingpolicyState extends State<settingpolicy>
                   child: Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(colors: [
-                        ThemeBc.black,
-                        ThemeBc.black,
+                        ThemeBc.background,
+                        ThemeBc.background,
                       ], begin: Alignment.topRight, end: Alignment.bottomLeft),
                     ),
                     height: 1000,
@@ -152,8 +152,8 @@ class _settingpolicyState extends State<settingpolicy>
                   child: Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(colors: [
-                        ThemeBc.black,
-                        ThemeBc.black,
+                        ThemeBc.background,
+                        ThemeBc.background,
                       ], begin: Alignment.topRight, end: Alignment.bottomLeft),
                     ),
                     height: 1000,
@@ -212,8 +212,8 @@ class _settingpolicyState extends State<settingpolicy>
                   child: Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(colors: [
-                        ThemeBc.black,
-                        ThemeBc.black,
+                        ThemeBc.background,
+                        ThemeBc.background,
                       ], begin: Alignment.topRight, end: Alignment.bottomLeft),
                     ),
                     height: 1000,
@@ -253,7 +253,7 @@ class _settingpolicyState extends State<settingpolicy>
         ),
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.black,
+        backgroundColor: ThemeBc.background,
         title: Center(child: const Text('เทศบาลเมืองมหาสารคาม')),
         actions: <Widget>[
           IconButton(

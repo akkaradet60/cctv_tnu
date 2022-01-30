@@ -345,7 +345,7 @@ class _RegisterPageState extends State<register_page> {
                           label: Text('ลงทะเบียน'),
                           icon: Icon(Icons.login_rounded),
                           style: ElevatedButton.styleFrom(
-                            primary: ThemeBc.black,
+                            primary: ThemeBc.background,
                             //side: BorderSide(color: Colors.red, width: 5),
                             textStyle: TextStyle(fontSize: 15),
                             padding: EdgeInsets.all(15),
@@ -368,7 +368,7 @@ class _RegisterPageState extends State<register_page> {
                         child: Text("ย้อนกลับ",
                             style: TextStyle(
                                 decoration: TextDecoration.underline)),
-                        textColor: ThemeBc.black,
+                        textColor: ThemeBc.background,
                         onPressed: () {
                           // _fbKey.currentState.reset();
                           Navigator.pushNamed(context, '/login_page');

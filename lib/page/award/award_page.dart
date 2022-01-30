@@ -171,7 +171,7 @@ class _award_pageState extends State<award_page> {
                                     fontSize: 24.0,
                                     fontWeight: FontWeight.bold,
                                     backgroundColor: Colors.black45,
-                                    color: Colors.white,
+                                    color: ThemeBc.white,
                                   ),
                                 ),
                               ),
@@ -196,7 +196,7 @@ class _award_pageState extends State<award_page> {
 
     Widget award_page(BuildContext context) {
       return Container(
-        color: ThemeBc.black,
+        color: ThemeBc.background,
         margin: EdgeInsets.only(top: 10, bottom: 0),
         width: 1000,
         height: 500,
@@ -498,7 +498,7 @@ class _award_pageState extends State<award_page> {
           ),
           shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.black,
+          backgroundColor: ThemeBc.background,
           title: Center(child: const Text('รางวัล')),
           actions: <Widget>[
             IconButton(

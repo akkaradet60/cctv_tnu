@@ -1,9 +1,7 @@
 import 'dart:async';
 
-import 'package:cctv_tun/models/hotlinee/hotlinee.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -84,7 +82,7 @@ class _map_pageState extends State<map_page> {
         ),
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.black,
+        backgroundColor: ThemeBc.background,
         title: Center(child: Text('${hotlinee['hotlineName']}')),
         actions: <Widget>[
           IconButton(
@@ -97,38 +95,68 @@ class _map_pageState extends State<map_page> {
           ),
         ],
       ),
-      body: FutureBuilder(
-        future: _getLocation(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            return GoogleMap(
-              markers: <Marker>[
-                Marker(
-                    markerId: const MarkerId('100'),
-                    position: LatLng(app_lat, app_lng),
-                    infoWindow: InfoWindow(
-                        title: 'ตำแหน่งของศูนย์ ${hotlinee['hotlineName']}',
-                        //   snippet: '-------------------',
-                        onTap: () {})),
-              ].toSet(),
-              mapType: MapType.normal,
-              onMapCreated: (GoogleMapController controller) {
-                _controller.complete(controller);
-              },
-              myLocationEnabled: true,
-              initialCameraPosition: cameraPosition,
-            );
-          } else {
-            return Center(
-              child: Column(
-                  // mainAxisAlignment: MainAxisAlignment.center,
-                  //   children: <Widget>[
-                  //     CircularProgressIndicator(),
-                  //    ],
-                  ),
-            );
-          }
-        },
+      body: Container(
+        color: ThemeBc.background,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            decoration: BoxDecoration(
+                color: secondaryTextColor,
+                borderRadius: BorderRadius.circular(
+                  20,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      offset: Offset(2, 2),
+                      blurRadius: 7,
+                      spreadRadius: 1.0),
+                  BoxShadow(
+                      color: Colors.black.withOpacity(0.5),
+                      offset: Offset(2, 4),
+                      blurRadius: 7.0,
+                      spreadRadius: 1.0),
+                ]),
+            height: 600,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: FutureBuilder(
+                future: _getLocation(),
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  if (snapshot.hasData) {
+                    return GoogleMap(
+                      markers: <Marker>[
+                        Marker(
+                            markerId: const MarkerId('100'),
+                            position: LatLng(app_lat, app_lng),
+                            infoWindow: InfoWindow(
+                                title:
+                                    'ตำแหน่งของศูนย์ ${hotlinee['hotlineName']}',
+                                //   snippet: '-------------------',
+                                onTap: () {})),
+                      ].toSet(),
+                      mapType: MapType.normal,
+                      onMapCreated: (GoogleMapController controller) {
+                        _controller.complete(controller);
+                      },
+                      myLocationEnabled: true,
+                      initialCameraPosition: cameraPosition,
+                    );
+                  } else {
+                    return Center(
+                      child: Column(
+                          // mainAxisAlignment: MainAxisAlignment.center,
+                          //   children: <Widget>[
+                          //     CircularProgressIndicator(),
+                          //    ],
+                          ),
+                    );
+                  }
+                },
+              ),
+            ),
+          ),
+        ),
       ),
       /* Column(
         children: [

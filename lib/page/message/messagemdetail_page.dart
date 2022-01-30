@@ -68,7 +68,7 @@ class _messagemdetail_page extends State<messagemdetail_page> {
           ),
           shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.black,
+          backgroundColor: ThemeBc.background,
           title: Text('${productt['blog_name']}'),
           actions: <Widget>[
             IconButton(
@@ -87,8 +87,10 @@ class _messagemdetail_page extends State<messagemdetail_page> {
                   colors: [ThemeBc.orange, ThemeBc.pinkAccent],
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft)),
+          height: 1000,
+          width: 1000,
           child: Container(
-            color: ThemeBc.black,
+            color: ThemeBc.background,
             child: ListView(
               children: [
                 Container(

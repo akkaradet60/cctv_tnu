@@ -71,10 +71,10 @@ class MyApp extends StatelessWidget {
                 end: Alignment.bottomLeft)),
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-              primarySwatch: Colors.brown,
-              // canvasColor: Colors.pinkAccent,
-              scaffoldBackgroundColor: Colors.pinkAccent),
+          // theme: ThemeData(
+          //     primarySwatch: Colors.grey,
+          //     canvasColor: Colors.pinkAccent,
+          //     scaffoldBackgroundColor: Colors.pinkAccent),
           routes: {
             '/': (context) => token == null ? login_page() : home_page(),
             '/map_prod': (context) => map_prod(),

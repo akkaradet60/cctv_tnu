@@ -203,7 +203,7 @@ class _message_pageState extends State<message_page> {
 
     Widget ss1(BuildContext context) {
       return Container(
-        color: ThemeBc.black,
+        color: ThemeBc.background,
         margin: EdgeInsets.only(top: 10, bottom: 0),
         width: 1000,
         height: 500,
@@ -226,7 +226,8 @@ class _message_pageState extends State<message_page> {
                                   context, '/messagemdetail_page',
                                   arguments: {
                                     'blog_images': snapshot.data!['data'][index]
-                                                ['blog_images'] !=
+                                                    ['blog_images'][0]
+                                                ['blogi_path_name'] !=
                                             null
                                         ? Global.domainImage +
                                             snapshot.data!['data'][index]
@@ -521,7 +522,7 @@ class _message_pageState extends State<message_page> {
           ),
           shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.black,
+          backgroundColor: ThemeBc.background,
           title: Center(child: const Text('ข่าวสาร')),
           actions: <Widget>[
             IconButton(

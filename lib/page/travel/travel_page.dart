@@ -87,7 +87,7 @@ class _travel_page extends State<travel_page> {
                       child: Container(
                         height: 480,
                         decoration: BoxDecoration(
-                          color: ThemeBc.black,
+                          color: ThemeBc.background,
                           borderRadius: BorderRadius.circular(
                             30,
                           ),
@@ -132,33 +132,86 @@ class _travel_page extends State<travel_page> {
                                           child: Column(
                                             children: [
                                               Container(
+                                                  decoration: BoxDecoration(
+                                                      color: ThemeBc.white,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                        20,
+                                                      ),
+                                                      boxShadow: [
+                                                        BoxShadow(
+                                                            color: Colors.grey
+                                                                .withOpacity(
+                                                                    0.5),
+                                                            offset:
+                                                                Offset(2, 2),
+                                                            blurRadius: 7,
+                                                            spreadRadius: 1.0),
+                                                        BoxShadow(
+                                                            color: Colors.black
+                                                                .withOpacity(
+                                                                    0.5),
+                                                            offset:
+                                                                Offset(2, 4),
+                                                            blurRadius: 7.0,
+                                                            spreadRadius: 1.0),
+                                                      ]),
                                                   width: 320,
                                                   height: 250,
-                                                  child: Image.network(
-                                                    snapshot.data!['data']
-                                                                        [index]
-                                                                    ['travel_images'][0]
-                                                                [
-                                                                'traveli_path_name'] !=
-                                                            null
-                                                        ? Global.domainImage +
-                                                            snapshot.data!['data']
-                                                                        [index][
-                                                                    'travel_images'][0]
-                                                                [
-                                                                'traveli_path_name']
-                                                        : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
-                                                    fit: BoxFit.cover,
-                                                    width: double.infinity,
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            5.0),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                        Radius.circular(20),
+                                                      ),
+                                                      child: Image.network(
+                                                        snapshot.data!['data']
+                                                                            [index]
+                                                                        ['travel_images'][0]
+                                                                    [
+                                                                    'traveli_path_name'] !=
+                                                                null
+                                                            ? Global.domainImage +
+                                                                snapshot.data!['data']
+                                                                            [index]
+                                                                        [
+                                                                        'travel_images'][0]
+                                                                    [
+                                                                    'traveli_path_name']
+                                                            : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                                        fit: BoxFit.cover,
+                                                        width: double.infinity,
+                                                      ),
+                                                    ),
                                                   )),
                                               SizedBox(height: 1),
                                               Padding(
                                                 padding:
                                                     const EdgeInsets.all(8.0),
                                                 child: Container(
-                                                  color: Colors.grey[200],
+                                                  decoration: BoxDecoration(
+                                                      color: ThemeBc.white,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                        20,
+                                                      ),
+                                                      boxShadow: [
+                                                        // BoxShadow(
+                                                        //     color: Colors.grey.withOpacity(0.5),
+                                                        //     offset: Offset(2, 2),
+                                                        //     blurRadius: 7,
+                                                        //     spreadRadius: 1.0),
+                                                        // BoxShadow(
+                                                        //     color: Colors.black.withOpacity(0.5),
+                                                        //     offset: Offset(2, 4),
+                                                        //     blurRadius: 7.0,
+                                                        //     spreadRadius: 1.0),
+                                                      ]),
                                                   width: 320,
-                                                  height: 170,
+                                                  height: 190,
                                                   child: Column(
                                                     children: [
                                                       SizedBox(height: 5),
@@ -172,15 +225,17 @@ class _travel_page extends State<travel_page> {
                                                           ),
                                                         ),
                                                       ),
-                                                      Container(
-                                                        height: 100,
-                                                        child: ListView(
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .all(8.0),
-                                                              child: Text(
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .all(8.0),
+                                                        child: Container(
+                                                          decoration:
+                                                              BoxDecoration(),
+                                                          height: 120,
+                                                          child: ListView(
+                                                            children: [
+                                                              Text(
                                                                 'ที่นี้คือ : ${snapshot.data!['data'][index]['travel_detail']}',
                                                                 style: primaryTextStyle
                                                                     .copyWith(
@@ -189,8 +244,8 @@ class _travel_page extends State<travel_page> {
                                                                         fontWeight:
                                                                             medium),
                                                               ),
-                                                            ),
-                                                          ],
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
                                                     ],
@@ -313,7 +368,7 @@ class _travel_page extends State<travel_page> {
           height: 60,
           decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors: [ThemeBc.black, ThemeBc.black],
+                colors: [ThemeBc.background, ThemeBc.background],
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft),
             borderRadius: BorderRadius.circular(
@@ -347,7 +402,7 @@ class _travel_page extends State<travel_page> {
           ),
           shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.black,
+          backgroundColor: ThemeBc.background,
           title: Center(child: const Text('ท่องเที่ยว')),
           actions: <Widget>[
             IconButton(

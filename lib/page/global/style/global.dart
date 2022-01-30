@@ -46,10 +46,12 @@ class ThemeBc {
   static const black = Color(0xff1B2836);
   static const green = Color(0xff02d667);
   static const greens = Colors.green;
+  static const background = Color(0xff1B2836);
+  static const text = Color(0xffF1EFE3);
 }
 
 TextStyle primaryTextStyle = GoogleFonts.poppins(
-  color: ThemeBc.black,
+  color: ThemeBc.background,
 );
 //bg
 // const whiteBg = Color(0xFFFFF9EC);

@@ -75,7 +75,7 @@ class _productshome_page extends State<productshome_page> {
           ),
           shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.black,
+          backgroundColor: ThemeBc.background,
           title: Center(child: Text('สินค้า OTOP')),
           actions: <Widget>[
             IconButton(
@@ -108,7 +108,7 @@ class _productshome_page extends State<productshome_page> {
 
   Widget sso(BuildContext context) {
     return Container(
-      color: ThemeBc.black,
+      color: ThemeBc.background,
       child: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(8.0),
@@ -178,7 +178,7 @@ class _productshome_page extends State<productshome_page> {
     }
 
     return Container(
-      color: ThemeBc.black,
+      color: ThemeBc.background,
       width: 1000,
       height: 430,
       child: Column(
@@ -423,7 +423,7 @@ class _productshome_page extends State<productshome_page> {
     }
 
     return Container(
-      color: ThemeBc.black,
+      color: ThemeBc.background,
       width: 1000,
       height: 430,
       child: Column(

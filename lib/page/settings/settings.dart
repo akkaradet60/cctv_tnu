@@ -10,56 +10,122 @@ class settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget imageSplash() {
-      return Container(
-        height: 225,
-        width: 10,
-        margin: EdgeInsets.only(top: 20),
-        child: Card(
-          color: ThemeBc.black,
-          margin: const EdgeInsets.symmetric(horizontal: 15),
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          decoration: BoxDecoration(
+              color: secondaryTextColor,
+              borderRadius: BorderRadius.circular(
+                20,
+              ),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    offset: const Offset(2, 2),
+                    blurRadius: 7,
+                    spreadRadius: 1.0),
+                BoxShadow(
+                    color: Colors.black.withOpacity(0.5),
+                    offset: const Offset(2, 4),
+                    blurRadius: 7.0,
+                    spreadRadius: 1.0),
+              ]),
+          height: 225,
+          width: 10,
+          margin: const EdgeInsets.only(top: 20),
           child: Column(
             children: [
-              SizedBox(height: 18),
-              Text(
+              const SizedBox(height: 18),
+              const Text(
                 'ข้อมูล',
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
                   // backgroundColor: Colors.black45,
-                  color: Colors.white,
+                  color: ThemeBc.black,
                 ),
               ),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               Container(
                 child: Column(
                   children: [
-                    SignInButtonBuilder(
+                    Container(
+                      width: 342,
                       height: 45,
-                      width: 300,
-                      text: 'ร้านค้า',
-                      icon: Icons.shopping_basket,
-                      onPressed: () =>
-                          Navigator.pushNamed(context, '/settingshop'),
-                      backgroundColor: Colors.blueGrey[700]!,
+                      child: ElevatedButton.icon(
+                        onPressed: () =>
+                            Navigator.pushNamed(context, '/settingshop'),
+                        icon: const Icon(Icons.shopping_bag),
+                        label: const Text('ร้านค้า'),
+                        style: ElevatedButton.styleFrom(
+                          primary: ThemeBc.background,
+                          onPrimary: Colors.white,
+                          shadowColor: Colors.grey[700],
+                          elevation: 30,
+                          shape: const RoundedRectangleBorder(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(40))),
+                        ),
+                      ),
                     ),
-                    SignInButtonBuilder(
+                    const SizedBox(height: 5),
+                    Container(
+                      width: 342,
                       height: 45,
-                      width: 300,
-                      text: 'แก้ไขข้อมูลส่วนตัว',
-                      icon: Icons.account_box,
-                      onPressed: () =>
-                          Navigator.pushNamed(context, '/settingprofile'),
-                      backgroundColor: Colors.blueGrey[700]!,
+                      child: ElevatedButton.icon(
+                        onPressed: () =>
+                            Navigator.pushNamed(context, '/settingpolicy'),
+                        icon: const Icon(Icons.account_box),
+                        label: const Text('ข้อตกลงและเงื่อนไข'),
+                        style: ElevatedButton.styleFrom(
+                          primary: ThemeBc.background,
+                          onPrimary: Colors.white,
+                          shadowColor: Colors.grey[700],
+                          elevation: 30,
+                          shape: const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(40))),
+                        ),
+                      ),
                     ),
-                    SignInButtonBuilder(
+                    const SizedBox(height: 5),
+                    Container(
+                      width: 342,
                       height: 45,
-                      width: 300,
-                      text: 'ข้อตกลงและเงื่อนไข',
-                      icon: Icons.view_headline,
-                      onPressed: () =>
-                          Navigator.pushNamed(context, '/settingpolicy'),
-                      backgroundColor: Colors.blueGrey[700]!,
+                      child: ElevatedButton.icon(
+                        onPressed: () =>
+                            Navigator.pushNamed(context, '/settingprofile'),
+                        icon: const Icon(Icons.account_box),
+                        label: const Text('แก้ไขข้อมูลส่วนตัว'),
+                        style: ElevatedButton.styleFrom(
+                          primary: ThemeBc.background,
+                          onPrimary: Colors.white,
+                          shadowColor: Colors.grey[700],
+                          elevation: 30,
+                          shape: const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(40))),
+                        ),
+                      ),
                     ),
+                    // SignInButtonBuilder(
+                    //   height: 45,
+                    //   width: 300,
+                    //   text: 'แก้ไขข้อมูลส่วนตัว',
+                    //   icon: Icons.account_box,
+                    //   onPressed: () =>
+                    //       Navigator.pushNamed(context, '/settingprofile'),
+                    //   backgroundColor: Colors.blueGrey[700]!,
+                    // ),
+                    // SignInButtonBuilder(
+                    //   height: 45,
+                    //   width: 300,
+                    //   text: 'ข้อตกลงและเงื่อนไข',
+                    //   icon: Icons.view_headline,
+                    //   onPressed: () =>
+                    //       Navigator.pushNamed(context, '/settingpolicy'),
+                    //   backgroundColor: Colors.blueGrey[700]!,
+                    // ),
                   ],
                 ),
               ),
@@ -70,41 +136,95 @@ class settings extends StatelessWidget {
     }
 
     Widget text2() {
-      return Container(
-        height: 175,
-        margin: EdgeInsets.only(top: 15),
-        child: Card(
-          color: ThemeBc.black,
-          margin: const EdgeInsets.symmetric(horizontal: 15),
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          decoration: BoxDecoration(
+              color: secondaryTextColor,
+              borderRadius: BorderRadius.circular(
+                20,
+              ),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    offset: const Offset(2, 2),
+                    blurRadius: 7,
+                    spreadRadius: 1.0),
+                BoxShadow(
+                    color: Colors.black.withOpacity(0.5),
+                    offset: const Offset(2, 4),
+                    blurRadius: 7.0,
+                    spreadRadius: 1.0),
+              ]),
+          height: 175,
+          margin: const EdgeInsets.only(top: 15),
           child: Column(
             children: [
-              SizedBox(height: 18),
-              Text(
+              const SizedBox(height: 18),
+              const Text(
                 'ตั้งค่า',
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
                   // backgroundColor: Colors.black45,
-                  color: Colors.white,
+                  color: ThemeBc.black,
                 ),
               ),
-              SizedBox(height: 5),
-              SignInButtonBuilder(
+              const SizedBox(height: 5),
+              Container(
+                width: 342,
                 height: 45,
-                width: 300,
-                text: 'เปลี่ยนภาษา',
-                icon: Icons.spellcheck,
-                onPressed: () {},
-                backgroundColor: Colors.blueGrey[700]!,
+                child: ElevatedButton.icon(
+                  onPressed: () =>
+                      Navigator.pushNamed(context, '/settingprofile'),
+                  icon: const Icon(Icons.spellcheck),
+                  label: const Text('เปลี่ยนภาษา'),
+                  style: ElevatedButton.styleFrom(
+                    primary: ThemeBc.background,
+                    onPrimary: Colors.white,
+                    shadowColor: Colors.grey[700],
+                    elevation: 30,
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(40))),
+                  ),
+                ),
               ),
-              SignInButtonBuilder(
+              const SizedBox(height: 5),
+              Container(
+                width: 342,
                 height: 45,
-                width: 300,
-                text: 'แก้ไขรหัสผ่าน',
-                icon: Icons.vpn_key,
-                onPressed: () {},
-                backgroundColor: Colors.blueGrey[700]!,
+                child: ElevatedButton.icon(
+                  onPressed: () =>
+                      Navigator.pushNamed(context, '/settingprofile'),
+                  icon: const Icon(Icons.vpn_key),
+                  label: const Text('แก้ไขรหัสผ่าน'),
+                  style: ElevatedButton.styleFrom(
+                    primary: ThemeBc.background,
+                    onPrimary: Colors.white,
+                    shadowColor: Colors.grey[700],
+                    elevation: 30,
+                    shape: const RoundedRectangleBorder(
+                        borderRadius:
+                            const BorderRadius.all(const Radius.circular(40))),
+                  ),
+                ),
               ),
+              // SignInButtonBuilder(
+              //   height: 45,
+              //   width: 300,
+              //   text: 'เปลี่ยนภาษา',
+              //   icon: Icons.spellcheck,
+              //   onPressed: () {},
+              //   backgroundColor: Colors.blueGrey[700]!,
+              // ),
+              // SignInButtonBuilder(
+              //   height: 45,
+              //   width: 300,
+              //   text: 'แก้ไขรหัสผ่าน',
+              //   icon: Icons.vpn_key,
+              //   onPressed: () {},
+              //   backgroundColor: Colors.blueGrey[700]!,
+              // ),
             ],
           ),
         ),
@@ -114,13 +234,13 @@ class settings extends StatelessWidget {
     return Scaffold(
       drawer: menu_pang(),
       appBar: AppBar(
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: ThemeBc.white, //change your color here
         ),
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.black,
-        title: Center(child: const Text('ตั้งค่า')),
+        backgroundColor: ThemeBc.background,
+        title: const Center(child: Text('ตั้งค่า')),
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/logo.png', scale: 15),
@@ -133,8 +253,8 @@ class settings extends StatelessWidget {
         ],
       ),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
+        decoration: const BoxDecoration(
+          gradient: const LinearGradient(
               colors: [ThemeBc.orange, ThemeBc.pinkAccent],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft),

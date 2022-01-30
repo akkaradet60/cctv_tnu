@@ -482,7 +482,7 @@ class _settingshopState extends State<settingshop>
         ),
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.black,
+        backgroundColor: ThemeBc.background,
         title: Center(child: const Text('ร้านค้า')),
         actions: <Widget>[
           IconButton(
