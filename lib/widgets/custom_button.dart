@@ -24,7 +24,7 @@ class CustomButton extends StatelessWidget {
         Container(
           color: Colors.transparent,
           width: 342,
-          height: 45,
+          height: 55,
           child: Container(
             child: ElevatedButton(
               onPressed: onPressed,

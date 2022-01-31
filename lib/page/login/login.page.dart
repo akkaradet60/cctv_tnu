@@ -8,6 +8,7 @@ import 'package:cctv_tun/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 import 'package:http/http.dart' as http;
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'dart:convert';
@@ -36,7 +37,7 @@ class _LoginPageState extends State<login_page> {
           "Accept": "application/json",
         },
         body: json.encode({
-          "app_id": Global.app_id,
+          "user_app_id": Global.app_id,
           "email": formValues['email'],
           "password": formValues['password']
         }));
@@ -151,7 +152,7 @@ class _LoginPageState extends State<login_page> {
         body: Container(
       decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [Colors.pinkAccent, Colors.orangeAccent],
+              colors: [ThemeBc.background, ThemeBc.white],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft)),
       child: Container(
@@ -196,22 +197,34 @@ class _LoginPageState extends State<login_page> {
                                           blurRadius: 7.0,
                                           spreadRadius: 1.0),
                                     ]),
-                                child: FormBuilderTextField(
-                                  //   initialValue: 'akkaradet.ko60@snru.ac.th',
-                                  name: "email",
-                                  maxLines: 1,
-                                  keyboardType: TextInputType.emailAddress,
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        20.0,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: FormBuilderTextField(
+                                      //   initialValue: 'akkaradet.ko60@snru.ac.th',
+                                      name: "email",
+                                      maxLines: 1,
+                                      keyboardType: TextInputType.emailAddress,
+                                      decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            20.0,
+                                          ),
+                                        ),
+                                        suffixIcon: Icon(Icons.email),
+                                        labelText: 'อีเมล',
+                                        // helperText: '555',
+                                        fillColor: Colors.white,
+                                        filled: true,
                                       ),
+                                      validator: MultiValidator([
+                                        RequiredValidator(
+                                            errorText: "ป้อนข้อมูลอีเมลด้วย"),
+                                        EmailValidator(
+                                            errorText:
+                                                "รูปแบบอีเมล์ไม่ถูกต้อง"),
+                                      ]),
                                     ),
-                                    suffixIcon: Icon(Icons.email),
-                                    labelText: 'อีเมล',
-                                    // helperText: '555',
-                                    fillColor: Colors.white,
-                                    filled: true,
                                   ),
                                 ),
                               ),
@@ -234,22 +247,32 @@ class _LoginPageState extends State<login_page> {
                                           blurRadius: 7.0,
                                           spreadRadius: 1.0),
                                     ]),
-                                child: FormBuilderTextField(
-                                  //    initialValue: '123456',
-                                  name: "password",
-                                  maxLines: 1,
-                                  keyboardType: TextInputType.visiblePassword,
-                                  obscureText: true,
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        20.0,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: FormBuilderTextField(
+                                      //    initialValue: '123456',
+                                      name: "password",
+                                      maxLines: 1,
+                                      keyboardType:
+                                          TextInputType.visiblePassword,
+                                      obscureText: true,
+                                      decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            20.0,
+                                          ),
+                                        ),
+                                        suffixIcon: Icon(Icons.vpn_key),
+                                        labelText: 'รหัสผ่าน',
+                                        fillColor: Colors.white,
+                                        filled: true,
                                       ),
+                                      validator: MultiValidator([
+                                        RequiredValidator(
+                                            errorText: "ป้อนรหัสผ่านด้วย"),
+                                      ]),
                                     ),
-                                    suffixIcon: Icon(Icons.vpn_key),
-                                    labelText: 'รหัสผ่าน',
-                                    fillColor: Colors.white,
-                                    filled: true,
                                   ),
                                 ),
                               )
@@ -381,7 +404,7 @@ class _LoginPageState extends State<login_page> {
                       children: [
                         Container(
                           width: 390,
-                          height: 45,
+                          height: 55,
                           padding:
                               EdgeInsets.symmetric(horizontal: defaultMargin),
                           color: Colors.transparent,

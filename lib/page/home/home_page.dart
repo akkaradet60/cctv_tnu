@@ -81,6 +81,16 @@ class _home_pageState extends State<home_page> {
   //     throw Exception('$response.statusCode');
   //   }
   // }
+  late List<String> titles = [
+    ' 1 ',
+    ' 2 ',
+    ' 3 ',
+    ' 4 ',
+    ' 5',
+    '6',
+    '7',
+    '8',
+  ];
 
   @override
   var porfile;
@@ -177,131 +187,162 @@ class _home_pageState extends State<home_page> {
           future: getDataSlide(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              // return ListView.separated(
-              //     itemBuilder: (context, index) {
-              // return Text('3232');
-              return CarouselSlider.builder(
-                itemCount: snapshot.data!['data'].length,
-                options: CarouselOptions(
-                  autoPlay: true,
-                  enlargeCenterPage: true,
-                  viewportFraction: 0.9,
-                  aspectRatio: 2.0,
-                  initialPage: 2,
-                  onPageChanged: (index, reason) {
-                    setState(
-                      () {
-                        _currentIndex = index;
-                      },
-                    );
-                  },
-                ),
-                itemBuilder:
-                    (BuildContext context, int item, int pageViewIndex) =>
-
-                        // Text('${snapshot.data!['data'][item]['blog_id']}');
-                        //     Container(
-                        //   child: Center(child: Text(item.toString())),
-                        //   color: Colors.green,
-                        // ),
-                        NeumorphicButton(
-                  style: NeumorphicStyle(
-                    shape: NeumorphicShape.flat,
-                    // boxShape:
-                    //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                    // boxShape: NeumorphicBoxShape.circle(),
-                    color: Colors.white,
+              if (snapshot.data!['data'] == 'ไม่พบข้อมูล') {
+                return Center(
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: ThemeBc.text,
+                        borderRadius: BorderRadius.circular(
+                          20,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              offset: Offset(2, 2),
+                              blurRadius: 7,
+                              spreadRadius: 1.0),
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.5),
+                              offset: Offset(2, 4),
+                              blurRadius: 7.0,
+                              spreadRadius: 1.0),
+                        ]),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text('ไม่พบข้อมูล'),
+                    ),
                   ),
-                  padding: EdgeInsets.all(0),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/messagemdetail_page',
-                          arguments: {
-                            'blog_images': snapshot.data!['data'][item]
-                                        ['blog_images'][0]['blogi_path_name'] !=
-                                    null
-                                ? Global.domainImage +
-                                    snapshot.data!['data'][item]['blog_images']
-                                        [0]['blogi_path_name']
-                                : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
-                            'blog_name': snapshot.data!['data'][item]
-                                ['blog_name'],
-                            'blog_detail': snapshot.data!['data'][item]
-                                ['blog_detail']
+                );
+              } else {
+                return CarouselSlider.builder(
+                  itemCount: snapshot.data!['data'].length,
+                  options: CarouselOptions(
+                    autoPlay: true,
+                    enlargeCenterPage: true,
+                    viewportFraction: 0.9,
+                    aspectRatio: 2.0,
+                    initialPage: 2,
+                    onPageChanged: (index, reason) {
+                      setState(
+                        () {
+                          _currentIndex = index;
+                        },
+                      );
+                    },
+                  ),
+                  itemBuilder:
+                      (BuildContext context, int item, int pageViewIndex) =>
 
-                            /*   'id': data[index].id,
+                          // Text('${snapshot.data!['data'][item]['blog_id']}');
+                          //     Container(
+                          //   child: Center(child: Text(item.toString())),
+                          //   color: Colors.green,
+                          // ),
+                          NeumorphicButton(
+                    style: NeumorphicStyle(
+                      shape: NeumorphicShape.flat,
+                      // boxShape:
+                      //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
+                      // boxShape: NeumorphicBoxShape.circle(),
+                      color: Colors.white,
+                    ),
+                    padding: EdgeInsets.all(0),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/messagemdetail_page',
+                            arguments: {
+                              'blog_images': snapshot.data!['data'][item]
+                                              ['blog_images'][0]
+                                          ['blogi_path_name'] !=
+                                      null
+                                  ? Global.domainImage +
+                                      snapshot.data!['data'][item]
+                                          ['blog_images'][0]['blogi_path_name']
+                                  : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                              'blog_name': snapshot.data!['data'][item]
+                                  ['blog_name'],
+                              'blog_detail': snapshot.data!['data'][item]
+                                  ['blog_detail']
+
+                              /*   'id': data[index].id,
                                 'detail': data[index].detail,
                                 'picture': data[index].picture,
                                 'view': data[index].view,*/
-                          });
-                    },
-                    // child: Card(
-                    //   margin: EdgeInsets.only(
-                    //     top: 10.0,
-                    //     bottom: 10.0,
-                    //   ),
-                    //   elevation: 6.0,
-                    // shadowColor: Colors.redAccent,
-                    // shape: RoundedRectangleBorder(
-                    //     // borderRadius: BorderRadius.circular(30.0),
-                    //     ),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: secondaryTextColor,
-                          borderRadius: BorderRadius.circular(
-                            8,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                offset: Offset(2, 2),
-                                blurRadius: 7,
-                                spreadRadius: 1.0),
-                            BoxShadow(
-                                color: Colors.black.withOpacity(0.5),
-                                offset: Offset(2, 4),
-                                blurRadius: 7.0,
-                                spreadRadius: 1.0),
-                          ]),
-                      child: Card(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(8.0),
-                          ),
-                          child: Stack(
-                            children: <Widget>[
-                              Image.network(
-                                snapshot.data!['data'][item]['blog_images'][0]
-                                            ['blogi_path_name'] !=
-                                        null
-                                    ? Global.domainImage +
-                                        snapshot.data!['data'][item]
-                                                ['blog_images'][0]
-                                            ['blogi_path_name']
-                                    : 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
-                                fit: BoxFit.cover,
-                                width: double.infinity,
-                              ),
-                              Center(
-                                child: Text(
-                                  // '${titles[_currentIndex]}',
-                                  '${snapshot.data!['data'][item]['blog_name']}',
-                                  style: TextStyle(
-                                    fontSize: 24.0,
-                                    fontWeight: FontWeight.bold,
-                                    backgroundColor: Colors.black45,
-                                    color: Colors.white,
-                                  ),
+                            });
+                      },
+                      // child: Card(
+                      //   margin: EdgeInsets.only(
+                      //     top: 10.0,
+                      //     bottom: 10.0,
+                      //   ),
+                      //   elevation: 6.0,
+                      // shadowColor: Colors.redAccent,
+                      // shape: RoundedRectangleBorder(
+                      //     // borderRadius: BorderRadius.circular(30.0),
+                      //     ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: secondaryTextColor,
+                            borderRadius: BorderRadius.circular(
+                              8,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  offset: Offset(2, 2),
+                                  blurRadius: 7,
+                                  spreadRadius: 1.0),
+                              BoxShadow(
+                                  color: Colors.black.withOpacity(0.5),
+                                  offset: Offset(2, 4),
+                                  blurRadius: 7.0,
+                                  spreadRadius: 1.0),
+                            ]),
+                        child: Card(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(8.0),
+                            ),
+                            child: Stack(
+                              children: <Widget>[
+                                Image.network(
+                                  snapshot.data!['data'][item]['blog_images'][0]
+                                              ['blogi_path_name'] !=
+                                          null
+                                      ? Global.domainImage +
+                                          snapshot.data!['data'][item]
+                                                  ['blog_images'][0]
+                                              ['blogi_path_name']
+                                      : 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
+                                  fit: BoxFit.cover,
+                                  width: double.infinity,
                                 ),
-                              ),
-                            ],
+                                // Center(
+                                //   child: Text(
+                                //     // '${titles[_currentIndex]}',
+                                //     '${snapshot.data!['data'][item]['blog_name']}',
+                                //     style: TextStyle(
+                                //       fontSize: 24.0,
+                                //       fontWeight: FontWeight.bold,
+                                //       backgroundColor: Colors.black45,
+                                //       color: Colors.white,
+                                //     ),
+                                //   ),
+                                // ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              );
+                );
+              }
+              ;
+              // return ListView.separated(
+              //     itemBuilder: (context, index) {
+              // return Text('3232');
+
             } else if (snapshot.hasError) {
               return Center(
                   child: Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
@@ -320,7 +361,12 @@ class _home_pageState extends State<home_page> {
           margin: EdgeInsets.only(top: 30, left: 5),
           child: Text(
             'เมนู',
-            style: primaryTextStyle.copyWith(fontSize: 25, fontWeight: medium),
+            style: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+              // backgroundColor: Colors.black45,
+              color: ThemeBc.white,
+            ),
           ),
         ),
       );
@@ -380,7 +426,7 @@ class _home_pageState extends State<home_page> {
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_6.png',
                       titleMenus: 'CCTV',
-                      pathName: '/cctv_page',
+                      pathName: '/sss',
                       titleMenus2: '',
                       titleMenus1: '',
                     ),
@@ -453,15 +499,6 @@ class _home_pageState extends State<home_page> {
       );
     }
 
-    Widget tt(BuildContext context) {
-      return ListView.builder(
-        itemCount: 1,
-        itemBuilder: (BuildContext context, int index) {
-          return Container();
-        },
-      );
-    }
-
     return Scaffold(
       drawer: menu_pang(),
       appBar: AppBar(
@@ -488,14 +525,36 @@ class _home_pageState extends State<home_page> {
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                  colors: [ThemeBc.orange, ThemeBc.pinkAccent],
+                  colors: [ThemeBc.background, ThemeBc.background],
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft),
             ),
             child: ListView(
               children: <Widget>[
                 SizedBox(height: 15),
-                slide(context), // slider(),
+                slide(context),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: titles.map((urlOfItem) {
+                      int index = titles.indexOf(urlOfItem);
+                      return Container(
+                        width: 10.0,
+                        height: 10.0,
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 10.0, horizontal: 2.0),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: _currentIndex == index
+                              ? const Color.fromRGBO(255, 102, 0, 0.9)
+                              : const Color.fromRGBO(255, 255, 255, 0.8),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ),
+                // alert // slider(),
                 titleMenus(),
                 cardMenus(),
                 cardMenus1(),

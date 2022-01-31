@@ -34,7 +34,7 @@ class _RegisterPageState extends State<register_page> {
           // }));
           body: {
             "user_app_id": Global.app_id,
-            "user_card_id": '1471200',
+            "user_card_id": formValues['user_card_id'],
             "user_firstname": formValues['firstname'],
             "user_lastname": formValues['lastname'],
             "user_email": formValues['email'],
@@ -112,7 +112,7 @@ class _RegisterPageState extends State<register_page> {
       child: Center(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(40),
+            padding: EdgeInsets.all(30),
             child: Column(
               children: [
                 Text('ลงทะเบียน', style: TextStyle(fontSize: 40)),
@@ -124,7 +124,7 @@ class _RegisterPageState extends State<register_page> {
                     'lastname': '',
                     'email': '',
                     'password': '',
-                    'ro': '',
+                    'user_card_id': '',
                   },
                   autovalidateMode: AutovalidateMode
                       .always, //ถ้าไม่ใส่ต้อง submit ก่อนถึงจะตรวจสอบ validation
@@ -148,27 +148,33 @@ class _RegisterPageState extends State<register_page> {
                                   blurRadius: 7.0,
                                   spreadRadius: 1.0),
                             ]),
-                        child: FormBuilderTextField(
-                          name: "firstname",
-                          maxLines: 1,
-                          keyboardType: TextInputType.text,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(
-                                20.0,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            child: FormBuilderTextField(
+                              name: "firstname",
+                              maxLines: 1,
+                              keyboardType: TextInputType.text,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(
+                                    20.0,
+                                  ),
+                                ),
+                                suffixIcon: Icon(Icons.badge),
+                                labelText: 'ชื่อ',
+                                fillColor: Colors.white,
+                                filled: true,
                               ),
+                              validator: MultiValidator([
+                                RequiredValidator(
+                                    errorText: "ป้อนข้อมูลชื่อด้วย"),
+                              ]),
                             ),
-                            suffixIcon: Icon(Icons.badge),
-                            labelText: 'ชื่อ',
-                            fillColor: Colors.white,
-                            filled: true,
                           ),
-                          validator: MultiValidator([
-                            RequiredValidator(errorText: "ป้อนข้อมูลชื่อด้วย"),
-                          ]),
                         ),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 10),
                       Container(
                         decoration: BoxDecoration(
                             color: secondaryTextColor,
@@ -187,27 +193,33 @@ class _RegisterPageState extends State<register_page> {
                                   blurRadius: 7.0,
                                   spreadRadius: 1.0),
                             ]),
-                        child: FormBuilderTextField(
-                          name: "lastname",
-                          maxLines: 1,
-                          keyboardType: TextInputType.text,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(
-                                20.0,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            child: FormBuilderTextField(
+                              name: "lastname",
+                              maxLines: 1,
+                              keyboardType: TextInputType.text,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(
+                                    20.0,
+                                  ),
+                                ),
+                                suffixIcon: Icon(Icons.badge_sharp),
+                                labelText: 'นามสกุล',
+                                fillColor: Colors.white,
+                                filled: true,
                               ),
+                              validator: MultiValidator([
+                                RequiredValidator(
+                                    errorText: "ป้อนข้อมูลสกุลด้วย"),
+                              ]),
                             ),
-                            suffixIcon: Icon(Icons.badge_sharp),
-                            labelText: 'นามสกุล',
-                            fillColor: Colors.white,
-                            filled: true,
                           ),
-                          validator: MultiValidator([
-                            RequiredValidator(errorText: "ป้อนข้อมูลสกุลด้วย"),
-                          ]),
                         ),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 10),
                       Container(
                         decoration: BoxDecoration(
                             color: secondaryTextColor,
@@ -226,28 +238,35 @@ class _RegisterPageState extends State<register_page> {
                                   blurRadius: 7.0,
                                   spreadRadius: 1.0),
                             ]),
-                        child: FormBuilderTextField(
-                          name: "email",
-                          maxLines: 1,
-                          keyboardType: TextInputType.emailAddress,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(
-                                20.0,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            child: FormBuilderTextField(
+                              name: "email",
+                              maxLines: 1,
+                              keyboardType: TextInputType.emailAddress,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(
+                                    20.0,
+                                  ),
+                                ),
+                                suffixIcon: Icon(Icons.email),
+                                labelText: 'อีเมล',
+                                fillColor: Colors.white,
+                                filled: true,
                               ),
+                              validator: MultiValidator([
+                                RequiredValidator(
+                                    errorText: "ป้อนข้อมูลอีเมลด้วย"),
+                                EmailValidator(
+                                    errorText: "รูปแบบอีเมล์ไม่ถูกต้อง"),
+                              ]),
                             ),
-                            suffixIcon: Icon(Icons.email),
-                            labelText: 'อีเมล',
-                            fillColor: Colors.white,
-                            filled: true,
                           ),
-                          validator: MultiValidator([
-                            RequiredValidator(errorText: "ป้อนข้อมูลอีเมลด้วย"),
-                            EmailValidator(errorText: "รูปแบบอีเมล์ไม่ถูกต้อง"),
-                          ]),
                         ),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 10),
                       Container(
                         decoration: BoxDecoration(
                             color: secondaryTextColor,
@@ -266,31 +285,36 @@ class _RegisterPageState extends State<register_page> {
                                   blurRadius: 7.0,
                                   spreadRadius: 1.0),
                             ]),
-                        child: FormBuilderTextField(
-                          name: "password",
-                          maxLines: 1,
-                          keyboardType: TextInputType.visiblePassword,
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(
-                                20.0,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            child: FormBuilderTextField(
+                              name: "password",
+                              maxLines: 1,
+                              keyboardType: TextInputType.visiblePassword,
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(
+                                    20.0,
+                                  ),
+                                ),
+                                suffixIcon: Icon(Icons.vpn_key),
+                                labelText: 'รหัสผ่าน',
+                                fillColor: Colors.white,
+                                filled: true,
                               ),
+                              validator: MultiValidator([
+                                RequiredValidator(
+                                    errorText: "ป้อนข้อมูลรหัสผ่านด้วย"),
+                                MinLengthValidator(6,
+                                    errorText: "รหัสผ่านต้อง 6 ตัวอักษรขึ้นไป"),
+                              ]),
                             ),
-                            suffixIcon: Icon(Icons.vpn_key),
-                            labelText: 'รหัสผ่าน',
-                            fillColor: Colors.white,
-                            filled: true,
                           ),
-                          validator: MultiValidator([
-                            RequiredValidator(
-                                errorText: "ป้อนข้อมูลรหัสผ่านด้วย"),
-                            MinLengthValidator(6,
-                                errorText: "รหัสผ่านต้อง 6 ตัวอักษรขึ้นไป"),
-                          ]),
                         ),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 10),
                       Container(
                         decoration: BoxDecoration(
                             color: secondaryTextColor,
@@ -309,25 +333,30 @@ class _RegisterPageState extends State<register_page> {
                                   blurRadius: 7.0,
                                   spreadRadius: 1.0),
                             ]),
-                        child: FormBuilderTextField(
-                          name: "ro",
-                          maxLines: 1,
-                          keyboardType: TextInputType.text,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(
-                                20.0,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            child: FormBuilderTextField(
+                              name: "user_card_id",
+                              maxLines: 1,
+                              keyboardType: TextInputType.text,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(
+                                    20.0,
+                                  ),
+                                ),
+                                suffixIcon: Icon(Icons.badge),
+                                labelText: 'เลขบัตรประชาชน',
+                                fillColor: Colors.white,
+                                filled: true,
                               ),
+                              validator: MultiValidator([
+                                RequiredValidator(
+                                    errorText: "ป้อนเลขบัตรประชาชนด้วย"),
+                              ]),
                             ),
-                            suffixIcon: Icon(Icons.badge),
-                            labelText: 'เลขบัตรประชาชน',
-                            fillColor: Colors.white,
-                            filled: true,
                           ),
-                          validator: MultiValidator([
-                            RequiredValidator(
-                                errorText: "ป้อนเลขบัตรประชาชนด้วย"),
-                          ]),
                         ),
                       ),
                     ],

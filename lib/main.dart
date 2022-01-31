@@ -21,6 +21,7 @@ import 'package:cctv_tun/page/oobk.dart';
 import 'package:cctv_tun/page/otoproducts/productshome_page.dart';
 
 import 'package:cctv_tun/page/otoproducts/productshop_page.dart';
+import 'package:cctv_tun/page/otoproducts/productstore_page.dart';
 
 import 'package:cctv_tun/page/profile/app_reducer.dart';
 import 'package:cctv_tun/page/settings/settingpolicy.dart';
@@ -29,6 +30,7 @@ import 'package:cctv_tun/page/settings/settingprodot.dart';
 import 'package:cctv_tun/page/settings/settingprofile.dart';
 import 'package:cctv_tun/page/settings/settings.dart';
 import 'package:cctv_tun/page/settings/settingshop.dart';
+import 'package:cctv_tun/page/settings/sss.dart';
 
 import 'package:cctv_tun/page/trainingcalendar/trainingcalendardetail_page.dart';
 import 'package:cctv_tun/page/trainingcalendar/trainingcalendar.dart';
@@ -77,7 +79,9 @@ class MyApp extends StatelessWidget {
           //     scaffoldBackgroundColor: Colors.pinkAccent),
           routes: {
             '/': (context) => token == null ? login_page() : home_page(),
+
             '/map_prod': (context) => map_prod(),
+            '/productstore_page': (context) => productstore_page(),
             //  '/confirmemail': (context) => confirmemail(),
             '/home_page': (context) => home_page(), //home_page
             '/register_page': (context) => register_page(),

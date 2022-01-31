@@ -57,6 +57,13 @@ class _award_pageState extends State<award_page> {
       _product = _product + _product1;
     });
   }*/
+  late List<String> titles = [
+    ' 1 ',
+    ' 2 ',
+    ' 3 ',
+    ' 4 ',
+    ' 5',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -522,6 +529,24 @@ class _award_pageState extends State<award_page> {
             children: [
               // titleMenus(),
               award_pageSlide(context),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: titles.map((urlOfItem) {
+                  int index = titles.indexOf(urlOfItem);
+                  return Container(
+                    width: 10.0,
+                    height: 10.0,
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 10.0, horizontal: 2.0),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: _currentIndex == index
+                          ? const Color.fromRGBO(0, 0, 0, 0.8)
+                          : const Color.fromRGBO(0, 0, 0, 0.3),
+                    ),
+                  );
+                }).toList(),
+              ),
               titleMenus1(),
               award_page(context),
 

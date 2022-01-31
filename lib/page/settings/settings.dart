@@ -30,7 +30,7 @@ class settings extends StatelessWidget {
                     blurRadius: 7.0,
                     spreadRadius: 1.0),
               ]),
-          height: 225,
+          height: 280,
           width: 10,
           margin: const EdgeInsets.only(top: 20),
           child: Column(
@@ -51,7 +51,7 @@ class settings extends StatelessWidget {
                   children: [
                     Container(
                       width: 342,
-                      height: 45,
+                      height: 55,
                       child: ElevatedButton.icon(
                         onPressed: () =>
                             Navigator.pushNamed(context, '/settingshop'),
@@ -71,7 +71,7 @@ class settings extends StatelessWidget {
                     const SizedBox(height: 5),
                     Container(
                       width: 342,
-                      height: 45,
+                      height: 55,
                       child: ElevatedButton.icon(
                         onPressed: () =>
                             Navigator.pushNamed(context, '/settingpolicy'),
@@ -91,7 +91,7 @@ class settings extends StatelessWidget {
                     const SizedBox(height: 5),
                     Container(
                       width: 342,
-                      height: 45,
+                      height: 55,
                       child: ElevatedButton.icon(
                         onPressed: () =>
                             Navigator.pushNamed(context, '/settingprofile'),
@@ -156,7 +156,7 @@ class settings extends StatelessWidget {
                     blurRadius: 7.0,
                     spreadRadius: 1.0),
               ]),
-          height: 175,
+          height: 200,
           margin: const EdgeInsets.only(top: 15),
           child: Column(
             children: [
@@ -173,7 +173,7 @@ class settings extends StatelessWidget {
               const SizedBox(height: 5),
               Container(
                 width: 342,
-                height: 45,
+                height: 55,
                 child: ElevatedButton.icon(
                   onPressed: () =>
                       Navigator.pushNamed(context, '/settingprofile'),
@@ -192,7 +192,7 @@ class settings extends StatelessWidget {
               const SizedBox(height: 5),
               Container(
                 width: 342,
-                height: 45,
+                height: 55,
                 child: ElevatedButton.icon(
                   onPressed: () =>
                       Navigator.pushNamed(context, '/settingprofile'),

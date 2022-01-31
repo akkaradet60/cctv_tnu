@@ -94,11 +94,11 @@ class _travelmap_page extends State<travelmap_page> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: ThemeBc.white, //change your color here
+          color: ThemeBc.black, //change your color here
         ),
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.background,
+        backgroundColor: ThemeBc.black,
         title: Column(
           children: [
             SizedBox(height: 18),
@@ -129,38 +129,69 @@ class _travelmap_page extends State<travelmap_page> {
       //     ),
       //   ],
       // ),
-      body: FutureBuilder(
-        future: _getLocation(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            return GoogleMap(
-              markers: <Marker>[
-                Marker(
-                    markerId: MarkerId('100'),
-                    position: LatLng(16.155182041998927, 103.30619597899741),
-                    infoWindow: InfoWindow(
-                        title: 'ไปที่นี้กัน ${travelmapname['travel_name']}',
-                        snippet: '--------------------------------------',
-                        onTap: () {})),
-              ].toSet(),
-              mapType: MapType.normal,
-              onMapCreated: (GoogleMapController controller) {
-                _controller.complete(controller);
-              },
-              myLocationEnabled: true,
-              initialCameraPosition: cameraPosition,
-            );
-          } else {
-            return Center(
-              child: Column(
-                  // mainAxisAlignment: MainAxisAlignment.center,
-                  //   children: <Widget>[
-                  //     CircularProgressIndicator(),
-                  //    ],
-                  ),
-            );
-          }
-        },
+      body: Container(
+        color: ThemeBc.background,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            decoration: BoxDecoration(
+                color: secondaryTextColor,
+                borderRadius: BorderRadius.circular(
+                  20,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      offset: Offset(2, 2),
+                      blurRadius: 7,
+                      spreadRadius: 1.0),
+                  BoxShadow(
+                      color: Colors.black.withOpacity(0.5),
+                      offset: Offset(2, 4),
+                      blurRadius: 7.0,
+                      spreadRadius: 1.0),
+                ]),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: FutureBuilder(
+                future: _getLocation(),
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  if (snapshot.hasData) {
+                    return GoogleMap(
+                      markers: <Marker>[
+                        Marker(
+                            markerId: MarkerId('100'),
+                            position:
+                                LatLng(16.155182041998927, 103.30619597899741),
+                            infoWindow: InfoWindow(
+                                title:
+                                    'ไปที่นี้กัน ${travelmapname['travel_name']}',
+                                snippet:
+                                    '--------------------------------------',
+                                onTap: () {})),
+                      ].toSet(),
+                      mapType: MapType.normal,
+                      onMapCreated: (GoogleMapController controller) {
+                        _controller.complete(controller);
+                      },
+                      myLocationEnabled: true,
+                      initialCameraPosition: cameraPosition,
+                    );
+                  } else {
+                    return Center(
+                      child: Column(
+                          // mainAxisAlignment: MainAxisAlignment.center,
+                          //   children: <Widget>[
+                          //     CircularProgressIndicator(),
+                          //    ],
+                          ),
+                    );
+                  }
+                },
+              ),
+            ),
+          ),
+        ),
       ),
 
       /* Column(

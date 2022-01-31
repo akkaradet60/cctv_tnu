@@ -84,37 +84,40 @@ class _settingpolicyState extends State<settingpolicy>
                 padding: const EdgeInsets.all(5),
                 child: Container(
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: [Colors.pinkAccent, Colors.orangeAccent],
-                        begin: Alignment.topRight,
-                        end: Alignment.bottomLeft),
-                  ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(colors: [
-                        ThemeBc.background,
-                        ThemeBc.background,
-                      ], begin: Alignment.topRight, end: Alignment.bottomLeft),
-                    ),
-                    height: 1000,
-                    width: 400,
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: ListView(
-                        children: [
-                          Container(
-                            child: Text(
-                              '$app_agreement',
-                              style: TextStyle(
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.bold,
-                                // backgroundColor: Colors.black45,
-                                color: Colors.white,
-                              ),
-                            ),
-                          )
-                        ],
+                      color: ThemeBc.background,
+                      borderRadius: BorderRadius.circular(
+                        20,
                       ),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            offset: Offset(2, 2),
+                            blurRadius: 7,
+                            spreadRadius: 1.0),
+                        BoxShadow(
+                            color: Colors.black.withOpacity(0.5),
+                            offset: Offset(2, 4),
+                            blurRadius: 7.0,
+                            spreadRadius: 1.0),
+                      ]),
+                  height: 1000,
+                  width: 400,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: ListView(
+                      children: [
+                        Container(
+                          child: Text(
+                            '$app_agreement',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                              // backgroundColor: Colors.black45,
+                              color: Colors.white,
+                            ),
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ),
@@ -127,12 +130,6 @@ class _settingpolicyState extends State<settingpolicy>
 
     Widget settingpolicyCH() {
       return Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [Colors.pinkAccent, Colors.orangeAccent],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft),
-        ),
         height: 1000,
         child: ListView(
           scrollDirection: Axis.horizontal,
@@ -144,37 +141,40 @@ class _settingpolicyState extends State<settingpolicy>
                 padding: const EdgeInsets.all(5),
                 child: Container(
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: [Colors.pinkAccent, Colors.orangeAccent],
-                        begin: Alignment.topRight,
-                        end: Alignment.bottomLeft),
-                  ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(colors: [
-                        ThemeBc.background,
-                        ThemeBc.background,
-                      ], begin: Alignment.topRight, end: Alignment.bottomLeft),
-                    ),
-                    height: 1000,
-                    width: 400,
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: ListView(
-                        children: [
-                          Container(
-                            child: Text(
-                              '$app_agreement_cn',
-                              style: TextStyle(
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.bold,
-                                // backgroundColor: Colors.black45,
-                                color: Colors.white,
-                              ),
-                            ),
-                          )
-                        ],
+                      color: ThemeBc.background,
+                      borderRadius: BorderRadius.circular(
+                        20,
                       ),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            offset: Offset(2, 2),
+                            blurRadius: 7,
+                            spreadRadius: 1.0),
+                        BoxShadow(
+                            color: Colors.black.withOpacity(0.5),
+                            offset: Offset(2, 4),
+                            blurRadius: 7.0,
+                            spreadRadius: 1.0),
+                      ]),
+                  height: 1000,
+                  width: 400,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: ListView(
+                      children: [
+                        Container(
+                          child: Text(
+                            '$app_agreement_cn',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                              // backgroundColor: Colors.black45,
+                              color: Colors.white,
+                            ),
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ),
@@ -187,12 +187,6 @@ class _settingpolicyState extends State<settingpolicy>
 
     Widget settingpolicyEN() {
       return Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [Colors.pinkAccent, Colors.orangeAccent],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft),
-        ),
         height: 1000,
         child: ListView(
           scrollDirection: Axis.horizontal,
@@ -204,37 +198,40 @@ class _settingpolicyState extends State<settingpolicy>
                 padding: const EdgeInsets.all(5),
                 child: Container(
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: [Colors.pinkAccent, Colors.orangeAccent],
-                        begin: Alignment.topRight,
-                        end: Alignment.bottomLeft),
-                  ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(colors: [
-                        ThemeBc.background,
-                        ThemeBc.background,
-                      ], begin: Alignment.topRight, end: Alignment.bottomLeft),
-                    ),
-                    height: 1000,
-                    width: 400,
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: ListView(
-                        children: [
-                          Container(
-                            child: Text(
-                              '$app_agreement_en',
-                              style: TextStyle(
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.bold,
-                                // backgroundColor: Colors.black45,
-                                color: Colors.white,
-                              ),
-                            ),
-                          )
-                        ],
+                      color: ThemeBc.background,
+                      borderRadius: BorderRadius.circular(
+                        20,
                       ),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            offset: Offset(2, 2),
+                            blurRadius: 7,
+                            spreadRadius: 1.0),
+                        BoxShadow(
+                            color: Colors.black.withOpacity(0.5),
+                            offset: Offset(2, 4),
+                            blurRadius: 7.0,
+                            spreadRadius: 1.0),
+                      ]),
+                  height: 1000,
+                  width: 400,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: ListView(
+                      children: [
+                        Container(
+                          child: Text(
+                            '$app_agreement_en',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                              // backgroundColor: Colors.black45,
+                              color: Colors.white,
+                            ),
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ),

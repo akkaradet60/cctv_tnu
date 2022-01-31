@@ -220,21 +220,25 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                                       child: Column(
                                         // mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
+                                          SizedBox(height: 10),
                                           ListTile(
                                             title: Container(
                                               width: 300,
-                                              height: 20,
+                                              height: 30,
                                               child: ListView(
                                                 scrollDirection:
                                                     Axis.horizontal,
                                                 children: [
-                                                  SizedBox(height: 20),
+                                                  SizedBox(height: 50),
                                                   Text(
                                                     '${snapshot.data!['data'][index]['hotline_name']}',
-                                                    style: primaryTextStyle
-                                                        .copyWith(
-                                                            fontSize: 18,
-                                                            fontWeight: medium),
+                                                    style: TextStyle(
+                                                      fontSize: 18.0,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      // backgroundColor: Colors.black45,
+                                                      color: ThemeBc.black,
+                                                    ),
                                                   ),
                                                 ],
                                               ),
@@ -259,14 +263,14 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                                                         },
                                                         icon: Icon(
                                                           Icons.phone,
-                                                          color: Colors.pink,
+                                                          color: ThemeBc.white,
                                                           size: 30,
                                                         ),
                                                         label: Text(''),
                                                         style: ElevatedButton
                                                             .styleFrom(
-                                                          primary:
-                                                              Colors.orange,
+                                                          primary: ThemeBc
+                                                              .background,
                                                           elevation: 10,
                                                           shape: RoundedRectangleBorder(
                                                               borderRadius: BorderRadius
@@ -320,14 +324,14 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                                                             }),
                                                         icon: Icon(
                                                           Icons.maps_home_work,
-                                                          color: Colors.pink,
+                                                          color: ThemeBc.white,
                                                           size: 30,
                                                         ),
                                                         label: Text(''),
                                                         style: ElevatedButton
                                                             .styleFrom(
-                                                          primary:
-                                                              Colors.orange,
+                                                          primary: ThemeBc
+                                                              .background,
                                                           elevation: 10,
                                                           shape: RoundedRectangleBorder(
                                                               borderRadius: BorderRadius

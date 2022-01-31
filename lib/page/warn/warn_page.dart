@@ -257,36 +257,45 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
                               blurRadius: 7.0,
                               spreadRadius: 1.0),
                         ]),
-                    child: FormBuilderDropdown(
-                      name: "em_type",
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        child: FormBuilderDropdown(
+                          name: "em_type",
 
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(
-                            20.0,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                20.0,
+                              ),
+                            ),
+                            suffixIcon: Icon(Icons.article),
+                            // labelText: 'เลือกประเภทการแจ้งเหตุ',
+                            fillColor: Colors.white,
+                            filled: true,
                           ),
-                        ),
-                        suffixIcon: Icon(Icons.article),
-                        // labelText: 'เลือกประเภทการแจ้งเหตุ',
-                        fillColor: Colors.white,
-                        filled: true,
-                      ),
-                      // initialValue: 'Male',
-                      //allowClear: true,
-                      hint: Text('เลือกประเภทการแจ้งเหตุ'),
+                          // initialValue: 'Male',
+                          //allowClear: true,
+                          hint: Text('เลือกประเภทการแจ้งเหตุ'),
 
-                      initialValue: '1',
-                      items: [
-                        DropdownMenuItem(
-                          value: '1',
-                          child: Text('ผู้ป่วยฉุกเฉิน'),
+                          initialValue: '1',
+                          items: [
+                            DropdownMenuItem(
+                              value: '1',
+                              child: Text('ผู้ป่วยฉุกเฉิน'),
+                            ),
+                            DropdownMenuItem(
+                                value: '2', child: Text('ไฟฟ้ารั่ว')),
+                            DropdownMenuItem(value: '3', child: Text('ไฟไหม้')),
+                            DropdownMenuItem(
+                                value: '4', child: Text('เหตุระเบิด')),
+                            DropdownMenuItem(
+                                value: '5', child: Text('อุบัติเหตุ')),
+                            DropdownMenuItem(
+                                value: '6', child: Text('อาชญากรรม')),
+                          ],
                         ),
-                        DropdownMenuItem(value: '2', child: Text('ไฟฟ้ารั่ว')),
-                        DropdownMenuItem(value: '3', child: Text('ไฟไหม้')),
-                        DropdownMenuItem(value: '4', child: Text('เหตุระเบิด')),
-                        DropdownMenuItem(value: '5', child: Text('อุบัติเหตุ')),
-                        DropdownMenuItem(value: '6', child: Text('อาชญากรรม')),
-                      ],
+                      ),
                     ),
                   ),
                   SizedBox(height: 18),
@@ -309,20 +318,25 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
                               blurRadius: 7.0,
                               spreadRadius: 1.0),
                         ]),
-                    child: FormBuilderTextField(
-                      name: "em_owner",
-                      maxLines: 1,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(
-                            20.0,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        child: FormBuilderTextField(
+                          name: "em_owner",
+                          maxLines: 1,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                20.0,
+                              ),
+                            ),
+                            suffixIcon: Icon(Icons.email),
+                            labelText: 'ชื่อผู้แจ้ง',
+                            fillColor: Colors.white,
+                            filled: true,
                           ),
                         ),
-                        suffixIcon: Icon(Icons.email),
-                        labelText: 'ชื่อผู้แจ้ง',
-                        fillColor: Colors.white,
-                        filled: true,
                       ),
                     ),
                   ),
@@ -345,23 +359,28 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
                               blurRadius: 7.0,
                               spreadRadius: 1.0),
                         ]),
-                    child: FormBuilderTextField(
-                      name: "em_phone",
-                      maxLines: 1,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(
-                            20.0,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        child: FormBuilderTextField(
+                          name: "em_phone",
+                          maxLines: 1,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                20.0,
+                              ),
+                            ),
+                            suffixIcon: Icon(Icons.phone_android),
+                            labelText: 'เบอร์โทรศัพท์',
+                            //   labelStyle: TextStyle(
+                            //   color: Color(0xFF6200EE),
+                            // ),
+                            fillColor: Colors.white,
+                            filled: true,
                           ),
                         ),
-                        suffixIcon: Icon(Icons.phone_android),
-                        labelText: 'เบอร์โทรศัพท์',
-                        //   labelStyle: TextStyle(
-                        //   color: Color(0xFF6200EE),
-                        // ),
-                        fillColor: Colors.white,
-                        filled: true,
                       ),
                     ),
                   ),
@@ -384,20 +403,25 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
                               blurRadius: 7.0,
                               spreadRadius: 1.0),
                         ]),
-                    child: FormBuilderTextField(
-                      name: "em_detail",
-                      maxLines: 1,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(
-                            20.0,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        child: FormBuilderTextField(
+                          name: "em_detail",
+                          maxLines: 1,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                20.0,
+                              ),
+                            ),
+                            suffixIcon: Icon(Icons.description),
+                            labelText: 'รายละเอียดเหตุการณ์',
+                            fillColor: Colors.white,
+                            filled: true,
                           ),
                         ),
-                        suffixIcon: Icon(Icons.description),
-                        labelText: 'รายละเอียดเหตุการณ์',
-                        fillColor: Colors.white,
-                        filled: true,
                       ),
                     ), //รายละเอียดเหตุการณ์
                   ),
@@ -405,23 +429,40 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
                   SizedBox(height: 18),
                   Container(
                     decoration: BoxDecoration(
+                        color: secondaryTextColor,
                         borderRadius: BorderRadius.circular(
                           20,
                         ),
-                        boxShadow: []),
-                    child: FormBuilderImagePicker(
-                      name: 'emi_path_name',
-                      iconColor: Colors.black,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(
-                            20.0,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              offset: Offset(2, 2),
+                              blurRadius: 7,
+                              spreadRadius: 1.0),
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.5),
+                              offset: Offset(2, 4),
+                              blurRadius: 7.0,
+                              spreadRadius: 1.0),
+                        ]),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        child: FormBuilderImagePicker(
+                          name: 'emi_path_name',
+                          iconColor: Colors.black,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                20.0,
+                              ),
+                            ),
+                            labelText: 'ภาพประกอบเหตุการ',
+                            filled: true,
                           ),
+                          maxImages: 1,
                         ),
-                        labelText: 'ภาพประกอบเหตุการ',
-                        filled: true,
                       ),
-                      maxImages: 1,
                     ),
                   ),
                   SizedBox(height: 18),

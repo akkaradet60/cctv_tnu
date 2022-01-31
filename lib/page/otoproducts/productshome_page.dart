@@ -109,33 +109,56 @@ class _productshome_page extends State<productshome_page> {
   Widget sso(BuildContext context) {
     return Container(
       color: ThemeBc.background,
-      child: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          decoration: BoxDecoration(
+              color: secondaryTextColor,
+              borderRadius: BorderRadius.circular(
+                20,
               ),
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      20.0,
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    offset: Offset(2, 2),
+                    blurRadius: 7,
+                    spreadRadius: 1.0),
+                BoxShadow(
+                    color: Colors.black.withOpacity(0.5),
+                    offset: Offset(2, 4),
+                    blurRadius: 7.0,
+                    spreadRadius: 1.0),
+              ]),
+          child: SafeArea(
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          20.0,
+                        ),
+                      ),
+                      suffixIcon: IconButton(
+                        icon: Icon(Icons.search),
+                        onPressed: () =>
+                            Navigator.pushNamed(context, '/productstore_page'),
+                      ),
+                      labelText: 'ค้นหา',
+                      fillColor: Colors.white,
+                      filled: true,
                     ),
                   ),
-                  suffixIcon: IconButton(
-                    icon: Icon(Icons.search),
-                    onPressed: () => Navigator.pushNamed(context, '/map_prod'),
-                  ),
-                  labelText: 'ค้นหา',
-                  fillColor: Colors.white,
-                  filled: true,
-                ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),
@@ -223,8 +246,10 @@ class _productshome_page extends State<productshome_page> {
                                         'productPrice': snapshot.data!['data']
                                             [index]['product_price'],
                                         'productiPathName': snapshot
-                                                        .data!['data'][index]
-                                                    ['product_images'] !=
+                                                                .data!['data']
+                                                            [index]
+                                                        ['product_images'][0]
+                                                    ['producti_path_name'] !=
                                                 null
                                             ? Global.domainImage +
                                                 snapshot.data!['data'][index]
@@ -287,15 +312,14 @@ class _productshome_page extends State<productshome_page> {
                                                                     20.0)),
                                                         child: Image.network(
                                                           snapshot.data!['data']
-                                                                          [
-                                                                          index]
+                                                                              [index]
+                                                                          ['product_images'][0]
                                                                       [
-                                                                      'product_images'] !=
+                                                                      'producti_path_name'] !=
                                                                   null
                                                               ? Global.domainImage +
                                                                   snapshot.data!['data']
-                                                                              [
-                                                                              index]
+                                                                              [index]
                                                                           [
                                                                           'product_images'][0]
                                                                       [
@@ -468,8 +492,10 @@ class _productshome_page extends State<productshome_page> {
                                         'productPrice': snapshot.data!['data']
                                             [index]['product_price'],
                                         'productiPathName': snapshot
-                                                        .data!['data'][index]
-                                                    ['product_images'] !=
+                                                                .data!['data']
+                                                            [index]
+                                                        ['product_images'][0]
+                                                    ['producti_path_name'] !=
                                                 null
                                             ? Global.domainImage +
                                                 snapshot.data!['data'][index]
@@ -532,15 +558,14 @@ class _productshome_page extends State<productshome_page> {
                                                                     20.0)),
                                                         child: Image.network(
                                                           snapshot.data!['data']
-                                                                          [
-                                                                          index]
+                                                                              [index]
+                                                                          ['product_images'][0]
                                                                       [
-                                                                      'product_images'] !=
+                                                                      'producti_path_name'] !=
                                                                   null
                                                               ? Global.domainImage +
                                                                   snapshot.data!['data']
-                                                                              [
-                                                                              index]
+                                                                              [index]
                                                                           [
                                                                           'product_images'][0]
                                                                       [
@@ -711,8 +736,10 @@ class _productshome_page extends State<productshome_page> {
                                         'productPrice': snapshot.data!['data']
                                             [index]['product_price'],
                                         'productiPathName': snapshot
-                                                        .data!['data'][index]
-                                                    ['product_images'] !=
+                                                                .data!['data']
+                                                            [index]
+                                                        ['product_images'][0]
+                                                    ['producti_path_name'] !=
                                                 null
                                             ? Global.domainImage +
                                                 snapshot.data!['data'][index]
@@ -761,7 +788,7 @@ class _productshome_page extends State<productshome_page> {
                                                 Padding(
                                                   padding: EdgeInsets.all(5.0),
                                                   child: Container(
-                                                      height: 100,
+                                                      height: 110,
                                                       child: ClipRRect(
                                                         borderRadius:
                                                             BorderRadius.all(
@@ -769,15 +796,14 @@ class _productshome_page extends State<productshome_page> {
                                                                     20.0)),
                                                         child: Image.network(
                                                           snapshot.data!['data']
-                                                                          [
-                                                                          index]
+                                                                              [index]
+                                                                          ['product_images'][0]
                                                                       [
-                                                                      'product_images'] !=
+                                                                      'producti_path_name'] !=
                                                                   null
                                                               ? Global.domainImage +
                                                                   snapshot.data!['data']
-                                                                              [
-                                                                              index]
+                                                                              [index]
                                                                           [
                                                                           'product_images'][0]
                                                                       [
@@ -789,7 +815,7 @@ class _productshome_page extends State<productshome_page> {
                                                         ),
                                                       )),
                                                 ),
-                                                SizedBox(height: 15),
+                                                SizedBox(height: 0),
                                                 Container(
                                                   decoration: BoxDecoration(
                                                       color: Colors.grey[200],

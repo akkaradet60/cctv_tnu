@@ -351,12 +351,12 @@ class _location_page extends State<location_page> {
                                                     }),
                                                 icon: Icon(
                                                   Icons.maps_home_work,
-                                                  color: Colors.pink,
+                                                  color: ThemeBc.white,
                                                   size: 30,
                                                 ),
                                                 label: Text(''),
                                                 style: ElevatedButton.styleFrom(
-                                                  primary: Colors.orange,
+                                                  primary: ThemeBc.background,
                                                   elevation: 10,
                                                   shape: RoundedRectangleBorder(
                                                       borderRadius:

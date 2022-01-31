@@ -27,6 +27,7 @@ class _travel_page extends State<travel_page> {
     super.initState();
   }
 
+  var index;
   var productt;
   var detail;
 
@@ -71,9 +72,7 @@ class _travel_page extends State<travel_page> {
           // ),
           height: 500,
           width: 500,
-          margin: EdgeInsets.only(
-            top: 10,
-          ),
+
           child: FutureBuilder<Map<String, dynamic>>(
             future: getDataSlide(),
             builder: (context, snapshot) {
@@ -87,11 +86,22 @@ class _travel_page extends State<travel_page> {
                       child: Container(
                         height: 480,
                         decoration: BoxDecoration(
-                          color: ThemeBc.background,
-                          borderRadius: BorderRadius.circular(
-                            30,
-                          ),
-                        ),
+                            color: ThemeBc.background,
+                            borderRadius: BorderRadius.circular(
+                              30,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  offset: Offset(2, 2),
+                                  blurRadius: 7,
+                                  spreadRadius: 1.0),
+                              BoxShadow(
+                                  color: Colors.black.withOpacity(0.5),
+                                  offset: Offset(2, 4),
+                                  blurRadius: 7.0,
+                                  spreadRadius: 1.0),
+                            ]),
                         child: Center(
                           child: Column(
                             // scrollDirection: Axis.horizontal,
@@ -139,22 +149,22 @@ class _travel_page extends State<travel_page> {
                                                         20,
                                                       ),
                                                       boxShadow: [
-                                                        BoxShadow(
-                                                            color: Colors.grey
-                                                                .withOpacity(
-                                                                    0.5),
-                                                            offset:
-                                                                Offset(2, 2),
-                                                            blurRadius: 7,
-                                                            spreadRadius: 1.0),
-                                                        BoxShadow(
-                                                            color: Colors.black
-                                                                .withOpacity(
-                                                                    0.5),
-                                                            offset:
-                                                                Offset(2, 4),
-                                                            blurRadius: 7.0,
-                                                            spreadRadius: 1.0),
+                                                        // BoxShadow(
+                                                        //     color: Colors.grey
+                                                        //         .withOpacity(
+                                                        //             0.5),
+                                                        //     offset:
+                                                        //         Offset(2, 2),
+                                                        //     blurRadius: 7,
+                                                        //     spreadRadius: 1.0),
+                                                        // BoxShadow(
+                                                        //     color: Colors.black
+                                                        //         .withOpacity(
+                                                        //             0.5),
+                                                        //     offset:
+                                                        //         Offset(2, 4),
+                                                        //     blurRadius: 7.0,
+                                                        //     spreadRadius: 1.0),
                                                       ]),
                                                   width: 320,
                                                   height: 250,
@@ -367,14 +377,22 @@ class _travel_page extends State<travel_page> {
         child: Container(
           height: 60,
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [ThemeBc.background, ThemeBc.background],
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft),
-            borderRadius: BorderRadius.circular(
-              30,
-            ),
-          ),
+              color: ThemeBc.background,
+              borderRadius: BorderRadius.circular(
+                30,
+              ),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    offset: Offset(2, 2),
+                    blurRadius: 7,
+                    spreadRadius: 1.0),
+                BoxShadow(
+                    color: Colors.black.withOpacity(0.5),
+                    offset: Offset(2, 4),
+                    blurRadius: 7.0,
+                    spreadRadius: 1.0),
+              ]),
           child: Column(
             children: [
               SizedBox(height: 10),
@@ -395,6 +413,13 @@ class _travel_page extends State<travel_page> {
       );
     }
 
+    late List<String> titles = [
+      ' 1 ',
+      ' 2 ',
+      ' 3 ',
+      ' 4 ',
+      ' 5',
+    ];
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
@@ -418,7 +443,7 @@ class _travel_page extends State<travel_page> {
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors: [Colors.pinkAccent, Colors.orangeAccent],
+                colors: [ThemeBc.white, ThemeBc.white],
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft),
           ),
@@ -426,7 +451,7 @@ class _travel_page extends State<travel_page> {
             children: [
               // titleMenus(),
               titleMenus(),
-              SizedBox(height: 0),
+
               ss1(context),
 
               //  sss2(context),

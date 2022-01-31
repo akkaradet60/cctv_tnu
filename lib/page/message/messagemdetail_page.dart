@@ -152,18 +152,18 @@ class _messagemdetail_page extends State<messagemdetail_page> {
                                             width: double.infinity,
                                           ),
                                         ),
-                                        Center(
-                                          child: Text(
-                                            // '${titles[_currentIndex]}',
-                                            '${snapshot.data!['data'][item]['blog_name']}',
-                                            style: TextStyle(
-                                              fontSize: 24.0,
-                                              fontWeight: FontWeight.bold,
-                                              backgroundColor: Colors.black45,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                        ),
+                                        // Center(
+                                        //   child: Text(
+                                        //     // '${titles[_currentIndex]}',
+                                        //     '${snapshot.data!['data'][item]['blog_name']}',
+                                        //     style: TextStyle(
+                                        //       fontSize: 24.0,
+                                        //       fontWeight: FontWeight.bold,
+                                        //       backgroundColor: Colors.black45,
+                                        //       color: Colors.white,
+                                        //     ),
+                                        //   ),
+                                        // ),
                                       ],
                                     ),
                                   ),

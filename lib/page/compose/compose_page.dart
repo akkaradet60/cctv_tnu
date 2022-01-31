@@ -216,81 +216,52 @@ class _compose_page extends State<compose_page>
                               blurRadius: 7.0,
                               spreadRadius: 1.0),
                         ]),
-                    child: FormBuilderDropdown(
-                      name: "em_type",
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        child: FormBuilderDropdown(
+                          name: "em_type",
 
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(
-                            20.0,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                20.0,
+                              ),
+                            ),
+                            suffixIcon: Icon(Icons.article),
+                            //labelText: 'เลือกประเภทร้องเรียน',
+                            fillColor: Colors.white,
+                            filled: true,
                           ),
-                        ),
-                        suffixIcon: Icon(Icons.article),
-                        //labelText: 'เลือกประเภทร้องเรียน',
-                        fillColor: Colors.white,
-                        filled: true,
-                      ),
-                      // initialValue: 'Male',
-                      //allowClear: true,
-                      hint: Text('เลือกประเภทร้องเรียน'),
+                          // initialValue: 'Male',
+                          //allowClear: true,
+                          hint: Text('เลือกประเภทร้องเรียน'),
 
-                      initialValue: '1',
-                      items: [
-                        DropdownMenuItem(
-                          value: '1',
-                          child: Text('ไฟฟ้าดับ'),
+                          initialValue: '1',
+                          items: [
+                            DropdownMenuItem(
+                              value: '1',
+                              child: Text('ไฟฟ้าดับ'),
+                            ),
+                            DropdownMenuItem(
+                                value: '2', child: Text('น้ำประปาไม่ไหล')),
+                            DropdownMenuItem(
+                                value: '3', child: Text('แจ้งซ่อมทางเดินเท้า')),
+                            DropdownMenuItem(
+                                value: '4', child: Text('แจ้งซ่อมถนน')),
+                            DropdownMenuItem(
+                                value: '5',
+                                child: Text('เรื่องร้องเรียนฝาท่อ')),
+                            DropdownMenuItem(
+                                value: '6', child: Text('ขยะไม่ได้รับกำจัด')),
+                            DropdownMenuItem(
+                                value: '7', child: Text('ได้รับการบริการ')),
+                            DropdownMenuItem(
+                                value: '8',
+                                child: Text('หน้าที่ที่ไม่เหมาะสม')),
+                            DropdownMenuItem(value: '9', child: Text('อื่นๆ')),
+                          ],
                         ),
-                        DropdownMenuItem(
-                            value: '2', child: Text('น้ำประปาไม่ไหล')),
-                        DropdownMenuItem(
-                            value: '3', child: Text('แจ้งซ่อมทางเดินเท้า')),
-                        DropdownMenuItem(
-                            value: '4', child: Text('แจ้งซ่อมถนน')),
-                        DropdownMenuItem(
-                            value: '5', child: Text('เรื่องร้องเรียนฝาท่อ')),
-                        DropdownMenuItem(
-                            value: '6', child: Text('ขยะไม่ได้รับกำจัด')),
-                        DropdownMenuItem(
-                            value: '7', child: Text('ได้รับการบริการ')),
-                        DropdownMenuItem(
-                            value: '8', child: Text('หน้าที่ที่ไม่เหมาะสม')),
-                        DropdownMenuItem(value: '9', child: Text('อื่นๆ')),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 18),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: secondaryTextColor,
-                        borderRadius: BorderRadius.circular(
-                          20,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              offset: Offset(2, 2),
-                              blurRadius: 7,
-                              spreadRadius: 1.0),
-                          BoxShadow(
-                              color: Colors.black.withOpacity(0.5),
-                              offset: Offset(2, 4),
-                              blurRadius: 7.0,
-                              spreadRadius: 1.0),
-                        ]),
-                    child: FormBuilderTextField(
-                      name: "em_owner",
-                      maxLines: 1,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(
-                            20.0,
-                          ),
-                        ),
-                        suffixIcon: Icon(Icons.email),
-                        labelText: 'ชื่อผู้แจ้ง',
-                        fillColor: Colors.white,
-                        filled: true,
                       ),
                     ),
                   ),
@@ -313,20 +284,25 @@ class _compose_page extends State<compose_page>
                               blurRadius: 7.0,
                               spreadRadius: 1.0),
                         ]),
-                    child: FormBuilderTextField(
-                      name: "em_phone",
-                      maxLines: 1,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(
-                            20.0,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        child: FormBuilderTextField(
+                          name: "em_owner",
+                          maxLines: 1,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                20.0,
+                              ),
+                            ),
+                            suffixIcon: Icon(Icons.email),
+                            labelText: 'ชื่อผู้แจ้ง',
+                            fillColor: Colors.white,
+                            filled: true,
                           ),
                         ),
-                        suffixIcon: Icon(Icons.phone_android),
-                        labelText: 'เบอร์โทรศัพท์',
-                        fillColor: Colors.white,
-                        filled: true,
                       ),
                     ),
                   ),
@@ -349,43 +325,106 @@ class _compose_page extends State<compose_page>
                               blurRadius: 7.0,
                               spreadRadius: 1.0),
                         ]),
-                    child: FormBuilderTextField(
-                      name: "em_detail",
-                      maxLines: 1,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(
-                            20.0,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        child: FormBuilderTextField(
+                          name: "em_phone",
+                          maxLines: 1,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                20.0,
+                              ),
+                            ),
+                            suffixIcon: Icon(Icons.phone_android),
+                            labelText: 'เบอร์โทรศัพท์',
+                            fillColor: Colors.white,
+                            filled: true,
                           ),
                         ),
-                        suffixIcon: Icon(Icons.description),
-                        labelText: 'รายละเอียดเหตุการณ์',
-                        fillColor: Colors.white,
-                        filled: true,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 18),
+                  Container(
+                    decoration: BoxDecoration(
+                        color: secondaryTextColor,
+                        borderRadius: BorderRadius.circular(
+                          20,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              offset: Offset(2, 2),
+                              blurRadius: 7,
+                              spreadRadius: 1.0),
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.5),
+                              offset: Offset(2, 4),
+                              blurRadius: 7.0,
+                              spreadRadius: 1.0),
+                        ]),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        child: FormBuilderTextField(
+                          name: "em_detail",
+                          maxLines: 1,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                20.0,
+                              ),
+                            ),
+                            suffixIcon: Icon(Icons.description),
+                            labelText: 'รายละเอียดเหตุการณ์',
+                            fillColor: Colors.white,
+                            filled: true,
+                          ),
+                        ),
                       ),
                     ), //รายละเอียดเหตุการณ์
                   ),
                   SizedBox(height: 18),
                   Container(
                     decoration: BoxDecoration(
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(
                           20,
                         ),
-                        boxShadow: []),
-                    child: FormBuilderImagePicker(
-                      name: 'emi_path_name',
-                      iconColor: Colors.white70,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(
-                            20.0,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              offset: Offset(2, 2),
+                              blurRadius: 7,
+                              spreadRadius: 1.0),
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.5),
+                              offset: Offset(2, 4),
+                              blurRadius: 7.0,
+                              spreadRadius: 1.0),
+                        ]),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        child: FormBuilderImagePicker(
+                          name: 'emi_path_name',
+                          iconColor: Colors.black,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(
+                                20.0,
+                              ),
+                            ),
+                            labelText: 'ภาพประกอบเหตุการ',
+                            filled: true,
                           ),
+                          maxImages: 1,
                         ),
-                        labelText: 'ภาพประกอบเหตุการ',
-                        filled: true,
                       ),
-                      maxImages: 1,
                     ),
                   ),
                   SizedBox(height: 18),

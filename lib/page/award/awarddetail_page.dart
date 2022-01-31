@@ -228,59 +228,61 @@ class _awarddetail_page extends State<awarddetail_page> {
                     children: [
                       SizedBox(height: 10),
                       Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                color: ThemeBc.white,
-                                borderRadius: BorderRadius.circular(
-                                  20,
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      offset: Offset(2, 2),
-                                      blurRadius: 7,
-                                      spreadRadius: 1.0),
-                                  BoxShadow(
-                                      color: Colors.black.withOpacity(0.5),
-                                      offset: Offset(2, 4),
-                                      blurRadius: 7.0,
-                                      spreadRadius: 1.0),
-                                ]),
-                            width: 410,
-                            height: 280,
-                            child: ListView(
-                              children: [
-                                Column(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        'ชื่อข่าว ${productt['award_name']}',
-                                        style: TextStyle(
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.bold,
-                                          // backgroundColor: Colors.black45,
-                                          color: Colors.black,
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: ThemeBc.white,
+                                  borderRadius: BorderRadius.circular(
+                                    20,
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.grey.withOpacity(0.5),
+                                        offset: Offset(2, 2),
+                                        blurRadius: 7,
+                                        spreadRadius: 1.0),
+                                    BoxShadow(
+                                        color: Colors.black.withOpacity(0.5),
+                                        offset: Offset(2, 4),
+                                        blurRadius: 7.0,
+                                        spreadRadius: 1.0),
+                                  ]),
+                              width: 410,
+                              height: 280,
+                              child: ListView(
+                                children: [
+                                  Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          'รางวัล : ${productt['award_name']}',
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                            fontWeight: FontWeight.bold,
+                                            // backgroundColor: Colors.black45,
+                                            color: ThemeBc.black,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        'เนื้อข่าว ${productt['award_detail']}',
-                                        style: TextStyle(
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.bold,
-                                          // backgroundColor: Colors.black45,
-                                          color: Colors.black,
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          'เนื้อหา : ${productt['award_detail']}',
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                            fontWeight: FontWeight.bold,
+                                            color: ThemeBc.black,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],

@@ -60,6 +60,12 @@ class MenusCustom extends StatelessWidget {
             SizedBox(height: 12),
             Text(
               titleMenus,
+              style: TextStyle(
+                fontSize: 13.0,
+                fontWeight: FontWeight.bold,
+                // backgroundColor: Colors.black45,
+                color: Colors.white,
+              ),
             ),
             Text(titleMenus1),
           ],

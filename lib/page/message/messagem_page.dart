@@ -49,6 +49,14 @@ class _message_pageState extends State<message_page> {
     }
   }
 
+  late List<String> titles = [
+    ' 1 ',
+    ' 2 ',
+    ' 3 ',
+    ' 4 ',
+    ' 5',
+  ];
+
   /* void _incrementCounter() {
     setState(() {
       _counter++;
@@ -170,18 +178,18 @@ class _message_pageState extends State<message_page> {
                                 fit: BoxFit.cover,
                                 width: double.infinity,
                               ),
-                              Center(
-                                child: Text(
-                                  // '${titles[_currentIndex]}',
-                                  '${snapshot.data!['data'][item]['blog_name']}',
-                                  style: TextStyle(
-                                    fontSize: 24.0,
-                                    fontWeight: FontWeight.bold,
-                                    backgroundColor: Colors.black45,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
+                              // Center(
+                              //   child: Text(
+                              //     // '${titles[_currentIndex]}',
+                              //     '${snapshot.data!['data'][item]['blog_name']}',
+                              //     style: TextStyle(
+                              //       fontSize: 24.0,
+                              //       fontWeight: FontWeight.bold,
+                              //       backgroundColor: Colors.black45,
+                              //       color: Colors.white,
+                              //     ),
+                              //   ),
+                              // ),
                             ],
                           ),
                         ),
@@ -386,88 +394,6 @@ class _message_pageState extends State<message_page> {
                   );
                 },
               );
-              // return ListView.separated(
-              //     itemBuilder: (context, index) {
-              // return Text('3232');
-              // return CarouselSlider.builder(
-              //   itemCount: snapshot.data!['data'].length,
-              //   options: CarouselOptions(
-              //     autoPlay: true,
-              //     enlargeCenterPage: true,
-              //     viewportFraction: 0.9,
-              //     aspectRatio: 2.0,
-              //     initialPage: 2,
-              //     onPageChanged: (index, reason) {
-              //       setState(
-              //         () {
-              //           _currentIndex = index;
-              //         },
-              //       );
-              //     },
-              //   ),
-              //   itemBuilder:
-              //       (BuildContext context, int item, int pageViewIndex) =>
-
-              //           // Text('${snapshot.data!['data'][item]['blog_id']}');
-              //           //     Container(
-              //           //   child: Center(child: Text(item.toString())),
-              //           //   color: Colors.green,
-              //           // ),
-              //           NeumorphicButton(
-              //     style: NeumorphicStyle(
-              //       shape: NeumorphicShape.flat,
-              //       // boxShape:
-              //       //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-              //       // boxShape: NeumorphicBoxShape.circle(),
-              //       color: Colors.white,
-              //     ),
-              //     padding: EdgeInsets.all(0),
-              //     child: Container(
-              //       height: 20,
-              //       child: Card(
-              //         margin: EdgeInsets.only(
-              //           top: 10.0,
-              //           bottom: 10.0,
-              //         ),
-              //         elevation: 6.0,
-              //         // shadowColor: Colors.redAccent,
-              //         // shape: RoundedRectangleBorder(
-              //         //     // borderRadius: BorderRadius.circular(30.0),
-              //         //     ),
-              //         child: ClipRRect(
-              //           borderRadius: BorderRadius.all(
-              //             Radius.circular(3.0),
-              //           ),
-              //           child: Stack(
-              //             children: <Widget>[
-              //               Image.network(
-              //                 snapshot.data!['data'][item]['blog_images'] !=
-              //                         null
-              //                     ? snapshot.data!['data'][item]['blog_images']
-              //                         [0]['blogi_path_name']
-              //                     : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
-              //                 fit: BoxFit.cover,
-              //                 width: double.infinity,
-              //               ),
-              //               Center(
-              //                 child: Text(
-              //                   // '${titles[_currentIndex]}',
-              //                   '${snapshot.data!['data'][item]['blog_name']}',
-              //                   style: TextStyle(
-              //                     fontSize: 24.0,
-              //                     fontWeight: FontWeight.bold,
-              //                     backgroundColor: Colors.black45,
-              //                     color: Colors.white,
-              //                   ),
-              //                 ),
-              //               ),
-              //             ],
-              //           ),
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // );
             } else if (snapshot.hasError) {
               return Center(
                   child: Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
@@ -546,6 +472,25 @@ class _message_pageState extends State<message_page> {
             children: [
               // titleMenus(),
               ssss(context),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: titles.map((urlOfItem) {
+                  int index = titles.indexOf(urlOfItem);
+                  return Container(
+                    width: 10.0,
+                    height: 10.0,
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 10.0, horizontal: 2.0),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: _currentIndex == index
+                          ? const Color.fromRGBO(0, 0, 0, 0.8)
+                          : const Color.fromRGBO(0, 0, 0, 0.3),
+                    ),
+                  );
+                }).toList(),
+              ),
+              // a
               titleMenus1(),
               ss1(context),
 

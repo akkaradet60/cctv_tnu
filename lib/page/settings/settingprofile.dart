@@ -2,14 +2,14 @@ import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:cctv_tun/page/profile/app_reducer.dart';
-import 'package:cctv_tun/page/profile/profile_action.dart';
+
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 import 'package:http/http.dart' as http;
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'dart:convert';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class settingprofile extends StatefulWidget {
   @override
@@ -34,7 +34,7 @@ class _EmergecyPageState extends State<settingprofile>
   }
 
   var newProfile;
-
+  var oi = 'ssss';
   // // List<Data> data = [];
   // Future<void> getData() async {
   //   var url = Uri.parse('https://api.codingthailand.com/api/course');
@@ -103,12 +103,17 @@ class _EmergecyPageState extends State<settingprofile>
                                       body: {
                                     "user_app_id": Global.app_id,
                                     "user_id": profile['user_id'],
-
+                                    "user_prov": formValues['user_prov'],
+                                    "user_dis": formValues['user_dis'],
+                                    "user_sub": formValues['user_sub'],
+                                    "user_address": formValues['user_address'],
+                                    "user_zip_code":
+                                        formValues['user_zip_code'],
                                     "user_lastname":
                                         formValues['user_lastname'],
                                     "user_firstname":
                                         formValues['user_firstname'],
-                                    "user_card_id": formValues['user_card_id'],
+                                    // "user_card_id": formValues['user_card_id'],
                                     "user_email": formValues['user_email'],
                                     "user_status": '1',
 
@@ -192,6 +197,7 @@ class _EmergecyPageState extends State<settingprofile>
                                       fit: BoxFit.fill),
                                 ),
                               ),
+
                               const SizedBox(height: 20),
                               Container(
                                 decoration: BoxDecoration(
@@ -211,21 +217,89 @@ class _EmergecyPageState extends State<settingprofile>
                                           blurRadius: 7.0,
                                           spreadRadius: 1.0),
                                     ]),
-                                child: FormBuilderTextField(
-                                  initialValue: '${profile['user_firstname']}',
-                                  name: "user_firstname",
-                                  maxLines: 1,
-                                  keyboardType: TextInputType.emailAddress,
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        20.0,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        color: secondaryTextColor,
+                                        borderRadius: BorderRadius.circular(
+                                          20,
+                                        ),
+                                        boxShadow: [
+                                          // BoxShadow(
+                                          //     color: Colors.grey.withOpacity(0.5),
+                                          //     offset: Offset(2, 2),
+                                          //     blurRadius: 7,
+                                          //     spreadRadius: 1.0),
+                                          // BoxShadow(
+                                          //     color: Colors.black.withOpacity(0.5),
+                                          //     offset: Offset(2, 4),
+                                          //     blurRadius: 7.0,
+                                          //     spreadRadius: 1.0),
+                                        ]),
+
+                                    child: FormBuilderTextField(
+                                      initialValue:
+                                          '${profile['user_firstname']}',
+                                      name: "user_firstname",
+                                      maxLines: 1,
+                                      keyboardType: TextInputType.emailAddress,
+                                      decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            20.0,
+                                          ),
+                                        ),
+                                        suffixIcon: Icon(Icons.description),
+                                        labelText: 'ชื่อ',
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                      ),
+                                    ), //รายละเอียดเหตุการณ์
+                                  ),
+                                ),
+                              ),
+
+                              SizedBox(height: 10),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: secondaryTextColor,
+                                    borderRadius: BorderRadius.circular(
+                                      20,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          offset: Offset(2, 2),
+                                          blurRadius: 7,
+                                          spreadRadius: 1.0),
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.5),
+                                          offset: Offset(2, 4),
+                                          blurRadius: 7.0,
+                                          spreadRadius: 1.0),
+                                    ]),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: FormBuilderTextField(
+                                      initialValue:
+                                          '${profile['user_lastname']}',
+                                      name: "user_lastname",
+                                      maxLines: 1,
+                                      keyboardType: TextInputType.emailAddress,
+                                      decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            20.0,
+                                          ),
+                                        ),
+                                        suffixIcon: Icon(Icons.description),
+                                        labelText: 'นามสกุล',
+                                        fillColor: Colors.white,
+                                        filled: true,
                                       ),
                                     ),
-                                    suffixIcon: Icon(Icons.description),
-                                    labelText: 'ชื่อ',
-                                    fillColor: Colors.white,
-                                    filled: true,
                                   ),
                                 ), //รายละเอียดเหตุการณ์
                               ),
@@ -249,21 +323,27 @@ class _EmergecyPageState extends State<settingprofile>
                                           blurRadius: 7.0,
                                           spreadRadius: 1.0),
                                     ]),
-                                child: FormBuilderTextField(
-                                  initialValue: '${profile['user_lastname']}',
-                                  name: "user_lastname",
-                                  maxLines: 1,
-                                  keyboardType: TextInputType.emailAddress,
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        20.0,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: FormBuilderTextField(
+                                      initialValue:
+                                          '${profile['user_card_id']}',
+                                      name: "user_card_id",
+                                      maxLines: 1,
+                                      keyboardType: TextInputType.emailAddress,
+                                      decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            20.0,
+                                          ),
+                                        ),
+                                        suffixIcon: Icon(Icons.description),
+                                        labelText: 'รหัสบัตรประจำประชาชน',
+                                        fillColor: Colors.white,
+                                        filled: true,
                                       ),
                                     ),
-                                    suffixIcon: Icon(Icons.description),
-                                    labelText: 'นามสกุล',
-                                    fillColor: Colors.white,
-                                    filled: true,
                                   ),
                                 ), //รายละเอียดเหตุการณ์
                               ),
@@ -287,21 +367,26 @@ class _EmergecyPageState extends State<settingprofile>
                                           blurRadius: 7.0,
                                           spreadRadius: 1.0),
                                     ]),
-                                child: FormBuilderTextField(
-                                  initialValue: '${profile['user_card_id']}',
-                                  name: "user_card_id",
-                                  maxLines: 1,
-                                  keyboardType: TextInputType.emailAddress,
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        20.0,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: FormBuilderTextField(
+                                      initialValue: '${profile['user_email']}',
+                                      name: "user_email",
+                                      maxLines: 1,
+                                      keyboardType: TextInputType.emailAddress,
+                                      decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            20.0,
+                                          ),
+                                        ),
+                                        suffixIcon: Icon(Icons.description),
+                                        labelText: 'อีเมล',
+                                        fillColor: Colors.white,
+                                        filled: true,
                                       ),
                                     ),
-                                    suffixIcon: Icon(Icons.description),
-                                    labelText: 'รหัสบัตรประจำประชาชน',
-                                    fillColor: Colors.white,
-                                    filled: true,
                                   ),
                                 ), //รายละเอียดเหตุการณ์
                               ),
@@ -325,21 +410,26 @@ class _EmergecyPageState extends State<settingprofile>
                                           blurRadius: 7.0,
                                           spreadRadius: 1.0),
                                     ]),
-                                child: FormBuilderTextField(
-                                  initialValue: '${profile['user_email']}',
-                                  name: "user_email",
-                                  maxLines: 1,
-                                  keyboardType: TextInputType.emailAddress,
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        20.0,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: FormBuilderTextField(
+                                      initialValue: '${profile['user_prov']}',
+                                      name: "user_prov",
+                                      maxLines: 1,
+                                      keyboardType: TextInputType.emailAddress,
+                                      decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            20.0,
+                                          ),
+                                        ),
+                                        suffixIcon: Icon(Icons.description),
+                                        labelText: 'จังหวัด',
+                                        fillColor: Colors.white,
+                                        filled: true,
                                       ),
                                     ),
-                                    suffixIcon: Icon(Icons.description),
-                                    labelText: 'อีเมล',
-                                    fillColor: Colors.white,
-                                    filled: true,
                                   ),
                                 ), //รายละเอียดเหตุการณ์
                               ),
@@ -363,21 +453,26 @@ class _EmergecyPageState extends State<settingprofile>
                                           blurRadius: 7.0,
                                           spreadRadius: 1.0),
                                     ]),
-                                child: FormBuilderTextField(
-                                  initialValue: '',
-                                  name: "ss",
-                                  maxLines: 1,
-                                  keyboardType: TextInputType.emailAddress,
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        20.0,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: FormBuilderTextField(
+                                      initialValue: '${profile['user_dis']}',
+                                      name: "user_dis",
+                                      maxLines: 1,
+                                      keyboardType: TextInputType.emailAddress,
+                                      decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            20.0,
+                                          ),
+                                        ),
+                                        suffixIcon: Icon(Icons.description),
+                                        labelText: 'อำเภอ',
+                                        fillColor: Colors.white,
+                                        filled: true,
                                       ),
                                     ),
-                                    suffixIcon: Icon(Icons.description),
-                                    labelText: 'จังหวัด',
-                                    fillColor: Colors.white,
-                                    filled: true,
                                   ),
                                 ), //รายละเอียดเหตุการณ์
                               ),
@@ -401,21 +496,26 @@ class _EmergecyPageState extends State<settingprofile>
                                           blurRadius: 7.0,
                                           spreadRadius: 1.0),
                                     ]),
-                                child: FormBuilderTextField(
-                                  initialValue: '',
-                                  name: "district",
-                                  maxLines: 1,
-                                  keyboardType: TextInputType.emailAddress,
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        20.0,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: FormBuilderTextField(
+                                      initialValue: '${profile['user_sub']}',
+                                      name: "user_sub",
+                                      maxLines: 1,
+                                      keyboardType: TextInputType.emailAddress,
+                                      decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            20.0,
+                                          ),
+                                        ),
+                                        suffixIcon: Icon(Icons.description),
+                                        labelText: 'ตำบล',
+                                        fillColor: Colors.white,
+                                        filled: true,
                                       ),
                                     ),
-                                    suffixIcon: Icon(Icons.description),
-                                    labelText: 'อำเภอ',
-                                    fillColor: Colors.white,
-                                    filled: true,
                                   ),
                                 ), //รายละเอียดเหตุการณ์
                               ),
@@ -439,21 +539,27 @@ class _EmergecyPageState extends State<settingprofile>
                                           blurRadius: 7.0,
                                           spreadRadius: 1.0),
                                     ]),
-                                child: FormBuilderTextField(
-                                  initialValue: '',
-                                  name: "district",
-                                  maxLines: 1,
-                                  keyboardType: TextInputType.emailAddress,
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        20.0,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: FormBuilderTextField(
+                                      initialValue:
+                                          '${profile['user_address']}',
+                                      name: "user_address",
+                                      maxLines: 1,
+                                      keyboardType: TextInputType.emailAddress,
+                                      decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            20.0,
+                                          ),
+                                        ),
+                                        suffixIcon: Icon(Icons.description),
+                                        labelText: 'ที่อยู่',
+                                        fillColor: Colors.white,
+                                        filled: true,
                                       ),
                                     ),
-                                    suffixIcon: Icon(Icons.description),
-                                    labelText: 'ตำบล',
-                                    fillColor: Colors.white,
-                                    filled: true,
                                   ),
                                 ), //รายละเอียดเหตุการณ์
                               ),
@@ -477,26 +583,31 @@ class _EmergecyPageState extends State<settingprofile>
                                           blurRadius: 7.0,
                                           spreadRadius: 1.0),
                                     ]),
-                                child: FormBuilderTextField(
-                                  initialValue: '',
-                                  name: "district",
-                                  maxLines: 1,
-                                  keyboardType: TextInputType.emailAddress,
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        20.0,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: FormBuilderTextField(
+                                      initialValue:
+                                          '${profile['user_zip_code']}',
+                                      name: "user_zip_code",
+                                      maxLines: 1,
+                                      keyboardType: TextInputType.emailAddress,
+                                      decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            20.0,
+                                          ),
+                                        ),
+                                        suffixIcon: Icon(Icons.description),
+                                        labelText: 'รหัสไปรษณีย์',
+                                        fillColor: Colors.white,
+                                        filled: true,
                                       ),
                                     ),
-                                    suffixIcon: Icon(Icons.description),
-                                    labelText: 'ที่อยู่',
-                                    fillColor: Colors.white,
-                                    filled: true,
                                   ),
                                 ), //รายละเอียดเหตุการณ์
                               ),
-
-                              const SizedBox(height: 10),
+                              SizedBox(height: 15),
                               Container(
                                 decoration: BoxDecoration(
                                     color: secondaryTextColor,
@@ -515,29 +626,31 @@ class _EmergecyPageState extends State<settingprofile>
                                           blurRadius: 7.0,
                                           spreadRadius: 1.0),
                                     ]),
-                                child: FormBuilderTextField(
-                                  initialValue: '',
-                                  name: "district",
-                                  maxLines: 1,
-                                  keyboardType: TextInputType.emailAddress,
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        20.0,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: FormBuilderImagePicker(
+                                      name: 'emi_path_name',
+                                      iconColor: Colors.black,
+                                      decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            20.0,
+                                          ),
+                                        ),
+                                        labelText: 'ภาพประกอบเหตุการ',
+                                        filled: true,
                                       ),
+                                      maxImages: 1,
                                     ),
-                                    suffixIcon: Icon(Icons.description),
-                                    labelText: 'รหัสไปรษณีย์',
-                                    fillColor: Colors.white,
-                                    filled: true,
                                   ),
-                                ), //รายละเอียดเหตุการณ์
+                                ),
                               ),
 
                               SizedBox(height: 20),
                               Container(
                                 width: 390,
-                                height: 45,
+                                height: 60,
                                 padding: EdgeInsets.symmetric(
                                     horizontal: defaultMargin),
                                 color: Colors.transparent,
@@ -546,8 +659,8 @@ class _EmergecyPageState extends State<settingprofile>
                                     onPressed: () {
                                       if (_fbKey.currentState!
                                           .saveAndValidate()) {
-                                        // compose_page(
-                                        //     _fbKey.currentState!.value);
+                                        compose_page(
+                                            _fbKey.currentState!.value);
                                         print(_fbKey.currentState!.value);
                                       }
                                     },
@@ -564,7 +677,9 @@ class _EmergecyPageState extends State<settingprofile>
                                     ),
                                   ),
                                 ),
-                              ), // Expanded(
+                              ),
+
+                              // Expanded(
                               //   child: ElevatedButton.icon(
                               //     label: const Text('บันทึก'),
                               //     icon: const Icon(Icons.save),
