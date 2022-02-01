@@ -46,8 +46,9 @@ dependencies:
   syncfusion_flutter_pdfviewer: ^19.4.43-beta
   slide_to_act: ^2.0.1
   fluttertoast: ^8.0.8
- 
+  image_picker: ^0.8.4+5
   intl: ^0.17.0
+
   # flutter_clean_calendar: ^1.1.0
 
 

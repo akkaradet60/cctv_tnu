@@ -78,13 +78,41 @@ class _productshome_page extends State<productshome_page> {
           backgroundColor: ThemeBc.background,
           title: Center(child: Text('สินค้า OTOP')),
           actions: <Widget>[
-            IconButton(
-              icon: Image.asset('assets/logo.png', scale: 15),
-              tooltip: 'Show Snackbar',
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
-              },
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                    color: ThemeBc.white,
+                    borderRadius: BorderRadius.circular(
+                      20,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          offset: Offset(2, 2),
+                          blurRadius: 7,
+                          spreadRadius: 1.0),
+                      BoxShadow(
+                          color: Colors.black.withOpacity(0.5),
+                          offset: Offset(2, 4),
+                          blurRadius: 7.0,
+                          spreadRadius: 1.0),
+                    ]),
+                child: IconButton(
+                  icon: Icon(
+                    Icons.search,
+                    color: ThemeBc.black,
+                    size: 24.0,
+                  ),
+                  // Image.asset(
+                  //   'assets/fi_home.png',
+                  //   scale: 1,
+                  // ),
+                  tooltip: 'Show Snackbar',
+                  onPressed: () =>
+                      Navigator.pushNamed(context, '/productstore_page'),
+                ),
+              ),
             ),
           ],
         ),
@@ -97,7 +125,14 @@ class _productshome_page extends State<productshome_page> {
           ),
           child: ListView(
             children: [
-              sso(context),
+              SizedBox(
+                width: 20,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [],
+              ),
+              //sso(context),
               propopular_page(context),
               probestseller_page(context),
               probestss(context),
@@ -106,64 +141,64 @@ class _productshome_page extends State<productshome_page> {
         ));
   }
 
-  Widget sso(BuildContext context) {
-    return Container(
-      color: ThemeBc.background,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          decoration: BoxDecoration(
-              color: secondaryTextColor,
-              borderRadius: BorderRadius.circular(
-                20,
-              ),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    offset: Offset(2, 2),
-                    blurRadius: 7,
-                    spreadRadius: 1.0),
-                BoxShadow(
-                    color: Colors.black.withOpacity(0.5),
-                    offset: Offset(2, 4),
-                    blurRadius: 7.0,
-                    spreadRadius: 1.0),
-              ]),
-          child: SafeArea(
-            child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-                  ),
-                  TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                          20.0,
-                        ),
-                      ),
-                      suffixIcon: IconButton(
-                        icon: Icon(Icons.search),
-                        onPressed: () =>
-                            Navigator.pushNamed(context, '/productstore_page'),
-                      ),
-                      labelText: 'ค้นหา',
-                      fillColor: Colors.white,
-                      filled: true,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+  // Widget sso(BuildContext context) {
+  //   return Container(
+  //     color: ThemeBc.background,
+  //     child: Padding(
+  //       padding: const EdgeInsets.all(8.0),
+  //       child: Container(
+  //         decoration: BoxDecoration(
+  //             color: secondaryTextColor,
+  //             borderRadius: BorderRadius.circular(
+  //               20,
+  //             ),
+  //             boxShadow: [
+  //               BoxShadow(
+  //                   color: Colors.grey.withOpacity(0.5),
+  //                   offset: Offset(2, 2),
+  //                   blurRadius: 7,
+  //                   spreadRadius: 1.0),
+  //               BoxShadow(
+  //                   color: Colors.black.withOpacity(0.5),
+  //                   offset: Offset(2, 4),
+  //                   blurRadius: 7.0,
+  //                   spreadRadius: 1.0),
+  //             ]),
+  //         child: SafeArea(
+  //           child: Padding(
+  //             padding: EdgeInsets.all(8.0),
+  //             child: Column(
+  //               mainAxisAlignment: MainAxisAlignment.center,
+  //               crossAxisAlignment: CrossAxisAlignment.start,
+  //               children: [
+  //                 Padding(
+  //                   padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+  //                 ),
+  //                 TextField(
+  //                   decoration: InputDecoration(
+  //                     border: OutlineInputBorder(
+  //                       borderRadius: BorderRadius.circular(
+  //                         20.0,
+  //                       ),
+  //                     ),
+  //                     suffixIcon: IconButton(
+  //                       icon: Icon(Icons.search),
+  //                       onPressed: () =>
+  //                           Navigator.pushNamed(context, '/productstore_page'),
+  //                     ),
+  //                     labelText: 'ค้นหา',
+  //                     fillColor: Colors.white,
+  //                     filled: true,
+  //                   ),
+  //                 ),
+  //               ],
+  //             ),
+  //           ),
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
   Widget probestss(BuildContext context) {
     bool isLoading = true;

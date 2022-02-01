@@ -1,6 +1,6 @@
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
-
+import 'dart:io';
 import 'package:cctv_tun/widgets/custom_button.dart';
 import 'package:cctv_tun/widgets/custom_buttonmenu.dart';
 import 'package:cctv_tun/widgets/menus_custom.dart';
@@ -10,6 +10,7 @@ import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
 import 'dart:convert';
 
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -23,6 +24,47 @@ class compose_page extends StatefulWidget {
 
 class _compose_page extends State<compose_page>
     with SingleTickerProviderStateMixin {
+  var selectedImage;
+  var resJson = '1';
+  onUploadImage() async {
+    var request = http.MultipartRequest(
+      'POST',
+      Uri.parse("https://www.bc-official.com/api/app_nt/api/test/restful.php"),
+    );
+    Map<String, String> headers = {
+      "Accept": "application/json",
+      "Content-type": "multipart/form-data",
+      'Authorization': 'Bearer ${Global.token}'
+    };
+    request.files.add(
+      http.MultipartFile(
+        'files',
+        selectedImage!.readAsBytes().asStream(),
+        selectedImage!.lengthSync(),
+        filename: selectedImage!.path.split('/').last,
+      ),
+    );
+
+    request.headers.addAll(headers);
+    print("request: " + request.toString());
+    var res = await request.send();
+    http.Response response = await http.Response.fromStream(res);
+    setState(() {
+      // resJson = jsonDecode(response.body);
+    });
+  }
+
+  Future getImage() async {
+    //var image = await ImagePicker().getImage(source: ImageSource.gallery);
+    final ImagePicker _picker = ImagePicker();
+    // Pick an image
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      selectedImage = File(image!.path);
+    });
+  }
+
   final tabList = [
     'ร้องเรียน',
     'ร้องเรียนของท่าน',
@@ -390,8 +432,10 @@ class _compose_page extends State<compose_page>
                   ),
                   SizedBox(height: 18),
                   Container(
+                    width: 400,
+                    height: 300,
                     decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: secondaryTextColor,
                         borderRadius: BorderRadius.circular(
                           20,
                         ),
@@ -409,24 +453,120 @@ class _compose_page extends State<compose_page>
                         ]),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        child: FormBuilderImagePicker(
-                          name: 'emi_path_name',
-                          iconColor: Colors.black,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(
-                                20.0,
-                              ),
+                      child: ListView(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('อัพโหลดรูปภาพ'),
+                              ],
                             ),
-                            labelText: 'ภาพประกอบเหตุการ',
-                            filled: true,
                           ),
-                          maxImages: 1,
-                        ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: ThemeBc.white,
+                                      borderRadius: BorderRadius.circular(
+                                        20,
+                                      ),
+                                      boxShadow: []),
+                                  width: 350,
+                                  height: 240,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        selectedImage == null
+                                            ? IconButton(
+                                                icon: Icon(Icons.add_a_photo),
+                                                tooltip: 'Show Snackbar',
+                                                onPressed: getImage,
+                                              )
+                                            : Container(
+                                                height: 200,
+                                                child: ListView(
+                                                  children: [
+                                                    Container(
+                                                        height: 100,
+                                                        child: Image.file(
+                                                            selectedImage!)),
+                                                  ],
+                                                ),
+                                              ),
+                                        // Text(resJson),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
+                      //Container(
+                      //   child: FormBuilderImagePicker(
+                      //     name: 'emi_path_name',
+                      //     iconColor: Colors.black,
+                      //     decoration: InputDecoration(
+                      //       border: OutlineInputBorder(
+                      //         borderRadius: BorderRadius.circular(
+                      //           20.0,
+                      //         ),
+                      //       ),
+                      //       labelText: 'ภาพประกอบเหตุการ',
+                      //       filled: true,
+                      //     ),
+                      //     maxImages: 1,
+                      //   ),
+                      // ),
                     ),
                   ),
+                  // Container(
+                  //   decoration: BoxDecoration(
+                  //       color: Colors.white,
+                  //       borderRadius: BorderRadius.circular(
+                  //         20,
+                  //       ),
+                  //       boxShadow: [
+                  //         BoxShadow(
+                  //             color: Colors.grey.withOpacity(0.5),
+                  //             offset: Offset(2, 2),
+                  //             blurRadius: 7,
+                  //             spreadRadius: 1.0),
+                  //         BoxShadow(
+                  //             color: Colors.black.withOpacity(0.5),
+                  //             offset: Offset(2, 4),
+                  //             blurRadius: 7.0,
+                  //             spreadRadius: 1.0),
+                  //       ]),
+                  //   child: Padding(
+                  //     padding: const EdgeInsets.all(8.0),
+                  //     child: Container(
+                  //       child: FormBuilderImagePicker(
+                  //         name: 'emi_path_name',
+                  //         iconColor: Colors.black,
+                  //         decoration: InputDecoration(
+                  //           border: OutlineInputBorder(
+                  //             borderRadius: BorderRadius.circular(
+                  //               20.0,
+                  //             ),
+                  //           ),
+                  //           labelText: 'ภาพประกอบเหตุการ',
+                  //           filled: true,
+                  //         ),
+                  //         maxImages: 1,
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                   SizedBox(height: 18),
                   Container(
                     decoration: BoxDecoration(

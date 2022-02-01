@@ -96,7 +96,7 @@ class _menu_pangState extends State<menu_pang> {
                                       width: 300,
                                       height: 350,
                                       decoration: BoxDecoration(
-                                          color: ThemeBc.white,
+                                          color: Colors.white,
                                           borderRadius: BorderRadius.circular(
                                             20,
                                           ),

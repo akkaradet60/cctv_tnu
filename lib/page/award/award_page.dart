@@ -156,31 +156,48 @@ class _award_pageState extends State<award_page> {
                           borderRadius: BorderRadius.all(
                             Radius.circular(8.0),
                           ),
-                          child: Stack(
-                            children: <Widget>[
-                              Image.network(
-                                snapshot.data!['data'][item]['award_images'][0]
-                                            ['awardi_path_name'] !=
-                                        null
-                                    ? Global.domainImage +
-                                        snapshot.data!['data'][item]
-                                                ['award_images'][0]
-                                            ['awardi_path_name']
-                                    : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
-                                fit: BoxFit.cover,
-                                width: double.infinity,
-                              ),
-                              Center(
-                                child: Text(
-                                  // '${titles[_currentIndex]}',
-                                  '${snapshot.data!['data'][item]['award_name']}',
-                                  style: TextStyle(
-                                    fontSize: 24.0,
-                                    fontWeight: FontWeight.bold,
-                                    backgroundColor: Colors.black45,
-                                    color: ThemeBc.white,
+                          child: ListView(
+                            children: [
+                              Stack(
+                                children: <Widget>[
+                                  Image.network(
+                                    snapshot.data!['data'][item]['award_images']
+                                                [0]['awardi_path_name'] !=
+                                            null
+                                        ? Global.domainImage +
+                                            snapshot.data!['data'][item]
+                                                    ['award_images'][0]
+                                                ['awardi_path_name']
+                                        : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                    fit: BoxFit.cover,
+                                    width: double.infinity,
                                   ),
-                                ),
+                                  Column(
+                                    children: [
+                                      SizedBox(height: 160),
+                                      Container(
+                                        color: ThemeBc.black,
+                                        height: 40,
+                                        child: ListView(
+                                          scrollDirection: Axis.horizontal,
+                                          children: [
+                                            SizedBox(width: 10),
+                                            Text(
+                                              // '${titles[_currentIndex]}',
+                                              '${snapshot.data!['data'][item]['award_name']}',
+                                              style: TextStyle(
+                                                fontSize: 24.0,
+                                                fontWeight: FontWeight.bold,
+                                                // backgroundColor: Colors.black45,
+                                                color: ThemeBc.white,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ],
                           ),

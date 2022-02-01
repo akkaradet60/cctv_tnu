@@ -84,7 +84,7 @@ class _awarddetail_page extends State<awarddetail_page> {
           shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
-          title: Text('${productt['award_name']}'),
+          title: Center(child: Text('${productt['award_name']}')),
           actions: <Widget>[
             IconButton(
               icon: Image.asset('assets/logo.png', scale: 15),
@@ -258,13 +258,15 @@ class _awarddetail_page extends State<awarddetail_page> {
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          'รางวัล : ${productt['award_name']}',
-                                          style: TextStyle(
-                                            fontSize: 15.0,
-                                            fontWeight: FontWeight.bold,
-                                            // backgroundColor: Colors.black45,
-                                            color: ThemeBc.black,
+                                        child: Center(
+                                          child: Text(
+                                            'รางวัล : ${productt['award_name']}',
+                                            style: TextStyle(
+                                              fontSize: 15.0,
+                                              fontWeight: FontWeight.bold,
+                                              // backgroundColor: Colors.black45,
+                                              color: ThemeBc.black,
+                                            ),
                                           ),
                                         ),
                                       ),

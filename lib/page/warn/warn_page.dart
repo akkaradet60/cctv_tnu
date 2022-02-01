@@ -2,17 +2,17 @@ import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:cctv_tun/page/profile/app_reducer.dart';
 import 'package:cctv_tun/page/profile/profile_action.dart';
-
+import 'dart:io';
 import 'package:cctv_tun/widgets/custom_button.dart';
-import 'package:cctv_tun/widgets/custom_buttonmenu.dart';
-import 'package:cctv_tun/widgets/menus_custom.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:form_builder_image_picker/form_builder_image_picker.dart';
+
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
 import 'dart:convert';
 
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -34,22 +34,16 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
 
   late TabController _tabController;
 
-  var em_user_id;
-  var id;
-  bool _condition = true;
-
   double? lat, lng;
 
-  var application;
-  var app_agreement;
-  var app_agreement_en;
-  var app_agreement_cn;
   @override
   void initState() {
     _tabController = TabController(vsync: this, length: tabList.length);
     super.initState();
   }
 
+  var selectedImage;
+  var resJson = '1';
   var profilee;
   var newProfile;
   Future<void> getProfile() async {
@@ -88,6 +82,34 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
     }
   }
 
+  onUploadImage() async {
+    var request = http.MultipartRequest(
+      'POST',
+      Uri.parse("https://www.bc-official.com/api/app_nt/api/test/restful.php"),
+    );
+    Map<String, String> headers = {
+      "Accept": "application/json",
+      "Content-type": "multipart/form-data",
+      'Authorization': 'Bearer ${Global.token}'
+    };
+    request.files.add(
+      http.MultipartFile(
+        'files',
+        selectedImage!.readAsBytes().asStream(),
+        selectedImage!.lengthSync(),
+        filename: selectedImage!.path.split('/').last,
+      ),
+    );
+
+    request.headers.addAll(headers);
+    print("request: " + request.toString());
+    var res = await request.send();
+    http.Response response = await http.Response.fromStream(res);
+    setState(() {
+      // resJson = jsonDecode(response.body);
+    });
+  }
+
   Future<void> warn_page(Map formValues) async {
     //formValues['name']
     // print(formValues);
@@ -96,7 +118,8 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
           'https://www.bc-official.com/api/app_nt/api/app/emergency/restful/';
       var response = await http.post(Uri.parse(url), headers: {
         "Accept": "application/json",
-        'Authorization': 'Bearer ${Global.token}'
+        'Authorization': 'Bearer ${Global.token}',
+        "Content-type": "multipart/for",
       },
           // body: json.encode({
           //   "firstname": formValues['firstname'],
@@ -175,6 +198,17 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
     } catch (e) {
       // print(e);
     }
+  }
+
+  Future getImage() async {
+    //var image = await ImagePicker().getImage(source: ImageSource.gallery);
+    final ImagePicker _picker = ImagePicker();
+    // Pick an image
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      selectedImage = File(image!.path);
+    });
   }
 
   late Position userLocation;
@@ -428,6 +462,8 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
 
                   SizedBox(height: 18),
                   Container(
+                    width: 400,
+                    height: 300,
                     decoration: BoxDecoration(
                         color: secondaryTextColor,
                         borderRadius: BorderRadius.circular(
@@ -447,22 +483,80 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
                         ]),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        child: FormBuilderImagePicker(
-                          name: 'emi_path_name',
-                          iconColor: Colors.black,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(
-                                20.0,
-                              ),
+                      child: ListView(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('อัพโหลดรูปภาพ'),
+                              ],
                             ),
-                            labelText: 'ภาพประกอบเหตุการ',
-                            filled: true,
                           ),
-                          maxImages: 1,
-                        ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: ThemeBc.white,
+                                      borderRadius: BorderRadius.circular(
+                                        20,
+                                      ),
+                                      boxShadow: []),
+                                  width: 350,
+                                  height: 240,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        selectedImage == null
+                                            ? IconButton(
+                                                icon: Icon(Icons.add_a_photo),
+                                                tooltip: 'Show Snackbar',
+                                                onPressed: getImage,
+                                              )
+                                            : Container(
+                                                height: 200,
+                                                child: ListView(
+                                                  children: [
+                                                    Container(
+                                                        height: 100,
+                                                        child: Image.file(
+                                                            selectedImage!)),
+                                                  ],
+                                                ),
+                                              ),
+                                        // Text(resJson),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
+                      //Container(
+                      //   child: FormBuilderImagePicker(
+                      //     name: 'emi_path_name',
+                      //     iconColor: Colors.black,
+                      //     decoration: InputDecoration(
+                      //       border: OutlineInputBorder(
+                      //         borderRadius: BorderRadius.circular(
+                      //           20.0,
+                      //         ),
+                      //       ),
+                      //       labelText: 'ภาพประกอบเหตุการ',
+                      //       filled: true,
+                      //     ),
+                      //     maxImages: 1,
+                      //   ),
+                      // ),
                     ),
                   ),
                   SizedBox(height: 18),
@@ -555,6 +649,7 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
                         CustomButton(
                           title: 'แจ้งเหตุฉุกเฉิน',
                           onPressed: () {
+                            onUploadImage;
                             if (_fbKey.currentState!.saveAndValidate()) {
                               //  print(_fbKey.currentState!.value);
                               warn_page(_fbKey.currentState!.value);

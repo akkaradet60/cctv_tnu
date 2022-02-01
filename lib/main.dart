@@ -79,7 +79,7 @@ class MyApp extends StatelessWidget {
           //     scaffoldBackgroundColor: Colors.pinkAccent),
           routes: {
             '/': (context) => token == null ? login_page() : home_page(),
-
+            '/sss': (context) => sss(),
             '/map_prod': (context) => map_prod(),
             '/productstore_page': (context) => productstore_page(),
             //  '/confirmemail': (context) => confirmemail(),
