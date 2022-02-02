@@ -65,6 +65,7 @@ class _compose_page extends State<compose_page>
     });
   }
 
+  List<Marker> myMarker = [];
   final tabList = [
     'ร้องเรียน',
     'ร้องเรียนของท่าน',
@@ -124,6 +125,8 @@ class _compose_page extends State<compose_page>
             "em_lng": '13',
             "em_location": '12-13',
             "em_category": '1',
+            "em_location": '$position',
+
             // "emi_path_name[]": formValues['emi_path_name']
             // "user_app_id": Global.app_id,
             // "user_card_id": '1471200',
@@ -186,6 +189,7 @@ class _compose_page extends State<compose_page>
     }
   }
 
+  late String position = 'ไม่ได้เลือก';
   late Position userLocation;
   late GoogleMapController mapController;
 
@@ -569,58 +573,180 @@ class _compose_page extends State<compose_page>
                   // ),
                   SizedBox(height: 18),
                   Container(
-                    decoration: BoxDecoration(
-                        color: secondaryTextColor,
-                        borderRadius: BorderRadius.circular(
-                          20,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              offset: Offset(2, 2),
-                              blurRadius: 7,
-                              spreadRadius: 1.0),
-                          BoxShadow(
-                              color: Colors.black.withOpacity(0.5),
-                              offset: Offset(2, 4),
-                              blurRadius: 7.0,
-                              spreadRadius: 1.0),
-                        ]),
-                    padding: EdgeInsets.symmetric(horizontal: 0),
-                    margin: EdgeInsets.only(
-                      top: 0,
-                    ),
-                    height: 300.0,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: FutureBuilder(
-                        future: _getLocation(),
-                        builder:
-                            (BuildContext context, AsyncSnapshot snapshot) {
-                          if (snapshot.hasData) {
-                            return GoogleMap(
-                              mapType: MapType.normal,
-                              onMapCreated: _onMapCreated,
-                              myLocationEnabled: true,
-                              initialCameraPosition: CameraPosition(
-                                  target: LatLng(userLocation.latitude,
-                                      userLocation.longitude),
-                                  zoom: 15),
-                            );
-                          } else {
-                            return Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  CircularProgressIndicator(),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: secondaryTextColor,
+                          borderRadius: BorderRadius.circular(
+                            20,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                offset: Offset(2, 2),
+                                blurRadius: 7,
+                                spreadRadius: 1.0),
+                            BoxShadow(
+                                color: Colors.black.withOpacity(0.5),
+                                offset: Offset(2, 4),
+                                blurRadius: 7.0,
+                                spreadRadius: 1.0),
+                          ]),
+                      padding: EdgeInsets.symmetric(horizontal: 0),
+                      margin: EdgeInsets.only(
+                        top: 0,
+                      ),
+                      height: 300.0,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: FutureBuilder(
+                          future: _getLocation(),
+                          builder:
+                              (BuildContext context, AsyncSnapshot snapshot) {
+                            if (snapshot.hasData) {
+                              _handletap(LatLng tappedPoint) {
+                                position = '$tappedPoint';
+                                setState(() {
+                                  myMarker = [];
+                                  myMarker.add(Marker(
+                                    markerId: MarkerId(tappedPoint.toString()),
+                                    position: tappedPoint,
+                                  ));
+                                });
+                                return position;
+                              }
+
+                              return Column(
+                                children: [
+                                  Container(
+                                    height: 280,
+                                    child: GoogleMap(
+                                      markers: Set.from(myMarker),
+                                      onTap: _handletap,
+                                      mapType: MapType.normal,
+                                      onMapCreated: _onMapCreated,
+                                      myLocationEnabled: true,
+                                      initialCameraPosition: CameraPosition(
+                                          target: LatLng(userLocation.latitude,
+                                              userLocation.longitude),
+                                          zoom: 15),
+                                    ),
+                                  ),
+                                  // Padding(
+                                  //   padding: const EdgeInsets.all(3.0),
+                                  //   child: Container(
+                                  //     width: 400,
+                                  //     decoration: BoxDecoration(
+                                  //       color: ThemeBc.white,
+                                  //       borderRadius: BorderRadius.circular(
+                                  //         20,
+                                  //       ),
+                                  //     ),
+                                  //     // child: Row(
+                                  //   mainAxisAlignment:
+                                  //       MainAxisAlignment.spaceBetween,
+                                  //   children: [
+                                  //     Padding(
+                                  //       padding: const EdgeInsets.all(8.0),
+                                  //       child: Text(
+                                  //         'ขยายหน้าจอ',
+                                  //         style: TextStyle(
+                                  //           fontSize: 15.0,
+                                  //           fontWeight: FontWeight.bold,
+                                  //           // backgroundColor: Colors.black45,
+                                  //           color: ThemeBc.black,
+                                  //         ),
+                                  //       ),
+                                  //     ),
+                                  // Container(
+                                  //   decoration: BoxDecoration(
+                                  //     color: ThemeBc.black,
+                                  //     borderRadius:
+                                  //         BorderRadius.circular(
+                                  //       20,
+                                  //     ),
+                                  //   ),
+                                  //   child: IconButton(
+                                  //       icon: Icon(
+                                  //         Icons.map,
+                                  //         color: ThemeBc.white,
+                                  //         size: 30.0,
+                                  //       ),
+                                  //       // Image.asset(
+                                  //       //   'assets/fi_home.png',
+                                  //       //   scale: 1,
+                                  //       // ),
+                                  //       tooltip: 'Show Snackbar',
+                                  //       onPressed: () {
+                                  //         showDialog(
+                                  //           context: context,
+                                  //           builder: (context) {
+                                  //             return AlertDialog(
+                                  //               content: Text(
+                                  //                   'ตำแหน่งของคุณ !\nละติจูด : ${userLocation.latitude} ลองจิจูด : ${userLocation.longitude} '),
+                                  //             );
+                                  //           },
+                                  //         );
+                                  //       }),
+                                  // ),
+                                  //   ],
+                                  // ),
+                                  //   ),
+                                  // ),
                                 ],
-                              ),
-                            );
-                          }
-                        },
+                              );
+                            } else {
+                              return Center(
+                                  // child: Column(
+                                  //   mainAxisAlignment: MainAxisAlignment.center,
+                                  //   children: <Widget>[
+                                  //     CircularProgressIndicator(),
+                                  //   ],
+                                  // ),
+                                  );
+                            }
+                          },
+                        ),
                       ),
                     ),
                   ),
+                  SizedBox(height: 10),
+                  Container(
+                      width: 400,
+                      height: 200,
+                      decoration: BoxDecoration(
+                          color: secondaryTextColor,
+                          borderRadius: BorderRadius.circular(
+                            20,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                offset: Offset(2, 2),
+                                blurRadius: 7,
+                                spreadRadius: 1.0),
+                            BoxShadow(
+                                color: Colors.black.withOpacity(0.5),
+                                offset: Offset(2, 4),
+                                blurRadius: 7.0,
+                                spreadRadius: 1.0),
+                          ]),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'ตำแหน่ง ! \nตำแหน่งที่คุณเลือก : $position',
+                              style: TextStyle(
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.bold,
+                                // backgroundColor: Colors.black45,
+                                color: ThemeBc.black,
+                              ),
+                            ),
+                          ),
+                        ],
+                      )),
                   ElevatedButton.icon(
                     onPressed: () {
                       mapController.animateCamera(CameraUpdate.newLatLngZoom(

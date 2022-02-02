@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:cctv_tun/models/api/books_api.dart';
-import 'package:cctv_tun/models/model/book.dart';
+import 'package:cctv_tun/models/model/product.dart';
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:cctv_tun/widgets/search_widget.dart';
@@ -37,7 +37,7 @@ class _productstore_page extends State<productstore_page> {
     }
   }
 
-  List<Book> books = [];
+  List<product> books = [];
   String query = '';
   Timer? debouncer;
 
@@ -152,7 +152,7 @@ class _productstore_page extends State<productstore_page> {
         });
       });
 
-  Widget buildBook(Book book) => Padding(
+  Widget buildBook(product productt) => Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
           height: 250,
@@ -183,7 +183,7 @@ class _productstore_page extends State<productstore_page> {
                     Radius.circular(20.0),
                   ),
                   child: Image.network(
-                    Global.domainImage + book.urlImage,
+                    Global.domainImage + productt.urlImage,
                     fit: BoxFit.cover,
                     width: 210,
                     height: 230,
@@ -217,7 +217,7 @@ class _productstore_page extends State<productstore_page> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'ชื่อสินค้า : ${book.title}',
+                          'ชื่อสินค้า : ${productt.title}',
                           style: TextStyle(
                             fontSize: 15.0,
                             fontWeight: FontWeight.bold,
@@ -227,7 +227,7 @@ class _productstore_page extends State<productstore_page> {
                         ),
                         SizedBox(height: 5),
                         Text(
-                          'เนื่อหาสิ้นค้า : ${book.author}',
+                          'เนื่อหาสิ้นค้า : ${productt.author}',
                           style: TextStyle(
                             fontSize: 15.0,
                             fontWeight: FontWeight.bold,

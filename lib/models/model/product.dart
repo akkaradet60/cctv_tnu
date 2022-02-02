@@ -23,20 +23,20 @@
 //   }
 // }
 
-class Book {
+class product {
   final String id;
   final String title;
   final String author;
   final String urlImage;
 
-  const Book({
+  const product({
     required this.id,
     required this.author,
     required this.title,
     required this.urlImage,
   });
 
-  factory Book.fromJson(Map<String, dynamic> json) => Book(
+  factory product.fromJson(Map<String, dynamic> json) => product(
         id: json['id'],
         author: json['author'],
         title: json['title'],

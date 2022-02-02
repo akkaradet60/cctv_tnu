@@ -138,7 +138,8 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
             "em_lng": '13',
             "em_location": '12-13',
             "em_category": '0',
-            "emi_path_name[]": formValues['emi_path_name']
+            "emi_path_name[]": formValues['emi_path_name'],
+            "em_location": '$position',
             // "user_app_id": Global.app_id,
             // "user_card_id": '1471200',
             // "user_firstname": formValues['firstname'],
@@ -213,6 +214,7 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
 
   late Position userLocation;
   late GoogleMapController mapController;
+  late String position = 'ยังไม่ได้เลือก';
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
@@ -244,6 +246,7 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
     return userLocation;
   }
 
+  List<Marker> myMarker = [];
   @override
   Widget build(BuildContext context) {
     Widget warnpage() {
@@ -561,58 +564,119 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
                   ),
                   SizedBox(height: 18),
                   Container(
-                    decoration: BoxDecoration(
-                        color: secondaryTextColor,
-                        borderRadius: BorderRadius.circular(
-                          20,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              offset: Offset(2, 2),
-                              blurRadius: 7,
-                              spreadRadius: 1.0),
-                          BoxShadow(
-                              color: Colors.black.withOpacity(0.5),
-                              offset: Offset(2, 4),
-                              blurRadius: 7.0,
-                              spreadRadius: 1.0),
-                        ]),
-                    padding: EdgeInsets.symmetric(horizontal: 0),
-                    margin: EdgeInsets.only(
-                      top: 0,
-                    ),
-                    height: 300.0,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: FutureBuilder(
-                        future: _getLocation(),
-                        builder:
-                            (BuildContext context, AsyncSnapshot snapshot) {
-                          if (snapshot.hasData) {
-                            return GoogleMap(
-                              mapType: MapType.normal,
-                              onMapCreated: _onMapCreated,
-                              myLocationEnabled: true,
-                              initialCameraPosition: CameraPosition(
-                                  target: LatLng(userLocation.latitude,
-                                      userLocation.longitude),
-                                  zoom: 15),
-                            );
-                          } else {
-                            return Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  CircularProgressIndicator(),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: secondaryTextColor,
+                          borderRadius: BorderRadius.circular(
+                            20,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                offset: Offset(2, 2),
+                                blurRadius: 7,
+                                spreadRadius: 1.0),
+                            BoxShadow(
+                                color: Colors.black.withOpacity(0.5),
+                                offset: Offset(2, 4),
+                                blurRadius: 7.0,
+                                spreadRadius: 1.0),
+                          ]),
+                      padding: EdgeInsets.symmetric(horizontal: 0),
+                      margin: EdgeInsets.only(
+                        top: 0,
+                      ),
+                      height: 300.0,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: FutureBuilder(
+                          future: _getLocation(),
+                          builder:
+                              (BuildContext context, AsyncSnapshot snapshot) {
+                            if (snapshot.hasData) {
+                              _handletap(LatLng tappedPoint) {
+                                position = '$tappedPoint';
+                                setState(() {
+                                  myMarker = [];
+                                  myMarker.add(Marker(
+                                    markerId: MarkerId(tappedPoint.toString()),
+                                    position: tappedPoint,
+                                  ));
+                                });
+                                return position;
+                              }
+
+                              return Column(
+                                children: [
+                                  Container(
+                                    height: 280,
+                                    child: GoogleMap(
+                                      markers: Set.from(myMarker),
+                                      onTap: _handletap,
+                                      mapType: MapType.normal,
+                                      onMapCreated: _onMapCreated,
+                                      myLocationEnabled: true,
+                                      initialCameraPosition: CameraPosition(
+                                          target: LatLng(userLocation.latitude,
+                                              userLocation.longitude),
+                                          zoom: 15),
+                                    ),
+                                  ),
                                 ],
-                              ),
-                            );
-                          }
-                        },
+                              );
+                            } else {
+                              return Center(
+                                  // child: Column(
+                                  //   mainAxisAlignment: MainAxisAlignment.center,
+                                  //   children: <Widget>[
+                                  //     CircularProgressIndicator(),
+                                  //   ],
+                                  // ),
+                                  );
+                            }
+                          },
+                        ),
                       ),
                     ),
                   ),
+                  SizedBox(height: 10),
+                  Container(
+                      width: 400,
+                      height: 200,
+                      decoration: BoxDecoration(
+                          color: secondaryTextColor,
+                          borderRadius: BorderRadius.circular(
+                            20,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                offset: Offset(2, 2),
+                                blurRadius: 7,
+                                spreadRadius: 1.0),
+                            BoxShadow(
+                                color: Colors.black.withOpacity(0.5),
+                                offset: Offset(2, 4),
+                                blurRadius: 7.0,
+                                spreadRadius: 1.0),
+                          ]),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'ตำแหน่ง ! \nตำแหน่งที่คุณเลือก : $position',
+                              style: TextStyle(
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.bold,
+                                // backgroundColor: Colors.black45,
+                                color: ThemeBc.black,
+                              ),
+                            ),
+                          ),
+                        ],
+                      )),
                   SizedBox(height: 10),
                   ElevatedButton.icon(
                     onPressed: () {
@@ -624,7 +688,7 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
                         builder: (context) {
                           return AlertDialog(
                             content: Text(
-                                'ตำแหน่งของคุณ !\nละติจูด : ${userLocation.latitude} ลองจิจูด : ${userLocation.longitude} '),
+                                'ตำแหน่ง !\nละติจูด : ${userLocation.latitude} ลองจิจูด : ${userLocation.longitude} ตำแหน่งที่คุณเลือก : $position'),
                           );
                         },
                       );
