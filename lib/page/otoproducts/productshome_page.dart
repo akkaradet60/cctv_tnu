@@ -1,13 +1,10 @@
-import 'package:cctv_tun/models/product/bestseller.dart';
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
+
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
-import 'package:shared_preferences/shared_preferences.dart';
 
 class productshome_page extends StatefulWidget {
   productshome_page({Key? key}) : super(key: key);
@@ -276,6 +273,8 @@ class _productshome_page extends State<productshome_page> {
                                   Navigator.pushNamed(
                                       context, '/productshop_page',
                                       arguments: {
+                                        'product_detail': snapshot.data!['data']
+                                            [index]['product_detail'],
                                         'productName': snapshot.data!['data']
                                             [index]['product_name'],
                                         'productPrice': snapshot.data!['data']
@@ -286,7 +285,7 @@ class _productshome_page extends State<productshome_page> {
                                                         ['product_images'][0]
                                                     ['producti_path_name'] !=
                                                 null
-                                            ? Global.domainImage +
+                                            ? Global.domainImagenew +
                                                 snapshot.data!['data'][index]
                                                         ['product_images'][0]
                                                     ['producti_path_name']
@@ -352,7 +351,7 @@ class _productshome_page extends State<productshome_page> {
                                                                       [
                                                                       'producti_path_name'] !=
                                                                   null
-                                                              ? Global.domainImage +
+                                                              ? Global.domainImagenew +
                                                                   snapshot.data!['data']
                                                                               [index]
                                                                           [
@@ -522,6 +521,8 @@ class _productshome_page extends State<productshome_page> {
                                   Navigator.pushNamed(
                                       context, '/productshop_page',
                                       arguments: {
+                                        'product_detail': snapshot.data!['data']
+                                            [index]['product_detail'],
                                         'productName': snapshot.data!['data']
                                             [index]['product_name'],
                                         'productPrice': snapshot.data!['data']
@@ -532,7 +533,7 @@ class _productshome_page extends State<productshome_page> {
                                                         ['product_images'][0]
                                                     ['producti_path_name'] !=
                                                 null
-                                            ? Global.domainImage +
+                                            ? Global.domainImagenew +
                                                 snapshot.data!['data'][index]
                                                         ['product_images'][0]
                                                     ['producti_path_name']
@@ -598,7 +599,7 @@ class _productshome_page extends State<productshome_page> {
                                                                       [
                                                                       'producti_path_name'] !=
                                                                   null
-                                                              ? Global.domainImage +
+                                                              ? Global.domainImagenew +
                                                                   snapshot.data!['data']
                                                                               [index]
                                                                           [
@@ -766,6 +767,8 @@ class _productshome_page extends State<productshome_page> {
                                   Navigator.pushNamed(
                                       context, '/productshop_page',
                                       arguments: {
+                                        'product_detail': snapshot.data!['data']
+                                            [index]['product_detail'],
                                         'productName': snapshot.data!['data']
                                             [index]['product_name'],
                                         'productPrice': snapshot.data!['data']
@@ -776,7 +779,7 @@ class _productshome_page extends State<productshome_page> {
                                                         ['product_images'][0]
                                                     ['producti_path_name'] !=
                                                 null
-                                            ? Global.domainImage +
+                                            ? Global.domainImagenew +
                                                 snapshot.data!['data'][index]
                                                         ['product_images'][0]
                                                     ['producti_path_name']
@@ -836,7 +839,7 @@ class _productshome_page extends State<productshome_page> {
                                                                       [
                                                                       'producti_path_name'] !=
                                                                   null
-                                                              ? Global.domainImage +
+                                                              ? Global.domainImagenew +
                                                                   snapshot.data!['data']
                                                                               [index]
                                                                           [

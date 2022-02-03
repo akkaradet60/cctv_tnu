@@ -2,8 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -243,7 +241,7 @@ class _productshop_page extends State<productshop_page> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
-                                  height: 55,
+                                  height: 165,
                                   decoration: BoxDecoration(
                                       color: ThemeBc.background,
                                       borderRadius: BorderRadius.circular(
@@ -264,171 +262,452 @@ class _productshop_page extends State<productshop_page> {
                                       ]),
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                    child: Column(
                                       children: [
-                                        Icon(
-                                          Icons.shopping_cart_rounded,
-                                          size: 40,
-                                          color: ThemeBc.white,
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.article,
+                                              size: 40,
+                                              color: ThemeBc.white,
+                                            ),
+                                            Text(
+                                              '           ชื่อสินค้า :  ${productt['productName']}',
+                                              style: TextStyle(
+                                                fontSize: 15.0,
+                                                fontWeight: FontWeight.bold,
+                                                // backgroundColor: Colors.black45,
+                                                color: ThemeBc.white,
+                                              ),
+                                            ),
+                                          ],
                                         ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Icon(
+                                              Icons.shopping_cart_rounded,
+                                              size: 40,
+                                              color: ThemeBc.white,
+                                            ),
+                                            Text(
+                                              'ศูนย์แสดงสินค้าโอทอป',
+                                              style: TextStyle(
+                                                fontSize: 15.0,
+                                                fontWeight: FontWeight.bold,
+                                                // backgroundColor: Colors.black45,
+                                                color: ThemeBc.text,
+                                              ),
+                                            ),
+                                            ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                primary: ThemeBc.white,
+                                                onPrimary: ThemeBc.white,
+                                              ),
+                                              child: Text(
+                                                'ดูร้านค้า',
+                                                style: TextStyle(
+                                                  fontSize: 15.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  // backgroundColor: Colors.black45,
+                                                  color: ThemeBc.black,
+                                                ),
+                                              ),
+                                              onPressed: () =>
+                                                  Navigator.pushNamed(context,
+                                                      '/productshome_page'),
+                                            )
+                                          ],
+                                        ),
+                                        SizedBox(height: 18),
                                         Text(
-                                          'ศูนย์แสดงสินค้าโอทอป',
+                                          ' $_product : บาท',
                                           style: TextStyle(
-                                            fontSize: 15.0,
+                                            fontSize: 25.0,
                                             fontWeight: FontWeight.bold,
                                             // backgroundColor: Colors.black45,
-                                            color: ThemeBc.text,
+                                            color: ThemeBc.white,
                                           ),
                                         ),
-                                        ElevatedButton(
-                                          style: ElevatedButton.styleFrom(
-                                            primary: ThemeBc.white,
-                                            onPrimary: ThemeBc.white,
-                                          ),
-                                          child: Text(
-                                            'ดูร้านค้า',
-                                            style: TextStyle(
-                                              fontSize: 15.0,
-                                              fontWeight: FontWeight.bold,
-                                              // backgroundColor: Colors.black45,
-                                              color: ThemeBc.black,
-                                            ),
-                                          ),
-                                          onPressed: () => Navigator.pushNamed(
-                                              context, '/productshome_page'),
-                                        )
                                       ],
                                     ),
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  height: 55,
-                                  decoration: BoxDecoration(
-                                      color: ThemeBc.background,
-                                      borderRadius: BorderRadius.circular(
-                                        20,
-                                      ),
-                                      boxShadow: [
-                                        BoxShadow(
-                                            color: Colors.grey.withOpacity(0.5),
-                                            offset: Offset(2, 2),
-                                            blurRadius: 7,
-                                            spreadRadius: 1.0),
-                                        BoxShadow(
-                                            color:
-                                                Colors.black.withOpacity(0.5),
-                                            offset: Offset(2, 4),
-                                            blurRadius: 7.0,
-                                            spreadRadius: 1.0),
-                                      ]),
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        Icons.article,
-                                        size: 40,
-                                        color: ThemeBc.white,
-                                      ),
-                                      Text(
-                                        '             ชื่อสินค้า :  ${productt['productName']}',
-                                        style: TextStyle(
-                                          fontSize: 15.0,
-                                          fontWeight: FontWeight.bold,
-                                          // backgroundColor: Colors.black45,
-                                          color: ThemeBc.white,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
+                              // Padding(
+                              //   padding: const EdgeInsets.all(8.0),
+                              //   child: Container(
+                              //     height: 55,
+                              //     decoration: BoxDecoration(
+                              //         color: ThemeBc.background,
+                              //         borderRadius: BorderRadius.circular(
+                              //           20,
+                              //         ),
+                              //         boxShadow: [
+                              //           BoxShadow(
+                              //               color: Colors.grey.withOpacity(0.5),
+                              //               offset: Offset(2, 2),
+                              //               blurRadius: 7,
+                              //               spreadRadius: 1.0),
+                              //           BoxShadow(
+                              //               color:
+                              //                   Colors.black.withOpacity(0.5),
+                              //               offset: Offset(2, 4),
+                              //               blurRadius: 7.0,
+                              //               spreadRadius: 1.0),
+                              //         ]),
+                              //     child: Row(
+                              //       children: [
+                              //         Icon(
+                              //           Icons.article,
+                              //           size: 40,
+                              //           color: ThemeBc.white,
+                              //         ),
+                              //         Text(
+                              //           '             ชื่อสินค้า :  ${productt['productName']}',
+                              //           style: TextStyle(
+                              //             fontSize: 15.0,
+                              //             fontWeight: FontWeight.bold,
+                              //             // backgroundColor: Colors.black45,
+                              //             color: ThemeBc.white,
+                              //           ),
+                              //         ),
+                              //       ],
+                              //     ),
+                              //   ),
+                              // ),
                               Container(
                                 margin: EdgeInsets.only(
                                   top: 10,
                                 ),
                                 child: Column(
                                   children: [
-                                    Text(
-                                      ' $_product : บาท',
-                                      style: primaryTextStyle.copyWith(
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold),
-                                    ),
+                                    // Text(
+                                    //   ' $_product : บาท',
+                                    //   style: primaryTextStyle.copyWith(
+                                    //       fontSize: 25,
+                                    //       fontWeight: FontWeight.bold),
+                                    // ),
                                     SizedBox(
                                       width: 60,
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                              color: ThemeBc.background,
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                10,
-                                              ),
-                                              boxShadow: [
-                                                BoxShadow(
-                                                    color: Colors.grey
-                                                        .withOpacity(0.5),
-                                                    offset: Offset(2, 2),
-                                                    blurRadius: 7,
-                                                    spreadRadius: 1.0),
-                                                BoxShadow(
-                                                    color: Colors.black
-                                                        .withOpacity(0.5),
-                                                    offset: Offset(2, 4),
-                                                    blurRadius: 7.0,
-                                                    spreadRadius: 1.0),
-                                              ]),
-                                          child: Row(
-                                            children: [
-                                              ElevatedButton(
-                                                  style:
-                                                      ElevatedButton.styleFrom(
-                                                    primary: ThemeBc.background,
-                                                    onPrimary: Colors.white,
-                                                  ),
-                                                  child: Text(
-                                                    '-',
-                                                    style: TextStyle(
-                                                      fontSize: 20.0,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      // backgroundColor: Colors.black45,
-                                                      color: ThemeBc.white,
-                                                    ),
-                                                  ),
-                                                  onPressed:
-                                                      _incrementCounterp),
-                                              SizedBox(
-                                                width: 10,
-                                              ),
-                                              Text(
-                                                '$_counter',
-                                                style: TextStyle(
-                                                  fontSize: 20.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  // backgroundColor: Colors.black45,
-                                                  color: ThemeBc.white,
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                                color: ThemeBc.background,
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                  10,
                                                 ),
-                                              ),
-                                              SizedBox(
-                                                width: 10,
-                                              ),
-                                              ElevatedButton(
-                                                  style:
-                                                      ElevatedButton.styleFrom(
-                                                    primary: ThemeBc.background,
-                                                    onPrimary: Colors.black,
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                      color: Colors.grey
+                                                          .withOpacity(0.5),
+                                                      offset: Offset(2, 2),
+                                                      blurRadius: 7,
+                                                      spreadRadius: 1.0),
+                                                  BoxShadow(
+                                                      color: Colors.black
+                                                          .withOpacity(0.5),
+                                                      offset: Offset(2, 4),
+                                                      blurRadius: 7.0,
+                                                      spreadRadius: 1.0),
+                                                ]),
+                                            child: Row(
+                                              children: [
+                                                ElevatedButton(
+                                                    style: ElevatedButton
+                                                        .styleFrom(
+                                                      primary:
+                                                          ThemeBc.background,
+                                                      onPrimary: Colors.white,
+                                                    ),
+                                                    child: Text(
+                                                      '-',
+                                                      style: TextStyle(
+                                                        fontSize: 20.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        // backgroundColor: Colors.black45,
+                                                        color: ThemeBc.white,
+                                                      ),
+                                                    ),
+                                                    onPressed:
+                                                        _incrementCounterp),
+                                                SizedBox(
+                                                  width: 10,
+                                                ),
+                                                Text(
+                                                  '$_counter',
+                                                  style: TextStyle(
+                                                    fontSize: 20.0,
+                                                    fontWeight: FontWeight.bold,
+                                                    // backgroundColor: Colors.black45,
+                                                    color: ThemeBc.white,
                                                   ),
-                                                  child: Text(
-                                                    '+',
+                                                ),
+                                                SizedBox(
+                                                  width: 10,
+                                                ),
+                                                ElevatedButton(
+                                                    style: ElevatedButton
+                                                        .styleFrom(
+                                                      primary:
+                                                          ThemeBc.background,
+                                                      onPrimary: Colors.black,
+                                                    ),
+                                                    child: Text(
+                                                      '+',
+                                                      style: TextStyle(
+                                                        fontSize: 20.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        // backgroundColor: Colors.black45,
+                                                        color: ThemeBc.white,
+                                                      ),
+                                                    ),
+                                                    onPressed:
+                                                        _incrementCounter)
+                                              ],
+                                            ),
+                                          ),
+                                          InkWell(
+                                            onTap: () {
+                                              showDialog(
+                                                context: context,
+                                                builder: (context) {
+                                                  return AlertDialog(
+                                                    elevation: 24,
+                                                    shape: CircleBorder(),
+                                                    // elevation: 100,
+                                                    content: Container(
+                                                      height: 200,
+                                                      width: 400,
+                                                      decoration: BoxDecoration(
+                                                          color: ThemeBc
+                                                              .background,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                            20,
+                                                          ),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                                color: Colors
+                                                                    .black
+                                                                    .withOpacity(
+                                                                        0.5),
+                                                                offset: Offset(
+                                                                    2, 2),
+                                                                blurRadius: 7,
+                                                                spreadRadius:
+                                                                    1.0),
+                                                            BoxShadow(
+                                                                color: Colors
+                                                                    .black
+                                                                    .withOpacity(
+                                                                        0.5),
+                                                                offset: Offset(
+                                                                    2, 4),
+                                                                blurRadius: 7.0,
+                                                                spreadRadius:
+                                                                    1.0),
+                                                          ]),
+                                                      child: ListView(
+                                                        children: [
+                                                          Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        8.0),
+                                                                child: Text(
+                                                                  'ชื้อสินค้า :${productt['productName']} \nจำนวน : ${_counter}',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        20.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    // backgroundColor: Colors.black45,
+                                                                    color: ThemeBc
+                                                                        .white,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          SizedBox(height: 10),
+                                                          Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              Container(
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                        color: ThemeBc
+                                                                            .white,
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(
+                                                                          20,
+                                                                        ),
+                                                                        boxShadow: [
+                                                                      BoxShadow(
+                                                                          color: Colors.black.withOpacity(
+                                                                              0.5),
+                                                                          offset: Offset(2,
+                                                                              2),
+                                                                          blurRadius:
+                                                                              7,
+                                                                          spreadRadius:
+                                                                              1.0),
+                                                                      BoxShadow(
+                                                                          color: Colors.black.withOpacity(
+                                                                              0.5),
+                                                                          offset: Offset(2,
+                                                                              4),
+                                                                          blurRadius:
+                                                                              7.0,
+                                                                          spreadRadius:
+                                                                              1.0),
+                                                                    ]),
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child: Text(
+                                                                    'ราคา $_product : บาท',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      fontSize:
+                                                                          20.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      // backgroundColor: Colors.black45,
+                                                                      color: ThemeBc
+                                                                          .black,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          SizedBox(height: 10),
+                                                          Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              InkWell(
+                                                                child:
+                                                                    Container(
+                                                                  height: 45,
+                                                                  width: 100,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                          color: ThemeBc
+                                                                              .white,
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(
+                                                                            20,
+                                                                          ),
+                                                                          boxShadow: [
+                                                                        BoxShadow(
+                                                                            color: Colors.black.withOpacity(
+                                                                                0.5),
+                                                                            offset: Offset(
+                                                                                2, 2),
+                                                                            blurRadius:
+                                                                                7,
+                                                                            spreadRadius:
+                                                                                1.0),
+                                                                        BoxShadow(
+                                                                            color: Colors.black.withOpacity(
+                                                                                0.5),
+                                                                            offset: Offset(
+                                                                                2, 4),
+                                                                            blurRadius:
+                                                                                7.0,
+                                                                            spreadRadius:
+                                                                                1.0),
+                                                                      ]),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding:
+                                                                        const EdgeInsets.all(
+                                                                            8.0),
+                                                                    child:
+                                                                        Center(
+                                                                      child:
+                                                                          Text(
+                                                                        'ชื้อ',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              20.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          // backgroundColor: Colors.black45,
+                                                                          color:
+                                                                              ThemeBc.black,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              );
+                                            },
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                  color: ThemeBc.background,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                    10,
+                                                  ),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                        color: Colors.grey
+                                                            .withOpacity(0.5),
+                                                        offset: Offset(2, 2),
+                                                        blurRadius: 7,
+                                                        spreadRadius: 1.0),
+                                                    BoxShadow(
+                                                        color: Colors.black
+                                                            .withOpacity(0.5),
+                                                        offset: Offset(2, 4),
+                                                        blurRadius: 7.0,
+                                                        spreadRadius: 1.0),
+                                                  ]),
+                                              height: 45,
+                                              width: 100,
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    'ชื้อ',
                                                     style: TextStyle(
                                                       fontSize: 20.0,
                                                       fontWeight:
@@ -437,11 +716,12 @@ class _productshop_page extends State<productshop_page> {
                                                       color: ThemeBc.white,
                                                     ),
                                                   ),
-                                                  onPressed: _incrementCounter)
-                                            ],
+                                                ],
+                                              ),
+                                            ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     )
                                   ],
                                 ),
@@ -473,11 +753,11 @@ class _productshop_page extends State<productshop_page> {
                                       child: Padding(
                                         padding: EdgeInsets.all(8.0),
                                         child: Text(
-                                          '   รายละเอียดสินค้า : ',
+                                          '   รายละเอียดสินค้า : ${productt['product_detail']} ',
                                           style: primaryTextStyle.copyWith(
                                             fontSize: 15,
                                           ),
-                                        ),
+                                        ), //product_detail
                                       ),
                                     ),
                                   ],

@@ -183,7 +183,7 @@ class _productstore_page extends State<productstore_page> {
                     Radius.circular(20.0),
                   ),
                   child: Image.network(
-                    Global.domainImage + productt.urlImage,
+                    Global.domainImagenew + productt.urlImage,
                     fit: BoxFit.cover,
                     width: 210,
                     height: 230,

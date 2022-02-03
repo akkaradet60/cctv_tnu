@@ -149,188 +149,197 @@ class _LoginPageState extends State<login_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: ThemeBc.black,
         body: Container(
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [ThemeBc.background, ThemeBc.white],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft)),
-      child: Container(
-        child: Center(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.all(0),
-              child: Column(
-                children: [
-                  SizedBox(height: 10),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 80),
-                    child: Image.asset('assets/logo.png'),
-                  ),
-                  SizedBox(height: 10),
-                  FormBuilder(
-                    key: _fbKey,
-                    initialValue: {'email': '', 'password': ''},
-                    autovalidateMode: AutovalidateMode
-                        .always, //ถ้าไม่ใส่ต้อง submit ก่อนถึงจะตรวจสอบ validation
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.all(30),
-                          child: Column(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: secondaryTextColor,
-                                    borderRadius: BorderRadius.circular(
-                                      20,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          offset: Offset(2, 2),
-                                          blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(0.5),
-                                          offset: Offset(2, 4),
-                                          blurRadius: 7.0,
-                                          spreadRadius: 1.0),
-                                    ]),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    child: FormBuilderTextField(
-                                      //   initialValue: 'akkaradet.ko60@snru.ac.th',
-                                      name: "email",
-                                      maxLines: 1,
-                                      keyboardType: TextInputType.emailAddress,
-                                      decoration: InputDecoration(
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(
-                                            20.0,
-                                          ),
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [ThemeBc.pinkAccent, ThemeBc.orange],
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft)),
+          child: Container(
+            child: Center(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.all(0),
+                  child: Column(
+                    children: [
+                      SizedBox(height: 10),
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 80),
+                        child: Image.asset('assets/logo.png'),
+                      ),
+                      SizedBox(height: 10),
+                      FormBuilder(
+                        key: _fbKey,
+                        initialValue: {'email': '', 'password': ''},
+                        autovalidateMode: AutovalidateMode
+                            .always, //ถ้าไม่ใส่ต้อง submit ก่อนถึงจะตรวจสอบ validation
+                        child: Column(
+                          children: <Widget>[
+                            Padding(
+                              padding: EdgeInsets.all(30),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color: secondaryTextColor,
+                                        borderRadius: BorderRadius.circular(
+                                          20,
                                         ),
-                                        suffixIcon: Icon(Icons.email),
-                                        labelText: 'อีเมล',
-                                        // helperText: '555',
-                                        fillColor: Colors.white,
-                                        filled: true,
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color:
+                                                  Colors.grey.withOpacity(0.5),
+                                              offset: Offset(2, 2),
+                                              blurRadius: 7,
+                                              spreadRadius: 1.0),
+                                          BoxShadow(
+                                              color:
+                                                  Colors.black.withOpacity(0.5),
+                                              offset: Offset(2, 4),
+                                              blurRadius: 7.0,
+                                              spreadRadius: 1.0),
+                                        ]),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        child: FormBuilderTextField(
+                                          //   initialValue: 'akkaradet.ko60@snru.ac.th',
+                                          name: "email",
+                                          maxLines: 1,
+                                          keyboardType:
+                                              TextInputType.emailAddress,
+                                          decoration: InputDecoration(
+                                            border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                20.0,
+                                              ),
+                                            ),
+                                            suffixIcon: Icon(Icons.email),
+                                            labelText: 'อีเมล',
+                                            // helperText: '555',
+                                            fillColor: Colors.white,
+                                            filled: true,
+                                          ),
+                                          validator: MultiValidator([
+                                            RequiredValidator(
+                                                errorText:
+                                                    "ป้อนข้อมูลอีเมลด้วย"),
+                                            EmailValidator(
+                                                errorText:
+                                                    "รูปแบบอีเมล์ไม่ถูกต้อง"),
+                                          ]),
+                                        ),
                                       ),
-                                      validator: MultiValidator([
-                                        RequiredValidator(
-                                            errorText: "ป้อนข้อมูลอีเมลด้วย"),
-                                        EmailValidator(
-                                            errorText:
-                                                "รูปแบบอีเมล์ไม่ถูกต้อง"),
-                                      ]),
                                     ),
                                   ),
+                                  SizedBox(height: 5),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color: secondaryTextColor,
+                                        borderRadius: BorderRadius.circular(
+                                          20,
+                                        ),
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color:
+                                                  Colors.grey.withOpacity(0.5),
+                                              offset: Offset(2, 2),
+                                              blurRadius: 7,
+                                              spreadRadius: 1.0),
+                                          BoxShadow(
+                                              color:
+                                                  Colors.black.withOpacity(0.5),
+                                              offset: Offset(2, 4),
+                                              blurRadius: 7.0,
+                                              spreadRadius: 1.0),
+                                        ]),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        child: FormBuilderTextField(
+                                          //    initialValue: '123456',
+                                          name: "password",
+                                          maxLines: 1,
+                                          keyboardType:
+                                              TextInputType.visiblePassword,
+                                          obscureText: true,
+                                          decoration: InputDecoration(
+                                            border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                20.0,
+                                              ),
+                                            ),
+                                            suffixIcon: Icon(Icons.vpn_key),
+                                            labelText: 'รหัสผ่าน',
+                                            fillColor: Colors.white,
+                                            filled: true,
+                                          ),
+                                          validator: MultiValidator([
+                                            RequiredValidator(
+                                                errorText: "ป้อนรหัสผ่านด้วย"),
+                                          ]),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                          top: 0,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            InkWell(
+                              onTap: () {},
+                              child: Text(
+                                'ลืมรหัสผ่าน',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                  decoration: TextDecoration.underline,
+                                  shadows: <Shadow>[
+                                    Shadow(
+                                      offset: Offset(1.0, 1.0),
+                                      blurRadius: 3.0,
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                    ),
+                                    Shadow(
+                                      offset: Offset(1.0, 1.0),
+                                      blurRadius: 8.0,
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                    ),
+                                  ],
                                 ),
                               ),
-                              SizedBox(height: 5),
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: secondaryTextColor,
-                                    borderRadius: BorderRadius.circular(
-                                      20,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          offset: Offset(2, 2),
-                                          blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(0.5),
-                                          offset: Offset(2, 4),
-                                          blurRadius: 7.0,
-                                          spreadRadius: 1.0),
-                                    ]),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    child: FormBuilderTextField(
-                                      //    initialValue: '123456',
-                                      name: "password",
-                                      maxLines: 1,
-                                      keyboardType:
-                                          TextInputType.visiblePassword,
-                                      obscureText: true,
-                                      decoration: InputDecoration(
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(
-                                            20.0,
-                                          ),
-                                        ),
-                                        suffixIcon: Icon(Icons.vpn_key),
-                                        labelText: 'รหัสผ่าน',
-                                        fillColor: Colors.white,
-                                        filled: true,
-                                      ),
-                                      validator: MultiValidator([
-                                        RequiredValidator(
-                                            errorText: "ป้อนรหัสผ่านด้วย"),
-                                      ]),
-                                    ),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                      top: 0,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        InkWell(
-                          onTap: () {},
-                          child: Text(
-                            'ลืมรหัสผ่าน',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                              decoration: TextDecoration.underline,
-                              shadows: <Shadow>[
-                                Shadow(
-                                  offset: Offset(1.0, 1.0),
-                                  blurRadius: 3.0,
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                ),
-                                Shadow(
-                                  offset: Offset(1.0, 1.0),
-                                  blurRadius: 8.0,
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                ),
-                              ],
                             ),
-                          ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        SizedBox(
-                          width: 0,
-                        ),
-                        Text(
-                          'ยังไม่ได้เป็นสมัครสมาชิก ?',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                            decoration: TextDecoration.underline,
-                            /*shadows: <Shadow>[
+                      ),
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            SizedBox(
+                              width: 0,
+                            ),
+                            Text(
+                              'ยังไม่ได้เป็นสมัครสมาชิก ?',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                                decoration: TextDecoration.underline,
+                                /*shadows: <Shadow>[
                               Shadow(
                                 offset: Offset(1.0, 1.0),
                                 blurRadius: 3.0,
@@ -342,117 +351,118 @@ class _LoginPageState extends State<login_page> {
                                 color: Color.fromARGB(255, 0, 0, 0),
                               ),
                             ],*/
-                          ),
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        InkWell(
-                          onTap: () =>
-                              Navigator.pushNamed(context, '/register_page'),
-                          child: Text(
-                            'สมัครสมาชิก',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'sss',
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              decoration: TextDecoration.underline,
-                              shadows: <Shadow>[
-                                Shadow(
-                                  offset: Offset(1.0, 1.0),
-                                  blurRadius: 3.0,
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                ),
-                                Shadow(
-                                  offset: Offset(1.0, 1.0),
-                                  blurRadius: 8.0,
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                ),
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Container(
-                    color: Colors.transparent,
-                    margin: EdgeInsets.only(top: 20, bottom: 5),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CustomButton(
-                            title: 'ล็อกอิน',
-                            onPressed: () {
-                              if (_fbKey.currentState!.saveAndValidate()) {
-                                print(_fbKey.currentState!.value);
-                                login(_fbKey.currentState!.value);
-                              }
-                            },
-                            colorButton: ThemeBc.background,
-                            textStyle: secondaryTextStyle.copyWith(
-                                fontWeight: medium, fontSize: 16),
-                          ),
-                        ]),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: 0, bottom: 5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 390,
-                          height: 55,
-                          padding:
-                              EdgeInsets.symmetric(horizontal: defaultMargin),
-                          color: Colors.transparent,
-                          child: Container(
-                            child: ElevatedButton.icon(
-                              onPressed: () =>
-                                  Navigator.pushNamed(context, '/about'),
-                              icon:
-                                  ImageIcon(AssetImage('assets/uif-u/01.png')),
-                              label: Text('ล็อกอินด้วย facebook'),
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.blue[900],
-                                onPrimary: Colors.white,
-                                shadowColor: Colors.grey[700],
-                                elevation: 30,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(40))),
                               ),
                             ),
-                          ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            InkWell(
+                              onTap: () => Navigator.pushNamed(
+                                  context, '/register_page'),
+                              child: Text(
+                                'สมัครสมาชิก',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'sss',
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  decoration: TextDecoration.underline,
+                                  shadows: <Shadow>[
+                                    Shadow(
+                                      offset: Offset(1.0, 1.0),
+                                      blurRadius: 3.0,
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                    ),
+                                    Shadow(
+                                      offset: Offset(1.0, 1.0),
+                                      blurRadius: 8.0,
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-                    margin: EdgeInsets.only(top: 0, bottom: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CustomButton(
-                          title: 'ทดลองใช้ในฐานะผู้เยี่ยมชม',
-                          onPressed: () =>
-                              Navigator.pushNamed(context, '/home_page'),
-                          colorButton: ThemeBc.background,
-                          textStyle: secondaryTextStyle.copyWith(
-                              fontWeight: medium, fontSize: 16),
+                      ),
+                      SizedBox(height: 10),
+                      Container(
+                        color: Colors.transparent,
+                        margin: EdgeInsets.only(top: 20, bottom: 5),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CustomButton(
+                                title: 'ล็อกอิน',
+                                onPressed: () {
+                                  if (_fbKey.currentState!.saveAndValidate()) {
+                                    print(_fbKey.currentState!.value);
+                                    login(_fbKey.currentState!.value);
+                                  }
+                                },
+                                colorButton: ThemeBc.background,
+                                textStyle: secondaryTextStyle.copyWith(
+                                    fontWeight: medium, fontSize: 16),
+                              ),
+                            ]),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 0, bottom: 5),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              width: 390,
+                              height: 55,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: defaultMargin),
+                              color: Colors.transparent,
+                              child: Container(
+                                child: ElevatedButton.icon(
+                                  onPressed: () =>
+                                      Navigator.pushNamed(context, '/about'),
+                                  icon: ImageIcon(
+                                      AssetImage('assets/uif-u/01.png')),
+                                  label: Text('ล็อกอินด้วย facebook'),
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Colors.blue[900],
+                                    onPrimary: Colors.white,
+                                    shadowColor: Colors.grey[700],
+                                    elevation: 30,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(40))),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                      Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: defaultMargin),
+                        margin: EdgeInsets.only(top: 0, bottom: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CustomButton(
+                              title: 'ทดลองใช้ในฐานะผู้เยี่ยมชม',
+                              onPressed: () =>
+                                  Navigator.pushNamed(context, '/home_page'),
+                              colorButton: ThemeBc.background,
+                              textStyle: secondaryTextStyle.copyWith(
+                                  fontWeight: medium, fontSize: 16),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
           ),
-        ),
-      ),
-    ));
+        ));
   }
 }

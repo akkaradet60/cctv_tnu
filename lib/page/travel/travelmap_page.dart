@@ -5,10 +5,13 @@ import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+// import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import 'package:latlong2/latlong.dart';
 
 class travelmap_page extends StatefulWidget {
   travelmap_page({Key? key}) : super(key: key);
@@ -66,31 +69,31 @@ class _travelmap_page extends State<travelmap_page> {
   }
 
   late Position userLocation;
-  late GoogleMapController mapController;
-  Completer<GoogleMapController> _controller = Completer();
-  LatLng latLng = LatLng(16.155182041998927, 103.30619597899741);
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
-  }
+  // late GoogleMapController mapController;
+  // Completer<GoogleMapController> _controller = Completer();
+  // LatLng latLng = LatLng(16.155182041998927, 103.30619597899741);
+  // void _onMapCreated(GoogleMapController controller) {
+  //   mapController = controller;
+  // }
 
-  var _currentLocation = 0;
-  static final CameraPosition Sarakham = CameraPosition(
-    target: LatLng(16.155182041998927, 103.30619597899741),
-    zoom: 15,
-  );
+  // var _currentLocation = 0;
+  // static final CameraPosition Sarakham = CameraPosition(
+  //   target: LatLng(16.155182041998927, 103.30619597899741),
+  //   zoom: 15,
+  // );
 
-  Future<void> _go(CameraPosition cameraPosition) async {
-    final controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
-  }
+  // Future<void> _go(CameraPosition cameraPosition) async {
+  //   final controller = await _controller.future;
+  //   controller.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
+  // }
 
   @override
   Widget build(BuildContext context) {
     travelmapname = ModalRoute.of(context)!.settings.arguments;
-    CameraPosition cameraPosition = CameraPosition(
-      target: latLng,
-      zoom: 14,
-    );
+    // CameraPosition cameraPosition = CameraPosition(
+    //   target: latLng,
+    //   zoom: 14,
+    // );
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
@@ -153,43 +156,77 @@ class _travelmap_page extends State<travelmap_page> {
                 ]),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: FutureBuilder(
-                future: _getLocation(),
-                builder: (BuildContext context, AsyncSnapshot snapshot) {
-                  if (snapshot.hasData) {
-                    return GoogleMap(
-                      markers: <Marker>[
-                        Marker(
-                            markerId: MarkerId('100'),
-                            position:
-                                LatLng(16.155182041998927, 103.30619597899741),
-                            infoWindow: InfoWindow(
-                                title:
-                                    'ไปที่นี้กัน ${travelmapname['travel_name']}',
-                                snippet:
-                                    '--------------------------------------',
-                                onTap: () {})),
-                      ].toSet(),
-                      mapType: MapType.normal,
-                      onMapCreated: (GoogleMapController controller) {
-                        _controller.complete(controller);
-                      },
-                      myLocationEnabled: true,
-                      initialCameraPosition: cameraPosition,
-                    );
-                  } else {
-                    return Center(
-                      child: Column(
-                          // mainAxisAlignment: MainAxisAlignment.center,
-                          //   children: <Widget>[
-                          //     CircularProgressIndicator(),
-                          //    ],
-                          ),
-                    );
-                  }
-                },
+              child: Container(
+                height: 500,
+                child: Column(
+                  children: [
+                    Flexible(
+                        child: FlutterMap(
+                      options: MapOptions(
+                          center:
+                              LatLng(16.186348810730625, 103.30025897021274),
+                          zoom: 16),
+                      layers: [
+                        TileLayerOptions(
+                          urlTemplate:
+                              "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                          subdomains: ['a', 'b', 'c'],
+                          attributionBuilder: (_) {
+                            return Text("© OpenStreetMap contributors");
+                          },
+                        ),
+                        MarkerLayerOptions(markers: [
+                          Marker(
+                            point:
+                                LatLng(16.186348810730625, 103.30025897021274),
+                            builder: (ctx) => const Icon(Icons.pin_drop),
+                          )
+                        ]),
+                      ],
+                    ))
+                  ],
+                ),
               ),
             ),
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: FutureBuilder(
+            //     future: _getLocation(),
+            //     builder: (BuildContext context, AsyncSnapshot snapshot) {
+            //       if (snapshot.hasData) {
+            //         return GoogleMap(
+            //           markers: <Marker>[
+            //             Marker(
+            //                 markerId: MarkerId('100'),
+            //                 position:
+            //                     LatLng(16.155182041998927, 103.30619597899741),
+            //                 infoWindow: InfoWindow(
+            //                     title:
+            //                         'ไปที่นี้กัน ${travelmapname['travel_name']}',
+            //                     snippet:
+            //                         '--------------------------------------',
+            //                     onTap: () {})),
+            //           ].toSet(),
+            //           mapType: MapType.normal,
+            //           onMapCreated: (GoogleMapController controller) {
+            //             _controller.complete(controller);
+            //           },
+            //           myLocationEnabled: true,
+            //           initialCameraPosition: cameraPosition,
+            //         );
+            //       } else {
+            //         return Center(
+            //           child: Column(
+            //               // mainAxisAlignment: MainAxisAlignment.center,
+            //               //   children: <Widget>[
+            //               //     CircularProgressIndicator(),
+            //               //    ],
+            //               ),
+            //         );
+            //       }
+            //     },
+            //   ),
+            // ),
           ),
         ),
       ),

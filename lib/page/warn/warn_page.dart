@@ -7,12 +7,15 @@ import 'package:cctv_tun/widgets/custom_button.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 
 import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+// import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
+import 'package:latlong2/latlong.dart';
 import 'dart:convert';
 
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -23,6 +26,15 @@ class warn_page extends StatefulWidget {
 
   @override
   _warn1State createState() => _warn1State();
+}
+
+class ApiImage {
+  final String imageUrl;
+  final String id;
+  ApiImage({
+    required this.imageUrl,
+    required this.id,
+  });
 }
 
 class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
@@ -110,92 +122,98 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
     });
   }
 
-  Future<void> warn_page(Map formValues) async {
+  var em_location = 'ยังไม่ได้เลือก';
+  Future<void> addEmergecy(Map formValues) async {
+    int index = 0;
     //formValues['name']
     // print(formValues);
     try {
-      var url =
-          'https://www.bc-official.com/api/app_nt/api/app/emergency/restful/';
-      var response = await http.post(Uri.parse(url), headers: {
-        "Accept": "application/json",
-        'Authorization': 'Bearer ${Global.token}',
-        "Content-type": "multipart/for",
-      },
-          // body: json.encode({
-          //   "firstname": formValues['firstname'],
-          //   "lastname": formValues['lastname'],
-          //   "email": formValues['email'],
-          //   "password": formValues['password']
-          // }));
-          body: {
-            "em_app_id": Global.app_id,
-            "em_user_id": '${profilee['user_id']}',
-            "em_detail": formValues['em_detail'],
-            "em_phone": formValues['em_phone'],
-            "em_type": formValues['em_type'],
-            "em_owner": formValues['em_owner'],
-            "em_lat": '12.00',
-            "em_lng": '13',
-            "em_location": '12-13',
-            "em_category": '0',
-            "emi_path_name[]": formValues['emi_path_name'],
-            "em_location": '$position',
-            // "user_app_id": Global.app_id,
-            // "user_card_id": '1471200',
-            // "user_firstname": formValues['firstname'],
-            // "user_lastname": formValues['lastname'],
-            // "user_email": formValues['email'],
-            // "user_pass": formValues['password']
-          });
-      Map<String, dynamic> warnpage = json.decode(response.body);
+      if (formValues['em_detail'] != null &&
+          formValues['em_phone'] != null &&
+          formValues['em_phone'] != null &&
+          formValues['em_owner'] != null &&
+          formValues['em_location'] != null &&
+          formValues['em_type'] != null) {
+        var url = Uri.parse(Global.urlWeb + 'api/app/emergency/restful/');
+        var request = http.MultipartRequest('POST', url)
+          ..fields['em_app_id'] = Global.app_id
+          ..fields['em_user_id'] = Global.user_id ?? ''
+          ..fields['em_detail'] = formValues['em_detail']
+          ..fields['em_phone'] = formValues['em_phone']
+          ..fields['em_owner'] = formValues['em_owner']
+          ..fields['em_lat'] = '1'
+          ..fields['em_lng'] = '1'
+          ..fields['em_location'] = em_location
+          ..fields['em_category'] = '1'
+          ..fields['em_type'] = formValues['em_type'];
 
-      if (response.statusCode == 201) {
-        Alert(
-          context: context,
-          // title: "แจ้งเตือน",
-          type: AlertType.success,
-          desc: '${warnpage['data']}',
-          buttons: [
-            DialogButton(
-              child: Text(
-                "ปิด",
-                style: TextStyle(color: ThemeBc.white, fontSize: 18),
-              ),
-              onPressed: () => Navigator.pushNamed(context, '/login_page'),
-              gradient: LinearGradient(colors: [
-                Color.fromRGBO(116, 116, 191, 1.0),
-                Color.fromRGBO(52, 138, 199, 1.0),
-              ]),
-            )
-          ],
-        ).show();
+        Map<String, String> headers = {
+          "Accept": "application/json",
+          "Content-type": "multipart/form-data",
+          "Authorization":
+              'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
+        };
 
-        //กลับไปที่หน้า LoginPage
-        // Future.delayed(const Duration(seconds: 5), () {
-        //   // Navigator.pop(context);
-        //    Navigator.pop(context, '/login');
-        // });
-      } else {
-        Alert(
-          context: context,
-          type: AlertType.warning,
-          // title: "แจ้งเตือน",
-          desc: '${warnpage['data']}',
-          buttons: [
-            DialogButton(
-              child: Text(
-                "ปิด",
-                style: TextStyle(color: ThemeBc.white, fontSize: 18),
-              ),
-              onPressed: () => Navigator.pop(context),
-              gradient: LinearGradient(colors: [
-                Color.fromRGBO(116, 116, 191, 1.0),
-                Color.fromRGBO(52, 138, 199, 1.0),
-              ]),
-            )
-          ],
-        ).show();
-      }
+        for (XFile item in formValues['emi_path_name'] ?? []) {
+          request.files.add(
+              await http.MultipartFile.fromPath('emi_path_name[]', item.path));
+          index++;
+        }
+
+        request.headers.addAll(headers);
+        var res = await request.send();
+        http.Response response = await http.Response.fromStream(res);
+
+        var feedback = jsonDecode(response.body);
+
+        if (response.statusCode == 201) {
+          Alert(
+            context: context,
+            // title: "แจ้งเตือน",
+            type: AlertType.success,
+            desc: '${profilee['data']}',
+            buttons: [
+              DialogButton(
+                child: Text(
+                  "ปิด",
+                  style: TextStyle(color: ThemeBc.white, fontSize: 18),
+                ),
+                onPressed: () {},
+                gradient: LinearGradient(colors: [
+                  Color.fromRGBO(116, 116, 191, 1.0),
+                  Color.fromRGBO(52, 138, 199, 1.0),
+                ]),
+              )
+            ],
+          ).show();
+
+          //กลับไปที่หน้า LoginPage
+          // Future.delayed(const Duration(seconds: 5), () {
+          //   // Navigator.pop(context);
+          //    Navigator.pop(context, '/login');
+          // });
+        } else {
+          Alert(
+            context: context,
+            type: AlertType.warning,
+            // title: "แจ้งเตือน",
+            desc: '${profilee['data']}',
+            buttons: [
+              DialogButton(
+                child: Text(
+                  "ปิด",
+                  style: TextStyle(color: ThemeBc.white, fontSize: 18),
+                ),
+                onPressed: () => Navigator.pop(context),
+                gradient: LinearGradient(colors: [
+                  Color.fromRGBO(116, 116, 191, 1.0),
+                  Color.fromRGBO(52, 138, 199, 1.0),
+                ]),
+              )
+            ],
+          ).show();
+        }
+      } else {}
     } catch (e) {
       // print(e);
     }
@@ -213,40 +231,40 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
   }
 
   late Position userLocation;
-  late GoogleMapController mapController;
+  // late GoogleMapController mapController;
   late String position = 'ยังไม่ได้เลือก';
 
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
-  }
+  // void _onMapCreated(GoogleMapController controller) {
+  //   mapController = controller;
+  // }
 
-  Future<Position> _getLocation() async {
-    bool serviceEnabled;
-    LocationPermission permission;
+  // Future<Position> _getLocation() async {
+  //   bool serviceEnabled;
+  //   LocationPermission permission;
 
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      return Future.error('Location services are disabled.');
-    }
+  //   serviceEnabled = await Geolocator.isLocationServiceEnabled();
+  //   if (!serviceEnabled) {
+  //     return Future.error('Location services are disabled.');
+  //   }
 
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        return Future.error('Location permissions are denied');
-      }
-    }
+  //   permission = await Geolocator.checkPermission();
+  //   if (permission == LocationPermission.denied) {
+  //     permission = await Geolocator.requestPermission();
+  //     if (permission == LocationPermission.denied) {
+  //       return Future.error('Location permissions are denied');
+  //     }
+  //   }
 
-    if (permission == LocationPermission.deniedForever) {
-      return Future.error(
-          'Location permissions are permanently denied, we cannot request permissions.');
-    }
+  //   if (permission == LocationPermission.deniedForever) {
+  //     return Future.error(
+  //         'Location permissions are permanently denied, we cannot request permissions.');
+  //   }
 
-    userLocation = await Geolocator.getCurrentPosition();
-    return userLocation;
-  }
+  //   userLocation = await Geolocator.getCurrentPosition();
+  //   return userLocation;
+  // }
 
-  List<Marker> myMarker = [];
+  // List<Marker> myMarker = [];
   @override
   Widget build(BuildContext context) {
     Widget warnpage() {
@@ -464,9 +482,106 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
                   ),
 
                   SizedBox(height: 18),
+                  // Container(
+                  //   width: 400,
+                  //   height: 300,
+                  //   decoration: BoxDecoration(
+                  //       color: secondaryTextColor,
+                  //       borderRadius: BorderRadius.circular(
+                  //         20,
+                  //       ),
+                  //       boxShadow: [
+                  //         BoxShadow(
+                  //             color: Colors.grey.withOpacity(0.5),
+                  //             offset: Offset(2, 2),
+                  //             blurRadius: 7,
+                  //             spreadRadius: 1.0),
+                  //         BoxShadow(
+                  //             color: Colors.black.withOpacity(0.5),
+                  //             offset: Offset(2, 4),
+                  //             blurRadius: 7.0,
+                  //             spreadRadius: 1.0),
+                  //       ]),
+                  //   child: Padding(
+                  //     padding: const EdgeInsets.all(8.0),
+                  //     child: ListView(
+                  //       children: [
+                  //         Padding(
+                  //           padding: const EdgeInsets.all(5.0),
+                  //           child: Column(
+                  //             crossAxisAlignment: CrossAxisAlignment.start,
+                  //             children: [
+                  //               Text('อัพโหลดรูปภาพ'),
+                  //             ],
+                  //           ),
+                  //         ),
+                  //         Column(
+                  //           crossAxisAlignment: CrossAxisAlignment.start,
+                  //           children: [
+                  //             Padding(
+                  //               padding: const EdgeInsets.all(8.0),
+                  //               child: Container(
+                  //                 decoration: BoxDecoration(
+                  //                     color: ThemeBc.white,
+                  //                     borderRadius: BorderRadius.circular(
+                  //                       20,
+                  //                     ),
+                  //                     boxShadow: []),
+                  //                 width: 350,
+                  //                 height: 240,
+                  //                 child: Padding(
+                  //                   padding: const EdgeInsets.all(8.0),
+                  //                   child: Column(
+                  //                     mainAxisAlignment:
+                  //                         MainAxisAlignment.center,
+                  //                     children: <Widget>[
+                  //                       selectedImage == null
+                  //                           ? IconButton(
+                  //                               icon: Icon(Icons.add_a_photo),
+                  //                               tooltip: 'Show Snackbar',
+                  //                               onPressed: getImage,
+                  //                             )
+                  //                           : Container(
+                  //                               height: 200,
+                  //                               child: ListView(
+                  //                                 children: [
+                  //                                   Container(
+                  //                                       height: 100,
+                  //                                       child: Image.file(
+                  //                                           selectedImage!)),
+                  //                                 ],
+                  //                               ),
+                  //                             ),
+                  //                       // Text(resJson),
+                  //                     ],
+                  //                   ),
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       ],
+                  //     ),
+
+                  //     Container(
+                  //       child: FormBuilderImagePicker(
+                  //         name: 'emi_path_name',
+                  //         iconColor: Colors.black,
+                  //         decoration: InputDecoration(
+                  //           border: OutlineInputBorder(
+                  //             borderRadius: BorderRadius.circular(
+                  //               20.0,
+                  //             ),
+                  //           ),
+                  //           labelText: 'ภาพประกอบเหตุการ',
+                  //           filled: true,
+                  //         ),
+                  //         maxImages: 1,
+                  //       ),
+                  //     ),
+                  // //   ),
+                  // ),
                   Container(
-                    width: 400,
-                    height: 300,
                     decoration: BoxDecoration(
                         color: secondaryTextColor,
                         borderRadius: BorderRadius.circular(
@@ -486,80 +601,27 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
                         ]),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: ListView(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('อัพโหลดรูปภาพ'),
-                              ],
+                      child: FormBuilderImagePicker(
+                        name: 'emi_path_name',
+                        displayCustomType: (obj) =>
+                            obj is ApiImage ? obj.imageUrl : obj,
+                        iconColor: Colors.black,
+                        decoration: InputDecoration(
+                          suffixIconColor: ThemeBc.black,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(
+                              20.0,
                             ),
                           ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: ThemeBc.white,
-                                      borderRadius: BorderRadius.circular(
-                                        20,
-                                      ),
-                                      boxShadow: []),
-                                  width: 350,
-                                  height: 240,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        selectedImage == null
-                                            ? IconButton(
-                                                icon: Icon(Icons.add_a_photo),
-                                                tooltip: 'Show Snackbar',
-                                                onPressed: getImage,
-                                              )
-                                            : Container(
-                                                height: 200,
-                                                child: ListView(
-                                                  children: [
-                                                    Container(
-                                                        height: 100,
-                                                        child: Image.file(
-                                                            selectedImage!)),
-                                                  ],
-                                                ),
-                                              ),
-                                        // Text(resJson),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                          labelText: 'ภาพ',
+                          fillColor: Colors.white,
+                          filled: true,
+                        ),
+                        maxImages: 5,
+                        onSaved: (val) {
+                          print(val);
+                        },
                       ),
-                      //Container(
-                      //   child: FormBuilderImagePicker(
-                      //     name: 'emi_path_name',
-                      //     iconColor: Colors.black,
-                      //     decoration: InputDecoration(
-                      //       border: OutlineInputBorder(
-                      //         borderRadius: BorderRadius.circular(
-                      //           20.0,
-                      //         ),
-                      //       ),
-                      //       labelText: 'ภาพประกอบเหตุการ',
-                      //       filled: true,
-                      //     ),
-                      //     maxImages: 1,
-                      //   ),
-                      // ),
                     ),
                   ),
                   SizedBox(height: 18),
@@ -589,52 +651,40 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
                       height: 300.0,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: FutureBuilder(
-                          future: _getLocation(),
-                          builder:
-                              (BuildContext context, AsyncSnapshot snapshot) {
-                            if (snapshot.hasData) {
-                              _handletap(LatLng tappedPoint) {
-                                position = '$tappedPoint';
-                                setState(() {
-                                  myMarker = [];
-                                  myMarker.add(Marker(
-                                    markerId: MarkerId(tappedPoint.toString()),
-                                    position: tappedPoint,
-                                  ));
-                                });
-                                return position;
-                              }
-
-                              return Column(
-                                children: [
-                                  Container(
-                                    height: 280,
-                                    child: GoogleMap(
-                                      markers: Set.from(myMarker),
-                                      onTap: _handletap,
-                                      mapType: MapType.normal,
-                                      onMapCreated: _onMapCreated,
-                                      myLocationEnabled: true,
-                                      initialCameraPosition: CameraPosition(
-                                          target: LatLng(userLocation.latitude,
-                                              userLocation.longitude),
-                                          zoom: 15),
-                                    ),
+                        child: Container(
+                          height: 500,
+                          child: Column(
+                            children: [
+                              Flexible(
+                                  child: FlutterMap(
+                                options: MapOptions(
+                                    center: LatLng(
+                                        16.186348810730625, 103.30025897021274),
+                                    zoom: 16),
+                                layers: [
+                                  TileLayerOptions(
+                                    urlTemplate:
+                                        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                                    subdomains: ['a', 'b', 'c'],
+                                    attributionBuilder: (_) {
+                                      return Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text("มหาสารคาม"),
+                                      );
+                                    },
                                   ),
+                                  // MarkerLayerOptions(markers: [
+                                  //   Marker(
+                                  //     point: LatLng(16.186348810730625,
+                                  //         103.30025897021274),
+                                  //     builder: (ctx) =>
+                                  //         const Icon(Icons.pin_drop),
+                                  //   )
+                                  // ]),
                                 ],
-                              );
-                            } else {
-                              return Center(
-                                  // child: Column(
-                                  //   mainAxisAlignment: MainAxisAlignment.center,
-                                  //   children: <Widget>[
-                                  //     CircularProgressIndicator(),
-                                  //   ],
-                                  // ),
-                                  );
-                            }
-                          },
+                              ))
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -678,31 +728,32 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
                         ],
                       )),
                   SizedBox(height: 10),
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      mapController.animateCamera(CameraUpdate.newLatLngZoom(
-                          LatLng(userLocation.latitude, userLocation.longitude),
-                          18));
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            content: Text(
-                                'ตำแหน่ง !\nละติจูด : ${userLocation.latitude} ลองจิจูด : ${userLocation.longitude} ตำแหน่งที่คุณเลือก : $position'),
-                          );
-                        },
-                      );
-                    },
-                    icon: Icon(Icons.gps_fixed),
-                    label: Text('ตำแหน่งของคุณ'),
-                    style: ElevatedButton.styleFrom(
-                      primary: ThemeBc.background,
-                      onPrimary: Colors.white,
-                      elevation: 30,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(40))),
-                    ),
-                  ),
+
+                  // ElevatedButton.icon(
+                  //   onPressed: () {
+                  //     // mapController.animateCamera(CameraUpdate.newLatLngZoom(
+                  //     //     LatLng(userLocation.latitude, userLocation.longitude),
+                  //     //     18));
+                  //     showDialog(
+                  //       context: context,
+                  //       builder: (context) {
+                  //         return AlertDialog(
+                  //           content: Text(
+                  //               'ตำแหน่ง !\nละติจูด : ${userLocation.latitude} ลองจิจูด : ${userLocation.longitude} ตำแหน่งที่คุณเลือก : $position'),
+                  //         );
+                  //       },
+                  //     );
+                  //   },
+                  //   icon: Icon(Icons.gps_fixed),
+                  //   label: Text('ตำแหน่งของคุณ'),
+                  //   style: ElevatedButton.styleFrom(
+                  //     primary: ThemeBc.background,
+                  //     onPrimary: Colors.white,
+                  //     elevation: 30,
+                  //     shape: RoundedRectangleBorder(
+                  //         borderRadius: BorderRadius.all(Radius.circular(40))),
+                  //   ),
+                  // ),
                   SizedBox(height: 18),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 0),
@@ -713,10 +764,9 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
                         CustomButton(
                           title: 'แจ้งเหตุฉุกเฉิน',
                           onPressed: () {
-                            onUploadImage;
                             if (_fbKey.currentState!.saveAndValidate()) {
-                              //  print(_fbKey.currentState!.value);
-                              warn_page(_fbKey.currentState!.value);
+                              print(_fbKey.currentState!.value);
+                              addEmergecy(_fbKey.currentState!.value);
                             }
                           },
                           colorButton: ThemeBc.background,
@@ -743,13 +793,13 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
               end: Alignment.bottomLeft),
         ),
         width: 1000,
-        height: 500,
+        height: 1000,
         child: ListView(
           children: [
             SizedBox(height: 5),
             Container(
               width: 1000,
-              height: 500,
+              height: 1000,
               child: FutureBuilder<Map<String, dynamic>>(
                 future: getDataSlide(),
                 builder: (context, snapshot) {
@@ -953,8 +1003,10 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
             icon: Image.asset('assets/logo.png', scale: 15),
             tooltip: 'Show Snackbar',
             onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+              if (_fbKey.currentState!.saveAndValidate()) {
+                // print(_fbKey.currentState.value);
+                addEmergecy(_fbKey.currentState!.value);
+              }
             },
           ),
         ],

@@ -1,13 +1,10 @@
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 
-import 'package:cctv_tun/widgets/custom_buttonmenu.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:cctv_tun/widgets/custom_button.dart';
 
 class location_page extends StatefulWidget {
   location_page({Key? key}) : super(key: key);

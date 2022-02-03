@@ -376,7 +376,7 @@ class _home_pageState extends State<home_page> {
       return Padding(
         padding: const EdgeInsets.all(10),
         child: Container(
-          margin: EdgeInsets.only(top: 30, left: 5),
+          // margin: EdgeInsets.only(top: 30, left: 5),
           child: Text(
             'เมนู',
             style: TextStyle(
@@ -543,7 +543,7 @@ class _home_pageState extends State<home_page> {
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                  colors: [ThemeBc.background, ThemeBc.background],
+                  colors: [ThemeBc.orange, ThemeBc.pinkAccent],
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft),
             ),

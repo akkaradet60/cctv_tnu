@@ -4,8 +4,10 @@ import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:latlong2/latlong.dart';
+// import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class map_prod extends StatefulWidget {
   map_prod({Key? key}) : super(key: key);
@@ -44,38 +46,38 @@ class _map_prod extends State<map_prod> {
   var hotlinee;
 
   late Position userLocation;
-  late GoogleMapController mapController;
-  Completer<GoogleMapController> _controller = Completer();
-  LatLng latLng = const LatLng(14, 103.30025897021274);
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
-  }
+  // late GoogleMapController mapController;
+  // Completer<GoogleMapController> _controller = Completer();
+  // LatLng latLng = const LatLng(14, 103.30025897021274);
+  // void _onMapCreated(GoogleMapController controller) {
+  //   mapController = controller;
+  // }
 
-  // var _currentLocation = 0;
-  // static final CameraPosition Sarakham = CameraPosition(
-  //   target: LatLng(16.186348810730625, 103.30025897021274),
-  //   zoom: 15,
-  // );
-  // static final CameraPosition Sarakham1 = const CameraPosition(
-  //   target: LatLng(16.155182041998927, 103.30619597899741),
-  //   zoom: 16,
-  // );
+  // // var _currentLocation = 0;
+  // // static final CameraPosition Sarakham = CameraPosition(
+  // //   target: LatLng(16.186348810730625, 103.30025897021274),
+  // //   zoom: 15,
+  // // );
+  // // static final CameraPosition Sarakham1 = const CameraPosition(
+  // //   target: LatLng(16.155182041998927, 103.30619597899741),
+  // //   zoom: 16,
+  // // );
 
-  Future<void> _go(CameraPosition cameraPosition) async {
-    final controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
-  }
+  // Future<void> _go(CameraPosition cameraPosition) async {
+  //   final controller = await _controller.future;
+  //   controller.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
+  // }
 
   @override
   Widget build(BuildContext context) {
     hotlinee = ModalRoute.of(context)!.settings.arguments;
-    // var app_lat = double.parse(hotlinee['travelLat'] ?? "102.83473877038512");
-    // var app_lng = double.parse(hotlinee['travelLng'] ?? "102.83473877038512");
+    var app_lat = double.parse(hotlinee['travelLat'] ?? "102.83473877038512");
+    var app_lng = double.parse(hotlinee['travelLng'] ?? "102.83473877038512");
 
-    CameraPosition cameraPosition = CameraPosition(
-      target: LatLng(102.83473877038512, 102.83473877038512),
-      zoom: 14,
-    );
+    // CameraPosition cameraPosition = CameraPosition(
+    //   target: LatLng(102.83473877038512, 102.83473877038512),
+    //   zoom: 14,
+    // );
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
@@ -106,53 +108,80 @@ class _map_prod extends State<map_prod> {
         ],
       ),
       body: Container(
-        height: 1000,
-        child: FutureBuilder(
-          future: _getLocation(),
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            if (snapshot.hasData) {
-              return Container(
-                height: 500,
-                child: ListView(
-                  children: [
-                    Container(
-                      height: 1000,
-                      child: GoogleMap(
-                        markers: <Marker>[
-                          Marker(
-                              markerId: const MarkerId('100'),
-                              position: LatLng(
-                                  102.83473877038512, 102.83473877038512),
-                              infoWindow: InfoWindow(
-                                  title: 'ตำแหน่งของศูนย์',
-                                  //   snippet: '-------------------',
-                                  onTap: () {})),
-                        ].toSet(),
-                        mapType: MapType.normal,
-                        onMapCreated: (GoogleMapController controller) {
-                          _controller.complete(controller);
-                        },
-                        myLocationEnabled: true,
-                        initialCameraPosition: cameraPosition,
-                      ),
-                    ),
-                  ],
+        height: 500,
+        child: Column(
+          children: [
+            Flexible(
+                child: FlutterMap(
+              options: MapOptions(center: LatLng(app_lat, app_lng), zoom: 16),
+              layers: [
+                TileLayerOptions(
+                  urlTemplate:
+                      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                  subdomains: ['a', 'b', 'c'],
+                  attributionBuilder: (_) {
+                    return Text("© OpenStreetMap contributors");
+                  },
                 ),
-              );
-            } else {
-              return Center(
-                child: Column(
-
-                    // mainAxisAlignment: MainAxisAlignment.center,
-                    //   children: <Widget>[
-                    //     CircularProgressIndicator(),
-                    //    ],
-                    ),
-              );
-            }
-          },
+                MarkerLayerOptions(markers: [
+                  Marker(
+                    point: LatLng(app_lat, app_lng),
+                    builder: (ctx) => const Icon(Icons.pin_drop),
+                  )
+                ]),
+              ],
+            ))
+          ],
         ),
       ),
+      // Container(
+      //   height: 1000,
+      //   child: FutureBuilder(
+      //     future: _getLocation(),
+      //     builder: (BuildContext context, AsyncSnapshot snapshot) {
+      //       if (snapshot.hasData) {
+      //         return Container(
+      //           height: 500,
+      //           child: ListView(
+      //             children: [
+      //               Container(
+      //                 height: 1000,
+      //                 child: GoogleMap(
+      //                   markers: <Marker>[
+      //                     Marker(
+      //                         markerId: const MarkerId('100'),
+      //                         position: LatLng(
+      //                             102.83473877038512, 102.83473877038512),
+      //                         infoWindow: InfoWindow(
+      //                             title: 'ตำแหน่งของศูนย์',
+      //                             //   snippet: '-------------------',
+      //                             onTap: () {})),
+      //                   ].toSet(),
+      //                   mapType: MapType.normal,
+      //                   onMapCreated: (GoogleMapController controller) {
+      //                     _controller.complete(controller);
+      //                   },
+      //                   myLocationEnabled: true,
+      //                   initialCameraPosition: cameraPosition,
+      //                 ),
+      //               ),
+      //             ],
+      //           ),
+      //         );
+      //       } else {
+      //         return Center(
+      //           child: Column(
+
+      //               // mainAxisAlignment: MainAxisAlignment.center,
+      //               //   children: <Widget>[
+      //               //     CircularProgressIndicator(),
+      //               //    ],
+      //               ),
+      //         );
+      //       }
+      //     },
+      //   ),
+      // ),
       /* Column(
         children: [
           Container(

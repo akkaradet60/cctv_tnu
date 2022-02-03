@@ -99,6 +99,7 @@ class _trainingcalendardetail_page extends State<trainingcalendardetail_page> {
   Widget build(BuildContext context) {
     trainingcalendardetail = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
+      backgroundColor: ThemeBc.background,
       appBar: AppBar(
         iconTheme: IconThemeData(
           color: ThemeBc.white, //change your color here
@@ -121,12 +122,6 @@ class _trainingcalendardetail_page extends State<trainingcalendardetail_page> {
       ),
       body: SafeArea(
         child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [Colors.pinkAccent, Colors.orangeAccent],
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft),
-          ),
           child: ListView(
             children: [
               SizedBox(height: 5),

@@ -3,8 +3,9 @@ import 'dart:async';
 import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:latlong2/latlong.dart';
 
 class map_page extends StatefulWidget {
   map_page({Key? key}) : super(key: key);
@@ -13,42 +14,45 @@ class map_page extends StatefulWidget {
   _map_pageState createState() => _map_pageState();
 }
 
+late var locn = '';
+late var locn2 = '';
+
 class _map_pageState extends State<map_page> {
-  Future<Position> _getLocation() async {
-    bool serviceEnabled;
-    LocationPermission permission;
+  // Future<Position> _getLocation() async {
+  //   bool serviceEnabled;
+  //   LocationPermission permission;
 
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      return Future.error('Location services are disabled.');
-    }
+  //   serviceEnabled = await Geolocator.isLocationServiceEnabled();
+  //   if (!serviceEnabled) {
+  //     return Future.error('Location services are disabled.');
+  //   }
 
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        return Future.error('Location permissions are denied');
-      }
-    }
+  //   permission = await Geolocator.checkPermission();
+  //   if (permission == LocationPermission.denied) {
+  //     permission = await Geolocator.requestPermission();
+  //     if (permission == LocationPermission.denied) {
+  //       return Future.error('Location permissions are denied');
+  //     }
+  //   }
 
-    if (permission == LocationPermission.deniedForever) {
-      return Future.error(
-          'Location permissions are permanently denied, we cannot request permissions.');
-    }
+  //   if (permission == LocationPermission.deniedForever) {
+  //     return Future.error(
+  //         'Location permissions are permanently denied, we cannot request permissions.');
+  //   }
 
-    userLocation = await Geolocator.getCurrentPosition();
-    return userLocation;
-  }
+  //   userLocation = await Geolocator.getCurrentPosition();
+  //   return userLocation;
+  // }
 
   var hotlinee;
 
   late Position userLocation;
-  late GoogleMapController mapController;
-  Completer<GoogleMapController> _controller = Completer();
-  LatLng latLng = const LatLng(14, 103.30025897021274);
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
-  }
+  // late GoogleMapController mapController;
+  // Completer<GoogleMapController> _controller = Completer();
+  // LatLng latLng = const LatLng(14, 103.30025897021274);
+  // void _onMapCreated(GoogleMapController controller) {
+  //   mapController = controller;
+  // }
 
   // var _currentLocation = 0;
   // static final CameraPosition Sarakham = CameraPosition(
@@ -60,25 +64,26 @@ class _map_pageState extends State<map_page> {
   //   zoom: 16,
   // );
 
-  Future<void> _go(CameraPosition cameraPosition) async {
-    final controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
-  }
+  // Future<void> _go(CameraPosition cameraPosition) async {
+  //   final controller = await _controller.future;
+  //   controller.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
+  // }
 
   @override
   Widget build(BuildContext context) {
     hotlinee = ModalRoute.of(context)!.settings.arguments;
-    var app_lat = double.parse(hotlinee['hotlineLat'] ?? "102.83473877038512");
-    var app_lng = double.parse(hotlinee['hotlineLng'] ?? "102.83473877038512");
+    var app_lat = double.parse(hotlinee['hotlineLat'] ?? "16.04594422566426");
+    var app_lng = double.parse(hotlinee['hotlineLng'] ?? "103.11927574700533");
 
-    CameraPosition cameraPosition = CameraPosition(
-      target: LatLng(app_lat, app_lng),
-      zoom: 14,
-    );
+    // CameraPosition cameraPosition = CameraPosition(
+    //   target: LatLng(app_lat, app_lng),
+    //   zoom: 14,
+    // );
     return Scaffold(
+      backgroundColor: ThemeBc.black,
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: ThemeBc.white, //change your color here
+          color: ThemeBc.background, //change your color here
         ),
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
@@ -117,44 +122,119 @@ class _map_pageState extends State<map_page> {
                       blurRadius: 7.0,
                       spreadRadius: 1.0),
                 ]),
-            height: 600,
+
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: FutureBuilder(
-                future: _getLocation(),
-                builder: (BuildContext context, AsyncSnapshot snapshot) {
-                  if (snapshot.hasData) {
-                    return GoogleMap(
-                      markers: <Marker>[
-                        Marker(
-                            markerId: const MarkerId('100'),
-                            position: LatLng(app_lat, app_lng),
-                            infoWindow: InfoWindow(
-                                title:
-                                    'ตำแหน่งของศูนย์ ${hotlinee['hotlineName']}',
-                                //   snippet: '-------------------',
-                                onTap: () {})),
-                      ].toSet(),
-                      mapType: MapType.normal,
-                      onMapCreated: (GoogleMapController controller) {
-                        _controller.complete(controller);
-                      },
-                      myLocationEnabled: true,
-                      initialCameraPosition: cameraPosition,
-                    );
-                  } else {
-                    return Center(
-                      child: Column(
-                          // mainAxisAlignment: MainAxisAlignment.center,
-                          //   children: <Widget>[
-                          //     CircularProgressIndicator(),
-                          //    ],
-                          ),
-                    );
-                  }
-                },
+              child: Container(
+                height: 700,
+                child: Column(
+                  children: [
+                    Flexible(
+                        child: FlutterMap(
+                      options: MapOptions(
+                          center: LatLng(app_lat, app_lng), zoom: 16),
+                      layers: [
+                        TileLayerOptions(
+                          urlTemplate:
+                              "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                          subdomains: ['a', 'b', 'c'],
+                          attributionBuilder: (_) {
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                children: [
+                                  ElevatedButton.icon(
+                                    onPressed: () {
+                                      print('$userLocation');
+                                      // locn = userLocation.latitude;
+                                      // locn2 = userLocation
+                                      //     .longitude; // mapController.animateCamera(CameraUpdate.newLatLngZoom(
+                                      // //     LatLng(userLocation.latitude, userLocation.longitude),
+                                      // //     18));
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return AlertDialog(
+                                            content: Text(
+                                                'ตำแหน่ง !\nละติจูด :// ${locn} ลองจิจูด : ${locn} ตำแหน่งที่คุณเลือก : '),
+                                          );
+                                        },
+                                      );
+                                    },
+                                    icon: Icon(Icons.gps_fixed),
+                                    label: Text('ตำแหน่งของคุณ'),
+                                    style: ElevatedButton.styleFrom(
+                                      primary: ThemeBc.background,
+                                      onPrimary: Colors.white,
+                                      elevation: 30,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(40))),
+                                    ),
+                                  ),
+                                  Text(
+                                    "เทศบาลมหาสารคาม",
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.bold,
+                                      // backgroundColor: Colors.black45,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
+                        MarkerLayerOptions(markers: [
+                          Marker(
+                            point: LatLng(app_lat, app_lng),
+                            builder: (ctx) => const Icon(Icons.pin_drop),
+                          )
+                        ]),
+                      ],
+                    ))
+                  ],
+                ),
               ),
             ),
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: FutureBuilder(
+            //     future: _getLocation(),
+            //     builder: (BuildContext context, AsyncSnapshot snapshot) {
+            //       if (snapshot.hasData) {
+            //         return GoogleMap(
+            //           markers: <Marker>[
+            //             Marker(
+            //                 markerId: const MarkerId('100'),
+            //                 position: LatLng(app_lat, app_lng),
+            //                 infoWindow: InfoWindow(
+            //                     title:
+            //                         'ตำแหน่งของศูนย์ ${hotlinee['hotlineName']}',
+            //                     //   snippet: '-------------------',
+            //                     onTap: () {})),
+            //           ].toSet(),
+            //           mapType: MapType.normal,
+            //           onMapCreated: (GoogleMapController controller) {
+            //             _controller.complete(controller);
+            //           },
+            //           myLocationEnabled: true,
+            //           initialCameraPosition: cameraPosition,
+            //         );
+            //       } else {
+            //         return Center(
+            //           child: Column(
+            //               // mainAxisAlignment: MainAxisAlignment.center,
+            //               //   children: <Widget>[
+            //               //     CircularProgressIndicator(),
+            //               //    ],
+            //               ),
+            //         );
+            //       }
+            //     },
+            //   ),
+            // ),
           ),
         ),
       ),

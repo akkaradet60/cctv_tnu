@@ -4,8 +4,10 @@ import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:latlong2/latlong.dart';
+// import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class maplocation_page extends StatefulWidget {
   maplocation_page({Key? key}) : super(key: key);
@@ -44,27 +46,27 @@ class _maplocation_page extends State<maplocation_page> {
   var hotlinee;
 
   late Position userLocation;
-  late GoogleMapController mapController;
-  Completer<GoogleMapController> _controller = Completer();
-  LatLng latLng = const LatLng(14, 103.30025897021274);
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
-  }
+  // late GoogleMapController mapController;
+  // Completer<GoogleMapController> _controller = Completer();
+  // LatLng latLng = const LatLng(14, 103.30025897021274);
+  // void _onMapCreated(GoogleMapController controller) {
+  //   mapController = controller;
+  // }
 
-  // var _currentLocation = 0;
-  // static final CameraPosition Sarakham = CameraPosition(
-  //   target: LatLng(16.186348810730625, 103.30025897021274),
-  //   zoom: 15,
-  // );
-  // static final CameraPosition Sarakham1 = const CameraPosition(
-  //   target: LatLng(16.155182041998927, 103.30619597899741),
-  //   zoom: 16,
-  // );
+  // // var _currentLocation = 0;
+  // // static final CameraPosition Sarakham = CameraPosition(
+  // //   target: LatLng(16.186348810730625, 103.30025897021274),
+  // //   zoom: 15,
+  // // );
+  // // static final CameraPosition Sarakham1 = const CameraPosition(
+  // //   target: LatLng(16.155182041998927, 103.30619597899741),
+  // //   zoom: 16,
+  // // );
 
-  Future<void> _go(CameraPosition cameraPosition) async {
-    final controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
-  }
+  // Future<void> _go(CameraPosition cameraPosition) async {
+  //   final controller = await _controller.future;
+  //   controller.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -72,10 +74,10 @@ class _maplocation_page extends State<maplocation_page> {
     var app_lat = double.parse(hotlinee['travelLat'] ?? "102.83473877038512");
     var app_lng = double.parse(hotlinee['travelLng'] ?? "102.83473877038512");
 
-    CameraPosition cameraPosition = CameraPosition(
-      target: LatLng(app_lat, app_lng),
-      zoom: 14,
-    );
+    // CameraPosition cameraPosition = CameraPosition(
+    //   target: LatLng(app_lat, app_lng),
+    //   zoom: 14,
+    // );
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
@@ -139,25 +141,104 @@ class _maplocation_page extends State<maplocation_page> {
                         height: 400,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: GoogleMap(
-                            markers: <Marker>[
-                              Marker(
-                                  markerId: const MarkerId('100'),
-                                  position: LatLng(app_lat, app_lng),
-                                  infoWindow: InfoWindow(
-                                      title:
-                                          'ตำแหน่งของศูนย์ ${hotlinee['travelName']}',
-                                      //   snippet: '-------------------',
-                                      onTap: () {})),
-                            ].toSet(),
-                            mapType: MapType.normal,
-                            onMapCreated: (GoogleMapController controller) {
-                              _controller.complete(controller);
-                            },
-                            myLocationEnabled: true,
-                            initialCameraPosition: cameraPosition,
+                          child: Container(
+                            height: 400,
+                            child: Column(
+                              children: [
+                                Flexible(
+                                    child: FlutterMap(
+                                  options: MapOptions(
+                                      center: LatLng(app_lat, app_lng),
+                                      zoom: 16),
+                                  layers: [
+                                    TileLayerOptions(
+                                      urlTemplate:
+                                          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                                      subdomains: ['a', 'b', 'c'],
+                                      attributionBuilder: (_) {
+                                        return Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Row(
+                                            children: [
+                                              // ElevatedButton.icon(
+                                              //   onPressed: () {
+                                              //     print('$userLocation');
+                                              //     // locn = userLocation.latitude;
+                                              //     // locn2 = userLocation
+                                              //     //     .longitude; // mapController.animateCamera(CameraUpdate.newLatLngZoom(
+                                              //     // //     LatLng(userLocation.latitude, userLocation.longitude),
+                                              //     // //     18));
+                                              //     showDialog(
+                                              //       context: context,
+                                              //       builder: (context) {
+                                              //         return AlertDialog(
+                                              //           content: Text(
+                                              //               'ตำแหน่ง !\nละติจูด ://  ลองจิจูด : ตำแหน่งที่คุณเลือก : '),
+                                              //         );
+                                              //       },
+                                              //     );
+                                              //   },
+                                              //   icon: Icon(Icons.gps_fixed),
+                                              //   label: Text('ตำแหน่งของคุณ'),
+                                              //   style: ElevatedButton.styleFrom(
+                                              //     primary: ThemeBc.background,
+                                              //     onPrimary: Colors.white,
+                                              //     elevation: 30,
+                                              //     shape: RoundedRectangleBorder(
+                                              //         borderRadius:
+                                              //             BorderRadius.all(
+                                              //                 Radius.circular(
+                                              //                     40))),
+                                              //   ),
+                                              // ),
+                                              Text(
+                                                "เทศบาลมหาสารคาม",
+                                                style: TextStyle(
+                                                  fontSize: 20.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  // backgroundColor: Colors.black45,
+                                                  color: Colors.black,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                    MarkerLayerOptions(markers: [
+                                      Marker(
+                                        point: LatLng(app_lat, app_lng),
+                                        builder: (ctx) =>
+                                            const Icon(Icons.pin_drop),
+                                      )
+                                    ]),
+                                  ],
+                                ))
+                              ],
+                            ),
                           ),
                         ),
+                        // child: Padding(
+                        //   padding: const EdgeInsets.all(8.0),
+                        //   child: GoogleMap(
+                        //     markers: <Marker>[
+                        //       Marker(
+                        //           markerId: const MarkerId('100'),
+                        //           position: LatLng(app_lat, app_lng),
+                        //           infoWindow: InfoWindow(
+                        //               title:
+                        //                   'ตำแหน่งของศูนย์ ${hotlinee['travelName']}',
+                        //               //   snippet: '-------------------',
+                        //               onTap: () {})),
+                        //     ].toSet(),
+                        //     mapType: MapType.normal,
+                        //     onMapCreated: (GoogleMapController controller) {
+                        //       _controller.complete(controller);
+                        //     },
+                        //     myLocationEnabled: true,
+                        //     initialCameraPosition: cameraPosition,
+                        //   ),
+                        // ),
                       ),
                     ),
                     Container(

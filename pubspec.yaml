@@ -36,7 +36,7 @@ dependencies:
   google_fonts: ^2.2.0
   flutter_signin_button: ^2.0.0
   flutter_neumorphic: ^3.2.0
-  flutter_form_builder: ^7.0.0
+  flutter_form_builder: ^7.0.0-alpha.2
   carousel_slider: ^4.0.0
   shared_preferences: ^2.0.11
   form_field_validator: ^1.1.0
@@ -44,11 +44,13 @@ dependencies:
   form_builder_image_picker: ^2.0.0
   flutter_phone_direct_caller: ^2.1.0
   syncfusion_flutter_pdfviewer: ^19.4.43-beta
-  slide_to_act: ^2.0.1
+  flutter_map: ^0.14.0
+  latlong2: ^0.8.1
+
   fluttertoast: ^8.0.8
   image_picker: ^0.8.4+5
-  intl: ^0.17.0
-
+  
+  # google_maps_flutter: ^2.1.1
   # flutter_clean_calendar: ^1.1.0
 
 
@@ -57,7 +59,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   redux: ^5.0.0
   flutter_redux: ^0.8.2
-  google_maps_flutter: ^2.1.1
+
   
 dev_dependencies:
   flutter_test:

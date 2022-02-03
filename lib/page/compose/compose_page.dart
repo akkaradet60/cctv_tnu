@@ -6,11 +6,13 @@ import 'package:cctv_tun/widgets/custom_buttonmenu.dart';
 import 'package:cctv_tun/widgets/menus_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:form_builder_image_picker/form_builder_image_picker.dart';
+import 'package:flutter_map/flutter_map.dart';
+// import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+// import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
+import 'package:latlong2/latlong.dart';
 import 'dart:convert';
 
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -65,7 +67,7 @@ class _compose_page extends State<compose_page>
     });
   }
 
-  List<Marker> myMarker = [];
+  // List<Marker> myMarker = [];
   final tabList = [
     'ร้องเรียน',
     'ร้องเรียนของท่าน',
@@ -191,11 +193,11 @@ class _compose_page extends State<compose_page>
 
   late String position = 'ไม่ได้เลือก';
   late Position userLocation;
-  late GoogleMapController mapController;
+  // late GoogleMapController mapController;
 
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
-  }
+  // void _onMapCreated(GoogleMapController controller) {
+  //   mapController = controller;
+  // }
 
   Future<Position> _getLocation() async {
     bool serviceEnabled;
@@ -571,144 +573,182 @@ class _compose_page extends State<compose_page>
                   //     ),
                   //   ),
                   // ),
-                  SizedBox(height: 18),
-                  Container(
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: secondaryTextColor,
-                          borderRadius: BorderRadius.circular(
-                            20,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                offset: Offset(2, 2),
-                                blurRadius: 7,
-                                spreadRadius: 1.0),
-                            BoxShadow(
-                                color: Colors.black.withOpacity(0.5),
-                                offset: Offset(2, 4),
-                                blurRadius: 7.0,
-                                spreadRadius: 1.0),
-                          ]),
-                      padding: EdgeInsets.symmetric(horizontal: 0),
-                      margin: EdgeInsets.only(
-                        top: 0,
-                      ),
-                      height: 300.0,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: FutureBuilder(
-                          future: _getLocation(),
-                          builder:
-                              (BuildContext context, AsyncSnapshot snapshot) {
-                            if (snapshot.hasData) {
-                              _handletap(LatLng tappedPoint) {
-                                position = '$tappedPoint';
-                                setState(() {
-                                  myMarker = [];
-                                  myMarker.add(Marker(
-                                    markerId: MarkerId(tappedPoint.toString()),
-                                    position: tappedPoint,
-                                  ));
-                                });
-                                return position;
-                              }
+                  SizedBox(height: 10),
 
-                              return Column(
-                                children: [
-                                  Container(
-                                    height: 280,
-                                    child: GoogleMap(
-                                      markers: Set.from(myMarker),
-                                      onTap: _handletap,
-                                      mapType: MapType.normal,
-                                      onMapCreated: _onMapCreated,
-                                      myLocationEnabled: true,
-                                      initialCameraPosition: CameraPosition(
-                                          target: LatLng(userLocation.latitude,
-                                              userLocation.longitude),
-                                          zoom: 15),
-                                    ),
-                                  ),
-                                  // Padding(
-                                  //   padding: const EdgeInsets.all(3.0),
-                                  //   child: Container(
-                                  //     width: 400,
-                                  //     decoration: BoxDecoration(
-                                  //       color: ThemeBc.white,
-                                  //       borderRadius: BorderRadius.circular(
-                                  //         20,
-                                  //       ),
-                                  //     ),
-                                  //     // child: Row(
-                                  //   mainAxisAlignment:
-                                  //       MainAxisAlignment.spaceBetween,
-                                  //   children: [
-                                  //     Padding(
-                                  //       padding: const EdgeInsets.all(8.0),
-                                  //       child: Text(
-                                  //         'ขยายหน้าจอ',
-                                  //         style: TextStyle(
-                                  //           fontSize: 15.0,
-                                  //           fontWeight: FontWeight.bold,
-                                  //           // backgroundColor: Colors.black45,
-                                  //           color: ThemeBc.black,
-                                  //         ),
-                                  //       ),
-                                  //     ),
-                                  // Container(
-                                  //   decoration: BoxDecoration(
-                                  //     color: ThemeBc.black,
-                                  //     borderRadius:
-                                  //         BorderRadius.circular(
-                                  //       20,
-                                  //     ),
-                                  //   ),
-                                  //   child: IconButton(
-                                  //       icon: Icon(
-                                  //         Icons.map,
-                                  //         color: ThemeBc.white,
-                                  //         size: 30.0,
-                                  //       ),
-                                  //       // Image.asset(
-                                  //       //   'assets/fi_home.png',
-                                  //       //   scale: 1,
-                                  //       // ),
-                                  //       tooltip: 'Show Snackbar',
-                                  //       onPressed: () {
-                                  //         showDialog(
-                                  //           context: context,
-                                  //           builder: (context) {
-                                  //             return AlertDialog(
-                                  //               content: Text(
-                                  //                   'ตำแหน่งของคุณ !\nละติจูด : ${userLocation.latitude} ลองจิจูด : ${userLocation.longitude} '),
-                                  //             );
-                                  //           },
-                                  //         );
-                                  //       }),
-                                  // ),
-                                  //   ],
-                                  // ),
-                                  //   ),
-                                  // ),
-                                ],
-                              );
-                            } else {
-                              return Center(
-                                  // child: Column(
-                                  //   mainAxisAlignment: MainAxisAlignment.center,
-                                  //   children: <Widget>[
-                                  //     CircularProgressIndicator(),
-                                  //   ],
-                                  // ),
-                                  );
-                            }
-                          },
+                  Container(
+                    height: 300,
+                    decoration: BoxDecoration(
+                        color: secondaryTextColor,
+                        borderRadius: BorderRadius.circular(
+                          20,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              offset: Offset(2, 2),
+                              blurRadius: 7,
+                              spreadRadius: 1.0),
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.5),
+                              offset: Offset(2, 4),
+                              blurRadius: 7.0,
+                              spreadRadius: 1.0),
+                        ]),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        height: 500,
+                        child: Column(
+                          children: [
+                            Flexible(
+                                child: FlutterMap(
+                              options: MapOptions(
+                                  center: LatLng(
+                                      16.186348810730625, 103.30025897021274),
+                                  zoom: 16),
+                              layers: [
+                                TileLayerOptions(
+                                  urlTemplate:
+                                      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                                  subdomains: ['a', 'b', 'c'],
+                                  attributionBuilder: (_) {
+                                    return Text("© OpenStreetMap contributors");
+                                  },
+                                ),
+                                MarkerLayerOptions(markers: [
+                                  Marker(
+                                    point: LatLng(
+                                        16.186348810730625, 103.30025897021274),
+                                    builder: (ctx) =>
+                                        const Icon(Icons.pin_drop),
+                                  )
+                                ]),
+                              ],
+                            ))
+                          ],
                         ),
                       ),
                     ),
                   ),
+
+                  //     padding: EdgeInsets.symmetric(horizontal: 0),
+                  //     margin: EdgeInsets.only(
+                  //       top: 0,
+                  //     ),
+                  //     height: 300.0,
+                  //     child: Padding(
+                  //       padding: const EdgeInsets.all(8.0),
+                  //       child: FutureBuilder(
+                  //         future: _getLocation(),
+                  //         builder:
+                  //             (BuildContext context, AsyncSnapshot snapshot) {
+                  //           if (snapshot.hasData) {
+                  //             _handletap(LatLng tappedPoint) {
+                  //               position = '$tappedPoint';
+                  //               setState(() {
+                  //                 myMarker = [];
+                  //                 myMarker.add(Marker(
+                  //                   markerId: MarkerId(tappedPoint.toString()),
+                  //                   position: tappedPoint,
+                  //                 ));
+                  //               });
+                  //               return position;
+                  //             }
+
+                  //             return Column(
+                  //               children: [
+                  //                 Container(
+                  //                   height: 280,
+                  //                   child: GoogleMap(
+                  //                     markers: Set.from(myMarker),
+                  //                     onTap: _handletap,
+                  //                     mapType: MapType.normal,
+                  //                     // onMapCreated: _onMapCreated,
+                  //                     myLocationEnabled: true,
+                  //                     initialCameraPosition: CameraPosition(
+                  //                         target: LatLng(userLocation.latitude,
+                  //                             userLocation.longitude),
+                  //                         zoom: 15),
+                  //                   ),
+                  //                 ),
+                  //                 // Padding(
+                  //                 //   padding: const EdgeInsets.all(3.0),
+                  //                 //   child: Container(
+                  //                 //     width: 400,
+                  //                 //     decoration: BoxDecoration(
+                  //                 //       color: ThemeBc.white,
+                  //                 //       borderRadius: BorderRadius.circular(
+                  //                 //         20,
+                  //                 //       ),
+                  //                 //     ),
+                  //                 //     // child: Row(
+                  //                 //   mainAxisAlignment:
+                  //                 //       MainAxisAlignment.spaceBetween,
+                  //                 //   children: [
+                  //                 //     Padding(
+                  //                 //       padding: const EdgeInsets.all(8.0),
+                  //                 //       child: Text(
+                  //                 //         'ขยายหน้าจอ',
+                  //                 //         style: TextStyle(
+                  //                 //           fontSize: 15.0,
+                  //                 //           fontWeight: FontWeight.bold,
+                  //                 //           // backgroundColor: Colors.black45,
+                  //                 //           color: ThemeBc.black,
+                  //                 //         ),
+                  //                 //       ),
+                  //                 //     ),
+                  //                 // Container(
+                  //                 //   decoration: BoxDecoration(
+                  //                 //     color: ThemeBc.black,
+                  //                 //     borderRadius:
+                  //                 //         BorderRadius.circular(
+                  //                 //       20,
+                  //                 //     ),
+                  //                 //   ),
+                  //                 //   child: IconButton(
+                  //                 //       icon: Icon(
+                  //                 //         Icons.map,
+                  //                 //         color: ThemeBc.white,
+                  //                 //         size: 30.0,
+                  //                 //       ),
+                  //                 //       // Image.asset(
+                  //                 //       //   'assets/fi_home.png',
+                  //                 //       //   scale: 1,
+                  //                 //       // ),
+                  //                 //       tooltip: 'Show Snackbar',
+                  //                 //       onPressed: () {
+                  //                 //         showDialog(
+                  //                 //           context: context,
+                  //                 //           builder: (context) {
+                  //                 //             return AlertDialog(
+                  //                 //               content: Text(
+                  //                 //                   'ตำแหน่งของคุณ !\nละติจูด : ${userLocation.latitude} ลองจิจูด : ${userLocation.longitude} '),
+                  //                 //             );
+                  //                 //           },
+                  //                 //         );
+                  //                 //       }),
+                  //                 // ),
+                  //                 //   ],
+                  //                 // ),
+                  //                 //   ),
+                  //                 // ),
+                  //               ],
+                  //             );
+                  //           } else {
+                  //             return Center(
+                  //                 // child: Column(
+                  //                 //   mainAxisAlignment: MainAxisAlignment.center,
+                  //                 //   children: <Widget>[
+                  //                 //     CircularProgressIndicator(),
+                  //                 //   ],
+                  //                 // ),
+                  //                 );
+                  //           }
+                  //         },
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                   SizedBox(height: 10),
                   Container(
                       width: 400,
@@ -747,32 +787,32 @@ class _compose_page extends State<compose_page>
                           ),
                         ],
                       )),
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      mapController.animateCamera(CameraUpdate.newLatLngZoom(
-                          LatLng(userLocation.latitude, userLocation.longitude),
-                          18));
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            content: Text(
-                                'ตำแหน่งของคุณ !\nละติจูด : ${userLocation.latitude} ลองจิจูด : ${userLocation.longitude} '),
-                          );
-                        },
-                      );
-                    },
-                    icon: Icon(Icons.gps_fixed),
-                    label: Text('ตำแหน่งของคุณ'),
-                    style: ElevatedButton.styleFrom(
-                      primary: ThemeBc.background,
-                      onPrimary: Colors.white,
-                      shadowColor: Colors.grey[700],
-                      elevation: 30,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(40))),
-                    ),
-                  ),
+                  // ElevatedButton.icon(
+                  //   onPressed: () {
+                  //     // mapController.animateCamera(CameraUpdate.newLatLngZoom(
+                  //     //     LatLng(userLocation.latitude, userLocation.longitude),
+                  //     //     18));
+                  //     showDialog(
+                  //       context: context,
+                  //       builder: (context) {
+                  //         return AlertDialog(
+                  //           content: Text(
+                  //               'ตำแหน่งของคุณ !\nละติจูด : ${userLocation.latitude} ลองจิจูด : ${userLocation.longitude} '),
+                  //         );
+                  //       },
+                  //     );
+                  //   },
+                  //   icon: Icon(Icons.gps_fixed),
+                  //   label: Text('ตำแหน่งของคุณ'),
+                  //   style: ElevatedButton.styleFrom(
+                  //     primary: ThemeBc.background,
+                  //     onPrimary: Colors.white,
+                  //     shadowColor: Colors.grey[700],
+                  //     elevation: 30,
+                  //     shape: RoundedRectangleBorder(
+                  //         borderRadius: BorderRadius.all(Radius.circular(40))),
+                  //   ),
+                  // ),
                   SizedBox(height: 18),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 0),
