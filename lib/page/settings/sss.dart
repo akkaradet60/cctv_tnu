@@ -2,7 +2,7 @@
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:cctv_tun/page/profile/app_reducer.dart';
-
+import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 // import 'package:flutter_point_tab_bar/pointTabIndicator.dart';
@@ -10,17 +10,26 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 // import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-
+import 'package:geolocator/geolocator.dart';
 // import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 // import 'package:latlong2/latlong.dart';
 // import 'package:location/location.dart';
 import 'dart:convert';
+import 'package:rflutter_alert/rflutter_alert.dart';
+// import 'package:smartcity_nt_mobile/global.dart';
+// import 'package:smartcity_nt_mobile/redux/app_reducer.dart';
+// import 'package:smartcity_nt_mobile/style/global.dart';
+// import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 //pic
 
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:image_picker/image_picker.dart';
 
+// import 'package:google_place/google_place.dart';
 class EmergecyPage extends StatefulWidget {
   @override
   _EmergecyPageState createState() => _EmergecyPageState();
@@ -94,8 +103,13 @@ class _EmergecyPageState extends State<EmergecyPage>
         var feedback = jsonDecode(response.body);
 
         if (feedback['data'] == "สำเร็จ") {
-        } else {}
-      } else {}
+          // alertSuccess(context, '${feedback['data']}');
+        } else {
+          // alertWarning(context, '${feedback['data']}');
+        }
+      } else {
+        // alertWarning(context, 'ใส่ข้อมูลให้ครบถ้วน');
+      }
     } catch (e) {
       print(e);
     }
@@ -390,7 +404,7 @@ class _EmergecyPageState extends State<EmergecyPage>
                             ),
                             onPressed: () {
                               if (_fbKey.currentState!.saveAndValidate()) {
-                                print(_fbKey.currentState!.value);
+                                // print(_fbKey.currentState.value);
                                 addEmergecy(_fbKey.currentState!.value);
                               }
                             },

@@ -38,6 +38,19 @@ class ApiImage {
 }
 
 class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
+  Future<Position> _getLocation() async {
+    try {
+      userLocation = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.best);
+    } catch (e) {
+      userLocation != null;
+    }
+    return userLocation;
+  }
+
+  var hotlinee;
+
+  late Position userLocation;
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
   final tabList = [
     'แจ้งเหตุฉุกเฉิน',
@@ -230,7 +243,6 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
     });
   }
 
-  late Position userLocation;
   // late GoogleMapController mapController;
   late String position = 'ยังไม่ได้เลือก';
 
@@ -625,70 +637,183 @@ class _warn1State extends State<warn_page> with SingleTickerProviderStateMixin {
                     ),
                   ),
                   SizedBox(height: 18),
-                  Container(
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: secondaryTextColor,
-                          borderRadius: BorderRadius.circular(
-                            20,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                offset: Offset(2, 2),
-                                blurRadius: 7,
-                                spreadRadius: 1.0),
-                            BoxShadow(
-                                color: Colors.black.withOpacity(0.5),
-                                offset: Offset(2, 4),
-                                blurRadius: 7.0,
-                                spreadRadius: 1.0),
-                          ]),
-                      padding: EdgeInsets.symmetric(horizontal: 0),
-                      margin: EdgeInsets.only(
-                        top: 0,
-                      ),
-                      height: 300.0,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: 500,
-                          child: Column(
-                            children: [
-                              Flexible(
-                                  child: FlutterMap(
-                                options: MapOptions(
-                                    center: LatLng(
-                                        16.186348810730625, 103.30025897021274),
-                                    zoom: 16),
-                                layers: [
-                                  TileLayerOptions(
-                                    urlTemplate:
-                                        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                                    subdomains: ['a', 'b', 'c'],
-                                    attributionBuilder: (_) {
-                                      return Padding(
+
+                  FutureBuilder(
+                      future: _getLocation(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          return Container(
+                            height: 400,
+                            child: ListView(
+                              children: [
+                                Container(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          color: secondaryTextColor,
+                                          borderRadius: BorderRadius.circular(
+                                            20,
+                                          ),
+                                          boxShadow: [
+                                            BoxShadow(
+                                                color: Colors.grey
+                                                    .withOpacity(0.5),
+                                                offset: Offset(2, 2),
+                                                blurRadius: 7,
+                                                spreadRadius: 1.0),
+                                            BoxShadow(
+                                                color: Colors.black
+                                                    .withOpacity(0.5),
+                                                offset: Offset(2, 4),
+                                                blurRadius: 7.0,
+                                                spreadRadius: 1.0),
+                                          ]),
+                                      child: Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: Text("มหาสารคาม"),
-                                      );
-                                    },
+                                        child: Container(
+                                          height: 300,
+                                          child: Column(
+                                            children: [
+                                              Flexible(
+                                                  child: FlutterMap(
+                                                options: MapOptions(
+                                                    center: LatLng(
+                                                        userLocation.latitude,
+                                                        userLocation.longitude),
+                                                    zoom: 16),
+                                                layers: [
+                                                  TileLayerOptions(
+                                                    urlTemplate:
+                                                        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                                                    subdomains: ['a', 'b', 'c'],
+                                                    attributionBuilder: (_) {
+                                                      return Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .all(8.0),
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .end,
+                                                          children: [
+                                                            // ElevatedButton.icon(
+                                                            //   onPressed: () {
+                                                            //     print('$userLocation');
+                                                            //     // locn = userLocation.latitude;
+                                                            //     // locn2 = userLocation
+                                                            //     //     .longitude; // mapController.animateCamera(CameraUpdate.newLatLngZoom(
+                                                            //     // //     LatLng(userLocation.latitude, userLocation.longitude),
+                                                            //     // //     18));
+                                                            //     showDialog(
+                                                            //       context: context,
+                                                            //       builder: (context) {
+                                                            //         return AlertDialog(
+                                                            //           content: Text(
+                                                            //               'ตำแหน่ง !\nละติจูด :// ${locn} ลองจิจูด : ${locn} ตำแหน่งที่คุณเลือก : '),
+                                                            //         );
+                                                            //       },
+                                                            //     );
+                                                            //   },
+                                                            //   icon: Icon(Icons.gps_fixed),
+                                                            //   label: Text('ตำแหน่งของคุณ'),
+                                                            //   style: ElevatedButton.styleFrom(
+                                                            //     primary: ThemeBc.background,
+                                                            //     onPrimary: Colors.white,
+                                                            //     elevation: 30,
+                                                            //     shape: RoundedRectangleBorder(
+                                                            //         borderRadius: BorderRadius.all(
+                                                            //             Radius.circular(40))),
+                                                            //   ),
+                                                            // ),
+                                                            Container(
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color:
+                                                                    secondaryTextColor,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                  20,
+                                                                ),
+                                                              ),
+                                                              child: Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        8.0),
+                                                                child: Text(
+                                                                  "เทศบาลมหาสารคาม",
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        20.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    // backgroundColor: Colors.black45,
+                                                                    color: Colors
+                                                                        .black,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  ),
+                                                  MarkerLayerOptions(markers: [
+                                                    Marker(
+                                                      point: LatLng(
+                                                          userLocation.latitude,
+                                                          userLocation
+                                                              .longitude),
+                                                      builder: (ctx) =>
+                                                          IconButton(
+                                                        icon: Icon(
+                                                            Icons.my_location),
+                                                        tooltip:
+                                                            'Show Snackbar',
+                                                        onPressed: () {
+                                                          showDialog(
+                                                            context: context,
+                                                            builder: (context) {
+                                                              return AlertDialog(
+                                                                content: Text(
+                                                                    'ตำแหน่งของคุณ !\nละติจูด : ${userLocation.latitude} ลองจิจูด : ${userLocation.longitude} '),
+                                                              );
+                                                            },
+                                                          );
+                                                        },
+                                                      ),
+                                                    )
+                                                  ]),
+                                                ],
+                                              ))
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
                                   ),
-                                  // MarkerLayerOptions(markers: [
-                                  //   Marker(
-                                  //     point: LatLng(16.186348810730625,
-                                  //         103.30025897021274),
-                                  //     builder: (ctx) =>
-                                  //         const Icon(Icons.pin_drop),
-                                  //   )
-                                  // ]),
-                                ],
-                              ))
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                          // Text('${userLocation.latitude} ${userLocation.longitude}');
+                        } else {
+                          return Center(
+                            child: Column(
+                              children: <Widget>[
+                                CircularProgressIndicator(),
+                              ],
+                            ),
+                          );
+                        }
+                        return Container();
+                      }),
+
                   SizedBox(height: 10),
                   Container(
                       width: 400,

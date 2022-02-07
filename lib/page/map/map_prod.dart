@@ -18,34 +18,19 @@ class map_prod extends StatefulWidget {
 
 class _map_prod extends State<map_prod> {
   Future<Position> _getLocation() async {
-    bool serviceEnabled;
-    LocationPermission permission;
-
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      return Future.error('Location services are disabled.');
+    try {
+      userLocation = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.best);
+    } catch (e) {
+      userLocation != null;
     }
-
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        return Future.error('Location permissions are denied');
-      }
-    }
-
-    if (permission == LocationPermission.deniedForever) {
-      return Future.error(
-          'Location permissions are permanently denied, we cannot request permissions.');
-    }
-
-    userLocation = await Geolocator.getCurrentPosition();
     return userLocation;
   }
 
   var hotlinee;
 
   late Position userLocation;
+
   // late GoogleMapController mapController;
   // Completer<GoogleMapController> _controller = Completer();
   // LatLng latLng = const LatLng(14, 103.30025897021274);
@@ -70,9 +55,9 @@ class _map_prod extends State<map_prod> {
 
   @override
   Widget build(BuildContext context) {
-    hotlinee = ModalRoute.of(context)!.settings.arguments;
-    var app_lat = double.parse(hotlinee['travelLat'] ?? "102.83473877038512");
-    var app_lng = double.parse(hotlinee['travelLng'] ?? "102.83473877038512");
+    // hotlinee = ModalRoute.of(context)!.settings.arguments;
+    // var app_lat = double.parse(hotlinee['travelLat'] ?? "102.83473877038512");
+    // var app_lng = double.parse(hotlinee['travelLng'] ?? "102.83473877038512");
 
     // CameraPosition cameraPosition = CameraPosition(
     //   target: LatLng(102.83473877038512, 102.83473877038512),
@@ -86,15 +71,19 @@ class _map_prod extends State<map_prod> {
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
-        title: Container(
-          height: 50,
-          width: 300,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: [
-              Center(child: Text('pro')),
-            ],
-          ),
+        title: Column(
+          children: [
+            Container(
+              height: 50,
+              width: 300,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  Center(child: Text('pro')),
+                ],
+              ),
+            ),
+          ],
         ),
         actions: <Widget>[
           IconButton(
@@ -107,34 +96,22 @@ class _map_prod extends State<map_prod> {
           ),
         ],
       ),
-      body: Container(
-        height: 500,
-        child: Column(
-          children: [
-            Flexible(
-                child: FlutterMap(
-              options: MapOptions(center: LatLng(app_lat, app_lng), zoom: 16),
-              layers: [
-                TileLayerOptions(
-                  urlTemplate:
-                      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                  subdomains: ['a', 'b', 'c'],
-                  attributionBuilder: (_) {
-                    return Text("© OpenStreetMap contributors");
-                  },
+      body: FutureBuilder(
+          future: _getLocation(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return Text('${userLocation.latitude} ${userLocation.longitude}');
+            } else {
+              return Center(
+                child: Column(
+                  children: <Widget>[
+                    CircularProgressIndicator(),
+                  ],
                 ),
-                MarkerLayerOptions(markers: [
-                  Marker(
-                    point: LatLng(app_lat, app_lng),
-                    builder: (ctx) => const Icon(Icons.pin_drop),
-                  )
-                ]),
-              ],
-            ))
-          ],
-        ),
-      ),
-      // Container(
+              );
+            }
+            return Container();
+          }),
       //   height: 1000,
       //   child: FutureBuilder(
       //     future: _getLocation(),

@@ -1,5 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
-
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 
@@ -8,8 +6,6 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
-import 'package:shared_preferences/shared_preferences.dart';
 
 class travel_page extends StatefulWidget {
   travel_page({Key? key}) : super(key: key);
@@ -27,15 +23,11 @@ class _travel_page extends State<travel_page> {
     super.initState();
   }
 
-  var index;
-  var productt;
-  var detail;
-
   late Map<String, dynamic> imgSlide;
 
   Future<Map<String, dynamic>> getDataSlide() async {
-    var url =
-        ('https://www.bc-official.com/api/app_nt/api/app/travel/restful/?travel_app_id=1&travel_cat=2');
+    var url = (Global.urlWeb +
+        'api/app/travel/restful/?travel_app_id=1&travel_cat=1');
     var response = await http.get(Uri.parse(url), headers: {
       'Authorization':
           'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
@@ -50,7 +42,6 @@ class _travel_page extends State<travel_page> {
       throw Exception('$response.statusCode');
     }
   }
-
   /* void _incrementCounter() {
     setState(() {
       _counter++;
@@ -262,173 +253,6 @@ class _travel_page extends State<travel_page> {
                 return Center(
                     child: Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
               }
-              // if (snapshot.hasData) {
-              //   return ListView.builder(
-              //     scrollDirection: Axis.horizontal,
-              //     itemCount: snapshot.data!['data'].length,
-              //     itemBuilder: (context, index) {
-              //       return Padding(
-              //         padding: const EdgeInsets.all(8.0),
-              //         child: Container(
-              //           height: 480,
-              //           decoration: BoxDecoration(
-              //               color: ThemeBc.background,
-              //               borderRadius: BorderRadius.circular(
-              //                 30,
-              //               ),
-              //               boxShadow: [
-              //                 BoxShadow(
-              //                     color: Colors.grey.withOpacity(0.5),
-              //                     offset: Offset(2, 2),
-              //                     blurRadius: 7,
-              //                     spreadRadius: 1.0),
-              //                 BoxShadow(
-              //                     color: Colors.black.withOpacity(0.5),
-              //                     offset: Offset(2, 4),
-              //                     blurRadius: 7.0,
-              //                     spreadRadius: 1.0),
-              //               ]),
-              //           child: Center(
-              //             child: Column(
-              //               // scrollDirection: Axis.horizontal,
-              //               // mainAxisAlignment: MainAxisAlignment.center,
-              //               children: [
-              //                 InkWell(
-              //                   onTap: () {
-              //                     Navigator.pushNamed(
-              //                         context, '/travelmap_page',
-              //                         arguments: {
-              //                           'travel_name': snapshot.data!['data']
-              //                               [index]['travel_name']
-
-              //                         });
-              //                   },
-              //                   child: Container(
-              //                     child: Column(
-              //                       children: [
-              //                         SizedBox(width: defaultMargin),
-              //                         Padding(
-              //                           padding: const EdgeInsets.all(10.0),
-              //                           child: Container(
-              //                             child: Column(
-              //                               children: [
-              //                                 Container(
-              //                                     decoration: BoxDecoration(
-              //                                         color: ThemeBc.white,
-              //                                         borderRadius:
-              //                                             BorderRadius.circular(
-              //                                           20,
-              //                                         ),
-              //                                         boxShadow: [
-
-              //                                         ]),
-              //                                     width: 320,
-              //                                     height: 250,
-              //                                     child: Padding(
-              //                                       padding:
-              //                                           const EdgeInsets.all(
-              //                                               5.0),
-              //                                       child: ClipRRect(
-              //                                         borderRadius:
-              //                                             BorderRadius.all(
-              //                                           Radius.circular(20),
-              //                                         ),
-              //                                         child: Image.network(
-              //                                           snapshot.data!['data']
-              //                                                               [index]
-              //                                                           ['travel_images'][0]
-              //                                                       [
-              //                                                       'traveli_path_name'] !=
-              //                                                   null
-              //                                               ? Global.domainImage +
-              //                                                   snapshot.data!['data']
-              //                                                               [index]
-              //                                                           [
-              //                                                           'travel_images'][0]
-              //                                                       [
-              //                                                       'traveli_path_name']
-              //                                               : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
-              //                                           fit: BoxFit.cover,
-              //                                           width: double.infinity,
-              //                                         ),
-              //                                       ),
-              //                                     )),
-              //                                 SizedBox(height: 1),
-              //                                 Padding(
-              //                                   padding:
-              //                                       const EdgeInsets.all(8.0),
-              //                                   child: Container(
-              //                                     decoration: BoxDecoration(
-              //                                         color: ThemeBc.white,
-              //                                         borderRadius:
-              //                                             BorderRadius.circular(
-              //                                           20,
-              //                                         ),
-              //                                         boxShadow: [
-
-              //                                         ]),
-              //                                     width: 320,
-              //                                     height: 190,
-              //                                     child: Column(
-              //                                       children: [
-              //                                         SizedBox(height: 5),
-              //                                         Center(
-              //                                           child: Text(
-              //                                             'เที่ยว: ${snapshot.data!['data'][index]['travel_name']}',
-              //                                             style:
-              //                                                 primaryTextStyle
-              //                                                     .copyWith(
-              //                                               fontSize: 16,
-              //                                             ),
-              //                                           ),
-              //                                         ),
-              //                                         Padding(
-              //                                           padding:
-              //                                               const EdgeInsets
-              //                                                   .all(8.0),
-              //                                           child: Container(
-              //                                             decoration:
-              //                                                 BoxDecoration(),
-              //                                             height: 120,
-              //                                             child: ListView(
-              //                                               children: [
-              //                                                 Text(
-              //                                                   'ที่นี้คือ : ${snapshot.data!['data'][index]['travel_detail']}',
-              //                                                   style: primaryTextStyle
-              //                                                       .copyWith(
-              //                                                           fontSize:
-              //                                                               15,
-              //                                                           fontWeight:
-              //                                                               medium),
-              //                                                 ),
-              //                                               ],
-              //                                             ),
-              //                                           ),
-              //                                         ),
-              //                                       ],
-              //                                     ),
-              //                                   ),
-              //                                 )
-              //                               ],
-              //                             ),
-              //                           ),
-              //                         ),
-              //                       ],
-              //                     ),
-              //                   ),
-              //                 ),
-              //               ],
-              //             ),
-              //           ),
-              //         ),
-              //       );
-              //     },
-              //   );
-
-              // } else if (snapshot.hasError) {
-              //   return Center(
-              //       child: Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
-              // }
 
               return Center(child: CircularProgressIndicator());
             },

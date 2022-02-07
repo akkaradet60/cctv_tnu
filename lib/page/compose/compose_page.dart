@@ -671,67 +671,67 @@ class _compose_page extends State<compose_page>
                   //                         zoom: 15),
                   //                   ),
                   //                 ),
-                  //                 // Padding(
-                  //                 //   padding: const EdgeInsets.all(3.0),
-                  //                 //   child: Container(
-                  //                 //     width: 400,
-                  //                 //     decoration: BoxDecoration(
-                  //                 //       color: ThemeBc.white,
-                  //                 //       borderRadius: BorderRadius.circular(
-                  //                 //         20,
-                  //                 //       ),
-                  //                 //     ),
-                  //                 //     // child: Row(
-                  //                 //   mainAxisAlignment:
-                  //                 //       MainAxisAlignment.spaceBetween,
-                  //                 //   children: [
-                  //                 //     Padding(
-                  //                 //       padding: const EdgeInsets.all(8.0),
-                  //                 //       child: Text(
-                  //                 //         'ขยายหน้าจอ',
-                  //                 //         style: TextStyle(
-                  //                 //           fontSize: 15.0,
-                  //                 //           fontWeight: FontWeight.bold,
-                  //                 //           // backgroundColor: Colors.black45,
-                  //                 //           color: ThemeBc.black,
-                  //                 //         ),
-                  //                 //       ),
-                  //                 //     ),
-                  //                 // Container(
-                  //                 //   decoration: BoxDecoration(
-                  //                 //     color: ThemeBc.black,
-                  //                 //     borderRadius:
-                  //                 //         BorderRadius.circular(
-                  //                 //       20,
-                  //                 //     ),
-                  //                 //   ),
-                  //                 //   child: IconButton(
-                  //                 //       icon: Icon(
-                  //                 //         Icons.map,
-                  //                 //         color: ThemeBc.white,
-                  //                 //         size: 30.0,
-                  //                 //       ),
-                  //                 //       // Image.asset(
-                  //                 //       //   'assets/fi_home.png',
-                  //                 //       //   scale: 1,
-                  //                 //       // ),
-                  //                 //       tooltip: 'Show Snackbar',
-                  //                 //       onPressed: () {
-                  //                 //         showDialog(
-                  //                 //           context: context,
-                  //                 //           builder: (context) {
-                  //                 //             return AlertDialog(
-                  //                 //               content: Text(
-                  //                 //                   'ตำแหน่งของคุณ !\nละติจูด : ${userLocation.latitude} ลองจิจูด : ${userLocation.longitude} '),
-                  //                 //             );
-                  //                 //           },
-                  //                 //         );
-                  //                 //       }),
-                  //                 // ),
-                  //                 //   ],
-                  //                 // ),
-                  //                 //   ),
-                  //                 // ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(3.0),
+                  //   child: Container(
+                  //     width: 400,
+                  //     decoration: BoxDecoration(
+                  //       color: ThemeBc.white,
+                  //       borderRadius: BorderRadius.circular(
+                  //         20,
+                  //       ),
+                  //     ),
+                  //     // child: Row(
+                  //   mainAxisAlignment:
+                  //       MainAxisAlignment.spaceBetween,
+                  //   children: [
+                  //     Padding(
+                  //       padding: const EdgeInsets.all(8.0),
+                  //       child: Text(
+                  //         'ขยายหน้าจอ',
+                  //         style: TextStyle(
+                  //           fontSize: 15.0,
+                  //           fontWeight: FontWeight.bold,
+                  //           // backgroundColor: Colors.black45,
+                  //           color: ThemeBc.black,
+                  //         ),
+                  //       ),
+                  //     ),
+                  // Container(
+                  //   decoration: BoxDecoration(
+                  //     color: ThemeBc.black,
+                  //     borderRadius:
+                  //         BorderRadius.circular(
+                  //       20,
+                  //     ),
+                  //   ),
+                  //   child: IconButton(
+                  //       icon: Icon(
+                  //         Icons.map,
+                  //         color: ThemeBc.white,
+                  //         size: 30.0,
+                  //       ),
+                  //       // Image.asset(
+                  //       //   'assets/fi_home.png',
+                  //       //   scale: 1,
+                  //       // ),
+                  //       tooltip: 'Show Snackbar',
+                  //       onPressed: () {
+                  //         showDialog(
+                  //           context: context,
+                  //           builder: (context) {
+                  //             return AlertDialog(
+                  //               content: Text(
+                  //                   'ตำแหน่งของคุณ !\nละติจูด : ${userLocation.latitude} ลองจิจูด : ${userLocation.longitude} '),
+                  //             );
+                  //           },
+                  //         );
+                  //       }),
+                  // ),
+                  //   ],
+                  // ),
+                  //   ),
+                  // ),
                   //               ],
                   //             );
                   //           } else {

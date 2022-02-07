@@ -1,5 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:cctv_tun/models/trainingcalendar/trainingcalendar.dart';
+
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 
@@ -18,8 +18,6 @@ class trainingcalendardetail_page extends StatefulWidget {
 }
 
 class _trainingcalendardetail_page extends State<trainingcalendardetail_page> {
-  List<Data> data = [];
-
   var trainingcalendardetail;
   late Map<String, dynamic> imgSlide;
 
