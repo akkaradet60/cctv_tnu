@@ -46,9 +46,10 @@ dependencies:
   syncfusion_flutter_pdfviewer: ^19.4.43-beta
   flutter_map: ^0.14.0
   latlong2: ^0.8.1
-
+  # flutter_thailand_provinces: ^1.0.1
   fluttertoast: ^8.0.8
   image_picker: ^0.8.4+5
+  
   
   # google_maps_flutter: ^2.1.1
   # flutter_clean_calendar: ^1.1.0
@@ -59,6 +60,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   redux: ^5.0.0
   flutter_redux: ^0.8.2
+  google_maps_flutter: ^2.1.1
 
   
 dev_dependencies:

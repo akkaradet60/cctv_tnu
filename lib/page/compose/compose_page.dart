@@ -7,6 +7,7 @@ import 'package:cctv_tun/widgets/menus_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 // import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 import 'package:geolocator/geolocator.dart';
 // import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -22,6 +23,15 @@ class compose_page extends StatefulWidget {
 
   @override
   _compose_page createState() => _compose_page();
+}
+
+class ApiImage {
+  final String imageUrl;
+  final String id;
+  ApiImage({
+    required this.imageUrl,
+    required this.id,
+  });
 }
 
 class _compose_page extends State<compose_page>
@@ -438,8 +448,6 @@ class _compose_page extends State<compose_page>
                   ),
                   SizedBox(height: 18),
                   Container(
-                    width: 400,
-                    height: 300,
                     decoration: BoxDecoration(
                         color: secondaryTextColor,
                         borderRadius: BorderRadius.circular(
@@ -459,82 +467,127 @@ class _compose_page extends State<compose_page>
                         ]),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: ListView(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('อัพโหลดรูปภาพ'),
-                              ],
+                      child: FormBuilderImagePicker(
+                        name: 'emi_path_name',
+                        displayCustomType: (obj) =>
+                            obj is ApiImage ? obj.imageUrl : obj,
+                        iconColor: Colors.black,
+                        decoration: InputDecoration(
+                          suffixIconColor: ThemeBc.black,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(
+                              20.0,
                             ),
                           ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: ThemeBc.white,
-                                      borderRadius: BorderRadius.circular(
-                                        20,
-                                      ),
-                                      boxShadow: []),
-                                  width: 350,
-                                  height: 240,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        selectedImage == null
-                                            ? IconButton(
-                                                icon: Icon(Icons.add_a_photo),
-                                                tooltip: 'Show Snackbar',
-                                                onPressed: getImage,
-                                              )
-                                            : Container(
-                                                height: 200,
-                                                child: ListView(
-                                                  children: [
-                                                    Container(
-                                                        height: 100,
-                                                        child: Image.file(
-                                                            selectedImage!)),
-                                                  ],
-                                                ),
-                                              ),
-                                        // Text(resJson),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                          labelText: 'ภาพ',
+                          fillColor: Colors.white,
+                          filled: true,
+                        ),
+                        maxImages: 5,
+                        onSaved: (val) {
+                          print(val);
+                        },
                       ),
-                      //Container(
-                      //   child: FormBuilderImagePicker(
-                      //     name: 'emi_path_name',
-                      //     iconColor: Colors.black,
-                      //     decoration: InputDecoration(
-                      //       border: OutlineInputBorder(
-                      //         borderRadius: BorderRadius.circular(
-                      //           20.0,
-                      //         ),
-                      //       ),
-                      //       labelText: 'ภาพประกอบเหตุการ',
-                      //       filled: true,
-                      //     ),
-                      //     maxImages: 1,
-                      //   ),
-                      // ),
                     ),
                   ),
+                  // Container(
+                  //   width: 400,
+                  //   height: 300,
+                  //   decoration: BoxDecoration(
+                  //       color: secondaryTextColor,
+                  //       borderRadius: BorderRadius.circular(
+                  //         20,
+                  //       ),
+                  //       boxShadow: [
+                  //         BoxShadow(
+                  //             color: Colors.grey.withOpacity(0.5),
+                  //             offset: Offset(2, 2),
+                  //             blurRadius: 7,
+                  //             spreadRadius: 1.0),
+                  //         BoxShadow(
+                  //             color: Colors.black.withOpacity(0.5),
+                  //             offset: Offset(2, 4),
+                  //             blurRadius: 7.0,
+                  //             spreadRadius: 1.0),
+                  //       ]),
+                  //   child: Padding(
+                  //     padding: const EdgeInsets.all(8.0),
+                  //     child: ListView(
+                  //       children: [
+                  //         Padding(
+                  //           padding: const EdgeInsets.all(5.0),
+                  //           child: Column(
+                  //             crossAxisAlignment: CrossAxisAlignment.start,
+                  //             children: [
+                  //               Text('อัพโหลดรูปภาพ'),
+                  //             ],
+                  //           ),
+                  //         ),
+                  //         Column(
+                  //           crossAxisAlignment: CrossAxisAlignment.start,
+                  //           children: [
+                  //             Padding(
+                  //               padding: const EdgeInsets.all(8.0),
+                  //               child: Container(
+                  //                 decoration: BoxDecoration(
+                  //                     color: ThemeBc.white,
+                  //                     borderRadius: BorderRadius.circular(
+                  //                       20,
+                  //                     ),
+                  //                     boxShadow: []),
+                  //                 width: 350,
+                  //                 height: 240,
+                  //                 child: Padding(
+                  //                   padding: const EdgeInsets.all(8.0),
+                  //                   child: Column(
+                  //                     mainAxisAlignment:
+                  //                         MainAxisAlignment.center,
+                  //                     children: <Widget>[
+                  //                       selectedImage == null
+                  //                           ? IconButton(
+                  //                               icon: Icon(Icons.add_a_photo),
+                  //                               tooltip: 'Show Snackbar',
+                  //                               onPressed: getImage,
+                  //                             )
+                  //                           : Container(
+                  //                               height: 200,
+                  //                               child: ListView(
+                  //                                 children: [
+                  //                                   Container(
+                  //                                       height: 100,
+                  //                                       child: Image.file(
+                  //                                           selectedImage!)),
+                  //                                 ],
+                  //                               ),
+                  //                             ),
+                  //                       // Text(resJson),
+                  //                     ],
+                  //                   ),
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       ],
+                  //     ),
+                  //     //Container(
+                  //     //   child: FormBuilderImagePicker(
+                  //     //     name: 'emi_path_name',
+                  //     //     iconColor: Colors.black,
+                  //     //     decoration: InputDecoration(
+                  //     //       border: OutlineInputBorder(
+                  //     //         borderRadius: BorderRadius.circular(
+                  //     //           20.0,
+                  //     //         ),
+                  //     //       ),
+                  //     //       labelText: 'ภาพประกอบเหตุการ',
+                  //     //       filled: true,
+                  //     //     ),
+                  //     //     maxImages: 1,
+                  //     //   ),
+                  //     // ),
+                  //   ),
+                  // ),
                   // Container(
                   //   decoration: BoxDecoration(
                   //       color: Colors.white,
@@ -576,59 +629,178 @@ class _compose_page extends State<compose_page>
                   SizedBox(height: 10),
 
                   Container(
-                    height: 300,
-                    decoration: BoxDecoration(
-                        color: secondaryTextColor,
-                        borderRadius: BorderRadius.circular(
-                          20,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              offset: Offset(2, 2),
-                              blurRadius: 7,
-                              spreadRadius: 1.0),
-                          BoxShadow(
-                              color: Colors.black.withOpacity(0.5),
-                              offset: Offset(2, 4),
-                              blurRadius: 7.0,
-                              spreadRadius: 1.0),
-                        ]),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: 500,
-                        child: Column(
-                          children: [
-                            Flexible(
-                                child: FlutterMap(
-                              options: MapOptions(
-                                  center: LatLng(
-                                      16.186348810730625, 103.30025897021274),
-                                  zoom: 16),
-                              layers: [
-                                TileLayerOptions(
-                                  urlTemplate:
-                                      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                                  subdomains: ['a', 'b', 'c'],
-                                  attributionBuilder: (_) {
-                                    return Text("© OpenStreetMap contributors");
-                                  },
-                                ),
-                                MarkerLayerOptions(markers: [
-                                  Marker(
-                                    point: LatLng(
-                                        16.186348810730625, 103.30025897021274),
-                                    builder: (ctx) =>
-                                        const Icon(Icons.pin_drop),
-                                  )
-                                ]),
-                              ],
-                            ))
-                          ],
-                        ),
-                      ),
-                    ),
+                    child: FutureBuilder(
+                        future: _getLocation(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return Container(
+                              height: 320,
+                              child: ListView(
+                                children: [
+                                  Container(
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          color: secondaryTextColor,
+                                          borderRadius: BorderRadius.circular(
+                                            20,
+                                          ),
+                                          boxShadow: [
+                                            BoxShadow(
+                                                color: Colors.grey
+                                                    .withOpacity(0.5),
+                                                offset: Offset(2, 2),
+                                                blurRadius: 7,
+                                                spreadRadius: 1.0),
+                                            BoxShadow(
+                                                color: Colors.black
+                                                    .withOpacity(0.5),
+                                                offset: Offset(2, 4),
+                                                blurRadius: 7.0,
+                                                spreadRadius: 1.0),
+                                          ]),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Container(
+                                          height: 300,
+                                          child: Column(
+                                            children: [
+                                              Flexible(
+                                                  child: FlutterMap(
+                                                options: MapOptions(
+                                                    center: LatLng(
+                                                        userLocation.latitude,
+                                                        userLocation.longitude),
+                                                    zoom: 16),
+                                                layers: [
+                                                  TileLayerOptions(
+                                                    urlTemplate:
+                                                        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                                                    subdomains: ['a', 'b', 'c'],
+                                                    attributionBuilder: (_) {
+                                                      return Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .all(8.0),
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .end,
+                                                          children: [
+                                                            // ElevatedButton.icon(
+                                                            //   onPressed: () {
+                                                            //     print('$userLocation');
+                                                            //     // locn = userLocation.latitude;
+                                                            //     // locn2 = userLocation
+                                                            //     //     .longitude; // mapController.animateCamera(CameraUpdate.newLatLngZoom(
+                                                            //     // //     LatLng(userLocation.latitude, userLocation.longitude),
+                                                            //     // //     18));
+                                                            //     showDialog(
+                                                            //       context: context,
+                                                            //       builder: (context) {
+                                                            //         return AlertDialog(
+                                                            //           content: Text(
+                                                            //               'ตำแหน่ง !\nละติจูด :// ${locn} ลองจิจูด : ${locn} ตำแหน่งที่คุณเลือก : '),
+                                                            //         );
+                                                            //       },
+                                                            //     );
+                                                            //   },
+                                                            //   icon: Icon(Icons.gps_fixed),
+                                                            //   label: Text('ตำแหน่งของคุณ'),
+                                                            //   style: ElevatedButton.styleFrom(
+                                                            //     primary: ThemeBc.background,
+                                                            //     onPrimary: Colors.white,
+                                                            //     elevation: 30,
+                                                            //     shape: RoundedRectangleBorder(
+                                                            //         borderRadius: BorderRadius.all(
+                                                            //             Radius.circular(40))),
+                                                            //   ),
+                                                            // ),
+                                                            Container(
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color:
+                                                                    secondaryTextColor,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                  20,
+                                                                ),
+                                                              ),
+                                                              child: Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        8.0),
+                                                                child: Text(
+                                                                  "เทศบาลมหาสารคาม",
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        20.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    // backgroundColor: Colors.black45,
+                                                                    color: Colors
+                                                                        .black,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  ),
+                                                  MarkerLayerOptions(markers: [
+                                                    Marker(
+                                                      point: LatLng(
+                                                          userLocation.latitude,
+                                                          userLocation
+                                                              .longitude),
+                                                      builder: (ctx) =>
+                                                          IconButton(
+                                                        icon: Icon(
+                                                            Icons.my_location),
+                                                        tooltip:
+                                                            'Show Snackbar',
+                                                        onPressed: () {
+                                                          showDialog(
+                                                            context: context,
+                                                            builder: (context) {
+                                                              return AlertDialog(
+                                                                content: Text(
+                                                                    'ตำแหน่งของคุณ !\nละติจูด : ${userLocation.latitude} ลองจิจูด : ${userLocation.longitude} '),
+                                                              );
+                                                            },
+                                                          );
+                                                        },
+                                                      ),
+                                                    )
+                                                  ]),
+                                                ],
+                                              ))
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                            // Text('${userLocation.latitude} ${userLocation.longitude}');
+                          } else {
+                            return Center(
+                              child: Column(
+                                children: <Widget>[
+                                  CircularProgressIndicator(),
+                                ],
+                              ),
+                            );
+                          }
+                          return Container();
+                        }),
                   ),
 
                   //     padding: EdgeInsets.symmetric(horizontal: 0),
@@ -851,8 +1023,7 @@ class _compose_page extends State<compose_page>
               begin: Alignment.topRight,
               end: Alignment.bottomLeft),
         ),
-        width: 1000,
-        height: 500,
+        height: 1000,
         child: ListView(
           children: [
             SizedBox(height: 5),

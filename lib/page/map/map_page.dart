@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:cctv_tun/page/global/style/global.dart';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:geolocator/geolocator.dart';
@@ -55,6 +54,12 @@ class _map_prod extends State<map_page> {
 
   @override
   Widget build(BuildContext context) {
+    hotlinee = ModalRoute.of(context)!.settings.arguments;
+    late var app_lat =
+        double.parse(hotlinee['hotlineLat'] ?? "16.04594422566426");
+    late var app_lng =
+        double.parse(hotlinee['hotlineLng'] ?? "103.11927574700533");
+
     // hotlinee = ModalRoute.of(context)!.settings.arguments;
     // var app_lat = double.parse(hotlinee['travelLat'] ?? "102.83473877038512");
     // var app_lng = double.parse(hotlinee['travelLng'] ?? "102.83473877038512");
@@ -64,6 +69,7 @@ class _map_prod extends State<map_page> {
     //   zoom: 14,
     // );
     return Scaffold(
+      backgroundColor: ThemeBc.background,
       appBar: AppBar(
         iconTheme: IconThemeData(
           color: ThemeBc.white, //change your color here
@@ -129,14 +135,13 @@ class _map_prod extends State<map_page> {
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Container(
-                              height: 700,
+                              height: 600,
                               child: Column(
                                 children: [
                                   Flexible(
                                       child: FlutterMap(
                                     options: MapOptions(
-                                        center: LatLng(userLocation.latitude,
-                                            userLocation.longitude),
+                                        center: LatLng(app_lat, app_lng),
                                         zoom: 16),
                                     layers: [
                                       TileLayerOptions(
@@ -177,13 +182,29 @@ class _map_prod extends State<map_page> {
                                                 //             Radius.circular(40))),
                                                 //   ),
                                                 // ),
-                                                Text(
-                                                  "เทศบาลมหาสารคาม",
-                                                  style: TextStyle(
-                                                    fontSize: 20.0,
-                                                    fontWeight: FontWeight.bold,
-                                                    // backgroundColor: Colors.black45,
-                                                    color: Colors.black,
+
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    color: secondaryTextColor,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                      20,
+                                                    ),
+                                                  ),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            3.0),
+                                                    child: Text(
+                                                      "เทศบาลมหาสารคาม",
+                                                      style: TextStyle(
+                                                        fontSize: 20.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        // backgroundColor: Colors.black45,
+                                                        color: Colors.black,
+                                                      ),
+                                                    ),
                                                   ),
                                                 ),
                                               ],
@@ -193,10 +214,28 @@ class _map_prod extends State<map_page> {
                                       ),
                                       MarkerLayerOptions(markers: [
                                         Marker(
+                                          point: LatLng(app_lat, app_lng),
+                                          builder: (ctx) => IconButton(
+                                            icon: Icon(Icons.pin_drop),
+                                            tooltip: 'Show Snackbar',
+                                            onPressed: () {
+                                              showDialog(
+                                                context: context,
+                                                builder: (context) {
+                                                  return AlertDialog(
+                                                    content: Text(
+                                                        'ตำแหน่งศูนย์ : ${hotlinee['hotlineName']}'),
+                                                  );
+                                                },
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                        Marker(
                                           point: LatLng(userLocation.latitude,
                                               userLocation.longitude),
-                                          builder: (ctx) =>
-                                              const Icon(Icons.pin_drop),
+                                          builder: (ctx) => const Icon(
+                                              Icons.my_location_outlined),
                                         )
                                       ]),
                                     ],
@@ -426,9 +465,9 @@ class _map_prod extends State<map_page> {
 
 //   @override
 //   Widget build(BuildContext context) {
-//     // hotlinee = ModalRoute.of(context)!.settings.arguments;
-//     // var app_lat = double.parse(hotlinee['hotlineLat'] ?? "16.04594422566426");
-//     // var app_lng = double.parse(hotlinee['hotlineLng'] ?? "103.11927574700533");
+    // hotlinee = ModalRoute.of(context)!.settings.arguments;
+    // var app_lat = double.parse(hotlinee['hotlineLat'] ?? "16.04594422566426");
+    // var app_lng = double.parse(hotlinee['hotlineLng'] ?? "103.11927574700533");
 
 //     // // CameraPosition cameraPosition = CameraPosition(
 //     //   target: LatLng(app_lat, app_lng),

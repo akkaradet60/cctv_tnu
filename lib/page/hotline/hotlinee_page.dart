@@ -231,7 +231,7 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                                                 children: [
                                                   SizedBox(height: 50),
                                                   Text(
-                                                    '${snapshot.data!['data'][index]['hotline_name']}',
+                                                    '${snapshot.data!['data'][index]['hotline_name']} ',
                                                     style: TextStyle(
                                                       fontSize: 18.0,
                                                       fontWeight:
@@ -257,9 +257,101 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                                                       child:
                                                           ElevatedButton.icon(
                                                         onPressed: () async {
-                                                          await FlutterPhoneDirectCaller
-                                                              .callNumber(
-                                                                  number);
+                                                          showDialog(
+                                                            context: context,
+                                                            builder: (context) {
+                                                              return AlertDialog(
+                                                                backgroundColor:
+                                                                    ThemeBc
+                                                                        .white,
+                                                                shape:
+                                                                    CircleBorder(),
+                                                                // shape: RoundedRectangleBorder(
+                                                                //     borderRadius:
+                                                                //         new BorderRadius.circular(
+                                                                //             30)),
+                                                                content:
+                                                                    Container(
+                                                                  child:
+                                                                      Container(
+                                                                    decoration: BoxDecoration(
+                                                                        color: ThemeBc.black,
+                                                                        borderRadius: BorderRadius.circular(
+                                                                          30,
+                                                                        ),
+                                                                        boxShadow: [
+                                                                          BoxShadow(
+                                                                              color: Colors.grey.withOpacity(0.5),
+                                                                              offset: Offset(2, 2),
+                                                                              blurRadius: 7,
+                                                                              spreadRadius: 1.0),
+                                                                          BoxShadow(
+                                                                              color: Colors.black.withOpacity(0.5),
+                                                                              offset: Offset(2, 4),
+                                                                              blurRadius: 7.0,
+                                                                              spreadRadius: 1.0),
+                                                                        ]),
+                                                                    width: 350,
+                                                                    height: 140,
+                                                                    child:
+                                                                        Column(
+                                                                      children: [
+                                                                        Padding(
+                                                                          padding:
+                                                                              const EdgeInsets.all(8.0),
+                                                                          child:
+                                                                              Container(
+                                                                            width:
+                                                                                300,
+                                                                            height:
+                                                                                50,
+                                                                            child:
+                                                                                ListView(
+                                                                              children: [
+                                                                                Text(
+                                                                                  'ต้องการติดต่อไปที่ \n${snapshot.data!['data'][index]['hotline_name']} ${snapshot.data!['data'][index]['hotline_phone']} ?',
+                                                                                  style: TextStyle(
+                                                                                    fontSize: 18.0,
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                    // backgroundColor: Colors.black45,
+                                                                                    color: ThemeBc.white,
+                                                                                  ),
+                                                                                ),
+                                                                              ],
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        ElevatedButton(
+                                                                          onPressed:
+                                                                              () async {
+                                                                            await FlutterPhoneDirectCaller.callNumber(number);
+                                                                          },
+                                                                          child:
+                                                                              Container(
+                                                                            child:
+                                                                                Text('ตกลง'),
+                                                                          ),
+                                                                          style:
+                                                                              ElevatedButton.styleFrom(
+                                                                            primary:
+                                                                                ThemeBc.white,
+                                                                            onPrimary:
+                                                                                Colors.black,
+                                                                            shadowColor:
+                                                                                Colors.black,
+                                                                            elevation:
+                                                                                30,
+                                                                            shape:
+                                                                                const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(40))),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            },
+                                                          );
                                                         },
                                                         icon: Icon(
                                                           Icons.phone,

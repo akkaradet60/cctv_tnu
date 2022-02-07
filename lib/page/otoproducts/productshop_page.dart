@@ -483,7 +483,6 @@ class _productshop_page extends State<productshop_page> {
                                                 context: context,
                                                 builder: (context) {
                                                   return AlertDialog(
-                                                    elevation: 24,
                                                     shape: CircleBorder(),
                                                     // elevation: 100,
                                                     content: Container(

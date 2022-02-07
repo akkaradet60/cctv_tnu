@@ -444,7 +444,7 @@ class _home_pageState extends State<home_page> {
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_6.png',
                       titleMenus: 'CCTV',
-                      pathName: '/map_prod',
+                      pathName: '/sss',
                       titleMenus2: '',
                       titleMenus1: '',
                     ),

@@ -66,9 +66,7 @@ class _EmergecyPageState extends State<EmergecyPage>
     try {
       if (formValues['em_detail'] != null &&
           formValues['em_phone'] != null &&
-          formValues['em_phone'] != null &&
           formValues['em_owner'] != null &&
-          formValues['em_location'] != null &&
           formValues['em_type'] != null) {
         var url = Uri.parse(Global.urlWeb + 'api/app/emergency/restful/');
         var request = http.MultipartRequest('POST', url)
@@ -101,7 +99,7 @@ class _EmergecyPageState extends State<EmergecyPage>
         http.Response response = await http.Response.fromStream(res);
 
         var feedback = jsonDecode(response.body);
-
+        print(feedback);
         if (feedback['data'] == "สำเร็จ") {
           // alertSuccess(context, '${feedback['data']}');
         } else {
@@ -404,7 +402,7 @@ class _EmergecyPageState extends State<EmergecyPage>
                             ),
                             onPressed: () {
                               if (_fbKey.currentState!.saveAndValidate()) {
-                                // print(_fbKey.currentState.value);
+                                print(_fbKey.currentState!.value);
                                 addEmergecy(_fbKey.currentState!.value);
                               }
                             },
