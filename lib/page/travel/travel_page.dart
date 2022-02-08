@@ -71,6 +71,9 @@ class _travel_page extends State<travel_page> {
                 return ListView.builder(
                   itemCount: snapshot.data!['data'].length,
                   itemBuilder: (context, index) {
+                    print(snapshot.data!['data'][index]['travel_images'][0]
+                        ['traveli_path_name']);
+
                     var datanill = snapshot.data!['data'];
                     print(snapshot.data!['data'].length);
                     var em_detaail;
@@ -172,7 +175,7 @@ class _travel_page extends State<travel_page> {
                                                                           'travel_images'][0]
                                                                       [
                                                                       'traveli_path_name']
-                                                              : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                                              : '${Global.networkImage}',
                                                           fit: BoxFit.cover,
                                                           width:
                                                               double.infinity,

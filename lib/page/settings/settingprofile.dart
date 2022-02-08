@@ -2,6 +2,7 @@ import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:cctv_tun/page/profile/app_reducer.dart';
+import 'package:cctv_tun/widgets/warn_api.dart';
 
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -129,54 +130,23 @@ class _EmergecyPageState extends State<settingprofile>
                                   json.decode(response.body);
 
                               if (response.statusCode == 201) {
-                                Alert(
+                                return showDialog(
                                   context: context,
-                                  // title: "แจ้งเตือน",
-                                  type: AlertType.success,
-                                  desc: '${profilee['data']}',
-                                  buttons: [
-                                    DialogButton(
-                                      child: Text(
-                                        "ปิด",
-                                        style: TextStyle(
-                                            color: ThemeBc.white, fontSize: 18),
-                                      ),
-                                      onPressed: () => Navigator.pushNamed(
-                                          context, '/login_page'),
-                                      gradient: LinearGradient(colors: [
-                                        Color.fromRGBO(116, 116, 191, 1.0),
-                                        Color.fromRGBO(52, 138, 199, 1.0),
-                                      ]),
-                                    )
-                                  ],
-                                ).show();
-
-                                //กลับไปที่หน้า LoginPage
-                                // Future.delayed(const Duration(seconds: 5), () {
-                                //   // Navigator.pop(context);
-                                //    Navigator.pop(context, '/login');
-                                // });
+                                  builder: (context) {
+                                    return warn_api(
+                                      title: '${profilee['data']}',
+                                    );
+                                  },
+                                );
                               } else {
-                                Alert(
+                                return showDialog(
                                   context: context,
-                                  type: AlertType.warning,
-                                  // title: "แจ้งเตือน",
-                                  desc: '${profilee['data']}',
-                                  buttons: [
-                                    DialogButton(
-                                      child: Text(
-                                        "ปิด",
-                                        style: TextStyle(
-                                            color: ThemeBc.white, fontSize: 18),
-                                      ),
-                                      onPressed: () => Navigator.pop(context),
-                                      gradient: LinearGradient(colors: [
-                                        Color.fromRGBO(116, 116, 191, 1.0),
-                                        Color.fromRGBO(52, 138, 199, 1.0),
-                                      ]),
-                                    )
-                                  ],
-                                ).show();
+                                  builder: (context) {
+                                    return warn_api(
+                                      title: '${profilee['data']}',
+                                    );
+                                  },
+                                );
                               }
                             } catch (e) {
                               // print(e);

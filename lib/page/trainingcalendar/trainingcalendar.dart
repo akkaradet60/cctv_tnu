@@ -20,8 +20,8 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
   int _currentIndex = 0;
 
   Future<Map<String, dynamic>> getDataSlide() async {
-    var url =
-        ('https://www.bc-official.com/api/app_nt/api/app/train/restful/?train_app_id=1');
+    var url = (Global.urlWeb +
+        'api/app/train/restful/?train_app_id=${Global.app_id}');
     var response = await http.get(Uri.parse(url), headers: {
       'Authorization':
           'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
@@ -180,7 +180,7 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
                                             snapshot.data!['data'][index]
                                                     ['train_images'][0]
                                                 ['traini_path_name']
-                                        : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                        : '${Global.networkImage}',
                                     //   'blog_images': snapshot.data!['data'][index]
                                     //               ['blog_images'] !=
                                     //           null
@@ -188,7 +188,7 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
                                     //           snapshot.data!['data'][index]
                                     //                   ['blog_images'][0]
                                     //               ['blogi_path_name']
-                                    //       : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                    //       : '${Global.networkImage}',
                                     //   'blog_name': snapshot.data!['data'][index]
                                     //       ['blog_name'],
                                     //   'blog_detail': snapshot.data!['data'][index]
@@ -253,7 +253,7 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
                                                                       'train_images'][0]
                                                                   [
                                                                   'traini_path_name']
-                                                          : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                                          : '${Global.networkImage}',
                                                       fit: BoxFit.cover,
                                                       width: double.infinity,
                                                     )),
@@ -384,7 +384,7 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
   //                                           data[index]
   //                                               .trainImages[index]
   //                                               .trainiPathName
-  //                                       : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+  //                                       : '${Global.networkImage}',
   //                                 });
   //                           },
   //                           child: Padding(
@@ -399,7 +399,7 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
   //                                             data[index]
   //                                                 .trainImages[index]
   //                                                 .trainiPathName
-  //                                         : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+  //                                         : '${Global.networkImage}',
   //                                   ),
   //                                 ),
   //                                 Padding(

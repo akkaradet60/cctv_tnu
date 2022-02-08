@@ -119,7 +119,7 @@ class _message_pageState extends State<message_page> {
                                 ? Global.domainImage +
                                     snapshot.data!['data'][item]['blog_images']
                                         [0]['blogi_path_name']
-                                : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                : '${Global.networkImage}',
                             'blog_name': snapshot.data!['data'][item]
                                 ['blog_name'],
                             'blog_detail': snapshot.data!['data'][item]
@@ -176,7 +176,7 @@ class _message_pageState extends State<message_page> {
                                             snapshot.data!['data'][item]
                                                     ['blog_images'][0]
                                                 ['blogi_path_name']
-                                        : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                        : '${Global.networkImage}',
                                     fit: BoxFit.cover,
                                     width: double.infinity,
                                   ),
@@ -258,7 +258,7 @@ class _message_pageState extends State<message_page> {
                                             snapshot.data!['data'][index]
                                                     ['blog_images'][0]
                                                 ['blogi_path_name']
-                                        : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                        : '${Global.networkImage}',
                                     'blog_name': snapshot.data!['data'][index]
                                         ['blog_name'],
                                     'blog_detail': snapshot.data!['data'][index]
@@ -328,7 +328,7 @@ class _message_pageState extends State<message_page> {
                                                                         'blog_images'][0]
                                                                     [
                                                                     'blogi_path_name']
-                                                            : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                                            : '${Global.networkImage}',
                                                         fit: BoxFit.cover,
                                                         width: double.infinity,
                                                       )),

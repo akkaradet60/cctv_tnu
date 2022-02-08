@@ -16,7 +16,6 @@ import 'package:cctv_tun/page/map/maplocation_page.dart';
 
 import 'package:cctv_tun/page/message/messagem_page.dart';
 import 'package:cctv_tun/page/message/messagemdetail_page.dart';
-import 'package:cctv_tun/page/oobk.dart';
 
 import 'package:cctv_tun/page/otoproducts/productshome_page.dart';
 
@@ -24,6 +23,7 @@ import 'package:cctv_tun/page/otoproducts/productshop_page.dart';
 import 'package:cctv_tun/page/otoproducts/productstore_page.dart';
 
 import 'package:cctv_tun/page/profile/app_reducer.dart';
+import 'package:cctv_tun/page/settings/fix_password.dart';
 import 'package:cctv_tun/page/settings/settingpolicy.dart';
 import 'package:cctv_tun/page/settings/settingpro.dart';
 import 'package:cctv_tun/page/settings/settingprodot.dart';
@@ -44,7 +44,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
-var filePath;
 var token;
 
 void main() async {
@@ -79,7 +78,8 @@ class MyApp extends StatelessWidget {
           //     scaffoldBackgroundColor: Colors.pinkAccent),
           routes: {
             '/': (context) => token == null ? login_page() : home_page(),
-            '/sss': (context) => EmergecyPage(),
+            '/fix_password': (context) => fix_password(),
+            // '/sss': (context) => EmergecyPage(),
             '/map_prod': (context) => map_prod(),
             '/productstore_page': (context) => productstore_page(),
             //  '/confirmemail': (context) => confirmemail(),

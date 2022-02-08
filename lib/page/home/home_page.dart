@@ -34,6 +34,8 @@ class _home_pageState extends State<home_page> {
     setState(() {
       Global.token = appToken['access_token'];
       Global.user_id = appuser_id['access_id'];
+
+      // Global.user_name= appuser_id['access_name'];
     });
 
     var newProfile = json.decode(prefs.getString('profile').toString());
@@ -258,7 +260,7 @@ class _home_pageState extends State<home_page> {
                                   ? Global.domainImage +
                                       snapshot.data!['data'][item]
                                           ['blog_images'][0]['blogi_path_name']
-                                  : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                  : '${Global.networkImage}',
                               'blog_name': snapshot.data!['data'][item]
                                   ['blog_name'],
                               'blog_detail': snapshot.data!['data'][item]
@@ -444,7 +446,7 @@ class _home_pageState extends State<home_page> {
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_6.png',
                       titleMenus: 'CCTV',
-                      pathName: '/sss',
+                      pathName: '/cctv_page',
                       titleMenus2: '',
                       titleMenus1: '',
                     ),

@@ -1,5 +1,6 @@
 import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class cctv_page extends StatefulWidget {
   cctv_page({Key? key}) : super(key: key);
@@ -31,13 +32,9 @@ class _cctv_pageState extends State<cctv_page> {
           ),
         ],
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [ThemeBc.orange, ThemeBc.pinkAccent],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft),
-        ),
+      body: WebView(
+        javascriptMode: JavascriptMode.unrestricted,
+        initialUrl: 'https://amazon.com',
       ),
     );
   }

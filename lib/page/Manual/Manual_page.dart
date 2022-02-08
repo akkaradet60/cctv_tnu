@@ -44,6 +44,7 @@ class _manual_pageState extends State<manual_page> {
   //     print('error 400');
   //   }
   // }
+
   late Map<String, dynamic> imgSlide;
 
   int _currentIndex = 0;

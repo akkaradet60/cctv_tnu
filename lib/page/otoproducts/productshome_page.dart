@@ -289,7 +289,7 @@ class _productshome_page extends State<productshome_page> {
                                                 snapshot.data!['data'][index]
                                                         ['product_images'][0]
                                                     ['producti_path_name']
-                                            : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                            : '${Global.networkImage}',
                                         'productiproductid':
                                             snapshot.data!['data'][index]
                                                     ['product_images'][0]
@@ -358,7 +358,7 @@ class _productshome_page extends State<productshome_page> {
                                                                           'product_images'][0]
                                                                       [
                                                                       'producti_path_name']
-                                                              : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                                              : '${Global.networkImage}',
                                                           fit: BoxFit.cover,
                                                           width:
                                                               double.infinity,
@@ -537,7 +537,7 @@ class _productshome_page extends State<productshome_page> {
                                                 snapshot.data!['data'][index]
                                                         ['product_images'][0]
                                                     ['producti_path_name']
-                                            : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                            : '${Global.networkImage}',
                                         'productiproductid':
                                             snapshot.data!['data'][index]
                                                     ['product_images'][0]
@@ -606,7 +606,7 @@ class _productshome_page extends State<productshome_page> {
                                                                           'product_images'][0]
                                                                       [
                                                                       'producti_path_name']
-                                                              : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                                              : '${Global.networkImage}',
                                                           fit: BoxFit.cover,
                                                           width:
                                                               double.infinity,
@@ -783,7 +783,7 @@ class _productshome_page extends State<productshome_page> {
                                                 snapshot.data!['data'][index]
                                                         ['product_images'][0]
                                                     ['producti_path_name']
-                                            : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                            : '${Global.networkImage}',
                                         'productiproductid':
                                             snapshot.data!['data'][index]
                                                     ['product_images'][0]
@@ -846,7 +846,7 @@ class _productshome_page extends State<productshome_page> {
                                                                           'product_images'][0]
                                                                       [
                                                                       'producti_path_name']
-                                                              : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                                              : '${Global.networkImage}',
                                                           fit: BoxFit.cover,
                                                           width:
                                                               double.infinity,

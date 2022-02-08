@@ -250,133 +250,180 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                                                 padding:
                                                     const EdgeInsets.all(5.0),
                                                 child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.end,
                                                   children: [
-                                                    //         .callNumber(number);},
                                                     Container(
-                                                      height: 50,
-                                                      child:
-                                                          ElevatedButton.icon(
-                                                        onPressed: () async {
-                                                          showDialog(
-                                                            context: context,
-                                                            builder: (context) {
-                                                              return AlertDialog(
-                                                                backgroundColor:
-                                                                    ThemeBc
-                                                                        .white,
-                                                                shape:
-                                                                    CircleBorder(),
-                                                                // shape: RoundedRectangleBorder(
-                                                                //     borderRadius:
-                                                                //         new BorderRadius.circular(
-                                                                //             30)),
-                                                                content:
-                                                                    Container(
-                                                                  child:
+                                                      decoration: BoxDecoration(
+                                                          color: ThemeBc.black,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                            30,
+                                                          ),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                                color: Colors
+                                                                    .grey
+                                                                    .withOpacity(
+                                                                        0.5),
+                                                                offset: Offset(
+                                                                    2, 2),
+                                                                blurRadius: 7,
+                                                                spreadRadius:
+                                                                    1.0),
+                                                            BoxShadow(
+                                                                color: Colors
+                                                                    .black
+                                                                    .withOpacity(
+                                                                        0.5),
+                                                                offset: Offset(
+                                                                    2, 4),
+                                                                blurRadius: 7.0,
+                                                                spreadRadius:
+                                                                    1.0),
+                                                          ]),
+                                                      child: IconButton(
+                                                          icon: Icon(
+                                                            Icons.phone,
+                                                            color:
+                                                                ThemeBc.white,
+                                                            size: 30,
+                                                          ),
+                                                          tooltip:
+                                                              'Show Snackbar',
+                                                          onPressed: () {
+                                                            showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (context) {
+                                                                return AlertDialog(
+                                                                  backgroundColor:
+                                                                      ThemeBc
+                                                                          .white,
+                                                                  shape:
+                                                                      CircleBorder(),
+                                                                  // shape: RoundedRectangleBorder(
+                                                                  //     borderRadius:
+                                                                  //         new BorderRadius.circular(
+                                                                  //             30)),
+                                                                  content:
                                                                       Container(
-                                                                    decoration: BoxDecoration(
-                                                                        color: ThemeBc.black,
-                                                                        borderRadius: BorderRadius.circular(
-                                                                          30,
-                                                                        ),
-                                                                        boxShadow: [
-                                                                          BoxShadow(
-                                                                              color: Colors.grey.withOpacity(0.5),
-                                                                              offset: Offset(2, 2),
-                                                                              blurRadius: 7,
-                                                                              spreadRadius: 1.0),
-                                                                          BoxShadow(
-                                                                              color: Colors.black.withOpacity(0.5),
-                                                                              offset: Offset(2, 4),
-                                                                              blurRadius: 7.0,
-                                                                              spreadRadius: 1.0),
-                                                                        ]),
-                                                                    width: 350,
-                                                                    height: 140,
                                                                     child:
-                                                                        Column(
-                                                                      children: [
-                                                                        Padding(
-                                                                          padding:
-                                                                              const EdgeInsets.all(8.0),
-                                                                          child:
-                                                                              Container(
-                                                                            width:
-                                                                                300,
-                                                                            height:
-                                                                                50,
+                                                                        Container(
+                                                                      decoration: BoxDecoration(
+                                                                          color: ThemeBc.black,
+                                                                          borderRadius: BorderRadius.circular(
+                                                                            30,
+                                                                          ),
+                                                                          boxShadow: [
+                                                                            BoxShadow(
+                                                                                color: Colors.grey.withOpacity(0.5),
+                                                                                offset: Offset(2, 2),
+                                                                                blurRadius: 7,
+                                                                                spreadRadius: 1.0),
+                                                                            BoxShadow(
+                                                                                color: Colors.black.withOpacity(0.5),
+                                                                                offset: Offset(2, 4),
+                                                                                blurRadius: 7.0,
+                                                                                spreadRadius: 1.0),
+                                                                          ]),
+                                                                      width:
+                                                                          500,
+                                                                      height:
+                                                                          140,
+                                                                      child:
+                                                                          Column(
+                                                                        children: [
+                                                                          Padding(
+                                                                            padding:
+                                                                                const EdgeInsets.all(8.0),
                                                                             child:
-                                                                                ListView(
-                                                                              children: [
-                                                                                Text(
-                                                                                  'ต้องการติดต่อไปที่ \n${snapshot.data!['data'][index]['hotline_name']} ${snapshot.data!['data'][index]['hotline_phone']} ?',
-                                                                                  style: TextStyle(
-                                                                                    fontSize: 18.0,
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                    // backgroundColor: Colors.black45,
-                                                                                    color: ThemeBc.white,
+                                                                                Container(
+                                                                              width: 500,
+                                                                              height: 50,
+                                                                              child: ListView(
+                                                                                children: [
+                                                                                  Text(
+                                                                                    'ต้องการติดต่อไปที่ \n${snapshot.data!['data'][index]['hotline_name']} ${snapshot.data!['data'][index]['hotline_phone']} ?',
+                                                                                    style: TextStyle(
+                                                                                      fontSize: 18.0,
+                                                                                      fontWeight: FontWeight.bold,
+                                                                                      // backgroundColor: Colors.black45,
+                                                                                      color: ThemeBc.white,
+                                                                                    ),
                                                                                   ),
-                                                                                ),
-                                                                              ],
+                                                                                ],
+                                                                              ),
                                                                             ),
                                                                           ),
-                                                                        ),
-                                                                        ElevatedButton(
-                                                                          onPressed:
-                                                                              () async {
-                                                                            await FlutterPhoneDirectCaller.callNumber(number);
-                                                                          },
-                                                                          child:
-                                                                              Container(
+                                                                          ElevatedButton(
+                                                                            onPressed:
+                                                                                () async {
+                                                                              await FlutterPhoneDirectCaller.callNumber(number);
+                                                                            },
                                                                             child:
-                                                                                Text('ตกลง'),
+                                                                                Container(
+                                                                              child: Text('ตกลง'),
+                                                                            ),
+                                                                            style:
+                                                                                ElevatedButton.styleFrom(
+                                                                              primary: ThemeBc.white,
+                                                                              onPrimary: Colors.black,
+                                                                              shadowColor: Colors.black,
+                                                                              elevation: 30,
+                                                                              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(40))),
+                                                                            ),
                                                                           ),
-                                                                          style:
-                                                                              ElevatedButton.styleFrom(
-                                                                            primary:
-                                                                                ThemeBc.white,
-                                                                            onPrimary:
-                                                                                Colors.black,
-                                                                            shadowColor:
-                                                                                Colors.black,
-                                                                            elevation:
-                                                                                30,
-                                                                            shape:
-                                                                                const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(40))),
-                                                                          ),
-                                                                        ),
-                                                                      ],
+                                                                        ],
+                                                                      ),
                                                                     ),
                                                                   ),
-                                                                ),
-                                                              );
-                                                            },
-                                                          );
-                                                        },
+                                                                );
+                                                              },
+                                                            );
+                                                          }),
+                                                    ),
+                                                    //         .callNumber(number);},
+                                                    SizedBox(width: 5),
+                                                    Container(
+                                                      decoration: BoxDecoration(
+                                                          color: ThemeBc.black,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                            30,
+                                                          ),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                                color: Colors
+                                                                    .grey
+                                                                    .withOpacity(
+                                                                        0.5),
+                                                                offset: Offset(
+                                                                    2, 2),
+                                                                blurRadius: 7,
+                                                                spreadRadius:
+                                                                    1.0),
+                                                            BoxShadow(
+                                                                color: Colors
+                                                                    .black
+                                                                    .withOpacity(
+                                                                        0.5),
+                                                                offset: Offset(
+                                                                    2, 4),
+                                                                blurRadius: 7.0,
+                                                                spreadRadius:
+                                                                    1.0),
+                                                          ]),
+                                                      child: IconButton(
                                                         icon: Icon(
-                                                          Icons.phone,
+                                                          Icons.maps_home_work,
                                                           color: ThemeBc.white,
                                                           size: 30,
                                                         ),
-                                                        label: Text(''),
-                                                        style: ElevatedButton
-                                                            .styleFrom(
-                                                          primary: ThemeBc
-                                                              .background,
-                                                          elevation: 10,
-                                                          shape: RoundedRectangleBorder(
-                                                              borderRadius: BorderRadius
-                                                                  .all(Radius
-                                                                      .circular(
-                                                                          20))),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    SizedBox(width: 5),
-                                                    Container(
-                                                      height: 50,
-                                                      child:
-                                                          ElevatedButton.icon(
+                                                        tooltip:
+                                                            'Show Snackbar',
                                                         onPressed: () =>
                                                             Navigator.pushNamed(
                                                                 context,
@@ -397,40 +444,7 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                                                                       'data'][index]
                                                                   [
                                                                   'hotline_name'],
-                                                              // 'productName':
-                                                              //     data[index].productName,
-                                                              // 'productPrice':
-                                                              //     data[index].productPrice,
-                                                              // 'productiPathName': data[index]
-                                                              //         .productImage?[0]
-                                                              //         .productiPathName ??
-                                                              //     'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
-                                                              // 'productiproductid': data[index]
-                                                              //     .productImage?[0]
-                                                              //     .productiProductId,
-
-                                                              /*   'id': data[index].id,
-                                              'detail': data[index].detail,
-                                              'picture': data[index].picture,
-                                              'view': data[index].view,*/
                                                             }),
-                                                        icon: Icon(
-                                                          Icons.maps_home_work,
-                                                          color: ThemeBc.white,
-                                                          size: 30,
-                                                        ),
-                                                        label: Text(''),
-                                                        style: ElevatedButton
-                                                            .styleFrom(
-                                                          primary: ThemeBc
-                                                              .background,
-                                                          elevation: 10,
-                                                          shape: RoundedRectangleBorder(
-                                                              borderRadius: BorderRadius
-                                                                  .all(Radius
-                                                                      .circular(
-                                                                          20))),
-                                                        ),
                                                       ),
                                                     ),
                                                   ],

@@ -121,7 +121,7 @@ class _award_pageState extends State<award_page> {
                                 ? Global.domainImage +
                                     snapshot.data!['data'][item]['award_images']
                                         [0]['awardi_path_name']
-                                : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                : '${Global.networkImage}',
                             'award_name': snapshot.data!['data'][item]
                                 ['award_name'],
                             'award_detail': snapshot.data!['data'][item]
@@ -168,7 +168,7 @@ class _award_pageState extends State<award_page> {
                                             snapshot.data!['data'][item]
                                                     ['award_images'][0]
                                                 ['awardi_path_name']
-                                        : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                        : '${Global.networkImage}',
                                     fit: BoxFit.cover,
                                     width: double.infinity,
                                   ),
@@ -249,7 +249,7 @@ class _award_pageState extends State<award_page> {
                                             snapshot.data!['data'][index]
                                                     ['award_images'][0]
                                                 ['awardi_path_name']
-                                        : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                        : '${Global.networkImage}',
                                     'award_name': snapshot.data!['data'][index]
                                         ['award_name'],
                                     'award_detail': snapshot.data!['data']
@@ -314,7 +314,7 @@ class _award_pageState extends State<award_page> {
                                                                       'award_images'][0]
                                                                   [
                                                                   'awardi_path_name']
-                                                          : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                                          : '${Global.networkImage}',
                                                       fit: BoxFit.cover,
                                                       width: double.infinity,
                                                     )),
@@ -455,7 +455,7 @@ class _award_pageState extends State<award_page> {
               //                         null
               //                     ? snapshot.data!['data'][item]['blog_images']
               //                         [0]['blogi_path_name']
-              //                     : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+              //                     : '${Global.networkImage}',
               //                 fit: BoxFit.cover,
               //                 width: double.infinity,
               //               ),

@@ -175,8 +175,170 @@ class settings extends StatelessWidget {
                 width: 342,
                 height: 55,
                 child: ElevatedButton.icon(
-                  onPressed: () =>
-                      Navigator.pushNamed(context, '/settingprofile'),
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          shape: CircleBorder(),
+                          // elevation: 100,
+                          content: Container(
+                            height: 200,
+                            width: 400,
+                            decoration: BoxDecoration(
+                                color: ThemeBc.background,
+                                borderRadius: BorderRadius.circular(
+                                  20,
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.black.withOpacity(0.5),
+                                      offset: Offset(2, 2),
+                                      blurRadius: 7,
+                                      spreadRadius: 1.0),
+                                  BoxShadow(
+                                      color: Colors.black.withOpacity(0.5),
+                                      offset: Offset(2, 4),
+                                      blurRadius: 7.0,
+                                      spreadRadius: 1.0),
+                                ]),
+                            child: ListView(
+                              children: [
+                                SizedBox(height: 20),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    InkWell(
+                                      onTap: () {},
+                                      child: Container(
+                                        height: 40,
+                                        width: 250,
+                                        decoration: BoxDecoration(
+                                            color: ThemeBc.white,
+                                            borderRadius: BorderRadius.circular(
+                                              20,
+                                            ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  color: Colors.black
+                                                      .withOpacity(0.5),
+                                                  offset: Offset(2, 2),
+                                                  blurRadius: 7,
+                                                  spreadRadius: 1.0),
+                                              BoxShadow(
+                                                  color: Colors.black
+                                                      .withOpacity(0.5),
+                                                  offset: Offset(2, 4),
+                                                  blurRadius: 7.0,
+                                                  spreadRadius: 1.0),
+                                            ]),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Center(
+                                            child: Text(
+                                              'ภาษาไทย',
+                                              style: TextStyle(
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.bold,
+                                                // backgroundColor: Colors.black45,
+                                                color: ThemeBc.black,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(height: 10),
+                                    InkWell(
+                                      onTap: () {},
+                                      child: Container(
+                                        height: 40,
+                                        width: 250,
+                                        decoration: BoxDecoration(
+                                            color: ThemeBc.white,
+                                            borderRadius: BorderRadius.circular(
+                                              20,
+                                            ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  color: Colors.black
+                                                      .withOpacity(0.5),
+                                                  offset: Offset(2, 2),
+                                                  blurRadius: 7,
+                                                  spreadRadius: 1.0),
+                                              BoxShadow(
+                                                  color: Colors.black
+                                                      .withOpacity(0.5),
+                                                  offset: Offset(2, 4),
+                                                  blurRadius: 7.0,
+                                                  spreadRadius: 1.0),
+                                            ]),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Center(
+                                            child: Text(
+                                              'English',
+                                              style: TextStyle(
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.bold,
+                                                // backgroundColor: Colors.black45,
+                                                color: ThemeBc.black,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(height: 10),
+                                    InkWell(
+                                      onTap: () {},
+                                      child: Container(
+                                        height: 40,
+                                        width: 250,
+                                        decoration: BoxDecoration(
+                                            color: ThemeBc.white,
+                                            borderRadius: BorderRadius.circular(
+                                              20,
+                                            ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  color: Colors.black
+                                                      .withOpacity(0.5),
+                                                  offset: Offset(2, 2),
+                                                  blurRadius: 7,
+                                                  spreadRadius: 1.0),
+                                              BoxShadow(
+                                                  color: Colors.black
+                                                      .withOpacity(0.5),
+                                                  offset: Offset(2, 4),
+                                                  blurRadius: 7.0,
+                                                  spreadRadius: 1.0),
+                                            ]),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Center(
+                                            child: Text(
+                                              '中国',
+                                              style: TextStyle(
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.bold,
+                                                // backgroundColor: Colors.black45,
+                                                color: ThemeBc.black,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
                   icon: const Icon(Icons.spellcheck),
                   label: const Text('เปลี่ยนภาษา'),
                   style: ElevatedButton.styleFrom(
@@ -195,7 +357,7 @@ class settings extends StatelessWidget {
                 height: 55,
                 child: ElevatedButton.icon(
                   onPressed: () =>
-                      Navigator.pushNamed(context, '/settingprofile'),
+                      Navigator.pushNamed(context, '/fix_password'),
                   icon: const Icon(Icons.vpn_key),
                   label: const Text('แก้ไขรหัสผ่าน'),
                   style: ElevatedButton.styleFrom(

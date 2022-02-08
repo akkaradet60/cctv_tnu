@@ -1145,7 +1145,7 @@ class _EmergecyPageState extends State<EmergecyPage>
                                                                           snapshot.data!['data'][index]['em_images'][0]
                                                                               [
                                                                               'emi_path_name']
-                                                                      : 'https://boychawins.com/blogs/images/17641500_1623653406.jpeg',
+                                                                      : '${Global.networkImage}',
                                                                   'em_phone': snapshot
                                                                               .data!['data']
                                                                           [
