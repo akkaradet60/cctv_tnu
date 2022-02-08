@@ -1,11 +1,26 @@
 import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:cctv_tun/page/menu/manu.dart';
+import 'package:easy_localization/src/public_ext.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_builder.dart';
 
+import 'Language/LanguageTH.dart';
+
 class settings extends StatelessWidget {
   const settings({Key? key}) : super(key: key);
+
+  // Widget build(BuildContext context) {
+  //   return MaterialApp(
+  //     debugShowCheckedModeBanner: false,
+  //     // theme: ThemeData(
+  //     //     primarySwatch: Colors.grey,
+  //     //     canvasColor: Colors.pinkAccent,
+  //     //     scaffoldBackgroundColor: Colors.pinkAccent),
+
+  //       //   '/messagem2': (context) => messagem2()
+  //     },
+  //   );
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +50,9 @@ class settings extends StatelessWidget {
           margin: const EdgeInsets.only(top: 20),
           child: Column(
             children: [
+              Text(
+                LocaleKeys.this_should_be_translated.tr(),
+              ),
               const SizedBox(height: 18),
               const Text(
                 'ข้อมูล',
@@ -209,7 +227,9 @@ class settings extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     InkWell(
-                                      onTap: () {},
+                                      onTap: () async {
+                                        await context.setLocale(Locale('th'));
+                                      },
                                       child: Container(
                                         height: 40,
                                         width: 250,
@@ -250,7 +270,9 @@ class settings extends StatelessWidget {
                                     ),
                                     SizedBox(height: 10),
                                     InkWell(
-                                      onTap: () {},
+                                      onTap: () async {
+                                        await context.setLocale(Locale('en'));
+                                      },
                                       child: Container(
                                         height: 40,
                                         width: 250,
@@ -291,7 +313,9 @@ class settings extends StatelessWidget {
                                     ),
                                     SizedBox(height: 10),
                                     InkWell(
-                                      onTap: () {},
+                                      onTap: () async {
+                                        await context.setLocale(Locale('ch'));
+                                      },
                                       child: Container(
                                         height: 40,
                                         width: 250,
@@ -424,6 +448,11 @@ class settings extends StatelessWidget {
         child: SafeArea(
           child: ListView(
             children: [
+              MaterialApp(
+                supportedLocales: context.supportedLocales,
+                localizationsDelegates: context.localizationDelegates,
+                locale: context.locale,
+              ),
               imageSplash(),
               text2(),
             ],

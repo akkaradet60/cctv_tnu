@@ -1,4 +1,3 @@
-import 'package:cctv_tun/main.dart';
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:cctv_tun/page/profile/app_reducer.dart';

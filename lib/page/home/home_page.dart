@@ -3,14 +3,16 @@ import 'dart:convert';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
-import 'package:cctv_tun/page/login/login.page.dart';
+
 import 'package:cctv_tun/page/menu/manu.dart';
+import 'package:cctv_tun/page/settings/Language/LanguageTH.dart';
+import 'package:easy_localization/src/public_ext.dart';
 
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:cctv_tun/widgets/menus_custom.dart';
-import 'package:flutter/material.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class home_page extends StatefulWidget {
@@ -392,6 +394,66 @@ class _home_pageState extends State<home_page> {
       );
     }
 
+    // Widget ssss() {
+    //   return Container(
+    //     child: Center(
+    //       child: Column(
+    //         mainAxisAlignment: MainAxisAlignment.center,
+    //         children: <Widget>[
+    //           Text(
+    //             LocaleKeys.hi_text.tr(),
+    //           ),
+    //           Text(
+    //             LocaleKeys.this_should_be_translated.tr(),
+    //           ),
+    //           const SizedBox(height: 15),
+    //           Row(
+    //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    //             children: <Widget>[
+    //               Card(
+    //                 child: Text('sdsd'),
+    //               ),
+    //               // ElevatedButton(
+    //               //   onPressed: () async {
+    //               //     await context.setLocale(Locale('en'));
+    //               //   },
+    //               //   child: Text(
+    //               //     "English",
+    //               //   ),
+    //               // ),
+    //               ElevatedButton(
+    //                 onPressed: () async {
+    //                   await context.setLocale(Locale('th'));
+    //                 },
+    //                 child: Text(
+    //                   "TH",
+    //                 ),
+    //               ),
+
+    //               ElevatedButton(
+    //                 onPressed: () async {
+    //                   await context.setLocale(Locale('en'));
+    //                 },
+    //                 child: Text(
+    //                   "English",
+    //                 ),
+    //               ),
+    //               // ElevatedButton(
+    //               //   onPressed: () async {
+    //               //     await context.setLocale(Locale('ar'));
+    //               //   },
+    //               //   child: Text(
+    //               //     "العربية",
+    //               //   ),
+    //               // ),
+    //             ],
+    //           ),
+    //         ],
+    //       ),
+    //     ),
+    //   );
+    // }
+
     Widget cardMenus() {
       return Container(
           margin: EdgeInsets.only(top: 18),
@@ -574,10 +636,12 @@ class _home_pageState extends State<home_page> {
                     }).toList(),
                   ),
                 ),
-                // alert // slider(),
+                // alert // slider()
                 titleMenus(),
                 cardMenus(),
                 cardMenus1(),
+
+                // ssss(),
                 SizedBox(height: 111),
               ],
             ),
