@@ -5,8 +5,7 @@ import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:cctv_tun/page/menu/manu.dart';
-import 'package:cctv_tun/page/settings/Language/LanguageTH.dart';
-import 'package:easy_localization/src/public_ext.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:http/http.dart' as http;
@@ -381,7 +380,7 @@ class _home_pageState extends State<home_page> {
         padding: const EdgeInsets.all(10),
         child: Container(
           // margin: EdgeInsets.only(top: 30, left: 5),
-          child: Text(
+          child: LocaleText(
             'เมนู',
             style: TextStyle(
               fontSize: 25,
@@ -507,7 +506,7 @@ class _home_pageState extends State<home_page> {
                     ),
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_6.png',
-                      titleMenus: 'CCTV',
+                      titleMenus: 'โทรทัศน์วงจรปิด',
                       pathName: '/cctv_page',
                       titleMenus2: '',
                       titleMenus1: '',
@@ -560,7 +559,7 @@ class _home_pageState extends State<home_page> {
                 children: [
                   MenusCustom(
                     iconMenus: 'assets/homepage/icon_11.png',
-                    titleMenus: 'สินค้า OTOP',
+                    titleMenus: 'สินค้าโอทอป',
                     pathName: '/productshome_page',
                     titleMenus1: '',
                     titleMenus2: '',
@@ -590,7 +589,22 @@ class _home_pageState extends State<home_page> {
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
-        title: Center(child: const Text('เทศบาลเมืองมหาสารคาม')),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(width: 20),
+            Container(
+              height: 30,
+              width: 250,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  LocaleText('เทศบาลเมืองมหาสารคาม'),
+                ],
+              ),
+            )
+          ],
+        ),
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/logo.png', scale: 15),

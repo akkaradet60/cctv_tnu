@@ -50,7 +50,7 @@ dependencies:
   fluttertoast: ^8.0.8
   image_picker: ^0.8.4+5
   webview_flutter: ^3.0.0
-  easy_localization: ^3.0.0
+  flutter_locales: ^2.0.1
   # google_maps_flutter: ^2.1.1
   # flutter_clean_calendar: ^1.1.0
 
@@ -96,7 +96,10 @@ flutter:
     - assets/youtube/
     - assets/travel/
     - assets/
-    - assets/translations/
+    - assets/locales/en.json
+    - assets/locales/zh.json
+    - assets/locales/th.json
+  
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

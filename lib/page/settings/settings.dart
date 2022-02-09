@@ -1,11 +1,11 @@
+import 'package:cctv_tun/generated/languageS.dart';
+import 'package:cctv_tun/generated/locale_keys.g.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:cctv_tun/page/menu/manu.dart';
-import 'package:easy_localization/src/public_ext.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_signin_button/button_builder.dart';
-
-import 'Language/LanguageTH.dart';
 
 class settings extends StatelessWidget {
   const settings({Key? key}) : super(key: key);
@@ -13,7 +13,7 @@ class settings extends StatelessWidget {
   // Widget build(BuildContext context) {
   //   return MaterialApp(
   //     debugShowCheckedModeBanner: false,
-  //     // theme: ThemeData(
+  // theme: ThemeData(
   //     //     primarySwatch: Colors.grey,
   //     //     canvasColor: Colors.pinkAccent,
   //     //     scaffoldBackgroundColor: Colors.pinkAccent),
@@ -23,7 +23,7 @@ class settings extends StatelessWidget {
   //   );
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     Widget imageSplash() {
       return Padding(
         padding: const EdgeInsets.all(8.0),
@@ -50,12 +50,9 @@ class settings extends StatelessWidget {
           margin: const EdgeInsets.only(top: 20),
           child: Column(
             children: [
-              Text(
-                LocaleKeys.this_should_be_translated.tr(),
-              ),
               const SizedBox(height: 18),
-              const Text(
-                'ข้อมูล',
+              LocaleText(
+                "ตั้งค่า",
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
@@ -74,7 +71,10 @@ class settings extends StatelessWidget {
                         onPressed: () =>
                             Navigator.pushNamed(context, '/settingshop'),
                         icon: const Icon(Icons.shopping_bag),
-                        label: const Text('ร้านค้า'),
+                        label: LocaleText(
+                          "ร้านค้า",
+                          style: TextStyle(fontSize: 18),
+                        ),
                         style: ElevatedButton.styleFrom(
                           primary: ThemeBc.background,
                           onPrimary: Colors.white,
@@ -94,7 +94,10 @@ class settings extends StatelessWidget {
                         onPressed: () =>
                             Navigator.pushNamed(context, '/settingpolicy'),
                         icon: const Icon(Icons.account_box),
-                        label: const Text('ข้อตกลงและเงื่อนไข'),
+                        label: LocaleText(
+                          "ข้อตกลงและเงื่อนไข",
+                          style: TextStyle(fontSize: 18),
+                        ),
                         style: ElevatedButton.styleFrom(
                           primary: ThemeBc.background,
                           onPrimary: Colors.white,
@@ -114,7 +117,10 @@ class settings extends StatelessWidget {
                         onPressed: () =>
                             Navigator.pushNamed(context, '/settingprofile'),
                         icon: const Icon(Icons.account_box),
-                        label: const Text('แก้ไขข้อมูลส่วนตัว'),
+                        label: LocaleText(
+                          "แก้ไขข้อมูลส่วนตัว",
+                          style: TextStyle(fontSize: 18),
+                        ),
                         style: ElevatedButton.styleFrom(
                           primary: ThemeBc.background,
                           onPrimary: Colors.white,
@@ -178,9 +184,64 @@ class settings extends StatelessWidget {
           margin: const EdgeInsets.only(top: 15),
           child: Column(
             children: [
+              // Container(
+              //   child: Center(
+              //     child: Column(
+              //       mainAxisAlignment: MainAxisAlignment.center,
+              //       children: <Widget>[
+              //         Text(
+              //           LocaleKeys.settings.tr(),
+              //         ),
+              //         Text(
+              //           LocaleKeys.settinge_change_language.tr(),
+              //         ),
+              //         Text(LocaleKeys.settinge_edit_personal_information.tr()),
+              //         const SizedBox(height: 15),
+              //         Row(
+              //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //           children: <Widget>[
+              //             ElevatedButton(
+              //               onPressed: () async {
+              //                 await context.setLocale(Locale('zh'));
+              //               },
+              //               child: Text(
+              //                 "English",
+              //               ),
+              //             ),
+              //             ElevatedButton(
+              //               onPressed: () async {
+              //                 await context.setLocale(Locale('th'));
+              //               },
+              //               child: Text(
+              //                 "English",
+              //               ),
+              //             ),
+
+              //             ElevatedButton(
+              //               onPressed: () async {
+              //                 await context.setLocale(Locale('en'));
+              //               },
+              //               child: Text(
+              //                 "TH",
+              //               ),
+              //             ),
+              //             // ElevatedButton(
+              //             //   onPressed: () async {
+              //             //     await context.setLocale(Locale('ar'));
+              //             //   },
+              //             //   child: Text(
+              //             //     "العربية",
+              //             //   ),
+              //             // ),
+              //           ],
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
               const SizedBox(height: 18),
-              const Text(
-                'ตั้งค่า',
+              const LocaleText(
+                "ตั้งค่า",
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
@@ -220,15 +281,18 @@ class settings extends StatelessWidget {
                                       blurRadius: 7.0,
                                       spreadRadius: 1.0),
                                 ]),
-                            child: ListView(
+                            child: Column(
                               children: [
                                 SizedBox(height: 20),
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     InkWell(
-                                      onTap: () async {
-                                        await context.setLocale(Locale('th'));
+                                      onTap: () {
+                                        LocaleNotifier.of(context)!
+                                            .change('th');
+                                        Navigator.pushNamed(
+                                            context, '/home_page');
                                       },
                                       child: Container(
                                         height: 40,
@@ -270,8 +334,11 @@ class settings extends StatelessWidget {
                                     ),
                                     SizedBox(height: 10),
                                     InkWell(
-                                      onTap: () async {
-                                        await context.setLocale(Locale('en'));
+                                      onTap: () {
+                                        LocaleNotifier.of(context)!
+                                            .change('en');
+                                        Navigator.pushNamed(
+                                            context, '/home_page');
                                       },
                                       child: Container(
                                         height: 40,
@@ -313,8 +380,11 @@ class settings extends StatelessWidget {
                                     ),
                                     SizedBox(height: 10),
                                     InkWell(
-                                      onTap: () async {
-                                        await context.setLocale(Locale('ch'));
+                                      onTap: () {
+                                        LocaleNotifier.of(context)!
+                                            .change('zh');
+                                        Navigator.pushNamed(
+                                            context, '/home_page');
                                       },
                                       child: Container(
                                         height: 40,
@@ -364,7 +434,10 @@ class settings extends StatelessWidget {
                     );
                   },
                   icon: const Icon(Icons.spellcheck),
-                  label: const Text('เปลี่ยนภาษา'),
+                  label: LocaleText(
+                    "เปลี่ยนภาษา",
+                    style: TextStyle(fontSize: 18),
+                  ),
                   style: ElevatedButton.styleFrom(
                     primary: ThemeBc.background,
                     onPrimary: Colors.white,
@@ -383,7 +456,10 @@ class settings extends StatelessWidget {
                   onPressed: () =>
                       Navigator.pushNamed(context, '/fix_password'),
                   icon: const Icon(Icons.vpn_key),
-                  label: const Text('แก้ไขรหัสผ่าน'),
+                  label: LocaleText(
+                    "แก้ไขรหัสผ่าน",
+                    style: TextStyle(fontSize: 18),
+                  ),
                   style: ElevatedButton.styleFrom(
                     primary: ThemeBc.background,
                     onPrimary: Colors.white,
@@ -426,7 +502,12 @@ class settings extends StatelessWidget {
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
-        title: const Center(child: Text('ตั้งค่า')),
+        title: const Center(
+          child: LocaleText(
+            "ตั้งค่า",
+            style: TextStyle(fontSize: 18),
+          ),
+        ),
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/logo.png', scale: 15),
@@ -448,11 +529,6 @@ class settings extends StatelessWidget {
         child: SafeArea(
           child: ListView(
             children: [
-              MaterialApp(
-                supportedLocales: context.supportedLocales,
-                localizationsDelegates: context.localizationDelegates,
-                locale: context.locale,
-              ),
               imageSplash(),
               text2(),
             ],

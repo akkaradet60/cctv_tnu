@@ -5,6 +5,7 @@ import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:cctv_tun/page/profile/app_reducer.dart';
 import 'package:cctv_tun/page/profile/profile_action.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -136,10 +137,8 @@ class _menu_pangState extends State<menu_pang> {
                                                     ),
                                                     boxShadow: []),
                                                 child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceAround,
                                                   children: [
+                                                    SizedBox(height: 15),
                                                     Container(
                                                       width: 150,
                                                       height: 150,
@@ -155,29 +154,87 @@ class _menu_pangState extends State<menu_pang> {
                                                 ),
                                               ),
                                             ),
-                                            Text(
-                                              'ชื่อ : ${snapshot.data!['data'][index]['user_firstname']}',
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.bold,
-                                                color: ThemeBc.black,
-                                              ),
+                                            SizedBox(height: 5),
+                                            Row(
+                                              children: [
+                                                LocaleText(
+                                                  'ชื่อ',
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: ThemeBc.black,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  ' : ${snapshot.data!['data'][index]['user_firstname']}',
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: ThemeBc.black,
+                                                  ),
+                                                )
+                                              ],
                                             ),
-                                            Text(
-                                              'นามสกุล : ${snapshot.data!['data'][index]['user_lastname']}',
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.bold,
-                                                color: ThemeBc.black,
-                                              ),
+                                            SizedBox(height: 5),
+                                            Row(
+                                              children: [
+                                                LocaleText(
+                                                  'นามสกุล',
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: ThemeBc.black,
+                                                  ),
+                                                ),
+                                                Container(
+                                                  child: Column(
+                                                    children: [
+                                                      Text(
+                                                        ' : ${snapshot.data!['data'][index]['user_lastname']}',
+                                                        style: TextStyle(
+                                                          fontSize: 16,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color: ThemeBc.black,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )
+                                              ],
                                             ),
-                                            Text(
-                                              'อีเมล : ${snapshot.data!['data'][index]['user_email']}',
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.bold,
-                                                color: ThemeBc.black,
-                                              ),
+                                            SizedBox(height: 5),
+                                            Row(
+                                              children: [
+                                                Container(
+                                                  height: 20,
+                                                  width: 260,
+                                                  child: ListView(
+                                                    scrollDirection:
+                                                        Axis.horizontal,
+                                                    children: [
+                                                      LocaleText(
+                                                        'อีเมล',
+                                                        style: TextStyle(
+                                                          fontSize: 16,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color: ThemeBc.black,
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        ' : ${snapshot.data!['data'][index]['user_email']}',
+                                                        style: TextStyle(
+                                                          fontSize: 16,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color: ThemeBc.black,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )
+                                              ],
                                             ),
                                           ],
                                         ),
@@ -221,7 +278,7 @@ class _menu_pangState extends State<menu_pang> {
                   height: 50,
                   child: ListTile(
                     leading: Icon(Icons.stairs),
-                    title: Text('หน้าหลัก'),
+                    title: LocaleText('หน้าหลัก'),
                     trailing: Icon(Icons.double_arrow),
                     selected:
                         ModalRoute.of(context)?.settings.name == '/home_page'
@@ -259,7 +316,7 @@ class _menu_pangState extends State<menu_pang> {
                   height: 50,
                   child: ListTile(
                     leading: Icon(Icons.settings),
-                    title: Text('ตั้งค่า'),
+                    title: LocaleText('ตั้งค่า'),
                     trailing: Icon(Icons.double_arrow),
                     selected:
                         ModalRoute.of(context)?.settings.name == '/settings'
@@ -296,7 +353,7 @@ class _menu_pangState extends State<menu_pang> {
                   height: 50,
                   child: ListTile(
                     leading: Icon(Icons.logout),
-                    title: Text('ออกจากระบบ'),
+                    title: LocaleText('ออกจากระบบ'),
                     trailing: Icon(Icons.double_arrow),
                     onTap: () {
                       logout();

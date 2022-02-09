@@ -1,6 +1,7 @@
 import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 
 class MenusCustom extends StatelessWidget {
   final String iconMenus;
@@ -58,7 +59,7 @@ class MenusCustom extends StatelessWidget {
               ),
             ),
             SizedBox(height: 12),
-            Text(
+            LocaleText(
               titleMenus,
               style: TextStyle(
                 fontSize: 13.0,
