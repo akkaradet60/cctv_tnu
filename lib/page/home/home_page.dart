@@ -507,7 +507,7 @@ class _home_pageState extends State<home_page> {
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_6.png',
                       titleMenus: 'โทรทัศน์วงจรปิด',
-                      pathName: '/cctv_page',
+                      pathName: '/AppealPage',
                       titleMenus2: '',
                       titleMenus1: '',
                     ),

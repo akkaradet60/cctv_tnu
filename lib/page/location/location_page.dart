@@ -207,43 +207,43 @@ class _location_page extends State<location_page> {
                   travelt_mon =
                       'วันจันทร์ เปิดตั้งแต่เวลา $travelt_mon_start - $travelt_mon_end ';
                 } else {
-                  travelt_mon = 'วันจันทร์ปิด';
+                  travelt_mon = 'วันจันทร์ - ปิด';
                 }
                 if (travelt_tues == '2' || travelt_tues == 2) {
                   travelt_tues =
                       'วันอังคาร เปิดตั้งแต่เวลา $travelt_tues_start - $travelt_tues_end ';
                 } else {
-                  travelt_tues = 'วันอังคารปิด';
+                  travelt_tues = 'วันอังคาร - ปิด';
                 }
                 if (travelt_wednes == '2' || travelt_wednes == 2) {
                   travelt_wednes =
                       'วันพุธ เปิดตั้งแต่เวลา $travelt_wednes_start - $travelt_wednes_end ';
                 } else {
-                  travelt_wednes = 'วันพุธปิด';
+                  travelt_wednes = 'วันพุธ - ปิด';
                 }
                 if (travelt_thurs == '2' || travelt_thurs == 2) {
                   travelt_thurs =
                       'วันพฤหัสบดี เปิดตั้งแต่เวลา $travelt_thurs_start - $travelt_thurs_end ';
                 } else {
-                  travelt_thurs = 'วันพฤหัสบดีปิด';
+                  travelt_thurs = 'วันพฤหัสบดี - ปิด';
                 }
                 if (travelt_fri == '2' || travelt_fri == 2) {
                   travelt_fri =
                       'วันศุกร์ เปิดตั้งแต่เวลา $travelt_sun_start - $travelt_sun_end ';
                 } else {
-                  travelt_fri = 'วันศุกร์ปิด';
+                  travelt_fri = 'วันศุกร์ - ปิด';
                 }
                 if (travelt_sun == '2' || travelt_sun == 2) {
                   travelt_sun =
                       'วันเสาร์ เปิดตั้งแต่เวลา $travelt_fri_start - $travelt_fri_end ';
                 } else {
-                  travelt_sun = 'วันเสาร์ปิด';
+                  travelt_sun = 'วันเสาร์ - ปิด';
                 }
                 if (travelt_satur == '2' || travelt_satur == 2) {
                   travelt_satur =
                       'วันอาทิตย์ เปิดตั้งแต่เวลา $travelt_fri_start - $travelt_fri_end ';
                 } else {
-                  travelt_satur = 'วันอาทิตย์ปิด';
+                  travelt_satur = 'วันอาทิตย์ - ปิด';
                 }
 
                 if (day01 == '1') {
@@ -281,10 +281,13 @@ class _location_page extends State<location_page> {
                                       spreadRadius: 1.0),
                                 ]),
                             height: 80,
-                            child: Column(
-                              children: [
-                                ListTile(
-                                  title: Column(
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
@@ -296,102 +299,51 @@ class _location_page extends State<location_page> {
                                       ),
                                     ],
                                   ),
-                                  trailing: Container(
-                                    width: 80,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(0.0),
-                                      child: Row(
-                                        children: [
-                                          //         .callNumber(number);},
-
-                                          SizedBox(width: 5),
-                                          Padding(
-                                            padding: const EdgeInsets.all(3),
-                                            child: Container(
-                                              height: 50,
-                                              child: ElevatedButton.icon(
-                                                onPressed: () =>
-                                                    Navigator.pushNamed(context,
-                                                        '/maplocation_page',
-                                                        arguments: {
-                                                      'detail': detail,
-                                                      'travelLat': snapshot
-                                                              .data!['data']
-                                                          [index]['travel_lat'],
-                                                      'travelLng': snapshot
-                                                              .data!['data']
-                                                          [index]['travel_lng'],
-                                                      'travelName':
-                                                          snapshot.data!['data']
-                                                                  [index]
-                                                              ['travel_name'],
-                                                      'travelDetail':
-                                                          snapshot.data!['data']
-                                                                  [index]
-                                                              ['travel_detail'],
-                                                      // 'productName':
-                                                      //     data[index].productName,
-                                                      // 'productPrice':
-                                                      //     data[index].productPrice,
-                                                      // 'productiPathName': data[index]
-                                                      //         .productImage?[0]
-                                                      //         .productiPathName ??
-                                                      //     'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
-                                                      // 'productiproductid': data[index]
-                                                      //     .productImage?[0]
-                                                      //     .productiProductId,
-
-                                                      /*   'id': data[index].id,
-                                            'detail': data[index].detail,
-                                            'picture': data[index].picture,
-                                            'view': data[index].view,*/
-                                                    }),
-                                                icon: Icon(
-                                                  Icons.maps_home_work,
-                                                  color: ThemeBc.white,
-                                                  size: 30,
-                                                ),
-                                                label: Text(''),
-                                                style: ElevatedButton.styleFrom(
-                                                  primary: ThemeBc.background,
-                                                  elevation: 10,
-                                                  shape: RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                              Radius.circular(
-                                                                  20))),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-
-                                          // child: TextButton(
-                                          //   style: TextButton.styleFrom(
-                                          //       backgroundColor:
-                                          //           Colors.orange,
-                                          //       padding:
-                                          //           EdgeInsets.symmetric(
-                                          //               horizontal: 0,
-                                          //               vertical: 0),
-                                          //       shape:
-                                          //           RoundedRectangleBorder(
-                                          //               side: BorderSide(
-                                          //                   color: Colors
-                                          //                       .orange))),
-                                          //   child: Text(
-                                          //     'call',
-                                          //   ),
-                                          // onPressed: () async {
-                                          // await FlutterPhoneDirectCaller
-                                          //       .callNumber(number);
-                                          // },
-                                          // ),
-                                        ],
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color: ThemeBc.black,
+                                        borderRadius: BorderRadius.circular(
+                                          30,
+                                        ),
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color:
+                                                  Colors.grey.withOpacity(0.5),
+                                              offset: Offset(2, 2),
+                                              blurRadius: 7,
+                                              spreadRadius: 1.0),
+                                          BoxShadow(
+                                              color:
+                                                  Colors.black.withOpacity(0.5),
+                                              offset: Offset(2, 4),
+                                              blurRadius: 7.0,
+                                              spreadRadius: 1.0),
+                                        ]),
+                                    child: IconButton(
+                                      icon: Icon(
+                                        Icons.maps_home_work,
+                                        color: ThemeBc.white,
+                                        size: 30,
                                       ),
+                                      tooltip: 'Show Snackbar',
+                                      onPressed: () => Navigator.pushNamed(
+                                          context, '/maplocation_page',
+                                          arguments: {
+                                            'detail': detail,
+                                            'travelLat': snapshot.data!['data']
+                                                [index]['travel_lat'],
+                                            'travelLng': snapshot.data!['data']
+                                                [index]['travel_lng'],
+                                            'travelName': snapshot.data!['data']
+                                                [index]['travel_name'],
+                                            'travelDetail':
+                                                snapshot.data!['data'][index]
+                                                    ['travel_detail'],
+                                          }),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ],

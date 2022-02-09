@@ -10,6 +10,8 @@ class AppState {
   factory AppState.initial() {
     return AppState(appState: ProfileState());
   }
+
+  get profileState => null;
 }
 
 //reducer

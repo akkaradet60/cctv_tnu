@@ -145,8 +145,12 @@ class _menu_pangState extends State<menu_pang> {
                                                       decoration: BoxDecoration(
                                                         shape: BoxShape.circle,
                                                         image: DecorationImage(
-                                                            image: AssetImage(
-                                                                'assets/homepage/gtx.jpg'),
+                                                            image: NetworkImage(Global
+                                                                    .domainImage +
+                                                                snapshot.data![
+                                                                            'data']
+                                                                        [index][
+                                                                    'user_image']),
                                                             fit: BoxFit.fill),
                                                       ),
                                                     ),

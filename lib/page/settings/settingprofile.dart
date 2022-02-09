@@ -1,20 +1,27 @@
+import 'dart:convert';
+import 'dart:io';
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
-
 import 'package:cctv_tun/page/profile/app_reducer.dart';
+import 'package:cctv_tun/page/profile/profile_action.dart';
 import 'package:cctv_tun/widgets/warn_api.dart';
-
+import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 import 'package:http/http.dart' as http;
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'dart:convert';
+
+//upload image
+import 'package:image_picker/image_picker.dart';
 
 class settingprofile extends StatefulWidget {
   @override
-  _EmergecyPageState createState() => _EmergecyPageState();
+  _settingprofile createState() => _settingprofile();
 }
 
 class ApiImage {
@@ -26,37 +33,22 @@ class ApiImage {
   });
 }
 
-class _EmergecyPageState extends State<settingprofile>
+class _settingprofile extends State<settingprofile>
     with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    //  getProfile();
+    _getProv();
   }
 
   var newProfile;
   var oi = 'ssss';
-  // // List<Data> data = [];
-  // Future<void> getData() async {
-  //   var url = Uri.parse('https://api.codingthailand.com/api/course');
-  //   var response = await http.get(url);
-  //   // print(json.decode(response.body));
-  //   //นำ json ใส่ที่โมเมล product
-  //   final product paroduct = product.fromJson(json.decode(response.body));
-  //   // print(paroduct.data);
-  //   setState(() {
-  //     data = paroduct.data!;
-  //   });
-  //   @override
-  //   void initState() {
-  //     super.initState();
-  //     getData();
-  //   }
-  // }
   var profilee;
+
   @override
   Widget build(BuildContext context) {
-    Widget emergecyPage1() {
+    // print('=>  $selectedImage');
+    Widget proFilePage() {
       final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
 
       var _data;
@@ -72,7 +64,7 @@ class _EmergecyPageState extends State<settingprofile>
               // const SizedBox(height: 40),
               FormBuilder(
                 key: _fbKey,
-                initialValue: const {},
+                // initialValue: const {},
                 // autovalidateMode: AutovalidateMode
                 //     .always, //ถ้าไม่ใส่ต้อง submit ก่อนถึงจะตรวจสอบ validation
                 child: Column(
@@ -83,129 +75,103 @@ class _EmergecyPageState extends State<settingprofile>
                         distinct: true,
                         converter: (store) => store.state.profileState.profile,
                         builder: (context, profile) {
-                          Future<void> compose_page(Map formValues) async {
-                            //formValues['name']
-                            // print(formValues);
+                          print(profile['user_image']);
+                          _prov = profile['user_prov'];
+                          _dis = profile['user_dis'];
+                          _sub = profile['user_sub'];
 
-                            try {
-                              var url = Global.urlWeb +
-                                  'api/profile/restful?user_id=${Global.user_id}&user_app_id=${Global.app_id}';
-                              var response =
-                                  await http.post(Uri.parse(url), headers: {
-                                "Accept": "application/json",
-                                'Authorization': 'Bearer ${Global.token}'
-                              },
-                                      // body: json.encode({
-                                      //   "firstname": formValues['firstname'],
-                                      //   "lastname": formValues['lastname'],
-                                      //   "email": formValues['email'],
-                                      //   "password": formValues['password']
-                                      // }));
-                                      body: {
-                                    "user_app_id": Global.app_id,
-                                    "user_id": profile['user_id'],
-                                    "user_prov": formValues['user_prov'],
-                                    "user_dis": formValues['user_dis'],
-                                    "user_sub": formValues['user_sub'],
-                                    "user_address": formValues['user_address'],
-                                    "user_zip_code":
-                                        formValues['user_zip_code'],
-                                    "user_lastname":
-                                        formValues['user_lastname'],
-                                    "user_firstname":
-                                        formValues['user_firstname'],
-                                    // "user_card_id": formValues['user_card_id'],
-                                    "user_email": formValues['user_email'],
-                                    "user_status": '1',
-
-                                    // "emi_path_name[]": formValues['emi_path_name']
-                                    // "user_app_id": Global.app_id,
-                                    // "user_card_id": '1471200',
-                                    // "user_firstname": formValues['firstname'],
-                                    // "user_lastname": formValues['lastname'],
-                                    // "user_email": formValues['email'],
-                                    // "user_pass": formValues['password']
-                                  });
-                              Map<String, dynamic> profilee =
-                                  json.decode(response.body);
-
-                              if (response.statusCode == 201) {
-                                return showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return warn_api(
-                                      title: '${profilee['data']}',
-                                    );
-                                  },
-                                );
-                              } else {
-                                return showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return warn_api(
-                                      title: '${profilee['data']}',
-                                    );
-                                  },
-                                );
-                              }
-                            } catch (e) {
-                              // print(e);
-                            }
-                          }
+                          _adddess = profile['user_address'];
+                          _zibcode = profile['user_zip_code'];
+                          _lat = profile['user_lastname'];
+                          _fir = profile['user_firstname'];
+                          _email = profile['user_email'];
 
                           return Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Container(
-                                width: 200,
-                                height: 200,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          'https://www.dozzdiy.com/wp-content/uploads/2019/01/SDI0295_1170.jpg'),
-                                      fit: BoxFit.fill),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    selectedImage == null
+                                        ? Container(
+                                            child: profile['user_image'] != null
+                                                ? Image.network(
+                                                    Global.domainImage +
+                                                        profile['user_image'],
+                                                    width: 200,
+                                                    height: 200,
+                                                    fit: BoxFit.fill)
+                                                : Image.network(
+                                                    Global.domainImage,
+                                                    width: 200,
+                                                    height: 200,
+                                                    fit: BoxFit.fill),
+                                          )
+                                        : Container(
+                                            decoration: BoxDecoration(
+                                                color: ThemeBc.black,
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                  20,
+                                                ),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                      color: Colors.black
+                                                          .withOpacity(0.5),
+                                                      offset: Offset(2, 2),
+                                                      blurRadius: 7,
+                                                      spreadRadius: 1.0),
+                                                  BoxShadow(
+                                                      color: Colors.black
+                                                          .withOpacity(0.5),
+                                                      offset: Offset(2, 4),
+                                                      blurRadius: 7.0,
+                                                      spreadRadius: 1.0),
+                                                ]),
+                                            child: Image.file(selectedImage!,
+                                                width: 200,
+                                                height: 200,
+                                                fit: BoxFit.fill),
+                                          ),
+                                  ],
                                 ),
                               ),
-
+                              const SizedBox(height: 20),
+                              FloatingActionButton(
+                                onPressed: getImage,
+                                tooltip: 'Increment',
+                                child: Icon(Icons.add_a_photo),
+                              ),
                               const SizedBox(height: 20),
                               Container(
                                 decoration: BoxDecoration(
-                                    color: secondaryTextColor,
+                                    color: ThemeBc.white,
                                     borderRadius: BorderRadius.circular(
                                       20,
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
+                                          color: ThemeBc.black,
                                           offset: Offset(2, 2),
                                           blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(0.5),
-                                          offset: Offset(2, 4),
-                                          blurRadius: 7.0,
                                           spreadRadius: 1.0),
                                     ]),
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
                                     decoration: BoxDecoration(
-                                        color: secondaryTextColor,
+                                        color: ThemeBc.black,
                                         borderRadius: BorderRadius.circular(
                                           20,
                                         ),
                                         boxShadow: [
-                                          // BoxShadow(
-                                          //     color: Colors.grey.withOpacity(0.5),
-                                          //     offset: Offset(2, 2),
-                                          //     blurRadius: 7,
-                                          //     spreadRadius: 1.0),
-                                          // BoxShadow(
-                                          //     color: Colors.black.withOpacity(0.5),
-                                          //     offset: Offset(2, 4),
-                                          //     blurRadius: 7.0,
-                                          //     spreadRadius: 1.0),
+                                          BoxShadow(
+                                              color: ThemeBc.white
+                                                  .withOpacity(0.5),
+                                              offset: Offset(2, 2),
+                                              blurRadius: 7,
+                                              spreadRadius: 1.0),
                                         ]),
 
                                     child: FormBuilderTextField(
@@ -229,24 +195,18 @@ class _EmergecyPageState extends State<settingprofile>
                                   ),
                                 ),
                               ),
-
                               SizedBox(height: 10),
                               Container(
                                 decoration: BoxDecoration(
-                                    color: secondaryTextColor,
+                                    color: ThemeBc.white,
                                     borderRadius: BorderRadius.circular(
                                       20,
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
+                                          color: ThemeBc.black,
                                           offset: Offset(2, 2),
                                           blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(0.5),
-                                          offset: Offset(2, 4),
-                                          blurRadius: 7.0,
                                           spreadRadius: 1.0),
                                     ]),
                                 child: Padding(
@@ -273,24 +233,18 @@ class _EmergecyPageState extends State<settingprofile>
                                   ),
                                 ), //รายละเอียดเหตุการณ์
                               ),
-
                               const SizedBox(height: 10),
                               Container(
                                 decoration: BoxDecoration(
-                                    color: secondaryTextColor,
+                                    color: ThemeBc.white,
                                     borderRadius: BorderRadius.circular(
                                       20,
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
+                                          color: ThemeBc.black,
                                           offset: Offset(2, 2),
                                           blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(0.5),
-                                          offset: Offset(2, 4),
-                                          blurRadius: 7.0,
                                           spreadRadius: 1.0),
                                     ]),
                                 child: Padding(
@@ -317,24 +271,18 @@ class _EmergecyPageState extends State<settingprofile>
                                   ),
                                 ), //รายละเอียดเหตุการณ์
                               ),
-
                               const SizedBox(height: 10),
                               Container(
                                 decoration: BoxDecoration(
-                                    color: secondaryTextColor,
+                                    color: ThemeBc.white,
                                     borderRadius: BorderRadius.circular(
                                       20,
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
+                                          color: ThemeBc.black,
                                           offset: Offset(2, 2),
                                           blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(0.5),
-                                          offset: Offset(2, 4),
-                                          blurRadius: 7.0,
                                           spreadRadius: 1.0),
                                     ]),
                                 child: Padding(
@@ -360,153 +308,194 @@ class _EmergecyPageState extends State<settingprofile>
                                   ),
                                 ), //รายละเอียดเหตุการณ์
                               ),
-
                               const SizedBox(height: 10),
                               Container(
                                 decoration: BoxDecoration(
-                                    color: secondaryTextColor,
+                                    color: ThemeBc.white,
                                     borderRadius: BorderRadius.circular(
                                       20,
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
+                                          color: ThemeBc.black,
                                           offset: Offset(2, 2),
                                           blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(0.5),
-                                          offset: Offset(2, 4),
-                                          blurRadius: 7.0,
                                           spreadRadius: 1.0),
                                     ]),
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    child: FormBuilderTextField(
-                                      initialValue: '${profile['user_prov']}',
-                                      name: "user_prov",
-                                      maxLines: 1,
-                                      keyboardType: TextInputType.emailAddress,
-                                      decoration: InputDecoration(
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(
-                                            20.0,
-                                          ),
+                                  child: FormBuilderDropdown(
+                                    name: 'user_prov',
+                                    initialValue: _myState,
+                                    // initialValue: _myState != null
+                                    //     ? _myState
+                                    //     : profile['user_prov'] != '0' &&
+                                    //             profile['user_prov'] != null
+                                    //         ? profile['user_prov']
+                                    //         : _myState,
+                                    decoration: InputDecoration(
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(
+                                          20.0,
                                         ),
-                                        suffixIcon: Icon(Icons.description),
-                                        labelText: 'จังหวัด',
-                                        fillColor: Colors.white,
-                                        filled: true,
                                       ),
+                                      suffixIcon: Icon(Icons.description),
+                                      labelText: 'เลือกจังหวัด',
+                                      fillColor: Colors.white,
+                                      filled: true,
                                     ),
-                                  ),
-                                ), //รายละเอียดเหตุการณ์
-                              ),
+                                    allowClear: true,
+                                    hint: profile['user_prov'] != null
+                                        ? Text(profile['prov'])
+                                        : Text('เลือกจังหวัด'),
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _myState = value as String?;
+                                        disList = [];
+                                        _myDis = null;
 
+                                        subList = [];
+                                        _mySub = null;
+
+                                        _getDis();
+                                      });
+                                    },
+                                    items: statesList.map((item) {
+                                      return new DropdownMenuItem(
+                                        // value: '1', child: Text('ผู้ป่วยฉุกเฉิน')
+                                        child: new Text(item['name_th']),
+                                        value: item['id'].toString(),
+                                      );
+                                    }).toList(),
+                                  ),
+                                ),
+                              ),
                               const SizedBox(height: 10),
                               Container(
                                 decoration: BoxDecoration(
-                                    color: secondaryTextColor,
+                                    color: ThemeBc.white,
                                     borderRadius: BorderRadius.circular(
                                       20,
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
+                                          color: ThemeBc.black,
                                           offset: Offset(2, 2),
                                           blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(0.5),
-                                          offset: Offset(2, 4),
-                                          blurRadius: 7.0,
                                           spreadRadius: 1.0),
                                     ]),
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    child: FormBuilderTextField(
-                                      initialValue: '${profile['user_dis']}',
-                                      name: "user_dis",
-                                      maxLines: 1,
-                                      keyboardType: TextInputType.emailAddress,
-                                      decoration: InputDecoration(
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(
-                                            20.0,
-                                          ),
+                                  child: FormBuilderDropdown(
+                                    name: 'user_dis',
+                                    initialValue: _myDis,
+                                    // = null
+                                    //     ? _myDis
+                                    //     : profile['user_dis'] != '0' &&
+                                    //             profile['user_dis'] != null
+                                    //         ? profile['user_dis'].toString()
+                                    //         : _myDis,
+                                    decoration: InputDecoration(
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(
+                                          20.0,
                                         ),
-                                        suffixIcon: Icon(Icons.description),
-                                        labelText: 'อำเภอ',
-                                        fillColor: Colors.white,
-                                        filled: true,
                                       ),
+                                      suffixIcon: Icon(Icons.description),
+                                      labelText: 'เลือกอำเภอ',
+                                      fillColor: Colors.white,
+                                      filled: true,
                                     ),
+                                    allowClear: true,
+                                    hint: profile['user_dis'] != null
+                                        ? Text(profile['dis'])
+                                        : Text('เลือกอำเภอ'),
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _myDis = value as String?;
+                                        subList = [];
+                                        _mySub = null;
+                                        _getSub();
+                                      });
+                                    },
+                                    items: disList.map((item) {
+                                      return new DropdownMenuItem(
+                                        // value: '1', child: Text('ผู้ป่วยฉุกเฉิน')
+                                        child: new Text(item['name_th']),
+                                        value: item['id'].toString(),
+                                      );
+                                    }).toList(),
                                   ),
-                                ), //รายละเอียดเหตุการณ์
+                                ),
                               ),
-
                               const SizedBox(height: 10),
                               Container(
                                 decoration: BoxDecoration(
-                                    color: secondaryTextColor,
+                                    color: ThemeBc.white,
                                     borderRadius: BorderRadius.circular(
                                       20,
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
+                                          color: ThemeBc.black,
                                           offset: Offset(2, 2),
                                           blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(0.5),
-                                          offset: Offset(2, 4),
-                                          blurRadius: 7.0,
                                           spreadRadius: 1.0),
                                     ]),
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    child: FormBuilderTextField(
-                                      initialValue: '${profile['user_sub']}',
-                                      name: "user_sub",
-                                      maxLines: 1,
-                                      keyboardType: TextInputType.emailAddress,
-                                      decoration: InputDecoration(
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(
-                                            20.0,
-                                          ),
+                                  child: FormBuilderDropdown(
+                                    name: 'user_sub',
+                                    initialValue: _mySub,
+                                    // = null && _mySub == ''
+                                    //     ? _mySub
+                                    //     : profile['user_sub'] != '0' &&
+                                    //             profile['user_sub'] != null
+                                    //         ? profile['user_sub'].toString()
+                                    //         : _mySub,
+                                    decoration: InputDecoration(
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(
+                                          20.0,
                                         ),
-                                        suffixIcon: Icon(Icons.description),
-                                        labelText: 'ตำบล',
-                                        fillColor: Colors.white,
-                                        filled: true,
                                       ),
+                                      suffixIcon: Icon(Icons.description),
+                                      labelText: 'เลือกตำบล',
+                                      fillColor: Colors.white,
+                                      filled: true,
                                     ),
+                                    allowClear: true,
+                                    hint: profile['user_sub'] != null
+                                        ? Text(profile['sub'])
+                                        : Text('เลือกตำบล'),
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _mySub = value as String?;
+                                        zip_code = null;
+                                        _getZipCode();
+                                      });
+                                    },
+                                    items: subList.map((item) {
+                                      return new DropdownMenuItem(
+                                        child: new Text(item['name_th']),
+                                        value: item['id'].toString(),
+                                      );
+                                    }).toList(),
                                   ),
-                                ), //รายละเอียดเหตุการณ์
+                                ),
                               ),
-
                               const SizedBox(height: 10),
                               Container(
                                 decoration: BoxDecoration(
-                                    color: secondaryTextColor,
+                                    color: ThemeBc.white,
                                     borderRadius: BorderRadius.circular(
                                       20,
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
+                                          color: ThemeBc.black,
                                           offset: Offset(2, 2),
                                           blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(0.5),
-                                          offset: Offset(2, 4),
-                                          blurRadius: 7.0,
                                           spreadRadius: 1.0),
                                     ]),
                                 child: Padding(
@@ -533,32 +522,32 @@ class _EmergecyPageState extends State<settingprofile>
                                   ),
                                 ), //รายละเอียดเหตุการณ์
                               ),
-
                               const SizedBox(height: 10),
                               Container(
                                 decoration: BoxDecoration(
-                                    color: secondaryTextColor,
+                                    color: ThemeBc.white,
                                     borderRadius: BorderRadius.circular(
                                       20,
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
+                                          color: ThemeBc.black,
                                           offset: Offset(2, 2),
                                           blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(0.5),
-                                          offset: Offset(2, 4),
-                                          blurRadius: 7.0,
                                           spreadRadius: 1.0),
                                     ]),
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
                                     child: FormBuilderTextField(
-                                      initialValue:
-                                          '${profile['user_zip_code']}',
+                                      initialValue: zip_code != null
+                                          ? zip_code
+                                          : profile['user_zip_code'] != '0' &&
+                                                  profile['user_zip_code'] !=
+                                                      null
+                                              ? profile['user_zip_code']
+                                                  .toString()
+                                              : zip_code,
                                       name: "user_zip_code",
                                       maxLines: 1,
                                       keyboardType: TextInputType.emailAddress,
@@ -579,46 +568,6 @@ class _EmergecyPageState extends State<settingprofile>
                               ),
                               SizedBox(height: 15),
                               Container(
-                                decoration: BoxDecoration(
-                                    color: secondaryTextColor,
-                                    borderRadius: BorderRadius.circular(
-                                      20,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          offset: Offset(2, 2),
-                                          blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(0.5),
-                                          offset: Offset(2, 4),
-                                          blurRadius: 7.0,
-                                          spreadRadius: 1.0),
-                                    ]),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    child: FormBuilderImagePicker(
-                                      name: 'emi_path_name',
-                                      iconColor: Colors.black,
-                                      decoration: InputDecoration(
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(
-                                            20.0,
-                                          ),
-                                        ),
-                                        labelText: 'ภาพประกอบเหตุการ',
-                                        filled: true,
-                                      ),
-                                      maxImages: 1,
-                                    ),
-                                  ),
-                                ),
-                              ),
-
-                              SizedBox(height: 20),
-                              Container(
                                 width: 390,
                                 height: 60,
                                 padding: EdgeInsets.symmetric(
@@ -629,15 +578,25 @@ class _EmergecyPageState extends State<settingprofile>
                                     onPressed: () {
                                       if (_fbKey.currentState!
                                           .saveAndValidate()) {
-                                        compose_page(
-                                            _fbKey.currentState!.value);
-                                        print(_fbKey.currentState!.value);
+                                        // print(_fbKey.currentState.value);
+                                        updataUser(_fbKey.currentState!.value);
                                       }
                                     },
-                                    icon: Icon(Icons.description),
-                                    label: Text('แก้ไขข้อมูล'),
+                                    icon: Icon(
+                                      Icons.description,
+                                      color: ThemeBc.black,
+                                    ),
+                                    label: Text(
+                                      'แก้ไขข้อมูล',
+                                      style: TextStyle(
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.bold,
+                                        // backgroundColor: Colors.black45,
+                                        color: ThemeBc.black,
+                                      ),
+                                    ),
                                     style: ElevatedButton.styleFrom(
-                                      primary: ThemeBc.black,
+                                      primary: ThemeBc.white,
                                       onPrimary: Colors.white,
                                       shadowColor: Colors.grey[700],
                                       elevation: 30,
@@ -648,28 +607,36 @@ class _EmergecyPageState extends State<settingprofile>
                                   ),
                                 ),
                               ),
-
-                              // Expanded(
-                              //   child: ElevatedButton.icon(
-                              //     label: const Text('บันทึก'),
-                              //     icon: const Icon(Icons.save),
-                              //     style: ElevatedButton.styleFrom(
-                              //       primary: Colors.orange,
-                              //       textStyle: const TextStyle(fontSize: 15),
-                              //       padding: const EdgeInsets.all(15),
-                              //       shape: const RoundedRectangleBorder(
-                              //           borderRadius: BorderRadius.all(
-                              //               Radius.circular(10))),
+                              // Row(
+                              //   mainAxisAlignment:
+                              //       MainAxisAlignment.spaceAround,
+                              //   children: <Widget>[
+                              //     Expanded(
+                              //       child: ElevatedButton.icon(
+                              //         label: Text('แก้ไขข้อมูล'),
+                              //         icon: const Icon(Icons.description),
+                              //         style: ElevatedButton.styleFrom(
+                              //           primary: ThemeBc.green,
+                              //           //side: BorderSide(color: Colors.red, width: 5),
+                              //           textStyle:
+                              //               const TextStyle(fontSize: 15),
+                              //           padding: const EdgeInsets.all(15),
+                              //           shape: const RoundedRectangleBorder(
+                              //               borderRadius: BorderRadius.all(
+                              //                   Radius.circular(10))),
+                              //         ),
+                              // onPressed: () {
+                              //   if (_fbKey.currentState!
+                              //       .saveAndValidate()) {
+                              //     // print(_fbKey.currentState.value);
+                              //     updataUser(
+                              //         _fbKey.currentState!.value);
+                              //   }
+                              // },
+                              //       ),
                               //     ),
-                              //     onPressed: () {
-                              //       if (_fbKey.currentState!
-                              //           .saveAndValidate()) {
-                              //         compose_page(_fbKey.currentState!.value);
-                              //         print(_fbKey.currentState!.value);
-                              //       }
-                              //     },
-                              //   ),
-                              // ),
+                              //   ],
+                              // )
                             ],
                           );
                         },
@@ -685,6 +652,7 @@ class _EmergecyPageState extends State<settingprofile>
     }
 
     return Scaffold(
+      backgroundColor: ThemeBc.background,
       // drawer: manu(),
       // drawer: Icon(Icons.ac_unit, color: white),
       appBar: AppBar(
@@ -694,33 +662,226 @@ class _EmergecyPageState extends State<settingprofile>
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.black,
-        title: Center(child: const Text('แก้ไขข้อมูลส่วนตัว')),
-        actions: <Widget>[
-          IconButton(
-            icon: Image.asset('assets/logo.png', scale: 15),
-            tooltip: 'Show Snackbar',
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
-            },
-          ),
-        ],
+        title: Text('แก้ไขข้อมูลส่วนตัว'),
+        actions: <Widget>[],
       ),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [ThemeBc.orange, ThemeBc.pinkAccent],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft),
-        ),
         child: SafeArea(
           child: ListView(
             children: [
-              emergecyPage1(),
+              proFilePage(),
             ],
           ),
         ),
       ),
     );
+  }
+
+  //==================================  Api  =============================================
+  String? _prov;
+  String? _dis;
+  String? _sub;
+
+  String? _adddess;
+  String? _zibcode;
+  String? _lat;
+  String? _fir;
+  String? _email;
+
+  Future<void> updataUser(Map formValues) async {
+    try {
+//=======  check data ==========
+
+      var provData = formValues['user_prov'] ?? _prov;
+      var disData = formValues['user_dis'] ?? _dis;
+      var subData = formValues['user_sub'] ?? _sub;
+
+      var addressData = formValues['user_address'] ?? _adddess;
+      var zibCodeData = formValues['user_zip_code'] ?? _zibcode;
+      var latData = formValues['user_lastname'] ?? _lat;
+      var firData = formValues['user_firstname'] ?? _fir;
+      var emailData = formValues['user_email'] ?? _email;
+
+      var url = Uri.parse(Global.urlWeb +
+          'api/profile/restful/?user_id=${Global.user_id}&user_app_id=${Global.app_id}');
+      var request = http.MultipartRequest('POST', url)
+        ..fields['user_app_id'] = Global.app_id
+        ..fields['user_id'] = Global.user_id!
+        ..fields['user_prov'] = provData
+        ..fields['user_dis'] = disData
+        ..fields['user_sub'] = subData
+        ..fields['user_address'] = addressData
+        ..fields['user_zip_code'] = zibCodeData
+        ..fields['user_lastname'] = latData
+        ..fields['user_firstname'] = firData
+        ..fields['user_status'] = '1'
+        ..fields['user_email'] = emailData;
+
+      Map<String, String> headers = {
+        "Accept": "application/json",
+        "Content-type": "multipart/form-data",
+        "Authorization":
+            'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
+      };
+
+      if (selectedImage != null) {
+        request.files.add(await http.MultipartFile.fromPath(
+            'user_image', selectedImage.path));
+      }
+
+      request.headers.addAll(headers);
+      var res = await request.send();
+      http.Response response = await http.Response.fromStream(res);
+
+      var feedback = jsonDecode(response.body);
+
+      if (feedback['data'] == "สำเร็จ") {
+        getProfile();
+        return showDialog(
+          context: context,
+          builder: (context) {
+            return warn_api(
+              title: '${feedback['data']}',
+            );
+          },
+        );
+      } else {
+        return showDialog(
+          context: context,
+          builder: (context) {
+            return warn_api(
+              title: '${feedback['data']}',
+            );
+          },
+        );
+      }
+    } catch (e) {
+      // print(e);
+    }
+  }
+
+  //====================== update upload image  ===============================
+  var selectedImage;
+
+  Future getImage() async {
+    //var image = await ImagePicker().getImage(source: ImageSource.gallery);
+    final ImagePicker _picker = ImagePicker();
+    // Pick an image
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      selectedImage = File(image!.path);
+    });
+  }
+
+  //====================== update reduct  ===============================
+  Future<void> getProfile() async {
+    var profileUrl = Global.urlWeb +
+        'api/profile/restful?user_id=${Global.user_id}&user_app_id=${Global.app_id}';
+    var responseProfile = await http.get(Uri.parse(profileUrl),
+        headers: {'Authorization': 'Bearer ${Global.token}'});
+    var profile = json.decode(responseProfile.body);
+
+//update reduct user
+    var user = profile['data'][0];
+    var newProfile = jsonDecode(jsonEncode(user));
+
+//setString
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('profile', jsonEncode(user));
+
+    //call redux action
+    final store = StoreProvider.of<AppState>(context);
+    store.dispatch(updateProfileAction(newProfile));
+  }
+
+  //================================== GET Api  Users =============================================
+
+  List statesList = [
+    {
+      "id": "0",
+      "code": "0",
+      "name_th": "ไม่พบข้อมูล",
+      "name_en": "Bangkok",
+      "geography_id": "2",
+      "active": ""
+    },
+  ];
+  String? _myState;
+  //================================== GET Api  province =============================================
+  Future<void> _getProv() async {
+    String stateInfoUrl =
+        Global.urlWeb + 'api/country/province/restful/?app_id=${Global.app_id}';
+
+    await http.get(Uri.parse(stateInfoUrl),
+        headers: {'Authorization': 'Bearer ${Global.token}'}).then((response) {
+      var data = json.decode(response.body);
+
+      if (data['data'] != "ไม่พบข้อมูล") {
+        setState(() {
+          statesList = data['data'];
+        });
+      }
+    });
+  }
+
+  //================================== GET Api  dis =============================================
+  List disList = [];
+  String? _myDis;
+
+  Future<void> _getDis() async {
+    String url = Global.urlWeb +
+        'api/country/amphure/restful/?app_id=${Global.app_id}&province_id=${_myState}';
+
+    await http.get(Uri.parse(url),
+        headers: {'Authorization': 'Bearer ${Global.token}'}).then((response) {
+      var dataDis = json.decode(response.body);
+
+      if (dataDis['data'] != "ไม่พบข้อมูล") {
+        setState(() {
+          disList = dataDis['data'];
+        });
+      }
+    });
+  }
+
+  //================================== GET Api  sub =============================================
+  List subList = [];
+  String? _mySub;
+
+  Future<void> _getSub() async {
+    String url = Global.urlWeb +
+        'api/country/district/restful/?app_id=${Global.app_id}&amphure_id=${_myDis}';
+
+    await http.get(Uri.parse(url),
+        headers: {'Authorization': 'Bearer ${Global.token}'}).then((response) {
+      var dataSub = json.decode(response.body);
+
+      if (dataSub['data'] != "ไม่พบข้อมูล") {
+        setState(() {
+          subList = dataSub['data'];
+        });
+      }
+    });
+  }
+  //================================== GET Api  zip_code =============================================
+
+  String? zip_code;
+
+  Future<void> _getZipCode() async {
+    String url2 = Global.urlWeb +
+        'api/country/district/restful/?app_id=${Global.app_id}&id=${_mySub}';
+
+    await http.get(Uri.parse(url2),
+        headers: {'Authorization': 'Bearer ${Global.token}'}).then((response) {
+      var json_zip = json.decode(response.body);
+
+      print(json_zip['data'][0]['zip_code']);
+      if (json_zip['data'] != "ไม่พบข้อมูล") {
+        setState(() {
+          zip_code = json_zip['data'][0]['zip_code'];
+        });
+      }
+    });
   }
 }

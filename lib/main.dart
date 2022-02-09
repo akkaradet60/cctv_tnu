@@ -125,7 +125,7 @@ class MyApp extends StatelessWidget {
             '/maplocation_page': (context) => maplocation_page(),
             '/settingpolicy': (context) => settingpolicy(),
             // '/EmergecyPage': (context) => EmergecyPage(),
-
+            '/AppealPage': (context) => AppealPage(),
             //   '/messagem2': (context) => messagem2()
           },
         ),

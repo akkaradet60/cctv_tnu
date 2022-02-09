@@ -12,6 +12,7 @@ class Global {
   static String networkImage =
       'https://www.hushhush.com/wp-content/uploads/2019/01/1968-plymouth-gtx.jpg';
   static String? user_name;
+  static String urlFile2 = 'https://www.bc-official.com/api/app_nt/1/2/';
   // static String glogg_catid = '2';
 
   // static List<Covid> CovidListGlobal = [];

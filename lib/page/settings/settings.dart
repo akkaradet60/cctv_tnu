@@ -64,28 +64,28 @@ class settings extends StatelessWidget {
               Container(
                 child: Column(
                   children: [
-                    Container(
-                      width: 342,
-                      height: 55,
-                      child: ElevatedButton.icon(
-                        onPressed: () =>
-                            Navigator.pushNamed(context, '/settingshop'),
-                        icon: const Icon(Icons.shopping_bag),
-                        label: LocaleText(
-                          "ร้านค้า",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          primary: ThemeBc.background,
-                          onPrimary: Colors.white,
-                          shadowColor: Colors.grey[700],
-                          elevation: 30,
-                          shape: const RoundedRectangleBorder(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(40))),
-                        ),
-                      ),
-                    ),
+                    // Container(
+                    //   width: 342,
+                    //   height: 55,
+                    //   child: ElevatedButton.icon(
+                    //     onPressed: () =>
+                    //         Navigator.pushNamed(context, '/settingshop'),
+                    //     icon: const Icon(Icons.shopping_bag),
+                    //     label: LocaleText(
+                    //       "ร้านค้า",
+                    //       style: TextStyle(fontSize: 18),
+                    //     ),
+                    //     style: ElevatedButton.styleFrom(
+                    //       primary: ThemeBc.background,
+                    //       onPrimary: Colors.white,
+                    //       shadowColor: Colors.grey[700],
+                    //       elevation: 30,
+                    //       shape: const RoundedRectangleBorder(
+                    //           borderRadius:
+                    //               const BorderRadius.all(Radius.circular(40))),
+                    //     ),
+                    //   ),
+                    // ),
                     const SizedBox(height: 5),
                     Container(
                       width: 342,

@@ -86,6 +86,7 @@ class _compose_page extends State<compose_page>
   void initState() {
     _tabController = TabController(vsync: this, length: tabList.length);
     super.initState();
+    _getStateList();
     // findLatLng();
   }
 
@@ -153,6 +154,14 @@ class _compose_page extends State<compose_page>
           // alertWarning(context, '${feedback['data']}');
         }
       } else {
+        return showDialog(
+          context: context,
+          builder: (context) {
+            return warn_api(
+              title: 'ใส่ข้อมูลให้ครบถ้วน',
+            );
+          },
+        );
         // alertWarning(context, 'ใส่ข้อมูลให้ครบถ้วน');
       }
     } catch (e) {
@@ -160,6 +169,31 @@ class _compose_page extends State<compose_page>
     }
   }
 
+  List statesList = [
+    {
+      "emt_id": "0",
+      "emt_category": "0",
+      "emt_name": "ไม่พบข้อมูล",
+    },
+  ];
+  String? _myState;
+
+  Future<void> _getStateList() async {
+    String stateInfoUrl = Global.urlWeb +
+        'api/app/emergency/type/restful/?emt_app_id=${Global.app_id}&emt_category=2';
+
+    await http.get(Uri.parse(stateInfoUrl),
+        headers: {'Authorization': 'Bearer ${Global.token}'}).then((response) {
+      var data = json.decode(response.body);
+
+      //print(data['data']);
+      if (data['data'] != "ไม่พบข้อมูล") {
+        setState(() {
+          statesList = data['data'];
+        });
+      }
+    });
+  }
 //pic
 
   Future getImage() async {
@@ -195,7 +229,8 @@ class _compose_page extends State<compose_page>
                     FormBuilder(
                       key: _fbKey,
                       initialValue: {
-                        'em_type': '1',
+                        'em_type': _myState,
+
                         // '2': '-',
                         'em_phone': user_phone,
                         'em_detail': '',
@@ -234,43 +269,29 @@ class _compose_page extends State<compose_page>
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
                                 child: FormBuilderDropdown(
-                                  name: "em_type",
-
+                                  name: 'em_type',
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(
                                         20.0,
                                       ),
                                     ),
-                                    suffixIcon: Icon(Icons.article),
-                                    // labelText: 'เลือกประเภทการแจ้งเหตุ',
+                                    suffixIcon: Icon(Icons.email),
+                                    labelText: 'เลือกประเภทการแจ้งเหตุ',
                                     fillColor: Colors.white,
                                     filled: true,
                                   ),
-                                  // initialValue: 'Male',
-                                  //allowClear: true,
-                                  hint: Text('เลือกประเภทการihvร้องเรียน'),
-
-                                  initialValue: '1',
-                                  items: [
-                                    DropdownMenuItem(
-                                      value: '1',
-                                      child: Text('ไฟฟ้าดับ'),
-                                    ),
-                                    DropdownMenuItem(
-                                        value: '2',
-                                        child: Text('น้ำประปาไม่ไหล่')),
-                                    DropdownMenuItem(
-                                        value: '3',
-                                        child: Text('แจ้งซ่อมทางเดิน')),
-                                    DropdownMenuItem(
-                                        value: '4', child: Text('แจ้งซ่อมถนน')),
-                                    DropdownMenuItem(
-                                        value: '5',
-                                        child: Text('ร้องเรียนที่รบายน้ำ')),
-                                    DropdownMenuItem(
-                                        value: '6', child: Text('ร้องเรียน')),
-                                  ],
+                                  allowClear: true,
+                                  hint: Text('เลือกประเภทการแจ้งเหตุ'),
+                                  onChanged: (value) => setState(
+                                      () => _myState = value as String?),
+                                  items: statesList.map((item) {
+                                    return new DropdownMenuItem(
+                                      // value: '1', child: Text('ผู้ป่วยฉุกเฉิน')
+                                      child: new Text(item['emt_name']),
+                                      value: item['emt_id'].toString(),
+                                    );
+                                  }).toList(),
                                 ),
                               ),
                             ),
@@ -736,12 +757,6 @@ class _compose_page extends State<compose_page>
 
     Widget emergecyPage2() {
       return Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [ThemeBc.white, ThemeBc.white],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft),
-        ),
         child: Container(
           width: 1000,
           height: 1000,
@@ -749,147 +764,151 @@ class _compose_page extends State<compose_page>
             future: getDataSlide(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return ListView.builder(
-                  itemCount: snapshot.data!['data'].length,
-                  itemBuilder: (context, index) {
-                    var datanill = snapshot.data!['data'];
-                    print(snapshot.data!['data'].length);
-                    var em_detaail;
-                    if (datanill == 'ไม่พบข้อมูล') {
-                      em_detaail = 'ไม่พบข้อมูล';
-                      return Text('');
-                    } else {
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                  color: secondaryTextColor,
-                                  borderRadius: BorderRadius.circular(
-                                    30,
-                                  ),
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        offset: Offset(2, 2),
-                                        blurRadius: 7,
-                                        spreadRadius: 1.0),
-                                    BoxShadow(
-                                        color: Colors.black.withOpacity(0.5),
-                                        offset: Offset(2, 4),
-                                        blurRadius: 7.0,
-                                        spreadRadius: 1.0),
-                                  ]),
-                              height: 80,
-                              child: Center(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Column(
-                                    // mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                SizedBox(height: 10),
-                                                Text(
-                                                  '${snapshot.data!['data'][index]['em_detail']}',
-                                                  style:
-                                                      primaryTextStyle.copyWith(
-                                                          fontSize: 18,
-                                                          fontWeight: medium),
-                                                ),
-                                              ],
-                                            ),
-                                            Container(
-                                              decoration: BoxDecoration(
-                                                  color: ThemeBc.black,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                    30,
+                return Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: ListView.builder(
+                    itemCount: snapshot.data!['data'].length,
+                    itemBuilder: (context, index) {
+                      var datanill = snapshot.data!['data'];
+                      print(snapshot.data!['data'].length);
+                      var em_detaail;
+                      if (datanill == 'ไม่พบข้อมูล') {
+                        em_detaail = 'ไม่พบข้อมูล';
+                        return Text('');
+                      } else {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: secondaryTextColor,
+                                    borderRadius: BorderRadius.circular(
+                                      30,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          offset: Offset(2, 2),
+                                          blurRadius: 7,
+                                          spreadRadius: 1.0),
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.5),
+                                          offset: Offset(2, 4),
+                                          blurRadius: 7.0,
+                                          spreadRadius: 1.0),
+                                    ]),
+                                height: 80,
+                                child: Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Column(
+                                      // mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  SizedBox(height: 10),
+                                                  Text(
+                                                    '${snapshot.data!['data'][index]['em_detail']}',
+                                                    style: primaryTextStyle
+                                                        .copyWith(
+                                                            fontSize: 18,
+                                                            fontWeight: medium),
                                                   ),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                        color: Colors.grey
-                                                            .withOpacity(0.5),
-                                                        offset: Offset(2, 2),
-                                                        blurRadius: 7,
-                                                        spreadRadius: 1.0),
-                                                    BoxShadow(
-                                                        color: Colors.black
-                                                            .withOpacity(0.5),
-                                                        offset: Offset(2, 4),
-                                                        blurRadius: 7.0,
-                                                        spreadRadius: 1.0),
-                                                  ]),
-                                              child: IconButton(
-                                                icon: Icon(
-                                                  Icons.article,
-                                                  color: ThemeBc.white,
-                                                  size: 30,
-                                                ),
-                                                tooltip: 'Show Snackbar',
-                                                onPressed: () =>
-                                                    Navigator.pushNamed(context,
-                                                        '/composedetail_page',
-                                                        arguments: {
-                                                      'em_owner': snapshot
-                                                              .data!['data']
-                                                          [index]['em_owner'],
-                                                      'em_detail': snapshot
-                                                              .data!['data']
-                                                          [index]['em_detail'],
-                                                      'em_images': snapshot.data![
-                                                                          'data']
-                                                                      [index][
-                                                                  'em_images'] !=
-                                                              null
-                                                          ? Global.domainImage +
-                                                              snapshot.data!['data']
-                                                                          [index]
-                                                                      [
-                                                                      'em_images'][0]
-                                                                  [
-                                                                  'emi_path_name']
-                                                          : '${Global.networkImage}',
-                                                      'em_phone': snapshot
-                                                              .data!['data']
-                                                          [index]['em_phone'],
-                                                      'em_lat':
-                                                          snapshot.data!['data']
-                                                              [index]['em_lat'],
-                                                      'em_lng':
-                                                          snapshot.data!['data']
-                                                              [index]['em_lng'],
-                                                      'em_location':
-                                                          snapshot.data!['data']
-                                                                  [index]
-                                                              ['em_location'],
-                                                      'em_type': snapshot
-                                                              .data!['data']
-                                                          [index]['em_type'],
-                                                    }),
+                                                ],
                                               ),
-                                            ),
-                                          ],
+                                              Container(
+                                                decoration: BoxDecoration(
+                                                    color: ThemeBc.black,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                      30,
+                                                    ),
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                          color: Colors.grey
+                                                              .withOpacity(0.5),
+                                                          offset: Offset(2, 2),
+                                                          blurRadius: 7,
+                                                          spreadRadius: 1.0),
+                                                      BoxShadow(
+                                                          color: Colors.black
+                                                              .withOpacity(0.5),
+                                                          offset: Offset(2, 4),
+                                                          blurRadius: 7.0,
+                                                          spreadRadius: 1.0),
+                                                    ]),
+                                                child: IconButton(
+                                                  icon: Icon(
+                                                    Icons.article,
+                                                    color: ThemeBc.white,
+                                                    size: 30,
+                                                  ),
+                                                  tooltip: 'Show Snackbar',
+                                                  onPressed: () =>
+                                                      Navigator.pushNamed(
+                                                          context,
+                                                          '/composedetail_page',
+                                                          arguments: {
+                                                        'em_owner': snapshot
+                                                                .data!['data']
+                                                            [index]['em_owner'],
+                                                        'em_detail': snapshot
+                                                                .data!['data'][
+                                                            index]['em_detail'],
+                                                        'em_images': snapshot.data![
+                                                                            'data']
+                                                                        [index][
+                                                                    'em_images'] !=
+                                                                null
+                                                            ? Global.domainImage +
+                                                                snapshot.data!['data']
+                                                                            [index]
+                                                                        [
+                                                                        'em_images'][0]
+                                                                    [
+                                                                    'emi_path_name']
+                                                            : '${Global.networkImage}',
+                                                        'em_phone': snapshot
+                                                                .data!['data']
+                                                            [index]['em_phone'],
+                                                        'em_lat': snapshot
+                                                                .data!['data']
+                                                            [index]['em_lat'],
+                                                        'em_lng': snapshot
+                                                                .data!['data']
+                                                            [index]['em_lng'],
+                                                        'em_location': snapshot
+                                                                    .data![
+                                                                'data'][index]
+                                                            ['em_location'],
+                                                        'em_type': snapshot
+                                                                .data!['data']
+                                                            [index]['em_type'],
+                                                      }),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      );
-                    }
-                  },
+                            ],
+                          ),
+                        );
+                      }
+                    },
+                  ),
                 );
               } else if (snapshot.hasError) {
                 return Center(
@@ -929,17 +948,25 @@ class _compose_page extends State<compose_page>
           }).toList(),
         ),
       ),
-      body: TabBarView(
-        controller: _tabController,
-        children: tabList.map((item) {
-          if (item == 'ร้องเรียน') {
-            return emergecyPage1();
-          } else {
-            return emergecyPage2();
-          }
-          // print(item);
-          // return Center(child: Text(item));
-        }).toList(),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              colors: [ThemeBc.orange, ThemeBc.pinkAccent],
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft),
+        ),
+        child: TabBarView(
+          controller: _tabController,
+          children: tabList.map((item) {
+            if (item == 'ร้องเรียน') {
+              return emergecyPage1();
+            } else {
+              return emergecyPage2();
+            }
+            // print(item);
+            // return Center(child: Text(item));
+          }).toList(),
+        ),
       ),
     );
   }
