@@ -23,8 +23,89 @@ class login_page extends StatefulWidget {
 
 class _LoginPageState extends State<login_page> {
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
+  Future<void> loginapp() async {
+    //formValues['name']
+    //print(formValues);
 
-  get offset => null;
+    var url = Uri.parse(Global.urlWeb + 'api/login/restful');
+    var response = await http.post(url,
+        headers: {
+          "Accept": "application/json",
+        },
+        body: json.encode({
+          "user_app_id": Global.app_id,
+          "email": 'akkaradet.ko60@snru.ac.th',
+          "password": '1234567'
+        }));
+
+    Map<String, dynamic> token = json.decode(response.body);
+    var user_id = json.decode(response.body);
+    if (response.statusCode == 200) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString('token', response.body);
+      await prefs.setString('user_id', response.body);
+      var profileUrl = Global.urlWeb +
+          'api/profile/restful?user_id=${user_id['access_id']}&user_app_id=${Global.app_id}';
+      var responseProfile = await http.get(Uri.parse(profileUrl),
+          headers: {'Authorization': 'Bearer ${token['access_token']}'});
+      var profile = json.decode(responseProfile.body);
+      Map<String, dynamic> user =
+          profile['data'][0]; // { id: 111, name: john ....}
+      await prefs.setString('profile', jsonEncode(user));
+      print('profile: $user');
+      print(user_id['access_id']);
+      var appUrl = Global.urlWeb +
+          'api/app/application/restful/?app_id=${Global.app_id}';
+      var responseApp = await http.get(Uri.parse(appUrl),
+          headers: {'Authorization': 'Bearer ${token['access_token']}'});
+      var application_data = json.decode(responseApp.body);
+      Map<String, dynamic> app_data =
+          application_data['data'][0]; // { id: 111, name: john ....}
+      await prefs.setString('application', jsonEncode(app_data));
+      //print(app_data);
+      //Global.user_id = token['access_id'];
+      print('app: $app_data');
+      //user_id = token['access_id'];
+
+      // print(Global.usi_id);
+      // print(user_id);
+
+      //get Profile
+      /* var profileUrl = Uri.parse('https://api.codingthailand.com/api/profile');
+      var responseProfile = await http.get(profileUrl,
+          headers: {'Authorization': 'Bearer ${token['access_token']}'});
+      Map<String, dynamic> profile = json.decode(responseProfile.body);
+      var user = profile['data']['user']; // { id: 111, name: john ....}
+      await prefs.setString('profile', json.encode(user));
+      // print('profile: $user');
+      print(token['message']);*/
+      //กลับไปที่หน้า HomeStack
+      Navigator.pushNamedAndRemoveUntil(
+          context, '/home_page', (route) => false);
+
+      // Navigator.pushNamed(context, '/home_page');
+    } else {
+      Alert(
+        context: context,
+        type: AlertType.warning,
+        // title: "แจ้งเตือน",
+        desc: '${token['message']}',
+        buttons: [
+          DialogButton(
+            child: Text(
+              "ปิด",
+              style: TextStyle(color: Colors.white, fontSize: 18),
+            ),
+            onPressed: () => Navigator.pop(context),
+            gradient: LinearGradient(colors: [
+              Color.fromRGBO(116, 116, 191, 1.0),
+              Color.fromRGBO(52, 138, 199, 1.0),
+            ]),
+          )
+        ],
+      ).show();
+    }
+  }
 
   Future<void> login(Map formValues) async {
     //formValues['name']
@@ -142,6 +223,7 @@ class _LoginPageState extends State<login_page> {
   void initState() {
     super.initState();
     getProfile;
+
     //getProfile();
   }
 
@@ -168,6 +250,16 @@ class _LoginPageState extends State<login_page> {
                         child: Image.asset('assets/logo.png'),
                       ),
                       SizedBox(height: 10),
+                      // FormBuilder(
+                      //   key: _fbKey2,
+                      //   initialValue: {
+                      //     'email': 'akkaradet.ko60@snru.ac.th',
+                      //     'password': '1234567'
+                      //   },
+                      //   autovalidateMode: AutovalidateMode.always,
+                      //   child: Container(),
+                      // ),
+                      // Text('$ss $ss1'),
                       FormBuilder(
                         key: _fbKey,
                         initialValue: {'email': '', 'password': ''},
@@ -221,14 +313,14 @@ class _LoginPageState extends State<login_page> {
                                             fillColor: Colors.white,
                                             filled: true,
                                           ),
-                                          validator: MultiValidator([
-                                            RequiredValidator(
-                                                errorText:
-                                                    "ป้อนข้อมูลอีเมลด้วย"),
-                                            EmailValidator(
-                                                errorText:
-                                                    "รูปแบบอีเมล์ไม่ถูกต้อง"),
-                                          ]),
+                                          // validator: MultiValidator([
+                                          //   RequiredValidator(
+                                          //       errorText:
+                                          //           "ป้อนข้อมูลอีเมลด้วย"),
+                                          //   EmailValidator(
+                                          //       errorText:
+                                          //           "รูปแบบอีเมล์ไม่ถูกต้อง"),
+                                          // ]),
                                         ),
                                       ),
                                     ),
@@ -276,10 +368,10 @@ class _LoginPageState extends State<login_page> {
                                             fillColor: Colors.white,
                                             filled: true,
                                           ),
-                                          validator: MultiValidator([
-                                            RequiredValidator(
-                                                errorText: "ป้อนรหัสผ่านด้วย"),
-                                          ]),
+                                          // validator: MultiValidator([
+                                          //   RequiredValidator(
+                                          //       errorText: "ป้อนรหัสผ่านด้วย"),
+                                          // ]),
                                         ),
                                       ),
                                     ),
@@ -394,8 +486,9 @@ class _LoginPageState extends State<login_page> {
                               CustomButton(
                                 title: 'ล็อกอิน',
                                 onPressed: () {
+                                  // login(_fbKey.currentState!.value);
                                   if (_fbKey.currentState!.saveAndValidate()) {
-                                    print(_fbKey.currentState!.value);
+                                    // print(_fbKey.currentState!.value);
                                     login(_fbKey.currentState!.value);
                                   }
                                 },
@@ -447,8 +540,9 @@ class _LoginPageState extends State<login_page> {
                           children: [
                             CustomButton(
                               title: 'ทดลองใช้ในฐานะผู้เยี่ยมชม',
-                              onPressed: () =>
-                                  Navigator.pushNamed(context, '/home_page'),
+                              onPressed: () {
+                                loginapp();
+                              },
                               colorButton: ThemeBc.background,
                               textStyle: secondaryTextStyle.copyWith(
                                   fontWeight: medium, fontSize: 16),
