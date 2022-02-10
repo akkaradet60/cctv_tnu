@@ -2,6 +2,7 @@ import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -241,7 +242,7 @@ class _productshome_page extends State<productshome_page> {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(
+            child: LocaleText(
               'สินค้าขายดีอาทิตย์นี้',
               style: TextStyle(
                 fontSize: 20.0,
@@ -406,13 +407,28 @@ class _productshome_page extends State<productshome_page> {
                                                                     const EdgeInsets
                                                                             .all(
                                                                         0.0),
-                                                                child: Text(
-                                                                  'ราคา : ${snapshot.data!['data'][index]['product_price']}',
-                                                                  style: primaryTextStyle.copyWith(
-                                                                      fontSize:
-                                                                          12,
-                                                                      fontWeight:
-                                                                          medium),
+                                                                child: Row(
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    LocaleText(
+                                                                      'ราคา',
+                                                                      style: primaryTextStyle.copyWith(
+                                                                          fontSize:
+                                                                              12,
+                                                                          fontWeight:
+                                                                              medium),
+                                                                    ),
+                                                                    Text(
+                                                                      ' : ${snapshot.data!['data'][index]['product_price']}',
+                                                                      style: primaryTextStyle.copyWith(
+                                                                          fontSize:
+                                                                              12,
+                                                                          fontWeight:
+                                                                              medium),
+                                                                    ),
+                                                                  ],
                                                                 ),
                                                               ),
                                                             ),

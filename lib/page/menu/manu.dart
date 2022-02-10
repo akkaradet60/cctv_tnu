@@ -146,7 +146,7 @@ class _menu_pangState extends State<menu_pang> {
                                                         shape: BoxShape.circle,
                                                         image: DecorationImage(
                                                             image: NetworkImage(Global
-                                                                    .domainImage +
+                                                                    .urlFile2 +
                                                                 snapshot.data![
                                                                             'data']
                                                                         [index][

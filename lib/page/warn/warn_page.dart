@@ -20,7 +20,7 @@ import 'package:latlong2/latlong.dart';
 // import 'package:latlong2/latlong.dart';
 // import 'package:location/location.dart';
 import 'dart:convert';
-
+import 'package:geocoding/geocoding.dart';
 // import 'package:smartcity_nt_mobile/global.dart';
 // import 'package:smartcity_nt_mobile/redux/app_reducer.dart';
 // import 'package:smartcity_nt_mobile/style/global.dart';
@@ -35,6 +35,11 @@ class warn_page extends StatefulWidget {
   @override
   _warn_page createState() => _warn_page();
 }
+
+double long = 0;
+double lat = 0;
+LatLng point = LatLng(long, lat);
+var location = [];
 
 class ApiImage {
   final String imageUrl;
@@ -55,6 +60,9 @@ Future<Position> _getLocation() async {
   }
   return userLocation;
 }
+
+List<Marker> markers = [];
+List<LatLng> polylineCoordinates = [];
 
 class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
   late Map<String, dynamic> imgSlide;
@@ -80,7 +88,6 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
   var em_location = 'ยังไม่ได้เลือก';
   late TabController _tabController;
 
-  double? lat, lng;
   @override
   void initState() {
     _tabController = TabController(vsync: this, length: tabList.length);
@@ -508,6 +515,12 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                                                     Flexible(
                                                         child: FlutterMap(
                                                       options: MapOptions(
+                                                          onTap: (tapPosition,
+                                                              p) async {
+                                                            setState(() {
+                                                              point = p;
+                                                            });
+                                                          },
                                                           center: LatLng(
                                                               userLocation
                                                                   .latitude,
@@ -537,8 +550,8 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                                                                   Container(
                                                                     decoration:
                                                                         BoxDecoration(
-                                                                      color:
-                                                                          secondaryTextColor,
+                                                                      color: ThemeBc
+                                                                          .black,
                                                                       borderRadius:
                                                                           BorderRadius
                                                                               .circular(
@@ -561,7 +574,7 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                                                                               FontWeight.bold,
                                                                           // backgroundColor: Colors.black45,
                                                                           color:
-                                                                              Colors.black,
+                                                                              ThemeBc.white,
                                                                         ),
                                                                       ),
                                                                     ),
@@ -573,6 +586,20 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                                                         ),
                                                         MarkerLayerOptions(
                                                             markers: [
+                                                              Marker(
+                                                                width: 80.0,
+                                                                height: 80.0,
+                                                                point: point,
+                                                                builder: (ctx) =>
+                                                                    Container(
+                                                                  child: Icon(
+                                                                    Icons
+                                                                        .location_on,
+                                                                    color: Colors
+                                                                        .red,
+                                                                  ),
+                                                                ),
+                                                              ),
                                                               Marker(
                                                                 point: LatLng(
                                                                     userLocation
@@ -594,7 +621,11 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                                                                           (context) {
                                                                         return AlertDialog(
                                                                           content:
+                                                                              Column(
+                                                                            children: [
                                                                               Text('ตำแหน่งของคุณ !\nละติจูด : ${userLocation.latitude} ลองจิจูด : ${userLocation.longitude} '),
+                                                                            ],
+                                                                          ),
                                                                         );
                                                                       },
                                                                     );
@@ -653,7 +684,7 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(
-                                      'ตำแหน่ง ! \nตำแหน่งที่คุณเลือก : ',
+                                      'ตำแหน่ง ! \nตำแหน่งที่คุณเลือก : $point',
                                       style: TextStyle(
                                         fontSize: 15.0,
                                         fontWeight: FontWeight.bold,

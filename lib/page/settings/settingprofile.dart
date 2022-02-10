@@ -42,7 +42,7 @@ class _settingprofile extends State<settingprofile>
   }
 
   var newProfile;
-  var oi = 'ssss';
+  // var oi = 'ssss';
   var profilee;
 
   @override
@@ -97,13 +97,12 @@ class _settingprofile extends State<settingprofile>
                                         ? Container(
                                             child: profile['user_image'] != null
                                                 ? Image.network(
-                                                    Global.domainImage +
+                                                    Global.urlFile2 +
                                                         profile['user_image'],
                                                     width: 200,
                                                     height: 200,
                                                     fit: BoxFit.fill)
-                                                : Image.network(
-                                                    Global.domainImage,
+                                                : Image.network(Global.urlFile2,
                                                     width: 200,
                                                     height: 200,
                                                     fit: BoxFit.fill),
@@ -607,6 +606,7 @@ class _settingprofile extends State<settingprofile>
                                   ),
                                 ),
                               ),
+
                               // Row(
                               //   mainAxisAlignment:
                               //       MainAxisAlignment.spaceAround,
@@ -770,7 +770,9 @@ class _settingprofile extends State<settingprofile>
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
 
     setState(() {
-      selectedImage = File(image!.path);
+      if (image != null) {
+        selectedImage = File(image.path);
+      }
     });
   }
 
