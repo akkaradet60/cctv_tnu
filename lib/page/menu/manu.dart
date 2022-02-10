@@ -79,25 +79,186 @@ class _menu_pangState extends State<menu_pang> {
           child: ListView(
             children: [
               Container(
-                height: 370,
+                height: 1000,
                 child: FutureBuilder<Map<String, dynamic>>(
                   future: getDataSlide(),
                   builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return ListView.builder(
-                        itemCount: snapshot.data!['data'].length,
-                        itemBuilder: (context, index) {
-                          return Container(
-                            width: 500,
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                      width: 300,
-                                      height: 350,
+                    if (Global.user_id == '103') {
+                      if (snapshot.hasData) {
+                        return ListView.builder(
+                          itemCount: snapshot.data!['data'].length,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                        width: 300,
+                                        height: 350,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.circular(
+                                              20,
+                                            ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  color: Colors.grey
+                                                      .withOpacity(0.5),
+                                                  offset: Offset(2, 2),
+                                                  blurRadius: 7,
+                                                  spreadRadius: 1.0),
+                                              BoxShadow(
+                                                  color: Colors.black
+                                                      .withOpacity(0.5),
+                                                  offset: Offset(2, 4),
+                                                  blurRadius: 7.0,
+                                                  spreadRadius: 1.0),
+                                            ]),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            // mainAxisAlignment:
+                                            //     MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Container(
+                                                  width: 300,
+                                                  height: 180,
+                                                  decoration: BoxDecoration(
+                                                      color: ThemeBc.background,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                        20,
+                                                      ),
+                                                      boxShadow: []),
+                                                  child: Column(
+                                                    children: [
+                                                      SizedBox(height: 15),
+                                                      Container(
+                                                        width: 150,
+                                                        height: 150,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
+                                                          image: DecorationImage(
+                                                              image: NetworkImage(Global
+                                                                      .urlFile2 +
+                                                                  snapshot.data![
+                                                                              'data']
+                                                                          [
+                                                                          index]
+                                                                      [
+                                                                      'user_image']),
+                                                              fit: BoxFit.fill),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(height: 5),
+                                              Row(
+                                                children: [
+                                                  LocaleText(
+                                                    'ชื่อ',
+                                                    style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: ThemeBc.black,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    ' : ${snapshot.data!['data'][index]['user_firstname']}',
+                                                    style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: ThemeBc.black,
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                              SizedBox(height: 5),
+                                              Row(
+                                                children: [
+                                                  LocaleText(
+                                                    'นามสกุล',
+                                                    style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: ThemeBc.black,
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    child: Column(
+                                                      children: [
+                                                        Text(
+                                                          ' : ${snapshot.data!['data'][index]['user_lastname']}',
+                                                          style: TextStyle(
+                                                            fontSize: 16,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color:
+                                                                ThemeBc.black,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                              SizedBox(height: 5),
+                                              Row(
+                                                children: [
+                                                  Container(
+                                                    height: 20,
+                                                    width: 260,
+                                                    child: ListView(
+                                                      scrollDirection:
+                                                          Axis.horizontal,
+                                                      children: [
+                                                        LocaleText(
+                                                          'อีเมล',
+                                                          style: TextStyle(
+                                                            fontSize: 16,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color:
+                                                                ThemeBc.black,
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          ' : ${snapshot.data!['data'][index]['user_email']}',
+                                                          style: TextStyle(
+                                                            fontSize: 16,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color:
+                                                                ThemeBc.black,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        )),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
                                       decoration: BoxDecoration(
-                                          color: Colors.white,
+                                          color: secondaryTextColor,
                                           borderRadius: BorderRadius.circular(
                                             20,
                                           ),
@@ -115,254 +276,376 @@ class _menu_pangState extends State<menu_pang> {
                                                 blurRadius: 7.0,
                                                 spreadRadius: 1.0),
                                           ]),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          // mainAxisAlignment:
-                                          //     MainAxisAlignment.spaceAround,
-                                          children: [
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Container(
-                                                width: 300,
-                                                height: 180,
-                                                decoration: BoxDecoration(
-                                                    color: ThemeBc.background,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                      20,
-                                                    ),
-                                                    boxShadow: []),
-                                                child: Column(
-                                                  children: [
-                                                    SizedBox(height: 15),
-                                                    Container(
-                                                      width: 150,
-                                                      height: 150,
-                                                      decoration: BoxDecoration(
-                                                        shape: BoxShape.circle,
-                                                        image: DecorationImage(
-                                                            image: NetworkImage(Global
-                                                                    .urlFile2 +
-                                                                snapshot.data![
-                                                                            'data']
-                                                                        [index][
-                                                                    'user_image']),
-                                                            fit: BoxFit.fill),
+                                      height: 50,
+                                      child: ListTile(
+                                        leading: Icon(Icons.stairs),
+                                        title: LocaleText('หน้าหลัก'),
+                                        trailing: Icon(Icons.double_arrow),
+                                        selected: ModalRoute.of(context)
+                                                    ?.settings
+                                                    .name ==
+                                                '/home_page'
+                                            ? true
+                                            : false,
+                                        //  iconColor: Colors.orange,
+                                        onTap: () {
+                                          Navigator.of(context,
+                                                  rootNavigator: true)
+                                              .pushNamedAndRemoveUntil(
+                                                  '/home_page',
+                                                  (route) => false);
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          color: secondaryTextColor,
+                                          borderRadius: BorderRadius.circular(
+                                            20,
+                                          ),
+                                          boxShadow: [
+                                            BoxShadow(
+                                                color: Colors.grey
+                                                    .withOpacity(0.5),
+                                                offset: Offset(2, 2),
+                                                blurRadius: 7,
+                                                spreadRadius: 1.0),
+                                            BoxShadow(
+                                                color: Colors.black
+                                                    .withOpacity(0.5),
+                                                offset: Offset(2, 4),
+                                                blurRadius: 7.0,
+                                                spreadRadius: 1.0),
+                                          ]),
+                                      height: 50,
+                                      child: ListTile(
+                                        leading: Icon(Icons.logout),
+                                        title: LocaleText('ออกจากระบบ'),
+                                        trailing: Icon(Icons.double_arrow),
+                                        onTap: () {
+                                          logout();
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        );
+                      } else if (snapshot.hasError) {
+                        return Center(
+                            child: Text(
+                                'เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
+                      }
+                    } else {
+                      if (snapshot.hasData) {
+                        return ListView.builder(
+                          itemCount: snapshot.data!['data'].length,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                        width: 300,
+                                        height: 350,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.circular(
+                                              20,
+                                            ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  color: Colors.grey
+                                                      .withOpacity(0.5),
+                                                  offset: Offset(2, 2),
+                                                  blurRadius: 7,
+                                                  spreadRadius: 1.0),
+                                              BoxShadow(
+                                                  color: Colors.black
+                                                      .withOpacity(0.5),
+                                                  offset: Offset(2, 4),
+                                                  blurRadius: 7.0,
+                                                  spreadRadius: 1.0),
+                                            ]),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            // mainAxisAlignment:
+                                            //     MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Container(
+                                                  width: 300,
+                                                  height: 180,
+                                                  decoration: BoxDecoration(
+                                                      color: ThemeBc.background,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                        20,
                                                       ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                            SizedBox(height: 5),
-                                            Row(
-                                              children: [
-                                                LocaleText(
-                                                  'ชื่อ',
-                                                  style: TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: ThemeBc.black,
-                                                  ),
-                                                ),
-                                                Text(
-                                                  ' : ${snapshot.data!['data'][index]['user_firstname']}',
-                                                  style: TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: ThemeBc.black,
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                            SizedBox(height: 5),
-                                            Row(
-                                              children: [
-                                                LocaleText(
-                                                  'นามสกุล',
-                                                  style: TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: ThemeBc.black,
-                                                  ),
-                                                ),
-                                                Container(
+                                                      boxShadow: []),
                                                   child: Column(
                                                     children: [
-                                                      Text(
-                                                        ' : ${snapshot.data!['data'][index]['user_lastname']}',
-                                                        style: TextStyle(
-                                                          fontSize: 16,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color: ThemeBc.black,
+                                                      SizedBox(height: 15),
+                                                      Container(
+                                                        width: 150,
+                                                        height: 150,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
+                                                          image: DecorationImage(
+                                                              image: NetworkImage(Global
+                                                                      .urlFile2 +
+                                                                  snapshot.data![
+                                                                              'data']
+                                                                          [
+                                                                          index]
+                                                                      [
+                                                                      'user_image']),
+                                                              fit: BoxFit.fill),
                                                         ),
                                                       ),
                                                     ],
                                                   ),
-                                                )
-                                              ],
-                                            ),
-                                            SizedBox(height: 5),
-                                            Row(
-                                              children: [
-                                                Container(
-                                                  height: 20,
-                                                  width: 260,
-                                                  child: ListView(
-                                                    scrollDirection:
-                                                        Axis.horizontal,
-                                                    children: [
-                                                      LocaleText(
-                                                        'อีเมล',
-                                                        style: TextStyle(
-                                                          fontSize: 16,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color: ThemeBc.black,
-                                                        ),
-                                                      ),
-                                                      Text(
-                                                        ' : ${snapshot.data!['data'][index]['user_email']}',
-                                                        style: TextStyle(
-                                                          fontSize: 16,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color: ThemeBc.black,
-                                                        ),
-                                                      ),
-                                                    ],
+                                                ),
+                                              ),
+                                              SizedBox(height: 5),
+                                              Row(
+                                                children: [
+                                                  LocaleText(
+                                                    'ชื่อ',
+                                                    style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: ThemeBc.black,
+                                                    ),
                                                   ),
-                                                )
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      )),
-                                )
-                              ],
-                            ),
-                          );
-                        },
-                      );
-                    } else if (snapshot.hasError) {
-                      return Center(
-                          child: Text(
-                              'เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
+                                                  Text(
+                                                    ' : ${snapshot.data!['data'][index]['user_firstname']}',
+                                                    style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: ThemeBc.black,
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                              SizedBox(height: 5),
+                                              Row(
+                                                children: [
+                                                  LocaleText(
+                                                    'นามสกุล',
+                                                    style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: ThemeBc.black,
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    child: Column(
+                                                      children: [
+                                                        Text(
+                                                          ' : ${snapshot.data!['data'][index]['user_lastname']}',
+                                                          style: TextStyle(
+                                                            fontSize: 16,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color:
+                                                                ThemeBc.black,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                              SizedBox(height: 5),
+                                              Row(
+                                                children: [
+                                                  Container(
+                                                    height: 20,
+                                                    width: 260,
+                                                    child: ListView(
+                                                      scrollDirection:
+                                                          Axis.horizontal,
+                                                      children: [
+                                                        LocaleText(
+                                                          'อีเมล',
+                                                          style: TextStyle(
+                                                            fontSize: 16,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color:
+                                                                ThemeBc.black,
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          ' : ${snapshot.data!['data'][index]['user_email']}',
+                                                          style: TextStyle(
+                                                            fontSize: 16,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color:
+                                                                ThemeBc.black,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        )),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          color: secondaryTextColor,
+                                          borderRadius: BorderRadius.circular(
+                                            20,
+                                          ),
+                                          boxShadow: [
+                                            BoxShadow(
+                                                color: Colors.grey
+                                                    .withOpacity(0.5),
+                                                offset: Offset(2, 2),
+                                                blurRadius: 7,
+                                                spreadRadius: 1.0),
+                                            BoxShadow(
+                                                color: Colors.black
+                                                    .withOpacity(0.5),
+                                                offset: Offset(2, 4),
+                                                blurRadius: 7.0,
+                                                spreadRadius: 1.0),
+                                          ]),
+                                      height: 50,
+                                      child: ListTile(
+                                        leading: Icon(Icons.stairs),
+                                        title: LocaleText('หน้าหลัก'),
+                                        trailing: Icon(Icons.double_arrow),
+                                        selected: ModalRoute.of(context)
+                                                    ?.settings
+                                                    .name ==
+                                                '/home_page'
+                                            ? true
+                                            : false,
+                                        //  iconColor: Colors.orange,
+                                        onTap: () {
+                                          Navigator.of(context,
+                                                  rootNavigator: true)
+                                              .pushNamedAndRemoveUntil(
+                                                  '/home_page',
+                                                  (route) => false);
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          color: secondaryTextColor,
+                                          borderRadius: BorderRadius.circular(
+                                            20,
+                                          ),
+                                          boxShadow: [
+                                            BoxShadow(
+                                                color: Colors.grey
+                                                    .withOpacity(0.5),
+                                                offset: Offset(2, 2),
+                                                blurRadius: 7,
+                                                spreadRadius: 1.0),
+                                            BoxShadow(
+                                                color: Colors.black
+                                                    .withOpacity(0.5),
+                                                offset: Offset(2, 4),
+                                                blurRadius: 7.0,
+                                                spreadRadius: 1.0),
+                                          ]),
+                                      height: 50,
+                                      child: ListTile(
+                                        leading: Icon(Icons.settings),
+                                        title: LocaleText('ตั้งค่า'),
+                                        trailing: Icon(Icons.double_arrow),
+                                        selected: ModalRoute.of(context)
+                                                    ?.settings
+                                                    .name ==
+                                                '/settings'
+                                            ? true
+                                            : false,
+                                        onTap: () {
+                                          Navigator.of(context,
+                                                  rootNavigator: true)
+                                              .pushNamedAndRemoveUntil(
+                                                  '/settings',
+                                                  (route) => false);
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          color: secondaryTextColor,
+                                          borderRadius: BorderRadius.circular(
+                                            20,
+                                          ),
+                                          boxShadow: [
+                                            BoxShadow(
+                                                color: Colors.grey
+                                                    .withOpacity(0.5),
+                                                offset: Offset(2, 2),
+                                                blurRadius: 7,
+                                                spreadRadius: 1.0),
+                                            BoxShadow(
+                                                color: Colors.black
+                                                    .withOpacity(0.5),
+                                                offset: Offset(2, 4),
+                                                blurRadius: 7.0,
+                                                spreadRadius: 1.0),
+                                          ]),
+                                      height: 50,
+                                      child: ListTile(
+                                        leading: Icon(Icons.logout),
+                                        title: LocaleText('ออกจากระบบ'),
+                                        trailing: Icon(Icons.double_arrow),
+                                        onTap: () {
+                                          logout();
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        );
+                      } else if (snapshot.hasError) {
+                        return Center(
+                            child: Text(
+                                'เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
+                      }
                     }
 
                     return Center(child: CircularProgressIndicator());
                   },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: secondaryTextColor,
-                      borderRadius: BorderRadius.circular(
-                        20,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            offset: Offset(2, 2),
-                            blurRadius: 7,
-                            spreadRadius: 1.0),
-                        BoxShadow(
-                            color: Colors.black.withOpacity(0.5),
-                            offset: Offset(2, 4),
-                            blurRadius: 7.0,
-                            spreadRadius: 1.0),
-                      ]),
-                  height: 50,
-                  child: ListTile(
-                    leading: Icon(Icons.stairs),
-                    title: LocaleText('หน้าหลัก'),
-                    trailing: Icon(Icons.double_arrow),
-                    selected:
-                        ModalRoute.of(context)?.settings.name == '/home_page'
-                            ? true
-                            : false,
-                    //  iconColor: Colors.orange,
-                    onTap: () {
-                      Navigator.of(context, rootNavigator: true)
-                          .pushNamedAndRemoveUntil(
-                              '/home_page', (route) => false);
-                    },
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: secondaryTextColor,
-                      borderRadius: BorderRadius.circular(
-                        20,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            offset: Offset(2, 2),
-                            blurRadius: 7,
-                            spreadRadius: 1.0),
-                        BoxShadow(
-                            color: Colors.black.withOpacity(0.5),
-                            offset: Offset(2, 4),
-                            blurRadius: 7.0,
-                            spreadRadius: 1.0),
-                      ]),
-                  height: 50,
-                  child: ListTile(
-                    leading: Icon(Icons.settings),
-                    title: LocaleText('ตั้งค่า'),
-                    trailing: Icon(Icons.double_arrow),
-                    selected:
-                        ModalRoute.of(context)?.settings.name == '/settings'
-                            ? true
-                            : false,
-                    onTap: () {
-                      Navigator.of(context, rootNavigator: true)
-                          .pushNamedAndRemoveUntil(
-                              '/settings', (route) => false);
-                    },
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: secondaryTextColor,
-                      borderRadius: BorderRadius.circular(
-                        20,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            offset: Offset(2, 2),
-                            blurRadius: 7,
-                            spreadRadius: 1.0),
-                        BoxShadow(
-                            color: Colors.black.withOpacity(0.5),
-                            offset: Offset(2, 4),
-                            blurRadius: 7.0,
-                            spreadRadius: 1.0),
-                      ]),
-                  height: 50,
-                  child: ListTile(
-                    leading: Icon(Icons.logout),
-                    title: LocaleText('ออกจากระบบ'),
-                    trailing: Icon(Icons.double_arrow),
-                    onTap: () {
-                      logout();
-                    },
-                  ),
                 ),
               ),
             ],

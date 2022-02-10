@@ -227,7 +227,7 @@ class _EmergecyPageState extends State<AppealPage>
     try {
       var userPass = formValues['user_pass'] ?? null;
       var userPassConfirm = formValues['user_pass_confirm'] ?? null;
-      var userId = Global.user_id ?? null;
+      var userId = Global.user_id;
       var token = Global.token ?? null;
 
       if (userId != null &&

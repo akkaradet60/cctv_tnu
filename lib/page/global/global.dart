@@ -7,7 +7,7 @@ class Global {
   static String domainImagenew =
       'https://www.bc-official.com/api/app_nt/1/2/3/4/';
   static String files = 'https://www.bc-official.com/api/app_nt/1/2/3/';
-  static String? user_id;
+  static String user_id = '';
   static String glog_catid = '2';
   static String networkImage =
       'https://www.hushhush.com/wp-content/uploads/2019/01/1968-plymouth-gtx.jpg';

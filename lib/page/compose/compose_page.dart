@@ -103,7 +103,7 @@ class _compose_page extends State<compose_page>
         var url = Uri.parse(Global.urlWeb + 'api/app/emergency/restful/');
         var request = http.MultipartRequest('POST', url)
           ..fields['em_app_id'] = Global.app_id
-          ..fields['em_user_id'] = Global.user_id ?? ''
+          ..fields['em_user_id'] = Global.user_id
           ..fields['em_detail'] = formValues['em_detail']
           ..fields['em_phone'] = formValues['em_phone']
           ..fields['em_owner'] = formValues['em_owner']

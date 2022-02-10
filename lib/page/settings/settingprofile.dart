@@ -706,7 +706,7 @@ class _settingprofile extends State<settingprofile>
           'api/profile/restful/?user_id=${Global.user_id}&user_app_id=${Global.app_id}');
       var request = http.MultipartRequest('POST', url)
         ..fields['user_app_id'] = Global.app_id
-        ..fields['user_id'] = Global.user_id!
+        ..fields['user_id'] = Global.user_id
         ..fields['user_prov'] = provData
         ..fields['user_dis'] = disData
         ..fields['user_sub'] = subData

@@ -23,7 +23,6 @@ class _settingpolicyState extends State<settingpolicy>
   final tabList = ['ภาษาไทย', 'English', 'China'];
   late TabController _tabController;
 
-  var em_user_id;
   var id;
   bool _condition = true;
 
