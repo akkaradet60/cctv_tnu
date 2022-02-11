@@ -6,6 +6,7 @@ import 'package:cctv_tun/widgets/warn_api.dart';
 import 'package:cctv_tun/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 // import 'package:flutter_point_tab_bar/pointTabIndicator.dart';
@@ -144,6 +145,7 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
             builder: (context) {
               return warn_api(
                 title: '${feedback['data']}',
+                title2: '',
               );
             },
           );
@@ -154,6 +156,7 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
             builder: (context) {
               return warn_api(
                 title: 'ใส่ข้อมูลให้ครบถ้วน',
+                title2: '',
               );
             },
           );
@@ -164,6 +167,7 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
           builder: (context) {
             return warn_api(
               title: 'ใส่ข้อมูลให้ครบถ้วน',
+              title2: '',
             );
           },
         );
@@ -905,7 +909,7 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.black,
-        title: const Text('แจ้งเหตุฉุกเฉิน',
+        title: const LocaleText('แจ้งเหตุฉุกเฉิน',
             style: TextStyle(color: ThemeBc.white)),
         centerTitle: true,
         actions: <Widget>[

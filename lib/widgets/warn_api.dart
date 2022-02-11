@@ -1,12 +1,15 @@
 import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 
 class warn_api extends StatelessWidget {
   final String title;
+  final String title2;
 
   warn_api({
     Key? key,
     required this.title,
+    required this.title2,
   }) : super(key: key);
 
   @override
@@ -48,16 +51,29 @@ class warn_api extends StatelessWidget {
                   height: 100,
                   child: ListView(
                     children: [
-                      SizedBox(height: 40),
+                      SizedBox(height: 30),
                       Center(
-                        child: Text(
-                          title,
-                          style: TextStyle(
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold,
-                            // backgroundColor: Colors.black45,
-                            color: ThemeBc.white,
-                          ),
+                        child: Column(
+                          children: [
+                            LocaleText(
+                              title,
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold,
+                                // backgroundColor: Colors.black45,
+                                color: ThemeBc.white,
+                              ),
+                            ),
+                            // LocaleText(
+                            //   title2,
+                            //   style: TextStyle(
+                            //     fontSize: 18.0,
+                            //     fontWeight: FontWeight.bold,
+                            //     // backgroundColor: Colors.black45,
+                            //     color: ThemeBc.white,
+                            //   ),
+                            // ),
+                          ],
                         ),
                       ),
                     ],

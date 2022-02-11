@@ -263,6 +263,7 @@ class _EmergecyPageState extends State<AppealPage>
             context: context,
             builder: (context) {
               return warn_api(
+                title2: '',
                 title: '${feedback['data']}',
               );
             },
@@ -272,6 +273,7 @@ class _EmergecyPageState extends State<AppealPage>
             context: context,
             builder: (context) {
               return warn_api(
+                title2: '',
                 title: 'ใส่ข้อมูลให้ครบถ้วน',
               );
             },
@@ -282,6 +284,7 @@ class _EmergecyPageState extends State<AppealPage>
           context: context,
           builder: (context) {
             return warn_api(
+              title2: '',
               title: 'ใส่ข้อมูลให้ครบถ้วน',
             );
           },

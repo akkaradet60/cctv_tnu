@@ -6,18 +6,18 @@ import 'package:flutter_locales/flutter_locales.dart';
 class MenusCustom extends StatelessWidget {
   final String iconMenus;
   final String titleMenus;
-  final String pathName;
+
   final String titleMenus1;
   final String titleMenus2;
   final int ss = 0;
-
+  final Function() pathName;
   MenusCustom({
     Key? key,
     required this.iconMenus,
     required this.titleMenus,
-    required this.pathName,
     required this.titleMenus1,
     required this.titleMenus2,
+    required this.pathName,
   }) : super(key: key);
 
   @override
@@ -25,7 +25,7 @@ class MenusCustom extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: 0, bottom: 0),
       child: InkWell(
-        onTap: () => Navigator.pushNamed(context, pathName),
+        onTap: pathName,
         child: Column(
           children: [
             Container(

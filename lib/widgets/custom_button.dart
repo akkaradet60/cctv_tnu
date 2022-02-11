@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 
 class CustomButton extends StatelessWidget {
   final String title;
@@ -27,7 +28,7 @@ class CustomButton extends StatelessWidget {
           child: Container(
             child: ElevatedButton(
               onPressed: onPressed,
-              child: Text(
+              child: LocaleText(
                 title,
                 style: textStyle,
               ),

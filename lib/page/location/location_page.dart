@@ -2,6 +2,7 @@ import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -97,7 +98,7 @@ class _location_page extends State<location_page> {
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
-        title: Center(child: Text('สถานที่ราชการ')),
+        title: Center(child: LocaleText('สถานที่ราชการ')),
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/logo.png', scale: 15),
@@ -254,100 +255,95 @@ class _location_page extends State<location_page> {
                       'เปิดวัน \n$travelt_mon  \n$travelt_tues  \n$travelt_wednes  \n$travelt_thurs \n$travelt_fri \n$travelt_sun \n$travelt_satur';
                 }
 
-                return Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Container(
-                      child: Column(
-                        // mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(height: 5),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: secondaryTextColor,
-                                borderRadius: BorderRadius.circular(
-                                  30,
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      offset: Offset(2, 2),
-                                      blurRadius: 7,
-                                      spreadRadius: 1.0),
-                                  BoxShadow(
-                                      color: Colors.black.withOpacity(0.5),
-                                      offset: Offset(2, 4),
-                                      blurRadius: 7.0,
-                                      spreadRadius: 1.0),
-                                ]),
-                            height: 80,
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(height: 10),
-                                      Text(
-                                        '${snapshot.data!['data'][index]['travel_name']}',
-                                        style: primaryTextStyle.copyWith(
-                                            fontSize: 18, fontWeight: medium),
-                                      ),
-                                    ],
-                                  ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        color: ThemeBc.black,
-                                        borderRadius: BorderRadius.circular(
-                                          30,
-                                        ),
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color:
-                                                  Colors.grey.withOpacity(0.5),
-                                              offset: Offset(2, 2),
-                                              blurRadius: 7,
-                                              spreadRadius: 1.0),
-                                          BoxShadow(
-                                              color:
-                                                  Colors.black.withOpacity(0.5),
-                                              offset: Offset(2, 4),
-                                              blurRadius: 7.0,
-                                              spreadRadius: 1.0),
-                                        ]),
-                                    child: IconButton(
-                                      icon: Icon(
-                                        Icons.maps_home_work,
-                                        color: ThemeBc.white,
-                                        size: 30,
-                                      ),
-                                      tooltip: 'Show Snackbar',
-                                      onPressed: () => Navigator.pushNamed(
-                                          context, '/maplocation_page',
-                                          arguments: {
-                                            'detail': detail,
-                                            'travelLat': snapshot.data!['data']
-                                                [index]['travel_lat'],
-                                            'travelLng': snapshot.data!['data']
-                                                [index]['travel_lng'],
-                                            'travelName': snapshot.data!['data']
-                                                [index]['travel_name'],
-                                            'travelDetail':
-                                                snapshot.data!['data'][index]
-                                                    ['travel_detail'],
-                                          }),
-                                    ),
-                                  ),
-                                ],
+                return Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Column(
+                      // mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(height: 5),
+                        Container(
+                          decoration: BoxDecoration(
+                              color: secondaryTextColor,
+                              borderRadius: BorderRadius.circular(
+                                30,
                               ),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    offset: Offset(2, 2),
+                                    blurRadius: 7,
+                                    spreadRadius: 1.0),
+                                BoxShadow(
+                                    color: Colors.black.withOpacity(0.5),
+                                    offset: Offset(2, 4),
+                                    blurRadius: 7.0,
+                                    spreadRadius: 1.0),
+                              ]),
+                          height: 80,
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(height: 10),
+                                    Text(
+                                      '${snapshot.data!['data'][index]['travel_name']}',
+                                      style: primaryTextStyle.copyWith(
+                                          fontSize: 18, fontWeight: medium),
+                                    ),
+                                  ],
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                      color: ThemeBc.black,
+                                      borderRadius: BorderRadius.circular(
+                                        30,
+                                      ),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Colors.grey.withOpacity(0.5),
+                                            offset: Offset(2, 2),
+                                            blurRadius: 7,
+                                            spreadRadius: 1.0),
+                                        BoxShadow(
+                                            color:
+                                                Colors.black.withOpacity(0.5),
+                                            offset: Offset(2, 4),
+                                            blurRadius: 7.0,
+                                            spreadRadius: 1.0),
+                                      ]),
+                                  child: IconButton(
+                                    icon: Icon(
+                                      Icons.maps_home_work,
+                                      color: ThemeBc.white,
+                                      size: 30,
+                                    ),
+                                    tooltip: 'Show Snackbar',
+                                    onPressed: () => Navigator.pushNamed(
+                                        context, '/maplocation_page',
+                                        arguments: {
+                                          'detail': detail,
+                                          'travelLat': snapshot.data!['data']
+                                              [index]['travel_lat'],
+                                          'travelLng': snapshot.data!['data']
+                                              [index]['travel_lng'],
+                                          'travelName': snapshot.data!['data']
+                                              [index]['travel_name'],
+                                          'travelDetail': snapshot.data!['data']
+                                              [index]['travel_detail'],
+                                        }),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 );

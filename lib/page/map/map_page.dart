@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
@@ -85,7 +86,7 @@ class _map_prod extends State<map_page> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Center(child: Text('pro')),
+                  Center(child: LocaleText('pro')),
                 ],
               ),
             ),

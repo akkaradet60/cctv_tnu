@@ -15,27 +15,23 @@ class productstore_page extends StatefulWidget {
 }
 
 class _productstore_page extends State<productstore_page> {
-  late Map<String, dynamic> imgSlide;
+  // Future<Map<String, dynamic>> getDataSlide() async {
+  //   var url = (Global.urlWeb +
+  //       'api/app/blog/restful/?blog_app_id=${Global.app_id}&blog_cat_id=1');
+  //   var response = await http.get(Uri.parse(url), headers: {
+  //     'Authorization':
+  //         'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
+  //   });
 
-  int _currentIndex = 0;
+  //   if (response.statusCode == 200) {
+  //     imgSlide = json.decode(response.body);
 
-  Future<Map<String, dynamic>> getDataSlide() async {
-    var url = (Global.urlWeb +
-        'api/app/blog/restful/?blog_app_id=${Global.app_id}&blog_cat_id=${Global.glog_catid}');
-    var response = await http.get(Uri.parse(url), headers: {
-      'Authorization':
-          'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
-    });
-
-    if (response.statusCode == 200) {
-      imgSlide = json.decode(response.body);
-
-      // print(imgSlide['data'].length);
-      return imgSlide;
-    } else {
-      throw Exception('$response.statusCode');
-    }
-  }
+  //     // print(imgSlide['data'].length);
+  //     return imgSlide;
+  //   } else {
+  //     throw Exception('$response.statusCode');
+  //   }
+  // }
 
   List<product> books = [];
   String query = '';
@@ -183,7 +179,9 @@ class _productstore_page extends State<productstore_page> {
                     Radius.circular(20.0),
                   ),
                   child: Image.network(
-                    Global.domainImagenew + productt.urlImage,
+                    Global.domainImage + productt.urlImage != null
+                        ? Global.domainImage + productt.urlImage
+                        : Global.domainImage,
                     fit: BoxFit.cover,
                     width: 210,
                     height: 230,

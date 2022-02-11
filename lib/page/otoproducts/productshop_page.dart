@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:http/http.dart' as http;
@@ -88,7 +89,7 @@ class _productshop_page extends State<productshop_page> {
           shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
-          title: Text('สินค้า'),
+          title: Center(child: LocaleText('สินค้า')),
           actions: <Widget>[
             IconButton(
               icon: Image.asset('assets/logo.png', scale: 15),
@@ -271,8 +272,18 @@ class _productshop_page extends State<productshop_page> {
                                               size: 40,
                                               color: ThemeBc.white,
                                             ),
+                                            SizedBox(width: 10),
+                                            LocaleText(
+                                              'ชื่อสินค้า',
+                                              style: TextStyle(
+                                                fontSize: 15.0,
+                                                fontWeight: FontWeight.bold,
+                                                // backgroundColor: Colors.black45,
+                                                color: ThemeBc.white,
+                                              ),
+                                            ),
                                             Text(
-                                              '           ชื่อสินค้า :  ${productt['productName']}',
+                                              ' :  ${productt['productName']}',
                                               style: TextStyle(
                                                 fontSize: 15.0,
                                                 fontWeight: FontWeight.bold,
@@ -286,26 +297,31 @@ class _productshop_page extends State<productshop_page> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Icon(
-                                              Icons.shopping_cart_rounded,
-                                              size: 40,
-                                              color: ThemeBc.white,
-                                            ),
-                                            Text(
-                                              'ศูนย์แสดงสินค้าโอทอป',
-                                              style: TextStyle(
-                                                fontSize: 15.0,
-                                                fontWeight: FontWeight.bold,
-                                                // backgroundColor: Colors.black45,
-                                                color: ThemeBc.text,
-                                              ),
+                                            Row(
+                                              children: [
+                                                Icon(
+                                                  Icons.shopping_cart_rounded,
+                                                  size: 40,
+                                                  color: ThemeBc.white,
+                                                ),
+                                                SizedBox(width: 10),
+                                                LocaleText(
+                                                  'ศูนย์แสดงสินค้าโอทอป',
+                                                  style: TextStyle(
+                                                    fontSize: 15.0,
+                                                    fontWeight: FontWeight.bold,
+                                                    // backgroundColor: Colors.black45,
+                                                    color: ThemeBc.text,
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                             ElevatedButton(
                                               style: ElevatedButton.styleFrom(
                                                 primary: ThemeBc.white,
                                                 onPrimary: ThemeBc.white,
                                               ),
-                                              child: Text(
+                                              child: LocaleText(
                                                 'ดูร้านค้า',
                                                 style: TextStyle(
                                                   fontSize: 15.0,
@@ -321,13 +337,30 @@ class _productshop_page extends State<productshop_page> {
                                           ],
                                         ),
                                         SizedBox(height: 18),
-                                        Text(
-                                          ' $_product : บาท',
-                                          style: TextStyle(
-                                            fontSize: 25.0,
-                                            fontWeight: FontWeight.bold,
-                                            // backgroundColor: Colors.black45,
-                                            color: ThemeBc.white,
+                                        Container(
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                ' $_product : ',
+                                                style: TextStyle(
+                                                  fontSize: 25.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  // backgroundColor: Colors.black45,
+                                                  color: ThemeBc.white,
+                                                ),
+                                              ),
+                                              LocaleText(
+                                                'บาท',
+                                                style: TextStyle(
+                                                  fontSize: 25.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  // backgroundColor: Colors.black45,
+                                                  color: ThemeBc.white,
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ],
@@ -486,7 +519,7 @@ class _productshop_page extends State<productshop_page> {
                                                     shape: CircleBorder(),
                                                     // elevation: 100,
                                                     content: Container(
-                                                      height: 200,
+                                                      height: 230,
                                                       width: 400,
                                                       decoration: BoxDecoration(
                                                           color: ThemeBc
@@ -530,19 +563,71 @@ class _productshop_page extends State<productshop_page> {
                                                                     const EdgeInsets
                                                                             .all(
                                                                         8.0),
-                                                                child: Text(
-                                                                  'ชื้อสินค้า :${productt['productName']} \nจำนวน : ${_counter}',
-                                                                  style:
-                                                                      TextStyle(
-                                                                    fontSize:
-                                                                        20.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
-                                                                    // backgroundColor: Colors.black45,
-                                                                    color: ThemeBc
-                                                                        .white,
-                                                                  ),
+                                                                child: Row(
+                                                                  children: [
+                                                                    LocaleText(
+                                                                      'ชื่อสินค้า',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontSize:
+                                                                            20.0,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        // backgroundColor: Colors.black45,
+                                                                        color: ThemeBc
+                                                                            .white,
+                                                                      ),
+                                                                    ),
+                                                                    Text(
+                                                                      ' : ${productt['productName']}',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontSize:
+                                                                            20.0,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        // backgroundColor: Colors.black45,
+                                                                        color: ThemeBc
+                                                                            .white,
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        8.0),
+                                                                child: Row(
+                                                                  children: [
+                                                                    LocaleText(
+                                                                      'จำนวน',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontSize:
+                                                                            20.0,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        // backgroundColor: Colors.black45,
+                                                                        color: ThemeBc
+                                                                            .white,
+                                                                      ),
+                                                                    ),
+                                                                    Text(
+                                                                      ' : ${_counter}',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontSize:
+                                                                            20.0,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        // backgroundColor: Colors.black45,
+                                                                        color: ThemeBc
+                                                                            .white,
+                                                                      ),
+                                                                    ),
+                                                                  ],
                                                                 ),
                                                               ),
                                                             ],
@@ -587,19 +672,48 @@ class _productshop_page extends State<productshop_page> {
                                                                       const EdgeInsets
                                                                               .all(
                                                                           8.0),
-                                                                  child: Text(
-                                                                    'ราคา $_product : บาท',
-                                                                    style:
-                                                                        TextStyle(
-                                                                      fontSize:
-                                                                          20.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      // backgroundColor: Colors.black45,
-                                                                      color: ThemeBc
-                                                                          .black,
-                                                                    ),
+                                                                  child: Row(
+                                                                    children: [
+                                                                      LocaleText(
+                                                                        'ราคา',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              20.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          // backgroundColor: Colors.black45,
+                                                                          color:
+                                                                              ThemeBc.black,
+                                                                        ),
+                                                                      ),
+                                                                      Text(
+                                                                        ' $_product : ',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              20.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          // backgroundColor: Colors.black45,
+                                                                          color:
+                                                                              ThemeBc.black,
+                                                                        ),
+                                                                      ),
+                                                                      LocaleText(
+                                                                        'บาท',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              20.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          // backgroundColor: Colors.black45,
+                                                                          color:
+                                                                              ThemeBc.black,
+                                                                        ),
+                                                                      ),
+                                                                    ],
                                                                   ),
                                                                 ),
                                                               ),
@@ -652,7 +766,7 @@ class _productshop_page extends State<productshop_page> {
                                                                     child:
                                                                         Center(
                                                                       child:
-                                                                          Text(
+                                                                          LocaleText(
                                                                         'ชื้อ',
                                                                         style:
                                                                             TextStyle(
@@ -705,7 +819,7 @@ class _productshop_page extends State<productshop_page> {
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
                                                 children: [
-                                                  Text(
+                                                  LocaleText(
                                                     'ชื้อ',
                                                     style: TextStyle(
                                                       fontSize: 20.0,
@@ -751,11 +865,21 @@ class _productshop_page extends State<productshop_page> {
                                       width: 350,
                                       child: Padding(
                                         padding: EdgeInsets.all(8.0),
-                                        child: Text(
-                                          '   รายละเอียดสินค้า : ${productt['product_detail']} ',
-                                          style: primaryTextStyle.copyWith(
-                                            fontSize: 15,
-                                          ),
+                                        child: Row(
+                                          children: [
+                                            LocaleText(
+                                              'รายละเอียดสินค้า',
+                                              style: primaryTextStyle.copyWith(
+                                                fontSize: 15,
+                                              ),
+                                            ),
+                                            Text(
+                                              ' : ${productt['product_detail']} ',
+                                              style: primaryTextStyle.copyWith(
+                                                fontSize: 15,
+                                              ),
+                                            ),
+                                          ],
                                         ), //product_detail
                                       ),
                                     ),

@@ -8,6 +8,8 @@ import 'package:cctv_tun/page/compose/composedetail_page.dart';
 import 'package:cctv_tun/page/home/home_page.dart';
 import 'package:cctv_tun/page/hotline/hotlinee_page.dart';
 import 'package:cctv_tun/page/location/location_page.dart';
+import 'package:cctv_tun/page/login/facebook_login.dart';
+import 'package:cctv_tun/page/login/forgot_password.dart';
 
 import 'package:cctv_tun/page/login/login.page.dart';
 import 'package:cctv_tun/page/login/register_page.dart';
@@ -126,6 +128,8 @@ class MyApp extends StatelessWidget {
             '/settingpolicy': (context) => settingpolicy(),
             // '/EmergecyPage': (context) => EmergecyPage(),
             '/AppealPage': (context) => AppealPage(),
+            '/facebook_login': (context) => facebook_login(),
+            '/forgot_password': (context) => forgot_password(),
             //   '/messagem2': (context) => messagem2()
           },
         ),

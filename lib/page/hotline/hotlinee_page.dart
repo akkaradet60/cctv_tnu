@@ -2,6 +2,7 @@ import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 import 'package:http/http.dart' as http;
@@ -78,7 +79,7 @@ class _hotlinee_pageState extends State<hotlinee_page> {
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
-        title: Center(child: Text('สายด่วน')),
+        title: Center(child: LocaleText('สายด่วน')),
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/logo.png', scale: 15),
@@ -191,6 +192,7 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                           child: Padding(
                             padding: const EdgeInsets.all(5.0),
                             child: Container(
+                              padding: EdgeInsets.symmetric(horizontal: 15),
                               child: Column(
                                 // mainAxisAlignment: MainAxisAlignment.center,
                                 children: [

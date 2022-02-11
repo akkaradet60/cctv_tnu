@@ -5,6 +5,7 @@ import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:cctv_tun/page/menu/manu.dart';
+import 'package:cctv_tun/widgets/warn_api.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -466,21 +467,54 @@ class _home_pageState extends State<home_page> {
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_1.png',
                       titleMenus: 'แจ้งเหตุฉุกเฉิน',
-                      pathName: '/warn_page',
+                      pathName: () {
+                        if (Global.user_id == '111') {
+                          return showDialog(
+                            context: context,
+                            builder: (context) {
+                              return warn_api(
+                                title2: '',
+                                title: 'ถ้าต้องเป็นสมาชิกก่อน',
+                              );
+                            },
+                          );
+                        } else {
+                          Navigator.pushNamed(context, '/warn_page');
+                        }
+                      },
+                      // '/warn_page',
                       titleMenus1: '',
                       titleMenus2: '',
                     ),
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_2.png',
                       titleMenus: 'ร้องเรียน',
-                      pathName: '/compose_page',
+                      pathName: () {
+                        if (Global.user_id == '111') {
+                          return showDialog(
+                            context: context,
+                            builder: (context) {
+                              return warn_api(
+                                title2: '',
+                                title: 'ถ้าต้องเป็นสมาชิกก่อน',
+                              );
+                            },
+                          );
+                        } else {
+                          Navigator.pushNamed(context, '/compose_page');
+                        }
+                      },
+                      // '/compose_page',
                       titleMenus1: '',
                       titleMenus2: '',
                     ),
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_3.png',
                       titleMenus: 'สายด่วน',
-                      pathName: '/hotlinee_page',
+                      pathName: () {
+                        Navigator.pushNamed(context, '/hotlinee_page');
+                      },
+                      // '/hotlinee_page',
                       titleMenus1: '',
                       titleMenus2: '',
                     ),
@@ -493,21 +527,30 @@ class _home_pageState extends State<home_page> {
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_4.png',
                       titleMenus: 'ข่าวสาร',
-                      pathName: '/message_page',
+                      pathName: () {
+                        Navigator.pushNamed(context, '/message_page');
+                      },
+                      // '/message_page',
                       titleMenus1: '',
                       titleMenus2: '',
                     ),
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_5.png',
                       titleMenus: 'การฝึกอบรม',
-                      pathName: '/trainingcalendar_page',
+                      pathName: () {
+                        Navigator.pushNamed(context, '/trainingcalendar_page');
+                      },
+                      // '/trainingcalendar_page',
                       titleMenus1: '',
                       titleMenus2: '',
                     ),
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_6.png',
                       titleMenus: 'โทรทัศน์วงจรปิด',
-                      pathName: '/AppealPage',
+                      pathName: () {
+                        Navigator.pushNamed(context, '/cctv_page');
+                      },
+                      // '/AppealPage',
                       titleMenus2: '',
                       titleMenus1: '',
                     ),
@@ -532,21 +575,30 @@ class _home_pageState extends State<home_page> {
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_7.png',
                       titleMenus: 'รางวัล',
-                      pathName: '/award_page',
+                      pathName: () {
+                        Navigator.pushNamed(context, '/award_page');
+                      },
+                      // Navigator.pushNamed(context, '/award_page'),
                       titleMenus1: '',
                       titleMenus2: '',
                     ),
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_10.png',
                       titleMenus: 'ท่องเที่ยว',
-                      pathName: '/travel_page',
+                      pathName: () {
+                        Navigator.pushNamed(context, '/travel_page');
+                      },
+                      // pathName: '/travel_page',
                       titleMenus1: '',
                       titleMenus2: '',
                     ),
                     MenusCustom(
                       iconMenus: 'assets/homepage/icon_9.png',
                       titleMenus: 'คู่มือการใช้งาน',
-                      pathName: '/Manual_page',
+                      pathName: () {
+                        Navigator.pushNamed(context, '/Manual_page');
+                      },
+                      // pathName: '/Manual_page',
                       titleMenus1: '',
                       titleMenus2: '',
                     ),
@@ -560,7 +612,10 @@ class _home_pageState extends State<home_page> {
                   MenusCustom(
                     iconMenus: 'assets/homepage/icon_11.png',
                     titleMenus: 'สินค้าโอทอป',
-                    pathName: '/productshome_page',
+                    pathName: () {
+                      Navigator.pushNamed(context, '/productshome_page');
+                    },
+                    // pathName: '/productshome_page',
                     titleMenus1: '',
                     titleMenus2: '',
                   ),
@@ -568,7 +623,10 @@ class _home_pageState extends State<home_page> {
                   MenusCustom(
                     iconMenus: 'assets/homepage/icon_12.png',
                     titleMenus: 'สถานที่ราชการ',
-                    pathName: '/location_page',
+                    pathName: () {
+                      Navigator.pushNamed(context, '/location_page');
+                    },
+                    // pathName: '/location_page',
                     titleMenus1: '',
                     titleMenus2: '',
                   ),

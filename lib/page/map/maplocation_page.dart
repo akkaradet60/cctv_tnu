@@ -88,9 +88,10 @@ class _maplocation_page extends State<maplocation_page> {
         title: Container(
           height: 50,
           width: 300,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
+          child: Column(
+            // scrollDirection: Axis.horizontal,
             children: [
+              SizedBox(height: 10),
               Center(child: Text('${hotlinee['travelName']}')),
             ],
           ),

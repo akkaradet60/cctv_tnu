@@ -2,6 +2,7 @@ import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:http/http.dart' as http;
@@ -70,25 +71,25 @@ class _RegisterPageState extends State<register_page> {
         //    Navigator.pop(context, '/login');
         // });
       } else {
-        Alert(
-          context: context,
-          type: AlertType.warning,
-          // title: "แจ้งเตือน",
-          desc: '${feedback['data']}',
-          buttons: [
-            DialogButton(
-              child: Text(
-                "ปิด",
-                style: TextStyle(color: ThemeBc.white, fontSize: 18),
-              ),
-              onPressed: () => Navigator.pop(context),
-              gradient: LinearGradient(colors: [
-                Color.fromRGBO(116, 116, 191, 1.0),
-                Color.fromRGBO(52, 138, 199, 1.0),
-              ]),
-            )
-          ],
-        ).show();
+        // Alert(
+        //   context: context,
+        //   type: AlertType.warning,
+        //   // title: "แจ้งเตือน",
+        //   desc: '${feedback['data']}',
+        //   buttons: [
+        //     DialogButton(
+        //       child: Text(
+        //         "ปิด",
+        //         style: TextStyle(color: ThemeBc.white, fontSize: 18),
+        //       ),
+        //       onPressed: () => Navigator.pop(context),
+        //       gradient: LinearGradient(colors: [
+        //         Color.fromRGBO(116, 116, 191, 1.0),
+        //         Color.fromRGBO(52, 138, 199, 1.0),
+        //       ]),
+        //     )
+        //   ],
+        // ).show();
       }
     } catch (e) {
       // print(e);
@@ -115,7 +116,7 @@ class _RegisterPageState extends State<register_page> {
             padding: EdgeInsets.all(30),
             child: Column(
               children: [
-                Text('ลงทะเบียน', style: TextStyle(fontSize: 40)),
+                LocaleText('ลงทะเบียน', style: TextStyle(fontSize: 40)),
                 SizedBox(height: 40),
                 FormBuilder(
                   key: _fbKey,
@@ -368,10 +369,10 @@ class _RegisterPageState extends State<register_page> {
                   children: <Widget>[
                     Container(
                       width: 200,
-                      height: 60,
+                      height: 50,
                       child: Expanded(
                         child: ElevatedButton.icon(
-                          label: Text('ลงทะเบียน'),
+                          label: LocaleText('ลงทะเบียน'),
                           icon: Icon(Icons.login_rounded),
                           style: ElevatedButton.styleFrom(
                             primary: ThemeBc.background,
@@ -380,7 +381,7 @@ class _RegisterPageState extends State<register_page> {
                             padding: EdgeInsets.all(15),
                             shape: RoundedRectangleBorder(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
+                                    BorderRadius.all(Radius.circular(30))),
                             // shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                           ),
                           onPressed: () {
@@ -394,7 +395,7 @@ class _RegisterPageState extends State<register_page> {
                     ),
                     Expanded(
                       child: FlatButton(
-                        child: Text("ย้อนกลับ",
+                        child: LocaleText("ย้อนกลับ",
                             style: TextStyle(
                                 decoration: TextDecoration.underline)),
                         textColor: ThemeBc.background,

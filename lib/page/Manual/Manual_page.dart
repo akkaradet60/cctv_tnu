@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:cctv_tun/page/global/global.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:http/http.dart' as http;
@@ -85,7 +86,7 @@ class _manual_pageState extends State<manual_page> {
           shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
-          title: Center(child: const Text('คู่มือการใช้งาน')),
+          title: Center(child: const LocaleText('คู่มือการใช้งาน')),
           actions: <Widget>[
             IconButton(
               icon: Image.asset('assets/logo.png', scale: 15),

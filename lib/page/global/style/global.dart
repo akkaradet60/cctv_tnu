@@ -26,25 +26,25 @@ TextTheme defaultText = TextTheme(
     headline1: GoogleFonts.nunito(
   fontWeight: FontWeight.bold,
 ));
-loading() {
-  return Container(
-    child: Center(
-      child: Column(children: [
-        SizedBox(
-          height: 10,
-        ),
-        CircularProgressIndicator(),
-        SizedBox(
-          height: 10,
-        ),
-        Text(
-          "กำลังโหลด...",
-          style: TextStyle(color: ThemeBc.white),
-        )
-      ]),
-    ),
-  );
-}
+// loading() {
+//   return Container(
+//     child: Center(
+//       child: Column(children: [
+//         SizedBox(
+//           height: 10,
+//         ),
+//         CircularProgressIndicator(),
+//         SizedBox(
+//           height: 10,
+//         ),
+//         Text(
+//           "กำลังโหลด...",
+//           style: TextStyle(color: ThemeBc.white),
+//         )
+//       ]),
+//     ),
+//   );
+// }
 // TextStyle primaryTextStyle = GoogleFonts.poppins(
 //   color: primaryTextColor,
 // );

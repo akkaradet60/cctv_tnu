@@ -19,9 +19,9 @@ import 'dart:convert';
 //upload image
 import 'package:image_picker/image_picker.dart';
 
-class settingprofile extends StatefulWidget {
+class facebook_login extends StatefulWidget {
   @override
-  _settingprofile createState() => _settingprofile();
+  _facebook_login createState() => _facebook_login();
 }
 
 class ApiImage {
@@ -33,12 +33,12 @@ class ApiImage {
   });
 }
 
-class _settingprofile extends State<settingprofile>
+class _facebook_login extends State<facebook_login>
     with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _getProv();
+    // _getProv();
   }
 
   var newProfile;
@@ -89,59 +89,12 @@ class _settingprofile extends State<settingprofile>
                           return Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Container(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    selectedImage == null
-                                        ? Container(
-                                            child: profile['user_image'] != null
-                                                ? Image.network(
-                                                    Global.urlFile2 +
-                                                        profile['user_image'],
-                                                    width: 200,
-                                                    height: 200,
-                                                    fit: BoxFit.fill)
-                                                : Image.network(Global.urlFile2,
-                                                    width: 200,
-                                                    height: 200,
-                                                    fit: BoxFit.fill),
-                                          )
-                                        : Container(
-                                            decoration: BoxDecoration(
-                                                color: ThemeBc.black,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                  20,
-                                                ),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                      color: Colors.black
-                                                          .withOpacity(0.5),
-                                                      offset: Offset(2, 2),
-                                                      blurRadius: 7,
-                                                      spreadRadius: 1.0),
-                                                  BoxShadow(
-                                                      color: Colors.black
-                                                          .withOpacity(0.5),
-                                                      offset: Offset(2, 4),
-                                                      blurRadius: 7.0,
-                                                      spreadRadius: 1.0),
-                                                ]),
-                                            child: Image.file(selectedImage!,
-                                                width: 200,
-                                                height: 200,
-                                                fit: BoxFit.fill),
-                                          ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(height: 20),
-                              FloatingActionButton(
-                                onPressed: getImage,
-                                tooltip: 'Increment',
-                                child: Icon(Icons.add_a_photo),
-                              ),
+                              // const SizedBox(height: 20),
+                              // FloatingActionButton(
+                              //   onPressed: getImage,
+                              //   tooltip: 'Increment',
+                              //   child: Icon(Icons.add_a_photo),
+                              // ),
                               const SizedBox(height: 20),
                               Container(
                                 decoration: BoxDecoration(
@@ -174,8 +127,8 @@ class _settingprofile extends State<settingprofile>
                                         ]),
 
                                     child: FormBuilderTextField(
-                                      initialValue:
-                                          '${profile['user_firstname']}',
+                                      // initialValue:
+                                      //     '${profile['user_firstname']}',
                                       name: "user_firstname",
                                       maxLines: 1,
                                       keyboardType: TextInputType.emailAddress,
@@ -212,8 +165,8 @@ class _settingprofile extends State<settingprofile>
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
                                     child: FormBuilderTextField(
-                                      initialValue:
-                                          '${profile['user_lastname']}',
+                                      // initialValue:
+                                      //     '${profile['user_lastname']}',
                                       name: "user_lastname",
                                       maxLines: 1,
                                       keyboardType: TextInputType.emailAddress,
@@ -250,8 +203,8 @@ class _settingprofile extends State<settingprofile>
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
                                     child: FormBuilderTextField(
-                                      initialValue:
-                                          '${profile['user_card_id']}',
+                                      // initialValue:
+                                      //     '${profile['user_card_id']}',
                                       name: "user_card_id",
                                       maxLines: 1,
                                       keyboardType: TextInputType.emailAddress,
@@ -288,7 +241,7 @@ class _settingprofile extends State<settingprofile>
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
                                     child: FormBuilderTextField(
-                                      initialValue: '${profile['user_email']}',
+                                      // initialValue: '${profile['user_email']}',
                                       name: "user_email",
                                       maxLines: 1,
                                       keyboardType: TextInputType.emailAddress,
@@ -307,182 +260,182 @@ class _settingprofile extends State<settingprofile>
                                   ),
                                 ), //รายละเอียดเหตุการณ์
                               ),
-                              const SizedBox(height: 10),
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: ThemeBc.white,
-                                    borderRadius: BorderRadius.circular(
-                                      20,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: ThemeBc.black,
-                                          offset: Offset(2, 2),
-                                          blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                    ]),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: FormBuilderDropdown(
-                                    name: 'user_prov',
-                                    initialValue: _myState,
-                                    // initialValue: _myState != null
-                                    //     ? _myState
-                                    //     : profile['user_prov'] != '0' &&
-                                    //             profile['user_prov'] != null
-                                    //         ? profile['user_prov']
-                                    //         : _myState,
-                                    decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(
-                                          20.0,
-                                        ),
-                                      ),
-                                      suffixIcon: Icon(Icons.description),
-                                      labelText: 'เลือกจังหวัด',
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                    ),
-                                    allowClear: true,
-                                    hint: profile['user_prov'] != null
-                                        ? Text(profile['prov'])
-                                        : Text('เลือกจังหวัด'),
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _myState = value as String?;
-                                        disList = [];
-                                        _myDis = null;
+                              // const SizedBox(height: 10),
+                              // Container(
+                              //   decoration: BoxDecoration(
+                              //       color: ThemeBc.white,
+                              //       borderRadius: BorderRadius.circular(
+                              //         20,
+                              //       ),
+                              //       boxShadow: [
+                              //         BoxShadow(
+                              //             color: ThemeBc.black,
+                              //             offset: Offset(2, 2),
+                              //             blurRadius: 7,
+                              //             spreadRadius: 1.0),
+                              //       ]),
+                              //   child: Padding(
+                              //     padding: const EdgeInsets.all(8.0),
+                              //     child: FormBuilderDropdown(
+                              //       name: 'user_prov',
+                              //       initialValue: _myState,
+                              //       // initialValue: _myState != null
+                              //       //     ? _myState
+                              //       //     : profile['user_prov'] != '0' &&
+                              //       //             profile['user_prov'] != null
+                              //       //         ? profile['user_prov']
+                              //       //         : _myState,
+                              //       decoration: InputDecoration(
+                              //         border: OutlineInputBorder(
+                              //           borderRadius: BorderRadius.circular(
+                              //             20.0,
+                              //           ),
+                              //         ),
+                              //         suffixIcon: Icon(Icons.description),
+                              //         labelText: 'เลือกจังหวัด',
+                              //         fillColor: Colors.white,
+                              //         filled: true,
+                              //       ),
+                              //       allowClear: true,
+                              //       hint: profile['user_prov'] != null
+                              //           ? Text(profile['prov'])
+                              //           : Text('เลือกจังหวัด'),
+                              //       onChanged: (value) {
+                              //         setState(() {
+                              //           _myState = value as String?;
+                              //           disList = [];
+                              //           _myDis = null;
 
-                                        subList = [];
-                                        _mySub = null;
+                              //           subList = [];
+                              //           _mySub = null;
 
-                                        _getDis();
-                                      });
-                                    },
-                                    items: statesList.map((item) {
-                                      return new DropdownMenuItem(
-                                        // value: '1', child: Text('ผู้ป่วยฉุกเฉิน')
-                                        child: new Text(item['name_th']),
-                                        value: item['id'].toString(),
-                                      );
-                                    }).toList(),
-                                  ),
-                                ),
-                              ),
+                              //           _getDis();
+                              //         });
+                              //       },
+                              //       items: statesList.map((item) {
+                              //         return new DropdownMenuItem(
+                              //           // value: '1', child: Text('ผู้ป่วยฉุกเฉิน')
+                              //           child: new Text(item['name_th']),
+                              //           value: item['id'].toString(),
+                              //         );
+                              //       }).toList(),
+                              //     ),
+                              //   ),
+                              // ),
+                              // const SizedBox(height: 10),
+                              // Container(
+                              //   decoration: BoxDecoration(
+                              //       color: ThemeBc.white,
+                              //       borderRadius: BorderRadius.circular(
+                              //         20,
+                              //       ),
+                              //       boxShadow: [
+                              //         BoxShadow(
+                              //             color: ThemeBc.black,
+                              //             offset: Offset(2, 2),
+                              //             blurRadius: 7,
+                              //             spreadRadius: 1.0),
+                              //       ]),
+                              //   child: Padding(
+                              //     padding: const EdgeInsets.all(8.0),
+                              //     child: FormBuilderDropdown(
+                              //       name: 'user_dis',
+                              //       initialValue: _myDis,
+                              //       // = null
+                              //       //     ? _myDis
+                              //       //     : profile['user_dis'] != '0' &&
+                              //       //             profile['user_dis'] != null
+                              //       //         ? profile['user_dis'].toString()
+                              //       //         : _myDis,
+                              //       decoration: InputDecoration(
+                              //         border: OutlineInputBorder(
+                              //           borderRadius: BorderRadius.circular(
+                              //             20.0,
+                              //           ),
+                              //         ),
+                              //         suffixIcon: Icon(Icons.description),
+                              //         labelText: 'เลือกอำเภอ',
+                              //         fillColor: Colors.white,
+                              //         filled: true,
+                              //       ),
+                              //       allowClear: true,
+                              //       hint: profile['user_dis'] != null
+                              //           ? Text(profile['dis'])
+                              //           : Text('เลือกอำเภอ'),
+                              //       onChanged: (value) {
+                              //         setState(() {
+                              //           _myDis = value as String?;
+                              //           subList = [];
+                              //           _mySub = null;
+                              //           _getSub();
+                              //         });
+                              //       },
+                              //       items: disList.map((item) {
+                              //         return new DropdownMenuItem(
+                              //           // value: '1', child: Text('ผู้ป่วยฉุกเฉิน')
+                              //           child: new Text(item['name_th']),
+                              //           value: item['id'].toString(),
+                              //         );
+                              //       }).toList(),
+                              //     ),
+                              //   ),
+                              // ),
                               const SizedBox(height: 10),
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: ThemeBc.white,
-                                    borderRadius: BorderRadius.circular(
-                                      20,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: ThemeBc.black,
-                                          offset: Offset(2, 2),
-                                          blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                    ]),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: FormBuilderDropdown(
-                                    name: 'user_dis',
-                                    initialValue: _myDis,
-                                    // = null
-                                    //     ? _myDis
-                                    //     : profile['user_dis'] != '0' &&
-                                    //             profile['user_dis'] != null
-                                    //         ? profile['user_dis'].toString()
-                                    //         : _myDis,
-                                    decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(
-                                          20.0,
-                                        ),
-                                      ),
-                                      suffixIcon: Icon(Icons.description),
-                                      labelText: 'เลือกอำเภอ',
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                    ),
-                                    allowClear: true,
-                                    hint: profile['user_dis'] != null
-                                        ? Text(profile['dis'])
-                                        : Text('เลือกอำเภอ'),
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _myDis = value as String?;
-                                        subList = [];
-                                        _mySub = null;
-                                        _getSub();
-                                      });
-                                    },
-                                    items: disList.map((item) {
-                                      return new DropdownMenuItem(
-                                        // value: '1', child: Text('ผู้ป่วยฉุกเฉิน')
-                                        child: new Text(item['name_th']),
-                                        value: item['id'].toString(),
-                                      );
-                                    }).toList(),
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 10),
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: ThemeBc.white,
-                                    borderRadius: BorderRadius.circular(
-                                      20,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: ThemeBc.black,
-                                          offset: Offset(2, 2),
-                                          blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                    ]),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: FormBuilderDropdown(
-                                    name: 'user_sub',
-                                    initialValue: _mySub,
-                                    // = null && _mySub == ''
-                                    //     ? _mySub
-                                    //     : profile['user_sub'] != '0' &&
-                                    //             profile['user_sub'] != null
-                                    //         ? profile['user_sub'].toString()
-                                    //         : _mySub,
-                                    decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(
-                                          20.0,
-                                        ),
-                                      ),
-                                      suffixIcon: Icon(Icons.description),
-                                      labelText: 'เลือกตำบล',
-                                      fillColor: Colors.white,
-                                      filled: true,
-                                    ),
-                                    allowClear: true,
-                                    hint: profile['user_sub'] != null
-                                        ? Text(profile['sub'])
-                                        : Text('เลือกตำบล'),
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _mySub = value as String?;
-                                        zip_code = null;
-                                        _getZipCode();
-                                      });
-                                    },
-                                    items: subList.map((item) {
-                                      return new DropdownMenuItem(
-                                        child: new Text(item['name_th']),
-                                        value: item['id'].toString(),
-                                      );
-                                    }).toList(),
-                                  ),
-                                ),
-                              ),
+                              // Container(
+                              //   decoration: BoxDecoration(
+                              //       color: ThemeBc.white,
+                              //       borderRadius: BorderRadius.circular(
+                              //         20,
+                              //       ),
+                              //       boxShadow: [
+                              //         BoxShadow(
+                              //             color: ThemeBc.black,
+                              //             offset: Offset(2, 2),
+                              //             blurRadius: 7,
+                              //             spreadRadius: 1.0),
+                              //       ]),
+                              //   child: Padding(
+                              //     padding: const EdgeInsets.all(8.0),
+                              //     child: FormBuilderDropdown(
+                              //       name: 'user_sub',
+                              //       initialValue: _mySub,
+                              //       // = null && _mySub == ''
+                              //       //     ? _mySub
+                              //       //     : profile['user_sub'] != '0' &&
+                              //       //             profile['user_sub'] != null
+                              //       //         ? profile['user_sub'].toString()
+                              //       //         : _mySub,
+                              //       decoration: InputDecoration(
+                              //         border: OutlineInputBorder(
+                              //           borderRadius: BorderRadius.circular(
+                              //             20.0,
+                              //           ),
+                              //         ),
+                              //         suffixIcon: Icon(Icons.description),
+                              //         labelText: 'เลือกตำบล',
+                              //         fillColor: Colors.white,
+                              //         filled: true,
+                              //       ),
+                              //       allowClear: true,
+                              //       hint: profile['user_sub'] != null
+                              //           ? Text(profile['sub'])
+                              //           : Text('เลือกตำบล'),
+                              //       onChanged: (value) {
+                              //         setState(() {
+                              //           _mySub = value as String?;
+                              //           zip_code = null;
+                              //           _getZipCode();
+                              //         });
+                              //       },
+                              //       items: subList.map((item) {
+                              //         return new DropdownMenuItem(
+                              //           child: new Text(item['name_th']),
+                              //           value: item['id'].toString(),
+                              //         );
+                              //       }).toList(),
+                              //     ),
+                              //   ),
+                              // ),
                               const SizedBox(height: 10),
                               Container(
                                 decoration: BoxDecoration(
@@ -501,8 +454,8 @@ class _settingprofile extends State<settingprofile>
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
                                     child: FormBuilderTextField(
-                                      initialValue:
-                                          '${profile['user_address']}',
+                                      // initialValue:
+                                      //     '${profile['user_address']}',
                                       name: "user_address",
                                       maxLines: 1,
                                       keyboardType: TextInputType.emailAddress,
@@ -539,14 +492,14 @@ class _settingprofile extends State<settingprofile>
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
                                     child: FormBuilderTextField(
-                                      initialValue: zip_code != null
-                                          ? zip_code
-                                          : profile['user_zip_code'] != '0' &&
-                                                  profile['user_zip_code'] !=
-                                                      null
-                                              ? profile['user_zip_code']
-                                                  .toString()
-                                              : zip_code,
+                                      // initialValue: zip_code != null
+                                      //     ? zip_code
+                                      //     : profile['user_zip_code'] != '0' &&
+                                      //             profile['user_zip_code'] !=
+                                      //                 null
+                                      //         ? profile['user_zip_code']
+                                      //             .toString()
+                                      //         : zip_code,
                                       name: "user_zip_code",
                                       maxLines: 1,
                                       keyboardType: TextInputType.emailAddress,
@@ -566,45 +519,66 @@ class _settingprofile extends State<settingprofile>
                                 ), //รายละเอียดเหตุการณ์
                               ),
                               SizedBox(height: 15),
-                              Container(
-                                width: 390,
-                                height: 60,
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: defaultMargin),
-                                color: Colors.transparent,
-                                child: Container(
-                                  child: ElevatedButton.icon(
-                                    onPressed: () {
-                                      if (_fbKey.currentState!
-                                          .saveAndValidate()) {
-                                        // print(_fbKey.currentState.value);
-                                        updataUser(_fbKey.currentState!.value);
-                                      }
-                                    },
-                                    icon: Icon(
-                                      Icons.description,
-                                      color: ThemeBc.black,
-                                    ),
-                                    label: Text(
-                                      'แก้ไขข้อมูล',
-                                      style: TextStyle(
-                                        fontSize: 20.0,
-                                        fontWeight: FontWeight.bold,
-                                        // backgroundColor: Colors.black45,
-                                        color: ThemeBc.black,
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Container(
+                                    width: 200,
+                                    height: 50,
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: defaultMargin),
+                                    color: Colors.transparent,
+                                    child: Container(
+                                      child: ElevatedButton.icon(
+                                        onPressed: () {
+                                          if (_fbKey.currentState!
+                                              .saveAndValidate()) {
+                                            // print(_fbKey.currentState.value);
+                                            updataUser(
+                                                _fbKey.currentState!.value);
+                                          }
+                                        },
+                                        icon: Icon(
+                                          Icons.description,
+                                          color: ThemeBc.black,
+                                        ),
+                                        label: Text(
+                                          'บันทึก',
+                                          style: TextStyle(
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.bold,
+                                            // backgroundColor: Colors.black45,
+                                            color: ThemeBc.black,
+                                          ),
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                          primary: ThemeBc.white,
+                                          onPrimary: Colors.white,
+                                          shadowColor: Colors.grey[700],
+                                          elevation: 30,
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(30))),
+                                        ),
                                       ),
                                     ),
-                                    style: ElevatedButton.styleFrom(
-                                      primary: ThemeBc.white,
-                                      onPrimary: Colors.white,
-                                      shadowColor: Colors.grey[700],
-                                      elevation: 30,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(40))),
-                                    ),
                                   ),
-                                ),
+                                  Expanded(
+                                    child: FlatButton(
+                                      child: Text("ย้อนกลับ",
+                                          style: TextStyle(
+                                              decoration:
+                                                  TextDecoration.underline)),
+                                      textColor: ThemeBc.white,
+                                      onPressed: () {
+                                        // _fbKey.currentState.reset();
+                                        Navigator.pushNamed(
+                                            context, '/login_page');
+                                      },
+                                    ),
+                                  )
+                                ],
                               ),
 
                               // Row(
@@ -655,16 +629,16 @@ class _settingprofile extends State<settingprofile>
       backgroundColor: ThemeBc.background,
       // drawer: manu(),
       // drawer: Icon(Icons.ac_unit, color: white),
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: ThemeBc.white, //change your color here
-        ),
-        shadowColor: ThemeBc.white,
-        foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.black,
-        title: Text('แก้ไขข้อมูลส่วนตัว'),
-        actions: <Widget>[],
-      ),
+      // appBar: AppBar(
+      //   iconTheme: IconThemeData(
+      //     color: ThemeBc.white, //change your color here
+      //   ),
+      //   shadowColor: ThemeBc.white,
+      //   foregroundColor: ThemeBc.white,
+      //   backgroundColor: ThemeBc.black,
+      //   title: Center(child: Text('บันทึก')),
+      //   actions: <Widget>[],
+      // ),
       body: Container(
         child: SafeArea(
           child: ListView(
@@ -801,91 +775,91 @@ class _settingprofile extends State<settingprofile>
 
   //================================== GET Api  Users =============================================
 
-  List statesList = [
-    {
-      "id": "0",
-      "code": "0",
-      "name_th": "ไม่พบข้อมูล",
-      "name_en": "Bangkok",
-      "geography_id": "2",
-      "active": ""
-    },
-  ];
-  String? _myState;
-  //================================== GET Api  province =============================================
-  Future<void> _getProv() async {
-    String stateInfoUrl =
-        Global.urlWeb + 'api/country/province/restful/?app_id=${Global.app_id}';
+  // List statesList = [
+  //   {
+  //     "id": "0",
+  //     "code": "0",
+  //     "name_th": "ไม่พบข้อมูล",
+  //     "name_en": "Bangkok",
+  //     "geography_id": "2",
+  //     "active": ""
+  //   },
+  // ];
+  // String? _myState;
+  // //================================== GET Api  province =============================================
+  // Future<void> _getProv() async {
+  //   String stateInfoUrl =
+  //       Global.urlWeb + 'api/country/province/restful/?app_id=${Global.app_id}';
 
-    await http.get(Uri.parse(stateInfoUrl),
-        headers: {'Authorization': 'Bearer ${Global.token}'}).then((response) {
-      var data = json.decode(response.body);
+  //   await http.get(Uri.parse(stateInfoUrl),
+  //       headers: {'Authorization': 'Bearer ${Global.token}'}).then((response) {
+  //     var data = json.decode(response.body);
 
-      if (data['data'] != "ไม่พบข้อมูล") {
-        setState(() {
-          statesList = data['data'];
-        });
-      }
-    });
-  }
+  //     if (data['data'] != "ไม่พบข้อมูล") {
+  //       setState(() {
+  //         statesList = data['data'];
+  //       });
+  //     }
+  //   });
+  // }
 
-  //================================== GET Api  dis =============================================
-  List disList = [];
-  String? _myDis;
+  // //================================== GET Api  dis =============================================
+  // List disList = [];
+  // String? _myDis;
 
-  Future<void> _getDis() async {
-    String url = Global.urlWeb +
-        'api/country/amphure/restful/?app_id=${Global.app_id}&province_id=${_myState}';
+  // Future<void> _getDis() async {
+  //   String url = Global.urlWeb +
+  //       'api/country/amphure/restful/?app_id=${Global.app_id}&province_id=${_myState}';
 
-    await http.get(Uri.parse(url),
-        headers: {'Authorization': 'Bearer ${Global.token}'}).then((response) {
-      var dataDis = json.decode(response.body);
+  //   await http.get(Uri.parse(url),
+  //       headers: {'Authorization': 'Bearer ${Global.token}'}).then((response) {
+  //     var dataDis = json.decode(response.body);
 
-      if (dataDis['data'] != "ไม่พบข้อมูล") {
-        setState(() {
-          disList = dataDis['data'];
-        });
-      }
-    });
-  }
+  //     if (dataDis['data'] != "ไม่พบข้อมูล") {
+  //       setState(() {
+  //         disList = dataDis['data'];
+  //       });
+  //     }
+  //   });
+  // }
 
-  //================================== GET Api  sub =============================================
-  List subList = [];
-  String? _mySub;
+  // //================================== GET Api  sub =============================================
+  // List subList = [];
+  // String? _mySub;
 
-  Future<void> _getSub() async {
-    String url = Global.urlWeb +
-        'api/country/district/restful/?app_id=${Global.app_id}&amphure_id=${_myDis}';
+  // Future<void> _getSub() async {
+  //   String url = Global.urlWeb +
+  //       'api/country/district/restful/?app_id=${Global.app_id}&amphure_id=${_myDis}';
 
-    await http.get(Uri.parse(url),
-        headers: {'Authorization': 'Bearer ${Global.token}'}).then((response) {
-      var dataSub = json.decode(response.body);
+  //   await http.get(Uri.parse(url),
+  //       headers: {'Authorization': 'Bearer ${Global.token}'}).then((response) {
+  //     var dataSub = json.decode(response.body);
 
-      if (dataSub['data'] != "ไม่พบข้อมูล") {
-        setState(() {
-          subList = dataSub['data'];
-        });
-      }
-    });
-  }
-  //================================== GET Api  zip_code =============================================
+  //     if (dataSub['data'] != "ไม่พบข้อมูล") {
+  //       setState(() {
+  //         subList = dataSub['data'];
+  //       });
+  //     }
+  //   });
+  // }
+  // //================================== GET Api  zip_code =============================================
 
-  String? zip_code;
+  // String? zip_code;
 
-  Future<void> _getZipCode() async {
-    String url2 = Global.urlWeb +
-        'api/country/district/restful/?app_id=${Global.app_id}&id=${_mySub}';
+  // Future<void> _getZipCode() async {
+  //   String url2 = Global.urlWeb +
+  //       'api/country/district/restful/?app_id=${Global.app_id}&id=${_mySub}';
 
-    await http.get(Uri.parse(url2),
-        headers: {'Authorization': 'Bearer ${Global.token}'}).then((response) {
-      var json_zip = json.decode(response.body);
+  //   await http.get(Uri.parse(url2),
+  //       headers: {'Authorization': 'Bearer ${Global.token}'}).then((response) {
+  //     var json_zip = json.decode(response.body);
 
-      print(json_zip['data'][0]['zip_code']);
-      if (json_zip['data'] != "ไม่พบข้อมูล") {
-        setState(() {
-          zip_code = json_zip['data'][0]['zip_code'];
-        });
-      }
-    });
-  }
+  //     print(json_zip['data'][0]['zip_code']);
+  //     if (json_zip['data'] != "ไม่พบข้อมูล") {
+  //       setState(() {
+  //         zip_code = json_zip['data'][0]['zip_code'];
+  //       });
+  //     }
+  //   });
+  // }
 }

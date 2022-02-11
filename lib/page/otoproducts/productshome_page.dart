@@ -74,7 +74,7 @@ class _productshome_page extends State<productshome_page> {
           shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
-          title: Center(child: Text('สินค้า OTOP')),
+          title: Center(child: LocaleText('สินค้าโอทอป')),
           actions: <Widget>[
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -286,7 +286,7 @@ class _productshome_page extends State<productshome_page> {
                                                         ['product_images'][0]
                                                     ['producti_path_name'] !=
                                                 null
-                                            ? Global.domainImagenew +
+                                            ? Global.domainImage +
                                                 snapshot.data!['data'][index]
                                                         ['product_images'][0]
                                                     ['producti_path_name']
@@ -346,15 +346,16 @@ class _productshome_page extends State<productshome_page> {
                                                                 Radius.circular(
                                                                     20.0)),
                                                         child: Image.network(
-                                                          snapshot.data!['data']
-                                                                              [index]
-                                                                          ['product_images'][0]
-                                                                      [
-                                                                      'producti_path_name'] !=
+                                                          Global.domainImage +
+                                                                      snapshot.data!['data'][index]['product_images']
+                                                                              [0]
+                                                                          [
+                                                                          'producti_path_name'] !=
                                                                   null
-                                                              ? Global.domainImagenew +
+                                                              ? Global.domainImage +
                                                                   snapshot.data!['data']
-                                                                              [index]
+                                                                              [
+                                                                              index]
                                                                           [
                                                                           'product_images'][0]
                                                                       [
@@ -386,14 +387,40 @@ class _productshome_page extends State<productshome_page> {
                                                           padding:
                                                               const EdgeInsets
                                                                   .all(8.0),
-                                                          child: Text(
-                                                            'ชื่อสินค้า : ${snapshot.data!['data'][index]['product_name']}',
-                                                            style: primaryTextStyle
-                                                                .copyWith(
-                                                                    fontSize:
-                                                                        12,
-                                                                    fontWeight:
-                                                                        medium),
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              LocaleText(
+                                                                'ชื่อสินค้า',
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize:
+                                                                      15.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  // backgroundColor: Colors.black45,
+                                                                  color: Colors
+                                                                      .black,
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                ' : ${snapshot.data!['data'][index]['product_name']}',
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize:
+                                                                      15.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  // backgroundColor: Colors.black45,
+                                                                  color: Colors
+                                                                      .black,
+                                                                ),
+                                                              ),
+                                                            ],
                                                           ),
                                                         ),
                                                       ),
@@ -414,19 +441,29 @@ class _productshome_page extends State<productshome_page> {
                                                                   children: [
                                                                     LocaleText(
                                                                       'ราคา',
-                                                                      style: primaryTextStyle.copyWith(
-                                                                          fontSize:
-                                                                              12,
-                                                                          fontWeight:
-                                                                              medium),
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontSize:
+                                                                            15.0,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        // backgroundColor: Colors.black45,
+                                                                        color: Colors
+                                                                            .black,
+                                                                      ),
                                                                     ),
                                                                     Text(
                                                                       ' : ${snapshot.data!['data'][index]['product_price']}',
-                                                                      style: primaryTextStyle.copyWith(
-                                                                          fontSize:
-                                                                              12,
-                                                                          fontWeight:
-                                                                              medium),
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontSize:
+                                                                            15.0,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        // backgroundColor: Colors.black45,
+                                                                        color: Colors
+                                                                            .black,
+                                                                      ),
                                                                     ),
                                                                   ],
                                                                 ),
@@ -505,7 +542,7 @@ class _productshome_page extends State<productshome_page> {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(
+            child: LocaleText(
               'ยอดนิยมประจำสัมปดาห์',
               style: TextStyle(
                 fontSize: 20.0,
@@ -549,7 +586,7 @@ class _productshome_page extends State<productshome_page> {
                                                         ['product_images'][0]
                                                     ['producti_path_name'] !=
                                                 null
-                                            ? Global.domainImagenew +
+                                            ? Global.domainImage +
                                                 snapshot.data!['data'][index]
                                                         ['product_images'][0]
                                                     ['producti_path_name']
@@ -615,7 +652,7 @@ class _productshome_page extends State<productshome_page> {
                                                                       [
                                                                       'producti_path_name'] !=
                                                                   null
-                                                              ? Global.domainImagenew +
+                                                              ? Global.domainImage +
                                                                   snapshot.data!['data']
                                                                               [index]
                                                                           [
@@ -649,14 +686,40 @@ class _productshome_page extends State<productshome_page> {
                                                           padding:
                                                               const EdgeInsets
                                                                   .all(8.0),
-                                                          child: Text(
-                                                            'ชื่อสินค้า : ${snapshot.data!['data'][index]['product_name']}',
-                                                            style: primaryTextStyle
-                                                                .copyWith(
-                                                                    fontSize:
-                                                                        12,
-                                                                    fontWeight:
-                                                                        medium),
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              LocaleText(
+                                                                'ชื่อสินค้า',
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize:
+                                                                      15.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  // backgroundColor: Colors.black45,
+                                                                  color: Colors
+                                                                      .black,
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                ' : ${snapshot.data!['data'][index]['product_name']}',
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize:
+                                                                      15.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  // backgroundColor: Colors.black45,
+                                                                  color: Colors
+                                                                      .black,
+                                                                ),
+                                                              ),
+                                                            ],
                                                           ),
                                                         ),
                                                       ),
@@ -670,13 +733,38 @@ class _productshome_page extends State<productshome_page> {
                                                                     const EdgeInsets
                                                                             .all(
                                                                         0.0),
-                                                                child: Text(
-                                                                  'ราคา : ${snapshot.data!['data'][index]['product_price']}',
-                                                                  style: primaryTextStyle.copyWith(
-                                                                      fontSize:
-                                                                          12,
-                                                                      fontWeight:
-                                                                          medium),
+                                                                child: Row(
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    LocaleText(
+                                                                      'ราคา',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontSize:
+                                                                            15.0,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        // backgroundColor: Colors.black45,
+                                                                        color: Colors
+                                                                            .black,
+                                                                      ),
+                                                                    ),
+                                                                    Text(
+                                                                      ' : ${snapshot.data!['data'][index]['product_price']}',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontSize:
+                                                                            15.0,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        // backgroundColor: Colors.black45,
+                                                                        color: Colors
+                                                                            .black,
+                                                                      ),
+                                                                    ),
+                                                                  ],
                                                                 ),
                                                               ),
                                                             ),
@@ -752,7 +840,7 @@ class _productshome_page extends State<productshome_page> {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(
+            child: LocaleText(
               'ใหม่ล่าสุด',
               style: TextStyle(
                 fontSize: 20.0,
@@ -795,7 +883,7 @@ class _productshome_page extends State<productshome_page> {
                                                         ['product_images'][0]
                                                     ['producti_path_name'] !=
                                                 null
-                                            ? Global.domainImagenew +
+                                            ? Global.domainImage +
                                                 snapshot.data!['data'][index]
                                                         ['product_images'][0]
                                                     ['producti_path_name']
@@ -855,7 +943,7 @@ class _productshome_page extends State<productshome_page> {
                                                                       [
                                                                       'producti_path_name'] !=
                                                                   null
-                                                              ? Global.domainImagenew +
+                                                              ? Global.domainImage +
                                                                   snapshot.data!['data']
                                                                               [index]
                                                                           [
@@ -901,14 +989,40 @@ class _productshome_page extends State<productshome_page> {
                                                           padding:
                                                               const EdgeInsets
                                                                   .all(8.0),
-                                                          child: Text(
-                                                            'ชื่อสินค้า : ${snapshot.data!['data'][index]['product_name']}',
-                                                            style: primaryTextStyle
-                                                                .copyWith(
-                                                                    fontSize:
-                                                                        12,
-                                                                    fontWeight:
-                                                                        medium),
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              LocaleText(
+                                                                'ชื่อสินค้า',
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize:
+                                                                      15.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  // backgroundColor: Colors.black45,
+                                                                  color: Colors
+                                                                      .black,
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                ' : ${snapshot.data!['data'][index]['product_name']}',
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize:
+                                                                      15.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  // backgroundColor: Colors.black45,
+                                                                  color: Colors
+                                                                      .black,
+                                                                ),
+                                                              ),
+                                                            ],
                                                           ),
                                                         ),
                                                       ),
@@ -922,13 +1036,38 @@ class _productshome_page extends State<productshome_page> {
                                                                     const EdgeInsets
                                                                             .all(
                                                                         0.0),
-                                                                child: Text(
-                                                                  'ราคา : ${snapshot.data!['data'][index]['product_price']}',
-                                                                  style: primaryTextStyle.copyWith(
-                                                                      fontSize:
-                                                                          12,
-                                                                      fontWeight:
-                                                                          medium),
+                                                                child: Row(
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    LocaleText(
+                                                                      'ราคา',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontSize:
+                                                                            15.0,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        // backgroundColor: Colors.black45,
+                                                                        color: Colors
+                                                                            .black,
+                                                                      ),
+                                                                    ),
+                                                                    Text(
+                                                                      ' : ${snapshot.data!['data'][index]['product_price']}',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontSize:
+                                                                            15.0,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        // backgroundColor: Colors.black45,
+                                                                        color: Colors
+                                                                            .black,
+                                                                      ),
+                                                                    ),
+                                                                  ],
                                                                 ),
                                                               ),
                                                             ),

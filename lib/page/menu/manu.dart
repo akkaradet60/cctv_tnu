@@ -83,7 +83,7 @@ class _menu_pangState extends State<menu_pang> {
                 child: FutureBuilder<Map<String, dynamic>>(
                   future: getDataSlide(),
                   builder: (context, snapshot) {
-                    if (Global.user_id == '103') {
+                    if (Global.user_id == '111') {
                       if (snapshot.hasData) {
                         return ListView.builder(
                           itemCount: snapshot.data!['data'].length,
@@ -95,7 +95,7 @@ class _menu_pangState extends State<menu_pang> {
                                     padding: const EdgeInsets.all(8.0),
                                     child: Container(
                                         width: 300,
-                                        height: 350,
+                                        height: 100,
                                         decoration: BoxDecoration(
                                             color: Colors.white,
                                             borderRadius: BorderRadius.circular(
@@ -123,136 +123,327 @@ class _menu_pangState extends State<menu_pang> {
                                             // mainAxisAlignment:
                                             //     MainAxisAlignment.spaceAround,
                                             children: [
+                                              SizedBox(height: 5),
                                               Padding(
                                                 padding:
                                                     const EdgeInsets.all(8.0),
                                                 child: Container(
-                                                  width: 300,
-                                                  height: 180,
-                                                  decoration: BoxDecoration(
-                                                      color: ThemeBc.background,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                        20,
-                                                      ),
-                                                      boxShadow: []),
                                                   child: Column(
                                                     children: [
-                                                      SizedBox(height: 15),
-                                                      Container(
-                                                        width: 150,
-                                                        height: 150,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          shape:
-                                                              BoxShape.circle,
-                                                          image: DecorationImage(
-                                                              image: NetworkImage(Global
-                                                                      .urlFile2 +
-                                                                  snapshot.data![
-                                                                              'data']
-                                                                          [
-                                                                          index]
-                                                                      [
-                                                                      'user_image']),
-                                                              fit: BoxFit.fill),
+                                                      SizedBox(height: 18),
+                                                      Center(
+                                                        child: LocaleText(
+                                                          'ผู้ชม',
+                                                          style: TextStyle(
+                                                            fontSize: 16,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color:
+                                                                ThemeBc.black,
+                                                          ),
                                                         ),
                                                       ),
                                                     ],
                                                   ),
                                                 ),
                                               ),
-                                              SizedBox(height: 5),
-                                              Row(
-                                                children: [
-                                                  LocaleText(
-                                                    'ชื่อ',
-                                                    style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: ThemeBc.black,
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    ' : ${snapshot.data!['data'][index]['user_firstname']}',
-                                                    style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: ThemeBc.black,
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                              SizedBox(height: 5),
-                                              Row(
-                                                children: [
-                                                  LocaleText(
-                                                    'นามสกุล',
-                                                    style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: ThemeBc.black,
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    child: Column(
-                                                      children: [
-                                                        Text(
-                                                          ' : ${snapshot.data!['data'][index]['user_lastname']}',
-                                                          style: TextStyle(
-                                                            fontSize: 16,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            color:
-                                                                ThemeBc.black,
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                              SizedBox(height: 5),
-                                              Row(
-                                                children: [
-                                                  Container(
-                                                    height: 20,
-                                                    width: 260,
-                                                    child: ListView(
-                                                      scrollDirection:
-                                                          Axis.horizontal,
-                                                      children: [
-                                                        LocaleText(
-                                                          'อีเมล',
-                                                          style: TextStyle(
-                                                            fontSize: 16,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            color:
-                                                                ThemeBc.black,
-                                                          ),
-                                                        ),
-                                                        Text(
-                                                          ' : ${snapshot.data!['data'][index]['user_email']}',
-                                                          style: TextStyle(
-                                                            fontSize: 16,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            color:
-                                                                ThemeBc.black,
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
                                             ],
                                           ),
                                         )),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                      width: 342,
+                                      height: 50,
+                                      child: ElevatedButton.icon(
+                                        onPressed: () {
+                                          showDialog(
+                                            context: context,
+                                            builder: (context) {
+                                              return AlertDialog(
+                                                shape: CircleBorder(),
+                                                // elevation: 100,
+                                                content: Container(
+                                                  height: 200,
+                                                  width: 400,
+                                                  decoration: BoxDecoration(
+                                                      color: ThemeBc.background,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                        20,
+                                                      ),
+                                                      boxShadow: [
+                                                        BoxShadow(
+                                                            color: Colors.black
+                                                                .withOpacity(
+                                                                    0.5),
+                                                            offset:
+                                                                Offset(2, 2),
+                                                            blurRadius: 7,
+                                                            spreadRadius: 1.0),
+                                                        BoxShadow(
+                                                            color: Colors.black
+                                                                .withOpacity(
+                                                                    0.5),
+                                                            offset:
+                                                                Offset(2, 4),
+                                                            blurRadius: 7.0,
+                                                            spreadRadius: 1.0),
+                                                      ]),
+                                                  child: Column(
+                                                    children: [
+                                                      SizedBox(height: 20),
+                                                      Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          InkWell(
+                                                            onTap: () {
+                                                              LocaleNotifier.of(
+                                                                      context)!
+                                                                  .change('th');
+                                                              Navigator.pushNamed(
+                                                                  context,
+                                                                  '/home_page');
+                                                            },
+                                                            child: Container(
+                                                              height: 40,
+                                                              width: 250,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                      color: ThemeBc
+                                                                          .white,
+                                                                      borderRadius:
+                                                                          BorderRadius
+                                                                              .circular(
+                                                                        20,
+                                                                      ),
+                                                                      boxShadow: [
+                                                                    BoxShadow(
+                                                                        color: Colors
+                                                                            .black
+                                                                            .withOpacity(
+                                                                                0.5),
+                                                                        offset: Offset(
+                                                                            2,
+                                                                            2),
+                                                                        blurRadius:
+                                                                            7,
+                                                                        spreadRadius:
+                                                                            1.0),
+                                                                    BoxShadow(
+                                                                        color: Colors
+                                                                            .black
+                                                                            .withOpacity(
+                                                                                0.5),
+                                                                        offset: Offset(
+                                                                            2,
+                                                                            4),
+                                                                        blurRadius:
+                                                                            7.0,
+                                                                        spreadRadius:
+                                                                            1.0),
+                                                                  ]),
+                                                              child: Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        8.0),
+                                                                child: Center(
+                                                                  child: Text(
+                                                                    'ภาษาไทย',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      fontSize:
+                                                                          20.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      // backgroundColor: Colors.black45,
+                                                                      color: ThemeBc
+                                                                          .black,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          SizedBox(height: 10),
+                                                          InkWell(
+                                                            onTap: () {
+                                                              LocaleNotifier.of(
+                                                                      context)!
+                                                                  .change('en');
+                                                              Navigator.pushNamed(
+                                                                  context,
+                                                                  '/home_page');
+                                                            },
+                                                            child: Container(
+                                                              height: 40,
+                                                              width: 250,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                      color: ThemeBc
+                                                                          .white,
+                                                                      borderRadius:
+                                                                          BorderRadius
+                                                                              .circular(
+                                                                        20,
+                                                                      ),
+                                                                      boxShadow: [
+                                                                    BoxShadow(
+                                                                        color: Colors
+                                                                            .black
+                                                                            .withOpacity(
+                                                                                0.5),
+                                                                        offset: Offset(
+                                                                            2,
+                                                                            2),
+                                                                        blurRadius:
+                                                                            7,
+                                                                        spreadRadius:
+                                                                            1.0),
+                                                                    BoxShadow(
+                                                                        color: Colors
+                                                                            .black
+                                                                            .withOpacity(
+                                                                                0.5),
+                                                                        offset: Offset(
+                                                                            2,
+                                                                            4),
+                                                                        blurRadius:
+                                                                            7.0,
+                                                                        spreadRadius:
+                                                                            1.0),
+                                                                  ]),
+                                                              child: Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        8.0),
+                                                                child: Center(
+                                                                  child: Text(
+                                                                    'English',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      fontSize:
+                                                                          20.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      // backgroundColor: Colors.black45,
+                                                                      color: ThemeBc
+                                                                          .black,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          SizedBox(height: 10),
+                                                          InkWell(
+                                                            onTap: () {
+                                                              LocaleNotifier.of(
+                                                                      context)!
+                                                                  .change('zh');
+                                                              Navigator.pushNamed(
+                                                                  context,
+                                                                  '/home_page');
+                                                            },
+                                                            child: Container(
+                                                              height: 40,
+                                                              width: 250,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                      color: ThemeBc
+                                                                          .white,
+                                                                      borderRadius:
+                                                                          BorderRadius
+                                                                              .circular(
+                                                                        20,
+                                                                      ),
+                                                                      boxShadow: [
+                                                                    BoxShadow(
+                                                                        color: Colors
+                                                                            .black
+                                                                            .withOpacity(
+                                                                                0.5),
+                                                                        offset: Offset(
+                                                                            2,
+                                                                            2),
+                                                                        blurRadius:
+                                                                            7,
+                                                                        spreadRadius:
+                                                                            1.0),
+                                                                    BoxShadow(
+                                                                        color: Colors
+                                                                            .black
+                                                                            .withOpacity(
+                                                                                0.5),
+                                                                        offset: Offset(
+                                                                            2,
+                                                                            4),
+                                                                        blurRadius:
+                                                                            7.0,
+                                                                        spreadRadius:
+                                                                            1.0),
+                                                                  ]),
+                                                              child: Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        8.0),
+                                                                child: Center(
+                                                                  child: Text(
+                                                                    '中国',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      fontSize:
+                                                                          20.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      // backgroundColor: Colors.black45,
+                                                                      color: ThemeBc
+                                                                          .black,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        },
+                                        icon: const Icon(
+                                          Icons.spellcheck,
+                                          color: Colors.black,
+                                        ),
+                                        label: LocaleText(
+                                          "เปลี่ยนภาษา",
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              color: Colors.black),
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                          primary: Colors.white,
+                                          onPrimary: Colors.white,
+                                          shadowColor: Colors.grey[700],
+                                          elevation: 30,
+                                          shape: const RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(40))),
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
