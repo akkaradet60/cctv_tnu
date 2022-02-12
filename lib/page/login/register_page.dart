@@ -71,25 +71,25 @@ class _RegisterPageState extends State<register_page> {
         //    Navigator.pop(context, '/login');
         // });
       } else {
-        // Alert(
-        //   context: context,
-        //   type: AlertType.warning,
-        //   // title: "แจ้งเตือน",
-        //   desc: '${feedback['data']}',
-        //   buttons: [
-        //     DialogButton(
-        //       child: Text(
-        //         "ปิด",
-        //         style: TextStyle(color: ThemeBc.white, fontSize: 18),
-        //       ),
-        //       onPressed: () => Navigator.pop(context),
-        //       gradient: LinearGradient(colors: [
-        //         Color.fromRGBO(116, 116, 191, 1.0),
-        //         Color.fromRGBO(52, 138, 199, 1.0),
-        //       ]),
-        //     )
-        //   ],
-        // ).show();
+        Alert(
+          context: context,
+          type: AlertType.warning,
+          // title: "แจ้งเตือน",
+          desc: '${feedback['data']}',
+          buttons: [
+            DialogButton(
+              child: Text(
+                "ปิด",
+                style: TextStyle(color: ThemeBc.white, fontSize: 18),
+              ),
+              onPressed: () => Navigator.pop(context),
+              gradient: LinearGradient(colors: [
+                Color.fromRGBO(116, 116, 191, 1.0),
+                Color.fromRGBO(52, 138, 199, 1.0),
+              ]),
+            )
+          ],
+        ).show();
       }
     } catch (e) {
       // print(e);

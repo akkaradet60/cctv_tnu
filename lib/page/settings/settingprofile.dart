@@ -4,6 +4,7 @@ import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:cctv_tun/page/profile/app_reducer.dart';
 import 'package:cctv_tun/page/profile/profile_action.dart';
+import 'package:cctv_tun/widgets/text_FormBuilderField.dart';
 import 'package:cctv_tun/widgets/warn_api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -96,12 +97,43 @@ class _settingprofile extends State<settingprofile>
                                     selectedImage == null
                                         ? Container(
                                             child: profile['user_image'] != null
-                                                ? Image.network(
-                                                    Global.urlFile2 +
-                                                        profile['user_image'],
-                                                    width: 200,
-                                                    height: 200,
-                                                    fit: BoxFit.fill)
+                                                ? Container(
+                                                    decoration: BoxDecoration(
+                                                        color: ThemeBc.white,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                          20,
+                                                        ),
+                                                        boxShadow: [
+                                                          BoxShadow(
+                                                              color: Colors
+                                                                  .black
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                              offset:
+                                                                  Offset(2, 2),
+                                                              blurRadius: 7,
+                                                              spreadRadius:
+                                                                  1.0),
+                                                        ]),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Column(
+                                                        children: [
+                                                          Image.network(
+                                                              Global.urlFile2 +
+                                                                  profile[
+                                                                      'user_image'],
+                                                              width: 200,
+                                                              height: 200,
+                                                              fit: BoxFit.fill),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  )
                                                 : Image.network(Global.urlFile2,
                                                     width: 200,
                                                     height: 200,
@@ -109,7 +141,7 @@ class _settingprofile extends State<settingprofile>
                                           )
                                         : Container(
                                             decoration: BoxDecoration(
-                                                color: ThemeBc.black,
+                                                color: ThemeBc.white,
                                                 borderRadius:
                                                     BorderRadius.circular(
                                                   20,
@@ -121,28 +153,20 @@ class _settingprofile extends State<settingprofile>
                                                       offset: Offset(2, 2),
                                                       blurRadius: 7,
                                                       spreadRadius: 1.0),
-                                                  BoxShadow(
-                                                      color: Colors.black
-                                                          .withOpacity(0.5),
-                                                      offset: Offset(2, 4),
-                                                      blurRadius: 7.0,
-                                                      spreadRadius: 1.0),
                                                 ]),
-                                            child: Image.file(selectedImage!,
-                                                width: 200,
-                                                height: 200,
-                                                fit: BoxFit.fill),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Image.file(selectedImage!,
+                                                  width: 200,
+                                                  height: 200,
+                                                  fit: BoxFit.fill),
+                                            ),
                                           ),
                                   ],
                                 ),
                               ),
                               const SizedBox(height: 20),
-                              FloatingActionButton(
-                                onPressed: getImage,
-                                tooltip: 'Increment',
-                                child: Icon(Icons.add_a_photo),
-                              ),
-                              const SizedBox(height: 20),
                               Container(
                                 decoration: BoxDecoration(
                                     color: ThemeBc.white,
@@ -151,162 +175,49 @@ class _settingprofile extends State<settingprofile>
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                          color: ThemeBc.black,
+                                          color: Colors.black,
                                           offset: Offset(2, 2),
                                           blurRadius: 7,
                                           spreadRadius: 1.0),
                                     ]),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        color: ThemeBc.black,
-                                        borderRadius: BorderRadius.circular(
-                                          20,
-                                        ),
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color: ThemeBc.white
-                                                  .withOpacity(0.5),
-                                              offset: Offset(2, 2),
-                                              blurRadius: 7,
-                                              spreadRadius: 1.0),
-                                        ]),
-
-                                    child: FormBuilderTextField(
-                                      initialValue:
-                                          '${profile['user_firstname']}',
-                                      name: "user_firstname",
-                                      maxLines: 1,
-                                      keyboardType: TextInputType.emailAddress,
-                                      decoration: InputDecoration(
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(
-                                            20.0,
-                                          ),
-                                        ),
-                                        suffixIcon: Icon(Icons.description),
-                                        labelText: 'ชื่อ',
-                                        fillColor: Colors.white,
-                                        filled: true,
-                                      ),
-                                    ), //รายละเอียดเหตุการณ์
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.add_a_photo,
+                                    color: ThemeBc.black,
+                                    size: 24.0,
                                   ),
+                                  // Image.asset(
+                                  //   'assets/fi_home.png',
+                                  //   scale: 1,
+                                  // ),
+                                  tooltip: 'Show Snackbar',
+                                  onPressed: getImage,
                                 ),
                               ),
+                              const SizedBox(height: 20),
+                              FormBuilderFieldText(
+                                  name: 'user_firstname',
+                                  labelText: 'ชื่อ',
+                                  icon: Icons.description,
+                                  initialValue: '${profile['user_firstname']}'),
                               SizedBox(height: 10),
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: ThemeBc.white,
-                                    borderRadius: BorderRadius.circular(
-                                      20,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: ThemeBc.black,
-                                          offset: Offset(2, 2),
-                                          blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                    ]),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    child: FormBuilderTextField(
-                                      initialValue:
-                                          '${profile['user_lastname']}',
-                                      name: "user_lastname",
-                                      maxLines: 1,
-                                      keyboardType: TextInputType.emailAddress,
-                                      decoration: InputDecoration(
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(
-                                            20.0,
-                                          ),
-                                        ),
-                                        suffixIcon: Icon(Icons.description),
-                                        labelText: 'นามสกุล',
-                                        fillColor: Colors.white,
-                                        filled: true,
-                                      ),
-                                    ),
-                                  ),
-                                ), //รายละเอียดเหตุการณ์
-                              ),
+                              FormBuilderFieldText(
+                                  name: 'user_lastname',
+                                  labelText: 'นามสกุล',
+                                  icon: Icons.description,
+                                  initialValue: '${profile['user_lastname']}'),
                               const SizedBox(height: 10),
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: ThemeBc.white,
-                                    borderRadius: BorderRadius.circular(
-                                      20,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: ThemeBc.black,
-                                          offset: Offset(2, 2),
-                                          blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                    ]),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    child: FormBuilderTextField(
-                                      initialValue:
-                                          '${profile['user_card_id']}',
-                                      name: "user_card_id",
-                                      maxLines: 1,
-                                      keyboardType: TextInputType.emailAddress,
-                                      decoration: InputDecoration(
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(
-                                            20.0,
-                                          ),
-                                        ),
-                                        suffixIcon: Icon(Icons.description),
-                                        labelText: 'รหัสบัตรประจำประชาชน',
-                                        fillColor: Colors.white,
-                                        filled: true,
-                                      ),
-                                    ),
-                                  ),
-                                ), //รายละเอียดเหตุการณ์
-                              ),
+                              FormBuilderFieldText(
+                                  name: 'user_card_id',
+                                  labelText: 'รหัสบัตรประจำประชาชน',
+                                  icon: Icons.description,
+                                  initialValue: '${profile['user_card_id']}'),
                               const SizedBox(height: 10),
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: ThemeBc.white,
-                                    borderRadius: BorderRadius.circular(
-                                      20,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: ThemeBc.black,
-                                          offset: Offset(2, 2),
-                                          blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                    ]),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    child: FormBuilderTextField(
-                                      initialValue: '${profile['user_email']}',
-                                      name: "user_email",
-                                      maxLines: 1,
-                                      keyboardType: TextInputType.emailAddress,
-                                      decoration: InputDecoration(
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(
-                                            20.0,
-                                          ),
-                                        ),
-                                        suffixIcon: Icon(Icons.description),
-                                        labelText: 'อีเมล',
-                                        fillColor: Colors.white,
-                                        filled: true,
-                                      ),
-                                    ),
-                                  ),
-                                ), //รายละเอียดเหตุการณ์
-                              ),
+                              FormBuilderFieldText(
+                                  name: 'user_email',
+                                  labelText: 'อีเมล',
+                                  icon: Icons.description,
+                                  initialValue: '${profile['user_email']}'),
                               const SizedBox(height: 10),
                               Container(
                                 decoration: BoxDecoration(
@@ -484,43 +395,11 @@ class _settingprofile extends State<settingprofile>
                                 ),
                               ),
                               const SizedBox(height: 10),
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: ThemeBc.white,
-                                    borderRadius: BorderRadius.circular(
-                                      20,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: ThemeBc.black,
-                                          offset: Offset(2, 2),
-                                          blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                    ]),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    child: FormBuilderTextField(
-                                      initialValue:
-                                          '${profile['user_address']}',
-                                      name: "user_address",
-                                      maxLines: 1,
-                                      keyboardType: TextInputType.emailAddress,
-                                      decoration: InputDecoration(
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(
-                                            20.0,
-                                          ),
-                                        ),
-                                        suffixIcon: Icon(Icons.description),
-                                        labelText: 'ที่อยู่',
-                                        fillColor: Colors.white,
-                                        filled: true,
-                                      ),
-                                    ),
-                                  ),
-                                ), //รายละเอียดเหตุการณ์
-                              ),
+                              FormBuilderFieldText(
+                                  name: 'user_address',
+                                  labelText: 'ที่อยู่',
+                                  icon: Icons.description,
+                                  initialValue: '${profile['user_address']}'),
                               const SizedBox(height: 10),
                               Container(
                                 decoration: BoxDecoration(
@@ -606,37 +485,6 @@ class _settingprofile extends State<settingprofile>
                                   ),
                                 ),
                               ),
-
-                              // Row(
-                              //   mainAxisAlignment:
-                              //       MainAxisAlignment.spaceAround,
-                              //   children: <Widget>[
-                              //     Expanded(
-                              //       child: ElevatedButton.icon(
-                              //         label: Text('แก้ไขข้อมูล'),
-                              //         icon: const Icon(Icons.description),
-                              //         style: ElevatedButton.styleFrom(
-                              //           primary: ThemeBc.green,
-                              //           //side: BorderSide(color: Colors.red, width: 5),
-                              //           textStyle:
-                              //               const TextStyle(fontSize: 15),
-                              //           padding: const EdgeInsets.all(15),
-                              //           shape: const RoundedRectangleBorder(
-                              //               borderRadius: BorderRadius.all(
-                              //                   Radius.circular(10))),
-                              //         ),
-                              // onPressed: () {
-                              //   if (_fbKey.currentState!
-                              //       .saveAndValidate()) {
-                              //     // print(_fbKey.currentState.value);
-                              //     updataUser(
-                              //         _fbKey.currentState!.value);
-                              //   }
-                              // },
-                              //       ),
-                              //     ),
-                              //   ],
-                              // )
                             ],
                           );
                         },

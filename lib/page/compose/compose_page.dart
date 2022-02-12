@@ -3,7 +3,9 @@ import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:cctv_tun/page/profile/app_reducer.dart';
 import 'package:cctv_tun/widgets/custom_button.dart';
+import 'package:cctv_tun/widgets/text_FormBuilderField.dart';
 import 'package:cctv_tun/widgets/warn_api.dart';
+import 'package:cctv_tun/widgets/warn_compose_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_locales/flutter_locales.dart';
@@ -301,133 +303,23 @@ class _compose_page extends State<compose_page>
                             ),
                           ),
                           SizedBox(height: 18),
-                          // Material(
-                          Container(
-                            decoration: BoxDecoration(
-                                color: secondaryTextColor,
-                                borderRadius: BorderRadius.circular(
-                                  20,
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      offset: Offset(2, 2),
-                                      blurRadius: 7,
-                                      spreadRadius: 1.0),
-                                  BoxShadow(
-                                      color: Colors.black.withOpacity(0.5),
-                                      offset: Offset(2, 4),
-                                      blurRadius: 7.0,
-                                      spreadRadius: 1.0),
-                                ]),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                child: FormBuilderTextField(
-                                  name: "em_owner",
-                                  maxLines: 1,
-                                  keyboardType: TextInputType.emailAddress,
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        20.0,
-                                      ),
-                                    ),
-                                    suffixIcon: Icon(Icons.email),
-                                    labelText: 'ชื่อผู้แจ้ง',
-                                    fillColor: Colors.white,
-                                    filled: true,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
+                          FormBuilderFieldText(
+                              name: 'em_owner',
+                              labelText: 'ชื่อผู้แจ้ง',
+                              icon: Icons.email,
+                              initialValue: ''),
                           SizedBox(height: 18),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: secondaryTextColor,
-                                borderRadius: BorderRadius.circular(
-                                  20,
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      offset: Offset(2, 2),
-                                      blurRadius: 7,
-                                      spreadRadius: 1.0),
-                                  BoxShadow(
-                                      color: Colors.black.withOpacity(0.5),
-                                      offset: Offset(2, 4),
-                                      blurRadius: 7.0,
-                                      spreadRadius: 1.0),
-                                ]),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                child: FormBuilderTextField(
-                                  name: "em_phone",
-                                  maxLines: 1,
-                                  keyboardType: TextInputType.emailAddress,
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        20.0,
-                                      ),
-                                    ),
-                                    suffixIcon: Icon(Icons.phone_android),
-                                    labelText: 'เบอร์โทรศัพท์',
-                                    //   labelStyle: TextStyle(
-                                    //   color: Color(0xFF6200EE),
-                                    // ),
-                                    fillColor: Colors.white,
-                                    filled: true,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
+                          FormBuilderFieldText(
+                              name: 'em_phone',
+                              labelText: 'เบอร์โทรศัพท์',
+                              icon: Icons.email,
+                              initialValue: ''),
                           SizedBox(height: 18),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: secondaryTextColor,
-                                borderRadius: BorderRadius.circular(
-                                  20,
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      offset: Offset(2, 2),
-                                      blurRadius: 7,
-                                      spreadRadius: 1.0),
-                                  BoxShadow(
-                                      color: Colors.black.withOpacity(0.5),
-                                      offset: Offset(2, 4),
-                                      blurRadius: 7.0,
-                                      spreadRadius: 1.0),
-                                ]),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                child: FormBuilderTextField(
-                                  name: "em_detail",
-                                  maxLines: 1,
-                                  keyboardType: TextInputType.emailAddress,
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        20.0,
-                                      ),
-                                    ),
-                                    suffixIcon: Icon(Icons.description),
-                                    labelText: 'รายละเอียดเหตุการณ์',
-                                    fillColor: Colors.white,
-                                    filled: true,
-                                  ),
-                                ),
-                              ),
-                            ), //รายละเอียดเหตุการณ์
-                          ),
-
+                          FormBuilderFieldText(
+                              name: 'em_detail',
+                              labelText: 'รายละเอียดเหตุการณ์',
+                              icon: Icons.email,
+                              initialValue: ''),
                           SizedBox(height: 18),
 
                           Container(
@@ -541,35 +433,6 @@ class _compose_page extends State<compose_page>
                                                                     MainAxisAlignment
                                                                         .end,
                                                                 children: [
-                                                                  // ElevatedButton.icon(
-                                                                  //   onPressed: () {
-                                                                  //     print('$userLocation');
-                                                                  //     // locn = userLocation.latitude;
-                                                                  //     // locn2 = userLocation
-                                                                  //     //     .longitude; // mapController.animateCamera(CameraUpdate.newLatLngZoom(
-                                                                  //     // //     LatLng(userLocation.latitude, userLocation.longitude),
-                                                                  //     // //     18));
-                                                                  //     showDialog(
-                                                                  //       context: context,
-                                                                  //       builder: (context) {
-                                                                  //         return AlertDialog(
-                                                                  //           content: Text(
-                                                                  //               'ตำแหน่ง !\nละติจูด :// ${locn} ลองจิจูด : ${locn} ตำแหน่งที่คุณเลือก : '),
-                                                                  //         );
-                                                                  //       },
-                                                                  //     );
-                                                                  //   },
-                                                                  //   icon: Icon(Icons.gps_fixed),
-                                                                  //   label: Text('ตำแหน่งของคุณ'),
-                                                                  //   style: ElevatedButton.styleFrom(
-                                                                  //     primary: ThemeBc.background,
-                                                                  //     onPrimary: Colors.white,
-                                                                  //     elevation: 30,
-                                                                  //     shape: RoundedRectangleBorder(
-                                                                  //         borderRadius: BorderRadius.all(
-                                                                  //             Radius.circular(40))),
-                                                                  //   ),
-                                                                  // ),
                                                                   Container(
                                                                     decoration:
                                                                         BoxDecoration(
@@ -784,128 +647,35 @@ class _compose_page extends State<compose_page>
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
                             children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: secondaryTextColor,
-                                    borderRadius: BorderRadius.circular(
-                                      30,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          offset: Offset(2, 2),
-                                          blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(0.5),
-                                          offset: Offset(2, 4),
-                                          blurRadius: 7.0,
-                                          spreadRadius: 1.0),
-                                    ]),
-                                height: 80,
-                                child: Center(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Column(
-                                      // mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  SizedBox(height: 10),
-                                                  Text(
-                                                    '${snapshot.data!['data'][index]['em_detail']}',
-                                                    style: primaryTextStyle
-                                                        .copyWith(
-                                                            fontSize: 18,
-                                                            fontWeight: medium),
-                                                  ),
-                                                ],
-                                              ),
-                                              Container(
-                                                decoration: BoxDecoration(
-                                                    color: ThemeBc.black,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                      30,
-                                                    ),
-                                                    boxShadow: [
-                                                      BoxShadow(
-                                                          color: Colors.grey
-                                                              .withOpacity(0.5),
-                                                          offset: Offset(2, 2),
-                                                          blurRadius: 7,
-                                                          spreadRadius: 1.0),
-                                                      BoxShadow(
-                                                          color: Colors.black
-                                                              .withOpacity(0.5),
-                                                          offset: Offset(2, 4),
-                                                          blurRadius: 7.0,
-                                                          spreadRadius: 1.0),
-                                                    ]),
-                                                child: IconButton(
-                                                  icon: Icon(
-                                                    Icons.article,
-                                                    color: ThemeBc.white,
-                                                    size: 30,
-                                                  ),
-                                                  tooltip: 'Show Snackbar',
-                                                  onPressed: () =>
-                                                      Navigator.pushNamed(
-                                                          context,
-                                                          '/composedetail_page',
-                                                          arguments: {
-                                                        'em_owner': snapshot
-                                                                .data!['data']
-                                                            [index]['em_owner'],
-                                                        'em_detail': snapshot
-                                                                .data!['data'][
-                                                            index]['em_detail'],
-                                                        'em_images': snapshot.data![
-                                                                            'data']
-                                                                        [index][
-                                                                    'em_images'] !=
-                                                                null
-                                                            ? Global.domainImage +
-                                                                snapshot.data!['data']
-                                                                            [index]
-                                                                        [
-                                                                        'em_images'][0]
-                                                                    [
-                                                                    'emi_path_name']
-                                                            : '${Global.networkImage}',
-                                                        'em_phone': snapshot
-                                                                .data!['data']
-                                                            [index]['em_phone'],
-                                                        'em_lat': snapshot
-                                                                .data!['data']
-                                                            [index]['em_lat'],
-                                                        'em_lng': snapshot
-                                                                .data!['data']
-                                                            [index]['em_lng'],
-                                                        'em_location': snapshot
-                                                                    .data![
-                                                                'data'][index]
-                                                            ['em_location'],
-                                                        'em_type': snapshot
-                                                                .data!['data']
-                                                            [index]['em_type'],
-                                                      }),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
+                              W_C_Detali(
+                                name:
+                                    '${snapshot.data!['data'][index]['em_type']}',
+                                onPressed: () => Navigator.pushNamed(
+                                    context, '/composedetail_page',
+                                    arguments: {
+                                      'em_owner': snapshot.data!['data'][index]
+                                          ['em_owner'],
+                                      'em_detail': snapshot.data!['data'][index]
+                                          ['em_detail'],
+                                      'em_images': snapshot.data!['data'][index]
+                                                  ['em_images'] !=
+                                              null
+                                          ? Global.domainImage +
+                                              snapshot.data!['data'][index]
+                                                      ['em_images'][0]
+                                                  ['emi_path_name']
+                                          : '${Global.networkImage}',
+                                      'em_phone': snapshot.data!['data'][index]
+                                          ['em_phone'],
+                                      'em_lat': snapshot.data!['data'][index]
+                                          ['em_lat'],
+                                      'em_lng': snapshot.data!['data'][index]
+                                          ['em_lng'],
+                                      'em_location': snapshot.data!['data']
+                                          [index]['em_location'],
+                                      'em_type': snapshot.data!['data'][index]
+                                          ['em_type'],
+                                    }),
                               ),
                             ],
                           ),

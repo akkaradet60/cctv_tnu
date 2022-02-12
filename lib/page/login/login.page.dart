@@ -1,11 +1,14 @@
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
+import 'package:cctv_tun/page/login/action.dart';
+
 import 'package:cctv_tun/page/profile/app_reducer.dart';
 import 'package:cctv_tun/page/profile/profile_action.dart';
-
+// import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:cctv_tun/widgets/custom_button.dart';
 import 'package:cctv_tun/widgets/warn_api.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -24,6 +27,115 @@ class login_page extends StatefulWidget {
 }
 
 class _LoginPageState extends State<login_page> {
+  Future<void> loginSocial(Map formValues) async {
+    print(formValues);
+    // print(formValues);
+    try {
+      var url = Global.urlWeb + 'api/login/restful/';
+      var response = await http.post(Uri.parse(url),
+          headers: {
+            "Accept": "application/json",
+          },
+          body: json.encode({
+            "user_app_id": Global.app_id,
+            "user_provider": '2',
+            "user_firstname": formValues['name'],
+            "user_image": formValues["picture"]["data"]["url"],
+            "email": formValues['email'],
+            "password": formValues['id']
+          }));
+      Map<String, dynamic> token = json.decode(response.body);
+      print(token);
+      // if (err['error']) {
+
+      if (response.statusCode == 200 && token['message'] == "สำเร็จ") {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('token', response.body);
+        await prefs.setString('user_id', response.body);
+        var profileUrl = Global.urlWeb +
+            'api/profile/restful?user_id=${token['access_id']}&user_app_id=${Global.app_id}';
+        var responseProfile = await http.get(Uri.parse(profileUrl),
+            headers: {'Authorization': 'Bearer ${token['access_token']}'});
+        var profile = json.decode(responseProfile.body);
+        Map<String, dynamic> user =
+            profile['data'][0]; // { id: 111, name: john ....}
+        await prefs.setString('profile', jsonEncode(user));
+        print('profile: $user');
+        print(token['access_id']);
+        var appUrl = Global.urlWeb +
+            'api/app/application/restful/?app_id=${Global.app_id}';
+        var responseApp = await http.get(Uri.parse(appUrl),
+            headers: {'Authorization': 'Bearer ${token['access_token']}'});
+        var application_data = json.decode(responseApp.body);
+        Map<String, dynamic> app_data =
+            application_data['data'][0]; // { id: 111, name: john ....}
+        await prefs.setString('application', jsonEncode(app_data));
+        //print(app_data);
+        //Global.user_id = token['access_id'];
+        print('app: $app_data');
+        //user_id = token['access_id'];
+
+        // print(Global.usi_id);
+        // print(user_id);
+
+        //get Profile
+        /* var profileUrl = Uri.parse('https://api.codingthailand.com/api/profile');
+      var responseProfile = await http.get(profileUrl,
+          headers: {'Authorization': 'Bearer ${token['access_token']}'});
+      Map<String, dynamic> profile = json.decode(responseProfile.body);
+      var user = profile['data']['user']; // { id: 111, name: john ....}
+      await prefs.setString('profile', json.encode(user));
+      // print('profile: $user');
+      print(token['message']);*/
+        //กลับไปที่หน้า HomeStack
+        Navigator.pushNamedAndRemoveUntil(
+            context, '/home_page', (route) => false);
+      } else {
+        return showDialog(
+          context: context,
+          builder: (context) {
+            return warn_api(
+              title: '${token['message']}',
+              title2: '',
+            );
+          },
+        );
+      }
+    } catch (e) {
+      return showDialog(
+        context: context,
+        builder: (context) {
+          return warn_api(
+            title: 'เกิดข้อผิดพลาดกรุณาลองใหม่อีกครั้ง',
+            title2: '',
+          );
+        },
+      );
+    }
+  }
+
+  Future<void> loginWithFacebook() async {
+    try {
+      await FacebookAuth.instance
+          .login(permissions: ["public_profile", "email"]).then((value) {
+        FacebookAuth.instance.getUserData().then((userData) {
+          print('userData => $userData');
+          loginSocial(userData);
+        });
+      });
+    } catch (e) {
+      return showDialog(
+        context: context,
+        builder: (context) {
+          return warn_api(
+            title: 'เกิดข้อผิดพลาดกครั้ง',
+            title2: '',
+          );
+        },
+      );
+    }
+  }
+
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
   Future<void> loginapp() async {
     //formValues['name']
@@ -87,25 +199,25 @@ class _LoginPageState extends State<login_page> {
 
       // Navigator.pushNamed(context, '/home_page');
     } else {
-      Alert(
-        context: context,
-        type: AlertType.warning,
-        // title: "แจ้งเตือน",
-        desc: '${token['message']}',
-        buttons: [
-          DialogButton(
-            child: Text(
-              "ปิด",
-              style: TextStyle(color: Colors.white, fontSize: 18),
-            ),
-            onPressed: () => Navigator.pop(context),
-            gradient: LinearGradient(colors: [
-              Color.fromRGBO(116, 116, 191, 1.0),
-              Color.fromRGBO(52, 138, 199, 1.0),
-            ]),
-          )
-        ],
-      ).show();
+      // Alert(
+      //   context: context,
+      //   type: AlertType.warning,
+      //   // title: "แจ้งเตือน",
+      //   desc: '${token['message']}',
+      //   buttons: [
+      //     DialogButton(
+      //       child: Text(
+      //         "ปิด",
+      //         style: TextStyle(color: Colors.white, fontSize: 18),
+      //       ),
+      //       onPressed: () => Navigator.pop(context),
+      //       gradient: LinearGradient(colors: [
+      //         Color.fromRGBO(116, 116, 191, 1.0),
+      //         Color.fromRGBO(52, 138, 199, 1.0),
+      //       ]),
+      //     )
+      //   ],
+      // ).show();
     }
   }
 
@@ -175,7 +287,7 @@ class _LoginPageState extends State<login_page> {
         context: context,
         builder: (context) {
           return warn_api(
-            title: 'ใส่ข้อมูลให้ครบถ้วนหรือรหัสผ่านไม่ถูกต้อง',
+            title: '${token['message']}',
             title2: '',
           );
         },
@@ -240,6 +352,8 @@ class _LoginPageState extends State<login_page> {
 
   @override
   Widget build(BuildContext context) {
+    bool _isLoggedIn = false;
+    Map _userObj = {};
     return Scaffold(
         backgroundColor: ThemeBc.black,
         body: Container(
@@ -362,7 +476,7 @@ class _LoginPageState extends State<login_page> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: Container(
                                         child: FormBuilderTextField(
-                                          initialValue: '12345678',
+                                          initialValue: '1234567',
                                           name: "password",
                                           maxLines: 1,
                                           keyboardType:
@@ -513,39 +627,7 @@ class _LoginPageState extends State<login_page> {
                               ),
                             ]),
                       ),
-                      Container(
-                        margin: EdgeInsets.only(top: 0, bottom: 5),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              width: 390,
-                              height: 55,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: defaultMargin),
-                              color: Colors.transparent,
-                              child: Container(
-                                child: ElevatedButton.icon(
-                                  onPressed: () =>
-                                      Navigator.pushNamed(context, '/about'),
-                                  icon: ImageIcon(
-                                      AssetImage('assets/uif-u/01.png')),
-                                  label: Text('Facebook'),
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Colors.blue[900],
-                                    onPrimary: Colors.white,
-                                    shadowColor: Colors.grey[700],
-                                    elevation: 30,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(40))),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+
                       Container(
                         padding:
                             EdgeInsets.symmetric(horizontal: defaultMargin),
@@ -561,6 +643,34 @@ class _LoginPageState extends State<login_page> {
                               colorButton: ThemeBc.background,
                               textStyle: secondaryTextStyle.copyWith(
                                   fontWeight: medium, fontSize: 16),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 34),
+                        margin: EdgeInsets.only(top: 0, bottom: 5),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Expanded(
+                              child: ElevatedButton.icon(
+                                label: const Text('เข้าสู่ระบบ facebook'),
+                                icon: const Icon(Icons.facebook_rounded),
+                                style: ElevatedButton.styleFrom(
+                                  primary: ThemeBc.black,
+                                  //side: BorderSide(color: Colors.red, width: 5),
+                                  textStyle: const TextStyle(fontSize: 15),
+                                  padding: const EdgeInsets.all(15),
+                                  shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(40))),
+                                  // shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+                                ),
+                                onPressed: () {
+                                  loginWithFacebook();
+                                },
+                              ),
                             ),
                           ],
                         ),

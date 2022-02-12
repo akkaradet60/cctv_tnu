@@ -30,7 +30,7 @@ class warn_api extends StatelessWidget {
               ),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
+                    color: Colors.black.withOpacity(0.5),
                     offset: Offset(2, 2),
                     blurRadius: 7,
                     spreadRadius: 1.0),
@@ -55,7 +55,7 @@ class warn_api extends StatelessWidget {
                       Center(
                         child: Column(
                           children: [
-                            LocaleText(
+                            Text(
                               title,
                               style: TextStyle(
                                 fontSize: 18.0,

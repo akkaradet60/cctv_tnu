@@ -5,6 +5,7 @@ import 'package:cctv_tun/page/award/awarddetail_page.dart';
 import 'package:cctv_tun/page/cctv/cctv_page.dart';
 import 'package:cctv_tun/page/compose/compose_page.dart';
 import 'package:cctv_tun/page/compose/composedetail_page.dart';
+import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/home/home_page.dart';
 import 'package:cctv_tun/page/hotline/hotlinee_page.dart';
 import 'package:cctv_tun/page/location/location_page.dart';
@@ -42,6 +43,7 @@ import 'package:cctv_tun/page/trainingcalendar/trainingcalendar.dart';
 import 'package:cctv_tun/page/travel/travel_page.dart';
 import 'package:cctv_tun/page/travel/travelmap_page.dart';
 import 'package:cctv_tun/page/warn/warn_page.dart';
+import 'package:cctv_tun/widgets/verify_email_page.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
@@ -83,7 +85,12 @@ class MyApp extends StatelessWidget {
           //     canvasColor: Colors.pinkAccent,
           //     scaffoldBackgroundColor: Colors.pinkAccent),
           routes: {
-            '/': (context) => token == null ? login_page() : home_page(),
+            '/': (context) => token == null
+                ? login_page()
+                : Global.app_id == "1"
+                    ? home_page()
+                    : Verify(),
+            // '/': (context) => token == null ? login_page() : home_page(),
             '/fix_password': (context) => fix_password(),
             // '/sss': (context) => EmergecyPage(),
             '/map_prod': (context) => map_prod(),
