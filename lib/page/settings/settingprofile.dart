@@ -124,9 +124,13 @@ class _settingprofile extends State<settingprofile>
                                                       child: Column(
                                                         children: [
                                                           Image.network(
-                                                              Global.urlFile2 +
-                                                                  profile[
-                                                                      'user_image'],
+                                                              profile['user_image'] !=
+                                                                      null
+                                                                  ? Global.urlFile2 +
+                                                                      profile[
+                                                                          'user_image']
+                                                                  : Global
+                                                                      .networkImage,
                                                               width: 200,
                                                               height: 200,
                                                               fit: BoxFit.fill),
@@ -134,7 +138,12 @@ class _settingprofile extends State<settingprofile>
                                                       ),
                                                     ),
                                                   )
-                                                : Image.network(Global.urlFile2,
+                                                : Image.network(
+                                                    selectedImage != null
+                                                        ? Global.urlFile2 +
+                                                            profile[
+                                                                'user_image']
+                                                        : Global.networkImage,
                                                     width: 200,
                                                     height: 200,
                                                     fit: BoxFit.fill),
@@ -256,7 +265,7 @@ class _settingprofile extends State<settingprofile>
                                     ),
                                     allowClear: true,
                                     hint: profile['user_prov'] != null
-                                        ? Text(profile['prov'])
+                                        ? Text(profile['user_prov'])
                                         : Text('เลือกจังหวัด'),
                                     onChanged: (value) {
                                       setState(() {
@@ -318,7 +327,7 @@ class _settingprofile extends State<settingprofile>
                                     ),
                                     allowClear: true,
                                     hint: profile['user_dis'] != null
-                                        ? Text(profile['dis'])
+                                        ? Text(profile['user_dis'])
                                         : Text('เลือกอำเภอ'),
                                     onChanged: (value) {
                                       setState(() {
@@ -376,7 +385,7 @@ class _settingprofile extends State<settingprofile>
                                     ),
                                     allowClear: true,
                                     hint: profile['user_sub'] != null
-                                        ? Text(profile['sub'])
+                                        ? Text(profile['user_sub'])
                                         : Text('เลือกตำบล'),
                                     onChanged: (value) {
                                       setState(() {

@@ -658,7 +658,7 @@ class _LoginPageState extends State<login_page> {
                                 label: const Text('เข้าสู่ระบบ facebook'),
                                 icon: const Icon(Icons.facebook_rounded),
                                 style: ElevatedButton.styleFrom(
-                                  primary: ThemeBc.black,
+                                  primary: ThemeBc.blue,
                                   //side: BorderSide(color: Colors.red, width: 5),
                                   textStyle: const TextStyle(fontSize: 15),
                                   padding: const EdgeInsets.all(15),

@@ -539,12 +539,19 @@ class _menu_pangState extends State<menu_pang> {
                           itemBuilder: (context, index) {
                             var imageData = Global.networkImage;
 
-                            if (snapshot.data!['user_image'] != null &&
-                                snapshot.data!['user_image_check'] == '1') {
+                            if (snapshot.data!['data'][index]['user_image'] !=
+                                    null &&
+                                snapshot.data!['data'][index]
+                                        ['user_image_check'] ==
+                                    '1') {
                               imageData = Global.urlFile2 +
-                                  snapshot.data!['user_image'];
-                            } else if (snapshot.data!['user_image'] != null &&
-                                snapshot.data!['user_image_check'] == '2') {
+                                  snapshot.data!['data'][index]['user_image'];
+                            } else if (snapshot.data!['data'][index]
+                                        ['user_image'] !=
+                                    null &&
+                                snapshot.data!['data'][index]
+                                        ['user_image_check'] ==
+                                    '2') {
                               imageData = Global.networkImage;
                             }
                             return Container(

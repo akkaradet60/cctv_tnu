@@ -66,6 +66,7 @@ class ThemeBc {
   static const greens = Colors.green;
   static const background = Color(0xff1B2836);
   static const text = Color(0xffF1EFE3);
+  static const blue = Color(0xff512da8);
 }
 
 TextStyle primaryTextStyle = GoogleFonts.poppins(
