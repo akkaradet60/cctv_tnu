@@ -1,3 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- <resources>
+    <string name="app_name">smartcity_nt_mobile</string>
+   <string name="facebook_app_id">305776278252974</string> 
+   <string name="fb_login_protocol_scheme">fb305776278252974</string>
+    <string name="facebook_client_token">73695d28acdd805705b065e781fa81c0</string>
+</resources> -->
 <resources>
     <string name="app_name">com.example.cctv_tun</string>
     <string name="facebook_app_id">272865201585754</string>

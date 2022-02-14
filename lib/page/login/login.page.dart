@@ -420,8 +420,7 @@ class _LoginPageState extends State<login_page> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: Container(
                                         child: FormBuilderTextField(
-                                          initialValue:
-                                              'akkaradet.ko60@snru.ac.th',
+                                          initialValue: 'ghame122331@gmail.com',
                                           name: "email",
                                           maxLines: 1,
                                           keyboardType:
@@ -476,7 +475,7 @@ class _LoginPageState extends State<login_page> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: Container(
                                         child: FormBuilderTextField(
-                                          initialValue: '1234567',
+                                          initialValue: '123456',
                                           name: "password",
                                           maxLines: 1,
                                           keyboardType:
