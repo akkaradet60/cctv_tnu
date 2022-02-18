@@ -222,7 +222,7 @@ class _warn1State extends State<settingprodot> {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [ThemeBc.orange, ThemeBc.pinkAccent],
+              colors: [ThemeBc.white, ThemeBc.white],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft),
         ),

@@ -5,11 +5,12 @@ import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:cctv_tun/page/menu/manu.dart';
-import 'package:cctv_tun/widgets/text_FormBuilderField.dart';
+
 import 'package:cctv_tun/widgets/warn_api.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:cctv_tun/widgets/menus_custom.dart';
@@ -49,6 +50,33 @@ class _home_pageState extends State<home_page> {
     /* final store = StoreProvider.of<AppState>(context);
     store.dispatch(updateProfileAction(newProfile));
     store.dispatch(updateApplicationAction(newApplication));*/
+  }
+
+  late Position userLocation;
+  Future<Position> _getLocation() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return Future.error('Location services are disabled.');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+
+    userLocation = await Geolocator.getCurrentPosition();
+    return userLocation;
   }
 
   Future<Map<String, dynamic>> getDataSlide() async {
@@ -105,6 +133,7 @@ class _home_pageState extends State<home_page> {
     getprofile1();
     getProfile();
     getDataSlide();
+    _getLocation();
   }
 
   Future<void> getprofile1() async {
@@ -196,16 +225,11 @@ class _home_pageState extends State<home_page> {
                 return Center(
                   child: Container(
                     decoration: BoxDecoration(
-                        color: ThemeBc.text,
+                        color: ThemeBc.textblack,
                         borderRadius: BorderRadius.circular(
                           20,
                         ),
                         boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              offset: Offset(2, 2),
-                              blurRadius: 7,
-                              spreadRadius: 1.0),
                           BoxShadow(
                               color: Colors.black.withOpacity(0.5),
                               offset: Offset(2, 4),
@@ -287,7 +311,7 @@ class _home_pageState extends State<home_page> {
                       //     ),
                       child: Container(
                         decoration: BoxDecoration(
-                            color: secondaryTextColor,
+                            color: ThemeBc.black,
                             borderRadius: BorderRadius.circular(
                               8,
                             ),
@@ -388,7 +412,7 @@ class _home_pageState extends State<home_page> {
               fontSize: 25,
               fontWeight: FontWeight.bold,
               // backgroundColor: Colors.black45,
-              color: ThemeBc.white,
+              color: ThemeBc.textblack,
             ),
           ),
         ),
@@ -456,6 +480,7 @@ class _home_pageState extends State<home_page> {
     // }
 
     Widget cardMenus() {
+      Map _userObj = {};
       return Container(
           margin: EdgeInsets.only(top: 18),
           child: Padding(
@@ -648,20 +673,9 @@ class _home_pageState extends State<home_page> {
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        title: Column(
           children: [
-            SizedBox(width: 20),
-            Container(
-              height: 30,
-              width: 250,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  LocaleText('เทศบาลเมืองมหาสารคาม'),
-                ],
-              ),
-            )
+            LocaleText('เทศบาลเมืองมหาสารคาม'),
           ],
         ),
         actions: <Widget>[
@@ -680,7 +694,7 @@ class _home_pageState extends State<home_page> {
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                  colors: [ThemeBc.orange, ThemeBc.pinkAccent],
+                  colors: [ThemeBc.white, ThemeBc.white],
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft),
             ),
@@ -703,7 +717,7 @@ class _home_pageState extends State<home_page> {
                           shape: BoxShape.circle,
                           color: _currentIndex == index
                               ? const Color.fromRGBO(255, 102, 0, 0.9)
-                              : const Color.fromRGBO(255, 255, 255, 0.8),
+                              : const Color.fromRGBO(0, 0, 0, 0.8),
                         ),
                       );
                     }).toList(),

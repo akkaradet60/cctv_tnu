@@ -24,11 +24,6 @@ class FormBuilderFieldText extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                offset: Offset(2, 2),
-                blurRadius: 7,
-                spreadRadius: 1.0),
-            BoxShadow(
                 color: Colors.black.withOpacity(0.5),
                 offset: Offset(2, 4),
                 blurRadius: 7.0,

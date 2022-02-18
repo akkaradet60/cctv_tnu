@@ -20,11 +20,15 @@ import 'package:cctv_tun/page/map/maplocation_page.dart';
 
 import 'package:cctv_tun/page/message/messagem_page.dart';
 import 'package:cctv_tun/page/message/messagemdetail_page.dart';
+import 'package:cctv_tun/page/otoproducts/productsearchome.dart';
+import 'package:cctv_tun/page/otoproducts/productsearchstore_page.dart';
 
 import 'package:cctv_tun/page/otoproducts/productshome_page.dart';
 
 import 'package:cctv_tun/page/otoproducts/productshop_page.dart';
-import 'package:cctv_tun/page/otoproducts/productstore_page.dart';
+import 'package:cctv_tun/page/otoproducts/productsearch_page.dart';
+import 'package:cctv_tun/page/otoproducts/productstorehome%20copy.dart';
+import 'package:cctv_tun/page/otoproducts/productstorehome.dart';
 
 import 'package:cctv_tun/page/profile/app_reducer.dart';
 
@@ -43,6 +47,7 @@ import 'package:cctv_tun/page/trainingcalendar/trainingcalendar.dart';
 import 'package:cctv_tun/page/travel/travel_page.dart';
 import 'package:cctv_tun/page/travel/travelmap_page.dart';
 import 'package:cctv_tun/page/warn/warn_page.dart';
+import 'package:cctv_tun/page/warn/warndetail_page.dart';
 import 'package:cctv_tun/widgets/verify_email_page.dart';
 
 import 'package:flutter/material.dart';
@@ -82,8 +87,8 @@ class MyApp extends StatelessWidget {
 
           // theme: ThemeData(
           //     primarySwatch: Colors.grey,
-          //     canvasColor: Colors.pinkAccent,
-          //     scaffoldBackgroundColor: Colors.pinkAccent),
+          //     canvasColor: Colors.white,
+          //     scaffoldBackgroundColor: Colors.white),
           routes: {
             '/': (context) => token == null
                 ? login_page()
@@ -134,10 +139,15 @@ class MyApp extends StatelessWidget {
             '/maplocation_page': (context) => maplocation_page(),
             '/settingpolicy': (context) => settingpolicy(),
             // '/EmergecyPage': (context) => EmergecyPage(),
-            '/AppealPage': (context) => AppealPage(),
+            // '/AppealPage': (context) => MyHomePage(),
             '/facebook_login': (context) => facebook_login(),
             '/forgot_password': (context) => forgot_password(),
-            //   '/messagem2': (context) => messagem2()
+            '/ssssss': (context) => ssssss(),
+            '/warndetail_page': (context) => warndetail_page(),
+            '/productsearchstore_page': (context) => productsearchstore_page(),
+
+            '/productsearchome': (context) => produsctsearchome(),
+            '/productstorehome': (context) => productstorehome(),
           },
         ),
       ),

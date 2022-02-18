@@ -98,7 +98,11 @@ class _location_page extends State<location_page> {
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
-        title: Center(child: LocaleText('สถานที่ราชการ')),
+        title: Column(
+          children: [
+            Center(child: LocaleText('สถานที่ราชการ')),
+          ],
+        ),
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/logo.png', scale: 15),
@@ -114,7 +118,7 @@ class _location_page extends State<location_page> {
         child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors: [ThemeBc.orange, ThemeBc.pinkAccent],
+                colors: [ThemeBc.white, ThemeBc.white],
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft),
           ),
@@ -396,7 +400,7 @@ class _location_page extends State<location_page> {
   //     child: Container(
   //       decoration: BoxDecoration(
   //           gradient: LinearGradient(
-  //               colors: [Colors.pinkAccent, Colors.orangeAccent],
+  //               colors: [Colors.white, Colors.white],
   //               begin: Alignment.topRight,
   //               end: Alignment.bottomLeft)),
   //       child: isLoading == true
@@ -494,7 +498,7 @@ class _location_page extends State<location_page> {
   //                                                       style: ElevatedButton
   //                                                           .styleFrom(
   //                                                         primary:
-  //                                                             Colors.orange,
+  //                                                             Colors.white,
   //                                                         elevation: 10,
   //                                                         shape: RoundedRectangleBorder(
   //                                                             borderRadius: BorderRadius
@@ -509,7 +513,7 @@ class _location_page extends State<location_page> {
   //                                                 // child: TextButton(
   //                                                 //   style: TextButton.styleFrom(
   //                                                 //       backgroundColor:
-  //                                                 //           Colors.orange,
+  //                                                 //           Colors.white,
   //                                                 //       padding:
   //                                                 //           EdgeInsets.symmetric(
   //                                                 //               horizontal: 0,
@@ -518,7 +522,7 @@ class _location_page extends State<location_page> {
   //                                                 //           RoundedRectangleBorder(
   //                                                 //               side: BorderSide(
   //                                                 //                   color: Colors
-  //                                                 //                       .orange))),
+  //                                                 //                       .white))),
   //                                                 //   child: Text(
   //                                                 //     'call',
   //                                                 //   ),
@@ -553,7 +557,7 @@ class _location_page extends State<location_page> {
   //   return Container(
   //     decoration: BoxDecoration(
   //         gradient: LinearGradient(
-  //             colors: [Colors.pinkAccent, Colors.orangeAccent],
+  //             colors: [Colors.white, Colors.white],
   //             begin: Alignment.topRight,
   //             end: Alignment.bottomLeft)),
   //     height: 500,
@@ -682,14 +686,14 @@ class _location_page extends State<location_page> {
 //         subtitle: Text(number1),
 //         trailing: Material(
 //           elevation: 18,
-//           color: Colors.orange,
+//           color: Colors.white,
 //           shadowColor: Colors.grey,
 //           child: TextButton(
 //             style: TextButton.styleFrom(
-//                 backgroundColor: Colors.orange,
+//                 backgroundColor: Colors.white,
 //                 padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
 //                 shape: RoundedRectangleBorder(
-//                     side: BorderSide(color: Colors.orange))),
+//                     side: BorderSide(color: Colors.white))),
 //             child: Text(
 //               'call',
 //             ),
@@ -716,14 +720,14 @@ class _location_page extends State<location_page> {
 //         subtitle: Text(number),
 //         trailing: Material(
 //           elevation: 18,
-//           color: Colors.orange,
+//           color: Colors.white,
 //           shadowColor: Colors.grey,
 //           child: TextButton(
 //             style: TextButton.styleFrom(
-//                 backgroundColor: Colors.orange,
+//                 backgroundColor: Colors.white,
 //                 padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
 //                 shape: RoundedRectangleBorder(
-//                     side: BorderSide(color: Colors.orange))),
+//                     side: BorderSide(color: Colors.white))),
 //             child: Text(
 //               'call',
 //             ),
@@ -750,14 +754,14 @@ class _location_page extends State<location_page> {
 //         subtitle: Text(number),
 //         trailing: Material(
 //           elevation: 18,
-//           color: Colors.orange,
+//           color: Colors.white,
 //           shadowColor: Colors.grey,
 //           child: TextButton(
 //             style: TextButton.styleFrom(
-//                 backgroundColor: Colors.orange,
+//                 backgroundColor: Colors.white,
 //                 padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
 //                 shape: RoundedRectangleBorder(
-//                     side: BorderSide(color: Colors.orange))),
+//                     side: BorderSide(color: Colors.white))),
 //             child: Text(
 //               'call',
 //             ),

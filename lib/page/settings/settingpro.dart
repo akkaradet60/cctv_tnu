@@ -86,7 +86,11 @@ class _warn1State extends State<settingpro> {
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
-        title: Center(child: const Text('จัดการสินค้า')),
+        title: Column(
+          children: [
+            Center(child: const Text('จัดการสินค้า')),
+          ],
+        ),
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/logo.png', scale: 15),
@@ -101,7 +105,7 @@ class _warn1State extends State<settingpro> {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [ThemeBc.orange, ThemeBc.pinkAccent],
+              colors: [ThemeBc.white, ThemeBc.white],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft),
         ),

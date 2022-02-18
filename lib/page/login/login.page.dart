@@ -148,7 +148,7 @@ class _LoginPageState extends State<login_page> {
         },
         body: json.encode({
           "user_app_id": Global.app_id,
-          "email": 'audience@nt.com',
+          "email": 'gtx@nt.com',
           "password": '1234567'
         }));
 
@@ -287,7 +287,7 @@ class _LoginPageState extends State<login_page> {
         context: context,
         builder: (context) {
           return warn_api(
-            title: '${token['message']}',
+            title: 'ใส่ข้อมูลให้ครบถ้วนหรือรหัสผ่านไม่ถูกต้อง',
             title2: '',
           );
         },
@@ -355,11 +355,11 @@ class _LoginPageState extends State<login_page> {
     bool _isLoggedIn = false;
     Map _userObj = {};
     return Scaffold(
-        backgroundColor: ThemeBc.black,
+        backgroundColor: ThemeBc.white,
         body: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
-                  colors: [ThemeBc.pinkAccent, ThemeBc.orange],
+                  colors: [ThemeBc.white, ThemeBc.white],
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft)),
           child: Container(
@@ -405,22 +405,17 @@ class _LoginPageState extends State<login_page> {
                                         boxShadow: [
                                           BoxShadow(
                                               color:
-                                                  Colors.grey.withOpacity(0.5),
+                                                  Colors.black.withOpacity(0.5),
                                               offset: Offset(2, 2),
                                               blurRadius: 7,
-                                              spreadRadius: 1.0),
-                                          BoxShadow(
-                                              color:
-                                                  Colors.black.withOpacity(0.5),
-                                              offset: Offset(2, 4),
-                                              blurRadius: 7.0,
                                               spreadRadius: 1.0),
                                         ]),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Container(
                                         child: FormBuilderTextField(
-                                          initialValue: 'ghame122331@gmail.com',
+                                          initialValue:
+                                              'akkaradet.k6@snru.ac.th',
                                           name: "email",
                                           maxLines: 1,
                                           keyboardType:
@@ -460,22 +455,16 @@ class _LoginPageState extends State<login_page> {
                                         boxShadow: [
                                           BoxShadow(
                                               color:
-                                                  Colors.grey.withOpacity(0.5),
+                                                  Colors.black.withOpacity(0.5),
                                               offset: Offset(2, 2),
                                               blurRadius: 7,
-                                              spreadRadius: 1.0),
-                                          BoxShadow(
-                                              color:
-                                                  Colors.black.withOpacity(0.5),
-                                              offset: Offset(2, 4),
-                                              blurRadius: 7.0,
                                               spreadRadius: 1.0),
                                         ]),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Container(
                                         child: FormBuilderTextField(
-                                          initialValue: '123456',
+                                          initialValue: '1234567',
                                           name: "password",
                                           maxLines: 1,
                                           keyboardType:
@@ -548,9 +537,6 @@ class _LoginPageState extends State<login_page> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            SizedBox(
-                              width: 0,
-                            ),
                             LocaleText(
                               'ยังไม่ได้เป็นสมัครสมาชิก',
                               style: TextStyle(
@@ -582,9 +568,8 @@ class _LoginPageState extends State<login_page> {
                                 'สมัครสมาชิก',
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontFamily: 'sss',
-                                  fontSize: 15,
                                   fontWeight: FontWeight.bold,
+                                  fontSize: 15,
                                   decoration: TextDecoration.underline,
                                   shadows: <Shadow>[
                                     Shadow(
@@ -606,117 +591,126 @@ class _LoginPageState extends State<login_page> {
                       ),
                       SizedBox(height: 10),
                       Container(
-                        color: Colors.transparent,
-                        margin: EdgeInsets.only(top: 20, bottom: 5),
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              CustomButton(
-                                title: 'ล็อกอิน',
-                                onPressed: () {
-                                  // login(_fbKey.currentState!.value);
-                                  if (_fbKey.currentState!.saveAndValidate()) {
-                                    // print(_fbKey.currentState!.value);
-                                    login(_fbKey.currentState!.value);
-                                  }
-                                },
-                                colorButton: ThemeBc.background,
-                                textStyle: secondaryTextStyle.copyWith(
-                                    fontWeight: medium, fontSize: 16),
+                        // color: Colors.transparent,
+                        // margin: EdgeInsets.only(
+                        //   top: 20,
+                        // ),
+                        child: CustomButton(
+                          title: 'ล็อกอิน',
+                          onPressed: () {
+                            // login(_fbKey.currentState!.value);
+                            if (_fbKey.currentState!.saveAndValidate()) {
+                              // print(_fbKey.currentState!.value);
+                              login(_fbKey.currentState!.value);
+                            }
+                          },
+                          colorButton: ThemeBc.background,
+                          textStyle: secondaryTextStyle.copyWith(
+                              fontWeight: medium, fontSize: 16),
+                        ),
+                      ),
+                      SizedBox(height: 5),
+                      Container(
+                        child: CustomButton(
+                          title: 'ทดลองใช้ในฐานะผู้เยี่ยมชม',
+                          onPressed: () {
+                            loginapp();
+                          },
+                          colorButton: ThemeBc.background,
+                          textStyle: secondaryTextStyle.copyWith(
+                              fontWeight: medium, fontSize: 16),
+                        ),
+                      ),
+                      SizedBox(height: 5),
+                      Padding(
+                        padding: const EdgeInsets.all(0.0),
+                        child: Container(
+                          width: 342,
+                          decoration: BoxDecoration(
+                              color: ThemeBc.white,
+                              borderRadius: BorderRadius.circular(
+                                30,
                               ),
-                            ]),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.black.withOpacity(0.5),
+                                    offset: Offset(2, 2),
+                                    blurRadius: 7,
+                                    spreadRadius: 1.0),
+                              ]),
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(
+                                child: ElevatedButton.icon(
+                                  label: const LocaleText('facebook'),
+                                  icon: const Icon(Icons.facebook_rounded),
+                                  style: ElevatedButton.styleFrom(
+                                    primary: ThemeBc.blue,
+                                    //side: BorderSide(color: Colors.red, width: 5),
+                                    textStyle: const TextStyle(fontSize: 15),
+                                    padding: const EdgeInsets.all(15),
+                                    shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(40))),
+                                    // shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+                                  ),
+                                  onPressed: () {
+                                    loginWithFacebook();
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
 
-                      Container(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: defaultMargin),
-                        margin: EdgeInsets.only(top: 0, bottom: 5),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CustomButton(
-                              title: 'ทดลองใช้ในฐานะผู้เยี่ยมชม',
-                              onPressed: () {
-                                loginapp();
-                              },
-                              colorButton: ThemeBc.background,
-                              textStyle: secondaryTextStyle.copyWith(
-                                  fontWeight: medium, fontSize: 16),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.symmetric(horizontal: 34),
-                        margin: EdgeInsets.only(top: 0, bottom: 5),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Expanded(
-                              child: ElevatedButton.icon(
-                                label: const Text('เข้าสู่ระบบ facebook'),
-                                icon: const Icon(Icons.facebook_rounded),
-                                style: ElevatedButton.styleFrom(
-                                  primary: ThemeBc.blue,
-                                  //side: BorderSide(color: Colors.red, width: 5),
-                                  textStyle: const TextStyle(fontSize: 15),
-                                  padding: const EdgeInsets.all(15),
-                                  shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(40))),
-                                  // shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
-                                ),
-                                onPressed: () {
-                                  loginWithFacebook();
-                                },
+                      SizedBox(height: 5),
+
+                      Padding(
+                        padding: const EdgeInsets.all(0),
+                        child: Container(
+                          width: 342,
+                          decoration: BoxDecoration(
+                              color: ThemeBc.black,
+                              borderRadius: BorderRadius.circular(
+                                30,
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 0, bottom: 5),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              width: 390,
-                              height: 55,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: defaultMargin),
-                              color: Colors.transparent,
-                              child: Container(
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.black.withOpacity(0.5),
+                                    offset: Offset(2, 2),
+                                    blurRadius: 7,
+                                    spreadRadius: 1.0),
+                              ]),
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(
                                 child: ElevatedButton.icon(
+                                  label: const LocaleText('เปลี่ยนภาษา'),
+                                  icon: const Icon(Icons.spellcheck),
+                                  style: ElevatedButton.styleFrom(
+                                    primary: ThemeBc.black,
+                                    //side: BorderSide(color: Colors.red, width: 5),
+                                    textStyle: const TextStyle(fontSize: 15),
+                                    padding: const EdgeInsets.all(15),
+                                    shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(40))),
+                                    // shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+                                  ),
                                   onPressed: () {
                                     showDialog(
                                       context: context,
                                       builder: (context) {
                                         return AlertDialog(
-                                          shape: CircleBorder(),
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  new BorderRadius.circular(
+                                                      30)),
+                                          // shape: CircleBorder(),
                                           // elevation: 100,
                                           content: Container(
-                                            height: 200,
-                                            width: 400,
-                                            decoration: BoxDecoration(
-                                                color: ThemeBc.background,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                  20,
-                                                ),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                      color: Colors.black
-                                                          .withOpacity(0.5),
-                                                      offset: Offset(2, 2),
-                                                      blurRadius: 7,
-                                                      spreadRadius: 1.0),
-                                                  BoxShadow(
-                                                      color: Colors.black
-                                                          .withOpacity(0.5),
-                                                      offset: Offset(2, 4),
-                                                      blurRadius: 7.0,
-                                                      spreadRadius: 1.0),
-                                                ]),
+                                            height: 180,
                                             child: Column(
                                               children: [
                                                 SizedBox(height: 20),
@@ -729,9 +723,12 @@ class _LoginPageState extends State<login_page> {
                                                         LocaleNotifier.of(
                                                                 context)!
                                                             .change('th');
-                                                        Navigator.pushNamed(
-                                                            context,
-                                                            '/login_page');
+                                                        Navigator
+                                                            .pushNamedAndRemoveUntil(
+                                                                context,
+                                                                '/login_page',
+                                                                (route) =>
+                                                                    false);
                                                       },
                                                       child: Container(
                                                         height: 40,
@@ -755,18 +752,6 @@ class _LoginPageState extends State<login_page> {
                                                                       Offset(
                                                                           2, 2),
                                                                   blurRadius: 7,
-                                                                  spreadRadius:
-                                                                      1.0),
-                                                              BoxShadow(
-                                                                  color: Colors
-                                                                      .black
-                                                                      .withOpacity(
-                                                                          0.5),
-                                                                  offset:
-                                                                      Offset(
-                                                                          2, 4),
-                                                                  blurRadius:
-                                                                      7.0,
                                                                   spreadRadius:
                                                                       1.0),
                                                             ]),
@@ -797,9 +782,12 @@ class _LoginPageState extends State<login_page> {
                                                         LocaleNotifier.of(
                                                                 context)!
                                                             .change('en');
-                                                        Navigator.pushNamed(
-                                                            context,
-                                                            '/login_page');
+                                                        Navigator
+                                                            .pushNamedAndRemoveUntil(
+                                                                context,
+                                                                '/login_page',
+                                                                (route) =>
+                                                                    false);
                                                       },
                                                       child: Container(
                                                         height: 40,
@@ -823,18 +811,6 @@ class _LoginPageState extends State<login_page> {
                                                                       Offset(
                                                                           2, 2),
                                                                   blurRadius: 7,
-                                                                  spreadRadius:
-                                                                      1.0),
-                                                              BoxShadow(
-                                                                  color: Colors
-                                                                      .black
-                                                                      .withOpacity(
-                                                                          0.5),
-                                                                  offset:
-                                                                      Offset(
-                                                                          2, 4),
-                                                                  blurRadius:
-                                                                      7.0,
                                                                   spreadRadius:
                                                                       1.0),
                                                             ]),
@@ -865,9 +841,12 @@ class _LoginPageState extends State<login_page> {
                                                         LocaleNotifier.of(
                                                                 context)!
                                                             .change('zh');
-                                                        Navigator.pushNamed(
-                                                            context,
-                                                            '/login_page');
+                                                        Navigator
+                                                            .pushNamedAndRemoveUntil(
+                                                                context,
+                                                                '/login_page',
+                                                                (route) =>
+                                                                    false);
                                                       },
                                                       child: Container(
                                                         height: 40,
@@ -891,18 +870,6 @@ class _LoginPageState extends State<login_page> {
                                                                       Offset(
                                                                           2, 2),
                                                                   blurRadius: 7,
-                                                                  spreadRadius:
-                                                                      1.0),
-                                                              BoxShadow(
-                                                                  color: Colors
-                                                                      .black
-                                                                      .withOpacity(
-                                                                          0.5),
-                                                                  offset:
-                                                                      Offset(
-                                                                          2, 4),
-                                                                  blurRadius:
-                                                                      7.0,
                                                                   spreadRadius:
                                                                       1.0),
                                                             ]),
@@ -936,23 +903,13 @@ class _LoginPageState extends State<login_page> {
                                       },
                                     );
                                   },
-                                  icon: Icon(Icons.g_translate_outlined),
-                                  label: LocaleText('เปลี่ยนภาษา'),
-                                  style: ElevatedButton.styleFrom(
-                                    primary: ThemeBc.black,
-                                    onPrimary: Colors.white,
-                                    shadowColor: Colors.grey[700],
-                                    elevation: 30,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(40))),
-                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
+
                       SizedBox(height: 100),
                     ],
                   ),

@@ -28,12 +28,20 @@ class product {
   final String title;
   final String author;
   final String urlImage;
+  final String product_number;
+  final String product_detail;
+  final String product_price;
+  final String product_discount;
 
   const product({
     required this.id,
     required this.author,
     required this.title,
     required this.urlImage,
+    required this.product_number,
+    required this.product_detail,
+    required this.product_price,
+    required this.product_discount,
   });
 
   factory product.fromJson(Map<String, dynamic> json) => product(
@@ -41,6 +49,10 @@ class product {
         author: json['author'],
         title: json['title'],
         urlImage: json['urlImage'],
+        product_detail: json['product_detail'],
+        product_number: json['product_number'],
+        product_price: json['product_price'],
+        product_discount: json['product_discount'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -48,6 +60,10 @@ class product {
         'title': title,
         'author': author,
         'urlImage': urlImage,
+        'product_detail': product_detail,
+        'product_number': product_number,
+        'product_price': product_price,
+        'product_discount': product_discount,
       };
 }
 

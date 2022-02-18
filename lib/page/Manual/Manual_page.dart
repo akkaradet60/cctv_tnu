@@ -86,7 +86,11 @@ class _manual_pageState extends State<manual_page> {
           shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
-          title: Center(child: const LocaleText('คู่มือการใช้งาน')),
+          title: Column(
+            children: [
+              Center(child: const LocaleText('คู่มือการใช้งาน')),
+            ],
+          ),
           actions: <Widget>[
             IconButton(
               icon: Image.asset('assets/logo.png', scale: 15),

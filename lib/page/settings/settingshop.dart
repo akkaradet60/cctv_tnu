@@ -430,7 +430,7 @@ class _settingshopState extends State<settingshop>
                       label: const Text('บันทึก'),
                       icon: const Icon(Icons.save),
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.orange,
+                        primary: Colors.white,
                         textStyle: const TextStyle(fontSize: 15),
                         padding: const EdgeInsets.all(15),
                         shape: const RoundedRectangleBorder(
@@ -455,7 +455,7 @@ class _settingshopState extends State<settingshop>
                       label: const Text('อีกที่'),
                       icon: const Icon(Icons.offline_bolt),
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.orange,
+                        primary: Colors.white,
                         textStyle: const TextStyle(fontSize: 15),
                         padding: const EdgeInsets.all(15),
                         shape: const RoundedRectangleBorder(
@@ -498,7 +498,7 @@ class _settingshopState extends State<settingshop>
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [ThemeBc.orange, ThemeBc.pinkAccent],
+              colors: [ThemeBc.white, ThemeBc.white],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft),
         ),

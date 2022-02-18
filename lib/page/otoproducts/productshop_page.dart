@@ -89,7 +89,11 @@ class _productshop_page extends State<productshop_page> {
           shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
-          title: Center(child: LocaleText('สินค้า')),
+          title: Column(
+            children: [
+              Center(child: LocaleText('สินค้า')),
+            ],
+          ),
           actions: <Widget>[
             IconButton(
               icon: Image.asset('assets/logo.png', scale: 15),
@@ -311,7 +315,7 @@ class _productshop_page extends State<productshop_page> {
                                                     fontSize: 15.0,
                                                     fontWeight: FontWeight.bold,
                                                     // backgroundColor: Colors.black45,
-                                                    color: ThemeBc.text,
+                                                    color: ThemeBc.textwhite,
                                                   ),
                                                 ),
                                               ],
@@ -865,7 +869,7 @@ class _productshop_page extends State<productshop_page> {
                                       width: 350,
                                       child: Padding(
                                         padding: EdgeInsets.all(8.0),
-                                        child: Row(
+                                        child: Column(
                                           children: [
                                             LocaleText(
                                               'รายละเอียดสินค้า',

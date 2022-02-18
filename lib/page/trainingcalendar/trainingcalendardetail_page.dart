@@ -142,7 +142,7 @@ class _trainingcalendardetail_page extends State<trainingcalendardetail_page> {
       width: 1000,
       decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [ThemeBc.orange, ThemeBc.pinkAccent],
+              colors: [ThemeBc.white, ThemeBc.white],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft)),
       child: Container(
@@ -155,7 +155,7 @@ class _trainingcalendardetail_page extends State<trainingcalendardetail_page> {
                   Container(
                     decoration: BoxDecoration(
                         gradient: LinearGradient(
-                            colors: [Colors.pinkAccent, Colors.orangeAccent],
+                            colors: [Colors.white, Colors.white],
                             begin: Alignment.topRight,
                             end: Alignment.bottomLeft)),
                     height: 300,
@@ -346,7 +346,7 @@ class _trainingcalendardetail_page extends State<trainingcalendardetail_page> {
   //   return Container(
   //     decoration: BoxDecoration(
   //         gradient: LinearGradient(
-  //             colors: [Colors.pinkAccent, Colors.orangeAccent],
+  //             colors: [Colors.white, Colors.white],
   //             begin: Alignment.topRight,
   //             end: Alignment.bottomLeft)),
   //     height: 500,
@@ -475,14 +475,14 @@ class _trainingcalendardetail_page extends State<trainingcalendardetail_page> {
 //         subtitle: Text(number1),
 //         trailing: Material(
 //           elevation: 18,
-//           color: Colors.orange,
+//           color: Colors.white,
 //           shadowColor: Colors.grey,
 //           child: TextButton(
 //             style: TextButton.styleFrom(
-//                 backgroundColor: Colors.orange,
+//                 backgroundColor: Colors.white,
 //                 padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
 //                 shape: RoundedRectangleBorder(
-//                     side: BorderSide(color: Colors.orange))),
+//                     side: BorderSide(color: Colors.white))),
 //             child: Text(
 //               'call',
 //             ),
@@ -509,14 +509,14 @@ class _trainingcalendardetail_page extends State<trainingcalendardetail_page> {
 //         subtitle: Text(number),
 //         trailing: Material(
 //           elevation: 18,
-//           color: Colors.orange,
+//           color: Colors.white,
 //           shadowColor: Colors.grey,
 //           child: TextButton(
 //             style: TextButton.styleFrom(
-//                 backgroundColor: Colors.orange,
+//                 backgroundColor: Colors.white,
 //                 padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
 //                 shape: RoundedRectangleBorder(
-//                     side: BorderSide(color: Colors.orange))),
+//                     side: BorderSide(color: Colors.white))),
 //             child: Text(
 //               'call',
 //             ),
@@ -543,14 +543,14 @@ class _trainingcalendardetail_page extends State<trainingcalendardetail_page> {
 //         subtitle: Text(number),
 //         trailing: Material(
 //           elevation: 18,
-//           color: Colors.orange,
+//           color: Colors.white,
 //           shadowColor: Colors.grey,
 //           child: TextButton(
 //             style: TextButton.styleFrom(
-//                 backgroundColor: Colors.orange,
+//                 backgroundColor: Colors.white,
 //                 padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
 //                 shape: RoundedRectangleBorder(
-//                     side: BorderSide(color: Colors.orange))),
+//                     side: BorderSide(color: Colors.white))),
 //             child: Text(
 //               'call',
 //             ),

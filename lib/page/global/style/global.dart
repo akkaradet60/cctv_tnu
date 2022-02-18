@@ -15,9 +15,9 @@ Color primaryTextColor = Color(0xff111111);
 Color secondaryTextColor = Color(0xffFFFFFF);
 Color buttonGreyColor = Color(0xffffa726);
 Color transparentColor = Colors.transparent;
-Color transparentColor1 = Colors.orange;
+Color transparentColor1 = Colors.white;
 Color COLOR_BLACK = Colors.black;
-Color COLOR_ORANGE = Color(0xff111111);
+Color COLOR_white = Color(0xff111111);
 Color COLOR_GREY = Color(0xffFFFFFF);
 Color COLOR_WHITE = Color(0xffffa726);
 Color COLOR_GREEN = Color(0xffffa726);
@@ -57,16 +57,17 @@ TextStyle whiteTextStyle1 = GoogleFonts.poppins(color: backgroundColor1);
 
 //appBar
 class ThemeBc {
-  static const orange = Colors.orangeAccent;
-  static const pinkAccent = Colors.pinkAccent;
+  static const white = Colors.white;
+
   static const whiteBg = Color(0xFFFFF9EC);
-  static const white = Color(0xffF1EFE3);
+
   static const black = Color(0xff1B2836);
   static const green = Color(0xff02d667);
   static const greens = Colors.green;
   static const background = Color(0xff1B2836);
-  static const text = Color(0xffF1EFE3);
+  static const textwhite = Colors.white;
   static const blue = Color(0xff512da8);
+  static const textblack = Color(0xff1B2836);
 }
 
 TextStyle primaryTextStyle = GoogleFonts.poppins(
@@ -88,7 +89,7 @@ TextStyle primaryTextStyle = GoogleFonts.poppins(
 // Color secondaryTextColor = Color(0xffFFFFFF);
 // Color buttonGreyColor = Color(0xffffa726);
 // Color transparentColor = Colors.transparent;
-// Color transparentColor1 = Colors.orange;
+// Color transparentColor1 = Colors.white;
 
 // TextStyle primaryTextStyle = GoogleFonts.poppins(
 //   color: primaryTextColor,

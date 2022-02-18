@@ -69,6 +69,7 @@ class _travel_page extends State<travel_page> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return ListView.builder(
+                  scrollDirection: Axis.horizontal,
                   itemCount: snapshot.data!['data'].length,
                   itemBuilder: (context, index) {
                     print(snapshot.data!['data'][index]['travel_images'][0]
@@ -127,10 +128,14 @@ class _travel_page extends State<travel_page> {
                                 InkWell(
                                   onTap: () {
                                     Navigator.pushNamed(
-                                        context, '/travelmap_page', arguments: {
-                                      'travel_name': snapshot.data!['data']
-                                          [index]['travel_name']
-                                    });
+                                        context, '/travelmap_page',
+                                        arguments: {
+                                          'travel_name': snapshot.data!['data']
+                                              [index]['travel_name'],
+                                          'travel_detail':
+                                              snapshot.data!['data'][index]
+                                                  ['travel_detail'],
+                                        });
                                   },
                                   child: Container(
                                     child: Column(
@@ -286,21 +291,23 @@ class _travel_page extends State<travel_page> {
                     blurRadius: 7.0,
                     spreadRadius: 1.0),
               ]),
-          child: Column(
-            children: [
-              SizedBox(height: 10),
-              Container(
-                child: Text(
-                  'แนะนำที่ท่องเที่ยวในมหาสารคาม',
-                  style: TextStyle(
-                    fontSize: 22.0,
-                    fontWeight: FontWeight.bold,
-                    // backgroundColor: Colors.black45,
-                    color: Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Container(
+                  child: Text(
+                    'แนะนำที่ท่องเที่ยวในมหาสารคาม',
+                    style: TextStyle(
+                      fontSize: 22.0,
+                      fontWeight: FontWeight.bold,
+                      // backgroundColor: Colors.black45,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       );
@@ -342,12 +349,16 @@ class _travel_page extends State<travel_page> {
           ),
           child: ListView(
             children: [
-              // titleMenus(),
-              titleMenus(),
+              Column(
+                children: [
+                  // titleMenus(),
+                  titleMenus(),
 
-              ss1(context),
+                  ss1(context),
 
-              //  sss2(context),
+                  //  sss2(context),
+                ],
+              ),
             ],
           ),
         ));
@@ -360,7 +371,7 @@ class _travel_page extends State<travel_page> {
 //     child: Container(
 //       decoration: BoxDecoration(
 //           gradient: LinearGradient(
-//               colors: [Colors.pinkAccent, Colors.orangeAccent],
+//               colors: [Colors.white, Colors.white],
 //               begin: Alignment.topRight,
 //               end: Alignment.bottomLeft)),
 //       child: isLoading == true

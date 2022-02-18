@@ -273,7 +273,11 @@ class _EmergecyPageState extends State<fix_password>
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.black,
-        title: Center(child: Text('แก้ไขรหัสผ่าน')),
+        title: Column(
+          children: [
+            Center(child: Text('แก้ไขรหัสผ่าน')),
+          ],
+        ),
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/logo.png', scale: 15),
@@ -698,7 +702,7 @@ class _EmergecyPageState extends State<fix_password>
 //       body: Container(
 //         decoration: BoxDecoration(
 //           gradient: LinearGradient(
-//               colors: [ThemeBc.orange, ThemeBc.pinkAccent],
+//               colors: [ThemeBc.white, ThemeBc.white],
 //               begin: Alignment.topRight,
 //               end: Alignment.bottomLeft),
 //         ),

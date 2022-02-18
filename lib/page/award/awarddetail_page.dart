@@ -84,7 +84,11 @@ class _awarddetail_page extends State<awarddetail_page> {
           shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
-          title: Center(child: Text('${productt['award_name']}')),
+          title: Column(
+            children: [
+              Center(child: Text('${productt['award_name']}')),
+            ],
+          ),
           actions: <Widget>[
             IconButton(
               icon: Image.asset('assets/logo.png', scale: 15),
@@ -99,7 +103,7 @@ class _awarddetail_page extends State<awarddetail_page> {
         body: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
-                  colors: [ThemeBc.orange, ThemeBc.pinkAccent],
+                  colors: [ThemeBc.white, ThemeBc.white],
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft)),
           child: Container(
@@ -112,10 +116,7 @@ class _awarddetail_page extends State<awarddetail_page> {
                       Container(
                         decoration: BoxDecoration(
                             gradient: LinearGradient(
-                                colors: [
-                              Colors.pinkAccent,
-                              Colors.orangeAccent
-                            ],
+                                colors: [Colors.white, Colors.white],
                                 begin: Alignment.topRight,
                                 end: Alignment.bottomLeft)),
                         height: 300,
@@ -319,7 +320,7 @@ class _awarddetail_page extends State<awarddetail_page> {
     //     body: Container(
     //       decoration: BoxDecoration(
     //           gradient: LinearGradient(
-    //               colors: [Colors.pinkAccent, Colors.orangeAccent],
+    //               colors: [Colors.white, Colors.white],
     //               begin: Alignment.topRight,
     //               end: Alignment.bottomLeft)),
     //       child: Padding(
@@ -332,7 +333,7 @@ class _awarddetail_page extends State<awarddetail_page> {
     //                 Container(
     //                   decoration: BoxDecoration(
     //                       gradient: LinearGradient(
-    //                           colors: [ThemeBc.orange,ThemeBc.pinkAccent],
+    //                           colors: [ThemeBc.white,ThemeBc.white],
     //                           begin: Alignment.topRight,
     //                           end: Alignment.bottomLeft)),
     //                   child: Container(

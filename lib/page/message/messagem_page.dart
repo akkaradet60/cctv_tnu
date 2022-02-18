@@ -144,16 +144,11 @@ class _message_pageState extends State<message_page> {
                     //     ),
                     child: Container(
                       decoration: BoxDecoration(
-                          color: secondaryTextColor,
+                          color: ThemeBc.black,
                           borderRadius: BorderRadius.circular(
                             8,
                           ),
                           boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                offset: Offset(2, 2),
-                                blurRadius: 7,
-                                spreadRadius: 1.0),
                             BoxShadow(
                                 color: Colors.black.withOpacity(0.5),
                                 offset: Offset(2, 4),
@@ -453,7 +448,7 @@ class _message_pageState extends State<message_page> {
             fontSize: 20.0,
             fontWeight: FontWeight.bold,
             // backgroundColor: Colors.black45,
-            color: Colors.white,
+            color: ThemeBc.textblack,
           ),
         ),
       );
@@ -467,7 +462,11 @@ class _message_pageState extends State<message_page> {
           shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
-          title: Center(child: const LocaleText('ข่าวสาร')),
+          title: Column(
+            children: [
+              Center(child: const LocaleText('ข่าวสาร')),
+            ],
+          ),
           actions: <Widget>[
             IconButton(
               icon: Image.asset('assets/logo.png', scale: 15),
@@ -482,7 +481,7 @@ class _message_pageState extends State<message_page> {
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors: [ThemeBc.orange, ThemeBc.pinkAccent],
+                colors: [ThemeBc.white, ThemeBc.white],
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft),
           ),
@@ -525,7 +524,7 @@ class _message_pageState extends State<message_page> {
     //     child: Container(
     //       decoration: BoxDecoration(
     //           gradient: LinearGradient(
-    //               colors: [Colors.pinkAccent, Colors.orangeAccent],
+    //               colors: [Colors.white, Colors.white],
     //               begin: Alignment.topRight,
     //               end: Alignment.bottomLeft)),
     //       child: isLoading == true

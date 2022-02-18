@@ -69,7 +69,11 @@ class _messagemdetail_page extends State<messagemdetail_page> {
           shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
-          title: Text('${productt['blog_name']}'),
+          title: Column(
+            children: [
+              Text('${productt['blog_name']}'),
+            ],
+          ),
           actions: <Widget>[
             IconButton(
               icon: Image.asset('assets/logo.png', scale: 15),
@@ -84,7 +88,7 @@ class _messagemdetail_page extends State<messagemdetail_page> {
         body: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
-                  colors: [ThemeBc.orange, ThemeBc.pinkAccent],
+                  colors: [ThemeBc.white, ThemeBc.white],
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft)),
           height: 1000,
@@ -99,10 +103,7 @@ class _messagemdetail_page extends State<messagemdetail_page> {
                       Container(
                         decoration: BoxDecoration(
                             gradient: LinearGradient(
-                                colors: [
-                              Colors.pinkAccent,
-                              Colors.orangeAccent
-                            ],
+                                colors: [Colors.white, Colors.white],
                                 begin: Alignment.topRight,
                                 end: Alignment.bottomLeft)),
                         height: 300,

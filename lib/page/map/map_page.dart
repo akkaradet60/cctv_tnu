@@ -83,8 +83,7 @@ class _map_prod extends State<map_page> {
             Container(
               height: 50,
               width: 300,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
+              child: Column(
                 children: [
                   Center(child: LocaleText('pro')),
                 ],
@@ -154,36 +153,6 @@ class _map_prod extends State<map_page> {
                                             padding: const EdgeInsets.all(8.0),
                                             child: Row(
                                               children: [
-                                                // ElevatedButton.icon(
-                                                //   onPressed: () {
-                                                //     print('$userLocation');
-                                                //     // locn = userLocation.latitude;
-                                                //     // locn2 = userLocation
-                                                //     //     .longitude; // mapController.animateCamera(CameraUpdate.newLatLngZoom(
-                                                //     // //     LatLng(userLocation.latitude, userLocation.longitude),
-                                                //     // //     18));
-                                                //     showDialog(
-                                                //       context: context,
-                                                //       builder: (context) {
-                                                //         return AlertDialog(
-                                                //           content: Text(
-                                                //               'ตำแหน่ง !\nละติจูด :// ${locn} ลองจิจูด : ${locn} ตำแหน่งที่คุณเลือก : '),
-                                                //         );
-                                                //       },
-                                                //     );
-                                                //   },
-                                                //   icon: Icon(Icons.gps_fixed),
-                                                //   label: Text('ตำแหน่งของคุณ'),
-                                                //   style: ElevatedButton.styleFrom(
-                                                //     primary: ThemeBc.background,
-                                                //     onPrimary: Colors.white,
-                                                //     elevation: 30,
-                                                //     shape: RoundedRectangleBorder(
-                                                //         borderRadius: BorderRadius.all(
-                                                //             Radius.circular(40))),
-                                                //   ),
-                                                // ),
-
                                                 Container(
                                                   decoration: BoxDecoration(
                                                     color: secondaryTextColor,

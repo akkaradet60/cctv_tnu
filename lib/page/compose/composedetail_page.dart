@@ -47,7 +47,11 @@ class _composedetail_page extends State<composedetail_page> {
           shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
-          title: Text('${datail_blogpose['em_owner']}'),
+          title: Column(
+            children: [
+              Center(child: Text('${datail_blogpose['em_type']}')),
+            ],
+          ),
           actions: <Widget>[
             IconButton(
               icon: Image.asset('assets/logo.png', scale: 15),
@@ -62,7 +66,7 @@ class _composedetail_page extends State<composedetail_page> {
         body: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
-                  colors: [ThemeBc.orange, ThemeBc.pinkAccent],
+                  colors: [ThemeBc.white, ThemeBc.white],
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft)),
           height: 1000,
@@ -77,10 +81,7 @@ class _composedetail_page extends State<composedetail_page> {
                       Container(
                         decoration: BoxDecoration(
                             gradient: LinearGradient(
-                                colors: [
-                              Colors.pinkAccent,
-                              Colors.orangeAccent
-                            ],
+                                colors: [Colors.white, Colors.white],
                                 begin: Alignment.topRight,
                                 end: Alignment.bottomLeft)),
                         height: 300,
@@ -235,7 +236,7 @@ class _composedetail_page extends State<composedetail_page> {
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: Text(
-                                          'เรื่องร้องเรียน : ${datail_blogpose['em_owner']}',
+                                          'ชื่อคนร้องเรียน : ${datail_blogpose['em_owner']}',
                                           style: TextStyle(
                                             fontSize: 15.0,
                                             fontWeight: FontWeight.bold,

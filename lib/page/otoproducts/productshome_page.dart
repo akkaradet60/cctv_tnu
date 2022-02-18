@@ -74,7 +74,11 @@ class _productshome_page extends State<productshome_page> {
           shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
-          title: Center(child: LocaleText('สินค้าโอทอป')),
+          title: Column(
+            children: [
+              Center(child: LocaleText('สินค้าโอทอป')),
+            ],
+          ),
           actions: <Widget>[
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -85,11 +89,6 @@ class _productshome_page extends State<productshome_page> {
                       20,
                     ),
                     boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          offset: Offset(2, 2),
-                          blurRadius: 7,
-                          spreadRadius: 1.0),
                       BoxShadow(
                           color: Colors.black.withOpacity(0.5),
                           offset: Offset(2, 4),
@@ -108,7 +107,7 @@ class _productshome_page extends State<productshome_page> {
                   // ),
                   tooltip: 'Show Snackbar',
                   onPressed: () =>
-                      Navigator.pushNamed(context, '/productstore_page'),
+                      Navigator.pushNamed(context, '/productsearchome'),
                 ),
               ),
             ),
@@ -117,7 +116,7 @@ class _productshome_page extends State<productshome_page> {
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors: [ThemeBc.orange, ThemeBc.pinkAccent],
+                colors: [ThemeBc.white, ThemeBc.white],
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft),
           ),
@@ -234,9 +233,6 @@ class _productshome_page extends State<productshome_page> {
     }
 
     return Container(
-      color: ThemeBc.background,
-      width: 1000,
-      height: 430,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -248,7 +244,7 @@ class _productshome_page extends State<productshome_page> {
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
                 // backgroundColor: Colors.black45,
-                color: Colors.white,
+                color: ThemeBc.textblack,
               ),
             ),
           ),
@@ -267,7 +263,7 @@ class _productshome_page extends State<productshome_page> {
                         width: 320,
                         height: 500,
                         child: Center(
-                          child: Column(
+                          child: ListView(
                             children: [
                               InkWell(
                                 onTap: () {
@@ -286,201 +282,216 @@ class _productshome_page extends State<productshome_page> {
                                                         ['product_images'][0]
                                                     ['producti_path_name'] !=
                                                 null
-                                            ? Global.domainImage +
+                                            ? Global.domainImagenew +
                                                 snapshot.data!['data'][index]
                                                         ['product_images'][0]
                                                     ['producti_path_name']
-                                            : '${Global.networkImage}',
+                                            : '${Global.domainImagenew}',
                                         'productiproductid':
                                             snapshot.data!['data'][index]
                                                     ['product_images'][0]
                                                 ['producti_product_id'],
                                       });
                                 },
-                                child: Container(
-                                  child: Column(
-                                    children: [
-                                      SizedBox(height: 5),
-                                      Container(
-                                        height: 350,
-                                        width: 300,
-                                        decoration: BoxDecoration(
-                                            color: secondaryTextColor,
-                                            borderRadius: BorderRadius.circular(
-                                              20,
-                                            ),
-                                            boxShadow: [
-                                              // BoxShadow(
-                                              //     color: Colors.grey
-                                              //         .withOpacity(0.5),
-                                              //     offset: Offset(2, 2),
-                                              //     blurRadius: 7,
-                                              //     spreadRadius: 1.0),
-                                              // BoxShadow(
-                                              //     color: Colors.grey
-                                              //         .withOpacity(0.5),
-                                              //     offset: Offset(2, 4),
-                                              //     blurRadius: 7.0,
-                                              //     spreadRadius: 1.0),
-                                            ]),
-                                        child: Column(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.all(5.0),
-                                                  child: Container(
-                                                      decoration: BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                            20,
-                                                          ),
-                                                          boxShadow: [
-                                                            //     spreadRadius: 1.0),
-                                                          ]),
-                                                      height: 230,
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                                Radius.circular(
-                                                                    20.0)),
-                                                        child: Image.network(
-                                                          Global.domainImage +
-                                                                      snapshot.data!['data'][index]['product_images']
-                                                                              [0]
-                                                                          [
-                                                                          'producti_path_name'] !=
-                                                                  null
-                                                              ? Global.domainImage +
-                                                                  snapshot.data!['data']
-                                                                              [
-                                                                              index]
-                                                                          [
-                                                                          'product_images'][0]
-                                                                      [
-                                                                      'producti_path_name']
-                                                              : '${Global.networkImage}',
-                                                          fit: BoxFit.cover,
-                                                          width:
-                                                              double.infinity,
-                                                        ),
-                                                      )),
-                                                ),
-                                                SizedBox(height: 15),
-                                                Container(
-                                                  decoration: BoxDecoration(
-                                                      color: Colors.grey[200],
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                        20,
-                                                      ),
-                                                      boxShadow: [
-                                                        //     spreadRadius: 1.0),
-                                                      ]),
-                                                  width: 280,
-                                                  height: 80,
-                                                  child: ListView(
-                                                    children: [
-                                                      Center(
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(8.0),
-                                                          child: Row(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            children: [
-                                                              LocaleText(
-                                                                'ชื่อสินค้า',
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize:
-                                                                      15.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  // backgroundColor: Colors.black45,
-                                                                  color: Colors
-                                                                      .black,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: Column(
+                                      children: [
+                                        SizedBox(height: 5),
+                                        Container(
+                                          height: 350,
+                                          width: 300,
+                                          decoration: BoxDecoration(
+                                              color: secondaryTextColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                20,
+                                              ),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                    color: Colors.black
+                                                        .withOpacity(0.5),
+                                                    offset: Offset(2, 2),
+                                                    blurRadius: 7,
+                                                    spreadRadius: 1.0),
+                                                // BoxShadow(
+                                                //     color: Colors.grey
+                                                //         .withOpacity(0.5),
+                                                //     offset: Offset(2, 4),
+                                                //     blurRadius: 7.0,
+                                                //     spreadRadius: 1.0),
+                                              ]),
+                                          child: ListView(
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsets.all(5.0),
+                                                    child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                  20,
                                                                 ),
-                                                              ),
-                                                              Text(
-                                                                ' : ${snapshot.data!['data'][index]['product_name']}',
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize:
-                                                                      15.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  // backgroundColor: Colors.black45,
-                                                                  color: Colors
-                                                                      .black,
+                                                                boxShadow: [
+                                                              //     spreadRadius: 1.0),
+                                                            ]),
+                                                        height: 230,
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius.all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          20.0)),
+                                                          child: Image.network(
+                                                            Global.domainImagenew +
+                                                                        snapshot.data!['data'][index]['product_images'][0]
+                                                                            [
+                                                                            'producti_path_name'] !=
+                                                                    null
+                                                                ? Global.domainImagenew +
+                                                                    snapshot.data!['data'][index]
+                                                                            [
+                                                                            'product_images'][0]
+                                                                        [
+                                                                        'producti_path_name']
+                                                                : '${Global.networkImage}',
+                                                            fit: BoxFit.cover,
+                                                            width:
+                                                                double.infinity,
+                                                          ),
+                                                        )),
+                                                  ),
+                                                  SizedBox(height: 15),
+                                                  Container(
+                                                    decoration: BoxDecoration(
+                                                        color: Colors.grey[200],
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                          20,
+                                                        ),
+                                                        boxShadow: [
+                                                          //     spreadRadius: 1.0),
+                                                        ]),
+                                                    width: 280,
+                                                    height: 80,
+                                                    child: Column(
+                                                      children: [
+                                                        Container(
+                                                          width: 200,
+                                                          height: 40,
+                                                          child: ListView(
+                                                            scrollDirection:
+                                                                Axis.horizontal,
+                                                            children: [
+                                                              Center(
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child: Row(
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .center,
+                                                                    children: [
+                                                                      LocaleText(
+                                                                        'ชื่อสินค้า',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              15.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          // backgroundColor: Colors.black45,
+                                                                          color:
+                                                                              Colors.black,
+                                                                        ),
+                                                                      ),
+                                                                      Text(
+                                                                        ' : ${snapshot.data!['data'][index]['product_name']}',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              15.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          // backgroundColor: Colors.black45,
+                                                                          color:
+                                                                              Colors.black,
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
                                                                 ),
                                                               ),
                                                             ],
                                                           ),
                                                         ),
-                                                      ),
-                                                      Container(
-                                                        height: 60,
-                                                        child: ListView(
-                                                          children: [
-                                                            Center(
-                                                              child: Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                            .all(
-                                                                        0.0),
-                                                                child: Row(
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .center,
-                                                                  children: [
-                                                                    LocaleText(
-                                                                      'ราคา',
-                                                                      style:
-                                                                          TextStyle(
-                                                                        fontSize:
-                                                                            15.0,
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                        // backgroundColor: Colors.black45,
-                                                                        color: Colors
-                                                                            .black,
+                                                        Container(
+                                                          width: 170,
+                                                          height: 40,
+                                                          child: Column(
+                                                            children: [
+                                                              Center(
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child: Row(
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .center,
+                                                                    children: [
+                                                                      LocaleText(
+                                                                        'ราคา',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              15.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          // backgroundColor: Colors.black45,
+                                                                          color:
+                                                                              Colors.black,
+                                                                        ),
                                                                       ),
-                                                                    ),
-                                                                    Text(
-                                                                      ' : ${snapshot.data!['data'][index]['product_price']}',
-                                                                      style:
-                                                                          TextStyle(
-                                                                        fontSize:
-                                                                            15.0,
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                        // backgroundColor: Colors.black45,
-                                                                        color: Colors
-                                                                            .black,
+                                                                      Text(
+                                                                        ' : ${snapshot.data!['data'][index]['product_price']}',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              15.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          // backgroundColor: Colors.black45,
+                                                                          color:
+                                                                              Colors.black,
+                                                                        ),
                                                                       ),
-                                                                    ),
-                                                                  ],
+                                                                    ],
+                                                                  ),
                                                                 ),
                                                               ),
-                                                            ),
-                                                          ],
+                                                            ],
+                                                          ),
                                                         ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                )
-                                              ],
-                                            )
-                                          ],
+                                                      ],
+                                                    ),
+                                                  )
+                                                ],
+                                              )
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -534,9 +545,6 @@ class _productshome_page extends State<productshome_page> {
     }
 
     return Container(
-      color: ThemeBc.background,
-      width: 1000,
-      height: 430,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -545,11 +553,10 @@ class _productshome_page extends State<productshome_page> {
             child: LocaleText(
               'ยอดนิยมประจำสัมปดาห์',
               style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-                // backgroundColor: Colors.black45,
-                color: Colors.white,
-              ),
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  // backgroundColor: Colors.black45,
+                  color: ThemeBc.textblack),
             ),
           ),
           SizedBox(height: 5),
@@ -567,7 +574,7 @@ class _productshome_page extends State<productshome_page> {
                         width: 320,
                         height: 500,
                         child: Center(
-                          child: Column(
+                          child: ListView(
                             children: [
                               InkWell(
                                 onTap: () {
@@ -586,7 +593,7 @@ class _productshome_page extends State<productshome_page> {
                                                         ['product_images'][0]
                                                     ['producti_path_name'] !=
                                                 null
-                                            ? Global.domainImage +
+                                            ? Global.domainImagenew +
                                                 snapshot.data!['data'][index]
                                                         ['product_images'][0]
                                                     ['producti_path_name']
@@ -597,189 +604,206 @@ class _productshome_page extends State<productshome_page> {
                                                 ['producti_product_id'],
                                       });
                                 },
-                                child: Container(
-                                  child: Column(
-                                    children: [
-                                      SizedBox(height: 5),
-                                      Container(
-                                        height: 350,
-                                        width: 300,
-                                        decoration: BoxDecoration(
-                                            color: secondaryTextColor,
-                                            borderRadius: BorderRadius.circular(
-                                              20,
-                                            ),
-                                            boxShadow: [
-                                              // BoxShadow(
-                                              //     color: Colors.grey
-                                              //         .withOpacity(0.5),
-                                              //     offset: Offset(2, 2),
-                                              //     blurRadius: 7,
-                                              //     spreadRadius: 1.0),
-                                              // BoxShadow(
-                                              //     color: Colors.grey
-                                              //         .withOpacity(0.5),
-                                              //     offset: Offset(2, 4),
-                                              //     blurRadius: 7.0,
-                                              //     spreadRadius: 1.0),
-                                            ]),
-                                        child: Column(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.all(5.0),
-                                                  child: Container(
-                                                      decoration: BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                            20,
-                                                          ),
-                                                          boxShadow: [
-                                                            //     spreadRadius: 1.0),
-                                                          ]),
-                                                      height: 230,
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                                Radius.circular(
-                                                                    20.0)),
-                                                        child: Image.network(
-                                                          snapshot.data!['data']
-                                                                              [index]
-                                                                          ['product_images'][0]
-                                                                      [
-                                                                      'producti_path_name'] !=
-                                                                  null
-                                                              ? Global.domainImage +
-                                                                  snapshot.data!['data']
-                                                                              [index]
-                                                                          [
-                                                                          'product_images'][0]
-                                                                      [
-                                                                      'producti_path_name']
-                                                              : '${Global.networkImage}',
-                                                          fit: BoxFit.cover,
-                                                          width:
-                                                              double.infinity,
-                                                        ),
-                                                      )),
-                                                ),
-                                                SizedBox(height: 15),
-                                                Container(
-                                                  decoration: BoxDecoration(
-                                                      color: Colors.grey[200],
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                        20,
-                                                      ),
-                                                      boxShadow: [
-                                                        //     spreadRadius: 1.0),
-                                                      ]),
-                                                  width: 280,
-                                                  height: 80,
-                                                  child: ListView(
-                                                    children: [
-                                                      Center(
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(8.0),
-                                                          child: Row(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            children: [
-                                                              LocaleText(
-                                                                'ชื่อสินค้า',
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize:
-                                                                      15.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  // backgroundColor: Colors.black45,
-                                                                  color: Colors
-                                                                      .black,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: Column(
+                                      children: [
+                                        SizedBox(height: 5),
+                                        Container(
+                                          height: 350,
+                                          width: 300,
+                                          decoration: BoxDecoration(
+                                              color: secondaryTextColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                20,
+                                              ),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                    color: Colors.black
+                                                        .withOpacity(0.5),
+                                                    offset: Offset(2, 2),
+                                                    blurRadius: 7,
+                                                    spreadRadius: 1.0),
+                                                // BoxShadow(
+                                                //     color: Colors.grey
+                                                //         .withOpacity(0.5),
+                                                //     offset: Offset(2, 4),
+                                                //     blurRadius: 7.0,
+                                                //     spreadRadius: 1.0),
+                                              ]),
+                                          child: ListView(
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsets.all(5.0),
+                                                    child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                  20,
                                                                 ),
-                                                              ),
-                                                              Text(
-                                                                ' : ${snapshot.data!['data'][index]['product_name']}',
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize:
-                                                                      15.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  // backgroundColor: Colors.black45,
-                                                                  color: Colors
-                                                                      .black,
+                                                                boxShadow: [
+                                                              //     spreadRadius: 1.0),
+                                                            ]),
+                                                        height: 230,
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius.all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          20.0)),
+                                                          child: Image.network(
+                                                            snapshot.data!['data'][index]
+                                                                            [
+                                                                            'product_images'][0]
+                                                                        [
+                                                                        'producti_path_name'] !=
+                                                                    null
+                                                                ? Global.domainImagenew +
+                                                                    snapshot.data!['data']
+                                                                            [
+                                                                            index]['product_images'][0]
+                                                                        [
+                                                                        'producti_path_name']
+                                                                : '${Global.networkImage}',
+                                                            fit: BoxFit.cover,
+                                                            width:
+                                                                double.infinity,
+                                                          ),
+                                                        )),
+                                                  ),
+                                                  SizedBox(height: 15),
+                                                  Container(
+                                                    decoration: BoxDecoration(
+                                                        color: Colors.grey[200],
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                          20,
+                                                        ),
+                                                        boxShadow: [
+                                                          //     spreadRadius: 1.0),
+                                                        ]),
+                                                    width: 280,
+                                                    height: 80,
+                                                    child: Column(
+                                                      children: [
+                                                        Container(
+                                                          width: 200,
+                                                          height: 40,
+                                                          child: ListView(
+                                                            scrollDirection:
+                                                                Axis.horizontal,
+                                                            children: [
+                                                              Center(
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child: Row(
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .center,
+                                                                    children: [
+                                                                      LocaleText(
+                                                                        'ชื่อสินค้า',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              15.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          // backgroundColor: Colors.black45,
+                                                                          color:
+                                                                              Colors.black,
+                                                                        ),
+                                                                      ),
+                                                                      Text(
+                                                                        ' : ${snapshot.data!['data'][index]['product_name']}',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              15.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          // backgroundColor: Colors.black45,
+                                                                          color:
+                                                                              Colors.black,
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
                                                                 ),
                                                               ),
                                                             ],
                                                           ),
                                                         ),
-                                                      ),
-                                                      Container(
-                                                        height: 60,
-                                                        child: ListView(
-                                                          children: [
-                                                            Center(
-                                                              child: Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                            .all(
-                                                                        0.0),
-                                                                child: Row(
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .center,
-                                                                  children: [
-                                                                    LocaleText(
-                                                                      'ราคา',
-                                                                      style:
-                                                                          TextStyle(
-                                                                        fontSize:
-                                                                            15.0,
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                        // backgroundColor: Colors.black45,
-                                                                        color: Colors
-                                                                            .black,
+                                                        Container(
+                                                          width: 170,
+                                                          height: 40,
+                                                          child: Column(
+                                                            children: [
+                                                              Center(
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child: Row(
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .center,
+                                                                    children: [
+                                                                      LocaleText(
+                                                                        'ราคา',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              15.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          // backgroundColor: Colors.black45,
+                                                                          color:
+                                                                              Colors.black,
+                                                                        ),
                                                                       ),
-                                                                    ),
-                                                                    Text(
-                                                                      ' : ${snapshot.data!['data'][index]['product_price']}',
-                                                                      style:
-                                                                          TextStyle(
-                                                                        fontSize:
-                                                                            15.0,
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                        // backgroundColor: Colors.black45,
-                                                                        color: Colors
-                                                                            .black,
+                                                                      Text(
+                                                                        ' : ${snapshot.data!['data'][index]['product_price']}',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              15.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          // backgroundColor: Colors.black45,
+                                                                          color:
+                                                                              Colors.black,
+                                                                        ),
                                                                       ),
-                                                                    ),
-                                                                  ],
+                                                                    ],
+                                                                  ),
                                                                 ),
                                                               ),
-                                                            ),
-                                                          ],
+                                                            ],
+                                                          ),
                                                         ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                )
-                                              ],
-                                            )
-                                          ],
+                                                      ],
+                                                    ),
+                                                  )
+                                                ],
+                                              )
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -833,8 +857,6 @@ class _productshome_page extends State<productshome_page> {
     }
 
     return Container(
-      width: 1000,
-      height: 250,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -846,13 +868,13 @@ class _productshome_page extends State<productshome_page> {
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
                 // backgroundColor: Colors.black45,
-                color: Colors.white,
+                color: ThemeBc.textblack,
               ),
             ),
           ),
           SizedBox(height: 5),
           Container(
-            height: 200,
+            height: 220,
             child: FutureBuilder<Map<String, dynamic>>(
               future: probests(),
               builder: (context, snapshot) {
@@ -864,7 +886,7 @@ class _productshome_page extends State<productshome_page> {
                       return Container(
                         width: 190,
                         child: Center(
-                          child: Column(
+                          child: ListView(
                             children: [
                               InkWell(
                                 onTap: () {
@@ -883,7 +905,7 @@ class _productshome_page extends State<productshome_page> {
                                                         ['product_images'][0]
                                                     ['producti_path_name'] !=
                                                 null
-                                            ? Global.domainImage +
+                                            ? Global.domainImagenew +
                                                 snapshot.data!['data'][index]
                                                         ['product_images'][0]
                                                     ['producti_path_name']
@@ -897,192 +919,189 @@ class _productshome_page extends State<productshome_page> {
                                         //     .productiProductId,
                                       });
                                 },
-                                child: Container(
-                                  child: Column(
-                                    children: [
-                                      SizedBox(height: 5),
-                                      Container(
-                                        height: 190,
-                                        width: 175,
-                                        decoration: BoxDecoration(
-                                            color: secondaryTextColor,
-                                            borderRadius: BorderRadius.circular(
-                                              20,
-                                            ),
-                                            boxShadow: [
-                                              // BoxShadow(
-                                              //     color: Colors.grey
-                                              //         .withOpacity(0.5),
-                                              //     offset: Offset(2, 2),
-                                              //     blurRadius: 7,
-                                              //     spreadRadius: 1.0),
-                                              // BoxShadow(
-                                              //     color: Colors.grey
-                                              //         .withOpacity(0.5),
-                                              //     offset: Offset(2, 4),
-                                              //     blurRadius: 7.0,
-                                              //     spreadRadius: 1.0),
-                                            ]),
-                                        child: Column(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.all(5.0),
-                                                  child: Container(
-                                                      height: 110,
-                                                      child: ClipRRect(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: Column(
+                                      children: [
+                                        SizedBox(height: 5),
+                                        Container(
+                                          height: 190,
+                                          width: 175,
+                                          decoration: BoxDecoration(
+                                              color: secondaryTextColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                20,
+                                              ),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                    color: Colors.black
+                                                        .withOpacity(0.5),
+                                                    offset: Offset(2, 2),
+                                                    blurRadius: 7,
+                                                    spreadRadius: 1.0),
+                                                // BoxShadow(
+                                                //     color: Colors.grey
+                                                //         .withOpacity(0.5),
+                                                //     offset: Offset(2, 4),
+                                                //     blurRadius: 7.0,
+                                                //     spreadRadius: 1.0),
+                                              ]),
+                                          child: ListView(
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsets.all(5.0),
+                                                    child: Container(
+                                                        height: 110,
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius.all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          20.0)),
+                                                          child: Image.network(
+                                                            snapshot.data!['data'][index]
+                                                                            [
+                                                                            'product_images'][0]
+                                                                        [
+                                                                        'producti_path_name'] !=
+                                                                    null
+                                                                ? Global.domainImagenew +
+                                                                    snapshot.data!['data']
+                                                                            [
+                                                                            index]['product_images'][0]
+                                                                        [
+                                                                        'producti_path_name']
+                                                                : '${Global.networkImage}',
+                                                            fit: BoxFit.cover,
+                                                            width:
+                                                                double.infinity,
+                                                          ),
+                                                        )),
+                                                  ),
+                                                  SizedBox(height: 0),
+                                                  Container(
+                                                    decoration: BoxDecoration(
+                                                        color: Colors.grey[200],
                                                         borderRadius:
-                                                            BorderRadius.all(
-                                                                Radius.circular(
-                                                                    20.0)),
-                                                        child: Image.network(
-                                                          snapshot.data!['data']
-                                                                              [index]
-                                                                          ['product_images'][0]
-                                                                      [
-                                                                      'producti_path_name'] !=
-                                                                  null
-                                                              ? Global.domainImage +
-                                                                  snapshot.data!['data']
-                                                                              [index]
-                                                                          [
-                                                                          'product_images'][0]
-                                                                      [
-                                                                      'producti_path_name']
-                                                              : '${Global.networkImage}',
-                                                          fit: BoxFit.cover,
-                                                          width:
-                                                              double.infinity,
+                                                            BorderRadius
+                                                                .circular(
+                                                          20,
                                                         ),
-                                                      )),
-                                                ),
-                                                SizedBox(height: 0),
-                                                Container(
-                                                  decoration: BoxDecoration(
-                                                      color: Colors.grey[200],
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                        20,
-                                                      ),
-                                                      boxShadow: [
-                                                        // BoxShadow(
-                                                        //     color: Colors.grey
-                                                        //         .withOpacity(0.5),
-                                                        //     offset: Offset(2, 2),
-                                                        //     blurRadius: 7,
-                                                        //     spreadRadius: 1.0),
-                                                        // BoxShadow(
-                                                        //     color: Colors.grey
-                                                        //         .withOpacity(0.5),
-                                                        //     offset: Offset(2, 4),
-                                                        //     blurRadius: 7.0,
-                                                        //     spreadRadius: 1.0),
-                                                      ]),
-                                                  width: 170,
-                                                  // color: Colors.grey[200],
-                                                  height: 60,
-                                                  child: ListView(
-                                                    children: [
-                                                      Center(
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(8.0),
-                                                          child: Row(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
+                                                        boxShadow: []),
+                                                    width: 190,
+                                                    // color: Colors.grey[200],
+                                                    height: 80,
+                                                    child: Column(
+                                                      children: [
+                                                        Container(
+                                                          width: 170,
+                                                          height: 30,
+                                                          child: ListView(
+                                                            scrollDirection:
+                                                                Axis.horizontal,
                                                             children: [
-                                                              LocaleText(
-                                                                'ชื่อสินค้า',
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize:
-                                                                      15.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  // backgroundColor: Colors.black45,
-                                                                  color: Colors
-                                                                      .black,
-                                                                ),
-                                                              ),
-                                                              Text(
-                                                                ' : ${snapshot.data!['data'][index]['product_name']}',
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize:
-                                                                      15.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  // backgroundColor: Colors.black45,
-                                                                  color: Colors
-                                                                      .black,
+                                                              Center(
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child: Row(
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .center,
+                                                                    children: [
+                                                                      LocaleText(
+                                                                        'ชื่อสินค้า',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              10.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          // backgroundColor: Colors.black45,
+                                                                          color:
+                                                                              Colors.black,
+                                                                        ),
+                                                                      ),
+                                                                      Text(
+                                                                        ' : ${snapshot.data!['data'][index]['product_name']}',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              10.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          // backgroundColor: Colors.black45,
+                                                                          color:
+                                                                              Colors.black,
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
                                                                 ),
                                                               ),
                                                             ],
                                                           ),
                                                         ),
-                                                      ),
-                                                      Container(
-                                                        height: 60,
-                                                        child: ListView(
-                                                          children: [
-                                                            Center(
-                                                              child: Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                            .all(
-                                                                        0.0),
-                                                                child: Row(
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .center,
-                                                                  children: [
-                                                                    LocaleText(
-                                                                      'ราคา',
-                                                                      style:
-                                                                          TextStyle(
-                                                                        fontSize:
-                                                                            15.0,
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                        // backgroundColor: Colors.black45,
-                                                                        color: Colors
-                                                                            .black,
-                                                                      ),
+                                                        Container(
+                                                          width: 170,
+                                                          height: 30,
+                                                          child: Column(
+                                                            children: [
+                                                              Row(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  LocaleText(
+                                                                    'ราคา',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      fontSize:
+                                                                          10.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      // backgroundColor: Colors.black45,
+                                                                      color: Colors
+                                                                          .black,
                                                                     ),
-                                                                    Text(
-                                                                      ' : ${snapshot.data!['data'][index]['product_price']}',
-                                                                      style:
-                                                                          TextStyle(
-                                                                        fontSize:
-                                                                            15.0,
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                        // backgroundColor: Colors.black45,
-                                                                        color: Colors
-                                                                            .black,
-                                                                      ),
+                                                                  ),
+                                                                  Text(
+                                                                    ' : ${snapshot.data!['data'][index]['product_price']}',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      fontSize:
+                                                                          10.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      // backgroundColor: Colors.black45,
+                                                                      color: Colors
+                                                                          .black,
                                                                     ),
-                                                                  ],
-                                                                ),
+                                                                  ),
+                                                                ],
                                                               ),
-                                                            ),
-                                                          ],
+                                                            ],
+                                                          ),
                                                         ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                )
-                                              ],
-                                            )
-                                          ],
+                                                      ],
+                                                    ),
+                                                  )
+                                                ],
+                                              )
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -1102,47 +1121,4 @@ class _productshome_page extends State<productshome_page> {
       ),
     );
   }
-  // Widget customBottomNav() {
-  //   return Container(
-  //     height: 60,
-  //     child: BottomAppBar(
-  //         shape: CircularNotchedRectangle(),
-  //         notchMargin: 5,
-  //         color: Colors.pink,
-  //         clipBehavior: Clip.antiAlias,
-  //         child: Column(
-  //           children: [
-  //             Row(
-  //               children: [
-  //                 SizedBox(
-  //                   width: 20,
-  //                 ),
-  //                 IconButton(
-  //                   icon: Image.asset(
-  //                     'assets/fi_home.png',
-  //                     scale: 1,
-  //                   ),
-  //                   tooltip: 'Show Snackbar',
-  //                   onPressed: () => Navigator.pushNamed(
-  //                       context, '/productshome_page'), //productshome_page
-  //                 ),
-  //                 SizedBox(
-  //                   width: 260,
-  //                 ),
-  //                 IconButton(
-  //                   icon: Image.asset(
-  //                     'assets/10.png',
-  //                     scale: 1,
-  //                     color: Colors.red[900],
-  //                   ),
-  //                   tooltip: 'Show Snackbar',
-  //                   onPressed: () =>
-  //                       Navigator.pushNamed(context, '/otopproductslike'),
-  //                 ),
-  //               ],
-  //             ),
-  //           ],
-  //         )),
-  //   );
-  // }
 }

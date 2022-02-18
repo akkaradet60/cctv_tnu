@@ -117,7 +117,7 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
         child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors: [ThemeBc.background, ThemeBc.background],
+                colors: [ThemeBc.white, ThemeBc.white],
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft),
           ),
@@ -140,14 +140,14 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
     return Container(
       // decoration: BoxDecoration(
       //     gradient: LinearGradient(
-      //         colors: [ThemeBc.background, Colors.orangeAccent],
+      //         colors: [ThemeBc.background, Colors.white],
       //         begin: Alignment.topRight,
       //         end: Alignment.bottomLeft)),
-      height: 600,
+      height: 800,
       child: Container(
         //  color: ThemeBc.background,
         width: 1000,
-        height: 500,
+
         child: FutureBuilder<Map<String, dynamic>>(
           future: getDataSlide(),
           builder: (context, snapshot) {
@@ -214,12 +214,6 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
                                           10,
                                         ),
                                         boxShadow: [
-                                          BoxShadow(
-                                              color:
-                                                  Colors.grey.withOpacity(0.5),
-                                              offset: Offset(2, 2),
-                                              blurRadius: 7,
-                                              spreadRadius: 1.0),
                                           BoxShadow(
                                               color:
                                                   Colors.black.withOpacity(0.5),
@@ -461,7 +455,7 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
   //   return Container(
   //     decoration: BoxDecoration(
   //         gradient: LinearGradient(
-  //             colors: [Colors.pinkAccent, Colors.orangeAccent],
+  //             colors: [Colors.white, Colors.white],
   //             begin: Alignment.topRight,
   //             end: Alignment.bottomLeft)),
   //     height: 500,

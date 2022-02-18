@@ -79,7 +79,11 @@ class _hotlinee_pageState extends State<hotlinee_page> {
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
-        title: Center(child: LocaleText('สายด่วน')),
+        title: Column(
+          children: [
+            Center(child: LocaleText('สายด่วน')),
+          ],
+        ),
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/logo.png', scale: 15),
@@ -95,7 +99,7 @@ class _hotlinee_pageState extends State<hotlinee_page> {
         child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors: [ThemeBc.whiteBg, ThemeBc.whiteBg],
+                colors: [ThemeBc.white, ThemeBc.white],
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft),
           ),
@@ -167,7 +171,7 @@ class _hotlinee_pageState extends State<hotlinee_page> {
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [ThemeBc.whiteBg, ThemeBc.whiteBg],
+              colors: [ThemeBc.white, ThemeBc.white],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft),
         ),
@@ -548,7 +552,7 @@ class _hotlinee_pageState extends State<hotlinee_page> {
         //                         ),
         //                         label: Text(''),
         //                         style: ElevatedButton.styleFrom(
-        //                           primary: Colors.orange,
+        //                           primary: Colors.white,
         //                           elevation: 10,
         //                           shape: RoundedRectangleBorder(
         //                               borderRadius:
@@ -596,7 +600,7 @@ class _hotlinee_pageState extends State<hotlinee_page> {
         //                         ),
         //                         label: Text(''),
         //                         style: ElevatedButton.styleFrom(
-        //                           primary: Colors.orange,
+        //                           primary: Colors.white,
         //                           elevation: 10,
         //                           shape: RoundedRectangleBorder(
         //                               borderRadius:
@@ -610,7 +614,7 @@ class _hotlinee_pageState extends State<hotlinee_page> {
         //                     // child: TextButton(
         //                     //   style: TextButton.styleFrom(
         //                     //       backgroundColor:
-        //                     //           Colors.orange,
+        //                     //           Colors.white,
         //                     //       padding:
         //                     //           EdgeInsets.symmetric(
         //                     //               horizontal: 0,
@@ -619,7 +623,7 @@ class _hotlinee_pageState extends State<hotlinee_page> {
         //                     //           RoundedRectangleBorder(
         //                     //               side: BorderSide(
         //                     //                   color: Colors
-        //                     //                       .orange))),
+        //                     //                       .white))),
         //                     //   child: Text(
         //                     //     'call',
         //                     //   ),
@@ -650,7 +654,7 @@ class _hotlinee_pageState extends State<hotlinee_page> {
   //   return Container(
   //     decoration: BoxDecoration(
   //         gradient: LinearGradient(
-  //             colors: [Colors.pinkAccent, Colors.orangeAccent],
+  //             colors: [Colors.white, Colors.white],
   //             begin: Alignment.topRight,
   //             end: Alignment.bottomLeft)),
   //     height: 500,
@@ -779,14 +783,14 @@ class _hotlinee_pageState extends State<hotlinee_page> {
 //         subtitle: Text(number1),
 //         trailing: Material(
 //           elevation: 18,
-//           color: Colors.orange,
+//           color: Colors.white,
 //           shadowColor: Colors.grey,
 //           child: TextButton(
 //             style: TextButton.styleFrom(
-//                 backgroundColor: Colors.orange,
+//                 backgroundColor: Colors.white,
 //                 padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
 //                 shape: RoundedRectangleBorder(
-//                     side: BorderSide(color: Colors.orange))),
+//                     side: BorderSide(color: Colors.white))),
 //             child: Text(
 //               'call',
 //             ),
@@ -813,14 +817,14 @@ class _hotlinee_pageState extends State<hotlinee_page> {
 //         subtitle: Text(number),
 //         trailing: Material(
 //           elevation: 18,
-//           color: Colors.orange,
+//           color: Colors.white,
 //           shadowColor: Colors.grey,
 //           child: TextButton(
 //             style: TextButton.styleFrom(
-//                 backgroundColor: Colors.orange,
+//                 backgroundColor: Colors.white,
 //                 padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
 //                 shape: RoundedRectangleBorder(
-//                     side: BorderSide(color: Colors.orange))),
+//                     side: BorderSide(color: Colors.white))),
 //             child: Text(
 //               'call',
 //             ),
@@ -847,14 +851,14 @@ class _hotlinee_pageState extends State<hotlinee_page> {
 //         subtitle: Text(number),
 //         trailing: Material(
 //           elevation: 18,
-//           color: Colors.orange,
+//           color: Colors.white,
 //           shadowColor: Colors.grey,
 //           child: TextButton(
 //             style: TextButton.styleFrom(
-//                 backgroundColor: Colors.orange,
+//                 backgroundColor: Colors.white,
 //                 padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
 //                 shape: RoundedRectangleBorder(
-//                     side: BorderSide(color: Colors.orange))),
+//                     side: BorderSide(color: Colors.white))),
 //             child: Text(
 //               'call',
 //             ),

@@ -5,11 +5,11 @@
   "แก้ไขข้อมูลส่วนตัว": "Edit personal information",
   "แก้ไขรหัสผ่าน": "sedit password",
   "เปลี่ยนภาษา": "Change language",
-  "ชื่อ": "Name",
-  "นามสกุล": "Surname",
+  "ชื่อ": "Name : ",
+  "นามสกุล": "Surname : ",
   "หน้าหลัก": "Main page",
   "ออกจากระบบ": "Log out",
-  "อีเมล": "Email",
+  "อีเมล": "Email : ",
   "เมนู": "Menu",
   "แจ้งเหตุฉุกเฉิน": "Emergency",
   "ร้องเรียน": "Appeal",
@@ -47,5 +47,11 @@
   "รายละเอียดสินค้า": "Product details",
   "จำนวน": "Quantity",
   "ใส่ข้อมูลให้ครบถ้วน": "Complete information",
-  "สำเร็จ": "Succeed"
+  "สำเร็จ": "Succeed",
+  "ตั้งค่าข้อมูล": "Set data",
+  "อีเมลไม่ถูกต้อง": "Lnvalid email",
+  "ระบบได้ทำการส่งอีเมลไปให้ท่านแล้ว": "The system has sent an email to you.",
+  "facebook": "Login with facebook",
+  "ค้นหาสินค้า": "Product search",
+  "ค้นหาร้านค้า": "Find a store"
 }

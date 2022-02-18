@@ -38,11 +38,6 @@ class MenusCustom extends StatelessWidget {
                   ),
                   boxShadow: [
                     BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        offset: Offset(2, 2),
-                        blurRadius: 7,
-                        spreadRadius: 1.0),
-                    BoxShadow(
                         color: Colors.black.withOpacity(0.5),
                         offset: Offset(2, 4),
                         blurRadius: 7.0,
@@ -65,7 +60,7 @@ class MenusCustom extends StatelessWidget {
                 fontSize: 13.0,
                 fontWeight: FontWeight.bold,
                 // backgroundColor: Colors.black45,
-                color: Colors.white,
+                color: ThemeBc.textblack,
               ),
             ),
             Text(titleMenus1),

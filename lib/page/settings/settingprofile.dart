@@ -76,6 +76,15 @@ class _settingprofile extends State<settingprofile>
                         distinct: true,
                         converter: (store) => store.state.profileState.profile,
                         builder: (context, profile) {
+                          var imageData;
+
+                          if (profile['user_image'] != null &&
+                              profile['user_image_check'] == '1') {
+                            imageData = Global.urlFile2 + profile['user_image'];
+                          } else if (profile['user_image'] != null &&
+                              profile['user_image_check'] == '2') {
+                            imageData = Global.networkImage;
+                          }
                           print(profile['user_image']);
                           _prov = profile['user_prov'];
                           _dis = profile['user_dis'];
@@ -124,13 +133,7 @@ class _settingprofile extends State<settingprofile>
                                                       child: Column(
                                                         children: [
                                                           Image.network(
-                                                              profile['user_image'] !=
-                                                                      null
-                                                                  ? Global.urlFile2 +
-                                                                      profile[
-                                                                          'user_image']
-                                                                  : Global
-                                                                      .networkImage,
+                                                              imageData,
                                                               width: 200,
                                                               height: 200,
                                                               fit: BoxFit.fill),
@@ -141,8 +144,7 @@ class _settingprofile extends State<settingprofile>
                                                 : Image.network(
                                                     selectedImage != null
                                                         ? Global.urlFile2 +
-                                                            profile[
-                                                                'user_image']
+                                                            imageData
                                                         : Global.networkImage,
                                                     width: 200,
                                                     height: 200,
@@ -184,7 +186,7 @@ class _settingprofile extends State<settingprofile>
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                          color: Colors.black,
+                                          color: Colors.black.withOpacity(0.5),
                                           offset: Offset(2, 2),
                                           blurRadius: 7,
                                           spreadRadius: 1.0),
@@ -509,7 +511,7 @@ class _settingprofile extends State<settingprofile>
     }
 
     return Scaffold(
-      backgroundColor: ThemeBc.background,
+      backgroundColor: ThemeBc.white,
       // drawer: manu(),
       // drawer: Icon(Icons.ac_unit, color: white),
       appBar: AppBar(
@@ -538,7 +540,6 @@ class _settingprofile extends State<settingprofile>
   String? _prov;
   String? _dis;
   String? _sub;
-
   String? _adddess;
   String? _zibcode;
   String? _lat;

@@ -1,3 +1,4 @@
+import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 
@@ -18,32 +19,42 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Container(
-          color: Colors.transparent,
-          width: 342,
-          height: 55,
-          child: Container(
-            child: ElevatedButton(
-              onPressed: onPressed,
-              child: LocaleText(
-                title,
-                style: textStyle,
+    return Padding(
+      padding: const EdgeInsets.all(0),
+      child: Container(
+        color: Colors.transparent,
+        width: 342,
+        height: 55,
+        child: Container(
+          decoration: BoxDecoration(
+              color: ThemeBc.black,
+              borderRadius: BorderRadius.circular(
+                30,
               ),
-              style: ElevatedButton.styleFrom(
-                primary: colorButton,
-                onPrimary: Colors.white,
-                shadowColor: Colors.grey[700],
-                elevation: 30,
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(40))),
-              ),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.black.withOpacity(0.5),
+                    offset: Offset(2, 2),
+                    blurRadius: 7,
+                    spreadRadius: 1.0),
+              ]),
+          child: ElevatedButton(
+            onPressed: onPressed,
+            child: LocaleText(
+              title,
+              style: textStyle,
+            ),
+            style: ElevatedButton.styleFrom(
+              primary: colorButton,
+
+              // shadowColor: Colors.grey[700],
+              elevation: 30,
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(40))),
             ),
           ),
         ),
-      ],
+      ),
     );
   }
 }

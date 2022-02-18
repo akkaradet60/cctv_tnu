@@ -68,7 +68,7 @@ class _settingpolicyState extends State<settingpolicy>
       return Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [Colors.pinkAccent, Colors.orangeAccent],
+              colors: [Colors.white, Colors.white],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft),
         ),
@@ -250,7 +250,11 @@ class _settingpolicyState extends State<settingpolicy>
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
-        title: Center(child: const Text('เทศบาลเมืองมหาสารคาม')),
+        title: Column(
+          children: [
+            Center(child: const Text('เทศบาลเมืองมหาสารคาม')),
+          ],
+        ),
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/logo.png', scale: 15),
@@ -279,7 +283,7 @@ class _settingpolicyState extends State<settingpolicy>
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [Colors.pinkAccent, Colors.orangeAccent],
+              colors: [Colors.white, Colors.white],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft),
         ),

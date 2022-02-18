@@ -40,7 +40,7 @@ class _VerifyState extends State<Verify> {
                 label: const Text('เข้าสู่ระบบ'),
                 icon: const Icon(Icons.login_rounded),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.orange,
+                  primary: Colors.white,
                   //side: BorderSide(color: Colors.red, width: 5),
                   textStyle: const TextStyle(fontSize: 15),
                   padding: const EdgeInsets.all(15),
@@ -54,7 +54,7 @@ class _VerifyState extends State<Verify> {
             // CustomButton(
             //   title: 'เข้าสู่ระบบต่อไป',
             //   onPressed: () => Navigator.pushNamed(context, '/home-page'),
-            //   colorButton: ThemeBc.orange,
+            //   colorButton: ThemeBc.white,
             //   textStyle:
             //       secondaryTextStyle.copyWith(fontWeight: medium, fontSize: 16),
             // ),

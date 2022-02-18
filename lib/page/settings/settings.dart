@@ -15,8 +15,8 @@ class settings extends StatelessWidget {
   //     debugShowCheckedModeBanner: false,
   // theme: ThemeData(
   //     //     primarySwatch: Colors.grey,
-  //     //     canvasColor: Colors.pinkAccent,
-  //     //     scaffoldBackgroundColor: Colors.pinkAccent),
+  //     //     canvasColor: Colors.white,
+  //     //     scaffoldBackgroundColor: Colors.white),
 
   //       //   '/messagem2': (context) => messagem2()
   //     },
@@ -35,11 +35,6 @@ class settings extends StatelessWidget {
               ),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    offset: const Offset(2, 2),
-                    blurRadius: 7,
-                    spreadRadius: 1.0),
-                BoxShadow(
                     color: Colors.black.withOpacity(0.5),
                     offset: const Offset(2, 4),
                     blurRadius: 7.0,
@@ -52,7 +47,7 @@ class settings extends StatelessWidget {
             children: [
               const SizedBox(height: 18),
               LocaleText(
-                "ตั้งค่า",
+                "ตั้งค่าข้อมูล",
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
@@ -291,8 +286,10 @@ class settings extends StatelessWidget {
                                       onTap: () {
                                         LocaleNotifier.of(context)!
                                             .change('th');
-                                        Navigator.pushNamed(
-                                            context, '/home_page');
+                                        Navigator.pushNamedAndRemoveUntil(
+                                            context,
+                                            '/home_page',
+                                            (route) => false);
                                       },
                                       child: Container(
                                         height: 40,
@@ -337,8 +334,10 @@ class settings extends StatelessWidget {
                                       onTap: () {
                                         LocaleNotifier.of(context)!
                                             .change('en');
-                                        Navigator.pushNamed(
-                                            context, '/home_page');
+                                        Navigator.pushNamedAndRemoveUntil(
+                                            context,
+                                            '/home_page',
+                                            (route) => false);
                                       },
                                       child: Container(
                                         height: 40,
@@ -383,8 +382,10 @@ class settings extends StatelessWidget {
                                       onTap: () {
                                         LocaleNotifier.of(context)!
                                             .change('zh');
-                                        Navigator.pushNamed(
-                                            context, '/home_page');
+                                        Navigator.pushNamedAndRemoveUntil(
+                                            context,
+                                            '/home_page',
+                                            (route) => false);
                                       },
                                       child: Container(
                                         height: 40,
@@ -522,7 +523,7 @@ class settings extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
           gradient: const LinearGradient(
-              colors: [ThemeBc.orange, ThemeBc.pinkAccent],
+              colors: [ThemeBc.white, ThemeBc.white],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft),
         ),

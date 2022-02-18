@@ -20,7 +20,11 @@ class _cctv_pageState extends State<cctv_page> {
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
-        title: Center(child: const Text('CCTV มหาสารคาม')),
+        title: Column(
+          children: [
+            Center(child: const Text('CCTV มหาสารคาม')),
+          ],
+        ),
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/logo.png', scale: 15),

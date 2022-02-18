@@ -6,8 +6,12 @@
     <string name="facebook_client_token">73695d28acdd805705b065e781fa81c0</string>
 </resources> -->
 <resources>
-    <string name="app_name">com.example.cctv_tun</string>
-    <string name="facebook_app_id">272865201585754</string>
-    <string name="fb_login_protocol_scheme">fb1365719610250300</string>
-    <string name="facebook_client_token">e8735c9ad4d25fd5e28a38f63345a93a</string>
+    <string name="app_name">cctv_tun</string>
+    <string name="facebook_app_id">213016177651062</string>
+    <string name="fb_login_protocol_scheme">fb213016177651062</string>
+
+    <!-- <string name="facebook_app_id">213016177651062</string>
+    <string name="fb_login_protocol_scheme">fb213016177651062</string> -->
+    <string name="facebook_client_token">d5f45679bd5c2d24fc50b19cde86d346</string>
 </resources>
+<!-- <string name="facebook_app_id">213016177651062</string> <string name="fb_login_protocol_scheme">fb213016177651062</string> -->

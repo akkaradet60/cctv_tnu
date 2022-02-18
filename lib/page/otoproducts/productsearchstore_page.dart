@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:cctv_tun/models/api/books_api.dart';
-import 'package:cctv_tun/models/model/product.dart';
+import 'package:cctv_tun/models/model/product_store.dart';
+import 'package:cctv_tun/models/search/search_store.dart';
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:cctv_tun/widgets/search_widget.dart';
@@ -9,12 +9,12 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class productstore_page extends StatefulWidget {
+class productsearchstore_page extends StatefulWidget {
   @override
   _productstore_page createState() => _productstore_page();
 }
 
-class _productstore_page extends State<productstore_page> {
+class _productstore_page extends State<productsearchstore_page> {
   // Future<Map<String, dynamic>> getDataSlide() async {
   //   var url = (Global.urlWeb +
   //       'api/app/blog/restful/?blog_app_id=${Global.app_id}&blog_cat_id=1');
@@ -33,7 +33,7 @@ class _productstore_page extends State<productstore_page> {
   //   }
   // }
 
-  List<product> books = [];
+  List<product_store> books = [];
   String query = '';
   Timer? debouncer;
 
@@ -77,7 +77,11 @@ class _productstore_page extends State<productstore_page> {
           shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
-          title: Center(child: Text('ค้นหา OTOP')),
+          title: Column(
+            children: [
+              Center(child: Text('ค้นหา ร้านค้า OTOP')),
+            ],
+          ),
           actions: <Widget>[
             IconButton(
               icon: Image.asset('assets/logo.png', scale: 15),
@@ -90,7 +94,7 @@ class _productstore_page extends State<productstore_page> {
           ],
         ),
         body: Container(
-          color: ThemeBc.background,
+          color: ThemeBc.white,
           child: Column(
             children: <Widget>[
               buildSearch(),
@@ -119,14 +123,9 @@ class _productstore_page extends State<productstore_page> {
               ),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
+                    color: Colors.black.withOpacity(0.5),
                     offset: Offset(2, 2),
                     blurRadius: 7,
-                    spreadRadius: 1.0),
-                BoxShadow(
-                    color: Colors.black.withOpacity(0.5),
-                    offset: Offset(2, 4),
-                    blurRadius: 7.0,
                     spreadRadius: 1.0),
               ]),
           child: SearchWidget(
@@ -148,7 +147,7 @@ class _productstore_page extends State<productstore_page> {
         });
       });
 
-  Widget buildBook(product productt) => Padding(
+  Widget buildBook(product_store productt) => Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
           height: 250,
@@ -159,82 +158,97 @@ class _productstore_page extends State<productstore_page> {
               ),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
+                    color: Colors.black.withOpacity(0.5),
                     offset: Offset(2, 2),
                     blurRadius: 7,
                     spreadRadius: 1.0),
-                BoxShadow(
-                    color: Colors.black.withOpacity(0.5),
-                    offset: Offset(2, 4),
-                    blurRadius: 7.0,
-                    spreadRadius: 1.0),
               ]),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(20.0),
-                  ),
-                  child: Image.network(
-                    Global.domainImage + productt.urlImage != null
-                        ? Global.domainImage + productt.urlImage
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, '/ssssss', arguments: {
+                    'product_detail': productt.otop_dateil,
+                    'productName': productt.otop_name,
+                    'productPrice': productt.otop_lat,
+                    'productiPathName': productt.otop_image != null
+                        ? Global.domainImage + productt.otop_image
                         : Global.domainImage,
-                    fit: BoxFit.cover,
-                    width: 210,
-                    height: 230,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+                  });
+                },
                 child: Container(
-                  width: 150,
-                  decoration: BoxDecoration(
-                      color: ThemeBc.black,
-                      borderRadius: BorderRadius.circular(
-                        20,
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(20.0),
+                          ),
+                          child: Image.network(
+                            Global.domainImage + productt.otop_image != null
+                                ? Global.domainImage + productt.otop_image
+                                : Global.domainImage,
+                            fit: BoxFit.cover,
+                            width: 210,
+                            height: 250,
+                          ),
+                        ),
                       ),
-                      boxShadow: [
-                        // BoxShadow(
-                        //     color: Colors.grey.withOpacity(0.5),
-                        //     offset: Offset(2, 2),
-                        //     blurRadius: 7,
-                        //     spreadRadius: 1.0),
-                        // BoxShadow(
-                        //     color: Colors.black.withOpacity(0.5),
-                        //     offset: Offset(2, 4),
-                        //     blurRadius: 7.0,
-                        //     spreadRadius: 1.0),
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'ชื่อสินค้า : ${productt.title}',
-                          style: TextStyle(
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.bold,
-                            // backgroundColor: Colors.black45,
-                            color: ThemeBc.white,
+                      Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: Container(
+                          width: 175,
+                          decoration: BoxDecoration(
+                              color: ThemeBc.black,
+                              borderRadius: BorderRadius.circular(
+                                20,
+                              ),
+                              boxShadow: []),
+                          child: Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Center(
+                                  child: Text(
+                                    'ชื่อร้านค้า : ${productt.otop_name}',
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      fontWeight: FontWeight.bold,
+                                      // backgroundColor: Colors.black45,
+                                      color: ThemeBc.white,
+                                    ),
+                                  ),
+                                ),
+                                Center(
+                                  child: Text(
+                                    'ราคา : ${productt.otop_dateil}',
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      fontWeight: FontWeight.bold,
+                                      // backgroundColor: Colors.black45,
+                                      color: ThemeBc.white,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 10),
+                                Text(
+                                  'ร้านนี้ : ${productt.otop_id}',
+                                  style: TextStyle(
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.bold,
+                                    // backgroundColor: Colors.black45,
+                                    color: ThemeBc.white,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                        SizedBox(height: 5),
-                        Text(
-                          'เนื่อหาสิ้นค้า : ${productt.author}',
-                          style: TextStyle(
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.bold,
-                            // backgroundColor: Colors.black45,
-                            color: ThemeBc.white,
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),

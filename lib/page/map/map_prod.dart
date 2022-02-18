@@ -72,16 +72,7 @@ class _map_prod extends State<map_prod> {
         backgroundColor: ThemeBc.background,
         title: Column(
           children: [
-            Container(
-              height: 50,
-              width: 300,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  Center(child: Text('pro')),
-                ],
-              ),
-            ),
+            Center(child: Text('pro')),
           ],
         ),
         actions: <Widget>[
