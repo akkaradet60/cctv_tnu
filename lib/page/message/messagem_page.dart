@@ -42,7 +42,7 @@ class _message_pageState extends State<message_page> {
 
     if (response.statusCode == 200) {
       imgSlide = json.decode(response.body);
-
+      print(imgSlide);
       // print(imgSlide['data'].length);
       return imgSlide;
     } else {
@@ -247,12 +247,12 @@ class _message_pageState extends State<message_page> {
                                   context, '/messagemdetail_page',
                                   arguments: {
                                     'blog_images': snapshot.data!['data'][index]
-                                                    ['blog_images'][0]
+                                                    ['blog_images'][index]
                                                 ['blogi_path_name'] !=
                                             null
                                         ? Global.domainImage +
                                             snapshot.data!['data'][index]
-                                                    ['blog_images'][0]
+                                                    ['blog_images'][index]
                                                 ['blogi_path_name']
                                         : '${Global.networkImage}',
                                     'blog_name': snapshot.data!['data'][index]
@@ -319,8 +319,7 @@ class _message_pageState extends State<message_page> {
                                                                 null
                                                             ? Global.domainImage +
                                                                 snapshot.data!['data']
-                                                                            [index]
-                                                                        [
+                                                                            [0][
                                                                         'blog_images'][0]
                                                                     [
                                                                     'blogi_path_name']

@@ -18,6 +18,28 @@ class productstorehome extends StatefulWidget {
 }
 
 class _productshop_page extends State<productstorehome> {
+  bool isLoading = true;
+  late Map<String, dynamic> imgSlide;
+
+  int _currentIndex = 0;
+  // Future<Map<String, dynamic>> getDataSlide() async {
+  //   var url =
+  //       ('https://www.bc-official.com/api/app_nt/api/app/otop/search-otop/restful/?otop_app_id=1');
+  //   var response = await http.get(Uri.parse(url), headers: {
+  //     'Authorization':
+  //         'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
+  //   });
+
+  //   if (response.statusCode == 200) {
+  //     imgSlide = json.decode(response.body);
+
+  //     // print(imgSlide['data'].length);
+  //     return imgSlide;
+  //   } else {
+  //     throw Exception('$response.statusCode');
+  //   }
+  // }
+
   @override
   void initState() {
     super.initState();
@@ -25,6 +47,7 @@ class _productshop_page extends State<productstorehome> {
 
   @override
   Widget build(BuildContext context) {
+    productt = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
@@ -71,108 +94,24 @@ class _productshop_page extends State<productstorehome> {
                       Container(
                         child: Column(
                           children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                color: secondaryTextColor,
-                                borderRadius: BorderRadius.circular(
-                                  20,
+                            Padding(
+                              padding: const EdgeInsets.all(18.0),
+                              child: Container(
+                                height: 250,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(10.0),
+                                  ),
+                                  child: Stack(
+                                    children: <Widget>[
+                                      Image.network(
+                                        productt['otop_image'],
+                                        fit: BoxFit.cover,
+                                        width: double.infinity,
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              height: 200,
-                              child: FutureBuilder<Map<String, dynamic>>(
-                                builder: (context, snapshot) {
-                                  if (snapshot.hasData) {
-                                    // return ListView.separated(
-                                    //     itemBuilder: (context, index) {
-                                    // return Text('3232');
-                                    return CarouselSlider.builder(
-                                      itemCount: snapshot.data!['data'].length,
-                                      options: CarouselOptions(
-                                        autoPlay: true,
-                                        enlargeCenterPage: true,
-                                        viewportFraction: 0.9,
-                                        aspectRatio: 2.0,
-                                        initialPage: 2,
-                                        onPageChanged: (index, reason) {
-                                          setState(
-                                            () {},
-                                          );
-                                        },
-                                      ),
-                                      itemBuilder: (BuildContext context,
-                                              int item, int pageViewIndex) =>
-
-                                          // Text('${snapshot.data!['data'][item]['blog_id']}');
-                                          //     Container(
-                                          //   child: Center(child: Text(item.toString())),
-                                          //   color: Colors.green,
-                                          // ),
-                                          NeumorphicButton(
-                                        style: NeumorphicStyle(
-                                          shape: NeumorphicShape.flat,
-                                          // boxShape:
-                                          //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                                          // boxShape: NeumorphicBoxShape.circle(),
-                                          color: Colors.white,
-                                        ),
-                                        padding: EdgeInsets.all(0),
-                                        child: Card(
-                                          margin: EdgeInsets.only(
-                                            top: 10.0,
-                                            bottom: 10.0,
-                                          ),
-                                          elevation: 6.0,
-                                          // shadowColor: Colors.redAccent,
-                                          // shape: RoundedRectangleBorder(
-                                          //     // borderRadius: BorderRadius.circular(30.0),
-                                          //     ),
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                                color: secondaryTextColor,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                  10,
-                                                ),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                      color: Colors.black
-                                                          .withOpacity(0.5),
-                                                      offset: Offset(2, 4),
-                                                      blurRadius: 7.0,
-                                                      spreadRadius: 1.0),
-                                                ]),
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(5.0),
-                                              child: ClipRRect(
-                                                borderRadius: BorderRadius.all(
-                                                  Radius.circular(10.0),
-                                                ),
-                                                child: Stack(
-                                                  children: <Widget>[
-                                                    Image.network(
-                                                      productt[
-                                                          'productiPathName'],
-                                                      fit: BoxFit.cover,
-                                                      width: double.infinity,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  } else if (snapshot.hasError) {
-                                    return Center(
-                                        child: Text(
-                                            'เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
-                                  }
-
-                                  return Center(
-                                      child: CircularProgressIndicator());
-                                },
                               ),
                             ),
                           ],
@@ -230,7 +169,7 @@ class _productshop_page extends State<productstorehome> {
                                               ),
                                             ),
                                             Text(
-                                              'ชื่อร้านค้า',
+                                              ' : ${productt['otop_name']}',
                                               style: TextStyle(
                                                 fontSize: 15.0,
                                                 fontWeight: FontWeight.bold,
@@ -274,7 +213,14 @@ class _productshop_page extends State<productstorehome> {
                                                         ),
                                                       ),
                                                       Text(
-                                                        'รายละเอียดร้านค้า',
+                                                        '${productt['otop_dateil']}',
+                                                        style: primaryTextStyle
+                                                            .copyWith(
+                                                          fontSize: 15,
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        '${productt['otop_id']}',
                                                         style: primaryTextStyle
                                                             .copyWith(
                                                           fontSize: 15,
@@ -322,6 +268,7 @@ class _productshop_page extends State<productstorehome> {
                                       ],
                                     )),
                               ),
+                              probestseller_page(context),
                             ],
                           ),
                         ),
@@ -333,5 +280,309 @@ class _productshop_page extends State<productstorehome> {
             ),
           ),
         ));
+  }
+
+  Widget probestseller_page(BuildContext context) {
+    productt = ModalRoute.of(context)!.settings.arguments;
+    bool isLoading = true;
+
+    late Map<String, dynamic> imgSlide;
+
+    int _currentIndex = 0;
+
+    Future<Map<String, dynamic>> probests() async {
+      var url =
+          ('https://www.bc-official.com/api/app_nt/api/app/otop/product/restful/?product_otop_id=${productt['otop_id']}&product_app_id=1');
+      var response = await http.get(Uri.parse(url), headers: {
+        'Authorization':
+            'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
+      });
+      var feedback = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        imgSlide = json.decode(response.body);
+
+        print(imgSlide);
+        // print(imgSlide['data'].length);
+        return imgSlide;
+      } else {
+        throw Exception('$response.statusCode');
+      }
+      if (feedback['data'] == "ไม่พบข้อม") {}
+    }
+
+    @override
+    void initState() {
+      super.initState();
+
+      probests();
+    }
+
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 5),
+          Container(
+            height: 400,
+            child: FutureBuilder<Map<String, dynamic>>(
+              future: probests(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                    // scrollDirection: Axis.horizontal,
+                    itemCount: snapshot.data!['data'].length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        width: 320,
+                        height: 500,
+                        child: Center(
+                          child: Column(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, '/productshop_page',
+                                      arguments: {
+                                        'product_detail': snapshot.data!['data']
+                                            [index]['product_detail'],
+                                        'productName': snapshot.data!['data']
+                                            [index]['product_name'],
+                                        'productPrice': snapshot.data!['data']
+                                            [index]['product_price'],
+                                        'productiPathName': snapshot
+                                                                .data!['data']
+                                                            [index]
+                                                        ['product_images'][0]
+                                                    ['producti_path_name'] !=
+                                                null
+                                            ? Global.domainImagenew +
+                                                snapshot.data!['data'][index]
+                                                        ['product_images'][0]
+                                                    ['producti_path_name']
+                                            : '${Global.networkImage}',
+                                        'productiproductid':
+                                            snapshot.data!['data'][index]
+                                                    ['product_images'][0]
+                                                ['producti_product_id'],
+                                      });
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: Column(
+                                      children: [
+                                        SizedBox(height: 5),
+                                        Container(
+                                          height: 350,
+                                          width: 300,
+                                          decoration: BoxDecoration(
+                                              color: secondaryTextColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                20,
+                                              ),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                    color: Colors.black
+                                                        .withOpacity(0.5),
+                                                    offset: Offset(2, 2),
+                                                    blurRadius: 7,
+                                                    spreadRadius: 1.0),
+                                                // BoxShadow(
+                                                //     color: Colors.grey
+                                                //         .withOpacity(0.5),
+                                                //     offset: Offset(2, 4),
+                                                //     blurRadius: 7.0,
+                                                //     spreadRadius: 1.0),
+                                              ]),
+                                          child: Column(
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsets.all(5.0),
+                                                    child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                  20,
+                                                                ),
+                                                                boxShadow: [
+                                                              //     spreadRadius: 1.0),
+                                                            ]),
+                                                        height: 230,
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius.all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          20.0)),
+                                                          child: Image.network(
+                                                            snapshot.data!['data'][index]
+                                                                            [
+                                                                            'product_images'][0]
+                                                                        [
+                                                                        'producti_path_name'] !=
+                                                                    null
+                                                                ? Global.domainImagenew +
+                                                                    snapshot.data!['data']
+                                                                            [
+                                                                            index]['product_images'][0]
+                                                                        [
+                                                                        'producti_path_name']
+                                                                : '${Global.networkImage}',
+                                                            fit: BoxFit.cover,
+                                                            width:
+                                                                double.infinity,
+                                                          ),
+                                                        )),
+                                                  ),
+                                                  SizedBox(height: 15),
+                                                  Container(
+                                                    decoration: BoxDecoration(
+                                                        color: Colors.grey[200],
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                          20,
+                                                        ),
+                                                        boxShadow: [
+                                                          //     spreadRadius: 1.0),
+                                                        ]),
+                                                    width: 280,
+                                                    height: 80,
+                                                    child: Column(
+                                                      children: [
+                                                        Container(
+                                                          width: 200,
+                                                          height: 40,
+                                                          child: ListView(
+                                                            scrollDirection:
+                                                                Axis.horizontal,
+                                                            children: [
+                                                              Center(
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child: Row(
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .center,
+                                                                    children: [
+                                                                      LocaleText(
+                                                                        'ชื่อสินค้า',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              15.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          // backgroundColor: Colors.black45,
+                                                                          color:
+                                                                              Colors.black,
+                                                                        ),
+                                                                      ),
+                                                                      Text(
+                                                                        ' : ${snapshot.data!['data'][index]['product_name']}',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              15.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          // backgroundColor: Colors.black45,
+                                                                          color:
+                                                                              Colors.black,
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          width: 170,
+                                                          height: 40,
+                                                          child: Column(
+                                                            children: [
+                                                              Center(
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child: Row(
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .center,
+                                                                    children: [
+                                                                      LocaleText(
+                                                                        'ราคา',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              15.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          // backgroundColor: Colors.black45,
+                                                                          color:
+                                                                              Colors.black,
+                                                                        ),
+                                                                      ),
+                                                                      Text(
+                                                                        ' : ${snapshot.data!['data'][index]['product_price']}',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              15.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          // backgroundColor: Colors.black45,
+                                                                          color:
+                                                                              Colors.black,
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  )
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                } else if (snapshot.hasError) {}
+
+                return Center(child: CircularProgressIndicator());
+              },
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

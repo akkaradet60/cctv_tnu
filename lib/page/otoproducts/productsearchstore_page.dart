@@ -168,11 +168,12 @@ class _productstore_page extends State<productsearchstore_page> {
             children: [
               InkWell(
                 onTap: () {
-                  Navigator.pushNamed(context, '/ssssss', arguments: {
-                    'product_detail': productt.otop_dateil,
-                    'productName': productt.otop_name,
-                    'productPrice': productt.otop_lat,
-                    'productiPathName': productt.otop_image != null
+                  Navigator.pushNamed(context, '/productstorehome', arguments: {
+                    'otop_id': productt.otop_id,
+                    'otop_dateil': productt.otop_dateil,
+                    'otop_name': productt.otop_name,
+                    'otop_lat': productt.otop_lat,
+                    'otop_image': productt.otop_image != null
                         ? Global.domainImage + productt.otop_image
                         : Global.domainImage,
                   });
@@ -224,7 +225,7 @@ class _productstore_page extends State<productsearchstore_page> {
                                 ),
                                 Center(
                                   child: Text(
-                                    'ราคา : ${productt.otop_dateil}',
+                                    'id : ${productt.otop_id}',
                                     style: TextStyle(
                                       fontSize: 15.0,
                                       fontWeight: FontWeight.bold,
@@ -235,7 +236,7 @@ class _productstore_page extends State<productsearchstore_page> {
                                 ),
                                 SizedBox(height: 10),
                                 Text(
-                                  'ร้านนี้ : ${productt.otop_id}',
+                                  'ร้านนี้ : ${productt.otop_dateil}',
                                   style: TextStyle(
                                     fontSize: 15.0,
                                     fontWeight: FontWeight.bold,

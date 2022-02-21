@@ -1,11 +1,14 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cctv_tun/generated/languageS.dart';
 import 'package:cctv_tun/page/Manual/Manual_page.dart';
+import 'package:cctv_tun/page/appp/appp.dart';
 import 'package:cctv_tun/page/award/award_page.dart';
 import 'package:cctv_tun/page/award/awarddetail_page.dart';
 import 'package:cctv_tun/page/cctv/cctv_page.dart';
 import 'package:cctv_tun/page/compose/compose_page.dart';
 import 'package:cctv_tun/page/compose/composedetail_page.dart';
 import 'package:cctv_tun/page/global/global.dart';
+import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:cctv_tun/page/home/home_page.dart';
 import 'package:cctv_tun/page/hotline/hotlinee_page.dart';
 import 'package:cctv_tun/page/location/location_page.dart';
@@ -27,7 +30,7 @@ import 'package:cctv_tun/page/otoproducts/productshome_page.dart';
 
 import 'package:cctv_tun/page/otoproducts/productshop_page.dart';
 import 'package:cctv_tun/page/otoproducts/productsearch_page.dart';
-import 'package:cctv_tun/page/otoproducts/productstorehome%20copy.dart';
+
 import 'package:cctv_tun/page/otoproducts/productstorehome.dart';
 
 import 'package:cctv_tun/page/profile/app_reducer.dart';
@@ -49,7 +52,7 @@ import 'package:cctv_tun/page/travel/travelmap_page.dart';
 import 'package:cctv_tun/page/warn/warn_page.dart';
 import 'package:cctv_tun/page/warn/warndetail_page.dart';
 import 'package:cctv_tun/widgets/verify_email_page.dart';
-
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -61,6 +64,18 @@ final myStore = Store<AppState>(appReducer, initialState: AppState.initial());
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Locales.init(['th', 'zh', 'en']);
+  AwesomeNotifications().initialize(null, [
+    NotificationChannel(
+      channelKey: 'key1',
+      channelName: 'poro',
+      channelDescription: 'not',
+      defaultColor: ThemeBc.black,
+      ledColor: ThemeBc.white,
+      playSound: true,
+      enableLights: true,
+      enableVibration: true,
+    )
+  ]);
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
   token = prefs.getString('token');
@@ -95,6 +110,7 @@ class MyApp extends StatelessWidget {
                 : Global.app_id == "1"
                     ? home_page()
                     : Verify(),
+            '/appppp': (context) => appp(),
             // '/': (context) => token == null ? login_page() : home_page(),
             '/fix_password': (context) => fix_password(),
             // '/sss': (context) => EmergecyPage(),
@@ -142,7 +158,7 @@ class MyApp extends StatelessWidget {
             // '/AppealPage': (context) => MyHomePage(),
             '/facebook_login': (context) => facebook_login(),
             '/forgot_password': (context) => forgot_password(),
-            '/ssssss': (context) => ssssss(),
+            '/appp': (context) => appp(),
             '/warndetail_page': (context) => warndetail_page(),
             '/productsearchstore_page': (context) => productsearchstore_page(),
 

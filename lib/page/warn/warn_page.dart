@@ -235,9 +235,7 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
           },
         );
       }
-    } catch (e) {
-      print(e);
-    }
+    } catch (e) {}
   }
 
   var _country;

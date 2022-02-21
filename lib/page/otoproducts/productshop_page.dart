@@ -574,7 +574,7 @@ class _productshop_page extends State<productshop_page> {
                                                                       style:
                                                                           TextStyle(
                                                                         fontSize:
-                                                                            20.0,
+                                                                            15.0,
                                                                         fontWeight:
                                                                             FontWeight.bold,
                                                                         // backgroundColor: Colors.black45,
@@ -582,17 +582,27 @@ class _productshop_page extends State<productshop_page> {
                                                                             .white,
                                                                       ),
                                                                     ),
-                                                                    Text(
-                                                                      ' : ${productt['productName']}',
-                                                                      style:
-                                                                          TextStyle(
-                                                                        fontSize:
-                                                                            20.0,
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                        // backgroundColor: Colors.black45,
-                                                                        color: ThemeBc
-                                                                            .white,
+                                                                    Container(
+                                                                      height:
+                                                                          20,
+                                                                      width:
+                                                                          150,
+                                                                      child:
+                                                                          ListView(
+                                                                        scrollDirection:
+                                                                            Axis.horizontal,
+                                                                        children: [
+                                                                          Text(
+                                                                            ' : ${productt['productName']}',
+                                                                            style:
+                                                                                TextStyle(
+                                                                              fontSize: 15.0,
+                                                                              fontWeight: FontWeight.bold,
+                                                                              // backgroundColor: Colors.black45,
+                                                                              color: ThemeBc.white,
+                                                                            ),
+                                                                          ),
+                                                                        ],
                                                                       ),
                                                                     ),
                                                                   ],
@@ -610,7 +620,7 @@ class _productshop_page extends State<productshop_page> {
                                                                       style:
                                                                           TextStyle(
                                                                         fontSize:
-                                                                            20.0,
+                                                                            15.0,
                                                                         fontWeight:
                                                                             FontWeight.bold,
                                                                         // backgroundColor: Colors.black45,
@@ -618,17 +628,22 @@ class _productshop_page extends State<productshop_page> {
                                                                             .white,
                                                                       ),
                                                                     ),
-                                                                    Text(
-                                                                      ' : ${_counter}',
-                                                                      style:
-                                                                          TextStyle(
-                                                                        fontSize:
-                                                                            20.0,
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                        // backgroundColor: Colors.black45,
-                                                                        color: ThemeBc
-                                                                            .white,
+                                                                    Container(
+                                                                      height:
+                                                                          15,
+                                                                      child:
+                                                                          Text(
+                                                                        ' : ${_counter}',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              15.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          // backgroundColor: Colors.black45,
+                                                                          color:
+                                                                              ThemeBc.white,
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ],
@@ -683,7 +698,7 @@ class _productshop_page extends State<productshop_page> {
                                                                         style:
                                                                             TextStyle(
                                                                           fontSize:
-                                                                              20.0,
+                                                                              15.0,
                                                                           fontWeight:
                                                                               FontWeight.bold,
                                                                           // backgroundColor: Colors.black45,
@@ -691,17 +706,22 @@ class _productshop_page extends State<productshop_page> {
                                                                               ThemeBc.black,
                                                                         ),
                                                                       ),
-                                                                      Text(
-                                                                        ' $_product : ',
-                                                                        style:
-                                                                            TextStyle(
-                                                                          fontSize:
-                                                                              20.0,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                          // backgroundColor: Colors.black45,
-                                                                          color:
-                                                                              ThemeBc.black,
+                                                                      Container(
+                                                                        height:
+                                                                            15,
+                                                                        child:
+                                                                            Text(
+                                                                          ' $_product : ',
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontSize:
+                                                                                15.0,
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
+                                                                            // backgroundColor: Colors.black45,
+                                                                            color:
+                                                                                ThemeBc.black,
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                       LocaleText(
@@ -709,7 +729,7 @@ class _productshop_page extends State<productshop_page> {
                                                                         style:
                                                                             TextStyle(
                                                                           fontSize:
-                                                                              20.0,
+                                                                              15.0,
                                                                           fontWeight:
                                                                               FontWeight.bold,
                                                                           // backgroundColor: Colors.black45,
@@ -775,7 +795,7 @@ class _productshop_page extends State<productshop_page> {
                                                                         style:
                                                                             TextStyle(
                                                                           fontSize:
-                                                                              20.0,
+                                                                              15.0,
                                                                           fontWeight:
                                                                               FontWeight.bold,
                                                                           // backgroundColor: Colors.black45,
