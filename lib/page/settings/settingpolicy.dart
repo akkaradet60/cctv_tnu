@@ -83,16 +83,11 @@ class _settingpolicyState extends State<settingpolicy>
                 padding: const EdgeInsets.all(5),
                 child: Container(
                   decoration: BoxDecoration(
-                      color: ThemeBc.background,
+                      color: ThemeBc.white,
                       borderRadius: BorderRadius.circular(
-                        20,
+                        10,
                       ),
                       boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            offset: Offset(2, 2),
-                            blurRadius: 7,
-                            spreadRadius: 1.0),
                         BoxShadow(
                             color: Colors.black.withOpacity(0.5),
                             offset: Offset(2, 4),
@@ -107,12 +102,12 @@ class _settingpolicyState extends State<settingpolicy>
                       children: [
                         Container(
                           child: Text(
-                            '$app_agreement',
+                            '  $app_agreement',
                             style: TextStyle(
-                              fontSize: 20.0,
+                              fontSize: 15.0,
                               fontWeight: FontWeight.bold,
                               // backgroundColor: Colors.black45,
-                              color: Colors.white,
+                              color: ThemeBc.textblack,
                             ),
                           ),
                         )
@@ -140,16 +135,11 @@ class _settingpolicyState extends State<settingpolicy>
                 padding: const EdgeInsets.all(5),
                 child: Container(
                   decoration: BoxDecoration(
-                      color: ThemeBc.background,
+                      color: ThemeBc.white,
                       borderRadius: BorderRadius.circular(
-                        20,
+                        10,
                       ),
                       boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            offset: Offset(2, 2),
-                            blurRadius: 7,
-                            spreadRadius: 1.0),
                         BoxShadow(
                             color: Colors.black.withOpacity(0.5),
                             offset: Offset(2, 4),
@@ -164,12 +154,12 @@ class _settingpolicyState extends State<settingpolicy>
                       children: [
                         Container(
                           child: Text(
-                            '$app_agreement_cn',
+                            '  $app_agreement_cn',
                             style: TextStyle(
-                              fontSize: 20.0,
+                              fontSize: 15.0,
                               fontWeight: FontWeight.bold,
                               // backgroundColor: Colors.black45,
-                              color: Colors.white,
+                              color: ThemeBc.textblack,
                             ),
                           ),
                         )
@@ -197,16 +187,11 @@ class _settingpolicyState extends State<settingpolicy>
                 padding: const EdgeInsets.all(5),
                 child: Container(
                   decoration: BoxDecoration(
-                      color: ThemeBc.background,
+                      color: ThemeBc.white,
                       borderRadius: BorderRadius.circular(
                         20,
                       ),
                       boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            offset: Offset(2, 2),
-                            blurRadius: 7,
-                            spreadRadius: 1.0),
                         BoxShadow(
                             color: Colors.black.withOpacity(0.5),
                             offset: Offset(2, 4),
@@ -221,12 +206,12 @@ class _settingpolicyState extends State<settingpolicy>
                       children: [
                         Container(
                           child: Text(
-                            '$app_agreement_en',
+                            '  $app_agreement_en',
                             style: TextStyle(
-                              fontSize: 20.0,
+                              fontSize: 15.0,
                               fontWeight: FontWeight.bold,
                               // backgroundColor: Colors.black45,
-                              color: Colors.white,
+                              color: ThemeBc.textblack,
                             ),
                           ),
                         )

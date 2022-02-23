@@ -2,7 +2,8 @@ import 'dart:convert';
 
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
-import 'package:cctv_tun/widgets/custom_button.dart';
+
+import 'package:cctv_tun/widgets/custom_buttonn.dart';
 import 'package:cctv_tun/widgets/warn_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

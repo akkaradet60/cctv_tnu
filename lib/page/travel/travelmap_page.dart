@@ -90,10 +90,10 @@ class _travelmap_page extends State<travelmap_page> {
   @override
   Widget build(BuildContext context) {
     travelmapname = ModalRoute.of(context)!.settings.arguments;
-    // CameraPosition cameraPosition = CameraPosition(
-    //   target: latLng,
-    //   zoom: 14,
-    // );
+    late var app_lat =
+        double.parse(travelmapname['travel_lat'] ?? "16.04594422566426");
+    late var app_lng =
+        double.parse(travelmapname['travel_lng'] ?? "103.11927574700533");
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
@@ -116,127 +116,80 @@ class _travelmap_page extends State<travelmap_page> {
           ),
         ],
       ),
-      // appBar: AppBar(
-      //   title: Center(child: Text('${travelmapname['travel_name']}')),
-      //   actions: <Widget>[
-      //     IconButton(
-      //       icon: Image.asset('assets/logo.png', scale: 15),
-      //       tooltip: 'Show Snackbar',
-      //       onPressed: () {
-      //         ScaffoldMessenger.of(context)
-      //             .showSnackBar(SnackBar(content: Text('แจ้งเหตุฉุกเฉิน')));
-      //       },
-      //     ),
-      //   ],
-      // ),
+
       body: Container(
-        color: ThemeBc.background,
+        color: ThemeBc.white,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(0.0),
           child: ListView(
             children: [
-              Container(
-                decoration: BoxDecoration(
-                    color: secondaryTextColor,
-                    borderRadius: BorderRadius.circular(
-                      20,
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black.withOpacity(0.5),
-                          offset: Offset(2, 4),
-                          blurRadius: 7.0,
-                          spreadRadius: 1.0),
-                    ]),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    height: 400,
-                    child: Column(
-                      children: [
-                        Flexible(
-                            child: FlutterMap(
-                          options: MapOptions(
-                              center: LatLng(
-                                  16.186348810730625, 103.30025897021274),
-                              zoom: 16),
-                          layers: [
-                            TileLayerOptions(
-                              urlTemplate:
-                                  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                              subdomains: ['a', 'b', 'c'],
-                              attributionBuilder: (_) {
-                                return Text("© OpenStreetMap contributors");
-                              },
-                            ),
-                            MarkerLayerOptions(markers: [
-                              Marker(
-                                point: LatLng(
-                                    16.186348810730625, 103.30025897021274),
-                                builder: (ctx) => const Icon(Icons.pin_drop),
-                              )
-                            ]),
-                          ],
-                        ))
-                      ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: secondaryTextColor,
+                      borderRadius: BorderRadius.circular(
+                        10,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.black.withOpacity(0.5),
+                            offset: Offset(2, 4),
+                            blurRadius: 7.0,
+                            spreadRadius: 1.0),
+                      ]),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Container(
+                      height: 400,
+                      child: Column(
+                        children: [
+                          Flexible(
+                              child: FlutterMap(
+                            options: MapOptions(
+                                center: LatLng(app_lat, app_lng), zoom: 16),
+                            layers: [
+                              TileLayerOptions(
+                                urlTemplate:
+                                    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                                subdomains: ['a', 'b', 'c'],
+                                attributionBuilder: (_) {
+                                  return Text('');
+                                },
+                              ),
+                              MarkerLayerOptions(markers: [
+                                Marker(
+                                  point: LatLng(app_lat, app_lng),
+                                  builder: (ctx) => IconButton(
+                                    icon: Icon(
+                                      Icons.where_to_vote,
+                                    ),
+                                    tooltip: 'Show Snackbar',
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return AlertDialog(
+                                            content: Text(
+                                                '${travelmapname['travel_name']}'),
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
+                                )
+                              ]),
+                            ],
+                          ))
+                        ],
+                      ),
                     ),
                   ),
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.all(8.0),
-                //   child: FutureBuilder(
-                //     future: _getLocation(),
-                //     builder: (BuildContext context, AsyncSnapshot snapshot) {
-                //       if (snapshot.hasData) {
-                //         return GoogleMap(
-                //           markers: <Marker>[
-                //             Marker(
-                //                 markerId: MarkerId('100'),
-                //                 position:
-                //                     LatLng(16.155182041998927, 103.30619597899741),
-                //                 infoWindow: InfoWindow(
-                //                     title:
-                //                         'ไปที่นี้กัน ${travelmapname['travel_name']}',
-                //                     snippet:
-                //                         '--------------------------------------',
-                //                     onTap: () {})),
-                //           ].toSet(),
-                //           mapType: MapType.normal,
-                //           onMapCreated: (GoogleMapController controller) {
-                //             _controller.complete(controller);
-                //           },
-                //           myLocationEnabled: true,
-                //           initialCameraPosition: cameraPosition,
-                //         );
-                //       } else {
-                //         return Center(
-                //           child: Column(
-                //               // mainAxisAlignment: MainAxisAlignment.center,
-                //               //   children: <Widget>[
-                //               //     CircularProgressIndicator(),
-                //               //    ],
-                //               ),
-                //         );
-                //       }
-                //     },
-                //   ),
-                // ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 5),
               Container(
                 height: 300,
-                decoration: BoxDecoration(
-                    color: ThemeBc.white,
-                    borderRadius: BorderRadius.circular(
-                      20,
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black.withOpacity(0.5),
-                          offset: Offset(2, 4),
-                          blurRadius: 7.0,
-                          spreadRadius: 1.0),
-                    ]),
                 child: Column(
                   children: [
                     Padding(
@@ -246,7 +199,7 @@ class _travelmap_page extends State<travelmap_page> {
                         decoration: BoxDecoration(
                             color: ThemeBc.black,
                             borderRadius: BorderRadius.circular(
-                              20,
+                              10,
                             ),
                             boxShadow: [
                               BoxShadow(
@@ -263,7 +216,7 @@ class _travelmap_page extends State<travelmap_page> {
                                 child: Text(
                                     'เที่ยว : ${travelmapname['travel_name']}',
                                     style: TextStyle(
-                                      fontSize: 20.0,
+                                      fontSize: 15.0,
                                       fontWeight: FontWeight.bold,
                                       // backgroundColor: Colors.black45,
                                       color: ThemeBc.white,
@@ -272,7 +225,7 @@ class _travelmap_page extends State<travelmap_page> {
                               Text(
                                   'เนื้อหา : ${travelmapname['travel_detail']} ',
                                   style: TextStyle(
-                                    fontSize: 20.0,
+                                    fontSize: 15.0,
                                     fontWeight: FontWeight.bold,
                                     // backgroundColor: Colors.black45,
                                     color: ThemeBc.white,

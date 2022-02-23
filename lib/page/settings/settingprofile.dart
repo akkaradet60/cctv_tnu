@@ -230,6 +230,7 @@ class _settingprofile extends State<settingprofile>
                                   icon: Icons.description,
                                   initialValue: '${profile['user_email']}'),
                               const SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               Container(
                                 decoration: BoxDecoration(
                                     color: ThemeBc.white,
@@ -260,14 +261,11 @@ class _settingprofile extends State<settingprofile>
                                           20.0,
                                         ),
                                       ),
-                                      suffixIcon: Icon(Icons.description),
                                       labelText: 'เลือกจังหวัด',
-                                      fillColor: Colors.white,
-                                      filled: true,
                                     ),
                                     allowClear: true,
                                     hint: profile['user_prov'] != null
-                                        ? Text(profile['user_prov'])
+                                        ? Text(profile['prov'])
                                         : Text('เลือกจังหวัด'),
                                     onChanged: (value) {
                                       setState(() {
@@ -322,14 +320,11 @@ class _settingprofile extends State<settingprofile>
                                           20.0,
                                         ),
                                       ),
-                                      suffixIcon: Icon(Icons.description),
                                       labelText: 'เลือกอำเภอ',
-                                      fillColor: Colors.white,
-                                      filled: true,
                                     ),
                                     allowClear: true,
                                     hint: profile['user_dis'] != null
-                                        ? Text(profile['user_dis'])
+                                        ? Text(profile['dis'])
                                         : Text('เลือกอำเภอ'),
                                     onChanged: (value) {
                                       setState(() {
@@ -380,14 +375,11 @@ class _settingprofile extends State<settingprofile>
                                           20.0,
                                         ),
                                       ),
-                                      suffixIcon: Icon(Icons.description),
                                       labelText: 'เลือกตำบล',
-                                      fillColor: Colors.white,
-                                      filled: true,
                                     ),
                                     allowClear: true,
                                     hint: profile['user_sub'] != null
-                                        ? Text(profile['user_sub'])
+                                        ? Text(profile['sub'])
                                         : Text('เลือกตำบล'),
                                     onChanged: (value) {
                                       setState(() {
@@ -537,14 +529,14 @@ class _settingprofile extends State<settingprofile>
   }
 
   //==================================  Api  =============================================
-  String? _prov;
-  String? _dis;
-  String? _sub;
-  String? _adddess;
-  String? _zibcode;
-  String? _lat;
-  String? _fir;
-  String? _email;
+  var _prov;
+  var _dis;
+  var _sub;
+  var _adddess;
+  var _zibcode;
+  var _lat;
+  var _fir;
+  var _email;
 
   Future<void> updataUser(Map formValues) async {
     try {

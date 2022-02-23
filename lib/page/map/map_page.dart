@@ -80,15 +80,7 @@ class _map_prod extends State<map_page> {
         backgroundColor: ThemeBc.background,
         title: Column(
           children: [
-            Container(
-              height: 50,
-              width: 300,
-              child: Column(
-                children: [
-                  Center(child: LocaleText('pro')),
-                ],
-              ),
-            ),
+            Center(child: Text('ตำแหน่งศูนย์ : ${hotlinee['hotlineName']}')),
           ],
         ),
         actions: <Widget>[
@@ -186,7 +178,7 @@ class _map_prod extends State<map_page> {
                                         Marker(
                                           point: LatLng(app_lat, app_lng),
                                           builder: (ctx) => IconButton(
-                                            icon: Icon(Icons.pin_drop),
+                                            icon: Icon(Icons.where_to_vote),
                                             tooltip: 'Show Snackbar',
                                             onPressed: () {
                                               showDialog(

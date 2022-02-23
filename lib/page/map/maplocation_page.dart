@@ -45,27 +45,6 @@ class _maplocation_page extends State<maplocation_page> {
   var hotlinee;
 
   late Position userLocation;
-  // late GoogleMapController mapController;
-  // Completer<GoogleMapController> _controller = Completer();
-  // LatLng latLng = const LatLng(14, 103.30025897021274);
-  // void _onMapCreated(GoogleMapController controller) {
-  //   mapController = controller;
-  // }
-
-  // // var _currentLocation = 0;
-  // // static final CameraPosition Sarakham = CameraPosition(
-  // //   target: LatLng(16.186348810730625, 103.30025897021274),
-  // //   zoom: 15,
-  // // );
-  // // static final CameraPosition Sarakham1 = const CameraPosition(
-  // //   target: LatLng(16.155182041998927, 103.30619597899741),
-  // //   zoom: 16,
-  // // );
-
-  // Future<void> _go(CameraPosition cameraPosition) async {
-  //   final controller = await _controller.future;
-  //   controller.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -124,14 +103,9 @@ class _maplocation_page extends State<maplocation_page> {
                         decoration: BoxDecoration(
                             color: secondaryTextColor,
                             borderRadius: BorderRadius.circular(
-                              20,
+                              10,
                             ),
                             boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  offset: Offset(2, 2),
-                                  blurRadius: 7,
-                                  spreadRadius: 1.0),
                               BoxShadow(
                                   color: Colors.black.withOpacity(0.5),
                                   offset: Offset(2, 4),
@@ -160,37 +134,6 @@ class _maplocation_page extends State<maplocation_page> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Row(
                                             children: [
-                                              // ElevatedButton.icon(
-                                              //   onPressed: () {
-                                              //     print('$userLocation');
-                                              //     // locn = userLocation.latitude;
-                                              //     // locn2 = userLocation
-                                              //     //     .longitude; // mapController.animateCamera(CameraUpdate.newLatLngZoom(
-                                              //     // //     LatLng(userLocation.latitude, userLocation.longitude),
-                                              //     // //     18));
-                                              //     showDialog(
-                                              //       context: context,
-                                              //       builder: (context) {
-                                              //         return AlertDialog(
-                                              //           content: Text(
-                                              //               'ตำแหน่ง !\nละติจูด ://  ลองจิจูด : ตำแหน่งที่คุณเลือก : '),
-                                              //         );
-                                              //       },
-                                              //     );
-                                              //   },
-                                              //   icon: Icon(Icons.gps_fixed),
-                                              //   label: Text('ตำแหน่งของคุณ'),
-                                              //   style: ElevatedButton.styleFrom(
-                                              //     primary: ThemeBc.background,
-                                              //     onPrimary: Colors.white,
-                                              //     elevation: 30,
-                                              //     shape: RoundedRectangleBorder(
-                                              //         borderRadius:
-                                              //             BorderRadius.all(
-                                              //                 Radius.circular(
-                                              //                     40))),
-                                              //   ),
-                                              // ),
                                               Text(
                                                 "เทศบาลมหาสารคาม",
                                                 style: TextStyle(
@@ -208,8 +151,10 @@ class _maplocation_page extends State<maplocation_page> {
                                     MarkerLayerOptions(markers: [
                                       Marker(
                                         point: LatLng(app_lat, app_lng),
-                                        builder: (ctx) =>
-                                            const Icon(Icons.pin_drop),
+                                        builder: (ctx) => const Icon(
+                                          Icons.where_to_vote,
+                                          size: 15,
+                                        ),
                                       )
                                     ]),
                                   ],
@@ -218,27 +163,6 @@ class _maplocation_page extends State<maplocation_page> {
                             ),
                           ),
                         ),
-                        // child: Padding(
-                        //   padding: const EdgeInsets.all(8.0),
-                        //   child: GoogleMap(
-                        //     markers: <Marker>[
-                        //       Marker(
-                        //           markerId: const MarkerId('100'),
-                        //           position: LatLng(app_lat, app_lng),
-                        //           infoWindow: InfoWindow(
-                        //               title:
-                        //                   'ตำแหน่งของศูนย์ ${hotlinee['travelName']}',
-                        //               //   snippet: '-------------------',
-                        //               onTap: () {})),
-                        //     ].toSet(),
-                        //     mapType: MapType.normal,
-                        //     onMapCreated: (GoogleMapController controller) {
-                        //       _controller.complete(controller);
-                        //     },
-                        //     myLocationEnabled: true,
-                        //     initialCameraPosition: cameraPosition,
-                        //   ),
-                        // ),
                       ),
                     ),
                     Container(
@@ -249,7 +173,7 @@ class _maplocation_page extends State<maplocation_page> {
                           decoration: BoxDecoration(
                               color: secondaryTextColor,
                               borderRadius: BorderRadius.circular(
-                                30,
+                                10,
                               ),
                               boxShadow: [
                                 BoxShadow(
@@ -320,74 +244,6 @@ class _maplocation_page extends State<maplocation_page> {
           },
         ),
       ),
-      /* Column(
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 0),
-            margin: EdgeInsets.only(
-              top: 0,
-            ),
-            height: 545.0,
-            width: 550,
-            child: GoogleMap(
-              markers: <Marker>[
-                Marker(
-                    markerId: MarkerId('100'),
-                    position: LatLng(16.155182041998927, 103.30619597899741),
-                    infoWindow: InfoWindow(
-                        title: 'ศูตย์ราชการมหาสารคาม',
-                        snippet: '-------------------',
-                        onTap: () {})),
-              ].toSet(),
-              initialCameraPosition: cameraPosition,
-              mapType: MapType.normal,
-              onMapCreated: (GoogleMapController controller) {
-                _controller.complete(controller);
-              },
-            ),
-          ),
-
-          /*  GoogleMap(
-          initialCameraPosition: CameraPosition(
-              target: LatLng(13.80564244, 100.5746134), zoom: 16),
-          mapType: MapType.normal,
-          onMapCreated: (GoogleMapController controler) {
-            _controller.complete(controler);
-          },
-        ),*/
-        ],
-      ),*/
-      // bottomNavigationBar: BottomNavigationBar(
-      //   backgroundColor: Colors.white,
-      //   items: [
-      //     const BottomNavigationBarItem(
-      //       title: const Text('มหาสารคาม '),
-      //       icon: const Icon(
-      //         Icons.map,
-      //       ),
-      //     ),
-      //     const BottomNavigationBarItem(
-      //       title: Text('ศูนย์ราชการมหาสารคาม'),
-      //       icon: Icon(
-      //         Icons.tour_outlined,
-      //       ),
-      //     ),
-      //   ],
-      // currentIndex: _currentLocation,
-      // onTap: (i) {
-      //   setState(() {
-      //     _currentLocation = i;
-      //     print(i);
-      //   });
-      //   switch (i) {
-      //     case 0:
-      //       _go(Sarakham);
-      //       break;
-      //     case 1:
-      //       _go(Sarakham1);
-      //   }
-      // },
-      // ),
     );
   }
 }

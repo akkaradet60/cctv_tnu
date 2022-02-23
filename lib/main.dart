@@ -48,6 +48,8 @@ import 'package:cctv_tun/page/trainingcalendar/trainingcalendardetail_page.dart'
 import 'package:cctv_tun/page/trainingcalendar/trainingcalendar.dart';
 
 import 'package:cctv_tun/page/travel/travel_page.dart';
+import 'package:cctv_tun/page/travel/travelhome_page.dart';
+import 'package:cctv_tun/page/travel/travelmapS_page.dart';
 import 'package:cctv_tun/page/travel/travelmap_page.dart';
 import 'package:cctv_tun/page/warn/warn_page.dart';
 import 'package:cctv_tun/page/warn/warndetail_page.dart';
@@ -143,6 +145,7 @@ class MyApp extends StatelessWidget {
             '/trainingcalendar_page': (context) => trainingcalendar_page(),
             '/travel_page': (context) => travel_page(),
             '/travelmap_page': (context) => travelmap_page(),
+            '/travelmapS_page': (context) => travelmapS_page(),
             '/trainingcalendardetail_page': (context) =>
                 trainingcalendardetail_page(),
             '/location_page': (context) => location_page(),
@@ -164,6 +167,7 @@ class MyApp extends StatelessWidget {
 
             '/productsearchome': (context) => produsctsearchome(),
             '/productstorehome': (context) => productstorehome(),
+            '/travelhome_page': (context) => travelhome_page(),
           },
         ),
       ),

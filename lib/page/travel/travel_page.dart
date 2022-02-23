@@ -1,5 +1,6 @@
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
+import 'package:cctv_tun/widgets/Text_pane.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -23,11 +24,12 @@ class _travel_page extends State<travel_page> {
     super.initState();
   }
 
+  var travel;
   late Map<String, dynamic> imgSlide;
 
   Future<Map<String, dynamic>> getDataSlide() async {
     var url = (Global.urlWeb +
-        'api/app/travel/restful/?travel_app_id=1&travel_cat=1');
+        'api/app/travel/restful/?travel_app_id=1&travel_cat=1&travel_type=${travel['type_app_id']}');
     var response = await http.get(Uri.parse(url), headers: {
       'Authorization':
           'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
@@ -51,9 +53,11 @@ class _travel_page extends State<travel_page> {
 
   @override
   Widget build(BuildContext context) {
+    travel = ModalRoute.of(context)!.settings.arguments;
     Widget ss1(BuildContext context) {
+      travel = ModalRoute.of(context)!.settings.arguments;
       return Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(0),
         child: Container(
           // decoration: BoxDecoration(
           //   color: secondaryTextColor,
@@ -61,7 +65,7 @@ class _travel_page extends State<travel_page> {
           //     40,
           //   ),
           // ),
-          height: 500,
+          height: 600,
           width: 500,
 
           child: FutureBuilder<Map<String, dynamic>>(
@@ -69,7 +73,6 @@ class _travel_page extends State<travel_page> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return ListView.builder(
-                  scrollDirection: Axis.horizontal,
                   itemCount: snapshot.data!['data'].length,
                   itemBuilder: (context, index) {
                     print(snapshot.data!['data'][index]['travel_images'][0]
@@ -81,177 +84,121 @@ class _travel_page extends State<travel_page> {
                     if (datanill == 'ไม่พบข้อมูล') {
                       em_detaail = 'ไม่พบข้อมูล';
                       return Text('');
-                      //   child: Padding(
-                      //     padding: const EdgeInsets.all(8.0),
-                      //     child: Column(
-                      //       children: [
-                      //         // Text(
-                      //         //   'ไม่พบข้อมูล',
-                      //         //   style: TextStyle(
-                      //         //     fontSize: 20.0,
-                      //         //     fontWeight: FontWeight.bold,
-                      //         //     // backgroundColor: Colors.black45,
-                      //         //     color: ThemeBc.black,
-                      //         //   ),
-                      //         // )
-                      //       ],
-                      //     ),
-                      //   ),
-                      // );
                     } else {
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: 480,
-                          decoration: BoxDecoration(
-                              color: ThemeBc.background,
-                              borderRadius: BorderRadius.circular(
-                                30,
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
-                                    offset: Offset(2, 2),
-                                    blurRadius: 7,
-                                    spreadRadius: 1.0),
-                                BoxShadow(
-                                    color: Colors.black.withOpacity(0.5),
-                                    offset: Offset(2, 4),
-                                    blurRadius: 7.0,
-                                    spreadRadius: 1.0),
-                              ]),
-                          child: Center(
-                            child: Column(
-                              // scrollDirection: Axis.horizontal,
-                              // mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                InkWell(
-                                  onTap: () {
-                                    Navigator.pushNamed(
-                                        context, '/travelmap_page',
-                                        arguments: {
-                                          'travel_name': snapshot.data!['data']
-                                              [index]['travel_name'],
-                                          'travel_detail':
-                                              snapshot.data!['data'][index]
-                                                  ['travel_detail'],
-                                        });
-                                  },
-                                  child: Container(
-                                    child: Column(
-                                      children: [
-                                        SizedBox(width: defaultMargin),
-                                        Padding(
-                                          padding: const EdgeInsets.all(10.0),
-                                          child: Container(
-                                            child: Column(
-                                              children: [
-                                                Container(
-                                                    decoration: BoxDecoration(
-                                                        color: ThemeBc.white,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(
-                                                          20,
-                                                        ),
-                                                        boxShadow: []),
-                                                    width: 320,
-                                                    height: 250,
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              5.0),
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                          Radius.circular(20),
-                                                        ),
-                                                        child: Image.network(
-                                                          snapshot.data!['data']
-                                                                              [index]
-                                                                          ['travel_images'][0]
-                                                                      [
-                                                                      'traveli_path_name'] !=
-                                                                  null
-                                                              ? Global.domainImage +
-                                                                  snapshot.data!['data']
-                                                                              [index]
-                                                                          [
-                                                                          'travel_images'][0]
-                                                                      [
-                                                                      'traveli_path_name']
-                                                              : '${Global.networkImage}',
-                                                          fit: BoxFit.cover,
-                                                          width:
-                                                              double.infinity,
-                                                        ),
-                                                      ),
-                                                    )),
-                                                SizedBox(height: 1),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Container(
-                                                    decoration: BoxDecoration(
-                                                        color: ThemeBc.white,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(
-                                                          20,
-                                                        ),
-                                                        boxShadow: []),
-                                                    width: 320,
-                                                    height: 190,
-                                                    child: Column(
-                                                      children: [
-                                                        SizedBox(height: 5),
-                                                        Center(
-                                                          child: Text(
-                                                            'เที่ยว: ${snapshot.data!['data'][index]['travel_name']}',
-                                                            style:
-                                                                primaryTextStyle
-                                                                    .copyWith(
-                                                              fontSize: 16,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(8.0),
-                                                          child: Container(
-                                                            decoration:
-                                                                BoxDecoration(),
-                                                            height: 120,
-                                                            child: ListView(
-                                                              children: [
-                                                                Text(
-                                                                  'ที่นี้คือ : ${snapshot.data!['data'][index]['travel_detail']}',
-                                                                  style: primaryTextStyle.copyWith(
-                                                                      fontSize:
-                                                                          15,
-                                                                      fontWeight:
-                                                                          medium),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
+                        child: Column(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Navigator.pushNamed(context, '/travelmap_page',
+                                    arguments: {
+                                      'travel_name': snapshot.data!['data']
+                                          [index]['travel_name'],
+                                      'travel_detail': snapshot.data!['data']
+                                          [index]['travel_detail'],
+                                      'travel_lat': snapshot.data!['data']
+                                          [index]['travel_lat'],
+                                      'travel_lng': snapshot.data!['data']
+                                          [index]['travel_lng'],
+                                    });
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  child: Column(
+                                    children: [
+                                      Stack(
+                                        children: <Widget>[
+                                          Container(
+                                            height: 500,
+                                            child: ClipRRect(
+                                              borderRadius: BorderRadius.all(
+                                                Radius.circular(10.0),
+                                              ),
+                                              child: Image.network(
+                                                snapshot.data!['data'][index][
+                                                                'travel_images'][0]
+                                                            [
+                                                            'traveli_path_name'] !=
+                                                        null
+                                                    ? Global.domainImage +
+                                                        snapshot.data!['data']
+                                                                    [index][
+                                                                'travel_images'][0]
+                                                            [
+                                                            'traveli_path_name']
+                                                    : '${Global.networkImage}',
+                                                fit: BoxFit.cover,
+                                                width: double.infinity,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              SizedBox(height: 60),
+                                              Container(
+                                                decoration: BoxDecoration(
+                                                    color: ThemeBc.black,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                      10,
+                                                    ),
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                          color: Colors.black
+                                                              .withOpacity(0.5),
+                                                          offset: Offset(2, 2),
+                                                          blurRadius: 7,
+                                                          spreadRadius: 1.0),
+                                                    ]),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Text(
+                                                    // '${titles[_currentIndex]}',
+                                                    'เที่ยว: ${snapshot.data!['data'][index]['travel_name']}',
+                                                    style: TextStyle(
+                                                      fontSize: 24.0,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      // backgroundColor: Colors.black45,
+                                                      color: ThemeBc.white,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(height: 210),
+                                              Container(
+                                                height: 170,
+                                                color: ThemeBc.black,
+                                                child: ListView(
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Text_pane(
+                                                          text:
+                                                              'ที่นี้คือ : ${snapshot.data!['data'][index]['travel_detail']}',
+                                                          color: ThemeBc.white,
+                                                          fontSize: 15),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ],
                                   ),
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
+                          ],
                         ),
                       );
                     }
@@ -269,49 +216,49 @@ class _travel_page extends State<travel_page> {
       );
     }
 
-    Widget titleMenus() {
-      return Padding(
-        padding: const EdgeInsets.all(10),
-        child: Container(
-          height: 60,
-          decoration: BoxDecoration(
-              color: ThemeBc.background,
-              borderRadius: BorderRadius.circular(
-                30,
-              ),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    offset: Offset(2, 2),
-                    blurRadius: 7,
-                    spreadRadius: 1.0),
-                BoxShadow(
-                    color: Colors.black.withOpacity(0.5),
-                    offset: Offset(2, 4),
-                    blurRadius: 7.0,
-                    spreadRadius: 1.0),
-              ]),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Container(
-                  child: Text(
-                    'แนะนำที่ท่องเที่ยวในมหาสารคาม',
-                    style: TextStyle(
-                      fontSize: 22.0,
-                      fontWeight: FontWeight.bold,
-                      // backgroundColor: Colors.black45,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      );
-    }
+    // Widget titleMenus() {
+    //   return Padding(
+    //     padding: const EdgeInsets.all(10),
+    //     child: Container(
+    //       height: 60,
+    //       decoration: BoxDecoration(
+    //           color: ThemeBc.background,
+    //           borderRadius: BorderRadius.circular(
+    //             30,
+    //           ),
+    //           boxShadow: [
+    //             BoxShadow(
+    //                 color: Colors.grey.withOpacity(0.5),
+    //                 offset: Offset(2, 2),
+    //                 blurRadius: 7,
+    //                 spreadRadius: 1.0),
+    //             BoxShadow(
+    //                 color: Colors.black.withOpacity(0.5),
+    //                 offset: Offset(2, 4),
+    //                 blurRadius: 7.0,
+    //                 spreadRadius: 1.0),
+    //           ]),
+    //       child: Padding(
+    //         padding: const EdgeInsets.all(8.0),
+    //         child: Column(
+    //           children: [
+    //             Container(
+    //               child: Text(
+    //                 'แนะนำที่ท่องเที่ยวในมหาสารคาม',
+    //                 style: TextStyle(
+    //                   fontSize: 22.0,
+    //                   fontWeight: FontWeight.bold,
+    //                   // backgroundColor: Colors.black45,
+    //                   color: Colors.white,
+    //                 ),
+    //               ),
+    //             ),
+    //           ],
+    //         ),
+    //       ),
+    //     ),
+    //   );
+    // }
 
     // late List<String> titles = [
     //   ' 1 ',
@@ -328,7 +275,11 @@ class _travel_page extends State<travel_page> {
           shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
-          title: Center(child: const Text('ท่องเที่ยว')),
+          title: Column(
+            children: [
+              Center(child: Text('${travel['type_name']}')),
+            ],
+          ),
           actions: <Widget>[
             IconButton(
               icon: Image.asset('assets/logo.png', scale: 15),
@@ -352,7 +303,7 @@ class _travel_page extends State<travel_page> {
               Column(
                 children: [
                   // titleMenus(),
-                  titleMenus(),
+                  // titleMenus(),
 
                   ss1(context),
 

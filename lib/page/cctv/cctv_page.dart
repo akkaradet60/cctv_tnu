@@ -38,7 +38,7 @@ class _cctv_pageState extends State<cctv_page> {
       ),
       body: WebView(
         javascriptMode: JavascriptMode.unrestricted,
-        initialUrl: 'https://amazon.com',
+        initialUrl: 'https://www.ntplc.co.th/News/news17',
       ),
     );
   }

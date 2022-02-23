@@ -226,7 +226,7 @@ class _message_pageState extends State<message_page> {
       return Container(
         color: ThemeBc.background,
         margin: EdgeInsets.only(top: 10, bottom: 0),
-        width: 1000,
+        width: 500,
         height: 500,
         child: FutureBuilder<Map<String, dynamic>>(
           future: getDataSlide(),
@@ -234,7 +234,7 @@ class _message_pageState extends State<message_page> {
             if (snapshot.hasData) {
               return ListView.builder(
                 itemCount: snapshot.data!['data'].length,
-                itemBuilder: (context, index) {
+                itemBuilder: (context, int index) {
                   return Container(
                     width: 500,
                     child: Center(
@@ -247,12 +247,12 @@ class _message_pageState extends State<message_page> {
                                   context, '/messagemdetail_page',
                                   arguments: {
                                     'blog_images': snapshot.data!['data'][index]
-                                                    ['blog_images'][index]
+                                                    ['blog_images'][0]
                                                 ['blogi_path_name'] !=
                                             null
                                         ? Global.domainImage +
                                             snapshot.data!['data'][index]
-                                                    ['blog_images'][index]
+                                                    ['blog_images'][0]
                                                 ['blogi_path_name']
                                         : '${Global.networkImage}',
                                     'blog_name': snapshot.data!['data'][index]
@@ -319,7 +319,8 @@ class _message_pageState extends State<message_page> {
                                                                 null
                                                             ? Global.domainImage +
                                                                 snapshot.data!['data']
-                                                                            [0][
+                                                                            [index]
+                                                                        [
                                                                         'blog_images'][0]
                                                                     [
                                                                     'blogi_path_name']

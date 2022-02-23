@@ -647,14 +647,15 @@ class _menu_pangState extends State<menu_pang> {
                                                       ],
                                                     ),
                                                     SizedBox(height: 5),
-                                                    Row(
+                                                    Column(
                                                       children: [
                                                         Container(
-                                                          height: 20,
+                                                          height: 50,
                                                           width: 260,
-                                                          child: ListView(
-                                                            scrollDirection:
-                                                                Axis.horizontal,
+                                                          child: Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
                                                             children: [
                                                               LocaleText(
                                                                 'อีเมล',
@@ -668,6 +669,7 @@ class _menu_pangState extends State<menu_pang> {
                                                                       .black,
                                                                 ),
                                                               ),
+
                                                               Text(
                                                                 '${snapshot.data!['data'][index]['user_email']}' !=
                                                                         null
@@ -683,7 +685,8 @@ class _menu_pangState extends State<menu_pang> {
                                                                   color: ThemeBc
                                                                       .black,
                                                                 ),
-                                                              )
+                                                              ),
+
                                                               // Text(
                                                               //   ' : ${snapshot.data!['data'][index]['user_email']}',
                                                               //   style: TextStyle(

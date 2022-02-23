@@ -574,7 +574,7 @@ class _home_pageState extends State<home_page> {
                       iconMenus: 'assets/homepage/icon_6.png',
                       titleMenus: 'โทรทัศน์วงจรปิด',
                       pathName: () {
-                        Navigator.pushNamed(context, '/appp');
+                        Navigator.pushNamed(context, '/cctv_page');
                       },
                       // '/AppealPage',
                       titleMenus2: '',
@@ -612,7 +612,7 @@ class _home_pageState extends State<home_page> {
                       iconMenus: 'assets/homepage/icon_10.png',
                       titleMenus: 'ท่องเที่ยว',
                       pathName: () {
-                        Navigator.pushNamed(context, '/travel_page');
+                        Navigator.pushNamed(context, '/travelhome_page');
                       },
                       // pathName: '/travel_page',
                       titleMenus1: '',
