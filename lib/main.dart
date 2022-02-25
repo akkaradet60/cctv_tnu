@@ -160,7 +160,7 @@ class MyApp extends StatelessWidget {
             '/maplocation_page': (context) => maplocation_page(),
             '/settingpolicy': (context) => settingpolicy(),
             // '/EmergecyPage': (context) => EmergecyPage(),
-            // '/AppealPage': (context) => MyHomePage(),
+            '/sss': (context) => sss(),
             '/facebook_login': (context) => facebook_login(),
             '/forgot_password': (context) => forgot_password(),
             '/appp': (context) => appp(),

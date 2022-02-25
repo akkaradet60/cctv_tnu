@@ -73,6 +73,7 @@ class _travel_page extends State<travel_page> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return ListView.builder(
+                  scrollDirection: Axis.horizontal,
                   itemCount: snapshot.data!['data'].length,
                   itemBuilder: (context, index) {
                     print(snapshot.data!['data'][index]['travel_images'][0]
@@ -87,118 +88,127 @@ class _travel_page extends State<travel_page> {
                     } else {
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(context, '/travelmap_page',
-                                    arguments: {
-                                      'travel_name': snapshot.data!['data']
-                                          [index]['travel_name'],
-                                      'travel_detail': snapshot.data!['data']
-                                          [index]['travel_detail'],
-                                      'travel_lat': snapshot.data!['data']
-                                          [index]['travel_lat'],
-                                      'travel_lng': snapshot.data!['data']
-                                          [index]['travel_lng'],
-                                    });
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  child: Column(
-                                    children: [
-                                      Stack(
-                                        children: <Widget>[
-                                          Container(
-                                            height: 500,
-                                            child: ClipRRect(
-                                              borderRadius: BorderRadius.all(
-                                                Radius.circular(10.0),
-                                              ),
-                                              child: Image.network(
-                                                snapshot.data!['data'][index][
-                                                                'travel_images'][0]
-                                                            [
-                                                            'traveli_path_name'] !=
-                                                        null
-                                                    ? Global.domainImage +
-                                                        snapshot.data!['data']
-                                                                    [index][
-                                                                'travel_images'][0]
-                                                            [
-                                                            'traveli_path_name']
-                                                    : '${Global.networkImage}',
-                                                fit: BoxFit.cover,
-                                                width: double.infinity,
+                        child: Container(
+                          height: 550,
+                          width: 400,
+                          child: Column(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, '/travelmap_page',
+                                      arguments: {
+                                        'travel_name': snapshot.data!['data']
+                                            [index]['travel_name'],
+                                        'travel_detail': snapshot.data!['data']
+                                            [index]['travel_detail'],
+                                        'travel_lat': snapshot.data!['data']
+                                            [index]['travel_lat'],
+                                        'travel_lng': snapshot.data!['data']
+                                            [index]['travel_lng'],
+                                      });
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    child: Column(
+                                      children: [
+                                        Stack(
+                                          children: <Widget>[
+                                            Container(
+                                              height: 500,
+                                              child: ClipRRect(
+                                                borderRadius: BorderRadius.all(
+                                                  Radius.circular(10.0),
+                                                ),
+                                                child: Image.network(
+                                                  snapshot.data!['data'][index][
+                                                                  'travel_images'][0]
+                                                              [
+                                                              'traveli_path_name'] !=
+                                                          null
+                                                      ? Global.domainImage +
+                                                          snapshot.data!['data']
+                                                                      [index][
+                                                                  'travel_images'][0]
+                                                              [
+                                                              'traveli_path_name']
+                                                      : '${Global.networkImage}',
+                                                  fit: BoxFit.cover,
+                                                  width: double.infinity,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              SizedBox(height: 60),
-                                              Container(
-                                                decoration: BoxDecoration(
-                                                    color: ThemeBc.black,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                      10,
-                                                    ),
-                                                    boxShadow: [
-                                                      BoxShadow(
-                                                          color: Colors.black
-                                                              .withOpacity(0.5),
-                                                          offset: Offset(2, 2),
-                                                          blurRadius: 7,
-                                                          spreadRadius: 1.0),
-                                                    ]),
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Text(
-                                                    // '${titles[_currentIndex]}',
-                                                    'เที่ยว: ${snapshot.data!['data'][index]['travel_name']}',
-                                                    style: TextStyle(
-                                                      fontSize: 24.0,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      // backgroundColor: Colors.black45,
-                                                      color: ThemeBc.white,
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                SizedBox(height: 60),
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                      color: ThemeBc.black,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                        10,
+                                                      ),
+                                                      boxShadow: [
+                                                        BoxShadow(
+                                                            color: Colors.black
+                                                                .withOpacity(
+                                                                    0.5),
+                                                            offset:
+                                                                Offset(2, 2),
+                                                            blurRadius: 7,
+                                                            spreadRadius: 1.0),
+                                                      ]),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Text(
+                                                      // '${titles[_currentIndex]}',
+                                                      'เที่ยว: ${snapshot.data!['data'][index]['travel_name']}',
+                                                      style: TextStyle(
+                                                        fontSize: 24.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        // backgroundColor: Colors.black45,
+                                                        color: ThemeBc.white,
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
-                                              ),
-                                              SizedBox(height: 210),
-                                              Container(
-                                                height: 170,
-                                                color: ThemeBc.black,
-                                                child: ListView(
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child: Text_pane(
-                                                          text:
-                                                              'ที่นี้คือ : ${snapshot.data!['data'][index]['travel_detail']}',
-                                                          color: ThemeBc.white,
-                                                          fontSize: 15),
-                                                    )
-                                                  ],
+                                                SizedBox(height: 210),
+                                                Container(
+                                                  height: 170,
+                                                  color: Colors.black54,
+                                                  child: ListView(
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .all(8.0),
+                                                        child: Text_pane(
+                                                            text:
+                                                                'ที่นี้คือ : ${snapshot.data!['data'][index]['travel_detail']}',
+                                                            color:
+                                                                ThemeBc.white,
+                                                            fontSize: 15),
+                                                      )
+                                                    ],
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ],
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       );
                     }

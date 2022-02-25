@@ -259,7 +259,7 @@ class _productshome_page extends State<travelhome_page> {
                                         SizedBox(height: 40),
                                         Container(
                                           height: 140,
-                                          color: ThemeBc.black,
+                                          color: Colors.black54,
                                           child: ListView(
                                             children: [
                                               Padding(
@@ -417,7 +417,7 @@ class _productshome_page extends State<travelhome_page> {
                                         SizedBox(height: 40),
                                         Container(
                                           height: 140,
-                                          color: ThemeBc.black,
+                                          color: Colors.black54,
                                           child: ListView(
                                             children: [
                                               Padding(
@@ -575,7 +575,7 @@ class _productshome_page extends State<travelhome_page> {
                                         SizedBox(height: 40),
                                         Container(
                                           height: 140,
-                                          color: ThemeBc.black,
+                                          color: Colors.black54,
                                           child: ListView(
                                             children: [
                                               Padding(

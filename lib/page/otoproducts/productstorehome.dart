@@ -86,7 +86,7 @@ class _productshop_page extends State<productstorehome> {
                   decoration: BoxDecoration(
                     color: secondaryTextColor,
                     borderRadius: BorderRadius.circular(
-                      50,
+                      10,
                     ),
                   ),
                   child: Column(
@@ -130,14 +130,9 @@ class _productshop_page extends State<productstorehome> {
                                   decoration: BoxDecoration(
                                       color: ThemeBc.background,
                                       borderRadius: BorderRadius.circular(
-                                        20,
+                                        10,
                                       ),
                                       boxShadow: [
-                                        BoxShadow(
-                                            color: Colors.grey.withOpacity(0.5),
-                                            offset: Offset(2, 2),
-                                            blurRadius: 7,
-                                            spreadRadius: 1.0),
                                         BoxShadow(
                                             color:
                                                 Colors.black.withOpacity(0.5),

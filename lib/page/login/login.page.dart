@@ -357,567 +357,581 @@ class _LoginPageState extends State<login_page> {
     Map _userObj = {};
     return Scaffold(
         backgroundColor: ThemeBc.white,
-        body: Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [ThemeBc.white, ThemeBc.white],
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft)),
-          child: Container(
-            child: Center(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.all(0),
-                  child: Column(
-                    children: [
-                      SizedBox(height: 30),
-                      Container(
-                        padding: EdgeInsets.symmetric(horizontal: 80),
-                        child: Image.asset('assets/logo.png'),
-                      ),
-                      SizedBox(height: 10),
-                      // FormBuilder(
-                      //   key: _fbKey2,
-                      //   initialValue: {
-                      //     'email': 'akkaradet.ko60@snru.ac.th',
-                      //     'password': '1234567'
-                      //   },
-                      //   autovalidateMode: AutovalidateMode.always,
-                      //   child: Container(),
-                      // ),
-                      // Text('$ss $ss1'),
-                      FormBuilder(
-                        key: _fbKey,
-                        initialValue: {'email': '', 'password': ''},
-                        autovalidateMode: AutovalidateMode
-                            .always, //ถ้าไม่ใส่ต้อง submit ก่อนถึงจะตรวจสอบ validation
-                        child: Column(
-                          children: <Widget>[
-                            Padding(
-                              padding: EdgeInsets.all(30),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        color: secondaryTextColor,
-                                        borderRadius: BorderRadius.circular(
-                                          20,
-                                        ),
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color:
-                                                  Colors.black.withOpacity(0.2),
-                                              offset: Offset(2, 2),
-                                              blurRadius: 7,
-                                              spreadRadius: 1.0),
-                                        ]),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Container(
-                                        child: FormBuilderTextField(
-                                          initialValue:
-                                              'akkaradet.k6@snru.ac.th',
-                                          name: "email",
-                                          maxLines: 1,
-                                          keyboardType:
-                                              TextInputType.emailAddress,
-                                          decoration: InputDecoration(
-                                            border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                20.0,
-                                              ),
+        body: Stack(
+          children: [
+            Image.network(
+              'http://4.bp.blogspot.com/-b5Ziev6W45k/VSqhWYDodcI/AAAAAAAARFI/OsRTia414fU/s1600/Y54_3009.jpg',
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height,
+              fit: BoxFit.cover,
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+
+              decoration: BoxDecoration(
+                  color: Colors.black45,
+                  borderRadius: BorderRadius.circular(10)),
+              // decoration: BoxDecoration(
+              //     gradient: LinearGradient(
+              //         colors: [ThemeBc.white, ThemeBc.white],
+              //         begin: Alignment.topRight,
+              //         end: Alignment.bottomLeft)),
+              child: Container(
+                child: Center(
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: EdgeInsets.all(0),
+                      child: Column(
+                        children: [
+                          SizedBox(height: 30),
+                          Container(
+                            padding: EdgeInsets.symmetric(horizontal: 80),
+                            child: Image.asset('assets/logo.png'),
+                          ),
+                          SizedBox(height: 10),
+                          FormBuilder(
+                            key: _fbKey,
+                            initialValue: {'email': '', 'password': ''},
+                            autovalidateMode: AutovalidateMode
+                                .always, //ถ้าไม่ใส่ต้อง submit ก่อนถึงจะตรวจสอบ validation
+                            child: Column(
+                              children: <Widget>[
+                                Padding(
+                                  padding: EdgeInsets.all(30),
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: secondaryTextColor,
+                                            borderRadius: BorderRadius.circular(
+                                              20,
                                             ),
-                                            suffixIcon: Icon(Icons.email),
-                                            labelText: 'Email',
-                                            // helperText: '555',
-                                            fillColor: Colors.white,
-                                            filled: true,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  color: Colors.black
+                                                      .withOpacity(0.2),
+                                                  offset: Offset(2, 2),
+                                                  blurRadius: 7,
+                                                  spreadRadius: 1.0),
+                                            ]),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Container(
+                                            child: FormBuilderTextField(
+                                              initialValue:
+                                                  'akkaradet.k6@snru.ac.th',
+                                              name: "email",
+                                              maxLines: 1,
+                                              keyboardType:
+                                                  TextInputType.emailAddress,
+                                              decoration: InputDecoration(
+                                                border: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                    20.0,
+                                                  ),
+                                                ),
+                                                suffixIcon: Icon(Icons.email),
+                                                labelText: 'Email',
+                                                // helperText: '555',
+                                                fillColor: Colors.white,
+                                                filled: true,
+                                              ),
+                                              // validator: MultiValidator([
+                                              //   RequiredValidator(
+                                              //       errorText:
+                                              //           "ป้อนข้อมูลอีเมลด้วย"),
+                                              //   EmailValidator(
+                                              //       errorText:
+                                              //           "รูปแบบอีเมล์ไม่ถูกต้อง"),
+                                              // ]),
+                                            ),
                                           ),
-                                          // validator: MultiValidator([
-                                          //   RequiredValidator(
-                                          //       errorText:
-                                          //           "ป้อนข้อมูลอีเมลด้วย"),
-                                          //   EmailValidator(
-                                          //       errorText:
-                                          //           "รูปแบบอีเมล์ไม่ถูกต้อง"),
-                                          // ]),
                                         ),
                                       ),
+                                      SizedBox(height: 10),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: secondaryTextColor,
+                                            borderRadius: BorderRadius.circular(
+                                              20,
+                                            ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  color: Colors.black
+                                                      .withOpacity(0.2),
+                                                  offset: Offset(2, 2),
+                                                  blurRadius: 7,
+                                                  spreadRadius: 1.0),
+                                            ]),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Container(
+                                            child: FormBuilderTextField(
+                                              initialValue: '1234567',
+                                              name: "password",
+                                              maxLines: 1,
+                                              keyboardType:
+                                                  TextInputType.visiblePassword,
+                                              obscureText: true,
+                                              decoration: InputDecoration(
+                                                border: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                    20.0,
+                                                  ),
+                                                ),
+                                                suffixIcon: Icon(Icons.vpn_key),
+                                                labelText: 'Password',
+                                                fillColor: Colors.white,
+                                                filled: true,
+                                              ),
+                                              // validator: MultiValidator([
+                                              //   RequiredValidator(
+                                              //       errorText: "ป้อนรหัสผ่านด้วย"),
+                                              // ]),
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(
+                              top: 0,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, '/forgot_password');
+                                  }, //facebook_login
+                                  child: LocaleText(
+                                    'ลืมรหัสผ่าน',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15,
+                                      decoration: TextDecoration.underline,
+                                      shadows: <Shadow>[
+                                        Shadow(
+                                          offset: Offset(1.0, 1.0),
+                                          blurRadius: 3.0,
+                                          color: Color.fromARGB(255, 0, 0, 0),
+                                        ),
+                                        Shadow(
+                                          offset: Offset(1.0, 1.0),
+                                          blurRadius: 8.0,
+                                          color: Color.fromARGB(255, 0, 0, 0),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                  SizedBox(height: 10),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        color: secondaryTextColor,
-                                        borderRadius: BorderRadius.circular(
-                                          20,
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                LocaleText(
+                                  'ยังไม่ได้เป็นสมัครสมาชิก',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15,
+                                    decoration: TextDecoration.underline,
+                                    /*shadows: <Shadow>[
+                                Shadow(
+                                  offset: Offset(1.0, 1.0),
+                                  blurRadius: 3.0,
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                ),
+                                Shadow(
+                                  offset: Offset(1.0, 1.0),
+                                  blurRadius: 8.0,
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                ),
+                              ],*/
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                InkWell(
+                                  onTap: () => Navigator.pushNamed(
+                                      context, '/register_page'),
+                                  child: LocaleText(
+                                    'สมัครสมาชิก',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15,
+                                      decoration: TextDecoration.underline,
+                                      shadows: <Shadow>[
+                                        Shadow(
+                                          offset: Offset(1.0, 1.0),
+                                          blurRadius: 3.0,
+                                          color: Color.fromARGB(255, 0, 0, 0),
                                         ),
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color:
-                                                  Colors.black.withOpacity(0.2),
-                                              offset: Offset(2, 2),
-                                              blurRadius: 7,
-                                              spreadRadius: 1.0),
-                                        ]),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Container(
-                                        child: FormBuilderTextField(
-                                          initialValue: '1234567',
-                                          name: "password",
-                                          maxLines: 1,
-                                          keyboardType:
-                                              TextInputType.visiblePassword,
-                                          obscureText: true,
-                                          decoration: InputDecoration(
-                                            border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                20.0,
-                                              ),
-                                            ),
-                                            suffixIcon: Icon(Icons.vpn_key),
-                                            labelText: 'Password',
-                                            fillColor: Colors.white,
-                                            filled: true,
-                                          ),
-                                          // validator: MultiValidator([
-                                          //   RequiredValidator(
-                                          //       errorText: "ป้อนรหัสผ่านด้วย"),
-                                          // ]),
+                                        Shadow(
+                                          offset: Offset(1.0, 1.0),
+                                          blurRadius: 8.0,
+                                          color: Color.fromARGB(255, 0, 0, 0),
                                         ),
-                                      ),
+                                      ],
                                     ),
-                                  )
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Container(
+                            // color: Colors.transparent,
+                            // margin: EdgeInsets.only(
+                            //   top: 20,
+                            // ),
+                            child: CustomButton(
+                              title: 'ล็อกอิน',
+                              onPressed: () {
+                                // login(_fbKey.currentState!.value);
+                                if (_fbKey.currentState!.saveAndValidate()) {
+                                  // print(_fbKey.currentState!.value);
+                                  login(_fbKey.currentState!.value);
+                                }
+                              },
+                              colorButton: ThemeBc.background,
+                              textStyle: secondaryTextStyle.copyWith(
+                                  fontWeight: medium, fontSize: 16),
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Container(
+                            child: CustomButton(
+                              title: 'ทดลองใช้ในฐานะผู้เยี่ยมชม',
+                              onPressed: () {
+                                loginapp();
+                              },
+                              colorButton: ThemeBc.background,
+                              textStyle: secondaryTextStyle.copyWith(
+                                  fontWeight: medium, fontSize: 16),
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Padding(
+                            padding: const EdgeInsets.all(0.0),
+                            child: Container(
+                              width: 342,
+                              decoration: BoxDecoration(
+                                  color: ThemeBc.white,
+                                  borderRadius: BorderRadius.circular(
+                                    20,
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.black.withOpacity(0.2),
+                                        offset: Offset(2, 2),
+                                        blurRadius: 7,
+                                        spreadRadius: 1.0),
+                                  ]),
+                              child: Row(
+                                children: <Widget>[
+                                  Expanded(
+                                    child: ElevatedButton.icon(
+                                      label: const LocaleText('facebook'),
+                                      icon: const Icon(Icons.facebook_rounded),
+                                      style: ElevatedButton.styleFrom(
+                                        primary: ThemeBc.blue,
+                                        //side: BorderSide(color: Colors.red, width: 5),
+                                        textStyle:
+                                            const TextStyle(fontSize: 15),
+                                        padding: const EdgeInsets.all(15),
+                                        shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(20))),
+                                        // shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+                                      ),
+                                      onPressed: () {
+                                        loginWithFacebook();
+                                      },
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(
-                          top: 0,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(
-                                    context, '/forgot_password');
-                              }, //facebook_login
-                              child: LocaleText(
-                                'ลืมรหัสผ่าน',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15,
-                                  decoration: TextDecoration.underline,
-                                  shadows: <Shadow>[
-                                    Shadow(
-                                      offset: Offset(1.0, 1.0),
-                                      blurRadius: 3.0,
-                                      color: Color.fromARGB(255, 0, 0, 0),
-                                    ),
-                                    Shadow(
-                                      offset: Offset(1.0, 1.0),
-                                      blurRadius: 8.0,
-                                      color: Color.fromARGB(255, 0, 0, 0),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            LocaleText(
-                              'ยังไม่ได้เป็นสมัครสมาชิก',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
-                                decoration: TextDecoration.underline,
-                                /*shadows: <Shadow>[
-                              Shadow(
-                                offset: Offset(1.0, 1.0),
-                                blurRadius: 3.0,
-                                color: Color.fromARGB(255, 0, 0, 0),
-                              ),
-                              Shadow(
-                                offset: Offset(1.0, 1.0),
-                                blurRadius: 8.0,
-                                color: Color.fromARGB(255, 0, 0, 0),
-                              ),
-                            ],*/
-                              ),
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            InkWell(
-                              onTap: () => Navigator.pushNamed(
-                                  context, '/register_page'),
-                              child: LocaleText(
-                                'สมัครสมาชิก',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15,
-                                  decoration: TextDecoration.underline,
-                                  shadows: <Shadow>[
-                                    Shadow(
-                                      offset: Offset(1.0, 1.0),
-                                      blurRadius: 3.0,
-                                      color: Color.fromARGB(255, 0, 0, 0),
-                                    ),
-                                    Shadow(
-                                      offset: Offset(1.0, 1.0),
-                                      blurRadius: 8.0,
-                                      color: Color.fromARGB(255, 0, 0, 0),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Container(
-                        // color: Colors.transparent,
-                        // margin: EdgeInsets.only(
-                        //   top: 20,
-                        // ),
-                        child: CustomButton(
-                          title: 'ล็อกอิน',
-                          onPressed: () {
-                            // login(_fbKey.currentState!.value);
-                            if (_fbKey.currentState!.saveAndValidate()) {
-                              // print(_fbKey.currentState!.value);
-                              login(_fbKey.currentState!.value);
-                            }
-                          },
-                          colorButton: ThemeBc.background,
-                          textStyle: secondaryTextStyle.copyWith(
-                              fontWeight: medium, fontSize: 16),
-                        ),
-                      ),
-                      SizedBox(height: 5),
-                      Container(
-                        child: CustomButton(
-                          title: 'ทดลองใช้ในฐานะผู้เยี่ยมชม',
-                          onPressed: () {
-                            loginapp();
-                          },
-                          colorButton: ThemeBc.background,
-                          textStyle: secondaryTextStyle.copyWith(
-                              fontWeight: medium, fontSize: 16),
-                        ),
-                      ),
-                      SizedBox(height: 5),
-                      Padding(
-                        padding: const EdgeInsets.all(0.0),
-                        child: Container(
-                          width: 342,
-                          decoration: BoxDecoration(
-                              color: ThemeBc.white,
-                              borderRadius: BorderRadius.circular(
-                                20,
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.black.withOpacity(0.2),
-                                    offset: Offset(2, 2),
-                                    blurRadius: 7,
-                                    spreadRadius: 1.0),
-                              ]),
-                          child: Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: ElevatedButton.icon(
-                                  label: const LocaleText('facebook'),
-                                  icon: const Icon(Icons.facebook_rounded),
-                                  style: ElevatedButton.styleFrom(
-                                    primary: ThemeBc.blue,
-                                    //side: BorderSide(color: Colors.red, width: 5),
-                                    textStyle: const TextStyle(fontSize: 15),
-                                    padding: const EdgeInsets.all(15),
-                                    shape: const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(20))),
-                                    // shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
-                                  ),
-                                  onPressed: () {
-                                    loginWithFacebook();
-                                  },
-                                ),
-                              ),
-                            ],
                           ),
-                        ),
-                      ),
-
-                      SizedBox(height: 5),
-
-                      Padding(
-                        padding: const EdgeInsets.all(0),
-                        child: Container(
-                          width: 342,
-                          decoration: BoxDecoration(
-                              color: ThemeBc.black,
-                              borderRadius: BorderRadius.circular(
-                                20,
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.black.withOpacity(0.2),
-                                    offset: Offset(2, 2),
-                                    blurRadius: 7,
-                                    spreadRadius: 1.0),
-                              ]),
-                          child: Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: ElevatedButton.icon(
-                                  label: const LocaleText('เปลี่ยนภาษา'),
-                                  icon: const Icon(Icons.spellcheck),
-                                  style: ElevatedButton.styleFrom(
-                                    primary: ThemeBc.black,
-                                    //side: BorderSide(color: Colors.red, width: 5),
-                                    textStyle: const TextStyle(fontSize: 15),
-                                    padding: const EdgeInsets.all(15),
-                                    shape: const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(20))),
-                                    // shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+                          SizedBox(height: 5),
+                          Padding(
+                            padding: const EdgeInsets.all(0),
+                            child: Container(
+                              width: 342,
+                              decoration: BoxDecoration(
+                                  color: ThemeBc.black,
+                                  borderRadius: BorderRadius.circular(
+                                    20,
                                   ),
-                                  onPressed: () {
-                                    showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        return AlertDialog(
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  new BorderRadius.circular(
-                                                      30)),
-                                          // shape: CircleBorder(),
-                                          // elevation: 100,
-                                          content: Container(
-                                            height: 180,
-                                            child: Column(
-                                              children: [
-                                                SizedBox(height: 20),
-                                                Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.black.withOpacity(0.2),
+                                        offset: Offset(2, 2),
+                                        blurRadius: 7,
+                                        spreadRadius: 1.0),
+                                  ]),
+                              child: Row(
+                                children: <Widget>[
+                                  Expanded(
+                                    child: ElevatedButton.icon(
+                                      label: const LocaleText('เปลี่ยนภาษา'),
+                                      icon: const Icon(Icons.spellcheck),
+                                      style: ElevatedButton.styleFrom(
+                                        primary: ThemeBc.black,
+                                        //side: BorderSide(color: Colors.red, width: 5),
+                                        textStyle:
+                                            const TextStyle(fontSize: 15),
+                                        padding: const EdgeInsets.all(15),
+                                        shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(20))),
+                                        // shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+                                      ),
+                                      onPressed: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (context) {
+                                            return AlertDialog(
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      new BorderRadius.circular(
+                                                          30)),
+                                              // shape: CircleBorder(),
+                                              // elevation: 100,
+                                              content: Container(
+                                                height: 180,
+                                                child: Column(
                                                   children: [
-                                                    InkWell(
-                                                      onTap: () {
-                                                        LocaleNotifier.of(
-                                                                context)!
-                                                            .change('th');
-                                                        Navigator
-                                                            .pushNamedAndRemoveUntil(
-                                                                context,
-                                                                '/login_page',
-                                                                (route) =>
-                                                                    false);
-                                                      },
-                                                      child: Container(
-                                                        height: 40,
-                                                        width: 250,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                                color: ThemeBc
-                                                                    .white,
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                  20,
+                                                    SizedBox(height: 20),
+                                                    Column(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        InkWell(
+                                                          onTap: () {
+                                                            LocaleNotifier.of(
+                                                                    context)!
+                                                                .change('th');
+                                                            Navigator
+                                                                .pushNamedAndRemoveUntil(
+                                                                    context,
+                                                                    '/login_page',
+                                                                    (route) =>
+                                                                        false);
+                                                          },
+                                                          child: Container(
+                                                            height: 40,
+                                                            width: 250,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                                    color: ThemeBc
+                                                                        .white,
+                                                                    borderRadius:
+                                                                        BorderRadius
+                                                                            .circular(
+                                                                      20,
+                                                                    ),
+                                                                    boxShadow: [
+                                                                  BoxShadow(
+                                                                      color: Colors
+                                                                          .black
+                                                                          .withOpacity(
+                                                                              0.5),
+                                                                      offset:
+                                                                          Offset(2,
+                                                                              2),
+                                                                      blurRadius:
+                                                                          7,
+                                                                      spreadRadius:
+                                                                          1.0),
+                                                                ]),
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child: Center(
+                                                                child: Text(
+                                                                  'ภาษาไทย',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        20.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    // backgroundColor: Colors.black45,
+                                                                    color: ThemeBc
+                                                                        .black,
+                                                                  ),
                                                                 ),
-                                                                boxShadow: [
-                                                              BoxShadow(
-                                                                  color: Colors
-                                                                      .black
-                                                                      .withOpacity(
-                                                                          0.5),
-                                                                  offset:
-                                                                      Offset(
-                                                                          2, 2),
-                                                                  blurRadius: 7,
-                                                                  spreadRadius:
-                                                                      1.0),
-                                                            ]),
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(8.0),
-                                                          child: Center(
-                                                            child: Text(
-                                                              'ภาษาไทย',
-                                                              style: TextStyle(
-                                                                fontSize: 20.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                // backgroundColor: Colors.black45,
-                                                                color: ThemeBc
-                                                                    .black,
                                                               ),
                                                             ),
                                                           ),
                                                         ),
-                                                      ),
-                                                    ),
-                                                    SizedBox(height: 10),
-                                                    InkWell(
-                                                      onTap: () {
-                                                        LocaleNotifier.of(
-                                                                context)!
-                                                            .change('en');
-                                                        Navigator
-                                                            .pushNamedAndRemoveUntil(
-                                                                context,
-                                                                '/login_page',
-                                                                (route) =>
-                                                                    false);
-                                                      },
-                                                      child: Container(
-                                                        height: 40,
-                                                        width: 250,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                                color: ThemeBc
-                                                                    .white,
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                  20,
+                                                        SizedBox(height: 10),
+                                                        InkWell(
+                                                          onTap: () {
+                                                            LocaleNotifier.of(
+                                                                    context)!
+                                                                .change('en');
+                                                            Navigator
+                                                                .pushNamedAndRemoveUntil(
+                                                                    context,
+                                                                    '/login_page',
+                                                                    (route) =>
+                                                                        false);
+                                                          },
+                                                          child: Container(
+                                                            height: 40,
+                                                            width: 250,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                                    color: ThemeBc
+                                                                        .white,
+                                                                    borderRadius:
+                                                                        BorderRadius
+                                                                            .circular(
+                                                                      20,
+                                                                    ),
+                                                                    boxShadow: [
+                                                                  BoxShadow(
+                                                                      color: Colors
+                                                                          .black
+                                                                          .withOpacity(
+                                                                              0.5),
+                                                                      offset:
+                                                                          Offset(2,
+                                                                              2),
+                                                                      blurRadius:
+                                                                          7,
+                                                                      spreadRadius:
+                                                                          1.0),
+                                                                ]),
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child: Center(
+                                                                child: Text(
+                                                                  'English',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        20.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    // backgroundColor: Colors.black45,
+                                                                    color: ThemeBc
+                                                                        .black,
+                                                                  ),
                                                                 ),
-                                                                boxShadow: [
-                                                              BoxShadow(
-                                                                  color: Colors
-                                                                      .black
-                                                                      .withOpacity(
-                                                                          0.5),
-                                                                  offset:
-                                                                      Offset(
-                                                                          2, 2),
-                                                                  blurRadius: 7,
-                                                                  spreadRadius:
-                                                                      1.0),
-                                                            ]),
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(8.0),
-                                                          child: Center(
-                                                            child: Text(
-                                                              'English',
-                                                              style: TextStyle(
-                                                                fontSize: 20.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                // backgroundColor: Colors.black45,
-                                                                color: ThemeBc
-                                                                    .black,
                                                               ),
                                                             ),
                                                           ),
                                                         ),
-                                                      ),
-                                                    ),
-                                                    SizedBox(height: 10),
-                                                    InkWell(
-                                                      onTap: () {
-                                                        LocaleNotifier.of(
-                                                                context)!
-                                                            .change('zh');
-                                                        Navigator
-                                                            .pushNamedAndRemoveUntil(
-                                                                context,
-                                                                '/login_page',
-                                                                (route) =>
-                                                                    false);
-                                                      },
-                                                      child: Container(
-                                                        height: 40,
-                                                        width: 250,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                                color: ThemeBc
-                                                                    .white,
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                  20,
+                                                        SizedBox(height: 10),
+                                                        InkWell(
+                                                          onTap: () {
+                                                            LocaleNotifier.of(
+                                                                    context)!
+                                                                .change('zh');
+                                                            Navigator
+                                                                .pushNamedAndRemoveUntil(
+                                                                    context,
+                                                                    '/login_page',
+                                                                    (route) =>
+                                                                        false);
+                                                          },
+                                                          child: Container(
+                                                            height: 40,
+                                                            width: 250,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                                    color: ThemeBc
+                                                                        .white,
+                                                                    borderRadius:
+                                                                        BorderRadius
+                                                                            .circular(
+                                                                      20,
+                                                                    ),
+                                                                    boxShadow: [
+                                                                  BoxShadow(
+                                                                      color: Colors
+                                                                          .black
+                                                                          .withOpacity(
+                                                                              0.5),
+                                                                      offset:
+                                                                          Offset(2,
+                                                                              2),
+                                                                      blurRadius:
+                                                                          7,
+                                                                      spreadRadius:
+                                                                          1.0),
+                                                                ]),
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child: Center(
+                                                                child: Text(
+                                                                  '中国',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        20.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    // backgroundColor: Colors.black45,
+                                                                    color: ThemeBc
+                                                                        .black,
+                                                                  ),
                                                                 ),
-                                                                boxShadow: [
-                                                              BoxShadow(
-                                                                  color: Colors
-                                                                      .black
-                                                                      .withOpacity(
-                                                                          0.5),
-                                                                  offset:
-                                                                      Offset(
-                                                                          2, 2),
-                                                                  blurRadius: 7,
-                                                                  spreadRadius:
-                                                                      1.0),
-                                                            ]),
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(8.0),
-                                                          child: Center(
-                                                            child: Text(
-                                                              '中国',
-                                                              style: TextStyle(
-                                                                fontSize: 20.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                // backgroundColor: Colors.black45,
-                                                                color: ThemeBc
-                                                                    .black,
                                                               ),
                                                             ),
                                                           ),
                                                         ),
-                                                      ),
+                                                      ],
                                                     ),
                                                   ],
                                                 ),
-                                              ],
-                                            ),
-                                          ),
+                                              ),
+                                            );
+                                          },
                                         );
                                       },
-                                    );
-                                  },
-                                ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ],
+                            ),
                           ),
-                        ),
+                          SizedBox(height: 100),
+                        ],
                       ),
-
-                      SizedBox(height: 100),
-                    ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
+          ],
         ));
   }
 }

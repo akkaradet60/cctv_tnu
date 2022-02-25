@@ -131,7 +131,7 @@ class _productshop_page extends State<productshop_page> {
                               decoration: BoxDecoration(
                                 color: secondaryTextColor,
                                 borderRadius: BorderRadius.circular(
-                                  20,
+                                  10,
                                 ),
                               ),
                               height: 300,
@@ -166,57 +166,47 @@ class _productshop_page extends State<productshop_page> {
                                           //   child: Center(child: Text(item.toString())),
                                           //   color: Colors.green,
                                           // ),
-                                          NeumorphicButton(
-                                        style: NeumorphicStyle(
-                                          shape: NeumorphicShape.flat,
-                                          // boxShape:
-                                          //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                                          // boxShape: NeumorphicBoxShape.circle(),
-                                          color: Colors.white,
+
+                                          Card(
+                                        margin: EdgeInsets.only(
+                                          top: 10.0,
+                                          bottom: 10.0,
                                         ),
-                                        padding: EdgeInsets.all(0),
-                                        child: Card(
-                                          margin: EdgeInsets.only(
-                                            top: 10.0,
-                                            bottom: 10.0,
-                                          ),
-                                          elevation: 6.0,
-                                          // shadowColor: Colors.redAccent,
-                                          // shape: RoundedRectangleBorder(
-                                          //     // borderRadius: BorderRadius.circular(30.0),
-                                          //     ),
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                                color: secondaryTextColor,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                  10,
-                                                ),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                      color: Colors.black
-                                                          .withOpacity(0.5),
-                                                      offset: Offset(2, 4),
-                                                      blurRadius: 7.0,
-                                                      spreadRadius: 1.0),
-                                                ]),
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(5.0),
-                                              child: ClipRRect(
-                                                borderRadius: BorderRadius.all(
-                                                  Radius.circular(10.0),
-                                                ),
-                                                child: Stack(
-                                                  children: <Widget>[
-                                                    Image.network(
-                                                      productt[
-                                                          'productiPathName'],
-                                                      fit: BoxFit.cover,
-                                                      width: double.infinity,
-                                                    ),
-                                                  ],
-                                                ),
+                                        elevation: 6.0,
+                                        // shadowColor: Colors.redAccent,
+                                        // shape: RoundedRectangleBorder(
+                                        //     // borderRadius: BorderRadius.circular(30.0),
+                                        //     ),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              color: secondaryTextColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                10,
+                                              ),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                    color: Colors.black
+                                                        .withOpacity(0.5),
+                                                    offset: Offset(2, 4),
+                                                    blurRadius: 7.0,
+                                                    spreadRadius: 1.0),
+                                              ]),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(5.0),
+                                            child: ClipRRect(
+                                              borderRadius: BorderRadius.all(
+                                                Radius.circular(10.0),
+                                              ),
+                                              child: Stack(
+                                                children: <Widget>[
+                                                  Image.network(
+                                                    productt[
+                                                        'productiPathName'],
+                                                    fit: BoxFit.cover,
+                                                    width: double.infinity,
+                                                  ),
+                                                ],
                                               ),
                                             ),
                                           ),
@@ -250,7 +240,7 @@ class _productshop_page extends State<productshop_page> {
                                   decoration: BoxDecoration(
                                       color: ThemeBc.background,
                                       borderRadius: BorderRadius.circular(
-                                        20,
+                                        10,
                                       ),
                                       boxShadow: [
                                         BoxShadow(
