@@ -189,7 +189,7 @@ class _settingpolicyState extends State<settingpolicy>
                   decoration: BoxDecoration(
                       color: ThemeBc.white,
                       borderRadius: BorderRadius.circular(
-                        20,
+                        10,
                       ),
                       boxShadow: [
                         BoxShadow(

@@ -29,11 +29,11 @@ class CustomButton extends StatelessWidget {
           decoration: BoxDecoration(
               color: ThemeBc.black,
               borderRadius: BorderRadius.circular(
-                30,
+                20,
               ),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.black.withOpacity(0.5),
+                    color: Colors.black.withOpacity(0.2),
                     offset: Offset(2, 2),
                     blurRadius: 7,
                     spreadRadius: 1.0),
@@ -50,7 +50,7 @@ class CustomButton extends StatelessWidget {
               // shadowColor: Colors.grey[700],
               elevation: 30,
               shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(40))),
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
             ),
           ),
         ),

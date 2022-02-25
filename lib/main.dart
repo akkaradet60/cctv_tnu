@@ -20,6 +20,7 @@ import 'package:cctv_tun/page/login/register_page.dart';
 import 'package:cctv_tun/page/map/map_page.dart';
 import 'package:cctv_tun/page/map/map_prod.dart';
 import 'package:cctv_tun/page/map/maplocation_page.dart';
+import 'package:cctv_tun/page/message/messagem_page%20copy.dart';
 
 import 'package:cctv_tun/page/message/messagem_page.dart';
 import 'package:cctv_tun/page/message/messagemdetail_page.dart';
@@ -140,6 +141,7 @@ class MyApp extends StatelessWidget {
             '/Manual_page': (context) => manual_page(),
             // '/Manual_page1': (context) => manual_page1(),
             '/message_page': (context) => message_page(),
+            '/message_page01': (context) => message_page01(),
             '/award_page': (context) => award_page(),
             '/awarddetail_page': (context) => awarddetail_page(),
             '/trainingcalendar_page': (context) => trainingcalendar_page(),

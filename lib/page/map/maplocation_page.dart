@@ -123,7 +123,7 @@ class _maplocation_page extends State<maplocation_page> {
                                     child: FlutterMap(
                                   options: MapOptions(
                                       center: LatLng(app_lat, app_lng),
-                                      zoom: 16),
+                                      zoom: 13),
                                   layers: [
                                     TileLayerOptions(
                                       urlTemplate:
@@ -140,7 +140,7 @@ class _maplocation_page extends State<maplocation_page> {
                                                   fontSize: 20.0,
                                                   fontWeight: FontWeight.bold,
                                                   // backgroundColor: Colors.black45,
-                                                  color: Colors.black,
+                                                  color: ThemeBc.textblack,
                                                 ),
                                               ),
                                             ],
@@ -177,12 +177,7 @@ class _maplocation_page extends State<maplocation_page> {
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
-                                    offset: Offset(2, 2),
-                                    blurRadius: 7,
-                                    spreadRadius: 1.0),
-                                BoxShadow(
-                                    color: Colors.black.withOpacity(0.5),
+                                    color: Colors.black.withOpacity(0.2),
                                     offset: Offset(2, 4),
                                     blurRadius: 7.0,
                                     spreadRadius: 1.0),
@@ -193,8 +188,12 @@ class _maplocation_page extends State<maplocation_page> {
                               SizedBox(height: 5),
                               Text(
                                 'ชื่อสถานที่ : ${hotlinee['travelName']}',
-                                style: primaryTextStyle.copyWith(
-                                    fontSize: 18, fontWeight: medium),
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.bold,
+                                  // backgroundColor: Colors.black45,
+                                  color: ThemeBc.textblack,
+                                ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(0),
@@ -206,16 +205,24 @@ class _maplocation_page extends State<maplocation_page> {
                                         padding: const EdgeInsets.all(8.0),
                                         child: Text(
                                           '${hotlinee['detail']}',
-                                          style: primaryTextStyle.copyWith(
-                                              fontSize: 18, fontWeight: medium),
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                            fontWeight: FontWeight.bold,
+                                            // backgroundColor: Colors.black45,
+                                            color: ThemeBc.textblack,
+                                          ),
                                         ),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: Text(
                                           '${hotlinee['travelName']} คือ : ${hotlinee['travelDetail']}',
-                                          style: primaryTextStyle.copyWith(
-                                              fontSize: 18, fontWeight: medium),
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                            fontWeight: FontWeight.bold,
+                                            // backgroundColor: Colors.black45,
+                                            color: ThemeBc.textblack,
+                                          ),
                                         ),
                                       ),
                                     ],

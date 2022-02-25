@@ -263,7 +263,7 @@ class _productshome_page extends State<productshome_page> {
                         width: 320,
                         height: 500,
                         child: Center(
-                          child: ListView(
+                          child: Column(
                             children: [
                               InkWell(
                                 onTap: () {
@@ -322,7 +322,7 @@ class _productshome_page extends State<productshome_page> {
                                                 //     blurRadius: 7.0,
                                                 //     spreadRadius: 1.0),
                                               ]),
-                                          child: ListView(
+                                          child: Column(
                                             children: [
                                               Column(
                                                 children: [
@@ -574,7 +574,7 @@ class _productshome_page extends State<productshome_page> {
                         width: 320,
                         height: 500,
                         child: Center(
-                          child: ListView(
+                          child: Column(
                             children: [
                               InkWell(
                                 onTap: () {
@@ -633,7 +633,7 @@ class _productshome_page extends State<productshome_page> {
                                                 //     blurRadius: 7.0,
                                                 //     spreadRadius: 1.0),
                                               ]),
-                                          child: ListView(
+                                          child: Column(
                                             children: [
                                               Column(
                                                 children: [
@@ -886,7 +886,7 @@ class _productshome_page extends State<productshome_page> {
                       return Container(
                         width: 190,
                         child: Center(
-                          child: ListView(
+                          child: Column(
                             children: [
                               InkWell(
                                 onTap: () {
@@ -948,7 +948,7 @@ class _productshome_page extends State<productshome_page> {
                                                 //     blurRadius: 7.0,
                                                 //     spreadRadius: 1.0),
                                               ]),
-                                          child: ListView(
+                                          child: Column(
                                             children: [
                                               Column(
                                                 children: [
@@ -985,109 +985,108 @@ class _productshome_page extends State<productshome_page> {
                                                   ),
                                                   SizedBox(height: 0),
                                                   Container(
-                                                    decoration: BoxDecoration(
-                                                        color: Colors.grey[200],
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(
-                                                          20,
-                                                        ),
-                                                        boxShadow: []),
-                                                    width: 190,
-                                                    // color: Colors.grey[200],
-                                                    height: 80,
-                                                    child: Column(
+                                                    height: 70,
+                                                    child: ListView(
                                                       children: [
                                                         Container(
-                                                          width: 170,
-                                                          height: 30,
-                                                          child: ListView(
-                                                            scrollDirection:
-                                                                Axis.horizontal,
-                                                            children: [
-                                                              Center(
-                                                                child: Padding(
-                                                                  padding:
-                                                                      const EdgeInsets
-                                                                              .all(
-                                                                          8.0),
-                                                                  child: Row(
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .center,
-                                                                    children: [
-                                                                      LocaleText(
-                                                                        'ชื่อสินค้า',
-                                                                        style:
-                                                                            TextStyle(
-                                                                          fontSize:
-                                                                              10.0,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                          // backgroundColor: Colors.black45,
-                                                                          color:
-                                                                              Colors.black,
-                                                                        ),
-                                                                      ),
-                                                                      Text(
-                                                                        ' : ${snapshot.data!['data'][index]['product_name']}',
-                                                                        style:
-                                                                            TextStyle(
-                                                                          fontSize:
-                                                                              10.0,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                          // backgroundColor: Colors.black45,
-                                                                          color:
-                                                                              Colors.black,
-                                                                        ),
-                                                                      ),
-                                                                    ],
+                                                          decoration:
+                                                              BoxDecoration(
+                                                                  color: Colors
+                                                                          .grey[
+                                                                      200],
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                    20,
                                                                   ),
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                          width: 170,
-                                                          height: 30,
+                                                                  boxShadow: []),
+                                                          width: 190,
+                                                          // color: Colors.grey[200],
+                                                          height: 70,
                                                           child: Column(
                                                             children: [
-                                                              Row(
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .center,
-                                                                children: [
-                                                                  LocaleText(
-                                                                    'ราคา',
-                                                                    style:
-                                                                        TextStyle(
-                                                                      fontSize:
-                                                                          10.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      // backgroundColor: Colors.black45,
-                                                                      color: Colors
-                                                                          .black,
+                                                              Container(
+                                                                width: 170,
+                                                                height: 30,
+                                                                child: ListView(
+                                                                  scrollDirection:
+                                                                      Axis.horizontal,
+                                                                  children: [
+                                                                    Center(
+                                                                      child:
+                                                                          Padding(
+                                                                        padding:
+                                                                            const EdgeInsets.all(8.0),
+                                                                        child:
+                                                                            Row(
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.center,
+                                                                          children: [
+                                                                            LocaleText(
+                                                                              'ชื่อสินค้า',
+                                                                              style: TextStyle(
+                                                                                fontSize: 10.0,
+                                                                                fontWeight: FontWeight.bold,
+                                                                                // backgroundColor: Colors.black45,
+                                                                                color: Colors.black,
+                                                                              ),
+                                                                            ),
+                                                                            Text(
+                                                                              ' : ${snapshot.data!['data'][index]['product_name']}',
+                                                                              style: TextStyle(
+                                                                                fontSize: 10.0,
+                                                                                fontWeight: FontWeight.bold,
+                                                                                // backgroundColor: Colors.black45,
+                                                                                color: Colors.black,
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ),
                                                                     ),
-                                                                  ),
-                                                                  Text(
-                                                                    ' : ${snapshot.data!['data'][index]['product_price']}',
-                                                                    style:
-                                                                        TextStyle(
-                                                                      fontSize:
-                                                                          10.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      // backgroundColor: Colors.black45,
-                                                                      color: Colors
-                                                                          .black,
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                              Container(
+                                                                width: 170,
+                                                                height: 30,
+                                                                child: Column(
+                                                                  children: [
+                                                                    Row(
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .center,
+                                                                      children: [
+                                                                        LocaleText(
+                                                                          'ราคา',
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontSize:
+                                                                                10.0,
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
+                                                                            // backgroundColor: Colors.black45,
+                                                                            color:
+                                                                                Colors.black,
+                                                                          ),
+                                                                        ),
+                                                                        Text(
+                                                                          ' : ${snapshot.data!['data'][index]['product_price']}',
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontSize:
+                                                                                10.0,
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
+                                                                            // backgroundColor: Colors.black45,
+                                                                            color:
+                                                                                Colors.black,
+                                                                          ),
+                                                                        ),
+                                                                      ],
                                                                     ),
-                                                                  ),
-                                                                ],
+                                                                  ],
+                                                                ),
                                                               ),
                                                             ],
                                                           ),

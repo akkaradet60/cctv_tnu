@@ -95,71 +95,74 @@ class _travelmap_page extends State<travelmapS_page> {
     //   zoom: 14,
     // );
     return Scaffold(
-      bottomNavigationBar: Container(
-        height: 60,
-        color: ThemeBc.white,
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(8.0),
         child: Container(
-          decoration: BoxDecoration(
-              color: ThemeBc.black,
-              borderRadius: BorderRadius.circular(
-                10,
-              ),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.white.withOpacity(0.5),
-                    offset: Offset(2, 2),
-                    blurRadius: 7,
-                    spreadRadius: 1.0),
-              ]),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              IconButton(
+          height: 60,
+          color: ThemeBc.white,
+          child: Container(
+            decoration: BoxDecoration(
+                color: ThemeBc.black,
+                borderRadius: BorderRadius.circular(
+                  10,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.white.withOpacity(0.5),
+                      offset: Offset(2, 2),
+                      blurRadius: 7,
+                      spreadRadius: 1.0),
+                ]),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                    icon: Icon(
+                      Icons.festival,
+                      size: 30,
+                      color: ThemeBc.white,
+                    ),
+                    tooltip: 'Show Snackbar',
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/travelhome_page');
+                    }),
+                IconButton(
                   icon: Icon(
-                    Icons.festival,
+                    Icons.room,
                     size: 30,
                     color: ThemeBc.white,
                   ),
                   tooltip: 'Show Snackbar',
                   onPressed: () {
-                    Navigator.pushNamed(context, '/travelhome_page');
-                  }),
-              IconButton(
-                icon: Icon(
-                  Icons.room,
-                  size: 30,
-                  color: ThemeBc.white,
+                    Navigator.pushNamed(context, '/travelmapS_page');
+                  },
                 ),
-                tooltip: 'Show Snackbar',
-                onPressed: () {
-                  Navigator.pushNamed(context, '/travelmapS_page');
-                },
-              ),
-              IconButton(
-                icon: Icon(
-                  Icons.kitesurfing,
-                  size: 30,
-                  color: ThemeBc.white,
+                IconButton(
+                  icon: Icon(
+                    Icons.kitesurfing,
+                    size: 30,
+                    color: ThemeBc.white,
+                  ),
+                  tooltip: 'Show Snackbar',
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('กำลังพัฒนา')));
+                  },
                 ),
-                tooltip: 'Show Snackbar',
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('กำลังพัฒนา')));
-                },
-              ),
-              IconButton(
-                icon: Icon(
-                  Icons.landscape,
-                  size: 30,
-                  color: ThemeBc.white,
+                IconButton(
+                  icon: Icon(
+                    Icons.landscape,
+                    size: 30,
+                    color: ThemeBc.white,
+                  ),
+                  tooltip: 'Show Snackbar',
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('กำลังพัฒนา')));
+                  },
                 ),
-                tooltip: 'Show Snackbar',
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('กำลังพัฒนา')));
-                },
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

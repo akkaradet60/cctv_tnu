@@ -406,7 +406,7 @@ class _LoginPageState extends State<login_page> {
                                         boxShadow: [
                                           BoxShadow(
                                               color:
-                                                  Colors.black.withOpacity(0.5),
+                                                  Colors.black.withOpacity(0.2),
                                               offset: Offset(2, 2),
                                               blurRadius: 7,
                                               spreadRadius: 1.0),
@@ -446,7 +446,7 @@ class _LoginPageState extends State<login_page> {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(height: 5),
+                                  SizedBox(height: 10),
                                   Container(
                                     decoration: BoxDecoration(
                                         color: secondaryTextColor,
@@ -456,7 +456,7 @@ class _LoginPageState extends State<login_page> {
                                         boxShadow: [
                                           BoxShadow(
                                               color:
-                                                  Colors.black.withOpacity(0.5),
+                                                  Colors.black.withOpacity(0.2),
                                               offset: Offset(2, 2),
                                               blurRadius: 7,
                                               spreadRadius: 1.0),
@@ -630,11 +630,11 @@ class _LoginPageState extends State<login_page> {
                           decoration: BoxDecoration(
                               color: ThemeBc.white,
                               borderRadius: BorderRadius.circular(
-                                30,
+                                20,
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                    color: Colors.black.withOpacity(0.5),
+                                    color: Colors.black.withOpacity(0.2),
                                     offset: Offset(2, 2),
                                     blurRadius: 7,
                                     spreadRadius: 1.0),
@@ -652,7 +652,7 @@ class _LoginPageState extends State<login_page> {
                                     padding: const EdgeInsets.all(15),
                                     shape: const RoundedRectangleBorder(
                                         borderRadius: BorderRadius.all(
-                                            Radius.circular(40))),
+                                            Radius.circular(20))),
                                     // shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                                   ),
                                   onPressed: () {
@@ -674,11 +674,11 @@ class _LoginPageState extends State<login_page> {
                           decoration: BoxDecoration(
                               color: ThemeBc.black,
                               borderRadius: BorderRadius.circular(
-                                30,
+                                20,
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                    color: Colors.black.withOpacity(0.5),
+                                    color: Colors.black.withOpacity(0.2),
                                     offset: Offset(2, 2),
                                     blurRadius: 7,
                                     spreadRadius: 1.0),
@@ -696,7 +696,7 @@ class _LoginPageState extends State<login_page> {
                                     padding: const EdgeInsets.all(15),
                                     shape: const RoundedRectangleBorder(
                                         borderRadius: BorderRadius.all(
-                                            Radius.circular(40))),
+                                            Radius.circular(20))),
                                     // shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                                   ),
                                   onPressed: () {

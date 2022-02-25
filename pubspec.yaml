@@ -64,7 +64,7 @@ dependencies:
   flutter_redux: ^0.8.2
 
   # geocoder: ^0.2.1
-  geocoding: ^2.0.2
+  
   
 dev_dependencies:
   flutter_test:

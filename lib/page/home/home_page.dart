@@ -119,10 +119,6 @@ class _home_pageState extends State<home_page> {
     ' 2 ',
     ' 3 ',
     ' 4 ',
-    ' 5',
-    '6',
-    '7',
-    '8',
   ];
 
   @override

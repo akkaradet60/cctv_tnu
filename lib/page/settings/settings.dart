@@ -35,7 +35,7 @@ class settings extends StatelessWidget {
               ),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.black.withOpacity(0.5),
+                    color: Colors.black.withOpacity(0.2),
                     offset: const Offset(2, 4),
                     blurRadius: 7.0,
                     spreadRadius: 1.0),
@@ -96,11 +96,11 @@ class settings extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                           primary: ThemeBc.background,
                           onPrimary: Colors.white,
-                          shadowColor: Colors.grey[700],
+                          shadowColor: Colors.grey.withOpacity(0.2),
                           elevation: 30,
                           shape: const RoundedRectangleBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(40))),
+                                  BorderRadius.all(Radius.circular(20))),
                         ),
                       ),
                     ),
@@ -119,11 +119,11 @@ class settings extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                           primary: ThemeBc.background,
                           onPrimary: Colors.white,
-                          shadowColor: Colors.grey[700],
+                          shadowColor: Colors.grey.withOpacity(0.2),
                           elevation: 30,
                           shape: const RoundedRectangleBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(40))),
+                                  BorderRadius.all(Radius.circular(20))),
                         ),
                       ),
                     ),
@@ -165,12 +165,7 @@ class settings extends StatelessWidget {
               ),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    offset: const Offset(2, 2),
-                    blurRadius: 7,
-                    spreadRadius: 1.0),
-                BoxShadow(
-                    color: Colors.black.withOpacity(0.5),
+                    color: Colors.black.withOpacity(0.2),
                     offset: const Offset(2, 4),
                     blurRadius: 7.0,
                     spreadRadius: 1.0),
@@ -266,12 +261,7 @@ class settings extends StatelessWidget {
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                      color: Colors.black.withOpacity(0.5),
-                                      offset: Offset(2, 2),
-                                      blurRadius: 7,
-                                      spreadRadius: 1.0),
-                                  BoxShadow(
-                                      color: Colors.black.withOpacity(0.5),
+                                      color: Colors.black.withOpacity(0.2),
                                       offset: Offset(2, 4),
                                       blurRadius: 7.0,
                                       spreadRadius: 1.0),
@@ -302,13 +292,7 @@ class settings extends StatelessWidget {
                                             boxShadow: [
                                               BoxShadow(
                                                   color: Colors.black
-                                                      .withOpacity(0.5),
-                                                  offset: Offset(2, 2),
-                                                  blurRadius: 7,
-                                                  spreadRadius: 1.0),
-                                              BoxShadow(
-                                                  color: Colors.black
-                                                      .withOpacity(0.5),
+                                                      .withOpacity(0.2),
                                                   offset: Offset(2, 4),
                                                   blurRadius: 7.0,
                                                   spreadRadius: 1.0),
@@ -350,13 +334,7 @@ class settings extends StatelessWidget {
                                             boxShadow: [
                                               BoxShadow(
                                                   color: Colors.black
-                                                      .withOpacity(0.5),
-                                                  offset: Offset(2, 2),
-                                                  blurRadius: 7,
-                                                  spreadRadius: 1.0),
-                                              BoxShadow(
-                                                  color: Colors.black
-                                                      .withOpacity(0.5),
+                                                      .withOpacity(0.2),
                                                   offset: Offset(2, 4),
                                                   blurRadius: 7.0,
                                                   spreadRadius: 1.0),
@@ -398,13 +376,7 @@ class settings extends StatelessWidget {
                                             boxShadow: [
                                               BoxShadow(
                                                   color: Colors.black
-                                                      .withOpacity(0.5),
-                                                  offset: Offset(2, 2),
-                                                  blurRadius: 7,
-                                                  spreadRadius: 1.0),
-                                              BoxShadow(
-                                                  color: Colors.black
-                                                      .withOpacity(0.5),
+                                                      .withOpacity(0.2),
                                                   offset: Offset(2, 4),
                                                   blurRadius: 7.0,
                                                   spreadRadius: 1.0),
@@ -442,10 +414,10 @@ class settings extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     primary: ThemeBc.background,
                     onPrimary: Colors.white,
-                    shadowColor: Colors.grey[700],
+                    shadowColor: Colors.grey.withOpacity(0.2),
                     elevation: 30,
                     shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(40))),
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
                   ),
                 ),
               ),
@@ -464,11 +436,11 @@ class settings extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     primary: ThemeBc.background,
                     onPrimary: Colors.white,
-                    shadowColor: Colors.grey[700],
+                    shadowColor: Colors.grey.withOpacity(0.2),
                     elevation: 30,
                     shape: const RoundedRectangleBorder(
                         borderRadius:
-                            const BorderRadius.all(const Radius.circular(40))),
+                            const BorderRadius.all(const Radius.circular(20))),
                   ),
                 ),
               ),

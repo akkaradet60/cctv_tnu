@@ -147,7 +147,7 @@ class _travelmap_page extends State<travelmap_page> {
                           Flexible(
                               child: FlutterMap(
                             options: MapOptions(
-                                center: LatLng(app_lat, app_lng), zoom: 16),
+                                center: LatLng(app_lat, app_lng), zoom: 13),
                             layers: [
                               TileLayerOptions(
                                 urlTemplate:

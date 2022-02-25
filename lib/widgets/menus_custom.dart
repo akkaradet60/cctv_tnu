@@ -54,13 +54,27 @@ class MenusCustom extends StatelessWidget {
               ),
             ),
             SizedBox(height: 12),
-            LocaleText(
-              titleMenus,
-              style: TextStyle(
-                fontSize: 13.0,
-                fontWeight: FontWeight.bold,
-                // backgroundColor: Colors.black45,
-                color: ThemeBc.textblack,
+            Container(
+              width: 90,
+              height: 20,
+              child: ListView(
+                children: [
+                  Column(
+                    // shrinkWrap: true,
+                    // scrollDirection: Axis.horizontal,
+                    children: [
+                      LocaleText(
+                        titleMenus,
+                        style: TextStyle(
+                          fontSize: 13.0,
+                          fontWeight: FontWeight.bold,
+                          // backgroundColor: Colors.black45,
+                          color: ThemeBc.textblack,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
             Text(titleMenus1),
