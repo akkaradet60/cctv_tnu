@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:form_field_validator/form_field_validator.dart';
+
+import '../page/global/style/global.dart';
 
 class FormBuilderFieldText extends StatelessWidget {
   final String name;
@@ -20,35 +23,39 @@ class FormBuilderFieldText extends StatelessWidget {
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(
-            20,
+            10,
           ),
           boxShadow: [
             BoxShadow(
-                color: Colors.black.withOpacity(0.2),
+                color: Colors.black.withOpacity(0.1),
                 offset: Offset(2, 4),
                 blurRadius: 7.0,
                 spreadRadius: 1.0),
           ]),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          child: FormBuilderTextField(
-            initialValue: initialValue,
-            name: name,
-            maxLines: 1,
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(
-                  20.0,
+        padding: const EdgeInsets.all(0),
+        child: Column(
+          children: [
+            Container(
+              child: FormBuilderTextField(
+                name: name,
+                initialValue: initialValue,
+                maxLines: 1,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  helperText: labelText,
+                  suffixIcon: Icon(icon),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: ThemeBc.black),
+                  ),
+                  // labelText: 'Email',
+                  hintText: labelText,
+                  filled: true,
+                  fillColor: Colors.white,
                 ),
               ),
-              suffixIcon: Icon(icon),
-              labelText: labelText,
-              fillColor: Colors.white,
-              filled: true,
             ),
-          ),
+          ],
         ),
       ),
     );

@@ -98,118 +98,77 @@ class _map_prod extends State<map_page> {
           future: _getLocation(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return SingleChildScrollView(
-                child: Container(
-                  height: 600,
-                  child: ListView(
-                    children: [
-                      Container(
-                        color: ThemeBc.white,
-                        child: Padding(
-                          padding: const EdgeInsets.all(5),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: secondaryTextColor,
-                                borderRadius: BorderRadius.circular(
-                                  10,
+              return Container(
+                height: 1000,
+                child: Flexible(
+                    child: FlutterMap(
+                  options:
+                      MapOptions(center: LatLng(app_lat, app_lng), zoom: 13),
+                  layers: [
+                    TileLayerOptions(
+                      urlTemplate:
+                          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                      subdomains: ['a', 'b', 'c'],
+                      attributionBuilder: (_) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: secondaryTextColor,
+                                  borderRadius: BorderRadius.circular(
+                                    20,
+                                  ),
                                 ),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.black.withOpacity(0.5),
-                                      offset: Offset(2, 4),
-                                      blurRadius: 7.0,
-                                      spreadRadius: 1.0),
-                                ]),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                height: 550,
-                                child: Column(
-                                  children: [
-                                    Flexible(
-                                        child: FlutterMap(
-                                      options: MapOptions(
-                                          center: LatLng(app_lat, app_lng),
-                                          zoom: 13),
-                                      layers: [
-                                        TileLayerOptions(
-                                          urlTemplate:
-                                              "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                                          subdomains: ['a', 'b', 'c'],
-                                          attributionBuilder: (_) {
-                                            return Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Row(
-                                                children: [
-                                                  Container(
-                                                    decoration: BoxDecoration(
-                                                      color: secondaryTextColor,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                        20,
-                                                      ),
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              3.0),
-                                                      child: Text(
-                                                        "เทศบาลมหาสารคาม",
-                                                        style: TextStyle(
-                                                          fontSize: 20.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          // backgroundColor: Colors.black45,
-                                                          color: Colors.black,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            );
-                                          },
-                                        ),
-                                        MarkerLayerOptions(markers: [
-                                          Marker(
-                                            point: LatLng(app_lat, app_lng),
-                                            builder: (ctx) => IconButton(
-                                              icon: Icon(Icons.where_to_vote),
-                                              tooltip: 'Show Snackbar',
-                                              onPressed: () {
-                                                showDialog(
-                                                  context: context,
-                                                  builder: (context) {
-                                                    return AlertDialog(
-                                                      content: Text(
-                                                          'ตำแหน่งศูนย์ : ${hotlinee['hotlineName']}'),
-                                                    );
-                                                  },
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                          Marker(
-                                            point: LatLng(userLocation.latitude,
-                                                userLocation.longitude),
-                                            builder: (ctx) => const Icon(
-                                                Icons.my_location_outlined),
-                                          )
-                                        ]),
-                                      ],
-                                    ))
-                                  ],
+                                child: Padding(
+                                  padding: const EdgeInsets.all(3.0),
+                                  child: Text(
+                                    "เทศบาลมหาสารคาม",
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.bold,
+                                      // backgroundColor: Colors.black45,
+                                      color: Colors.black,
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
+                            ],
                           ),
+                        );
+                      },
+                    ),
+                    MarkerLayerOptions(markers: [
+                      Marker(
+                        point: LatLng(app_lat, app_lng),
+                        builder: (ctx) => IconButton(
+                          icon: Icon(Icons.where_to_vote),
+                          tooltip: 'Show Snackbar',
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  content: Text(
+                                      'ตำแหน่งศูนย์ : ${hotlinee['hotlineName']}'),
+                                );
+                              },
+                            );
+                          },
                         ),
                       ),
-                    ],
-                  ),
-                ),
+                      Marker(
+                        point: LatLng(
+                            userLocation.latitude, userLocation.longitude),
+                        builder: (ctx) =>
+                            const Icon(Icons.my_location_outlined),
+                      )
+                    ]),
+                  ],
+                )),
               );
+
               // Text('${userLocation.latitude} ${userLocation.longitude}');
             } else {
               return Center(

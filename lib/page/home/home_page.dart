@@ -305,76 +305,55 @@ class _home_pageState extends State<home_page> {
                       // shape: RoundedRectangleBorder(
                       //     // borderRadius: BorderRadius.circular(30.0),
                       //     ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: ThemeBc.black,
-                            borderRadius: BorderRadius.circular(
-                              8,
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  offset: Offset(2, 2),
-                                  blurRadius: 7,
-                                  spreadRadius: 1.0),
-                              BoxShadow(
-                                  color: Colors.black.withOpacity(0.5),
-                                  offset: Offset(2, 4),
-                                  blurRadius: 7.0,
-                                  spreadRadius: 1.0),
-                            ]),
-                        child: Card(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8.0),
-                            ),
-                            child: ListView(
-                              children: [
-                                Stack(
-                                  children: <Widget>[
-                                    Image.network(
-                                      snapshot.data!['data'][item]
-                                                      ['blog_images'][0]
-                                                  ['blogi_path_name'] !=
-                                              null
-                                          ? Global.domainImage +
-                                              snapshot.data!['data'][item]
-                                                      ['blog_images'][0]
-                                                  ['blogi_path_name']
-                                          : 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
-                                      fit: BoxFit.cover,
-                                      width: double.infinity,
-                                    ),
-                                    Column(
-                                      children: [
-                                        SizedBox(height: 160),
-                                        Container(
-                                          color: ThemeBc.black,
-                                          height: 40,
-                                          child: ListView(
-                                            scrollDirection: Axis.horizontal,
-                                            children: [
-                                              SizedBox(width: 10),
-                                              Text(
-                                                // '${titles[_currentIndex]}',
-                                                '${snapshot.data!['data'][item]['blog_name']}',
-                                                style: TextStyle(
-                                                  fontSize: 24.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  // backgroundColor: Colors.black45,
-                                                  color: ThemeBc.white,
-                                                ),
-                                              ),
-                                            ],
+
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10.0),
+                        ),
+                        child: ListView(
+                          children: [
+                            Stack(
+                              children: <Widget>[
+                                Image.network(
+                                  snapshot.data!['data'][item]['blog_images'][0]
+                                              ['blogi_path_name'] !=
+                                          null
+                                      ? Global.domainImage +
+                                          snapshot.data!['data'][item]
+                                                  ['blog_images'][0]
+                                              ['blogi_path_name']
+                                      : 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
+                                  fit: BoxFit.cover,
+                                  width: double.infinity,
+                                ),
+                                Column(
+                                  children: [
+                                    SizedBox(height: 160),
+                                    Container(
+                                      color: ThemeBc.black,
+                                      height: 40,
+                                      child: ListView(
+                                        scrollDirection: Axis.horizontal,
+                                        children: [
+                                          SizedBox(width: 10),
+                                          Text(
+                                            // '${titles[_currentIndex]}',
+                                            '${snapshot.data!['data'][item]['blog_name']}',
+                                            style: TextStyle(
+                                              fontSize: 24.0,
+                                              fontWeight: FontWeight.bold,
+                                              // backgroundColor: Colors.black45,
+                                              color: ThemeBc.white,
+                                            ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),
                               ],
                             ),
-                          ),
+                          ],
                         ),
                       ),
                     ),

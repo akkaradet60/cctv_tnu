@@ -349,30 +349,33 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                             decoration: BoxDecoration(
                                 color: secondaryTextColor,
                                 borderRadius: BorderRadius.circular(
-                                  20,
+                                  10,
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                      color: Colors.black.withOpacity(0.2),
+                                      color: Colors.black.withOpacity(0.1),
                                       offset: Offset(2, 4),
                                       blurRadius: 7.0,
                                       spreadRadius: 1.0),
                                 ]),
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(0),
                               child: Container(
                                 child: FormBuilderDropdown(
                                   name: 'em_type',
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        20.0,
-                                      ),
+                                  decoration: const InputDecoration(
+                                    helperText: 'เลือกประเภทการแจ้งเหตุ',
+                                    suffixIcon: Icon(
+                                      Icons.list,
                                     ),
-                                    suffixIcon: Icon(Icons.email),
-                                    labelText: 'เลือกประเภทการแจ้งเหตุ',
-                                    fillColor: Colors.white,
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: ThemeBc.black),
+                                    ),
+                                    // labelText: 'Email',
+
                                     filled: true,
+                                    fillColor: ThemeBc.white,
                                   ),
                                   allowClear: true,
                                   hint: Text('เลือกประเภทการแจ้งเหตุ'),
@@ -412,11 +415,11 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                             decoration: BoxDecoration(
                                 color: secondaryTextColor,
                                 borderRadius: BorderRadius.circular(
-                                  20,
+                                  10,
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                      color: Colors.black.withOpacity(0.2),
+                                      color: Colors.black.withOpacity(0.1),
                                       offset: Offset(2, 2),
                                       blurRadius: 7,
                                       spreadRadius: 1.0),
@@ -432,7 +435,7 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                                   suffixIconColor: ThemeBc.black,
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(
-                                      20.0,
+                                      10.0,
                                     ),
                                   ),
                                   labelText: 'ภาพ',
@@ -476,7 +479,7 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                                   latt = '${userLocation.latitude}';
                                   lon = '${userLocation.longitude}';
                                   return Container(
-                                    height: 630,
+                                    height: 600,
                                     child: Column(
                                       children: [
                                         Container(
@@ -485,12 +488,12 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                                                 color: secondaryTextColor,
                                                 borderRadius:
                                                     BorderRadius.circular(
-                                                  20,
+                                                  10,
                                                 ),
                                                 boxShadow: [
                                                   BoxShadow(
                                                       color: Colors.black
-                                                          .withOpacity(0.2),
+                                                          .withOpacity(0.1),
                                                       offset: Offset(2, 4),
                                                       blurRadius: 7.0,
                                                       spreadRadius: 1.0),
@@ -499,7 +502,7 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                                               padding:
                                                   const EdgeInsets.all(8.0),
                                               child: Container(
-                                                height: 600,
+                                                height: 400,
                                                 child: Column(
                                                   children: [
                                                     Flexible(
@@ -536,40 +539,7 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                                                                 mainAxisAlignment:
                                                                     MainAxisAlignment
                                                                         .end,
-                                                                children: [
-                                                                  Container(
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: ThemeBc
-                                                                          .black,
-                                                                      borderRadius:
-                                                                          BorderRadius
-                                                                              .circular(
-                                                                        20,
-                                                                      ),
-                                                                    ),
-                                                                    child:
-                                                                        Padding(
-                                                                      padding:
-                                                                          const EdgeInsets.all(
-                                                                              8.0),
-                                                                      child:
-                                                                          Text(
-                                                                        "เทศบาลมหาสารคาม",
-                                                                        style:
-                                                                            TextStyle(
-                                                                          fontSize:
-                                                                              20.0,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                          // backgroundColor: Colors.black45,
-                                                                          color:
-                                                                              ThemeBc.white,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
+                                                                children: [],
                                                               ),
                                                             );
                                                           },
@@ -642,99 +612,123 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                                                             ]),
                                                       ],
                                                     )),
-                                                    Container(
-                                                      height: 220,
-                                                      child: FutureBuilder<
-                                                          Map<String, dynamic>>(
-                                                        future: mapdata(),
-                                                        builder: (context,
-                                                            snapshot) {
-                                                          // _road =
-                                                          //     profile['road'];
-                                                          if (snapshot
-                                                              .hasData) {
-                                                            _country =
-                                                                snapshot.data![
-                                                                    'country'];
-                                                            _district = snapshot
-                                                                        .data![
-                                                                    'district'] ??
-                                                                '';
-                                                            _elevation = snapshot
-                                                                        .data![
-                                                                    'elevation'] ??
-                                                                '';
-                                                            _subdistrict = snapshot
-                                                                        .data![
-                                                                    'subdistrict'] ??
-                                                                '';
-
-                                                            _geocode = snapshot
-                                                                        .data![
-                                                                    'geocode'] ??
-                                                                '';
-                                                            _postcode = snapshot
-                                                                        .data![
-                                                                    'postcode'] ??
-                                                                '';
-                                                            _province = snapshot
-                                                                        .data![
-                                                                    'province'] ??
-                                                                '';
-                                                            _road = snapshot
-                                                                        .data![
-                                                                    'road'] ??
-                                                                '';
-                                                            return Column(
-                                                              children: [
-                                                                SizedBox(
-                                                                    height: 10),
-                                                                Container(
-                                                                    width: 400,
-                                                                    height: 200,
-                                                                    child:
-                                                                        Column(
-                                                                      crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .start,
-                                                                      children: [
-                                                                        Padding(
-                                                                          padding:
-                                                                              const EdgeInsets.all(8.0),
-                                                                          child:
-                                                                              Text(
-                                                                            'ตำแหน่งของคุณตอนนี้ \n${snapshot.data!['country'] ?? '-'} ${snapshot.data!['province'] ?? '-'} ${snapshot.data!['district'] ?? '-'} ${snapshot.data!['subdistrict'] ?? ''} ${snapshot.data!['postcode'] ?? ''} ${snapshot.data!['elevation'] ?? ''} ${snapshot.data!['road'] ?? ''}',
-                                                                            style:
-                                                                                TextStyle(
-                                                                              fontSize: 15.0,
-                                                                              fontWeight: FontWeight.bold,
-                                                                              // backgroundColor: Colors.black45,
-                                                                              color: ThemeBc.black,
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    )),
-                                                              ],
-                                                            );
-                                                            // Text('${snapshot.data!['country']}');
-                                                          } else if (snapshot
-                                                              .hasError) {
-                                                            return Center(
-                                                                child: Text(
-                                                                    'เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
-                                                          }
-
-                                                          return Center(
-                                                              child:
-                                                                  CircularProgressIndicator());
-                                                        },
-                                                      ),
-                                                    ),
                                                   ],
                                                 ),
                                               ),
                                             ),
+                                          ),
+                                        ),
+                                        SizedBox(height: 20),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                              color: secondaryTextColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                10,
+                                              ),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                    color: Colors.black
+                                                        .withOpacity(0.1),
+                                                    offset: Offset(2, 4),
+                                                    blurRadius: 7.0,
+                                                    spreadRadius: 1.0),
+                                              ]),
+                                          height: 150,
+                                          child: FutureBuilder<
+                                              Map<String, dynamic>>(
+                                            future: mapdata(),
+                                            builder: (context, snapshot) {
+                                              // _road =
+                                              //     profile['road'];
+                                              if (snapshot.hasData) {
+                                                _country =
+                                                    snapshot.data!['country'];
+                                                _district = snapshot
+                                                        .data!['district'] ??
+                                                    '';
+                                                _elevation = snapshot
+                                                        .data!['elevation'] ??
+                                                    '';
+                                                _subdistrict = snapshot
+                                                        .data!['subdistrict'] ??
+                                                    '';
+
+                                                _geocode =
+                                                    snapshot.data!['geocode'] ??
+                                                        '';
+                                                _postcode = snapshot
+                                                        .data!['postcode'] ??
+                                                    '';
+                                                _province = snapshot
+                                                        .data!['province'] ??
+                                                    '';
+                                                _road =
+                                                    snapshot.data!['road'] ??
+                                                        '';
+                                                return Column(
+                                                  children: [
+                                                    Container(
+                                                        width: 400,
+                                                        height: 100,
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child: Column(
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Text(
+                                                                    'ตำแหน่งของคุณตอนนี้ ',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      fontSize:
+                                                                          15.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      // backgroundColor: Colors.black45,
+                                                                      color: ThemeBc
+                                                                          .black,
+                                                                    ),
+                                                                  ),
+                                                                  Text(
+                                                                    '${snapshot.data!['country'] ?? ''} ${snapshot.data!['province'] ?? ''} ${snapshot.data!['district'] ?? ''} ${snapshot.data!['subdistrict'] ?? ''} ',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      fontSize:
+                                                                          15.0,
+
+                                                                      // backgroundColor: Colors.black45,
+                                                                      color: ThemeBc
+                                                                          .black,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        )),
+                                                  ],
+                                                );
+                                                // Text('${snapshot.data!['country']}');
+                                              } else if (snapshot.hasError) {
+                                                return Center(
+                                                    child: Text(
+                                                        'เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
+                                              }
+
+                                              return Center(
+                                                  child:
+                                                      CircularProgressIndicator());
+                                            },
                                           ),
                                         ),
                                       ],

@@ -160,7 +160,7 @@ class _settingprofile extends State<settingprofile>
                                                 boxShadow: [
                                                   BoxShadow(
                                                       color: Colors.black
-                                                          .withOpacity(0.5),
+                                                          .withOpacity(0.2),
                                                       offset: Offset(2, 2),
                                                       blurRadius: 7,
                                                       spreadRadius: 1.0),
@@ -186,7 +186,7 @@ class _settingprofile extends State<settingprofile>
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                          color: Colors.black.withOpacity(0.5),
+                                          color: Colors.black.withOpacity(0.2),
                                           offset: Offset(2, 2),
                                           blurRadius: 7,
                                           spreadRadius: 1.0),
@@ -239,7 +239,7 @@ class _settingprofile extends State<settingprofile>
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                          color: ThemeBc.black,
+                                          color: Colors.black.withOpacity(0.2),
                                           offset: Offset(2, 2),
                                           blurRadius: 7,
                                           spreadRadius: 1.0),
@@ -298,7 +298,7 @@ class _settingprofile extends State<settingprofile>
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                          color: ThemeBc.black,
+                                          color: Colors.black.withOpacity(0.2),
                                           offset: Offset(2, 2),
                                           blurRadius: 7,
                                           spreadRadius: 1.0),
@@ -353,7 +353,7 @@ class _settingprofile extends State<settingprofile>
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                          color: ThemeBc.black,
+                                          color: Colors.black.withOpacity(0.2),
                                           offset: Offset(2, 2),
                                           blurRadius: 7,
                                           spreadRadius: 1.0),
@@ -412,7 +412,7 @@ class _settingprofile extends State<settingprofile>
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                          color: ThemeBc.black,
+                                          color: Colors.black.withOpacity(0.2),
                                           offset: Offset(2, 2),
                                           blurRadius: 7,
                                           spreadRadius: 1.0),
@@ -513,8 +513,21 @@ class _settingprofile extends State<settingprofile>
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.black,
-        title: Text('แก้ไขข้อมูลส่วนตัว'),
-        actions: <Widget>[],
+        title: Column(
+          children: [
+            Text('แก้ไขข้อมูลส่วนตัว'),
+          ],
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: Image.asset('assets/logo.png', scale: 15),
+            tooltip: 'Show Snackbar',
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+            },
+          ),
+        ],
       ),
       body: Container(
         child: SafeArea(

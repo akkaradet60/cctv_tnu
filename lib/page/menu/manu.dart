@@ -74,20 +74,19 @@ class _menu_pangState extends State<menu_pang> {
     var isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
     return Container(
       decoration: BoxDecoration(
-          color: ThemeBc.black,
+          // color: ThemeBc.black,
           borderRadius: BorderRadius.circular(
-            10,
+            0,
           ),
           boxShadow: [
             BoxShadow(
-                color: Colors.black.withOpacity(0.5),
+                color: Colors.black.withOpacity(0.1),
                 offset: Offset(2, 2),
                 blurRadius: 7,
                 spreadRadius: 1.0),
           ]),
-      height: 500,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(0),
         child: Drawer(
           backgroundColor: Colors.white,
           child: Container(

@@ -18,11 +18,11 @@ class W_C_Detali extends StatelessWidget {
       decoration: BoxDecoration(
           color: secondaryTextColor,
           borderRadius: BorderRadius.circular(
-            30,
+            20,
           ),
           boxShadow: [
             BoxShadow(
-                color: Colors.black.withOpacity(0.5),
+                color: Colors.black.withOpacity(0.1),
                 offset: Offset(2, 2),
                 blurRadius: 7,
                 spreadRadius: 1.0),
@@ -57,7 +57,7 @@ class W_C_Detali extends StatelessWidget {
                           ),
                           boxShadow: [
                             BoxShadow(
-                                color: Colors.black.withOpacity(0.5),
+                                color: Colors.black.withOpacity(0.1),
                                 offset: Offset(2, 4),
                                 blurRadius: 7.0,
                                 spreadRadius: 1.0),

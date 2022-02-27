@@ -68,85 +68,20 @@ class _message_pageState extends State<message_page> {
   @override
   Widget build(BuildContext context) {
     Widget ssss(BuildContext context) {
-      return Container(
-        margin: EdgeInsets.only(top: 10, bottom: 10),
-        child: FutureBuilder<Map<String, dynamic>>(
-          future: getDataSlide(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              // return ListView.separated(
-              //     itemBuilder: (context, index) {
-              // return Text('3232');
-              return CarouselSlider.builder(
-                itemCount: snapshot.data!['data'].length,
-                options: CarouselOptions(
-                  autoPlay: true,
-                  enlargeCenterPage: true,
-                  viewportFraction: 0.9,
-                  aspectRatio: 2.0,
-                  initialPage: 2,
-                  onPageChanged: (index, reason) {
-                    setState(
-                      () {
-                        _currentIndex = index;
-                      },
-                    );
-                  },
-                ),
-                itemBuilder:
-                    (BuildContext context, int item, int pageViewIndex) =>
-
-                        // Text('${snapshot.data!['data'][item]['blog_id']}');
-                        //     Container(
-                        //   child: Center(child: Text(item.toString())),
-                        //   color: Colors.green,
-                        // ),
-                        NeumorphicButton(
-                  style: NeumorphicStyle(
-                    shape: NeumorphicShape.flat,
-                    // boxShape:
-                    //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                    // boxShape: NeumorphicBoxShape.circle(),
-                    color: Colors.white,
-                  ),
-                  padding: EdgeInsets.all(0),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/messagemdetail_page',
-                          arguments: {
-                            'blog_images': snapshot.data!['data'][item]
-                                        ['blog_images'][0]['blogi_path_name'] !=
-                                    null
-                                ? Global.domainImage +
-                                    snapshot.data!['data'][item]['blog_images']
-                                        [0]['blogi_path_name']
-                                : '${Global.networkImage}',
-                            'blog_name': snapshot.data!['data'][item]
-                                ['blog_name'],
-                            'blog_detail': snapshot.data!['data'][item]
-                                ['blog_detail']
-
-                            /*   'id': data[index].id,
-                                'detail': data[index].detail,
-                                'picture': data[index].picture,
-                                'view': data[index].view,*/
-                          });
-                    },
-                    // child: Card(
-                    //   margin: EdgeInsets.only(
-                    //     top: 10.0,
-                    //     bottom: 10.0,
-                    //   ),
-                    //   elevation: 10.0,
-                    // shadowColor: Colors.redAccent,
-                    // shape: RoundedRectangleBorder(
-                    //     // borderRadius: BorderRadius.circular(30.0),
-                    //     ),
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          child: FutureBuilder<Map<String, dynamic>>(
+            future: getDataSlide(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                if (snapshot.data!['data'] == 'ไม่พบข้อมูล') {
+                  return Center(
                     child: Container(
                       decoration: BoxDecoration(
-                          color: ThemeBc.black,
+                          color: ThemeBc.textblack,
                           borderRadius: BorderRadius.circular(
-                            8,
+                            20,
                           ),
                           boxShadow: [
                             BoxShadow(
@@ -155,10 +90,84 @@ class _message_pageState extends State<message_page> {
                                 blurRadius: 7.0,
                                 spreadRadius: 1.0),
                           ]),
-                      child: Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text('ไม่พบข้อมูล'),
+                      ),
+                    ),
+                  );
+                } else {
+                  return CarouselSlider.builder(
+                    itemCount: snapshot.data!['data'].length,
+                    options: CarouselOptions(
+                      autoPlay: true,
+                      enlargeCenterPage: true,
+                      viewportFraction: 0.9,
+                      aspectRatio: 2.0,
+                      initialPage: 2,
+                      onPageChanged: (index, reason) {
+                        setState(
+                          () {
+                            _currentIndex = index;
+                          },
+                        );
+                      },
+                    ),
+                    itemBuilder: (BuildContext context, int item,
+                            int pageViewIndex) =>
+
+                        // Text('${snapshot.data!['data'][item]['blog_id']}');
+                        //     Container(
+                        //   child: Center(child: Text(item.toString())),
+                        //   color: Colors.green,
+                        // ),
+                        NeumorphicButton(
+                      style: NeumorphicStyle(
+                        shape: NeumorphicShape.flat,
+                        // boxShape:
+                        //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
+                        // boxShape: NeumorphicBoxShape.circle(),
+                        color: Colors.white,
+                      ),
+                      padding: EdgeInsets.all(0),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/messagemdetail_page',
+                              arguments: {
+                                'blog_images': snapshot.data!['data'][item]
+                                                ['blog_images'][0]
+                                            ['blogi_path_name'] !=
+                                        null
+                                    ? Global.domainImage +
+                                        snapshot.data!['data'][item]
+                                                ['blog_images'][0]
+                                            ['blogi_path_name']
+                                    : '${Global.networkImage}',
+                                'blog_name': snapshot.data!['data'][item]
+                                    ['blog_name'],
+                                'blog_detail': snapshot.data!['data'][item]
+                                    ['blog_detail']
+
+                                /*   'id': data[index].id,
+                                  'detail': data[index].detail,
+                                  'picture': data[index].picture,
+                                  'view': data[index].view,*/
+                              });
+                        },
+                        // child: Card(
+                        //   margin: EdgeInsets.only(
+                        //     top: 10.0,
+                        //     bottom: 10.0,
+                        //   ),
+                        //   elevation: 6.0,
+                        // shadowColor: Colors.redAccent,
+                        // shape: RoundedRectangleBorder(
+                        //     // borderRadius: BorderRadius.circular(30.0),
+                        //     ),
+
                         child: ClipRRect(
                           borderRadius: BorderRadius.all(
-                            Radius.circular(8.0),
+                            Radius.circular(10.0),
                           ),
                           child: ListView(
                             children: [
@@ -172,7 +181,7 @@ class _message_pageState extends State<message_page> {
                                             snapshot.data!['data'][item]
                                                     ['blog_images'][0]
                                                 ['blogi_path_name']
-                                        : '${Global.networkImage}',
+                                        : 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
                                     fit: BoxFit.cover,
                                     width: double.infinity,
                                   ),
@@ -208,23 +217,28 @@ class _message_pageState extends State<message_page> {
                         ),
                       ),
                     ),
-                  ),
-                ),
-              );
-            } else if (snapshot.hasError) {
-              return Center(
-                  child: Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
-            }
+                  );
+                }
+                ;
+                // return ListView.separated(
+                //     itemBuilder: (context, index) {
+                // return Text('3232');
 
-            return Center(child: CircularProgressIndicator());
-          },
+              } else if (snapshot.hasError) {
+                return Center(
+                    child: Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
+              }
+
+              return Center(child: CircularProgressIndicator());
+            },
+          ),
         ),
       );
     }
 
     Widget ss1(BuildContext context) {
       return Container(
-        color: ThemeBc.background,
+        color: ThemeBc.white,
         margin: EdgeInsets.only(top: 10, bottom: 0),
         width: 500,
         height: 500,
@@ -282,13 +296,7 @@ class _message_pageState extends State<message_page> {
                                         boxShadow: [
                                           BoxShadow(
                                               color:
-                                                  Colors.grey.withOpacity(0.5),
-                                              offset: Offset(2, 2),
-                                              blurRadius: 7,
-                                              spreadRadius: 1.0),
-                                          BoxShadow(
-                                              color:
-                                                  Colors.black.withOpacity(0.5),
+                                                  Colors.black.withOpacity(0.1),
                                               offset: Offset(2, 4),
                                               blurRadius: 7.0,
                                               spreadRadius: 1.0),
@@ -302,7 +310,7 @@ class _message_pageState extends State<message_page> {
                                                 Radius.circular(8.0),
                                               ),
                                               child: Padding(
-                                                padding: EdgeInsets.all(5.0),
+                                                padding: EdgeInsets.all(0),
                                                 child: ClipRRect(
                                                   borderRadius:
                                                       BorderRadius.all(
@@ -333,26 +341,6 @@ class _message_pageState extends State<message_page> {
                                             ),
                                             SizedBox(height: 5),
                                             Container(
-                                              decoration: BoxDecoration(
-                                                  color: Colors.grey[200],
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                    20,
-                                                  ),
-                                                  boxShadow: [
-                                                    // BoxShadow(
-                                                    //     color: Colors.grey
-                                                    //         .withOpacity(0.5),
-                                                    //     offset: Offset(2, 2),
-                                                    //     blurRadius: 7,
-                                                    //     spreadRadius: 1.0),
-                                                    // BoxShadow(
-                                                    //     color: Colors.black
-                                                    //         .withOpacity(0.5),
-                                                    //     offset: Offset(2, 4),
-                                                    //     blurRadius: 7.0,
-                                                    //     spreadRadius: 1.0),
-                                                  ]),
                                               width: 340,
                                               height: 160,
                                               child: ListView(
@@ -364,12 +352,20 @@ class _message_pageState extends State<message_page> {
                                                           const EdgeInsets.all(
                                                               8.0),
                                                       child: Text(
-                                                        'ข่าว: ${snapshot.data!['data'][index]['blog_name']}',
-                                                        style: primaryTextStyle
-                                                            .copyWith(
-                                                                fontSize: 16,
-                                                                fontWeight:
-                                                                    medium),
+                                                        '${snapshot.data!['data'][index]['blog_name']}',
+                                                        style: TextStyle(
+                                                          fontSize: 17.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          // backgroundColor: Colors.black45,
+                                                          color:
+                                                              ThemeBc.textblack,
+                                                        ),
+                                                        // style: primaryTextStyle
+                                                        //     .copyWith(
+                                                        //         fontSize: 16,
+                                                        //         fontWeight:
+                                                        //             medium),
                                                       ),
                                                     ),
                                                   ),
@@ -380,7 +376,7 @@ class _message_pageState extends State<message_page> {
                                                           const EdgeInsets.all(
                                                               8.0),
                                                       child: Text(
-                                                        'เนื้อหาข่าว : ${snapshot.data!['data'][index]['blog_detail']}',
+                                                        '${snapshot.data!['data'][index]['blog_detail']}',
                                                         style: primaryTextStyle
                                                             .copyWith(
                                                                 fontSize: 15,
@@ -507,7 +503,7 @@ class _message_pageState extends State<message_page> {
                   );
                 }).toList(),
               ),
-              // a
+
               titleMenus1(),
               ss1(context),
 
