@@ -14,6 +14,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 // import 'package:flutter_point_tab_bar/pointTabIndicator.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:form_builder_image_picker/form_builder_image_picker.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 // import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 
 import 'package:geolocator/geolocator.dart';
@@ -147,7 +148,7 @@ class _warn_page extends State<compose_page>
   void initState() {
     _tabController = TabController(vsync: this, length: tabList.length);
     super.initState();
-    _getStateList();
+    // _getStateList();
     mapdata();
 
     // mapdata();
@@ -376,23 +377,100 @@ class _warn_page extends State<compose_page>
                             ),
                           ),
 
-                          FormBuilderFieldText(
-                              name: 'em_owner',
-                              labelText: 'ชื่อผู้แจ้ง',
-                              icon: Icons.email,
-                              initialValue: ''),
-
-                          FormBuilderFieldText(
-                              name: 'em_phone',
-                              labelText: 'เบอร์โทรศัพท์',
-                              icon: Icons.safety_divider,
-                              initialValue: ''),
-
-                          FormBuilderFieldText(
-                              name: 'em_detail',
-                              labelText: 'รายละเอียดเหตุการณ์',
-                              icon: Icons.mail,
-                              initialValue: ''),
+                          NeumorphicButton(
+                            style: const NeumorphicStyle(
+                              shape: NeumorphicShape.flat,
+                              color: ThemeBc.white,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(0),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    child: FormBuilderTextField(
+                                      name: "em_owner",
+                                      maxLines: 1,
+                                      keyboardType: TextInputType.emailAddress,
+                                      decoration: InputDecoration(
+                                        // labelText: 'Email',
+                                        hintText: 'ชื่อผู้แจ้ง',
+                                        filled: true,
+                                        fillColor: ThemeBc.white,
+                                      ),
+                                      validator: MultiValidator([
+                                        RequiredValidator(
+                                            errorText: "ป้อนชื่อผู้แจ้ง"),
+                                      ]),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          NeumorphicButton(
+                            style: const NeumorphicStyle(
+                              shape: NeumorphicShape.flat,
+                              color: ThemeBc.white,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(0),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    child: FormBuilderTextField(
+                                      name: "em_phone",
+                                      maxLines: 1,
+                                      keyboardType: TextInputType.emailAddress,
+                                      decoration: InputDecoration(
+                                        // labelText: 'Email',
+                                        hintText: 'เบอร์โทรศัพท์',
+                                        filled: true,
+                                        fillColor: ThemeBc.white,
+                                      ),
+                                      validator: MultiValidator([
+                                        RequiredValidator(
+                                            errorText: "ป้อนเบอร์โทรศัพท์ผ่าน"),
+                                        MinLengthValidator(10,
+                                            errorText:
+                                                "เบอร์โทรศัพท์ต้อง 10 ตัวอักษรขึ้นไป"),
+                                      ]),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          NeumorphicButton(
+                            style: const NeumorphicStyle(
+                              shape: NeumorphicShape.flat,
+                              color: ThemeBc.white,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(0),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    child: FormBuilderTextField(
+                                      name: "em_detail",
+                                      maxLines: 1,
+                                      keyboardType: TextInputType.emailAddress,
+                                      decoration: InputDecoration(
+                                        // labelText: 'Email',
+                                        hintText: 'รายละเอียดเหตุการณ์',
+                                        filled: true,
+                                        fillColor: ThemeBc.white,
+                                      ),
+                                      validator: MultiValidator([
+                                        RequiredValidator(
+                                            errorText:
+                                                "ป้อนรายละเอียดเหตุการณ์"),
+                                      ]),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                           SizedBox(height: 18),
 
                           NeumorphicButton(
