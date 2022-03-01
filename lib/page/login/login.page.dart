@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:http/http.dart' as http;
@@ -149,7 +150,7 @@ class _LoginPageState extends State<login_page> {
         },
         body: json.encode({
           "user_app_id": Global.app_id,
-          "email": 'gtx@nt.com',
+          "email": 'demo@demo.com',
           "password": '1234567'
         }));
 
@@ -360,7 +361,8 @@ class _LoginPageState extends State<login_page> {
         body: Stack(
           children: [
             Image.network(
-              'http://4.bp.blogspot.com/-b5Ziev6W45k/VSqhWYDodcI/AAAAAAAARFI/OsRTia414fU/s1600/Y54_3009.jpg',
+              Global.domainImage +
+                  '../../../uploads/emergency/05c5c5e7921159b59cdd588450be25511646028116_bc.jpg',
               width: double.infinity,
               height: MediaQuery.of(context).size.height,
               fit: BoxFit.cover,
@@ -368,9 +370,9 @@ class _LoginPageState extends State<login_page> {
             Container(
               width: MediaQuery.of(context).size.width,
 
-              decoration: BoxDecoration(
-                  color: Colors.black45,
-                  borderRadius: BorderRadius.circular(10)),
+              // decoration: BoxDecoration(
+              //     color: Colors.black45,
+              //     borderRadius: BorderRadius.circular(0)),
               // decoration: BoxDecoration(
               //     gradient: LinearGradient(
               //         colors: [ThemeBc.white, ThemeBc.white],
@@ -383,12 +385,12 @@ class _LoginPageState extends State<login_page> {
                       padding: EdgeInsets.all(0),
                       child: Column(
                         children: [
-                          SizedBox(height: 30),
+                          SizedBox(height: 50),
                           Container(
-                            padding: EdgeInsets.symmetric(horizontal: 80),
+                            padding: EdgeInsets.symmetric(horizontal: 120),
                             child: Image.asset('assets/logo.png'),
                           ),
-                          SizedBox(height: 10),
+                          SizedBox(height: 20),
                           FormBuilder(
                             key: _fbKey,
                             initialValue: {'email': '', 'password': ''},
@@ -397,121 +399,83 @@ class _LoginPageState extends State<login_page> {
                             child: Column(
                               children: <Widget>[
                                 Padding(
-                                  padding: EdgeInsets.all(30),
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        decoration: BoxDecoration(
-                                            color: secondaryTextColor,
-                                            borderRadius: BorderRadius.circular(
-                                              20,
-                                            ),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                  color: Colors.black
-                                                      .withOpacity(0.2),
-                                                  offset: Offset(2, 2),
-                                                  blurRadius: 7,
-                                                  spreadRadius: 1.0),
-                                            ]),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Container(
-                                            child: FormBuilderTextField(
-                                              initialValue:
-                                                  'akkaradet.k6@snru.ac.th',
-                                              name: "email",
-                                              maxLines: 1,
-                                              keyboardType:
-                                                  TextInputType.emailAddress,
-                                              decoration: InputDecoration(
-                                                border: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                    20.0,
-                                                  ),
-                                                ),
-                                                suffixIcon: Icon(Icons.email),
-                                                labelText: 'Email',
-                                                // helperText: '555',
-                                                fillColor: Colors.white,
-                                                filled: true,
-                                              ),
-                                              // validator: MultiValidator([
-                                              //   RequiredValidator(
-                                              //       errorText:
-                                              //           "ป้อนข้อมูลอีเมลด้วย"),
-                                              //   EmailValidator(
-                                              //       errorText:
-                                              //           "รูปแบบอีเมล์ไม่ถูกต้อง"),
-                                              // ]),
-                                            ),
-                                          ),
-                                        ),
+                                  padding: const EdgeInsets.only(
+                                      left: 35, right: 35),
+                                  child: FormBuilderTextField(
+                                    name: "email",
+                                    style: TextStyle(color: Colors.white),
+                                    initialValue: 'akkaradet.k6@snru.ac.th',
+                                    maxLines: 1,
+                                    keyboardType: TextInputType.emailAddress,
+                                    decoration: const InputDecoration(
+                                      suffixIcon: Icon(
+                                        Icons.email,
+                                        color: Colors.white,
                                       ),
-                                      SizedBox(height: 10),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                            color: secondaryTextColor,
-                                            borderRadius: BorderRadius.circular(
-                                              20,
-                                            ),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                  color: Colors.black
-                                                      .withOpacity(0.2),
-                                                  offset: Offset(2, 2),
-                                                  blurRadius: 7,
-                                                  spreadRadius: 1.0),
-                                            ]),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Container(
-                                            child: FormBuilderTextField(
-                                              initialValue: '1234567',
-                                              name: "password",
-                                              maxLines: 1,
-                                              keyboardType:
-                                                  TextInputType.visiblePassword,
-                                              obscureText: true,
-                                              decoration: InputDecoration(
-                                                border: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                    20.0,
-                                                  ),
-                                                ),
-                                                suffixIcon: Icon(Icons.vpn_key),
-                                                labelText: 'Password',
-                                                fillColor: Colors.white,
-                                                filled: true,
-                                              ),
-                                              // validator: MultiValidator([
-                                              //   RequiredValidator(
-                                              //       errorText: "ป้อนรหัสผ่านด้วย"),
-                                              // ]),
-                                            ),
-                                          ),
-                                        ),
-                                      )
-                                    ],
+                                      // enabledBorder: UnderlineInputBorder(
+                                      //   borderSide:
+                                      //       BorderSide(color: ThemeBc.black),
+                                      // ),
+
+                                      // // labelText: 'Email',
+                                      hintText: 'อีเมล',
+                                      hintStyle: TextStyle(color: Colors.white),
+                                      filled: true,
+                                      fillColor: Colors.black45,
+                                    ),
+                                    validator: MultiValidator([
+                                      RequiredValidator(
+                                          errorText: "ป้อนข้อมูลอีเมล์ด้วย"),
+                                      EmailValidator(
+                                          errorText: "รูปแบบอีเมล์ไม่ถูกต้อง"),
+                                    ]),
+                                  ),
+                                ),
+
+                                SizedBox(height: 10),
+                                // const SizedBox(height: 20),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 35, right: 35),
+                                  child: FormBuilderTextField(
+                                    style: TextStyle(color: Colors.white),
+                                    name: "password",
+                                    maxLines: 1,
+                                    initialValue: '1234567',
+                                    keyboardType: TextInputType.visiblePassword,
+                                    obscureText: true,
+                                    decoration: InputDecoration(
+                                      suffixIcon: const Icon(
+                                        Icons.vpn_key,
+                                        color: Colors.white,
+                                      ),
+
+                                      hintText: 'รหัสผ่าน',
+                                      hintStyle: TextStyle(color: Colors.white),
+                                      // errorText: _emailError,
+                                      filled: true,
+                                      fillColor: Colors.black45,
+                                    ),
+                                    validator: MultiValidator([
+                                      RequiredValidator(
+                                          errorText: "ป้อนข้อมูลรหัสผ่านด้วย"),
+                                      MinLengthValidator(6,
+                                          errorText:
+                                              "รหัสผ่านต้อง 6 ตัวอักษรขึ้นไป"),
+                                    ]),
                                   ),
                                 ),
                               ],
                             ),
                           ),
+                          SizedBox(height: 18),
                           Container(
-                            margin: EdgeInsets.only(
-                              top: 0,
-                            ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 InkWell(
-                                  onTap: () {
-                                    Navigator.pushNamed(
-                                        context, '/forgot_password');
-                                  }, //facebook_login
+                                  onTap: () => Navigator.pushNamed(
+                                      context, '/forgot_password'),
                                   child: LocaleText(
                                     'ลืมรหัสผ่าน',
                                     style: TextStyle(
@@ -534,37 +498,7 @@ class _LoginPageState extends State<login_page> {
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                LocaleText(
-                                  'ยังไม่ได้เป็นสมัครสมาชิก',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15,
-                                    decoration: TextDecoration.underline,
-                                    /*shadows: <Shadow>[
-                                Shadow(
-                                  offset: Offset(1.0, 1.0),
-                                  blurRadius: 3.0,
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                ),
-                                Shadow(
-                                  offset: Offset(1.0, 1.0),
-                                  blurRadius: 8.0,
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                ),
-                              ],*/
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
+                                SizedBox(width: 50),
                                 InkWell(
                                   onTap: () => Navigator.pushNamed(
                                       context, '/register_page'),
@@ -633,7 +567,7 @@ class _LoginPageState extends State<login_page> {
                               decoration: BoxDecoration(
                                   color: ThemeBc.white,
                                   borderRadius: BorderRadius.circular(
-                                    20,
+                                    10,
                                   ),
                                   boxShadow: [
                                     BoxShadow(
@@ -656,7 +590,7 @@ class _LoginPageState extends State<login_page> {
                                         padding: const EdgeInsets.all(15),
                                         shape: const RoundedRectangleBorder(
                                             borderRadius: BorderRadius.all(
-                                                Radius.circular(20))),
+                                                Radius.circular(10))),
                                         // shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                                       ),
                                       onPressed: () {
@@ -676,7 +610,7 @@ class _LoginPageState extends State<login_page> {
                               decoration: BoxDecoration(
                                   color: ThemeBc.black,
                                   borderRadius: BorderRadius.circular(
-                                    20,
+                                    10,
                                   ),
                                   boxShadow: [
                                     BoxShadow(
@@ -699,7 +633,7 @@ class _LoginPageState extends State<login_page> {
                                         padding: const EdgeInsets.all(15),
                                         shape: const RoundedRectangleBorder(
                                             borderRadius: BorderRadius.all(
-                                                Radius.circular(20))),
+                                                Radius.circular(10))),
                                         // shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                                       ),
                                       onPressed: () {
@@ -741,26 +675,13 @@ class _LoginPageState extends State<login_page> {
                                                             decoration:
                                                                 BoxDecoration(
                                                                     color: ThemeBc
-                                                                        .white,
+                                                                        .background,
                                                                     borderRadius:
                                                                         BorderRadius
                                                                             .circular(
-                                                                      20,
+                                                                      10,
                                                                     ),
-                                                                    boxShadow: [
-                                                                  BoxShadow(
-                                                                      color: Colors
-                                                                          .black
-                                                                          .withOpacity(
-                                                                              0.5),
-                                                                      offset:
-                                                                          Offset(2,
-                                                                              2),
-                                                                      blurRadius:
-                                                                          7,
-                                                                      spreadRadius:
-                                                                          1.0),
-                                                                ]),
+                                                                    boxShadow: []),
                                                             child: Padding(
                                                               padding:
                                                                   const EdgeInsets
@@ -771,7 +692,7 @@ class _LoginPageState extends State<login_page> {
                                                                   style:
                                                                       TextStyle(
                                                                     fontSize:
-                                                                        20.0,
+                                                                        15.0,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .bold,
@@ -803,11 +724,11 @@ class _LoginPageState extends State<login_page> {
                                                             decoration:
                                                                 BoxDecoration(
                                                                     color: ThemeBc
-                                                                        .white,
+                                                                        .background,
                                                                     borderRadius:
                                                                         BorderRadius
                                                                             .circular(
-                                                                      20,
+                                                                      10,
                                                                     ),
                                                                     boxShadow: [
                                                                   BoxShadow(
@@ -833,7 +754,7 @@ class _LoginPageState extends State<login_page> {
                                                                   style:
                                                                       TextStyle(
                                                                     fontSize:
-                                                                        20.0,
+                                                                        15.0,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .bold,
@@ -864,27 +785,14 @@ class _LoginPageState extends State<login_page> {
                                                             width: 250,
                                                             decoration:
                                                                 BoxDecoration(
-                                                                    color: ThemeBc
-                                                                        .white,
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(
-                                                                      20,
-                                                                    ),
-                                                                    boxShadow: [
-                                                                  BoxShadow(
-                                                                      color: Colors
-                                                                          .black
-                                                                          .withOpacity(
-                                                                              0.5),
-                                                                      offset:
-                                                                          Offset(2,
-                                                                              2),
-                                                                      blurRadius:
-                                                                          7,
-                                                                      spreadRadius:
-                                                                          1.0),
-                                                                ]),
+                                                              color: ThemeBc
+                                                                  .background,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                10,
+                                                              ),
+                                                            ),
                                                             child: Padding(
                                                               padding:
                                                                   const EdgeInsets
@@ -895,7 +803,7 @@ class _LoginPageState extends State<login_page> {
                                                                   style:
                                                                       TextStyle(
                                                                     fontSize:
-                                                                        20.0,
+                                                                        15.0,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .bold,

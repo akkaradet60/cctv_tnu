@@ -4,11 +4,12 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 class W_C_Detali extends StatelessWidget {
   final String name;
-
+  final String name02;
   final Function() onPressed;
   W_C_Detali({
     Key? key,
     required this.name,
+    required this.name02,
     required this.onPressed,
   }) : super(key: key);
 
@@ -18,13 +19,13 @@ class W_C_Detali extends StatelessWidget {
       decoration: BoxDecoration(
           color: secondaryTextColor,
           borderRadius: BorderRadius.circular(
-            20,
+            10,
           ),
           boxShadow: [
             BoxShadow(
                 color: Colors.black.withOpacity(0.1),
                 offset: Offset(2, 2),
-                blurRadius: 7,
+                blurRadius: 2,
                 spreadRadius: 1.0),
           ]),
       height: 80,
@@ -44,28 +45,37 @@ class W_C_Detali extends StatelessWidget {
                         SizedBox(height: 10),
                         Text(
                           name,
-                          style: primaryTextStyle.copyWith(
-                              fontSize: 18, fontWeight: medium),
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.bold,
+                            // backgroundColor: Colors.black45,
+                            color: ThemeBc.black,
+                          ),
+                        ),
+                        Container(
+                          width: 200,
+                          height: 20,
+                          child: ListView(
+                            children: [
+                              Text(
+                                name02,
+                                style: TextStyle(
+                                  fontSize: 13.0,
+                                  // fontWeight: FontWeight.bold,
+                                  // backgroundColor: Colors.black45,
+                                  color: ThemeBc.black,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
                     Container(
-                      decoration: BoxDecoration(
-                          color: ThemeBc.black,
-                          borderRadius: BorderRadius.circular(
-                            30,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.black.withOpacity(0.1),
-                                offset: Offset(2, 4),
-                                blurRadius: 7.0,
-                                spreadRadius: 1.0),
-                          ]),
                       child: IconButton(
                         icon: Icon(
                           Icons.article,
-                          color: ThemeBc.white,
+                          color: ThemeBc.textblack,
                           size: 30,
                         ),
                         tooltip: 'Show Snackbar',

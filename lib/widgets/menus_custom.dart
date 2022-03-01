@@ -30,6 +30,11 @@ class MenusCustom extends StatelessWidget {
           NeumorphicButton(
             onPressed: pathName,
             style: const NeumorphicStyle(
+              // shadowDarkColor: ThemeBc.black,
+              shadowLightColor: ThemeBc.black54,
+              // shadowDarkColorEmboss: ThemeBc.black,
+              // shadowLightColorEmboss: ThemeBc.black,
+
               shape: NeumorphicShape.flat,
               // boxShape:
               //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),

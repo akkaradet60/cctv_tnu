@@ -308,7 +308,7 @@ class _home_pageState extends State<home_page> {
 
                       child: ClipRRect(
                         borderRadius: BorderRadius.all(
-                          Radius.circular(10.0),
+                          Radius.circular(5.0),
                         ),
                         child: ListView(
                           children: [
@@ -328,20 +328,20 @@ class _home_pageState extends State<home_page> {
                                 ),
                                 Column(
                                   children: [
-                                    SizedBox(height: 160),
+                                    SizedBox(height: 170),
                                     Container(
-                                      color: ThemeBc.black,
-                                      height: 40,
+                                      color: ThemeBc.background,
+                                      width: 370,
+                                      height: 100,
                                       child: ListView(
-                                        scrollDirection: Axis.horizontal,
                                         children: [
-                                          SizedBox(width: 10),
+                                          SizedBox(height: 10),
                                           Text(
                                             // '${titles[_currentIndex]}',
-                                            '${snapshot.data!['data'][item]['blog_name']}',
+                                            '  ${snapshot.data!['data'][item]['blog_name']}',
                                             style: TextStyle(
-                                              fontSize: 24.0,
-                                              fontWeight: FontWeight.bold,
+                                              fontSize: 18.0,
+                                              // fontWeight: FontWeight.bold,
                                               // backgroundColor: Colors.black45,
                                               color: ThemeBc.white,
                                             ),
@@ -349,6 +349,16 @@ class _home_pageState extends State<home_page> {
                                         ],
                                       ),
                                     ),
+                                    // Text(
+                                    //   // '${titles[_currentIndex]}',
+                                    //   '${snapshot.data!['data'][item]['em_update_date']}',
+                                    //   style: TextStyle(
+                                    //     fontSize: 15.0,
+                                    //     // fontWeight: FontWeight.bold,
+                                    //     // backgroundColor: Colors.black45,
+                                    //     color: ThemeBc.black,
+                                    //   ),
+                                    // ),
                                   ],
                                 ),
                               ],
@@ -608,7 +618,7 @@ class _home_pageState extends State<home_page> {
               ),
               SizedBox(height: 18),
               Row(
-                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   MenusCustom(
                     iconMenus: 'assets/homepage/icon_11.png',
@@ -620,7 +630,7 @@ class _home_pageState extends State<home_page> {
                     titleMenus1: '',
                     titleMenus2: '',
                   ),
-                  SizedBox(width: 48),
+                  // SizedBox(width: 48),
                   MenusCustom(
                     iconMenus: 'assets/homepage/icon_12.png',
                     titleMenus: 'สถานที่ราชการ',
@@ -645,7 +655,6 @@ class _home_pageState extends State<home_page> {
         iconTheme: IconThemeData(
           color: ThemeBc.white, //change your color here
         ),
-        shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
         title: Column(
@@ -669,7 +678,7 @@ class _home_pageState extends State<home_page> {
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                  colors: [ThemeBc.white, ThemeBc.white],
+                  colors: [Colors.orangeAccent, Colors.pinkAccent],
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft),
             ),
@@ -691,7 +700,7 @@ class _home_pageState extends State<home_page> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: _currentIndex == index
-                              ? const Color.fromRGBO(255, 102, 0, 0.9)
+                              ? Color.fromARGB(228, 255, 255, 255)
                               : const Color.fromRGBO(0, 0, 0, 0.8),
                         ),
                       );

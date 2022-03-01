@@ -157,7 +157,7 @@ class _settingpolicyState extends State<settingpolicy>
                             '  $app_agreement_cn',
                             style: TextStyle(
                               fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
+
                               // backgroundColor: Colors.black45,
                               color: ThemeBc.textblack,
                             ),
@@ -209,7 +209,7 @@ class _settingpolicyState extends State<settingpolicy>
                             '  $app_agreement_en',
                             style: TextStyle(
                               fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
+
                               // backgroundColor: Colors.black45,
                               color: ThemeBc.textblack,
                             ),

@@ -124,22 +124,22 @@ class _travelmap_page extends State<travelmap_page> {
           child: ListView(
             children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(0),
                 child: Container(
-                  decoration: BoxDecoration(
-                      color: secondaryTextColor,
-                      borderRadius: BorderRadius.circular(
-                        10,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black.withOpacity(0.5),
-                            offset: Offset(2, 4),
-                            blurRadius: 7.0,
-                            spreadRadius: 1.0),
-                      ]),
+                  // decoration: BoxDecoration(
+                  //     color: secondaryTextColor,
+                  //     borderRadius: BorderRadius.circular(
+                  //       10,
+                  //     ),
+                  //     boxShadow: [
+                  //       BoxShadow(
+                  //           color: Colors.black.withOpacity(0.5),
+                  //           offset: Offset(2, 4),
+                  //           blurRadius: 7.0,
+                  //           spreadRadius: 1.0),
+                  //     ]),
                   child: Padding(
-                    padding: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(0),
                     child: Container(
                       height: 400,
                       child: Column(
@@ -196,42 +196,44 @@ class _travelmap_page extends State<travelmap_page> {
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
                         height: 250,
-                        decoration: BoxDecoration(
-                            color: ThemeBc.black,
-                            borderRadius: BorderRadius.circular(
-                              10,
+                        // decoration: BoxDecoration(
+                        //     color: ThemeBc.black,
+                        //     borderRadius: BorderRadius.circular(
+                        //       10,
+                        //     ),
+                        //     boxShadow: [
+                        //       BoxShadow(
+                        //           color: Colors.black.withOpacity(0.5),
+                        //           offset: Offset(2, 4),
+                        //           blurRadius: 7.0,
+                        //           spreadRadius: 1.0),
+                        //     ]),
+
+                        child: ListView(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                  'เที่ยว : ${travelmapname['travel_name']}',
+                                  style: TextStyle(
+                                    fontSize: 17.0,
+                                    fontWeight: FontWeight.bold,
+                                    // backgroundColor: Colors.black45,
+                                    color: ThemeBc.textblack,
+                                  )),
                             ),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.black.withOpacity(0.5),
-                                  offset: Offset(2, 4),
-                                  blurRadius: 7.0,
-                                  spreadRadius: 1.0),
-                            ]),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ListView(
-                            children: [
-                              Center(
-                                child: Text(
-                                    'เที่ยว : ${travelmapname['travel_name']}',
-                                    style: TextStyle(
-                                      fontSize: 15.0,
-                                      fontWeight: FontWeight.bold,
-                                      // backgroundColor: Colors.black45,
-                                      color: ThemeBc.white,
-                                    )),
-                              ),
-                              Text(
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
                                   'เนื้อหา : ${travelmapname['travel_detail']} ',
                                   style: TextStyle(
                                     fontSize: 15.0,
-                                    fontWeight: FontWeight.bold,
+                                    // fontWeight: FontWeight.bold,
                                     // backgroundColor: Colors.black45,
-                                    color: ThemeBc.white,
-                                  ))
-                            ],
-                          ),
+                                    color: ThemeBc.textblack,
+                                  )),
+                            )
+                          ],
                         ),
                       ),
                     )

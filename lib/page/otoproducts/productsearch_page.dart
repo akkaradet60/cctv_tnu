@@ -94,7 +94,12 @@ class _productstore_page extends State<productstore_page> {
           ],
         ),
         body: Container(
-          color: ThemeBc.white,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [ThemeBc.orangeAccent, ThemeBc.pinkAccent],
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft),
+          ),
           child: Column(
             children: <Widget>[
               buildSearch(),
@@ -119,11 +124,11 @@ class _productstore_page extends State<productstore_page> {
           decoration: BoxDecoration(
               color: ThemeBc.white,
               borderRadius: BorderRadius.circular(
-                20,
+                10,
               ),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.black.withOpacity(0.5),
+                    color: Colors.black.withOpacity(0.1),
                     offset: Offset(2, 2),
                     blurRadius: 7,
                     spreadRadius: 1.0),
@@ -154,11 +159,11 @@ class _productstore_page extends State<productstore_page> {
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(
-                20,
+                10,
               ),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.black.withOpacity(0.5),
+                    color: Colors.black.withOpacity(0.1),
                     offset: Offset(2, 2),
                     blurRadius: 7,
                     spreadRadius: 1.0),
@@ -185,10 +190,10 @@ class _productstore_page extends State<productstore_page> {
                   child: Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(2.0),
+                        padding: const EdgeInsets.all(0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.all(
-                            Radius.circular(20.0),
+                            Radius.circular(10.0),
                           ),
                           child: Image.network(
                             Global.domainImagenew + productt.urlImage != null
@@ -204,47 +209,44 @@ class _productstore_page extends State<productstore_page> {
                         padding: const EdgeInsets.all(2.0),
                         child: Container(
                           width: 175,
-                          decoration: BoxDecoration(
-                              color: ThemeBc.black,
-                              borderRadius: BorderRadius.circular(
-                                20,
-                              ),
-                              boxShadow: []),
+                          // decoration: BoxDecoration(
+                          //     color: ThemeBc.black,
+                          //     borderRadius: BorderRadius.circular(
+                          //       20,
+                          //     ),
+                          //     boxShadow: []),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Center(
-                                  child: Text(
-                                    'ชื่อสินค้า : ${productt.title}',
-                                    style: TextStyle(
-                                      fontSize: 15.0,
-                                      fontWeight: FontWeight.bold,
-                                      // backgroundColor: Colors.black45,
-                                      color: ThemeBc.white,
-                                    ),
-                                  ),
-                                ),
-                                Center(
-                                  child: Text(
-                                    'ราคา : ${productt.product_price}',
-                                    style: TextStyle(
-                                      fontSize: 15.0,
-                                      fontWeight: FontWeight.bold,
-                                      // backgroundColor: Colors.black45,
-                                      color: ThemeBc.white,
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(height: 10),
                                 Text(
-                                  'เนื่อหาสิ้นค้า : ${productt.author}',
+                                  '${productt.title}',
                                   style: TextStyle(
                                     fontSize: 15.0,
                                     fontWeight: FontWeight.bold,
                                     // backgroundColor: Colors.black45,
-                                    color: ThemeBc.white,
+                                    color: ThemeBc.textblack,
+                                  ),
+                                ),
+                                SizedBox(height: 5),
+                                Text(
+                                  '${productt.product_price} บาท',
+                                  style: TextStyle(
+                                    fontSize: 15.0,
+
+                                    // backgroundColor: Colors.black45,
+                                    color: ThemeBc.textblack,
+                                  ),
+                                ),
+                                SizedBox(height: 10),
+                                Text(
+                                  '  ${productt.author}',
+                                  style: TextStyle(
+                                    fontSize: 15.0,
+
+                                    // backgroundColor: Colors.black45,
+                                    color: ThemeBc.textblack,
                                   ),
                                 ),
                               ],

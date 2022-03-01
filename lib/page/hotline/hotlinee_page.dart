@@ -233,7 +233,7 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                                                   Text(
                                                     '${snapshot.data!['data'][index]['hotline_name']} ',
                                                     style: TextStyle(
-                                                      fontSize: 18.0,
+                                                      fontSize: 15.0,
                                                       fontWeight:
                                                           FontWeight.bold,
                                                       // backgroundColor: Colors.black45,
@@ -254,30 +254,11 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                                                       MainAxisAlignment.end,
                                                   children: [
                                                     Container(
-                                                      decoration: BoxDecoration(
-                                                          color: ThemeBc.black,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                            30,
-                                                          ),
-                                                          boxShadow: [
-                                                            BoxShadow(
-                                                                color: Colors
-                                                                    .black
-                                                                    .withOpacity(
-                                                                        0.1),
-                                                                offset: Offset(
-                                                                    2, 4),
-                                                                blurRadius: 7.0,
-                                                                spreadRadius:
-                                                                    1.0),
-                                                          ]),
                                                       child: IconButton(
                                                           icon: Icon(
                                                             Icons.phone,
                                                             color:
-                                                                ThemeBc.white,
+                                                                ThemeBc.black,
                                                             size: 30,
                                                           ),
                                                           tooltip:
@@ -315,13 +296,26 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                                                                               height: 50,
                                                                               child: ListView(
                                                                                 children: [
-                                                                                  Text(
-                                                                                    'ต้องการติดต่อไปที่ \n${snapshot.data!['data'][index]['hotline_name']} ${snapshot.data!['data'][index]['hotline_phone']} ?',
-                                                                                    style: TextStyle(
-                                                                                      fontSize: 18.0,
-                                                                                      fontWeight: FontWeight.bold,
-                                                                                      // backgroundColor: Colors.black45,
-                                                                                      color: ThemeBc.textblack,
+                                                                                  Center(
+                                                                                    child: Text(
+                                                                                      'ติดต่อไปที่',
+                                                                                      style: TextStyle(
+                                                                                        fontSize: 18.0,
+                                                                                        fontWeight: FontWeight.bold,
+                                                                                        // backgroundColor: Colors.black45,
+                                                                                        color: ThemeBc.textblack,
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Center(
+                                                                                    child: Text(
+                                                                                      '${snapshot.data!['data'][index]['hotline_name']} ${snapshot.data!['data'][index]['hotline_phone']} ?',
+                                                                                      style: TextStyle(
+                                                                                        fontSize: 18.0,
+                                                                                        fontWeight: FontWeight.bold,
+                                                                                        // backgroundColor: Colors.black45,
+                                                                                        color: ThemeBc.textblack,
+                                                                                      ),
                                                                                     ),
                                                                                   ),
                                                                                 ],
@@ -339,11 +333,11 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                                                                             ),
                                                                             style:
                                                                                 ElevatedButton.styleFrom(
-                                                                              primary: ThemeBc.black,
+                                                                              primary: ThemeBc.background,
                                                                               onPrimary: Colors.white,
-                                                                              shadowColor: Colors.white,
-                                                                              elevation: 30,
-                                                                              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(40))),
+                                                                              // shadowColor: Colors.white,
+                                                                              // elevation: 30,
+                                                                              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                                                                             ),
                                                                           ),
                                                                         ],
@@ -358,39 +352,10 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                                                     //         .callNumber(number);},
                                                     SizedBox(width: 5),
                                                     Container(
-                                                      decoration: BoxDecoration(
-                                                          color: ThemeBc.black,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                            30,
-                                                          ),
-                                                          boxShadow: [
-                                                            BoxShadow(
-                                                                color: Colors
-                                                                    .grey
-                                                                    .withOpacity(
-                                                                        0.5),
-                                                                offset: Offset(
-                                                                    2, 2),
-                                                                blurRadius: 7,
-                                                                spreadRadius:
-                                                                    1.0),
-                                                            BoxShadow(
-                                                                color: Colors
-                                                                    .black
-                                                                    .withOpacity(
-                                                                        0.5),
-                                                                offset: Offset(
-                                                                    2, 4),
-                                                                blurRadius: 7.0,
-                                                                spreadRadius:
-                                                                    1.0),
-                                                          ]),
                                                       child: IconButton(
                                                         icon: Icon(
                                                           Icons.maps_home_work,
-                                                          color: ThemeBc.white,
+                                                          color: ThemeBc.black,
                                                           size: 30,
                                                         ),
                                                         tooltip:

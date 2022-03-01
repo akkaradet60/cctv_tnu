@@ -67,76 +67,20 @@ class _award_pageState extends State<award_page> {
   @override
   Widget build(BuildContext context) {
     Widget award_pageSlide(BuildContext context) {
-      return Container(
-        margin: EdgeInsets.only(top: 10, bottom: 10),
-        child: FutureBuilder<Map<String, dynamic>>(
-          future: getDataSlide(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              // return ListView.separated(
-              //     itemBuilder: (context, index) {
-              // return Text('3232');
-              return CarouselSlider.builder(
-                itemCount: snapshot.data!['data'].length,
-                options: CarouselOptions(
-                  autoPlay: true,
-                  enlargeCenterPage: true,
-                  viewportFraction: 0.9,
-                  aspectRatio: 2.0,
-                  initialPage: 2,
-                  onPageChanged: (index, reason) {
-                    setState(
-                      () {
-                        _currentIndex = index;
-                      },
-                    );
-                  },
-                ),
-                itemBuilder:
-                    (BuildContext context, int item, int pageViewIndex) =>
-
-                        // Text('${snapshot.data!['data'][item]['blog_id']}');
-                        //     Container(
-                        //   child: Center(child: Text(item.toString())),
-                        //   color: Colors.green,
-                        // ),
-                        NeumorphicButton(
-                  style: NeumorphicStyle(
-                    shape: NeumorphicShape.flat,
-                    // boxShape:
-                    //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                    // boxShape: NeumorphicBoxShape.circle(),
-                    color: Colors.white,
-                  ),
-                  padding: EdgeInsets.all(0),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/awarddetail_page',
-                          arguments: {
-                            'awardi_path_name': snapshot.data!['data'][item]
-                                            ['award_images'][0]
-                                        ['awardi_path_name'] !=
-                                    null
-                                ? Global.domainImage +
-                                    snapshot.data!['data'][item]['award_images']
-                                        [0]['awardi_path_name']
-                                : '${Global.networkImage}',
-                            'award_name': snapshot.data!['data'][item]
-                                ['award_name'],
-                            'award_detail': snapshot.data!['data'][item]
-                                ['award_detail']
-
-                            /*   'id': data[index].id,
-                                'detail': data[index].detail,
-                                'picture': data[index].picture,
-                                'view': data[index].view,*/
-                          });
-                    },
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          child: FutureBuilder<Map<String, dynamic>>(
+            future: getDataSlide(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                if (snapshot.data!['data'] == 'ไม่พบข้อมูล') {
+                  return Center(
                     child: Container(
                       decoration: BoxDecoration(
-                          color: ThemeBc.black,
+                          color: ThemeBc.textblack,
                           borderRadius: BorderRadius.circular(
-                            8,
+                            20,
                           ),
                           boxShadow: [
                             BoxShadow(
@@ -145,10 +89,83 @@ class _award_pageState extends State<award_page> {
                                 blurRadius: 7.0,
                                 spreadRadius: 1.0),
                           ]),
-                      child: Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text('ไม่พบข้อมูล'),
+                      ),
+                    ),
+                  );
+                } else {
+                  return CarouselSlider.builder(
+                    itemCount: snapshot.data!['data'].length,
+                    options: CarouselOptions(
+                      autoPlay: true,
+                      enlargeCenterPage: true,
+                      viewportFraction: 0.9,
+                      aspectRatio: 2.0,
+                      initialPage: 2,
+                      onPageChanged: (index, reason) {
+                        setState(
+                          () {
+                            _currentIndex = index;
+                          },
+                        );
+                      },
+                    ),
+                    itemBuilder: (BuildContext context, int item,
+                            int pageViewIndex) =>
+
+                        // Text('${snapshot.data!['data'][item]['blog_id']}');
+                        //     Container(
+                        //   child: Center(child: Text(item.toString())),
+                        //   color: Colors.green,
+                        // ),
+                        NeumorphicButton(
+                      style: NeumorphicStyle(
+                        shape: NeumorphicShape.flat,
+                        // boxShape:
+                        //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
+                        // boxShape: NeumorphicBoxShape.circle(),
+                        color: Colors.white,
+                      ),
+                      padding: EdgeInsets.all(0),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/awarddetail_page',
+                              arguments: {
+                                'awardi_path_name': snapshot.data!['data'][item]
+                                                ['award_images'][0]
+                                            ['awardi_path_name'] !=
+                                        null
+                                    ? Global.domainImage +
+                                        snapshot.data!['data'][item]
+                                                ['award_images'][0]
+                                            ['awardi_path_name']
+                                    : '${Global.networkImage}',
+                                'award_name': snapshot.data!['data'][item]
+                                    ['award_name'],
+                                'award_detail': snapshot.data!['data'][item]
+                                    ['award_detail']
+                                /*   'id': data[index].id,
+                                  'detail': data[index].detail,
+                                  'picture': data[index].picture,
+                                  'view': data[index].view,*/
+                              });
+                        },
+                        // child: Card(
+                        //   margin: EdgeInsets.only(
+                        //     top: 10.0,
+                        //     bottom: 10.0,
+                        //   ),
+                        //   elevation: 6.0,
+                        // shadowColor: Colors.redAccent,
+                        // shape: RoundedRectangleBorder(
+                        //     // borderRadius: BorderRadius.circular(30.0),
+                        //     ),
+
                         child: ClipRRect(
                           borderRadius: BorderRadius.all(
-                            Radius.circular(8.0),
+                            Radius.circular(5.0),
                           ),
                           child: ListView(
                             children: [
@@ -170,18 +187,18 @@ class _award_pageState extends State<award_page> {
                                     children: [
                                       SizedBox(height: 160),
                                       Container(
-                                        color: ThemeBc.black,
-                                        height: 40,
+                                        color: ThemeBc.background,
+                                        width: 370,
+                                        height: 100,
                                         child: ListView(
-                                          scrollDirection: Axis.horizontal,
                                           children: [
-                                            SizedBox(width: 10),
+                                            SizedBox(height: 10),
                                             Text(
                                               // '${titles[_currentIndex]}',
-                                              '${snapshot.data!['data'][item]['award_name']}',
+                                              '  ${snapshot.data!['data'][item]['award_name']}',
                                               style: TextStyle(
-                                                fontSize: 24.0,
-                                                fontWeight: FontWeight.bold,
+                                                fontSize: 18.0,
+                                                // fontWeight: FontWeight.bold,
                                                 // backgroundColor: Colors.black45,
                                                 color: ThemeBc.white,
                                               ),
@@ -198,23 +215,22 @@ class _award_pageState extends State<award_page> {
                         ),
                       ),
                     ),
-                  ),
-                ),
-              );
-            } else if (snapshot.hasError) {
-              return Center(
-                  child: Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
-            }
+                  );
+                }
+              } else if (snapshot.hasError) {
+                return Center(
+                    child: Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
+              }
 
-            return Center(child: CircularProgressIndicator());
-          },
+              return Center(child: CircularProgressIndicator());
+            },
+          ),
         ),
       );
     }
 
     Widget award_page(BuildContext context) {
       return Container(
-        color: ThemeBc.background,
         margin: EdgeInsets.only(top: 10, bottom: 0),
         width: 1000,
         height: 500,
@@ -271,7 +287,7 @@ class _award_pageState extends State<award_page> {
                                         boxShadow: [
                                           BoxShadow(
                                               color:
-                                                  Colors.black.withOpacity(0.5),
+                                                  Colors.black.withOpacity(0.1),
                                               offset: Offset(2, 4),
                                               blurRadius: 7.0,
                                               spreadRadius: 1.0),
@@ -281,7 +297,7 @@ class _award_pageState extends State<award_page> {
                                         Column(
                                           children: [
                                             Padding(
-                                              padding: EdgeInsets.all(5.0),
+                                              padding: EdgeInsets.all(0),
                                               child: ClipRRect(
                                                 borderRadius: BorderRadius.all(
                                                   Radius.circular(10.0),
@@ -308,61 +324,40 @@ class _award_pageState extends State<award_page> {
                                                     )),
                                               ),
                                             ),
-                                            SizedBox(height: 15),
                                             Container(
-                                              decoration: BoxDecoration(
-                                                  color: Colors.grey[200],
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                    20,
-                                                  ),
-                                                  boxShadow: [
-                                                    // BoxShadow(
-                                                    //     color: Colors.grey
-                                                    //         .withOpacity(0.5),
-                                                    //     offset: Offset(2, 2),
-                                                    //     blurRadius: 7,
-                                                    //     spreadRadius: 1.0),
-                                                    // BoxShadow(
-                                                    //     color: Colors.black
-                                                    //         .withOpacity(0.5),
-                                                    //     offset: Offset(2, 4),
-                                                    //     blurRadius: 7.0,
-                                                    //     spreadRadius: 1.0),
-                                                  ]),
-                                              width: 340,
-                                              height: 160,
+                                              height: 200,
                                               child: ListView(
                                                 children: [
                                                   SizedBox(height: 5),
-                                                  Center(
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child: Text(
-                                                        'รางวัล: ${snapshot.data!['data'][index]['award_name']}',
-                                                        style: primaryTextStyle
-                                                            .copyWith(
-                                                                fontSize: 16,
-                                                                fontWeight:
-                                                                    medium),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(8),
+                                                    child: Text(
+                                                      '${snapshot.data!['data'][index]['award_name']}',
+                                                      style: TextStyle(
+                                                        fontSize: 17.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        // backgroundColor: Colors.black45,
+                                                        color:
+                                                            ThemeBc.textblack,
                                                       ),
                                                     ),
                                                   ),
                                                   SizedBox(height: 0),
-                                                  Center(
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child: Text(
-                                                        'เนื้อหารางวัล : ${snapshot.data!['data'][index]['award_detail']}',
-                                                        style: primaryTextStyle
-                                                            .copyWith(
-                                                                fontSize: 15,
-                                                                fontWeight:
-                                                                    medium),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Text(
+                                                      '${snapshot.data!['data'][index]['award_detail']}',
+                                                      style: TextStyle(
+                                                        fontSize: 15.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        // backgroundColor: Colors.black45,
+                                                        color:
+                                                            ThemeBc.textblack,
                                                       ),
                                                     ),
                                                   ),
@@ -384,88 +379,6 @@ class _award_pageState extends State<award_page> {
                   );
                 },
               );
-              // return ListView.separated(
-              //     itemBuilder: (context, index) {
-              // return Text('3232');
-              // return CarouselSlider.builder(
-              //   itemCount: snapshot.data!['data'].length,
-              //   options: CarouselOptions(
-              //     autoPlay: true,
-              //     enlargeCenterPage: true,
-              //     viewportFraction: 0.9,
-              //     aspectRatio: 2.0,
-              //     initialPage: 2,
-              //     onPageChanged: (index, reason) {
-              //       setState(
-              //         () {
-              //           _currentIndex = index;
-              //         },
-              //       );
-              //     },
-              //   ),
-              //   itemBuilder:
-              //       (BuildContext context, int item, int pageViewIndex) =>
-
-              //           // Text('${snapshot.data!['data'][item]['blog_id']}');
-              //           //     Container(
-              //           //   child: Center(child: Text(item.toString())),
-              //           //   color: Colors.green,
-              //           // ),
-              //           NeumorphicButton(
-              //     style: NeumorphicStyle(
-              //       shape: NeumorphicShape.flat,
-              //       // boxShape:
-              //       //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-              //       // boxShape: NeumorphicBoxShape.circle(),
-              //       color: Colors.white,
-              //     ),
-              //     padding: EdgeInsets.all(0),
-              //     child: Container(
-              //       height: 20,
-              //       child: Card(
-              //         margin: EdgeInsets.only(
-              //           top: 10.0,
-              //           bottom: 10.0,
-              //         ),
-              //         elevation: 6.0,
-              //         // shadowColor: Colors.redAccent,
-              //         // shape: RoundedRectangleBorder(
-              //         //     // borderRadius: BorderRadius.circular(30.0),
-              //         //     ),
-              //         child: ClipRRect(
-              //           borderRadius: BorderRadius.all(
-              //             Radius.circular(3.0),
-              //           ),
-              //           child: Stack(
-              //             children: <Widget>[
-              //               Image.network(
-              //                 snapshot.data!['data'][item]['blog_images'] !=
-              //                         null
-              //                     ? snapshot.data!['data'][item]['blog_images']
-              //                         [0]['blogi_path_name']
-              //                     : '${Global.networkImage}',
-              //                 fit: BoxFit.cover,
-              //                 width: double.infinity,
-              //               ),
-              //               Center(
-              //                 child: Text(
-              //                   // '${titles[_currentIndex]}',
-              //                   '${snapshot.data!['data'][item]['blog_name']}',
-              //                   style: TextStyle(
-              //                     fontSize: 24.0,
-              //                     fontWeight: FontWeight.bold,
-              //                     backgroundColor: Colors.black45,
-              //                     color: Colors.white,
-              //                   ),
-              //                 ),
-              //               ),
-              //             ],
-              //           ),
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // );
             } else if (snapshot.hasError) {
               return Center(
                   child: Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
@@ -477,18 +390,23 @@ class _award_pageState extends State<award_page> {
       );
     }
 
-    Widget titleMenus() {
-      return Padding(
-        padding: const EdgeInsets.all(10),
-        child: Container(
-          margin: EdgeInsets.only(top: 30, left: 5),
-          child: Text(
-            'รางวัล',
-            style: primaryTextStyle.copyWith(fontSize: 20, fontWeight: medium),
-          ),
-        ),
-      );
-    }
+    // Widget titleMenus() {
+    //   return Padding(
+    //     padding: const EdgeInsets.all(10),
+    //     child: Container(
+    //       margin: EdgeInsets.only(top: 30, left: 5),
+    //       child: Text(
+    //         'รางวัล',
+    //         style: TextStyle(
+    //           fontSize: 20.0,
+    //           fontWeight: FontWeight.bold,
+    //           // backgroundColor: Colors.black45,
+    //           color: ThemeBc.textblack,
+    //         ),
+    //       ),
+    //     ),
+    //   );
+    // }
 
     Widget titleMenus1() {
       return Container(
@@ -498,7 +416,12 @@ class _award_pageState extends State<award_page> {
         ),
         child: Text(
           'รางวัลทั้งหมด',
-          style: primaryTextStyle.copyWith(fontSize: 20, fontWeight: medium),
+          style: TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+            // backgroundColor: Colors.black45,
+            color: ThemeBc.textblack,
+          ),
         ),
       );
     }

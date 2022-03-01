@@ -88,8 +88,12 @@ class _menu_pangState extends State<menu_pang> {
       child: Padding(
         padding: const EdgeInsets.all(0),
         child: Drawer(
-          backgroundColor: Colors.white,
           child: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    colors: [Colors.orange, Colors.pinkAccent],
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft)),
             child: ListView(
               children: [
                 Container(
@@ -108,342 +112,341 @@ class _menu_pangState extends State<menu_pang> {
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Container(
-                                          child: Padding(
-                                        padding: const EdgeInsets.all(0),
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                              color: ThemeBc.white,
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                10,
-                                              ),
-                                              boxShadow: []),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              // mainAxisAlignment:
-                                              //     MainAxisAlignment.spaceAround,
-                                              children: [
-                                                SizedBox(height: 5),
-                                                Padding(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            // mainAxisAlignment:
+                                            //     MainAxisAlignment.spaceAround,
+                                            children: [
+                                              SizedBox(height: 5),
+                                              Container(
+                                                child: Padding(
                                                   padding:
                                                       const EdgeInsets.all(8.0),
-                                                  child: Container(
-                                                    child: Column(
-                                                      children: [
-                                                        SizedBox(height: 18),
-                                                        Center(
-                                                          child: LocaleText(
-                                                            'ผู้ชม',
-                                                            style: TextStyle(
-                                                              fontSize: 16,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              color:
-                                                                  ThemeBc.black,
-                                                            ),
+                                                  child: Column(
+                                                    children: [
+                                                      SizedBox(height: 18),
+                                                      Center(
+                                                        child: LocaleText(
+                                                          'ผู้ชม',
+                                                          style: TextStyle(
+                                                            fontSize: 16,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color:
+                                                                ThemeBc.black,
                                                           ),
                                                         ),
-                                                      ],
-                                                    ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
-                                                SizedBox(height: 150),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(2.0),
-                                                  child: Container(
-                                                    decoration: BoxDecoration(
-                                                        color: ThemeBc.black,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(
-                                                          20,
-                                                        ),
-                                                        boxShadow: []),
-                                                    height: 50,
-                                                    child: ListTile(
-                                                      leading: Icon(
-                                                        Icons.spellcheck,
-                                                        color: ThemeBc.white,
+                                              ),
+                                              SizedBox(height: 50),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(2.0),
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                      color: ThemeBc.white,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                        10,
                                                       ),
-                                                      title: LocaleText(
-                                                        'เปลี่ยนภาษา',
-                                                        style: TextStyle(
-                                                          fontSize: 15.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          // backgroundColor: Colors.black45,
-                                                          color: Colors.white,
-                                                        ),
+                                                      boxShadow: []),
+                                                  height: 50,
+                                                  child: ListTile(
+                                                    leading: Icon(
+                                                      Icons.spellcheck,
+                                                      color: ThemeBc.black,
+                                                    ),
+                                                    title: LocaleText(
+                                                      'เปลี่ยนภาษา',
+                                                      style: TextStyle(
+                                                        fontSize: 15.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        // backgroundColor: Colors.black45,
+                                                        color: Colors.black,
                                                       ),
-                                                      trailing: Icon(
-                                                        Icons.double_arrow,
-                                                        color: ThemeBc.white,
-                                                      ),
+                                                    ),
+                                                    trailing: Icon(
+                                                      Icons.double_arrow,
+                                                      color: ThemeBc.black,
+                                                    ),
 
-                                                      //  iconColor: Colors.white,
-                                                      onTap: () {
-                                                        showDialog(
-                                                          context: context,
-                                                          builder: (context) {
-                                                            return AlertDialog(
-                                                              shape: RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      new BorderRadius
-                                                                              .circular(
-                                                                          30)),
-                                                              // shape: CircleBorder(),
-                                                              // elevation: 100,
-                                                              content:
-                                                                  Container(
-                                                                height: 180,
-                                                                child: Column(
-                                                                  children: [
-                                                                    SizedBox(
-                                                                        height:
-                                                                            20),
-                                                                    Column(
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .center,
-                                                                      children: [
-                                                                        InkWell(
-                                                                          onTap:
-                                                                              () {
-                                                                            LocaleNotifier.of(context)!.change('th');
-                                                                            Navigator.pushNamedAndRemoveUntil(
-                                                                                context,
-                                                                                '/home_page',
-                                                                                (route) => false);
-                                                                          },
+                                                    //  iconColor: Colors.white,
+                                                    onTap: () {
+                                                      showDialog(
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return AlertDialog(
+                                                            backgroundColor:
+                                                                Colors.white,
+                                                            shape: RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    new BorderRadius
+                                                                            .circular(
+                                                                        30)),
+                                                            // shape: CircleBorder(
+                                                            //     side: BorderSide
+                                                            //         .none),
+                                                            // elevation: 100,
+                                                            content: Container(
+                                                              height: 180,
+                                                              child: Column(
+                                                                children: [
+                                                                  SizedBox(
+                                                                      height:
+                                                                          20),
+                                                                  Column(
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .center,
+                                                                    children: [
+                                                                      InkWell(
+                                                                        onTap:
+                                                                            () {
+                                                                          LocaleNotifier.of(context)!
+                                                                              .change('th');
+                                                                          Navigator.pushNamedAndRemoveUntil(
+                                                                              context,
+                                                                              '/home_page',
+                                                                              (route) => false);
+                                                                        },
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              40,
+                                                                          width:
+                                                                              250,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color:
+                                                                                ThemeBc.background,
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(
+                                                                              10,
+                                                                            ),
+                                                                          ),
                                                                           child:
-                                                                              Container(
-                                                                            height:
-                                                                                40,
-                                                                            width:
-                                                                                250,
-                                                                            decoration: BoxDecoration(
-                                                                                color: ThemeBc.white,
-                                                                                borderRadius: BorderRadius.circular(
-                                                                                  20,
-                                                                                ),
-                                                                                boxShadow: [
-                                                                                  BoxShadow(color: Colors.black.withOpacity(0.5), offset: Offset(2, 2), blurRadius: 7, spreadRadius: 1.0),
-                                                                                ]),
+                                                                              Padding(
+                                                                            padding:
+                                                                                const EdgeInsets.all(8.0),
                                                                             child:
-                                                                                Padding(
-                                                                              padding: const EdgeInsets.all(8.0),
-                                                                              child: Center(
-                                                                                child: Text(
-                                                                                  'ภาษาไทย',
-                                                                                  style: TextStyle(
-                                                                                    fontSize: 20.0,
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                    // backgroundColor: Colors.black45,
-                                                                                    color: ThemeBc.black,
-                                                                                  ),
+                                                                                Center(
+                                                                              child: Text(
+                                                                                'ภาษาไทย',
+                                                                                style: TextStyle(
+                                                                                  fontSize: 20.0,
+                                                                                  fontWeight: FontWeight.bold,
+                                                                                  // backgroundColor: Colors.black45,
+                                                                                  color: ThemeBc.textwhite,
                                                                                 ),
                                                                               ),
                                                                             ),
                                                                           ),
                                                                         ),
-                                                                        SizedBox(
-                                                                            height:
-                                                                                10),
-                                                                        InkWell(
-                                                                          onTap:
-                                                                              () {
-                                                                            LocaleNotifier.of(context)!.change('en');
-                                                                            Navigator.pushNamedAndRemoveUntil(
-                                                                                context,
-                                                                                '/home_page',
-                                                                                (route) => false);
-                                                                          },
+                                                                      ),
+                                                                      SizedBox(
+                                                                          height:
+                                                                              10),
+                                                                      InkWell(
+                                                                        onTap:
+                                                                            () {
+                                                                          LocaleNotifier.of(context)!
+                                                                              .change('en');
+                                                                          Navigator.pushNamedAndRemoveUntil(
+                                                                              context,
+                                                                              '/home_page',
+                                                                              (route) => false);
+                                                                        },
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              40,
+                                                                          width:
+                                                                              250,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color:
+                                                                                ThemeBc.background,
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(
+                                                                              10,
+                                                                            ),
+                                                                          ),
                                                                           child:
-                                                                              Container(
-                                                                            height:
-                                                                                40,
-                                                                            width:
-                                                                                250,
-                                                                            decoration: BoxDecoration(
-                                                                                color: ThemeBc.white,
-                                                                                borderRadius: BorderRadius.circular(
-                                                                                  20,
-                                                                                ),
-                                                                                boxShadow: [
-                                                                                  BoxShadow(color: Colors.black.withOpacity(0.5), offset: Offset(2, 2), blurRadius: 7, spreadRadius: 1.0),
-                                                                                ]),
+                                                                              Padding(
+                                                                            padding:
+                                                                                const EdgeInsets.all(8.0),
                                                                             child:
-                                                                                Padding(
-                                                                              padding: const EdgeInsets.all(8.0),
-                                                                              child: Center(
-                                                                                child: Text(
-                                                                                  'English',
-                                                                                  style: TextStyle(
-                                                                                    fontSize: 20.0,
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                    // backgroundColor: Colors.black45,
-                                                                                    color: ThemeBc.black,
-                                                                                  ),
+                                                                                Center(
+                                                                              child: Text(
+                                                                                'English',
+                                                                                style: TextStyle(
+                                                                                  fontSize: 20.0,
+                                                                                  fontWeight: FontWeight.bold,
+                                                                                  // backgroundColor: Colors.black45,
+                                                                                  color: ThemeBc.textwhite,
                                                                                 ),
                                                                               ),
                                                                             ),
                                                                           ),
                                                                         ),
-                                                                        SizedBox(
-                                                                            height:
-                                                                                10),
-                                                                        InkWell(
-                                                                          onTap:
-                                                                              () {
-                                                                            LocaleNotifier.of(context)!.change('zh');
-                                                                            Navigator.pushNamedAndRemoveUntil(
-                                                                                context,
-                                                                                '/home_page',
-                                                                                (route) => false);
-                                                                          },
+                                                                      ),
+                                                                      SizedBox(
+                                                                          height:
+                                                                              10),
+                                                                      InkWell(
+                                                                        onTap:
+                                                                            () {
+                                                                          LocaleNotifier.of(context)!
+                                                                              .change('zh');
+                                                                          Navigator.pushNamedAndRemoveUntil(
+                                                                              context,
+                                                                              '/home_page',
+                                                                              (route) => false);
+                                                                        },
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              40,
+                                                                          width:
+                                                                              250,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color:
+                                                                                ThemeBc.background,
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(
+                                                                              10,
+                                                                            ),
+                                                                          ),
                                                                           child:
-                                                                              Container(
-                                                                            height:
-                                                                                40,
-                                                                            width:
-                                                                                250,
-                                                                            decoration: BoxDecoration(
-                                                                                color: ThemeBc.white,
-                                                                                borderRadius: BorderRadius.circular(
-                                                                                  20,
-                                                                                ),
-                                                                                boxShadow: [
-                                                                                  BoxShadow(color: Colors.black.withOpacity(0.5), offset: Offset(2, 2), blurRadius: 7, spreadRadius: 1.0),
-                                                                                ]),
+                                                                              Padding(
+                                                                            padding:
+                                                                                const EdgeInsets.all(8.0),
                                                                             child:
-                                                                                Padding(
-                                                                              padding: const EdgeInsets.all(8.0),
-                                                                              child: Center(
-                                                                                child: Text(
-                                                                                  '中国',
-                                                                                  style: TextStyle(
-                                                                                    fontSize: 20.0,
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                    // backgroundColor: Colors.black45,
-                                                                                    color: ThemeBc.black,
-                                                                                  ),
+                                                                                Center(
+                                                                              child: Text(
+                                                                                '中国',
+                                                                                style: TextStyle(
+                                                                                  fontSize: 20.0,
+                                                                                  fontWeight: FontWeight.bold,
+                                                                                  // backgroundColor: Colors.black45,
+                                                                                  color: ThemeBc.textwhite,
                                                                                 ),
                                                                               ),
                                                                             ),
                                                                           ),
                                                                         ),
-                                                                      ],
-                                                                    ),
-                                                                  ],
-                                                                ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ],
                                                               ),
-                                                            );
-                                                          },
-                                                        );
-                                                      },
-                                                    ),
+                                                            ),
+                                                          );
+                                                        },
+                                                      );
+                                                    },
                                                   ),
                                                 ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(2.0),
-                                                  child: Container(
-                                                    decoration: BoxDecoration(
-                                                        color: ThemeBc.black,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(
-                                                          20,
-                                                        ),
-                                                        boxShadow: []),
-                                                    height: 50,
-                                                    child: ListTile(
-                                                      leading: Icon(
-                                                        Icons.stairs,
-                                                        color: ThemeBc.white,
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(2.0),
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                      color: ThemeBc.white,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                        10,
                                                       ),
-                                                      title: LocaleText(
-                                                        'หน้าหลัก',
-                                                        style: TextStyle(
-                                                          fontSize: 15.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          // backgroundColor: Colors.black45,
-                                                          color: Colors.white,
-                                                        ),
-                                                      ),
-                                                      trailing: Icon(
-                                                        Icons.double_arrow,
-                                                        color: ThemeBc.white,
-                                                      ),
-                                                      selected:
-                                                          ModalRoute.of(context)
-                                                                      ?.settings
-                                                                      .name ==
-                                                                  '/home_page'
-                                                              ? true
-                                                              : false,
-                                                      //  iconColor: Colors.white,
-                                                      onTap: () {
-                                                        Navigator.of(context,
-                                                                rootNavigator:
-                                                                    true)
-                                                            .pushNamedAndRemoveUntil(
-                                                                '/home_page',
-                                                                (route) =>
-                                                                    false);
-                                                      },
+                                                      boxShadow: []),
+                                                  height: 50,
+                                                  child: ListTile(
+                                                    leading: Icon(
+                                                      Icons.stairs,
+                                                      color: ThemeBc.black,
                                                     ),
+                                                    title: LocaleText(
+                                                      'หน้าหลัก',
+                                                      style: TextStyle(
+                                                        fontSize: 15.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        // backgroundColor: Colors.black45,
+                                                        color: Colors.black,
+                                                      ),
+                                                    ),
+                                                    trailing: Icon(
+                                                      Icons.double_arrow,
+                                                      color: ThemeBc.black,
+                                                    ),
+                                                    selected:
+                                                        ModalRoute.of(context)
+                                                                    ?.settings
+                                                                    .name ==
+                                                                '/home_page'
+                                                            ? true
+                                                            : false,
+                                                    //  iconColor: Colors.white,
+                                                    onTap: () {
+                                                      Navigator.of(context,
+                                                              rootNavigator:
+                                                                  true)
+                                                          .pushNamedAndRemoveUntil(
+                                                              '/home_page',
+                                                              (route) => false);
+                                                    },
                                                   ),
                                                 ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(2.0),
-                                                  child: Container(
-                                                    decoration: BoxDecoration(
-                                                        color: ThemeBc.black,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(
-                                                          20,
-                                                        ),
-                                                        boxShadow: []),
-                                                    height: 50,
-                                                    child: ListTile(
-                                                      leading: Icon(
-                                                        Icons.logout,
-                                                        color: ThemeBc.white,
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(2.0),
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                      color: ThemeBc.white,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                        10,
                                                       ),
-                                                      title: LocaleText(
-                                                        'ออกจากระบบ',
-                                                        style: TextStyle(
-                                                          fontSize: 15.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          // backgroundColor: Colors.black45,
-                                                          color: Colors.white,
-                                                        ),
-                                                      ),
-                                                      trailing: Icon(
-                                                        Icons.double_arrow,
-                                                        color: ThemeBc.white,
-                                                      ),
-                                                      onTap: () {
-                                                        logout();
-                                                      },
+                                                      boxShadow: []),
+                                                  height: 50,
+                                                  child: ListTile(
+                                                    leading: Icon(
+                                                      Icons.logout,
+                                                      color: ThemeBc.black,
                                                     ),
+                                                    title: LocaleText(
+                                                      'ออกจากระบบ',
+                                                      style: TextStyle(
+                                                        fontSize: 15.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        // backgroundColor: Colors.black45,
+                                                        color: Colors.black,
+                                                      ),
+                                                    ),
+                                                    trailing: Icon(
+                                                      Icons.double_arrow,
+                                                      color: ThemeBc.black,
+                                                    ),
+                                                    onTap: () {
+                                                      logout();
+                                                    },
                                                   ),
                                                 ),
-                                              ],
-                                            ),
+                                              ),
+                                            ],
                                           ),
                                         ),
-                                      )),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -497,7 +500,7 @@ class _menu_pangState extends State<menu_pang> {
                                                     width: 300,
                                                     height: 500,
                                                     decoration: BoxDecoration(
-                                                        color: Colors.white,
+                                                        // color: Colors.white,
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(
@@ -544,143 +547,143 @@ class _menu_pangState extends State<menu_pang> {
                                                               ),
                                                             ),
                                                           ),
-                                                          SizedBox(height: 5),
-                                                          Row(
-                                                            children: [
-                                                              LocaleText(
-                                                                'ชื่อ',
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize: 16,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  color: ThemeBc
-                                                                      .black,
-                                                                ),
-                                                              ),
-                                                              Text(
-                                                                '${snapshot.data!['data'][index]['user_firstname']}' !=
-                                                                        null
-                                                                    ? '${snapshot.data!['data'][index]['user_firstname']}'
-                                                                    : _userObj[
-                                                                        "name"],
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize: 16,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  color: ThemeBc
-                                                                      .black,
-                                                                ),
-                                                              )
-                                                            ],
-                                                          ),
-                                                          SizedBox(height: 5),
-                                                          Row(
-                                                            children: [
-                                                              LocaleText(
-                                                                'นามสกุล',
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize: 16,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  color: ThemeBc
-                                                                      .black,
-                                                                ),
-                                                              ),
-                                                              Container(
-                                                                child: Column(
-                                                                  children: [
-                                                                    Text(
-                                                                      '${snapshot.data!['data'][index]['user_lastname']}' !=
-                                                                              null
-                                                                          ? '${snapshot.data!['data'][index]['user_lastname']}'
-                                                                          : _userObj[
-                                                                              "user_lastname"],
-                                                                      style:
-                                                                          TextStyle(
-                                                                        fontSize:
-                                                                            16,
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                        color: ThemeBc
-                                                                            .black,
-                                                                      ),
-                                                                    )
-                                                                    // Text(
-                                                                    //   ' : ${snapshot.data!['data'][index]['user_lastname']}',
-                                                                    //   style: TextStyle(
-                                                                    //     fontSize: 16,
-                                                                    //     fontWeight:
-                                                                    //         FontWeight.bold,
-                                                                    //     color:
-                                                                    //         ThemeBc.black,
-                                                                    //   ),
-                                                                    // ),
-                                                                  ],
-                                                                ),
-                                                              )
-                                                            ],
-                                                          ),
-                                                          SizedBox(height: 5),
-                                                          Column(
-                                                            children: [
-                                                              Container(
-                                                                height: 60,
-                                                                width: 260,
-                                                                child: ListView(
-                                                                  children: [
-                                                                    LocaleText(
-                                                                      'อีเมล',
-                                                                      style:
-                                                                          TextStyle(
-                                                                        fontSize:
-                                                                            16,
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                        color: ThemeBc
-                                                                            .black,
-                                                                      ),
+                                                          SizedBox(height: 10),
+                                                          Container(
+                                                            decoration:
+                                                                BoxDecoration(
+                                                                    color: ThemeBc
+                                                                        .white,
+                                                                    borderRadius:
+                                                                        BorderRadius
+                                                                            .circular(
+                                                                      10,
                                                                     ),
-                                                                    SizedBox(
+                                                                    boxShadow: []),
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child: Column(
+                                                                children: [
+                                                                  Row(
+                                                                    children: [
+                                                                      LocaleText(
+                                                                        'ชื่อ',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              16,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          color:
+                                                                              ThemeBc.black,
+                                                                        ),
+                                                                      ),
+                                                                      Text(
+                                                                        ' ${snapshot.data!['data'][index]['user_firstname']}' !=
+                                                                                null
+                                                                            ? '${snapshot.data!['data'][index]['user_firstname']}'
+                                                                            : _userObj["name"],
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              16,
+                                                                          color:
+                                                                              ThemeBc.black,
+                                                                        ),
+                                                                      )
+                                                                    ],
+                                                                  ),
+                                                                  Row(
+                                                                    children: [
+                                                                      LocaleText(
+                                                                        'นามสกุล',
+                                                                        style:
+                                                                            TextStyle(
+                                                                          fontSize:
+                                                                              16,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          color:
+                                                                              ThemeBc.black,
+                                                                        ),
+                                                                      ),
+                                                                      Container(
+                                                                        child:
+                                                                            Column(
+                                                                          children: [
+                                                                            Text(
+                                                                              '${snapshot.data!['data'][index]['user_lastname']}' != null ? '${snapshot.data!['data'][index]['user_lastname']}' : _userObj["user_lastname"],
+                                                                              style: TextStyle(
+                                                                                fontSize: 16,
+                                                                                color: ThemeBc.black,
+                                                                              ),
+                                                                            )
+                                                                            // Text(
+                                                                            //   ' : ${snapshot.data!['data'][index]['user_lastname']}',
+                                                                            //   style: TextStyle(
+                                                                            //     fontSize: 16,
+                                                                            //     fontWeight:
+                                                                            //         FontWeight.bold,
+                                                                            //     color:
+                                                                            //         ThemeBc.black,
+                                                                            //   ),
+                                                                            // ),
+                                                                          ],
+                                                                        ),
+                                                                      )
+                                                                    ],
+                                                                  ),
+                                                                  SizedBox(
+                                                                      height:
+                                                                          5),
+                                                                  Column(
+                                                                    children: [
+                                                                      Container(
                                                                         height:
-                                                                            5),
-                                                                    Text(
-                                                                      '${snapshot.data!['data'][index]['user_email']}' !=
-                                                                              null
-                                                                          ? '${snapshot.data!['data'][index]['user_email']}'
-                                                                          : _userObj[
-                                                                              "user_email"],
-                                                                      style:
-                                                                          TextStyle(
-                                                                        fontSize:
-                                                                            16,
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                        color: ThemeBc
-                                                                            .black,
-                                                                      ),
-                                                                    ),
+                                                                            60,
+                                                                        width:
+                                                                            260,
+                                                                        child:
+                                                                            ListView(
+                                                                          children: [
+                                                                            LocaleText(
+                                                                              'อีเมล',
+                                                                              style: TextStyle(
+                                                                                fontSize: 16,
+                                                                                fontWeight: FontWeight.bold,
+                                                                                color: ThemeBc.black,
+                                                                              ),
+                                                                            ),
+                                                                            SizedBox(height: 5),
+                                                                            Text(
+                                                                              '${snapshot.data!['data'][index]['user_email']}' != null ? '${snapshot.data!['data'][index]['user_email']}' : _userObj["user_email"],
+                                                                              style: TextStyle(
+                                                                                fontSize: 16,
+                                                                                color: ThemeBc.black,
+                                                                              ),
+                                                                            ),
 
-                                                                    // Text(
-                                                                    //   ' : ${snapshot.data!['data'][index]['user_email']}',
-                                                                    //   style: TextStyle(
-                                                                    //     fontSize: 16,
-                                                                    //     fontWeight:
-                                                                    //         FontWeight.bold,
-                                                                    //     color:
-                                                                    //         ThemeBc.black,
-                                                                    //   ),
-                                                                    // ),
-                                                                  ],
-                                                                ),
-                                                              )
-                                                            ],
+                                                                            // Text(
+                                                                            //   ' : ${snapshot.data!['data'][index]['user_email']}',
+                                                                            //   style: TextStyle(
+                                                                            //     fontSize: 16,
+                                                                            //     fontWeight:
+                                                                            //         FontWeight.bold,
+                                                                            //     color:
+                                                                            //         ThemeBc.black,
+                                                                            //   ),
+                                                                            // ),
+                                                                          ],
+                                                                        ),
+                                                                      )
+                                                                    ],
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
                                                           ),
+                                                          SizedBox(height: 5),
                                                           SizedBox(height: 20),
                                                           Padding(
                                                             padding:
@@ -690,11 +693,11 @@ class _menu_pangState extends State<menu_pang> {
                                                               decoration:
                                                                   BoxDecoration(
                                                                       color: ThemeBc
-                                                                          .black,
+                                                                          .white,
                                                                       borderRadius:
                                                                           BorderRadius
                                                                               .circular(
-                                                                        20,
+                                                                        10,
                                                                       ),
                                                                       boxShadow: []),
                                                               height: 50,
@@ -702,7 +705,7 @@ class _menu_pangState extends State<menu_pang> {
                                                                 leading: Icon(
                                                                   Icons.stairs,
                                                                   color: ThemeBc
-                                                                      .white,
+                                                                      .black,
                                                                 ),
                                                                 title:
                                                                     LocaleText(
@@ -715,15 +718,15 @@ class _menu_pangState extends State<menu_pang> {
                                                                         FontWeight
                                                                             .bold,
                                                                     // backgroundColor: Colors.black45,
-                                                                    color: Colors
-                                                                        .white,
+                                                                    color: ThemeBc
+                                                                        .black,
                                                                   ),
                                                                 ),
                                                                 trailing: Icon(
                                                                   Icons
                                                                       .double_arrow,
                                                                   color: ThemeBc
-                                                                      .white,
+                                                                      .black,
                                                                 ),
                                                                 selected: ModalRoute.of(context)
                                                                             ?.settings
@@ -753,11 +756,11 @@ class _menu_pangState extends State<menu_pang> {
                                                               decoration:
                                                                   BoxDecoration(
                                                                       color: ThemeBc
-                                                                          .black,
+                                                                          .white,
                                                                       borderRadius:
                                                                           BorderRadius
                                                                               .circular(
-                                                                        20,
+                                                                        10,
                                                                       ),
                                                                       boxShadow: []),
                                                               height: 50,
@@ -766,7 +769,7 @@ class _menu_pangState extends State<menu_pang> {
                                                                   Icons
                                                                       .settings,
                                                                   color: ThemeBc
-                                                                      .white,
+                                                                      .black,
                                                                 ),
                                                                 title:
                                                                     LocaleText(
@@ -780,14 +783,14 @@ class _menu_pangState extends State<menu_pang> {
                                                                             .bold,
                                                                     // backgroundColor: Colors.black45,
                                                                     color: Colors
-                                                                        .white,
+                                                                        .black,
                                                                   ),
                                                                 ),
                                                                 trailing: Icon(
                                                                   Icons
                                                                       .double_arrow,
                                                                   color: ThemeBc
-                                                                      .white,
+                                                                      .black,
                                                                 ),
                                                                 selected: ModalRoute.of(context)
                                                                             ?.settings
@@ -816,18 +819,18 @@ class _menu_pangState extends State<menu_pang> {
                                                               decoration:
                                                                   BoxDecoration(
                                                                       color: ThemeBc
-                                                                          .black,
+                                                                          .white,
                                                                       borderRadius:
                                                                           BorderRadius
                                                                               .circular(
-                                                                        20,
+                                                                        10,
                                                                       ),
                                                                       boxShadow: [
                                                                     BoxShadow(
                                                                         color: Colors
                                                                             .black
                                                                             .withOpacity(
-                                                                                0.5),
+                                                                                0.2),
                                                                         offset: Offset(
                                                                             2,
                                                                             4),
@@ -841,7 +844,7 @@ class _menu_pangState extends State<menu_pang> {
                                                                 leading: Icon(
                                                                   Icons.logout,
                                                                   color: ThemeBc
-                                                                      .white,
+                                                                      .black,
                                                                 ),
                                                                 title:
                                                                     LocaleText(
@@ -855,14 +858,14 @@ class _menu_pangState extends State<menu_pang> {
                                                                             .bold,
                                                                     // backgroundColor: Colors.black45,
                                                                     color: Colors
-                                                                        .white,
+                                                                        .black,
                                                                   ),
                                                                 ),
                                                                 trailing: Icon(
                                                                   Icons
                                                                       .double_arrow,
                                                                   color: ThemeBc
-                                                                      .white,
+                                                                      .black,
                                                                 ),
                                                                 onTap: () {
                                                                   logout();

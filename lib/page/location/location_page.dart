@@ -271,16 +271,11 @@ class _location_page extends State<location_page> {
                           decoration: BoxDecoration(
                               color: secondaryTextColor,
                               borderRadius: BorderRadius.circular(
-                                30,
+                                10,
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
-                                    offset: Offset(2, 2),
-                                    blurRadius: 7,
-                                    spreadRadius: 1.0),
-                                BoxShadow(
-                                    color: Colors.black.withOpacity(0.5),
+                                    color: Colors.black.withOpacity(0.1),
                                     offset: Offset(2, 4),
                                     blurRadius: 7.0,
                                     spreadRadius: 1.0),
@@ -297,34 +292,20 @@ class _location_page extends State<location_page> {
                                     SizedBox(height: 10),
                                     Text(
                                       '${snapshot.data!['data'][index]['travel_name']}',
-                                      style: primaryTextStyle.copyWith(
-                                          fontSize: 18, fontWeight: medium),
+                                      style: TextStyle(
+                                        fontSize: 18.0,
+                                        fontWeight: FontWeight.bold,
+                                        // backgroundColor: Colors.black45,
+                                        color: ThemeBc.textblack,
+                                      ),
                                     ),
                                   ],
                                 ),
                                 Container(
-                                  decoration: BoxDecoration(
-                                      color: ThemeBc.black,
-                                      borderRadius: BorderRadius.circular(
-                                        30,
-                                      ),
-                                      boxShadow: [
-                                        BoxShadow(
-                                            color: Colors.grey.withOpacity(0.5),
-                                            offset: Offset(2, 2),
-                                            blurRadius: 7,
-                                            spreadRadius: 1.0),
-                                        BoxShadow(
-                                            color:
-                                                Colors.black.withOpacity(0.5),
-                                            offset: Offset(2, 4),
-                                            blurRadius: 7.0,
-                                            spreadRadius: 1.0),
-                                      ]),
                                   child: IconButton(
                                     icon: Icon(
                                       Icons.maps_home_work,
-                                      color: ThemeBc.white,
+                                      color: ThemeBc.black,
                                       size: 30,
                                     ),
                                     tooltip: 'Show Snackbar',

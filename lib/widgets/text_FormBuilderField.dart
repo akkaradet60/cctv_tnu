@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
 import '../page/global/style/global.dart';
@@ -19,19 +20,11 @@ class FormBuilderFieldText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(
-            10,
-          ),
-          boxShadow: [
-            BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                offset: Offset(2, 4),
-                blurRadius: 7.0,
-                spreadRadius: 1.0),
-          ]),
+    return NeumorphicButton(
+      style: const NeumorphicStyle(
+        shape: NeumorphicShape.flat,
+        color: ThemeBc.white,
+      ),
       child: Padding(
         padding: const EdgeInsets.all(0),
         child: Column(
@@ -41,17 +34,12 @@ class FormBuilderFieldText extends StatelessWidget {
                 name: name,
                 initialValue: initialValue,
                 maxLines: 1,
-                keyboardType: TextInputType.emailAddress,
+                // keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
-                  helperText: labelText,
-                  suffixIcon: Icon(icon),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: ThemeBc.black),
-                  ),
                   // labelText: 'Email',
                   hintText: labelText,
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: ThemeBc.white,
                 ),
               ),
             ),

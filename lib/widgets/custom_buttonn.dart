@@ -22,18 +22,17 @@ class CustomButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(0),
       child: Container(
-        color: Colors.transparent,
         width: 342,
         height: 55,
         child: Container(
           decoration: BoxDecoration(
-              color: ThemeBc.black,
+              color: ThemeBc.background,
               borderRadius: BorderRadius.circular(
-                20,
+                10,
               ),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
+                    color: Colors.black.withOpacity(0.1),
                     offset: Offset(2, 2),
                     blurRadius: 7,
                     spreadRadius: 1.0),
@@ -48,9 +47,9 @@ class CustomButton extends StatelessWidget {
               primary: colorButton,
 
               // shadowColor: Colors.grey[700],
-              elevation: 30,
+              // elevation: 30,
               shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20))),
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
             ),
           ),
         ),

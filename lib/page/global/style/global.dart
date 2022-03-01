@@ -64,10 +64,16 @@ class ThemeBc {
   static const black = Color(0xff1B2836);
   static const green = Color(0xff02d667);
   static const greens = Colors.green;
-  static const background = Color(0xff1B2836);
+  // static const background = Color.fromARGB(255, 27, 40, 54);
+  static const background = Color(0xffd76302);
   static const textwhite = Colors.white;
   static const blue = Color(0xff512da8);
   static const textblack = Color(0xff1B2836);
+  static const grey = Color(0xFFeeeeee);
+  static const black54 = Colors.black54;
+  static const orangeAccent = Colors.orangeAccent;
+  static const pinkAccent = Colors.pinkAccent;
+  static const black54e = Color.fromARGB(204, 42, 39, 39);
 }
 
 TextStyle primaryTextStyle = GoogleFonts.poppins(

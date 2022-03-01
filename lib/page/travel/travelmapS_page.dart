@@ -102,7 +102,7 @@ class _travelmap_page extends State<travelmapS_page> {
           color: ThemeBc.white,
           child: Container(
             decoration: BoxDecoration(
-                color: ThemeBc.black,
+                color: ThemeBc.background,
                 borderRadius: BorderRadius.circular(
                   10,
                 ),
@@ -172,7 +172,7 @@ class _travelmap_page extends State<travelmapS_page> {
         ),
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.black,
+        backgroundColor: ThemeBc.background,
         title: Center(
           child: Text('ที่ท้องเที่ยวในมหาสารคาม'),
         ),
@@ -228,26 +228,6 @@ class _travelmap_page extends State<travelmapS_page> {
                           ),
                           MarkerLayerOptions(markers: [
                             Marker(
-                              point: LatLng(
-                                  16.186348810730625, 103.30025897021274),
-                              builder: (ctx) => IconButton(
-                                icon: Icon(
-                                  Icons.where_to_vote,
-                                ),
-                                tooltip: 'Show Snackbar',
-                                onPressed: () {
-                                  showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return AlertDialog(
-                                        content: Text(''),
-                                      );
-                                    },
-                                  );
-                                },
-                              ),
-                            ),
-                            Marker(
                               point:
                                   LatLng(16.1863488107307, 103.3002589702128),
                               builder: (ctx) => IconButton(
@@ -260,7 +240,7 @@ class _travelmap_page extends State<travelmapS_page> {
                                     context: context,
                                     builder: (context) {
                                       return AlertDialog(
-                                        content: Text(''),
+                                        content: Text('มหาสารคาม'),
                                       );
                                     },
                                   );

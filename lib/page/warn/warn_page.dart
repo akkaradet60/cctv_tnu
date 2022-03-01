@@ -345,37 +345,19 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           SizedBox(height: 18),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: secondaryTextColor,
-                                borderRadius: BorderRadius.circular(
-                                  10,
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.black.withOpacity(0.1),
-                                      offset: Offset(2, 4),
-                                      blurRadius: 7.0,
-                                      spreadRadius: 1.0),
-                                ]),
+
+                          NeumorphicButton(
+                            style: const NeumorphicStyle(
+                              shape: NeumorphicShape.flat,
+                              color: ThemeBc.white,
+                            ),
                             child: Padding(
                               padding: const EdgeInsets.all(0),
                               child: Container(
                                 child: FormBuilderDropdown(
                                   name: 'em_type',
-                                  decoration: const InputDecoration(
-                                    helperText: 'เลือกประเภทการแจ้งเหตุ',
-                                    suffixIcon: Icon(
-                                      Icons.list,
-                                    ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: ThemeBc.black),
-                                    ),
-                                    // labelText: 'Email',
-
-                                    filled: true,
-                                    fillColor: ThemeBc.white,
+                                  decoration: InputDecoration(
+                                    labelText: 'เลือกประเภทการแจ้งเหตุ',
                                   ),
                                   allowClear: true,
                                   hint: Text('เลือกประเภทการแจ้งเหตุ'),
@@ -392,38 +374,31 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                               ),
                             ),
                           ),
-                          SizedBox(height: 18),
+
                           FormBuilderFieldText(
                               name: 'em_owner',
                               labelText: 'ชื่อผู้แจ้ง',
                               icon: Icons.email,
                               initialValue: ''),
-                          SizedBox(height: 18),
+
                           FormBuilderFieldText(
                               name: 'em_phone',
                               labelText: 'เบอร์โทรศัพท์',
                               icon: Icons.safety_divider,
                               initialValue: ''),
-                          SizedBox(height: 18),
+
                           FormBuilderFieldText(
                               name: 'em_detail',
                               labelText: 'รายละเอียดเหตุการณ์',
                               icon: Icons.mail,
                               initialValue: ''),
                           SizedBox(height: 18),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: secondaryTextColor,
-                                borderRadius: BorderRadius.circular(
-                                  10,
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.black.withOpacity(0.1),
-                                      offset: Offset(2, 2),
-                                      blurRadius: 7,
-                                      spreadRadius: 1.0),
-                                ]),
+
+                          NeumorphicButton(
+                            style: const NeumorphicStyle(
+                              shape: NeumorphicShape.flat,
+                              color: ThemeBc.white,
+                            ),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: FormBuilderImagePicker(
@@ -433,11 +408,7 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                                 iconColor: Colors.black,
                                 decoration: InputDecoration(
                                   suffixIconColor: ThemeBc.black,
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(
-                                      10.0,
-                                    ),
-                                  ),
+                                  // border: OutlineInputBorder(),
                                   labelText: 'ภาพ',
                                   fillColor: Colors.white,
                                   filled: true,
@@ -481,28 +452,19 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                                   return Container(
                                     height: 600,
                                     child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Container(
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                                color: secondaryTextColor,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                  10,
-                                                ),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                      color: Colors.black
-                                                          .withOpacity(0.1),
-                                                      offset: Offset(2, 4),
-                                                      blurRadius: 7.0,
-                                                      spreadRadius: 1.0),
-                                                ]),
+                                          child: NeumorphicButton(
+                                            style: const NeumorphicStyle(
+                                              shape: NeumorphicShape.flat,
+                                              color: ThemeBc.white,
+                                            ),
                                             child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
+                                              padding: const EdgeInsets.all(0),
                                               child: Container(
-                                                height: 400,
+                                                height: 350,
                                                 child: Column(
                                                   children: [
                                                     Flexible(
@@ -619,116 +581,112 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                                           ),
                                         ),
                                         SizedBox(height: 20),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                              color: secondaryTextColor,
+                                        Text(
+                                          '      จุดเกิดเหตุ ',
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+                                            fontWeight: FontWeight.bold,
+                                            // backgroundColor: Colors.black45,
+                                            color: ThemeBc.black,
+                                          ),
+                                        ),
+                                        SizedBox(height: 5),
+                                        NeumorphicButton(
+                                          style: const NeumorphicStyle(
+                                            shape: NeumorphicShape.flat,
+                                            color: ThemeBc.white,
+                                          ),
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: ThemeBc.grey,
                                               borderRadius:
                                                   BorderRadius.circular(
                                                 10,
                                               ),
-                                              boxShadow: [
-                                                BoxShadow(
-                                                    color: Colors.black
-                                                        .withOpacity(0.1),
-                                                    offset: Offset(2, 4),
-                                                    blurRadius: 7.0,
-                                                    spreadRadius: 1.0),
-                                              ]),
-                                          height: 150,
-                                          child: FutureBuilder<
-                                              Map<String, dynamic>>(
-                                            future: mapdata(),
-                                            builder: (context, snapshot) {
-                                              // _road =
-                                              //     profile['road'];
-                                              if (snapshot.hasData) {
-                                                _country =
-                                                    snapshot.data!['country'];
-                                                _district = snapshot
-                                                        .data!['district'] ??
-                                                    '';
-                                                _elevation = snapshot
-                                                        .data!['elevation'] ??
-                                                    '';
-                                                _subdistrict = snapshot
-                                                        .data!['subdistrict'] ??
-                                                    '';
+                                            ),
+                                            height: 150,
+                                            child: FutureBuilder<
+                                                Map<String, dynamic>>(
+                                              future: mapdata(),
+                                              builder: (context, snapshot) {
+                                                // _road =
+                                                //     profile['road'];
+                                                if (snapshot.hasData) {
+                                                  _country =
+                                                      snapshot.data!['country'];
+                                                  _district = snapshot
+                                                          .data!['district'] ??
+                                                      '';
+                                                  _elevation = snapshot
+                                                          .data!['elevation'] ??
+                                                      '';
+                                                  _subdistrict = snapshot.data![
+                                                          'subdistrict'] ??
+                                                      '';
 
-                                                _geocode =
-                                                    snapshot.data!['geocode'] ??
-                                                        '';
-                                                _postcode = snapshot
-                                                        .data!['postcode'] ??
-                                                    '';
-                                                _province = snapshot
-                                                        .data!['province'] ??
-                                                    '';
-                                                _road =
-                                                    snapshot.data!['road'] ??
-                                                        '';
-                                                return Column(
-                                                  children: [
-                                                    Container(
-                                                        width: 400,
-                                                        height: 100,
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .all(8.0),
-                                                              child: Column(
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Text(
-                                                                    'ตำแหน่งของคุณตอนนี้ ',
-                                                                    style:
-                                                                        TextStyle(
-                                                                      fontSize:
-                                                                          15.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      // backgroundColor: Colors.black45,
-                                                                      color: ThemeBc
-                                                                          .black,
-                                                                    ),
-                                                                  ),
-                                                                  Text(
-                                                                    '${snapshot.data!['country'] ?? ''} ${snapshot.data!['province'] ?? ''} ${snapshot.data!['district'] ?? ''} ${snapshot.data!['subdistrict'] ?? ''} ',
-                                                                    style:
-                                                                        TextStyle(
-                                                                      fontSize:
-                                                                          15.0,
+                                                  _geocode = snapshot
+                                                          .data!['geocode'] ??
+                                                      '';
+                                                  _postcode = snapshot
+                                                          .data!['postcode'] ??
+                                                      '';
+                                                  _province = snapshot
+                                                          .data!['province'] ??
+                                                      '';
+                                                  _road =
+                                                      snapshot.data!['road'] ??
+                                                          '';
+                                                  return Column(
+                                                    children: [
+                                                      Container(
+                                                          width: 400,
+                                                          height: 100,
+                                                          child: Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        8.0),
+                                                                child: Column(
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Text(
+                                                                      '${snapshot.data!['country'] ?? ''} ${snapshot.data!['province'] ?? ''} ${snapshot.data!['district'] ?? ''} ${snapshot.data!['subdistrict'] ?? ''} ',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontSize:
+                                                                            15.0,
 
-                                                                      // backgroundColor: Colors.black45,
-                                                                      color: ThemeBc
-                                                                          .black,
+                                                                        // backgroundColor: Colors.black45,
+                                                                        color: ThemeBc
+                                                                            .black,
+                                                                      ),
                                                                     ),
-                                                                  ),
-                                                                ],
+                                                                  ],
+                                                                ),
                                                               ),
-                                                            ),
-                                                          ],
-                                                        )),
-                                                  ],
-                                                );
-                                                // Text('${snapshot.data!['country']}');
-                                              } else if (snapshot.hasError) {
-                                                return Center(
-                                                    child: Text(
-                                                        'เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
-                                              }
+                                                            ],
+                                                          )),
+                                                    ],
+                                                  );
+                                                  // Text('${snapshot.data!['country']}');
+                                                } else if (snapshot.hasError) {
+                                                  return Center(
+                                                      child: Text(
+                                                          'เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
+                                                }
 
-                                              return Center(
-                                                  child:
-                                                      CircularProgressIndicator());
-                                            },
+                                                return Center(
+                                                    child:
+                                                        CircularProgressIndicator());
+                                              },
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -806,8 +764,12 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                           child: Column(
                             children: [
                               W_C_Detali(
-                                name:
+                                name02:
                                     '${snapshot.data!['data'][index]['em_detail']}',
+                                name:
+                                    '${snapshot.data!['data'][index]['emt_name'] ?? '-'}',
+                                // name:
+                                //     '${snapshot.data!['data'][index]['em_detail']}',
                                 onPressed: () => Navigator.pushNamed(
                                     context, '/warndetail_page',
                                     arguments: {
@@ -815,6 +777,8 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                                           ['em_owner'],
                                       'em_detail': snapshot.data!['data'][index]
                                           ['em_detail'],
+                                      'emt_name': snapshot.data!['data'][index]
+                                          ['emt_name'],
                                       'em_images': snapshot.data!['data'][index]
                                                   ['em_images'] !=
                                               null
@@ -860,9 +824,8 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
         iconTheme: IconThemeData(
           color: ThemeBc.white, //change your color here
         ),
-        shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.black,
+        backgroundColor: ThemeBc.background,
         title: const LocaleText('แจ้งเหตุฉุกเฉิน',
             style: TextStyle(color: ThemeBc.white)),
         centerTitle: true,

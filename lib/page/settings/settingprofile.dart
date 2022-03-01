@@ -119,7 +119,7 @@ class _settingprofile extends State<settingprofile>
                                                               color: Colors
                                                                   .black
                                                                   .withOpacity(
-                                                                      0.5),
+                                                                      0.1),
                                                               offset:
                                                                   Offset(2, 2),
                                                               blurRadius: 7,
@@ -160,7 +160,7 @@ class _settingprofile extends State<settingprofile>
                                                 boxShadow: [
                                                   BoxShadow(
                                                       color: Colors.black
-                                                          .withOpacity(0.2),
+                                                          .withOpacity(0.1),
                                                       offset: Offset(2, 2),
                                                       blurRadius: 7,
                                                       spreadRadius: 1.0),
@@ -186,7 +186,7 @@ class _settingprofile extends State<settingprofile>
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                          color: Colors.black.withOpacity(0.2),
+                                          color: Colors.black.withOpacity(0.1),
                                           offset: Offset(2, 2),
                                           blurRadius: 7,
                                           spreadRadius: 1.0),
@@ -197,10 +197,6 @@ class _settingprofile extends State<settingprofile>
                                     color: ThemeBc.black,
                                     size: 24.0,
                                   ),
-                                  // Image.asset(
-                                  //   'assets/fi_home.png',
-                                  //   scale: 1,
-                                  // ),
                                   tooltip: 'Show Snackbar',
                                   onPressed: getImage,
                                 ),
@@ -230,22 +226,13 @@ class _settingprofile extends State<settingprofile>
                                   icon: Icons.description,
                                   initialValue: '${profile['user_email']}'),
                               const SizedBox(height: 10),
-                              const SizedBox(height: 10),
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: ThemeBc.white,
-                                    borderRadius: BorderRadius.circular(
-                                      20,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(0.2),
-                                          offset: Offset(2, 2),
-                                          blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                    ]),
+                              NeumorphicButton(
+                                style: const NeumorphicStyle(
+                                  shape: NeumorphicShape.flat,
+                                  color: ThemeBc.white,
+                                ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.all(0),
                                   child: FormBuilderDropdown(
                                     name: 'user_prov',
                                     initialValue: _myState,
@@ -256,11 +243,6 @@ class _settingprofile extends State<settingprofile>
                                     //         ? profile['user_prov']
                                     //         : _myState,
                                     decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(
-                                          20.0,
-                                        ),
-                                      ),
                                       labelText: 'เลือกจังหวัด',
                                     ),
                                     allowClear: true,
@@ -290,21 +272,13 @@ class _settingprofile extends State<settingprofile>
                                 ),
                               ),
                               const SizedBox(height: 10),
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: ThemeBc.white,
-                                    borderRadius: BorderRadius.circular(
-                                      20,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(0.2),
-                                          offset: Offset(2, 2),
-                                          blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                    ]),
+                              NeumorphicButton(
+                                style: const NeumorphicStyle(
+                                  shape: NeumorphicShape.flat,
+                                  color: ThemeBc.white,
+                                ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.all(0),
                                   child: FormBuilderDropdown(
                                     name: 'user_dis',
                                     initialValue: _myDis,
@@ -315,11 +289,6 @@ class _settingprofile extends State<settingprofile>
                                     //         ? profile['user_dis'].toString()
                                     //         : _myDis,
                                     decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(
-                                          20.0,
-                                        ),
-                                      ),
                                       labelText: 'เลือกอำเภอ',
                                     ),
                                     allowClear: true,
@@ -345,21 +314,13 @@ class _settingprofile extends State<settingprofile>
                                 ),
                               ),
                               const SizedBox(height: 10),
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: ThemeBc.white,
-                                    borderRadius: BorderRadius.circular(
-                                      20,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(0.2),
-                                          offset: Offset(2, 2),
-                                          blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                    ]),
+                              NeumorphicButton(
+                                style: const NeumorphicStyle(
+                                  shape: NeumorphicShape.flat,
+                                  color: ThemeBc.white,
+                                ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.all(0),
                                   child: FormBuilderDropdown(
                                     name: 'user_sub',
                                     initialValue: _mySub,
@@ -370,11 +331,6 @@ class _settingprofile extends State<settingprofile>
                                     //         ? profile['user_sub'].toString()
                                     //         : _mySub,
                                     decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(
-                                          20.0,
-                                        ),
-                                      ),
                                       labelText: 'เลือกตำบล',
                                     ),
                                     allowClear: true,
@@ -404,21 +360,13 @@ class _settingprofile extends State<settingprofile>
                                   icon: Icons.description,
                                   initialValue: '${profile['user_address']}'),
                               const SizedBox(height: 10),
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: ThemeBc.white,
-                                    borderRadius: BorderRadius.circular(
-                                      20,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(0.2),
-                                          offset: Offset(2, 2),
-                                          blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                    ]),
+                              NeumorphicButton(
+                                style: const NeumorphicStyle(
+                                  shape: NeumorphicShape.flat,
+                                  color: ThemeBc.white,
+                                ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.all(0),
                                   child: Container(
                                     child: FormBuilderTextField(
                                       initialValue: zip_code != null
@@ -433,15 +381,7 @@ class _settingprofile extends State<settingprofile>
                                       maxLines: 1,
                                       keyboardType: TextInputType.emailAddress,
                                       decoration: InputDecoration(
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(
-                                            20.0,
-                                          ),
-                                        ),
-                                        suffixIcon: Icon(Icons.description),
                                         labelText: 'รหัสไปรษณีย์',
-                                        fillColor: Colors.white,
-                                        filled: true,
                                       ),
                                     ),
                                   ),
@@ -479,11 +419,11 @@ class _settingprofile extends State<settingprofile>
                                     style: ElevatedButton.styleFrom(
                                       primary: ThemeBc.white,
                                       onPrimary: Colors.white,
-                                      shadowColor: Colors.grey[700],
-                                      elevation: 30,
+                                      // shadowColor: Colors.grey[700],
+                                      // elevation: 30,
                                       shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
-                                              Radius.circular(40))),
+                                              Radius.circular(10))),
                                     ),
                                   ),
                                 ),
@@ -510,12 +450,11 @@ class _settingprofile extends State<settingprofile>
         iconTheme: IconThemeData(
           color: ThemeBc.white, //change your color here
         ),
-        shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.black,
+        backgroundColor: ThemeBc.background,
         title: Column(
           children: [
-            Text('แก้ไขข้อมูลส่วนตัว'),
+            Center(child: Text('แก้ไขข้อมูลส่วนตัว')),
           ],
         ),
         actions: <Widget>[

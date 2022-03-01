@@ -81,7 +81,7 @@ class _message_pageState extends State<message_page> {
                       decoration: BoxDecoration(
                           color: ThemeBc.textblack,
                           borderRadius: BorderRadius.circular(
-                            20,
+                            10,
                           ),
                           boxShadow: [
                             BoxShadow(
@@ -167,7 +167,7 @@ class _message_pageState extends State<message_page> {
 
                         child: ClipRRect(
                           borderRadius: BorderRadius.all(
-                            Radius.circular(10.0),
+                            Radius.circular(5.0),
                           ),
                           child: ListView(
                             children: [
@@ -189,18 +189,18 @@ class _message_pageState extends State<message_page> {
                                     children: [
                                       SizedBox(height: 160),
                                       Container(
-                                        color: ThemeBc.black,
-                                        height: 40,
+                                        color: ThemeBc.background,
+                                        width: 370,
+                                        height: 100,
                                         child: ListView(
-                                          scrollDirection: Axis.horizontal,
                                           children: [
-                                            SizedBox(width: 10),
+                                            SizedBox(height: 10),
                                             Text(
                                               // '${titles[_currentIndex]}',
-                                              '${snapshot.data!['data'][item]['blog_name']}',
+                                              '  ${snapshot.data!['data'][item]['blog_name']}',
                                               style: TextStyle(
-                                                fontSize: 24.0,
-                                                fontWeight: FontWeight.bold,
+                                                fontSize: 18.0,
+                                                // fontWeight: FontWeight.bold,
                                                 // backgroundColor: Colors.black45,
                                                 color: ThemeBc.white,
                                               ),
@@ -219,7 +219,7 @@ class _message_pageState extends State<message_page> {
                     ),
                   );
                 }
-                ;
+
                 // return ListView.separated(
                 //     itemBuilder: (context, index) {
                 // return Text('3232');
@@ -377,11 +377,13 @@ class _message_pageState extends State<message_page> {
                                                               8.0),
                                                       child: Text(
                                                         '${snapshot.data!['data'][index]['blog_detail']}',
-                                                        style: primaryTextStyle
-                                                            .copyWith(
-                                                                fontSize: 15,
-                                                                fontWeight:
-                                                                    medium),
+                                                        style: TextStyle(
+                                                          fontSize: 15.0,
+
+                                                          // backgroundColor: Colors.black45,
+                                                          color:
+                                                              ThemeBc.textblack,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
@@ -455,12 +457,20 @@ class _message_pageState extends State<message_page> {
           iconTheme: IconThemeData(
             color: ThemeBc.white, //change your color here
           ),
-          shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
           title: Column(
             children: [
-              Center(child: const LocaleText('ข่าวสาร')),
+              Center(
+                  child: const LocaleText(
+                'ข่าวสาร',
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  // backgroundColor: Colors.black45,
+                  color: ThemeBc.textwhite,
+                ),
+              )),
             ],
           ),
           actions: <Widget>[

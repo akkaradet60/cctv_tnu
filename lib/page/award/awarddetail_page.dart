@@ -107,120 +107,123 @@ class _awarddetail_page extends State<awarddetail_page> {
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft)),
           child: Container(
-            color: ThemeBc.background,
             child: ListView(
               children: [
-                Container(
-                  child: Column(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                                colors: [Colors.white, Colors.white],
-                                begin: Alignment.topRight,
-                                end: Alignment.bottomLeft)),
-                        height: 300,
-                        width: 1000,
-                        child: FutureBuilder<Map<String, dynamic>>(
-                          future: getDataSlide(),
-                          builder: (context, snapshot) {
-                            if (snapshot.hasData) {
-                              // return ListView.separated(
-                              //     itemBuilder: (context, index) {
-                              // return Text('3232');
-                              return CarouselSlider.builder(
-                                itemCount: snapshot.data!['data'].length,
-                                options: CarouselOptions(
-                                  autoPlay: true,
-                                  enlargeCenterPage: true,
-                                  viewportFraction: 0.9,
-                                  aspectRatio: 2.0,
-                                  initialPage: 2,
-                                  onPageChanged: (index, reason) {
-                                    setState(
-                                      () {
-                                        _currentIndex = index;
-                                      },
-                                    );
-                                  },
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    child: FutureBuilder<Map<String, dynamic>>(
+                      future: getDataSlide(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          if (snapshot.data!['data'] == 'ไม่พบข้อมูล') {
+                            return Center(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: ThemeBc.textblack,
+                                    borderRadius: BorderRadius.circular(
+                                      20,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.5),
+                                          offset: Offset(2, 4),
+                                          blurRadius: 7.0,
+                                          spreadRadius: 1.0),
+                                    ]),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text('ไม่พบข้อมูล'),
                                 ),
-                                itemBuilder: (BuildContext context, int item,
-                                        int pageViewIndex) =>
+                              ),
+                            );
+                          } else {
+                            return CarouselSlider.builder(
+                              itemCount: snapshot.data!['data'].length,
+                              options: CarouselOptions(
+                                autoPlay: true,
+                                enlargeCenterPage: true,
+                                viewportFraction: 0.9,
+                                aspectRatio: 2.0,
+                                initialPage: 2,
+                                onPageChanged: (index, reason) {
+                                  setState(
+                                    () {
+                                      _currentIndex = index;
+                                    },
+                                  );
+                                },
+                              ),
+                              itemBuilder: (BuildContext context, int item,
+                                      int pageViewIndex) =>
 
-                                    // Text('${snapshot.data!['data'][item]['blog_id']}');
-                                    //     Container(
-                                    //   child: Center(child: Text(item.toString())),
-                                    //   color: Colors.green,
-                                    // ),
-                                    Card(
+                                  // Text('${snapshot.data!['data'][item]['blog_id']}');
+                                  //     Container(
+                                  //   child: Center(child: Text(item.toString())),
+                                  //   color: Colors.green,
+                                  // ),
+                                  NeumorphicButton(
+                                style: NeumorphicStyle(
+                                  shape: NeumorphicShape.flat,
+                                  // boxShape:
+                                  //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
+                                  // boxShape: NeumorphicBoxShape.circle(),
+                                  color: Colors.white,
+                                ),
+                                padding: EdgeInsets.all(0),
+                                child: InkWell(
+                                  // child: Card(
+                                  //   margin: EdgeInsets.only(
+                                  //     top: 10.0,
+                                  //     bottom: 10.0,
+                                  //   ),
+                                  //   elevation: 6.0,
+                                  // shadowColor: Colors.redAccent,
+                                  // shape: RoundedRectangleBorder(
+                                  //     // borderRadius: BorderRadius.circular(30.0),
+                                  //     ),
+
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.all(
-                                      Radius.circular(8.0),
+                                      Radius.circular(10.0),
                                     ),
-                                    child: Stack(
-                                      children: <Widget>[
-                                        Padding(
-                                          padding: const EdgeInsets.all(3.0),
-                                          child: Image.network(
-                                            productt['awardi_path_name'],
-                                            fit: BoxFit.cover,
-                                            width: double.infinity,
-                                          ),
+                                    child: ListView(
+                                      children: [
+                                        Stack(
+                                          children: <Widget>[
+                                            Image.network(
+                                              productt['awardi_path_name'],
+                                              fit: BoxFit.cover,
+                                              width: double.infinity,
+                                            ),
+                                            Column(
+                                              children: [
+                                                SizedBox(height: 160),
+                                              ],
+                                            ),
+                                          ],
                                         ),
-                                        // Center(
-                                        //   child: Text(
-                                        //     // '${titles[_currentIndex]}',
-                                        //     productt['awardi_path_name'],
-                                        //     style: TextStyle(
-                                        //       fontSize: 24.0,
-                                        //       fontWeight: FontWeight.bold,
-                                        //       backgroundColor: Colors.black45,
-                                        //       color: Colors.white,
-                                        //     ),
-                                        //   ),
-                                        // ),
                                       ],
                                     ),
                                   ),
                                 ),
-                                //     ListView(
-                                //   children: [
-                                //     ClipRRect(
-                                //       borderRadius: BorderRadius.all(
-                                //         Radius.circular(8.0),
-                                //       ),
-                                //       child: Stack(
-                                //         children: <Widget>[
-                                //           Image.network(
-                                //             productt['awardi_path_name'],
-                                //             fit: BoxFit.cover,
-                                //             width: double.infinity,
-                                //           ),
-                                //         ],
-                                //       ),
-                                //     ),
-                                //   ],
+                              ),
+                            );
+                          }
+                          ;
+                          // return ListView.separated(
+                          //     itemBuilder: (context, index) {
+                          // return Text('3232');
 
-                                //   //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                                //   // boxShape: NeumorphicBoxShape.circle(),
-                                // ),
+                        } else if (snapshot.hasError) {
+                          return Center(
+                              child: Text(
+                                  'เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
+                        }
 
-                                // shadowColor: Colors.redAccent,
-                                // shape: RoundedRectangleBorder(
-                                //blog_images//     // borderRadius: BorderRadius.circular(30.0),
-                                //     ),
-                              );
-                            } else if (snapshot.hasError) {
-                              return Center(
-                                  child: Text(
-                                      'เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
-                            }
-
-                            return Center(child: CircularProgressIndicator());
-                          },
-                        ),
-                      ),
-                    ],
+                        return Center(child: CircularProgressIndicator());
+                      },
+                    ),
                   ),
                 ),
                 Container(
@@ -234,55 +237,31 @@ class _awarddetail_page extends State<awarddetail_page> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Container(
-                              decoration: BoxDecoration(
-                                  color: ThemeBc.white,
-                                  borderRadius: BorderRadius.circular(
-                                    20,
-                                  ),
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        offset: Offset(2, 2),
-                                        blurRadius: 7,
-                                        spreadRadius: 1.0),
-                                    BoxShadow(
-                                        color: Colors.black.withOpacity(0.5),
-                                        offset: Offset(2, 4),
-                                        blurRadius: 7.0,
-                                        spreadRadius: 1.0),
-                                  ]),
                               width: 410,
                               height: 280,
                               child: ListView(
                                 children: [
-                                  Column(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Center(
-                                          child: Text(
-                                            'รางวัล : ${productt['award_name']}',
-                                            style: TextStyle(
-                                              fontSize: 15.0,
-                                              fontWeight: FontWeight.bold,
-                                              // backgroundColor: Colors.black45,
-                                              color: ThemeBc.black,
-                                            ),
-                                          ),
-                                        ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      '${productt['award_name']}',
+                                      style: TextStyle(
+                                        fontSize: 17.0,
+                                        fontWeight: FontWeight.bold,
+                                        // backgroundColor: Colors.black45,
+                                        color: ThemeBc.black,
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          'เนื้อหา : ${productt['award_detail']}',
-                                          style: TextStyle(
-                                            fontSize: 15.0,
-                                            fontWeight: FontWeight.bold,
-                                            color: ThemeBc.black,
-                                          ),
-                                        ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      '${productt['award_detail']}',
+                                      style: TextStyle(
+                                        fontSize: 15.0,
+                                        color: ThemeBc.black,
                                       ),
-                                    ],
+                                    ),
                                   ),
                                 ],
                               ),

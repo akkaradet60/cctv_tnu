@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:cctv_tun/widgets/Text_pane.dart';
@@ -44,13 +45,14 @@ class _travel_page extends State<travel_page> {
       throw Exception('$response.statusCode');
     }
   }
+
   /* void _incrementCounter() {
     setState(() {
       _counter++;
       _product = _product + _product1;
     });
   }*/
-
+  int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     travel = ModalRoute.of(context)!.settings.arguments;
@@ -89,10 +91,170 @@ class _travel_page extends State<travel_page> {
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
-                          height: 550,
+                          height: 400,
                           width: 400,
                           child: Column(
                             children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  child: FutureBuilder<Map<String, dynamic>>(
+                                    future: getDataSlide(),
+                                    builder: (context, snapshot) {
+                                      if (snapshot.hasData) {
+                                        if (snapshot.data!['data'] ==
+                                            'ไม่พบข้อมูล') {
+                                          return Center(
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                  color: ThemeBc.textblack,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                    10,
+                                                  ),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                        color: Colors.black
+                                                            .withOpacity(0.5),
+                                                        offset: Offset(2, 4),
+                                                        blurRadius: 7.0,
+                                                        spreadRadius: 1.0),
+                                                  ]),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Text('ไม่พบข้อมูล'),
+                                              ),
+                                            ),
+                                          );
+                                        } else {
+                                          return CarouselSlider.builder(
+                                            itemCount:
+                                                snapshot.data!['data'].length,
+                                            options: CarouselOptions(
+                                              autoPlay: true,
+                                              enlargeCenterPage: true,
+                                              viewportFraction: 0.9,
+                                              aspectRatio: 2.0,
+                                              initialPage: 2,
+                                              onPageChanged: (index, reason) {
+                                                setState(
+                                                  () {
+                                                    _currentIndex = index;
+                                                  },
+                                                );
+                                              },
+                                            ),
+                                            itemBuilder: (BuildContext context,
+                                                    int item,
+                                                    int pageViewIndex) =>
+
+                                                // Text('${snapshot.data!['data'][item]['blog_id']}');
+                                                //     Container(
+                                                //   child: Center(child: Text(item.toString())),
+                                                //   color: Colors.green,
+                                                // ),
+                                                NeumorphicButton(
+                                              style: NeumorphicStyle(
+                                                shape: NeumorphicShape.flat,
+                                                // boxShape:
+                                                //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
+                                                // boxShape: NeumorphicBoxShape.circle(),
+                                                color: Colors.white,
+                                              ),
+                                              padding: EdgeInsets.all(0),
+                                              child: InkWell(
+                                                onTap: () {
+                                                  Navigator.pushNamed(context,
+                                                      '/travelmap_page',
+                                                      arguments: {
+                                                        'travel_name': snapshot
+                                                                    .data![
+                                                                'data'][index]
+                                                            ['travel_name'],
+                                                        'travel_detail': snapshot
+                                                                    .data![
+                                                                'data'][index]
+                                                            ['travel_detail'],
+                                                        'travel_lat': snapshot
+                                                                    .data![
+                                                                'data'][index]
+                                                            ['travel_lat'],
+                                                        'travel_lng': snapshot
+                                                                    .data![
+                                                                'data'][index]
+                                                            ['travel_lng'],
+
+                                                        /*   'id': data[index].id,
+                                  'detail': data[index].detail,
+                                  'picture': data[index].picture,
+                                  'view': data[index].view,*/
+                                                      });
+                                                },
+                                                // child: Card(
+                                                //   margin: EdgeInsets.only(
+                                                //     top: 10.0,
+                                                //     bottom: 10.0,
+                                                //   ),
+                                                //   elevation: 6.0,
+                                                // shadowColor: Colors.redAccent,
+                                                // shape: RoundedRectangleBorder(
+                                                //     // borderRadius: BorderRadius.circular(30.0),
+                                                //     ),
+
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                    Radius.circular(5.0),
+                                                  ),
+                                                  child: ListView(
+                                                    children: [
+                                                      Stack(
+                                                        children: <Widget>[
+                                                          Image.network(
+                                                            snapshot.data!['data'][index]
+                                                                            [
+                                                                            'travel_images'][0]
+                                                                        [
+                                                                        'traveli_path_name'] !=
+                                                                    null
+                                                                ? Global.domainImage +
+                                                                    snapshot.data!['data']
+                                                                            [
+                                                                            index]['travel_images'][0]
+                                                                        [
+                                                                        'traveli_path_name']
+                                                                : '${Global.networkImage}',
+                                                            fit: BoxFit.cover,
+                                                            width:
+                                                                double.infinity,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        }
+
+                                        // return ListView.separated(
+                                        //     itemBuilder: (context, index) {
+                                        // return Text('3232');
+
+                                      } else if (snapshot.hasError) {
+                                        return Center(
+                                            child: Text(
+                                                'เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
+                                      }
+
+                                      return Center(
+                                          child: CircularProgressIndicator());
+                                    },
+                                  ),
+                                ),
+                              ),
                               InkWell(
                                 onTap: () {
                                   Navigator.pushNamed(
@@ -116,7 +278,7 @@ class _travel_page extends State<travel_page> {
                                         Stack(
                                           children: <Widget>[
                                             Container(
-                                              height: 500,
+                                              height: 350,
                                               child: ClipRRect(
                                                 borderRadius: BorderRadius.all(
                                                   Radius.circular(10.0),
@@ -145,31 +307,15 @@ class _travel_page extends State<travel_page> {
                                               children: [
                                                 SizedBox(height: 60),
                                                 Container(
-                                                  decoration: BoxDecoration(
-                                                      color: ThemeBc.black,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                        10,
-                                                      ),
-                                                      boxShadow: [
-                                                        BoxShadow(
-                                                            color: Colors.black
-                                                                .withOpacity(
-                                                                    0.5),
-                                                            offset:
-                                                                Offset(2, 2),
-                                                            blurRadius: 7,
-                                                            spreadRadius: 1.0),
-                                                      ]),
                                                   child: Padding(
                                                     padding:
                                                         const EdgeInsets.all(
                                                             8.0),
                                                     child: Text(
                                                       // '${titles[_currentIndex]}',
-                                                      'เที่ยว: ${snapshot.data!['data'][index]['travel_name']}',
+                                                      '${snapshot.data!['data'][index]['travel_name']}',
                                                       style: TextStyle(
-                                                        fontSize: 24.0,
+                                                        fontSize: 20.0,
                                                         fontWeight:
                                                             FontWeight.bold,
                                                         // backgroundColor: Colors.black45,
@@ -178,7 +324,7 @@ class _travel_page extends State<travel_page> {
                                                     ),
                                                   ),
                                                 ),
-                                                SizedBox(height: 210),
+                                                SizedBox(height: 50),
                                                 Container(
                                                   height: 170,
                                                   color: Colors.black54,
@@ -190,7 +336,7 @@ class _travel_page extends State<travel_page> {
                                                                 .all(8.0),
                                                         child: Text_pane(
                                                             text:
-                                                                'ที่นี้คือ : ${snapshot.data!['data'][index]['travel_detail']}',
+                                                                '  ${snapshot.data!['data'][index]['travel_detail']}',
                                                             color:
                                                                 ThemeBc.white,
                                                             fontSize: 15),
@@ -226,57 +372,6 @@ class _travel_page extends State<travel_page> {
       );
     }
 
-    // Widget titleMenus() {
-    //   return Padding(
-    //     padding: const EdgeInsets.all(10),
-    //     child: Container(
-    //       height: 60,
-    //       decoration: BoxDecoration(
-    //           color: ThemeBc.background,
-    //           borderRadius: BorderRadius.circular(
-    //             30,
-    //           ),
-    //           boxShadow: [
-    //             BoxShadow(
-    //                 color: Colors.grey.withOpacity(0.5),
-    //                 offset: Offset(2, 2),
-    //                 blurRadius: 7,
-    //                 spreadRadius: 1.0),
-    //             BoxShadow(
-    //                 color: Colors.black.withOpacity(0.5),
-    //                 offset: Offset(2, 4),
-    //                 blurRadius: 7.0,
-    //                 spreadRadius: 1.0),
-    //           ]),
-    //       child: Padding(
-    //         padding: const EdgeInsets.all(8.0),
-    //         child: Column(
-    //           children: [
-    //             Container(
-    //               child: Text(
-    //                 'แนะนำที่ท่องเที่ยวในมหาสารคาม',
-    //                 style: TextStyle(
-    //                   fontSize: 22.0,
-    //                   fontWeight: FontWeight.bold,
-    //                   // backgroundColor: Colors.black45,
-    //                   color: Colors.white,
-    //                 ),
-    //               ),
-    //             ),
-    //           ],
-    //         ),
-    //       ),
-    //     ),
-    //   );
-    // }
-
-    // late List<String> titles = [
-    //   ' 1 ',
-    //   ' 2 ',
-    //   ' 3 ',
-    //   ' 4 ',
-    //   ' 5',
-    // ];
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(

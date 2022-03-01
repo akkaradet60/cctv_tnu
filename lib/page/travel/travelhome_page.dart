@@ -26,7 +26,7 @@ class _productshome_page extends State<travelhome_page> {
             color: ThemeBc.white,
             child: Container(
               decoration: BoxDecoration(
-                  color: ThemeBc.black,
+                  color: ThemeBc.background,
                   borderRadius: BorderRadius.circular(
                     10,
                   ),
@@ -234,14 +234,7 @@ class _productshome_page extends State<travelhome_page> {
                                                   BorderRadius.circular(
                                                 10,
                                               ),
-                                              boxShadow: [
-                                                BoxShadow(
-                                                    color: Colors.black
-                                                        .withOpacity(0.5),
-                                                    offset: Offset(2, 2),
-                                                    blurRadius: 7,
-                                                    spreadRadius: 1.0),
-                                              ]),
+                                              boxShadow: []),
                                           child: Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Text(
@@ -393,12 +386,12 @@ class _productshome_page extends State<travelhome_page> {
                                                 10,
                                               ),
                                               boxShadow: [
-                                                BoxShadow(
-                                                    color: Colors.black
-                                                        .withOpacity(0.5),
-                                                    offset: Offset(2, 2),
-                                                    blurRadius: 7,
-                                                    spreadRadius: 1.0),
+                                                // BoxShadow(
+                                                //     color: Colors.black
+                                                //         .withOpacity(0.5),
+                                                //     offset: Offset(2, 2),
+                                                //     blurRadius: 7,
+                                                //     spreadRadius: 1.0),
                                               ]),
                                           child: Padding(
                                             padding: const EdgeInsets.all(8.0),
@@ -551,12 +544,12 @@ class _productshome_page extends State<travelhome_page> {
                                                 10,
                                               ),
                                               boxShadow: [
-                                                BoxShadow(
-                                                    color: Colors.black
-                                                        .withOpacity(0.5),
-                                                    offset: Offset(2, 2),
-                                                    blurRadius: 7,
-                                                    spreadRadius: 1.0),
+                                                // BoxShadow(
+                                                //     color: Colors.black
+                                                //         .withOpacity(0.5),
+                                                //     offset: Offset(2, 2),
+                                                //     blurRadius: 7,
+                                                //     spreadRadius: 1.0),
                                               ]),
                                           child: Padding(
                                             padding: const EdgeInsets.all(8.0),

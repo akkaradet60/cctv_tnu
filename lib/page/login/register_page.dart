@@ -102,7 +102,7 @@ class _RegisterPageState extends State<register_page> {
         body: Container(
       decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [Colors.white, Colors.white],
+              colors: [Colors.pinkAccent, Colors.orange],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft)),
       // decoration: const BoxDecoration(
@@ -131,232 +131,165 @@ class _RegisterPageState extends State<register_page> {
                       .always, //ถ้าไม่ใส่ต้อง submit ก่อนถึงจะตรวจสอบ validation
                   child: Column(
                     children: <Widget>[
-                      Container(
-                        decoration: BoxDecoration(
-                            color: secondaryTextColor,
-                            borderRadius: BorderRadius.circular(
-                              20,
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  offset: Offset(2, 2),
-                                  blurRadius: 7,
-                                  spreadRadius: 1.0),
-                              BoxShadow(
-                                  color: Colors.black.withOpacity(0.5),
-                                  offset: Offset(2, 4),
-                                  blurRadius: 7.0,
-                                  spreadRadius: 1.0),
-                            ]),
+                      NeumorphicButton(
+                        style: const NeumorphicStyle(
+                          shape: NeumorphicShape.flat,
+                          color: ThemeBc.white,
+                        ),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            child: FormBuilderTextField(
-                              name: "firstname",
-                              maxLines: 1,
-                              keyboardType: TextInputType.text,
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(
-                                    20.0,
+                          padding: const EdgeInsets.all(0),
+                          child: Column(
+                            children: [
+                              Container(
+                                child: FormBuilderTextField(
+                                  name: "firstname",
+                                  maxLines: 1,
+                                  keyboardType: TextInputType.name,
+                                  decoration: InputDecoration(
+                                    // labelText: 'Email',
+                                    hintText: 'ชื่อ',
+                                    filled: true,
+                                    fillColor: ThemeBc.white,
                                   ),
+                                  validator: MultiValidator([
+                                    RequiredValidator(
+                                        errorText: "ป้อนข้อมูลชื่อด้วย"),
+                                  ]),
                                 ),
-                                suffixIcon: Icon(Icons.badge),
-                                labelText: 'ชื่อ',
-                                fillColor: Colors.white,
-                                filled: true,
                               ),
-                              validator: MultiValidator([
-                                RequiredValidator(
-                                    errorText: "ป้อนข้อมูลชื่อด้วย"),
-                              ]),
-                            ),
+                            ],
                           ),
                         ),
                       ),
-                      SizedBox(height: 10),
-                      Container(
-                        decoration: BoxDecoration(
-                            color: secondaryTextColor,
-                            borderRadius: BorderRadius.circular(
-                              20,
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  offset: Offset(2, 2),
-                                  blurRadius: 7,
-                                  spreadRadius: 1.0),
-                              BoxShadow(
-                                  color: Colors.black.withOpacity(0.5),
-                                  offset: Offset(2, 4),
-                                  blurRadius: 7.0,
-                                  spreadRadius: 1.0),
-                            ]),
+                      SizedBox(height: 5),
+                      NeumorphicButton(
+                        style: const NeumorphicStyle(
+                          shape: NeumorphicShape.flat,
+                          color: ThemeBc.white,
+                        ),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            child: FormBuilderTextField(
-                              name: "lastname",
-                              maxLines: 1,
-                              keyboardType: TextInputType.text,
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(
-                                    20.0,
+                          padding: const EdgeInsets.all(0),
+                          child: Column(
+                            children: [
+                              Container(
+                                child: FormBuilderTextField(
+                                  name: "lastname",
+                                  maxLines: 1,
+                                  keyboardType: TextInputType.name,
+                                  decoration: InputDecoration(
+                                    // labelText: 'Email',
+                                    hintText: 'นามสกุล',
+                                    filled: true,
+                                    fillColor: ThemeBc.white,
                                   ),
+                                  validator: MultiValidator([
+                                    RequiredValidator(
+                                        errorText: "ป้อนข้อมูลนามสกุลด้วย"),
+                                  ]),
                                 ),
-                                suffixIcon: Icon(Icons.badge_sharp),
-                                labelText: 'นามสกุล',
-                                fillColor: Colors.white,
-                                filled: true,
                               ),
-                              validator: MultiValidator([
-                                RequiredValidator(
-                                    errorText: "ป้อนข้อมูลสกุลด้วย"),
-                              ]),
-                            ),
+                            ],
                           ),
                         ),
                       ),
-                      SizedBox(height: 10),
-                      Container(
-                        decoration: BoxDecoration(
-                            color: secondaryTextColor,
-                            borderRadius: BorderRadius.circular(
-                              20,
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  offset: Offset(2, 2),
-                                  blurRadius: 7,
-                                  spreadRadius: 1.0),
-                              BoxShadow(
-                                  color: Colors.black.withOpacity(0.5),
-                                  offset: Offset(2, 4),
-                                  blurRadius: 7.0,
-                                  spreadRadius: 1.0),
-                            ]),
+                      SizedBox(height: 5),
+                      NeumorphicButton(
+                        style: const NeumorphicStyle(
+                          shape: NeumorphicShape.flat,
+                          color: ThemeBc.white,
+                        ),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            child: FormBuilderTextField(
-                              name: "email",
-                              maxLines: 1,
-                              keyboardType: TextInputType.emailAddress,
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(
-                                    20.0,
+                          padding: const EdgeInsets.all(0),
+                          child: Column(
+                            children: [
+                              Container(
+                                child: FormBuilderTextField(
+                                  name: "email",
+                                  maxLines: 1,
+                                  keyboardType: TextInputType.emailAddress,
+                                  decoration: InputDecoration(
+                                    // labelText: 'Email',
+                                    hintText: 'อีเมล',
+                                    filled: true,
+                                    fillColor: ThemeBc.white,
                                   ),
+                                  validator: MultiValidator([
+                                    RequiredValidator(
+                                        errorText: "ป้อนข้อมูลอีเมลด้วย"),
+                                    EmailValidator(
+                                        errorText: "รูปแบบอีเมล์ไม่ถูกต้อง"),
+                                  ]),
                                 ),
-                                suffixIcon: Icon(Icons.email),
-                                labelText: 'อีเมล',
-                                fillColor: Colors.white,
-                                filled: true,
                               ),
-                              validator: MultiValidator([
-                                RequiredValidator(
-                                    errorText: "ป้อนข้อมูลอีเมลด้วย"),
-                                EmailValidator(
-                                    errorText: "รูปแบบอีเมล์ไม่ถูกต้อง"),
-                              ]),
-                            ),
+                            ],
                           ),
                         ),
                       ),
-                      SizedBox(height: 10),
-                      Container(
-                        decoration: BoxDecoration(
-                            color: secondaryTextColor,
-                            borderRadius: BorderRadius.circular(
-                              20,
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  offset: Offset(2, 2),
-                                  blurRadius: 7,
-                                  spreadRadius: 1.0),
-                              BoxShadow(
-                                  color: Colors.black.withOpacity(0.5),
-                                  offset: Offset(2, 4),
-                                  blurRadius: 7.0,
-                                  spreadRadius: 1.0),
-                            ]),
+                      SizedBox(height: 5),
+                      NeumorphicButton(
+                        style: const NeumorphicStyle(
+                          shape: NeumorphicShape.flat,
+                          color: ThemeBc.white,
+                        ),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            child: FormBuilderTextField(
-                              name: "password",
-                              maxLines: 1,
-                              keyboardType: TextInputType.visiblePassword,
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(
-                                    20.0,
+                          padding: const EdgeInsets.all(0),
+                          child: Column(
+                            children: [
+                              Container(
+                                child: FormBuilderTextField(
+                                  name: "password",
+                                  maxLines: 1,
+                                  keyboardType: TextInputType.emailAddress,
+                                  decoration: InputDecoration(
+                                    // labelText: 'Email',
+                                    hintText: 'รหัสผ่าน',
+                                    filled: true,
+                                    fillColor: ThemeBc.white,
                                   ),
+                                  validator: MultiValidator([
+                                    RequiredValidator(
+                                        errorText: "ป้อนข้อรหัสผ่านด้วย"),
+                                    MinLengthValidator(8,
+                                        errorText:
+                                            "รหัสผ่านต้อง 8 ตัวอักษรขึ้นไป"),
+                                  ]),
                                 ),
-                                suffixIcon: Icon(Icons.vpn_key),
-                                labelText: 'รหัสผ่าน',
-                                fillColor: Colors.white,
-                                filled: true,
                               ),
-                              validator: MultiValidator([
-                                RequiredValidator(
-                                    errorText: "ป้อนข้อมูลรหัสผ่านด้วย"),
-                                MinLengthValidator(6,
-                                    errorText: "รหัสผ่านต้อง 6 ตัวอักษรขึ้นไป"),
-                              ]),
-                            ),
+                            ],
                           ),
                         ),
                       ),
-                      SizedBox(height: 10),
-                      Container(
-                        decoration: BoxDecoration(
-                            color: secondaryTextColor,
-                            borderRadius: BorderRadius.circular(
-                              20,
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  offset: Offset(2, 2),
-                                  blurRadius: 7,
-                                  spreadRadius: 1.0),
-                              BoxShadow(
-                                  color: Colors.black.withOpacity(0.5),
-                                  offset: Offset(2, 4),
-                                  blurRadius: 7.0,
-                                  spreadRadius: 1.0),
-                            ]),
+                      SizedBox(height: 5),
+                      NeumorphicButton(
+                        style: const NeumorphicStyle(
+                          shape: NeumorphicShape.flat,
+                          color: ThemeBc.white,
+                        ),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            child: FormBuilderTextField(
-                              name: "user_card_id",
-                              maxLines: 1,
-                              keyboardType: TextInputType.text,
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(
-                                    20.0,
+                          padding: const EdgeInsets.all(0),
+                          child: Column(
+                            children: [
+                              Container(
+                                child: FormBuilderTextField(
+                                  name: "user_card_id",
+                                  maxLines: 1,
+                                  keyboardType: TextInputType.number,
+                                  decoration: InputDecoration(
+                                    // labelText: 'Email',
+                                    hintText: 'เลขบัตรประชาชน',
+                                    filled: true,
+                                    fillColor: ThemeBc.white,
                                   ),
+                                  validator: MultiValidator([
+                                    RequiredValidator(
+                                        errorText: "ป้อนเลขบัตรประชาชนด้วย"),
+                                    MinLengthValidator(14,
+                                        errorText:
+                                            "เลขบัตรประชาชนต้อง 14 ตัวอักษรขึ้นไป"),
+                                  ]),
                                 ),
-                                suffixIcon: Icon(Icons.badge),
-                                labelText: 'เลขบัตรประชาชน',
-                                fillColor: Colors.white,
-                                filled: true,
                               ),
-                              validator: MultiValidator([
-                                RequiredValidator(
-                                    errorText: "ป้อนเลขบัตรประชาชนด้วย"),
-                              ]),
-                            ),
+                            ],
                           ),
                         ),
                       ),
@@ -381,7 +314,7 @@ class _RegisterPageState extends State<register_page> {
                             padding: EdgeInsets.all(15),
                             shape: RoundedRectangleBorder(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(30))),
+                                    BorderRadius.all(Radius.circular(10))),
                             // shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                           ),
                           onPressed: () {
@@ -398,7 +331,7 @@ class _RegisterPageState extends State<register_page> {
                         child: LocaleText("ย้อนกลับ",
                             style: TextStyle(
                                 decoration: TextDecoration.underline)),
-                        textColor: ThemeBc.background,
+                        textColor: ThemeBc.textblack,
                         onPressed: () {
                           // _fbKey.currentState.reset();
                           Navigator.pushNamed(context, '/login_page');

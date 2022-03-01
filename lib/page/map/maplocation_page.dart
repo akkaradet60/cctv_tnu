@@ -93,28 +93,15 @@ class _maplocation_page extends State<maplocation_page> {
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
               return Container(
-                color: ThemeBc.background,
                 height: 500,
                 child: ListView(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(0),
                       child: Container(
-                        decoration: BoxDecoration(
-                            color: secondaryTextColor,
-                            borderRadius: BorderRadius.circular(
-                              10,
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.black.withOpacity(0.5),
-                                  offset: Offset(2, 4),
-                                  blurRadius: 7.0,
-                                  spreadRadius: 1.0),
-                            ]),
                         height: 400,
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(0),
                           child: Container(
                             height: 400,
                             child: Column(
@@ -166,22 +153,9 @@ class _maplocation_page extends State<maplocation_page> {
                       ),
                     ),
                     Container(
-                      color: ThemeBc.background,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
-                          decoration: BoxDecoration(
-                              color: secondaryTextColor,
-                              borderRadius: BorderRadius.circular(
-                                10,
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.black.withOpacity(0.2),
-                                    offset: Offset(2, 4),
-                                    blurRadius: 7.0,
-                                    spreadRadius: 1.0),
-                              ]),
                           height: 300,
                           child: Column(
                             children: [
@@ -189,7 +163,7 @@ class _maplocation_page extends State<maplocation_page> {
                               Text(
                                 'ชื่อสถานที่ : ${hotlinee['travelName']}',
                                 style: TextStyle(
-                                  fontSize: 15.0,
+                                  fontSize: 17.0,
                                   fontWeight: FontWeight.bold,
                                   // backgroundColor: Colors.black45,
                                   color: ThemeBc.textblack,
@@ -207,7 +181,7 @@ class _maplocation_page extends State<maplocation_page> {
                                           '${hotlinee['detail']}',
                                           style: TextStyle(
                                             fontSize: 15.0,
-                                            fontWeight: FontWeight.bold,
+
                                             // backgroundColor: Colors.black45,
                                             color: ThemeBc.textblack,
                                           ),
@@ -219,7 +193,7 @@ class _maplocation_page extends State<maplocation_page> {
                                           '${hotlinee['travelName']} คือ : ${hotlinee['travelDetail']}',
                                           style: TextStyle(
                                             fontSize: 15.0,
-                                            fontWeight: FontWeight.bold,
+
                                             // backgroundColor: Colors.black45,
                                             color: ThemeBc.textblack,
                                           ),

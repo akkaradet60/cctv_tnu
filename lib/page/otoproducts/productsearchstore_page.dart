@@ -94,7 +94,12 @@ class _productstore_page extends State<productsearchstore_page> {
           ],
         ),
         body: Container(
-          color: ThemeBc.white,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [ThemeBc.orangeAccent, ThemeBc.pinkAccent],
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft),
+          ),
           child: Column(
             children: <Widget>[
               buildSearch(),
@@ -119,18 +124,18 @@ class _productstore_page extends State<productsearchstore_page> {
           decoration: BoxDecoration(
               color: ThemeBc.white,
               borderRadius: BorderRadius.circular(
-                20,
+                10,
               ),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.black.withOpacity(0.5),
+                    color: Colors.black.withOpacity(0.1),
                     offset: Offset(2, 2),
                     blurRadius: 7,
                     spreadRadius: 1.0),
               ]),
           child: SearchWidget(
             text: query,
-            hintText: 'ค้นหา สินค้า',
+            hintText: 'ค้นหาร้านค้า',
             onChanged: searchBook,
           ),
         ),
@@ -154,11 +159,11 @@ class _productstore_page extends State<productsearchstore_page> {
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(
-                20,
+                10,
               ),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.black.withOpacity(0.5),
+                    color: Colors.black.withOpacity(0.1),
                     offset: Offset(2, 2),
                     blurRadius: 7,
                     spreadRadius: 1.0),
@@ -182,10 +187,10 @@ class _productstore_page extends State<productsearchstore_page> {
                   child: Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(2.0),
+                        padding: const EdgeInsets.all(0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.all(
-                            Radius.circular(20.0),
+                            Radius.circular(10.0),
                           ),
                           child: Image.network(
                             Global.domainImage + productt.otop_image != null
@@ -200,48 +205,30 @@ class _productstore_page extends State<productsearchstore_page> {
                       Padding(
                         padding: const EdgeInsets.all(2.0),
                         child: Container(
+                          height: 220,
                           width: 175,
-                          decoration: BoxDecoration(
-                              color: ThemeBc.black,
-                              borderRadius: BorderRadius.circular(
-                                20,
-                              ),
-                              boxShadow: []),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Center(
-                                  child: Text(
-                                    'ชื่อร้านค้า : ${productt.otop_name}',
-                                    style: TextStyle(
-                                      fontSize: 15.0,
-                                      fontWeight: FontWeight.bold,
-                                      // backgroundColor: Colors.black45,
-                                      color: ThemeBc.white,
-                                    ),
-                                  ),
-                                ),
-                                Center(
-                                  child: Text(
-                                    'id : ${productt.otop_id}',
-                                    style: TextStyle(
-                                      fontSize: 15.0,
-                                      fontWeight: FontWeight.bold,
-                                      // backgroundColor: Colors.black45,
-                                      color: ThemeBc.white,
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(height: 10),
                                 Text(
-                                  'ร้านนี้ : ${productt.otop_dateil}',
+                                  '${productt.otop_name}',
                                   style: TextStyle(
                                     fontSize: 15.0,
                                     fontWeight: FontWeight.bold,
                                     // backgroundColor: Colors.black45,
-                                    color: ThemeBc.white,
+                                    color: ThemeBc.textblack,
+                                  ),
+                                ),
+                                SizedBox(height: 10),
+                                Text(
+                                  ' ${productt.otop_dateil}',
+                                  style: TextStyle(
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.bold,
+                                    // backgroundColor: Colors.black45,
+                                    color: ThemeBc.textblack,
                                   ),
                                 ),
                               ],

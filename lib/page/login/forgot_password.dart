@@ -11,6 +11,7 @@ import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:form_builder_image_picker/form_builder_image_picker.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 import 'package:http/http.dart' as http;
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -126,29 +127,19 @@ class _forgot_password extends State<forgot_password>
                                 child: Container(
                                   width: 500,
                                   height: 100,
-                                  decoration: BoxDecoration(
-                                      color: ThemeBc.white,
-                                      borderRadius: BorderRadius.circular(
-                                        20,
-                                      ),
-                                      boxShadow: [
-                                        BoxShadow(
-                                            color: ThemeBc.black,
-                                            offset: Offset(2, 2),
-                                            blurRadius: 7,
-                                            spreadRadius: 1.0),
-                                      ]),
                                   child: Column(
                                     children: [
                                       SizedBox(height: 20),
-                                      LocaleText(
-                                        'ลืมรหัสผ่าน',
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 40,
-                                          decoration: TextDecoration.underline,
-                                          /*shadows: <Shadow>[
+                                      Center(
+                                        child: LocaleText(
+                                          'ลืมรหัสผ่าน',
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 40,
+                                            decoration:
+                                                TextDecoration.underline,
+                                            /*shadows: <Shadow>[
                               Shadow(
                                 offset: Offset(1.0, 1.0),
                                 blurRadius: 3.0,
@@ -160,6 +151,7 @@ class _forgot_password extends State<forgot_password>
                                 color: Color.fromARGB(255, 0, 0, 0),
                               ),
                             ],*/
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -167,41 +159,44 @@ class _forgot_password extends State<forgot_password>
                                 ),
                               ),
                               const SizedBox(height: 10),
-                              Container(
-                                decoration: BoxDecoration(
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 10, right: 10),
+                                child: NeumorphicButton(
+                                  style: const NeumorphicStyle(
+                                    shape: NeumorphicShape.flat,
                                     color: ThemeBc.white,
-                                    borderRadius: BorderRadius.circular(
-                                      20,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: ThemeBc.black,
-                                          offset: Offset(2, 2),
-                                          blurRadius: 7,
-                                          spreadRadius: 1.0),
-                                    ]),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    child: FormBuilderTextField(
-                                      // initialValue: '${profile['user_email']}',
-                                      name: "email",
-                                      maxLines: 1,
-                                      keyboardType: TextInputType.emailAddress,
-                                      decoration: InputDecoration(
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(
-                                            20.0,
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(0),
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          child: FormBuilderTextField(
+                                            name: "email",
+                                            maxLines: 1,
+                                            keyboardType:
+                                                TextInputType.emailAddress,
+                                            decoration: InputDecoration(
+                                              // labelText: 'Email',
+                                              hintText: 'อีเมล',
+                                              filled: true,
+                                              fillColor: ThemeBc.white,
+                                            ),
+                                            validator: MultiValidator([
+                                              RequiredValidator(
+                                                  errorText:
+                                                      "ป้อนข้อมูลอีเมลด้วย"),
+                                              EmailValidator(
+                                                  errorText:
+                                                      "รูปแบบอีเมล์ไม่ถูกต้อง"),
+                                            ]),
                                           ),
                                         ),
-                                        suffixIcon: Icon(Icons.email),
-                                        labelText: 'Email',
-                                        fillColor: Colors.white,
-                                        filled: true,
-                                      ),
+                                      ],
                                     ),
                                   ),
-                                ), //รายละเอียดเหตุการณ์
+                                ),
                               ),
 
                               SizedBox(height: 15),
@@ -240,12 +235,12 @@ class _forgot_password extends State<forgot_password>
                                         ),
                                         style: ElevatedButton.styleFrom(
                                           primary: ThemeBc.white,
-                                          onPrimary: Colors.white,
-                                          shadowColor: Colors.grey[700],
-                                          elevation: 30,
+                                          // onPrimary: Colors.white,
+                                          // shadowColor: Colors.grey[700],
+
                                           shape: RoundedRectangleBorder(
                                               borderRadius: BorderRadius.all(
-                                                  Radius.circular(30))),
+                                                  Radius.circular(10))),
                                         ),
                                       ),
                                     ),
@@ -312,7 +307,7 @@ class _forgot_password extends State<forgot_password>
     }
 
     return Scaffold(
-      backgroundColor: ThemeBc.background,
+      // backgroundColor: ThemeBc.background,
       // drawer: manu(),
       // drawer: Icon(Icons.ac_unit, color: white),
       // appBar: AppBar(
@@ -326,6 +321,11 @@ class _forgot_password extends State<forgot_password>
       //   actions: <Widget>[],
       // ),
       body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [Colors.pinkAccent, Colors.orange],
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft)),
         child: SafeArea(
           child: ListView(
             children: [

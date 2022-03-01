@@ -55,23 +55,6 @@ class _EmergecyPageState extends State<fix_password>
                         converter: (store) => store.state.profileState.profile,
                         builder: (context, profile) {
                           return Container(
-                            decoration: BoxDecoration(
-                                color: ThemeBc.background,
-                                borderRadius: BorderRadius.circular(
-                                  20,
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: ThemeBc.black,
-                                      offset: Offset(2, 2),
-                                      blurRadius: 7,
-                                      spreadRadius: 1.0),
-                                  BoxShadow(
-                                      color: ThemeBc.black,
-                                      offset: Offset(2, 2),
-                                      blurRadius: 7,
-                                      spreadRadius: 1.0),
-                                ]),
                             child: Padding(
                               padding: const EdgeInsets.all(12.0),
                               child: Column(
@@ -84,30 +67,17 @@ class _EmergecyPageState extends State<fix_password>
                                       fontSize: 25.0,
                                       fontWeight: FontWeight.bold,
                                       // backgroundColor: Colors.black45,
-                                      color: ThemeBc.white,
+                                      color: ThemeBc.black,
                                     ),
                                   ),
                                   const SizedBox(height: 20),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        color: ThemeBc.white,
-                                        borderRadius: BorderRadius.circular(
-                                          20,
-                                        ),
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color: ThemeBc.black,
-                                              offset: Offset(2, 2),
-                                              blurRadius: 7,
-                                              spreadRadius: 1.0),
-                                          BoxShadow(
-                                              color: ThemeBc.black,
-                                              offset: Offset(2, 2),
-                                              blurRadius: 7,
-                                              spreadRadius: 1.0),
-                                        ]),
+                                  NeumorphicButton(
+                                    style: const NeumorphicStyle(
+                                      shape: NeumorphicShape.flat,
+                                      color: ThemeBc.white,
+                                    ),
                                     child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                      padding: const EdgeInsets.all(0),
                                       child: Container(
                                         decoration: BoxDecoration(
                                             color: ThemeBc.white,
@@ -117,7 +87,7 @@ class _EmergecyPageState extends State<fix_password>
                                             boxShadow: [
                                               BoxShadow(
                                                   color: ThemeBc.white
-                                                      .withOpacity(0.5),
+                                                      .withOpacity(0.1),
                                                   offset: Offset(2, 2),
                                                   blurRadius: 7,
                                                   spreadRadius: 1.0),
@@ -129,42 +99,23 @@ class _EmergecyPageState extends State<fix_password>
                                           keyboardType:
                                               TextInputType.emailAddress,
                                           decoration: InputDecoration(
-                                            border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                20.0,
-                                              ),
-                                            ),
-                                            suffixIcon: Icon(Icons.description),
-                                            labelText: 'รหัสผ่านใหม่',
-                                            fillColor: Colors.white,
+                                            // labelText: 'Email',
+                                            hintText: "รหัสผ่านใหม่",
                                             filled: true,
+                                            fillColor: ThemeBc.white,
                                           ),
                                         ), //รายละเอียดเหตุการณ์
                                       ),
                                     ),
                                   ),
                                   SizedBox(height: 10),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        color: ThemeBc.white,
-                                        borderRadius: BorderRadius.circular(
-                                          20,
-                                        ),
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color: ThemeBc.black,
-                                              offset: Offset(2, 2),
-                                              blurRadius: 7,
-                                              spreadRadius: 1.0),
-                                          BoxShadow(
-                                              color: ThemeBc.black,
-                                              offset: Offset(2, 2),
-                                              blurRadius: 7,
-                                              spreadRadius: 1.0),
-                                        ]),
+                                  NeumorphicButton(
+                                    style: const NeumorphicStyle(
+                                      shape: NeumorphicShape.flat,
+                                      color: ThemeBc.white,
+                                    ),
                                     child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                      padding: const EdgeInsets.all(0),
                                       child: Container(
                                         child: FormBuilderTextField(
                                           name: "user_pass_confirm",
@@ -172,16 +123,10 @@ class _EmergecyPageState extends State<fix_password>
                                           keyboardType:
                                               TextInputType.emailAddress,
                                           decoration: InputDecoration(
-                                            border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                20.0,
-                                              ),
-                                            ),
-                                            suffixIcon: Icon(Icons.description),
-                                            labelText: 'ยืนยันรหัสผ่านใหม่',
-                                            fillColor: Colors.white,
+                                            // labelText: 'Email',
+                                            hintText: "ยืนยันรหัสผ่านใหม่",
                                             filled: true,
+                                            fillColor: ThemeBc.white,
                                           ),
                                         ),
                                       ),
@@ -205,16 +150,27 @@ class _EmergecyPageState extends State<fix_password>
                                                 _fbKey.currentState!.value);
                                           }
                                         },
-                                        icon: Icon(Icons.lock),
-                                        label: Text('เปลี่ยนรหัสผ่าน'),
+                                        icon: Icon(
+                                          Icons.lock,
+                                          color: ThemeBc.textwhite,
+                                        ),
+                                        label: Text(
+                                          'เปลี่ยนรหัสผ่าน',
+                                          style: TextStyle(
+                                            fontSize: 15.0,
+
+                                            // backgroundColor: Colors.black45,
+                                            color: ThemeBc.textwhite,
+                                          ),
+                                        ),
                                         style: ElevatedButton.styleFrom(
-                                          primary: Colors.white,
+                                          primary: ThemeBc.background,
                                           onPrimary: Colors.black,
-                                          shadowColor: Colors.grey[700],
-                                          elevation: 30,
+                                          // shadowColor: Colors.grey[700],
+
                                           shape: RoundedRectangleBorder(
                                               borderRadius: BorderRadius.all(
-                                                  Radius.circular(40))),
+                                                  Radius.circular(10))),
                                         ),
                                       ),
                                     ),
@@ -266,13 +222,14 @@ class _EmergecyPageState extends State<fix_password>
     }
 
     return Scaffold(
+      backgroundColor: ThemeBc.white,
       appBar: AppBar(
         iconTheme: IconThemeData(
           color: ThemeBc.white, //change your color here
         ),
         shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.black,
+        backgroundColor: ThemeBc.background,
         title: Column(
           children: [
             Center(child: Text('แก้ไขรหัสผ่าน')),

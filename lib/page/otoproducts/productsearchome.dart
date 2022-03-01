@@ -39,61 +39,57 @@ class _produscthomeState extends State<produsctsearchome> {
             ),
           ],
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            height: 300,
-            decoration: BoxDecoration(
-                color: ThemeBc.black,
-                borderRadius: BorderRadius.circular(
-                  20,
-                ),
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.black.withOpacity(0.5),
-                      offset: Offset(2, 2),
-                      blurRadius: 7,
-                      spreadRadius: 1.0),
-                ]),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  children: [
-                    SizedBox(height: 80),
-                    CustomButton(
-                        title: 'ค้นหาสินค้า',
-                        onPressed: () {
-                          Navigator.pushNamed(
-                            context,
-                            '/productstore_page',
-                          );
-                        },
-                        colorButton: ThemeBc.white,
-                        textStyle: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                          // backgroundColor: Colors.black45,
-                          color: ThemeBc.textblack,
-                        )),
-                    SizedBox(height: 10),
-                    CustomButton(
-                        title: 'ค้นหาร้านค้า',
-                        onPressed: () {
-                          Navigator.pushNamed(
-                              context, '/productsearchstore_page',
-                              arguments: {});
-                        },
-                        colorButton: ThemeBc.white,
-                        textStyle: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                          // backgroundColor: Colors.black45,
-                          color: ThemeBc.textblack,
-                        ))
-                  ],
-                ),
-              ],
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [ThemeBc.orangeAccent, ThemeBc.pinkAccent],
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              height: 1000,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                    children: [
+                      SizedBox(height: 20),
+                      CustomButton(
+                          title: 'ค้นหาสินค้า',
+                          onPressed: () {
+                            Navigator.pushNamed(
+                              context,
+                              '/productstore_page',
+                            );
+                          },
+                          colorButton: ThemeBc.white,
+                          textStyle: TextStyle(
+                            fontSize: 17.0,
+                            fontWeight: FontWeight.bold,
+                            // backgroundColor: Colors.black45,
+                            color: ThemeBc.textblack,
+                          )),
+                      SizedBox(height: 10),
+                      CustomButton(
+                          title: 'ค้นหาร้านค้า',
+                          onPressed: () {
+                            Navigator.pushNamed(
+                                context, '/productsearchstore_page',
+                                arguments: {});
+                          },
+                          colorButton: ThemeBc.white,
+                          textStyle: TextStyle(
+                            fontSize: 17.0,
+                            fontWeight: FontWeight.bold,
+                            // backgroundColor: Colors.black45,
+                            color: ThemeBc.textblack,
+                          ))
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ));

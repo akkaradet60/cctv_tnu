@@ -62,7 +62,6 @@ class _messagemdetail_page extends State<messagemdetail_page> {
 
     productt = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
-        backgroundColor: ThemeBc.white,
         appBar: AppBar(
           iconTheme: IconThemeData(
             color: ThemeBc.white, //change your color here
@@ -72,7 +71,15 @@ class _messagemdetail_page extends State<messagemdetail_page> {
           backgroundColor: ThemeBc.background,
           title: Column(
             children: [
-              Text('${productt['blog_name']}'),
+              Text(
+                '${productt['blog_name']}',
+                style: TextStyle(
+                  // fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  // backgroundColor: Colors.black45,
+                  color: ThemeBc.textwhite,
+                ),
+              ),
             ],
           ),
           actions: <Widget>[
@@ -105,7 +112,7 @@ class _messagemdetail_page extends State<messagemdetail_page> {
                                 decoration: BoxDecoration(
                                     color: ThemeBc.textblack,
                                     borderRadius: BorderRadius.circular(
-                                      20,
+                                      10,
                                     ),
                                     boxShadow: [
                                       BoxShadow(
@@ -155,30 +162,6 @@ class _messagemdetail_page extends State<messagemdetail_page> {
                                 ),
                                 padding: EdgeInsets.all(0),
                                 child: InkWell(
-                                  onTap: () {
-                                    Navigator.pushNamed(
-                                        context, '/messagemdetail_page',
-                                        arguments: {
-                                          'blog_images': snapshot.data!['data']
-                                                          [item]['blog_images']
-                                                      [0]['blogi_path_name'] !=
-                                                  null
-                                              ? Global.domainImage +
-                                                  snapshot.data!['data'][item]
-                                                          ['blog_images'][0]
-                                                      ['blogi_path_name']
-                                              : '${Global.networkImage}',
-                                          'blog_name': snapshot.data!['data']
-                                              [item]['blog_name'],
-                                          'blog_detail': snapshot.data!['data']
-                                              [item]['blog_detail']
-
-                                          /*   'id': data[index].id,
-                                  'detail': data[index].detail,
-                                  'picture': data[index].picture,
-                                  'view': data[index].view,*/
-                                        });
-                                  },
                                   // child: Card(
                                   //   margin: EdgeInsets.only(
                                   //     top: 10.0,
@@ -217,7 +200,7 @@ class _messagemdetail_page extends State<messagemdetail_page> {
                               ),
                             );
                           }
-                          ;
+
                           // return ListView.separated(
                           //     itemBuilder: (context, index) {
                           // return Text('3232');
@@ -233,87 +216,6 @@ class _messagemdetail_page extends State<messagemdetail_page> {
                     ),
                   ),
                 ),
-                // Container(
-                //   child: Column(
-                //     children: [
-                //       Container(
-                //         height: 300,
-                //         width: 1000,
-                //         child: FutureBuilder<Map<String, dynamic>>(
-                //           future: getDataSlide(),
-                //           builder: (context, snapshot) {
-                //             if (snapshot.hasData) {
-                //               // return ListView.separated(
-                //               //     itemBuilder: (context, index) {
-                //               // return Text('3232');
-                //               return CarouselSlider.builder(
-                //                 itemCount: snapshot.data!['data'].length,
-                //                 options: CarouselOptions(
-                //                   autoPlay: true,
-                //                   enlargeCenterPage: true,
-                //                   viewportFraction: 0.9,
-                //                   aspectRatio: 2.0,
-                //                   initialPage: 2,
-                //                   onPageChanged: (index, reason) {
-                //                     setState(
-                //                       () {
-                //                         _currentIndex = index;
-                //                       },
-                //                     );
-                //                   },
-                //                 ),
-                //                 itemBuilder: (BuildContext context, int item,
-                //                         int pageViewIndex) =>
-
-                //                     // Text('${snapshot.data!['data'][item]['blog_id']}');
-                //                     //     Container(
-                //                     //   child: Center(child: Text(item.toString())),
-                //                     //   color: Colors.green,
-                //                     Card(
-                //                   child: ClipRRect(
-                //                     borderRadius: BorderRadius.all(
-                //                       Radius.circular(8.0),
-                //                     ),
-                //                     child: Stack(
-                //                       children: <Widget>[
-                //                         Padding(
-                //                           padding: const EdgeInsets.all(3.0),
-                //                           child: Image.network(
-                //                             productt['blog_images'],
-                //                             fit: BoxFit.cover,
-                //                             width: double.infinity,
-                //                           ),
-                //                         ),
-                //                         // Center(
-                //                         //   child: Text(
-                //                         //     // '${titles[_currentIndex]}',
-                //                         //     '${snapshot.data!['data'][item]['blog_name']}',
-                //                         //     style: TextStyle(
-                //                         //       fontSize: 24.0,
-                //                         //       fontWeight: FontWeight.bold,
-                //                         //       backgroundColor: Colors.black45,
-                //                         //       color: Colors.white,
-                //                         //     ),
-                //                         //   ),
-                //                         // ),
-                //                       ],
-                //                     ),
-                //                   ),
-                //                 ),
-                //               );
-                //             } else if (snapshot.hasError) {
-                //               return Center(
-                //                   child: Text(
-                //                       'เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
-                //             }
-
-                //             return Center(child: CircularProgressIndicator());
-                //           },
-                //         ),
-                //       ),
-                //     ],
-                //   ),
-                // ),
                 Container(
                   height: 300,
                   child: ListView(

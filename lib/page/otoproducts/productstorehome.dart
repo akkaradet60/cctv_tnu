@@ -75,7 +75,7 @@ class _productshop_page extends State<productstorehome> {
         body: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
-                  colors: [ThemeBc.background, ThemeBc.background],
+                  colors: [ThemeBc.orangeAccent, ThemeBc.pinkAccent],
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft)),
           child: Padding(
@@ -83,12 +83,6 @@ class _productshop_page extends State<productstorehome> {
             child: ListView(
               children: [
                 Container(
-                  decoration: BoxDecoration(
-                    color: secondaryTextColor,
-                    borderRadius: BorderRadius.circular(
-                      10,
-                    ),
-                  ),
                   child: Column(
                     children: [
                       Container(
@@ -119,7 +113,7 @@ class _productshop_page extends State<productstorehome> {
                       ),
                       Container(
                         child: Container(
-                          height: 1000,
+                          height: 800,
                           width: 400,
                           child: Column(
                             children: [
@@ -128,14 +122,14 @@ class _productshop_page extends State<productstorehome> {
                                 child: Container(
                                   height: 250,
                                   decoration: BoxDecoration(
-                                      color: ThemeBc.background,
+                                      color: ThemeBc.white,
                                       borderRadius: BorderRadius.circular(
                                         10,
                                       ),
                                       boxShadow: [
                                         BoxShadow(
                                             color:
-                                                Colors.black.withOpacity(0.5),
+                                                Colors.black.withOpacity(0.1),
                                             offset: Offset(2, 4),
                                             blurRadius: 7.0,
                                             spreadRadius: 1.0),
@@ -151,7 +145,7 @@ class _productshop_page extends State<productstorehome> {
                                             Icon(
                                               Icons.article,
                                               size: 40,
-                                              color: ThemeBc.white,
+                                              color: ThemeBc.textblack,
                                             ),
                                             SizedBox(width: 10),
                                             LocaleText(
@@ -160,7 +154,7 @@ class _productshop_page extends State<productstorehome> {
                                                 fontSize: 15.0,
                                                 fontWeight: FontWeight.bold,
                                                 // backgroundColor: Colors.black45,
-                                                color: ThemeBc.white,
+                                                color: ThemeBc.textblack,
                                               ),
                                             ),
                                             Text(
@@ -169,7 +163,7 @@ class _productshop_page extends State<productstorehome> {
                                                 fontSize: 15.0,
                                                 fontWeight: FontWeight.bold,
                                                 // backgroundColor: Colors.black45,
-                                                color: ThemeBc.white,
+                                                color: ThemeBc.textblack,
                                               ),
                                             ),
                                           ],
@@ -182,14 +176,7 @@ class _productshop_page extends State<productstorehome> {
                                                   BorderRadius.circular(
                                                 10,
                                               ),
-                                              boxShadow: [
-                                                BoxShadow(
-                                                    color: Colors.black
-                                                        .withOpacity(0.5),
-                                                    offset: Offset(2, 4),
-                                                    blurRadius: 7.0,
-                                                    spreadRadius: 1.0),
-                                              ]),
+                                              boxShadow: []),
                                           height: 150,
                                           child: Column(
                                             children: [
@@ -200,27 +187,30 @@ class _productshop_page extends State<productstorehome> {
                                                   padding: EdgeInsets.all(8.0),
                                                   child: ListView(
                                                     children: [
-                                                      LocaleText(
-                                                        'รายละเอียดร้านค้า',
-                                                        style: primaryTextStyle
-                                                            .copyWith(
-                                                          fontSize: 15,
-                                                        ),
-                                                      ),
+                                                      // LocaleText(
+                                                      //   'รายละเอียดร้านค้า',
+                                                      //   style: primaryTextStyle
+                                                      //       .copyWith(
+                                                      //     fontSize: 15,
+                                                      //   ),
+                                                      // ),
                                                       Text(
-                                                        '${productt['otop_dateil']}',
-                                                        style: primaryTextStyle
-                                                            .copyWith(
-                                                          fontSize: 15,
+                                                        '   ${productt['otop_dateil']}',
+                                                        style: TextStyle(
+                                                          fontSize: 15.0,
+                                                          // fontWeight: FontWeight.bold,
+                                                          // backgroundColor: Colors.black45,
+                                                          color:
+                                                              ThemeBc.textblack,
                                                         ),
                                                       ),
-                                                      Text(
-                                                        '${productt['otop_id']}',
-                                                        style: primaryTextStyle
-                                                            .copyWith(
-                                                          fontSize: 15,
-                                                        ),
-                                                      ),
+                                                      // Text(
+                                                      //   '${productt['otop_id']}',
+                                                      //   style: primaryTextStyle
+                                                      //       .copyWith(
+                                                      //     fontSize: 15,
+                                                      //   ),
+                                                      // ),
                                                     ],
                                                   ), //product_detail
                                                 ),
@@ -239,14 +229,14 @@ class _productshop_page extends State<productstorehome> {
                                 child: Container(
                                     height: 50,
                                     decoration: BoxDecoration(
-                                        color: ThemeBc.black,
+                                        color: ThemeBc.white,
                                         borderRadius: BorderRadius.circular(
                                           10,
                                         ),
                                         boxShadow: [
                                           BoxShadow(
                                               color:
-                                                  Colors.black.withOpacity(0.5),
+                                                  Colors.black.withOpacity(0.1),
                                               offset: Offset(2, 4),
                                               blurRadius: 7.0,
                                               spreadRadius: 1.0),
@@ -257,7 +247,7 @@ class _productshop_page extends State<productstorehome> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Text_pane(
                                               text: 'สินค้าของร้านค้า',
-                                              color: Colors.white,
+                                              color: ThemeBc.textblack,
                                               fontSize: 15),
                                         ),
                                       ],
@@ -324,7 +314,7 @@ class _productshop_page extends State<productstorehome> {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return ListView.builder(
-                    // scrollDirection: Axis.horizontal,
+                    scrollDirection: Axis.horizontal,
                     itemCount: snapshot.data!['data'].length,
                     itemBuilder: (context, index) {
                       return Container(
@@ -374,7 +364,7 @@ class _productshop_page extends State<productstorehome> {
                                               color: secondaryTextColor,
                                               borderRadius:
                                                   BorderRadius.circular(
-                                                20,
+                                                10,
                                               ),
                                               boxShadow: [
                                                 BoxShadow(
@@ -403,7 +393,7 @@ class _productshop_page extends State<productstorehome> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
-                                                                  20,
+                                                                  10,
                                                                 ),
                                                                 boxShadow: [
                                                               //     spreadRadius: 1.0),
@@ -414,7 +404,7 @@ class _productshop_page extends State<productstorehome> {
                                                               BorderRadius.all(
                                                                   Radius
                                                                       .circular(
-                                                                          20.0)),
+                                                                          10.0)),
                                                           child: Image.network(
                                                             snapshot.data!['data'][index]
                                                                             [

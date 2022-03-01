@@ -209,14 +209,14 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
                                     height: 300,
                                     width: 370,
                                     decoration: BoxDecoration(
-                                        color: secondaryTextColor,
+                                        color: ThemeBc.grey,
                                         borderRadius: BorderRadius.circular(
                                           10,
                                         ),
                                         boxShadow: [
                                           BoxShadow(
                                               color:
-                                                  Colors.black.withOpacity(0.5),
+                                                  Colors.black.withOpacity(0.2),
                                               offset: Offset(2, 4),
                                               blurRadius: 7.0,
                                               spreadRadius: 1.0),
@@ -226,7 +226,7 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
                                         Column(
                                           children: [
                                             Padding(
-                                              padding: EdgeInsets.all(5.0),
+                                              padding: EdgeInsets.all(0),
                                               child: ClipRRect(
                                                 borderRadius: BorderRadius.all(
                                                   Radius.circular(8.0),
@@ -256,7 +256,6 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
                                             SizedBox(height: 5),
                                             Container(
                                               decoration: BoxDecoration(
-                                                  color: Colors.grey[200],
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                     10,
@@ -275,47 +274,39 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
                                                     //     blurRadius: 7.0,
                                                     //     spreadRadius: 1.0),
                                                   ]),
-                                              width: 340,
-                                              height: 100,
+                                              height: 120,
                                               child: ListView(
                                                 children: [
                                                   SizedBox(height: 15),
-                                                  Center(
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child: Text(
-                                                        'อบรม: ${snapshot.data!['data'][index]['train_name']}',
-                                                        style: primaryTextStyle
-                                                            .copyWith(
-                                                                fontSize: 16,
-                                                                fontWeight:
-                                                                    medium),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Text(
+                                                      '${snapshot.data!['data'][index]['train_name']}',
+                                                      style: TextStyle(
+                                                        fontSize: 17.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        // backgroundColor: Colors.black45,
+                                                        color:
+                                                            ThemeBc.textblack,
                                                       ),
                                                     ),
                                                   ),
-                                                  Container(
-                                                    height: 60,
-                                                    child: ListView(
-                                                      children: [
-                                                        Center(
-                                                          child: Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .all(0.0),
-                                                            child: Text(
-                                                              'เนื้อหาอบรม : ${snapshot.data!['data'][index]['train_detail']}',
-                                                              style: primaryTextStyle
-                                                                  .copyWith(
-                                                                      fontSize:
-                                                                          15,
-                                                                      fontWeight:
-                                                                          medium),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Text(
+                                                      'เนื้อหาอบรม : ${snapshot.data!['data'][index]['train_detail']}',
+                                                      style: TextStyle(
+                                                        fontSize: 15.0,
+
+                                                        // backgroundColor: Colors.black45,
+                                                        color:
+                                                            ThemeBc.textblack,
+                                                      ),
                                                     ),
                                                   ),
                                                 ],
