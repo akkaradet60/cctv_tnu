@@ -3,6 +3,7 @@ import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -95,12 +96,21 @@ class _location_page extends State<location_page> {
         iconTheme: IconThemeData(
           color: ThemeBc.white, //change your color here
         ),
-        shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
         title: Column(
           children: [
-            Center(child: LocaleText('สถานที่ราชการ')),
+            Center(
+                child: LocaleText(
+              'สถานที่ราชการ',
+              style: GoogleFonts.sarabun(
+                textStyle: TextStyle(
+                  color: ThemeBc.textwhite,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+            )),
           ],
         ),
         actions: <Widget>[
@@ -108,8 +118,8 @@ class _location_page extends State<location_page> {
             icon: Image.asset('assets/logo.png', scale: 15),
             tooltip: 'Show Snackbar',
             onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
             },
           ),
         ],
@@ -292,11 +302,12 @@ class _location_page extends State<location_page> {
                                     SizedBox(height: 10),
                                     Text(
                                       '${snapshot.data!['data'][index]['travel_name']}',
-                                      style: TextStyle(
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.bold,
-                                        // backgroundColor: Colors.black45,
-                                        color: ThemeBc.textblack,
+                                      style: GoogleFonts.sarabun(
+                                        textStyle: TextStyle(
+                                          color: ThemeBc.textblack,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 17,
+                                        ),
                                       ),
                                     ),
                                   ],

@@ -4,6 +4,7 @@ import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -39,7 +40,7 @@ class _productshop_page extends State<productshop_page> {
     }
   }
 
-  var _counter = 1;
+  var _counter = 0;
   var _product = int.parse('0');
   var _product1 = int.parse('0');
 
@@ -86,12 +87,21 @@ class _productshop_page extends State<productshop_page> {
           iconTheme: IconThemeData(
             color: ThemeBc.white, //change your color here
           ),
-          shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
           title: Column(
             children: [
-              Center(child: LocaleText('สินค้า')),
+              Center(
+                  child: LocaleText(
+                'สินค้า',
+                style: GoogleFonts.sarabun(
+                  textStyle: TextStyle(
+                    color: ThemeBc.textwhite,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              )),
             ],
           ),
           actions: <Widget>[
@@ -100,7 +110,7 @@ class _productshop_page extends State<productshop_page> {
               tooltip: 'Show Snackbar',
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+                    SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
               },
             ),
           ],
@@ -185,36 +195,6 @@ class _productshop_page extends State<productshop_page> {
                                         ),
                                         padding: EdgeInsets.all(0),
                                         child: InkWell(
-                                          onTap: () {
-                                            Navigator.pushNamed(
-                                                context, '/messagemdetail_page',
-                                                arguments: {
-                                                  'blog_images': snapshot.data![
-                                                                          'data']
-                                                                      [item]
-                                                                  ['blog_images'][0]
-                                                              [
-                                                              'blogi_path_name'] !=
-                                                          null
-                                                      ? Global.domainImage +
-                                                          snapshot.data!['data']
-                                                                      [item]
-                                                                  ['blog_images'][0]
-                                                              ['blogi_path_name']
-                                                      : '${Global.networkImage}',
-                                                  'blog_name':
-                                                      snapshot.data!['data']
-                                                          [item]['blog_name'],
-                                                  'blog_detail':
-                                                      snapshot.data!['data']
-                                                          [item]['blog_detail']
-
-                                                  /*   'id': data[index].id,
-                                    'detail': data[index].detail,
-                                    'picture': data[index].picture,
-                                    'view': data[index].view,*/
-                                                });
-                                          },
                                           // child: Card(
                                           //   margin: EdgeInsets.only(
                                           //     top: 10.0,
@@ -309,20 +289,22 @@ class _productshop_page extends State<productshop_page> {
                                             SizedBox(width: 10),
                                             LocaleText(
                                               'ชื่อสินค้า',
-                                              style: TextStyle(
-                                                fontSize: 15.0,
-                                                fontWeight: FontWeight.bold,
-                                                // backgroundColor: Colors.black45,
-                                                color: ThemeBc.textblack,
+                                              style: GoogleFonts.sarabun(
+                                                textStyle: TextStyle(
+                                                  color: ThemeBc.textblack,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 15,
+                                                ),
                                               ),
                                             ),
                                             Text(
                                               ' :  ${productt['productName']}',
-                                              style: TextStyle(
-                                                fontSize: 15.0,
-                                                fontWeight: FontWeight.bold,
-                                                // backgroundColor: Colors.black45,
-                                                color: ThemeBc.textblack,
+                                              style: GoogleFonts.sarabun(
+                                                textStyle: TextStyle(
+                                                  color: ThemeBc.textblack,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 15,
+                                                ),
                                               ),
                                             ),
                                           ],
@@ -341,27 +323,30 @@ class _productshop_page extends State<productshop_page> {
                                                 SizedBox(width: 10),
                                                 LocaleText(
                                                   'ศูนย์แสดงสินค้าโอทอป',
-                                                  style: TextStyle(
-                                                    fontSize: 15.0,
-                                                    fontWeight: FontWeight.bold,
-                                                    // backgroundColor: Colors.black45,
-                                                    color: ThemeBc.textblack,
+                                                  style: GoogleFonts.sarabun(
+                                                    textStyle: TextStyle(
+                                                      color: ThemeBc.textblack,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 15,
+                                                    ),
                                                   ),
                                                 ),
                                               ],
                                             ),
                                             ElevatedButton(
                                               style: ElevatedButton.styleFrom(
-                                                primary: ThemeBc.white,
+                                                primary: ThemeBc.background,
                                                 onPrimary: ThemeBc.white,
                                               ),
                                               child: LocaleText(
                                                 'ดูร้านค้า',
-                                                style: TextStyle(
-                                                  fontSize: 15.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  // backgroundColor: Colors.black45,
-                                                  color: ThemeBc.textblack,
+                                                style: GoogleFonts.sarabun(
+                                                  textStyle: TextStyle(
+                                                    color: ThemeBc.textwhite,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 15,
+                                                  ),
                                                 ),
                                               ),
                                               onPressed: () =>
@@ -378,20 +363,22 @@ class _productshop_page extends State<productshop_page> {
                                             children: [
                                               Text(
                                                 '$_product',
-                                                style: TextStyle(
-                                                  fontSize: 20.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  // backgroundColor: Colors.black45,
-                                                  color: ThemeBc.textblack,
+                                                style: GoogleFonts.sarabun(
+                                                  textStyle: TextStyle(
+                                                    color: ThemeBc.textblack,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 20,
+                                                  ),
                                                 ),
                                               ),
                                               LocaleText(
                                                 'บาท',
-                                                style: TextStyle(
-                                                  fontSize: 20.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  // backgroundColor: Colors.black45,
-                                                  color: ThemeBc.textblack,
+                                                style: GoogleFonts.sarabun(
+                                                  textStyle: TextStyle(
+                                                    color: ThemeBc.textblack,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 20,
+                                                  ),
                                                 ),
                                               ),
                                             ],
@@ -470,16 +457,18 @@ class _productshop_page extends State<productshop_page> {
                                               ElevatedButton(
                                                   style:
                                                       ElevatedButton.styleFrom(
-                                                    primary: ThemeBc.white,
+                                                    primary: ThemeBc.background,
                                                   ),
                                                   child: Text(
                                                     'ชื้อ',
-                                                    style: TextStyle(
-                                                      fontSize: 15.0,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      // backgroundColor: Colors.black45,
-                                                      color: ThemeBc.textblack,
+                                                    style: GoogleFonts.sarabun(
+                                                      textStyle: TextStyle(
+                                                        color:
+                                                            ThemeBc.textwhite,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        fontSize: 15,
+                                                      ),
                                                     ),
                                                   ),
                                                   onPressed: () {
@@ -494,7 +483,7 @@ class _productshop_page extends State<productshop_page> {
                                                                       30)),
                                                           // elevation: 100,
                                                           content: Container(
-                                                            height: 140,
+                                                            height: 150,
                                                             width: 300,
                                                             child: ListView(
                                                               children: [
@@ -523,11 +512,12 @@ class _productshop_page extends State<productshop_page> {
                                                                                 children: [
                                                                                   LocaleText(
                                                                                     'ชื่อสินค้า',
-                                                                                    style: TextStyle(
-                                                                                      fontSize: 15.0,
-                                                                                      fontWeight: FontWeight.bold,
-                                                                                      // backgroundColor: Colors.black45,
-                                                                                      color: ThemeBc.textblack,
+                                                                                    style: GoogleFonts.sarabun(
+                                                                                      textStyle: TextStyle(
+                                                                                        color: ThemeBc.textblack,
+                                                                                        fontWeight: FontWeight.bold,
+                                                                                        fontSize: 15,
+                                                                                      ),
                                                                                     ),
                                                                                   ),
                                                                                   Container(
@@ -538,11 +528,12 @@ class _productshop_page extends State<productshop_page> {
                                                                                       children: [
                                                                                         Text(
                                                                                           '  ${productt['productName']}',
-                                                                                          style: TextStyle(
-                                                                                            fontSize: 15.0,
-                                                                                            fontWeight: FontWeight.bold,
-                                                                                            // backgroundColor: Colors.black45,
-                                                                                            color: ThemeBc.textblack,
+                                                                                          style: GoogleFonts.sarabun(
+                                                                                            textStyle: TextStyle(
+                                                                                              color: ThemeBc.textblack,
+                                                                                              fontWeight: FontWeight.w400,
+                                                                                              fontSize: 15,
+                                                                                            ),
                                                                                           ),
                                                                                         ),
                                                                                       ],
@@ -555,22 +546,24 @@ class _productshop_page extends State<productshop_page> {
                                                                               children: [
                                                                                 LocaleText(
                                                                                   'จำนวน',
-                                                                                  style: TextStyle(
-                                                                                    fontSize: 15.0,
-
-                                                                                    // backgroundColor: Colors.black45,
-                                                                                    color: ThemeBc.textblack,
+                                                                                  style: GoogleFonts.sarabun(
+                                                                                    textStyle: TextStyle(
+                                                                                      color: ThemeBc.textblack,
+                                                                                      fontWeight: FontWeight.w400,
+                                                                                      fontSize: 15,
+                                                                                    ),
                                                                                   ),
                                                                                 ),
                                                                                 Container(
-                                                                                  height: 15,
+                                                                                  height: 20,
                                                                                   child: Text(
                                                                                     '  ${_counter}',
-                                                                                    style: TextStyle(
-                                                                                      fontSize: 15.0,
-
-                                                                                      // backgroundColor: Colors.black45,
-                                                                                      color: ThemeBc.textblack,
+                                                                                    style: GoogleFonts.sarabun(
+                                                                                      textStyle: TextStyle(
+                                                                                        color: ThemeBc.textblack,
+                                                                                        fontWeight: FontWeight.w400,
+                                                                                        fontSize: 15,
+                                                                                      ),
                                                                                     ),
                                                                                   ),
                                                                                 ),
@@ -586,32 +579,35 @@ class _productshop_page extends State<productshop_page> {
                                                                                       children: [
                                                                                         LocaleText(
                                                                                           'ราคา',
-                                                                                          style: TextStyle(
-                                                                                            fontSize: 15.0,
-
-                                                                                            // backgroundColor: Colors.black45,
-                                                                                            color: ThemeBc.black,
+                                                                                          style: GoogleFonts.sarabun(
+                                                                                            textStyle: TextStyle(
+                                                                                              color: ThemeBc.textblack,
+                                                                                              fontWeight: FontWeight.w400,
+                                                                                              fontSize: 15,
+                                                                                            ),
                                                                                           ),
                                                                                         ),
                                                                                         Container(
-                                                                                          height: 15,
+                                                                                          height: 20,
                                                                                           child: Text(
                                                                                             ' $_product  ',
-                                                                                            style: TextStyle(
-                                                                                              fontSize: 15.0,
-
-                                                                                              // backgroundColor: Colors.black45,
-                                                                                              color: ThemeBc.black,
+                                                                                            style: GoogleFonts.sarabun(
+                                                                                              textStyle: TextStyle(
+                                                                                                color: ThemeBc.textblack,
+                                                                                                fontWeight: FontWeight.w400,
+                                                                                                fontSize: 15,
+                                                                                              ),
                                                                                             ),
                                                                                           ),
                                                                                         ),
                                                                                         LocaleText(
                                                                                           'บาท',
-                                                                                          style: TextStyle(
-                                                                                            fontSize: 15.0,
-
-                                                                                            // backgroundColor: Colors.black45,
-                                                                                            color: ThemeBc.black,
+                                                                                          style: GoogleFonts.sarabun(
+                                                                                            textStyle: TextStyle(
+                                                                                              color: ThemeBc.textblack,
+                                                                                              fontWeight: FontWeight.w400,
+                                                                                              fontSize: 15,
+                                                                                            ),
                                                                                           ),
                                                                                         ),
                                                                                       ],
@@ -637,20 +633,19 @@ class _productshop_page extends State<productshop_page> {
                                                                         style: ElevatedButton
                                                                             .styleFrom(
                                                                           primary:
-                                                                              ThemeBc.white,
+                                                                              ThemeBc.background,
                                                                         ),
                                                                         child:
                                                                             Text(
                                                                           'ชื้อ',
                                                                           style:
-                                                                              TextStyle(
-                                                                            fontSize:
-                                                                                15.0,
-                                                                            fontWeight:
-                                                                                FontWeight.bold,
-                                                                            // backgroundColor: Colors.black45,
-                                                                            color:
-                                                                                ThemeBc.textblack,
+                                                                              GoogleFonts.sarabun(
+                                                                            textStyle:
+                                                                                TextStyle(
+                                                                              color: ThemeBc.textwhite,
+                                                                              fontWeight: FontWeight.w400,
+                                                                              fontSize: 15,
+                                                                            ),
                                                                           ),
                                                                         ),
                                                                         onPressed:
@@ -689,12 +684,16 @@ class _productshop_page extends State<productshop_page> {
                                                     children: [
                                                       Text(
                                                         '   ${productt['product_detail']} ',
-                                                        style: TextStyle(
-                                                            fontSize: 15.0,
-
-                                                            // backgroundColor: Colors.black45,
+                                                        style:
+                                                            GoogleFonts.sarabun(
+                                                          textStyle: TextStyle(
                                                             color: ThemeBc
-                                                                .textblack),
+                                                                .textblack,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            fontSize: 15,
+                                                          ),
+                                                        ),
                                                       ),
                                                     ],
                                                   ), //product_detail

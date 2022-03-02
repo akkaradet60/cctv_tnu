@@ -18,6 +18,7 @@ import 'package:form_field_validator/form_field_validator.dart';
 // import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 
 import 'package:geolocator/geolocator.dart';
+import 'package:google_fonts/google_fonts.dart';
 // import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:latlong2/latlong.dart';
@@ -654,21 +655,22 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                                                                           shape:
                                                                               RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30)),
                                                                           backgroundColor:
-                                                                              ThemeBc.black,
+                                                                              ThemeBc.white,
                                                                           content:
                                                                               Container(
                                                                             height:
-                                                                                150,
+                                                                                100,
                                                                             child:
                                                                                 Column(
                                                                               children: [
                                                                                 Text(
                                                                                   'ตำแหน่งของคุณ !\nละติจูด : ${userLocation.latitude} ลองจิจูด : ${userLocation.longitude} ',
-                                                                                  style: TextStyle(
-                                                                                    fontSize: 20.0,
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                    // backgroundColor: Colors.black45,
-                                                                                    color: ThemeBc.white,
+                                                                                  style: GoogleFonts.sarabun(
+                                                                                    textStyle: TextStyle(
+                                                                                      color: ThemeBc.textblack,
+                                                                                      fontWeight: FontWeight.w400,
+                                                                                      fontSize: 17,
+                                                                                    ),
                                                                                   ),
                                                                                 ),
                                                                               ],
@@ -692,11 +694,12 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                                         SizedBox(height: 20),
                                         Text(
                                           '      จุดเกิดเหตุ ',
-                                          style: TextStyle(
-                                            fontSize: 15.0,
-                                            fontWeight: FontWeight.bold,
-                                            // backgroundColor: Colors.black45,
-                                            color: ThemeBc.black,
+                                          style: GoogleFonts.sarabun(
+                                            textStyle: TextStyle(
+                                              color: ThemeBc.textblack,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16,
+                                            ),
                                           ),
                                         ),
                                         SizedBox(height: 5),
@@ -767,14 +770,17 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                                                                   children: [
                                                                     Text(
                                                                       '${snapshot.data!['country'] ?? ''} ${snapshot.data!['province'] ?? ''} ${snapshot.data!['district'] ?? ''} ${snapshot.data!['subdistrict'] ?? ''} ',
-                                                                      style:
-                                                                          TextStyle(
-                                                                        fontSize:
-                                                                            15.0,
-
-                                                                        // backgroundColor: Colors.black45,
-                                                                        color: ThemeBc
-                                                                            .black,
+                                                                      style: GoogleFonts
+                                                                          .sarabun(
+                                                                        textStyle:
+                                                                            TextStyle(
+                                                                          color:
+                                                                              ThemeBc.textblack,
+                                                                          fontWeight:
+                                                                              FontWeight.w400,
+                                                                          fontSize:
+                                                                              15,
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ],
@@ -831,8 +837,13 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                                     }
                                   },
                                   colorButton: ThemeBc.background,
-                                  textStyle: secondaryTextStyle.copyWith(
-                                      fontWeight: medium, fontSize: 16),
+                                  textStyle: GoogleFonts.sarabun(
+                                    textStyle: TextStyle(
+                                      color: ThemeBc.textwhite,
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 16,
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
@@ -935,8 +946,16 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
         ),
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
-        title: const LocaleText('แจ้งเหตุฉุกเฉิน',
-            style: TextStyle(color: ThemeBc.white)),
+        title: LocaleText(
+          'แจ้งเหตุฉุกเฉิน',
+          style: GoogleFonts.sarabun(
+            textStyle: TextStyle(
+              color: ThemeBc.textwhite,
+              fontWeight: FontWeight.w400,
+              fontSize: 18,
+            ),
+          ),
+        ),
         centerTitle: true,
         actions: <Widget>[
           IconButton(
@@ -944,7 +963,7 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+                  const SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
             },
           ),
         ],
@@ -1868,7 +1887,7 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
 //         iconTheme: IconThemeData(
 //           color: ThemeBc.white, //change your color here
 //         ),
-//         shadowColor: ThemeBc.white,
+//         
 //         foregroundColor: ThemeBc.white,
 //         backgroundColor: ThemeBc.black,
 //         title: const LocaleText('แจ้งเหตุฉุกเฉิน',
@@ -1880,7 +1899,7 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
 //             tooltip: 'Show Snackbar',
 //             onPressed: () {
 //               ScaffoldMessenger.of(context).showSnackBar(
-//                   const SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+//                   const SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
 //             },
 //           ),
 //         ],
@@ -3278,7 +3297,7 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
 // // //         iconTheme: IconThemeData(
 // // //           color: ThemeBc.white, //change your color here
 // // //         ),
-// // //         shadowColor: ThemeBc.white,
+// // //         
 // // //         foregroundColor: ThemeBc.white,
 // // //         backgroundColor: ThemeBc.background,
 // // //         title: Center(child: const Text('แจ้งเหตุฉุกเฉิน')),

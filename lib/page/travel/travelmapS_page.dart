@@ -170,7 +170,6 @@ class _travelmap_page extends State<travelmapS_page> {
         iconTheme: IconThemeData(
           color: ThemeBc.white, //change your color here
         ),
-        shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
         title: Center(
@@ -181,8 +180,8 @@ class _travelmap_page extends State<travelmapS_page> {
             icon: Image.asset('assets/logo.png', scale: 15),
             tooltip: 'Show Snackbar',
             onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
             },
           ),
         ],

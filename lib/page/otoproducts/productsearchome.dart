@@ -3,6 +3,7 @@ import 'package:cctv_tun/widgets/Text_pane.dart';
 import 'package:cctv_tun/widgets/custom_buttonn.dart';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class produsctsearchome extends StatefulWidget {
   produsctsearchome({Key? key}) : super(key: key);
@@ -20,12 +21,21 @@ class _produscthomeState extends State<produsctsearchome> {
           iconTheme: IconThemeData(
             color: ThemeBc.white, //change your color here
           ),
-          shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
           title: Column(
             children: [
-              Center(child: Text('ค้นหา')),
+              Center(
+                  child: Text(
+                'ค้นหา',
+                style: GoogleFonts.sarabun(
+                  textStyle: TextStyle(
+                    color: ThemeBc.textwhite,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              )),
             ],
           ),
           actions: <Widget>[
@@ -34,7 +44,7 @@ class _produscthomeState extends State<produsctsearchome> {
               tooltip: 'Show Snackbar',
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+                    SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
               },
             ),
           ],
@@ -57,35 +67,39 @@ class _produscthomeState extends State<produsctsearchome> {
                     children: [
                       SizedBox(height: 20),
                       CustomButton(
-                          title: 'ค้นหาสินค้า',
-                          onPressed: () {
-                            Navigator.pushNamed(
-                              context,
-                              '/productstore_page',
-                            );
-                          },
-                          colorButton: ThemeBc.white,
+                        title: 'ค้นหาสินค้า',
+                        onPressed: () {
+                          Navigator.pushNamed(
+                            context,
+                            '/productstore_page',
+                          );
+                        },
+                        colorButton: ThemeBc.white,
+                        textStyle: GoogleFonts.sarabun(
                           textStyle: TextStyle(
-                            fontSize: 17.0,
-                            fontWeight: FontWeight.bold,
-                            // backgroundColor: Colors.black45,
                             color: ThemeBc.textblack,
-                          )),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                          ),
+                        ),
+                      ),
                       SizedBox(height: 10),
                       CustomButton(
-                          title: 'ค้นหาร้านค้า',
-                          onPressed: () {
-                            Navigator.pushNamed(
-                                context, '/productsearchstore_page',
-                                arguments: {});
-                          },
-                          colorButton: ThemeBc.white,
+                        title: 'ค้นหาร้านค้า',
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, '/productsearchstore_page',
+                              arguments: {});
+                        },
+                        colorButton: ThemeBc.white,
+                        textStyle: GoogleFonts.sarabun(
                           textStyle: TextStyle(
-                            fontSize: 17.0,
-                            fontWeight: FontWeight.bold,
-                            // backgroundColor: Colors.black45,
                             color: ThemeBc.textblack,
-                          ))
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ],

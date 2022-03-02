@@ -67,7 +67,6 @@ class _map_prod extends State<map_prod> {
         iconTheme: IconThemeData(
           color: ThemeBc.white, //change your color here
         ),
-        shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
         title: Column(

@@ -5,6 +5,7 @@ import 'package:cctv_tun/widgets/Text_pane.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -53,12 +54,21 @@ class _productshop_page extends State<productstorehome> {
           iconTheme: IconThemeData(
             color: ThemeBc.white, //change your color here
           ),
-          shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
           title: Column(
             children: [
-              Center(child: LocaleText('ร้านค้า')),
+              Center(
+                  child: LocaleText(
+                'ร้านค้า',
+                style: GoogleFonts.sarabun(
+                  textStyle: TextStyle(
+                    color: ThemeBc.textwhite,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              )),
             ],
           ),
           actions: <Widget>[
@@ -67,7 +77,7 @@ class _productshop_page extends State<productstorehome> {
               tooltip: 'Show Snackbar',
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+                    SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
               },
             ),
           ],
@@ -148,22 +158,14 @@ class _productshop_page extends State<productstorehome> {
                                               color: ThemeBc.textblack,
                                             ),
                                             SizedBox(width: 10),
-                                            LocaleText(
-                                              'ชื่อร้านค้า',
-                                              style: TextStyle(
-                                                fontSize: 15.0,
-                                                fontWeight: FontWeight.bold,
-                                                // backgroundColor: Colors.black45,
-                                                color: ThemeBc.textblack,
-                                              ),
-                                            ),
                                             Text(
-                                              ' : ${productt['otop_name']}',
-                                              style: TextStyle(
-                                                fontSize: 15.0,
-                                                fontWeight: FontWeight.bold,
-                                                // backgroundColor: Colors.black45,
-                                                color: ThemeBc.textblack,
+                                              '${productt['otop_name']}',
+                                              style: GoogleFonts.sarabun(
+                                                textStyle: TextStyle(
+                                                  color: ThemeBc.textblack,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 17,
+                                                ),
                                               ),
                                             ),
                                           ],
@@ -196,12 +198,15 @@ class _productshop_page extends State<productstorehome> {
                                                       // ),
                                                       Text(
                                                         '   ${productt['otop_dateil']}',
-                                                        style: TextStyle(
-                                                          fontSize: 15.0,
-                                                          // fontWeight: FontWeight.bold,
-                                                          // backgroundColor: Colors.black45,
-                                                          color:
-                                                              ThemeBc.textblack,
+                                                        style:
+                                                            GoogleFonts.sarabun(
+                                                          textStyle: TextStyle(
+                                                            color: ThemeBc
+                                                                .textblack,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            fontSize: 15,
+                                                          ),
                                                         ),
                                                       ),
                                                       // Text(
@@ -227,31 +232,17 @@ class _productshop_page extends State<productstorehome> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                        color: ThemeBc.white,
-                                        borderRadius: BorderRadius.circular(
-                                          10,
-                                        ),
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color:
-                                                  Colors.black.withOpacity(0.1),
-                                              offset: Offset(2, 4),
-                                              blurRadius: 7.0,
-                                              spreadRadius: 1.0),
-                                        ]),
                                     child: Row(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text_pane(
-                                              text: 'สินค้าของร้านค้า',
-                                              color: ThemeBc.textblack,
-                                              fontSize: 15),
-                                        ),
-                                      ],
-                                    )),
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text_pane(
+                                          text: 'สินค้าของร้านค้า',
+                                          color: ThemeBc.textwhite,
+                                          fontSize: 20),
+                                    ),
+                                  ],
+                                )),
                               ),
                               probestseller_page(context),
                             ],
@@ -385,8 +376,7 @@ class _productshop_page extends State<productstorehome> {
                                               Column(
                                                 children: [
                                                   Padding(
-                                                    padding:
-                                                        EdgeInsets.all(5.0),
+                                                    padding: EdgeInsets.all(0),
                                                     child: Container(
                                                         decoration:
                                                             BoxDecoration(
@@ -404,7 +394,7 @@ class _productshop_page extends State<productstorehome> {
                                                               BorderRadius.all(
                                                                   Radius
                                                                       .circular(
-                                                                          10.0)),
+                                                                          10)),
                                                           child: Image.network(
                                                             snapshot.data!['data'][index]
                                                                             [
@@ -427,65 +417,34 @@ class _productshop_page extends State<productstorehome> {
                                                   ),
                                                   SizedBox(height: 15),
                                                   Container(
-                                                    decoration: BoxDecoration(
-                                                        color: Colors.grey[200],
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(
-                                                          20,
-                                                        ),
-                                                        boxShadow: [
-                                                          //     spreadRadius: 1.0),
-                                                        ]),
                                                     width: 280,
                                                     height: 80,
                                                     child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
                                                       children: [
                                                         Container(
                                                           width: 200,
-                                                          height: 40,
+                                                          height: 30,
                                                           child: ListView(
                                                             scrollDirection:
                                                                 Axis.horizontal,
                                                             children: [
-                                                              Center(
-                                                                child: Padding(
-                                                                  padding:
-                                                                      const EdgeInsets
-                                                                              .all(
-                                                                          8.0),
-                                                                  child: Row(
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .center,
-                                                                    children: [
-                                                                      LocaleText(
-                                                                        'ชื่อสินค้า',
-                                                                        style:
-                                                                            TextStyle(
-                                                                          fontSize:
-                                                                              15.0,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                          // backgroundColor: Colors.black45,
-                                                                          color:
-                                                                              Colors.black,
-                                                                        ),
-                                                                      ),
-                                                                      Text(
-                                                                        ' : ${snapshot.data!['data'][index]['product_name']}',
-                                                                        style:
-                                                                            TextStyle(
-                                                                          fontSize:
-                                                                              15.0,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                          // backgroundColor: Colors.black45,
-                                                                          color:
-                                                                              Colors.black,
-                                                                        ),
-                                                                      ),
-                                                                    ],
+                                                              Text(
+                                                                '${snapshot.data!['data'][index]['product_name']}',
+                                                                style:
+                                                                    GoogleFonts
+                                                                        .sarabun(
+                                                                  textStyle:
+                                                                      TextStyle(
+                                                                    color: ThemeBc
+                                                                        .textblack,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    fontSize:
+                                                                        15,
                                                                   ),
                                                                 ),
                                                               ),
@@ -493,48 +452,23 @@ class _productshop_page extends State<productstorehome> {
                                                           ),
                                                         ),
                                                         Container(
-                                                          width: 170,
-                                                          height: 40,
+                                                          height: 20,
                                                           child: Column(
                                                             children: [
-                                                              Center(
-                                                                child: Padding(
-                                                                  padding:
-                                                                      const EdgeInsets
-                                                                              .all(
-                                                                          8.0),
-                                                                  child: Row(
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .center,
-                                                                    children: [
-                                                                      LocaleText(
-                                                                        'ราคา',
-                                                                        style:
-                                                                            TextStyle(
-                                                                          fontSize:
-                                                                              15.0,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                          // backgroundColor: Colors.black45,
-                                                                          color:
-                                                                              Colors.black,
-                                                                        ),
-                                                                      ),
-                                                                      Text(
-                                                                        ' : ${snapshot.data!['data'][index]['product_price']}',
-                                                                        style:
-                                                                            TextStyle(
-                                                                          fontSize:
-                                                                              15.0,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                          // backgroundColor: Colors.black45,
-                                                                          color:
-                                                                              Colors.black,
-                                                                        ),
-                                                                      ),
-                                                                    ],
+                                                              Text(
+                                                                '${snapshot.data!['data'][index]['product_price']} บาท',
+                                                                style:
+                                                                    GoogleFonts
+                                                                        .sarabun(
+                                                                  textStyle:
+                                                                      TextStyle(
+                                                                    color: ThemeBc
+                                                                        .textblack,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                    fontSize:
+                                                                        15,
                                                                   ),
                                                                 ),
                                                               ),

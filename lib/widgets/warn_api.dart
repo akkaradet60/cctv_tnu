@@ -15,7 +15,7 @@ class warn_api extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: ThemeBc.black,
+      backgroundColor: ThemeBc.white,
       // shape: CircleBorder(),
       shape:
           RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30)),
@@ -31,7 +31,7 @@ class warn_api extends StatelessWidget {
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
                   // backgroundColor: Colors.black45,
-                  color: ThemeBc.white,
+                  color: ThemeBc.textblack,
                 ),
               ),
             ],

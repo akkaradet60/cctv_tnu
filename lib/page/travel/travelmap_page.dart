@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_fonts/google_fonts.dart';
 // import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -99,19 +100,27 @@ class _travelmap_page extends State<travelmap_page> {
         iconTheme: IconThemeData(
           color: ThemeBc.white, //change your color here
         ),
-        shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.black,
+        backgroundColor: ThemeBc.background,
         title: Center(
-          child: Text('${travelmapname['travel_name']}'),
+          child: Text(
+            '${travelmapname['travel_name']}',
+            style: GoogleFonts.sarabun(
+              textStyle: TextStyle(
+                color: ThemeBc.textwhite,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+          ),
         ),
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/logo.png', scale: 15),
             tooltip: 'Show Snackbar',
             onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
             },
           ),
         ],
@@ -214,24 +223,28 @@ class _travelmap_page extends State<travelmap_page> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                  'เที่ยว : ${travelmapname['travel_name']}',
-                                  style: TextStyle(
-                                    fontSize: 17.0,
-                                    fontWeight: FontWeight.bold,
-                                    // backgroundColor: Colors.black45,
+                                '${travelmapname['travel_name']}',
+                                style: GoogleFonts.sarabun(
+                                  textStyle: TextStyle(
                                     color: ThemeBc.textblack,
-                                  )),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 17,
+                                  ),
+                                ),
+                              ),
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                  'เนื้อหา : ${travelmapname['travel_detail']} ',
-                                  style: TextStyle(
-                                    fontSize: 15.0,
-                                    // fontWeight: FontWeight.bold,
-                                    // backgroundColor: Colors.black45,
+                                '  ${travelmapname['travel_detail']} ',
+                                style: GoogleFonts.sarabun(
+                                  textStyle: TextStyle(
                                     color: ThemeBc.textblack,
-                                  )),
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                              ),
                             )
                           ],
                         ),

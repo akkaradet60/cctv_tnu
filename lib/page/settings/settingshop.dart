@@ -480,7 +480,6 @@ class _settingshopState extends State<settingshop>
         iconTheme: IconThemeData(
           color: ThemeBc.white, //change your color here
         ),
-        shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
         title: Center(child: const Text('ร้านค้า')),
@@ -490,7 +489,7 @@ class _settingshopState extends State<settingshop>
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+                  const SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
             },
           ),
         ],

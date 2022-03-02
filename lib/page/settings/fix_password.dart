@@ -6,10 +6,12 @@ import 'package:cctv_tun/page/profile/app_reducer.dart';
 import 'package:cctv_tun/widgets/warn_api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -61,13 +63,14 @@ class _EmergecyPageState extends State<fix_password>
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   const SizedBox(height: 15),
-                                  const Text(
+                                  Text(
                                     'เปลี่ยนรหัสผ่าน',
-                                    style: TextStyle(
-                                      fontSize: 25.0,
-                                      fontWeight: FontWeight.bold,
-                                      // backgroundColor: Colors.black45,
-                                      color: ThemeBc.black,
+                                    style: GoogleFonts.sarabun(
+                                      textStyle: TextStyle(
+                                        color: ThemeBc.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 25,
+                                      ),
                                     ),
                                   ),
                                   const SizedBox(height: 20),
@@ -156,11 +159,12 @@ class _EmergecyPageState extends State<fix_password>
                                         ),
                                         label: Text(
                                           'เปลี่ยนรหัสผ่าน',
-                                          style: TextStyle(
-                                            fontSize: 15.0,
-
-                                            // backgroundColor: Colors.black45,
-                                            color: ThemeBc.textwhite,
+                                          style: GoogleFonts.sarabun(
+                                            textStyle: TextStyle(
+                                              color: ThemeBc.textwhite,
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: 15,
+                                            ),
                                           ),
                                         ),
                                         style: ElevatedButton.styleFrom(
@@ -227,12 +231,21 @@ class _EmergecyPageState extends State<fix_password>
         iconTheme: IconThemeData(
           color: ThemeBc.white, //change your color here
         ),
-        shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
         title: Column(
           children: [
-            Center(child: Text('แก้ไขรหัสผ่าน')),
+            Center(
+                child: LocaleText(
+              'แก้ไขรหัสผ่าน',
+              style: GoogleFonts.sarabun(
+                textStyle: TextStyle(
+                  color: ThemeBc.textwhite,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 18,
+                ),
+              ),
+            )),
           ],
         ),
         actions: <Widget>[
@@ -241,7 +254,7 @@ class _EmergecyPageState extends State<fix_password>
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+                  const SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
             },
           ),
         ],
@@ -641,7 +654,7 @@ class _EmergecyPageState extends State<fix_password>
 //         iconTheme: IconThemeData(
 //           color: ThemeBc.white, //change your color here
 //         ),
-//         shadowColor: ThemeBc.white,
+//         
 //         foregroundColor: ThemeBc.white,
 //         backgroundColor: ThemeBc.black,
 //         title: Center(child: const Text('แก้ไขรหัสผ่าน')),
@@ -651,7 +664,7 @@ class _EmergecyPageState extends State<fix_password>
 //             tooltip: 'Show Snackbar',
 //             onPressed: () {
 //               ScaffoldMessenger.of(context).showSnackBar(
-//                   const SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+//                   const SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
 //             },
 //           ),
 //         ],

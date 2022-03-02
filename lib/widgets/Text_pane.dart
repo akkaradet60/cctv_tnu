@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Text_pane extends StatelessWidget {
   final String text;
@@ -19,12 +20,19 @@ class Text_pane extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: TextStyle(
-        fontSize: fontSize,
-        fontWeight: FontWeight.bold,
-        // backgroundColor: Colors.black45,
-        color: color,
+      style: GoogleFonts.sarabun(
+        textStyle: TextStyle(
+          color: color,
+          fontWeight: FontWeight.w400,
+          fontSize: fontSize,
+        ),
       ),
+      // style: TextStyle(
+      //   fontSize: fontSize,
+      //   fontWeight: FontWeight.bold,
+      //   // backgroundColor: Colors.black45,
+      //   color: color,
+      // ),
     );
   }
 }

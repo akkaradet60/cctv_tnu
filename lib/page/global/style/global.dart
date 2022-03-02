@@ -67,9 +67,10 @@ class ThemeBc {
   // static const background = Color.fromARGB(255, 27, 40, 54);
   static const background = Color(0xffd76302);
   static const textwhite = Colors.white;
-  static const blue = Color(0xff512da8);
+  static const blue = Color(0xff4267B2);
   static const textblack = Color(0xff1B2836);
-  static const grey = Color(0xFFeeeeee);
+  static const grey = Color(0xffeeeeee);
+  static const grey01 = Color(0xFF757575);
   static const black54 = Colors.black54;
   static const orangeAccent = Colors.orangeAccent;
   static const pinkAccent = Colors.pinkAccent;

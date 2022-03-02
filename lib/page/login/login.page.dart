@@ -15,6 +15,7 @@ import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'dart:convert';
@@ -387,7 +388,7 @@ class _LoginPageState extends State<login_page> {
                         children: [
                           SizedBox(height: 50),
                           Container(
-                            padding: EdgeInsets.symmetric(horizontal: 120),
+                            padding: EdgeInsets.symmetric(horizontal: 140),
                             child: Image.asset('assets/logo.png'),
                           ),
                           SizedBox(height: 20),
@@ -401,34 +402,40 @@ class _LoginPageState extends State<login_page> {
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       left: 35, right: 35),
-                                  child: FormBuilderTextField(
-                                    name: "email",
-                                    style: TextStyle(color: Colors.white),
-                                    initialValue: 'akkaradet.k6@snru.ac.th',
-                                    maxLines: 1,
-                                    keyboardType: TextInputType.emailAddress,
-                                    decoration: const InputDecoration(
-                                      suffixIcon: Icon(
-                                        Icons.email,
-                                        color: Colors.white,
-                                      ),
-                                      // enabledBorder: UnderlineInputBorder(
-                                      //   borderSide:
-                                      //       BorderSide(color: ThemeBc.black),
-                                      // ),
-
-                                      // // labelText: 'Email',
-                                      hintText: 'อีเมล',
-                                      hintStyle: TextStyle(color: Colors.white),
-                                      filled: true,
-                                      fillColor: Colors.black45,
+                                  child: NeumorphicButton(
+                                    style: const NeumorphicStyle(
+                                      shape: NeumorphicShape.flat,
+                                      color: Colors.black45,
                                     ),
-                                    validator: MultiValidator([
-                                      RequiredValidator(
-                                          errorText: "ป้อนข้อมูลอีเมล์ด้วย"),
-                                      EmailValidator(
-                                          errorText: "รูปแบบอีเมล์ไม่ถูกต้อง"),
-                                    ]),
+                                    child: FormBuilderTextField(
+                                      name: "email",
+                                      style: TextStyle(color: Colors.white),
+                                      initialValue: 'akkaradet.k6@snru.ac.th',
+                                      maxLines: 1,
+                                      keyboardType: TextInputType.emailAddress,
+                                      decoration: const InputDecoration(
+                                        suffixIcon: Icon(
+                                          Icons.email,
+                                          color: Colors.white,
+                                        ),
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: ThemeBc.white),
+                                        ),
+                                        // // labelText: 'Email',
+                                        hintText: 'อีเมล',
+                                        hintStyle:
+                                            TextStyle(color: Colors.white),
+                                        filled: true,
+                                      ),
+                                      validator: MultiValidator([
+                                        RequiredValidator(
+                                            errorText: "ป้อนข้อมูลอีเมล์ด้วย"),
+                                        EmailValidator(
+                                            errorText:
+                                                "รูปแบบอีเมล์ไม่ถูกต้อง"),
+                                      ]),
+                                    ),
                                   ),
                                 ),
 
@@ -437,128 +444,127 @@ class _LoginPageState extends State<login_page> {
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       left: 35, right: 35),
-                                  child: FormBuilderTextField(
-                                    style: TextStyle(color: Colors.white),
-                                    name: "password",
-                                    maxLines: 1,
-                                    initialValue: '1234567',
-                                    keyboardType: TextInputType.visiblePassword,
-                                    obscureText: true,
-                                    decoration: InputDecoration(
-                                      suffixIcon: const Icon(
-                                        Icons.vpn_key,
-                                        color: Colors.white,
-                                      ),
+                                  child: NeumorphicButton(
+                                    style: const NeumorphicStyle(
+                                      shape: NeumorphicShape.flat,
+                                      color: Colors.black45,
+                                    ),
+                                    child: FormBuilderTextField(
+                                      style: TextStyle(color: Colors.white),
+                                      name: "password",
+                                      maxLines: 1,
+                                      initialValue: '1234567',
+                                      keyboardType:
+                                          TextInputType.visiblePassword,
+                                      obscureText: true,
+                                      decoration: InputDecoration(
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: ThemeBc.white),
+                                        ),
+                                        suffixIcon: const Icon(
+                                          Icons.vpn_key,
+                                          color: Colors.white,
+                                        ),
 
-                                      hintText: 'รหัสผ่าน',
-                                      hintStyle: TextStyle(color: Colors.white),
-                                      // errorText: _emailError,
-                                      filled: true,
-                                      fillColor: Colors.black45,
+                                        hintText: 'รหัสผ่าน',
+                                        hintStyle:
+                                            TextStyle(color: Colors.white),
+                                        // errorText: _emailError,
+                                        filled: true,
+                                      ),
+                                      validator: MultiValidator([
+                                        RequiredValidator(
+                                            errorText:
+                                                "ป้อนข้อมูลรหัสผ่านด้วย"),
+                                        MinLengthValidator(6,
+                                            errorText:
+                                                "รหัสผ่านต้อง 6 ตัวอักษรขึ้นไป"),
+                                      ]),
                                     ),
-                                    validator: MultiValidator([
-                                      RequiredValidator(
-                                          errorText: "ป้อนข้อมูลรหัสผ่านด้วย"),
-                                      MinLengthValidator(6,
-                                          errorText:
-                                              "รหัสผ่านต้อง 6 ตัวอักษรขึ้นไป"),
-                                    ]),
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          SizedBox(height: 18),
-                          Container(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                InkWell(
-                                  onTap: () => Navigator.pushNamed(
-                                      context, '/forgot_password'),
-                                  child: LocaleText(
-                                    'ลืมรหัสผ่าน',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15,
-                                      decoration: TextDecoration.underline,
-                                      shadows: <Shadow>[
-                                        Shadow(
-                                          offset: Offset(1.0, 1.0),
-                                          blurRadius: 3.0,
-                                          color: Color.fromARGB(255, 0, 0, 0),
+                          SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.all(0.0),
+                            child: Container(
+                              width: 342,
+                              decoration: BoxDecoration(
+                                  color: ThemeBc.white,
+                                  borderRadius: BorderRadius.circular(
+                                    10,
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.black.withOpacity(0.2),
+                                        offset: Offset(2, 2),
+                                        blurRadius: 7,
+                                        spreadRadius: 1.0),
+                                  ]),
+                              child: Row(
+                                children: <Widget>[
+                                  Expanded(
+                                    child: ElevatedButton.icon(
+                                      label: LocaleText(
+                                        'เข้าสู่ระบบ',
+                                        style: GoogleFonts.sarabun(
+                                          textStyle: TextStyle(
+                                            color: ThemeBc.textwhite,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 15,
+                                          ),
                                         ),
-                                        Shadow(
-                                          offset: Offset(1.0, 1.0),
-                                          blurRadius: 8.0,
-                                          color: Color.fromARGB(255, 0, 0, 0),
-                                        ),
-                                      ],
+                                      ),
+                                      icon: const Icon(
+                                        Icons.login,
+                                      ),
+                                      style: ElevatedButton.styleFrom(
+                                        primary: ThemeBc.background,
+                                        //side: BorderSide(color: Colors.red, width: 5),
+                                        textStyle:
+                                            const TextStyle(fontSize: 15),
+                                        padding: const EdgeInsets.all(15),
+                                        shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10))),
+                                        // shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+                                      ),
+                                      onPressed: () {
+                                        // login(_fbKey.currentState!.value);
+                                        if (_fbKey.currentState!
+                                            .saveAndValidate()) {
+                                          // print(_fbKey.currentState!.value);
+                                          login(_fbKey.currentState!.value);
+                                        }
+                                      },
                                     ),
                                   ),
-                                ),
-                                SizedBox(width: 50),
-                                InkWell(
-                                  onTap: () => Navigator.pushNamed(
-                                      context, '/register_page'),
-                                  child: LocaleText(
-                                    'สมัครสมาชิก',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15,
-                                      decoration: TextDecoration.underline,
-                                      shadows: <Shadow>[
-                                        Shadow(
-                                          offset: Offset(1.0, 1.0),
-                                          blurRadius: 3.0,
-                                          color: Color.fromARGB(255, 0, 0, 0),
-                                        ),
-                                        Shadow(
-                                          offset: Offset(1.0, 1.0),
-                                          blurRadius: 8.0,
-                                          color: Color.fromARGB(255, 0, 0, 0),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                )
-                              ],
+                                ],
+                              ),
                             ),
                           ),
-                          SizedBox(height: 10),
-                          Container(
-                            // color: Colors.transparent,
-                            // margin: EdgeInsets.only(
-                            //   top: 20,
-                            // ),
-                            child: CustomButton(
-                              title: 'ล็อกอิน',
-                              onPressed: () {
-                                // login(_fbKey.currentState!.value);
-                                if (_fbKey.currentState!.saveAndValidate()) {
-                                  // print(_fbKey.currentState!.value);
-                                  login(_fbKey.currentState!.value);
-                                }
-                              },
-                              colorButton: ThemeBc.background,
-                              textStyle: secondaryTextStyle.copyWith(
-                                  fontWeight: medium, fontSize: 16),
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Container(
-                            child: CustomButton(
-                              title: 'ทดลองใช้ในฐานะผู้เยี่ยมชม',
-                              onPressed: () {
-                                loginapp();
-                              },
-                              colorButton: ThemeBc.background,
-                              textStyle: secondaryTextStyle.copyWith(
-                                  fontWeight: medium, fontSize: 16),
-                            ),
-                          ),
+                          // Container(
+                          //   // color: Colors.transparent,
+                          //   // margin: EdgeInsets.only(
+                          //   //   top: 20,
+                          //   // ),
+                          //   child: CustomButton(
+                          //     title: 'เข้าสู่ระบบ',
+                          //     onPressed: () {
+                          //       // login(_fbKey.currentState!.value);
+                          //       if (_fbKey.currentState!.saveAndValidate()) {
+                          //         // print(_fbKey.currentState!.value);
+                          //         login(_fbKey.currentState!.value);
+                          //       }
+                          //     },
+                          //     colorButton: ThemeBc.background,
+                          //     textStyle: secondaryTextStyle.copyWith(
+                          //         fontWeight: FontWeight.w100, fontSize: 16),
+                          //   ),
+                          // ),
                           SizedBox(height: 5),
                           Padding(
                             padding: const EdgeInsets.all(0.0),
@@ -580,7 +586,16 @@ class _LoginPageState extends State<login_page> {
                                 children: <Widget>[
                                   Expanded(
                                     child: ElevatedButton.icon(
-                                      label: const LocaleText('facebook'),
+                                      label: LocaleText(
+                                        'facebook',
+                                        style: GoogleFonts.sarabun(
+                                          textStyle: TextStyle(
+                                            color: ThemeBc.textwhite,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                      ),
                                       icon: const Icon(Icons.facebook_rounded),
                                       style: ElevatedButton.styleFrom(
                                         primary: ThemeBc.blue,
@@ -602,31 +617,48 @@ class _LoginPageState extends State<login_page> {
                               ),
                             ),
                           ),
+                          SizedBox(height: 20),
+                          Container(
+                            child: CustomButton(
+                              title: 'ทดลองใช้ในฐานะผู้เยี่ยมชม',
+                              onPressed: () {
+                                loginapp();
+                              },
+                              colorButton: ThemeBc.grey01,
+                              textStyle: GoogleFonts.sarabun(
+                                textStyle: TextStyle(
+                                  color: ThemeBc.textwhite,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                          ),
                           SizedBox(height: 5),
                           Padding(
                             padding: const EdgeInsets.all(0),
                             child: Container(
                               width: 342,
-                              decoration: BoxDecoration(
-                                  color: ThemeBc.black,
-                                  borderRadius: BorderRadius.circular(
-                                    10,
-                                  ),
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.black.withOpacity(0.2),
-                                        offset: Offset(2, 2),
-                                        blurRadius: 7,
-                                        spreadRadius: 1.0),
-                                  ]),
                               child: Row(
                                 children: <Widget>[
                                   Expanded(
                                     child: ElevatedButton.icon(
-                                      label: const LocaleText('เปลี่ยนภาษา'),
-                                      icon: const Icon(Icons.spellcheck),
+                                      label: LocaleText(
+                                        'เปลี่ยนภาษา',
+                                        style: GoogleFonts.sarabun(
+                                          textStyle: TextStyle(
+                                            color: ThemeBc.textwhite,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                      ),
+                                      icon: const Icon(
+                                        Icons.spellcheck,
+                                        color: ThemeBc.white,
+                                      ),
                                       style: ElevatedButton.styleFrom(
-                                        primary: ThemeBc.black,
+                                        primary: Colors.black38,
                                         //side: BorderSide(color: Colors.red, width: 5),
                                         textStyle:
                                             const TextStyle(fontSize: 15),
@@ -689,16 +721,18 @@ class _LoginPageState extends State<login_page> {
                                                               child: Center(
                                                                 child: Text(
                                                                   'ภาษาไทย',
-                                                                  style:
-                                                                      TextStyle(
-                                                                    fontSize:
-                                                                        15.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
-                                                                    // backgroundColor: Colors.black45,
-                                                                    color: ThemeBc
-                                                                        .black,
+                                                                  style: GoogleFonts
+                                                                      .sarabun(
+                                                                    textStyle:
+                                                                        TextStyle(
+                                                                      color: ThemeBc
+                                                                          .textwhite,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                      fontSize:
+                                                                          15,
+                                                                    ),
                                                                   ),
                                                                 ),
                                                               ),
@@ -730,20 +764,7 @@ class _LoginPageState extends State<login_page> {
                                                                             .circular(
                                                                       10,
                                                                     ),
-                                                                    boxShadow: [
-                                                                  BoxShadow(
-                                                                      color: Colors
-                                                                          .black
-                                                                          .withOpacity(
-                                                                              0.5),
-                                                                      offset:
-                                                                          Offset(2,
-                                                                              2),
-                                                                      blurRadius:
-                                                                          7,
-                                                                      spreadRadius:
-                                                                          1.0),
-                                                                ]),
+                                                                    boxShadow: []),
                                                             child: Padding(
                                                               padding:
                                                                   const EdgeInsets
@@ -751,16 +772,18 @@ class _LoginPageState extends State<login_page> {
                                                               child: Center(
                                                                 child: Text(
                                                                   'English',
-                                                                  style:
-                                                                      TextStyle(
-                                                                    fontSize:
-                                                                        15.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
-                                                                    // backgroundColor: Colors.black45,
-                                                                    color: ThemeBc
-                                                                        .black,
+                                                                  style: GoogleFonts
+                                                                      .sarabun(
+                                                                    textStyle:
+                                                                        TextStyle(
+                                                                      color: ThemeBc
+                                                                          .textwhite,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                      fontSize:
+                                                                          15,
+                                                                    ),
                                                                   ),
                                                                 ),
                                                               ),
@@ -800,16 +823,18 @@ class _LoginPageState extends State<login_page> {
                                                               child: Center(
                                                                 child: Text(
                                                                   '中国',
-                                                                  style:
-                                                                      TextStyle(
-                                                                    fontSize:
-                                                                        15.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
-                                                                    // backgroundColor: Colors.black45,
-                                                                    color: ThemeBc
-                                                                        .black,
+                                                                  style: GoogleFonts
+                                                                      .sarabun(
+                                                                    textStyle:
+                                                                        TextStyle(
+                                                                      color: ThemeBc
+                                                                          .textwhite,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                      fontSize:
+                                                                          15,
+                                                                    ),
                                                                   ),
                                                                 ),
                                                               ),
@@ -829,6 +854,57 @@ class _LoginPageState extends State<login_page> {
                                   ),
                                 ],
                               ),
+                            ),
+                          ),
+                          SizedBox(height: 30),
+                          Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                InkWell(
+                                  onTap: () => Navigator.pushNamed(
+                                      context, '/forgot_password'),
+                                  child: LocaleText(
+                                    'ลืมรหัสผ่าน',
+                                    style: GoogleFonts.sarabun(
+                                      textStyle: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 15,
+                                        // decoration: TextDecoration.underline,
+                                        shadows: <Shadow>[
+                                          Shadow(
+                                            offset: Offset(1.0, 1.0),
+                                            blurRadius: 8.0,
+                                            color: Color.fromARGB(255, 0, 0, 0),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(width: 50),
+                                InkWell(
+                                  onTap: () => Navigator.pushNamed(
+                                      context, '/register_page'),
+                                  child: LocaleText(
+                                    'สมัครสมาชิก',
+                                    style: GoogleFonts.sarabun(
+                                      textStyle: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 15,
+                                        // decoration: TextDecoration.underline,
+                                        shadows: <Shadow>[
+                                          Shadow(
+                                            offset: Offset(1.0, 1.0),
+                                            blurRadius: 8.0,
+                                            color: Color.fromARGB(255, 0, 0, 0),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                           SizedBox(height: 100),

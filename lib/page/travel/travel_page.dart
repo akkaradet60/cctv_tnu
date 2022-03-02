@@ -5,6 +5,7 @@ import 'package:cctv_tun/widgets/Text_pane.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -314,12 +315,15 @@ class _travel_page extends State<travel_page> {
                                                     child: Text(
                                                       // '${titles[_currentIndex]}',
                                                       '${snapshot.data!['data'][index]['travel_name']}',
-                                                      style: TextStyle(
-                                                        fontSize: 20.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        // backgroundColor: Colors.black45,
-                                                        color: ThemeBc.white,
+                                                      style:
+                                                          GoogleFonts.sarabun(
+                                                        textStyle: TextStyle(
+                                                          color:
+                                                              ThemeBc.textwhite,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 20,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
@@ -377,7 +381,6 @@ class _travel_page extends State<travel_page> {
           iconTheme: IconThemeData(
             color: ThemeBc.white, //change your color here
           ),
-          shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
           title: Column(
@@ -391,7 +394,7 @@ class _travel_page extends State<travel_page> {
               tooltip: 'Show Snackbar',
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+                    const SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
               },
             ),
           ],

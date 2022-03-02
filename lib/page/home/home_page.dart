@@ -11,6 +11,7 @@ import 'package:flutter_locales/flutter_locales.dart';
 
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:cctv_tun/widgets/menus_custom.dart';
@@ -339,11 +340,12 @@ class _home_pageState extends State<home_page> {
                                           Text(
                                             // '${titles[_currentIndex]}',
                                             '  ${snapshot.data!['data'][item]['blog_name']}',
-                                            style: TextStyle(
-                                              fontSize: 18.0,
-                                              // fontWeight: FontWeight.bold,
-                                              // backgroundColor: Colors.black45,
-                                              color: ThemeBc.white,
+                                            style: GoogleFonts.sarabun(
+                                              textStyle: TextStyle(
+                                                color: ThemeBc.textwhite,
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 18,
+                                              ),
                                             ),
                                           ),
                                         ],
@@ -393,11 +395,12 @@ class _home_pageState extends State<home_page> {
           // margin: EdgeInsets.only(top: 30, left: 5),
           child: LocaleText(
             'เมนู',
-            style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-              // backgroundColor: Colors.black45,
-              color: ThemeBc.textblack,
+            style: GoogleFonts.sarabun(
+              textStyle: TextStyle(
+                color: ThemeBc.textblack,
+                fontWeight: FontWeight.bold,
+                fontSize: 25,
+              ),
             ),
           ),
         ),
@@ -659,7 +662,18 @@ class _home_pageState extends State<home_page> {
         backgroundColor: ThemeBc.background,
         title: Column(
           children: [
-            LocaleText('เทศบาลเมืองมหาสารคาม'),
+            Center(
+              child: LocaleText(
+                'เทศบาลตำบลพระลับ',
+                style: GoogleFonts.sarabun(
+                  textStyle: TextStyle(
+                    color: ThemeBc.textwhite,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
         actions: <Widget>[
@@ -668,7 +682,7 @@ class _home_pageState extends State<home_page> {
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+                  const SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
             },
           ),
         ],

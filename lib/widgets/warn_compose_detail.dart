@@ -1,6 +1,7 @@
 import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class W_C_Detali extends StatelessWidget {
   final String name;
@@ -45,13 +46,15 @@ class W_C_Detali extends StatelessWidget {
                         SizedBox(height: 10),
                         Text(
                           name,
-                          style: TextStyle(
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.bold,
-                            // backgroundColor: Colors.black45,
-                            color: ThemeBc.black,
+                          style: GoogleFonts.sarabun(
+                            textStyle: TextStyle(
+                              color: ThemeBc.textblack,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
                           ),
                         ),
+                        SizedBox(height: 5),
                         Container(
                           width: 200,
                           height: 20,
@@ -59,11 +62,12 @@ class W_C_Detali extends StatelessWidget {
                             children: [
                               Text(
                                 name02,
-                                style: TextStyle(
-                                  fontSize: 13.0,
-                                  // fontWeight: FontWeight.bold,
-                                  // backgroundColor: Colors.black45,
-                                  color: ThemeBc.black,
+                                style: GoogleFonts.sarabun(
+                                  textStyle: TextStyle(
+                                    color: ThemeBc.textblack,
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 13,
+                                  ),
                                 ),
                               ),
                             ],

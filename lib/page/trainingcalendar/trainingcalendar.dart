@@ -3,6 +3,7 @@ import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:flutter/gestures.dart';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -98,17 +99,26 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
         iconTheme: IconThemeData(
           color: ThemeBc.white, //change your color here
         ),
-        shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
-        title: Center(child: Text('การฝึกอบรม')),
+        title: Center(
+            child: Text(
+          'การฝึกอบรม',
+          style: GoogleFonts.sarabun(
+            textStyle: TextStyle(
+              color: ThemeBc.textwhite,
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+            ),
+          ),
+        )),
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/logo.png', scale: 15),
             tooltip: 'Show Snackbar',
             onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
             },
           ),
         ],
@@ -284,13 +294,15 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
                                                             8.0),
                                                     child: Text(
                                                       '${snapshot.data!['data'][index]['train_name']}',
-                                                      style: TextStyle(
-                                                        fontSize: 17.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        // backgroundColor: Colors.black45,
-                                                        color:
-                                                            ThemeBc.textblack,
+                                                      style:
+                                                          GoogleFonts.sarabun(
+                                                        textStyle: TextStyle(
+                                                          color:
+                                                              ThemeBc.textblack,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 17,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
@@ -300,12 +312,15 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
                                                             8.0),
                                                     child: Text(
                                                       'เนื้อหาอบรม : ${snapshot.data!['data'][index]['train_detail']}',
-                                                      style: TextStyle(
-                                                        fontSize: 15.0,
-
-                                                        // backgroundColor: Colors.black45,
-                                                        color:
-                                                            ThemeBc.textblack,
+                                                      style:
+                                                          GoogleFonts.sarabun(
+                                                        textStyle: TextStyle(
+                                                          color:
+                                                              ThemeBc.textblack,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          fontSize: 15,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),

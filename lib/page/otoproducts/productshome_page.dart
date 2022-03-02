@@ -3,6 +3,7 @@ import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -23,12 +24,21 @@ class _productshome_page extends State<productshome_page> {
           iconTheme: IconThemeData(
             color: ThemeBc.white, //change your color here
           ),
-          shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
           title: Column(
             children: [
-              Center(child: LocaleText('สินค้าโอทอป')),
+              Center(
+                  child: LocaleText(
+                'สินค้าโอทอป',
+                style: GoogleFonts.sarabun(
+                  textStyle: TextStyle(
+                    color: ThemeBc.textwhite,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              )),
             ],
           ),
           actions: <Widget>[
@@ -82,6 +92,7 @@ class _productshome_page extends State<productshome_page> {
                 children: [],
               ),
               //sso(context),
+              SizedBox(height: 12),
               propopular_page(context),
               probestseller_page(context),
               probestss(context),
@@ -133,11 +144,12 @@ class _productshome_page extends State<productshome_page> {
             padding: const EdgeInsets.all(8.0),
             child: LocaleText(
               'สินค้าขายดีอาทิตย์นี้',
-              style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-                // backgroundColor: Colors.black45,
-                color: ThemeBc.textblack,
+              style: GoogleFonts.sarabun(
+                textStyle: TextStyle(
+                  color: ThemeBc.textwhite,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
               ),
             ),
           ),
@@ -259,21 +271,24 @@ class _productshome_page extends State<productshome_page> {
                                                     children: [
                                                       Container(
                                                         width: 200,
-                                                        height: 20,
+                                                        height: 30,
                                                         child: ListView(
                                                           scrollDirection:
                                                               Axis.horizontal,
                                                           children: [
                                                             Text(
                                                               '${snapshot.data!['data'][index]['product_name']}',
-                                                              style: TextStyle(
-                                                                fontSize: 17.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                // backgroundColor: Colors.black45,
-                                                                color: Colors
-                                                                    .black,
+                                                              style: GoogleFonts
+                                                                  .sarabun(
+                                                                textStyle:
+                                                                    TextStyle(
+                                                                  color: ThemeBc
+                                                                      .textblack,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontSize: 17,
+                                                                ),
                                                               ),
                                                             ),
                                                           ],
@@ -281,12 +296,16 @@ class _productshome_page extends State<productshome_page> {
                                                       ),
                                                       SizedBox(height: 10),
                                                       Text(
-                                                        '${snapshot.data!['data'][index]['product_price']}',
-                                                        style: TextStyle(
-                                                          fontSize: 15.0,
-
-                                                          // backgroundColor: Colors.black45,
-                                                          color: Colors.black,
+                                                        '${snapshot.data!['data'][index]['product_price']} บาท',
+                                                        style:
+                                                            GoogleFonts.sarabun(
+                                                          textStyle: TextStyle(
+                                                            color: ThemeBc
+                                                                .textblack,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            fontSize: 15,
+                                                          ),
                                                         ),
                                                       ),
                                                     ],
@@ -356,11 +375,13 @@ class _productshome_page extends State<productshome_page> {
             padding: const EdgeInsets.all(8.0),
             child: LocaleText(
               'ยอดนิยมประจำสัมปดาห์',
-              style: TextStyle(
-                  fontSize: 20.0,
+              style: GoogleFonts.sarabun(
+                textStyle: TextStyle(
+                  color: ThemeBc.textwhite,
                   fontWeight: FontWeight.bold,
-                  // backgroundColor: Colors.black45,
-                  color: ThemeBc.textblack),
+                  fontSize: 20,
+                ),
+              ),
             ),
           ),
           SizedBox(height: 5),
@@ -481,21 +502,24 @@ class _productshome_page extends State<productshome_page> {
                                                     children: [
                                                       Container(
                                                         width: 200,
-                                                        height: 20,
+                                                        height: 30,
                                                         child: ListView(
                                                           scrollDirection:
                                                               Axis.horizontal,
                                                           children: [
                                                             Text(
                                                               '${snapshot.data!['data'][index]['product_name']}',
-                                                              style: TextStyle(
-                                                                fontSize: 17.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                // backgroundColor: Colors.black45,
-                                                                color: Colors
-                                                                    .black,
+                                                              style: GoogleFonts
+                                                                  .sarabun(
+                                                                textStyle:
+                                                                    TextStyle(
+                                                                  color: ThemeBc
+                                                                      .textblack,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontSize: 17,
+                                                                ),
                                                               ),
                                                             ),
                                                           ],
@@ -503,12 +527,16 @@ class _productshome_page extends State<productshome_page> {
                                                       ),
                                                       SizedBox(height: 10),
                                                       Text(
-                                                        '${snapshot.data!['data'][index]['product_price']}',
-                                                        style: TextStyle(
-                                                          fontSize: 15.0,
-
-                                                          // backgroundColor: Colors.black45,
-                                                          color: Colors.black,
+                                                        '${snapshot.data!['data'][index]['product_price']} บาท',
+                                                        style:
+                                                            GoogleFonts.sarabun(
+                                                          textStyle: TextStyle(
+                                                            color: ThemeBc
+                                                                .textblack,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            fontSize: 15,
+                                                          ),
                                                         ),
                                                       ),
                                                     ],
@@ -578,11 +606,12 @@ class _productshome_page extends State<productshome_page> {
             padding: const EdgeInsets.all(8.0),
             child: LocaleText(
               'ใหม่ล่าสุด',
-              style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-                // backgroundColor: Colors.black45,
-                color: ThemeBc.textblack,
+              style: GoogleFonts.sarabun(
+                textStyle: TextStyle(
+                  color: ThemeBc.textwhite,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
               ),
             ),
           ),
@@ -726,11 +755,12 @@ class _productshome_page extends State<productshome_page> {
                                                                           Text(
                                                                             '${snapshot.data!['data'][index]['product_name']}',
                                                                             style:
-                                                                                TextStyle(
-                                                                              fontSize: 10.0,
-                                                                              fontWeight: FontWeight.bold,
-                                                                              // backgroundColor: Colors.black45,
-                                                                              color: Colors.black,
+                                                                                GoogleFonts.sarabun(
+                                                                              textStyle: TextStyle(
+                                                                                color: ThemeBc.textblack,
+                                                                                fontWeight: FontWeight.bold,
+                                                                                fontSize: 10,
+                                                                              ),
                                                                             ),
                                                                           ),
                                                                         ],
@@ -740,15 +770,20 @@ class _productshome_page extends State<productshome_page> {
                                                                 ),
                                                               ),
                                                               Text(
-                                                                '${snapshot.data!['data'][index]['product_price']}',
+                                                                '${snapshot.data!['data'][index]['product_price']} บาท',
                                                                 style:
-                                                                    TextStyle(
-                                                                  fontSize:
-                                                                      10.0,
-
-                                                                  // backgroundColor: Colors.black45,
-                                                                  color: Colors
-                                                                      .black,
+                                                                    GoogleFonts
+                                                                        .sarabun(
+                                                                  textStyle:
+                                                                      TextStyle(
+                                                                    color: ThemeBc
+                                                                        .textblack,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                    fontSize:
+                                                                        10,
+                                                                  ),
                                                                 ),
                                                               ),
                                                             ],

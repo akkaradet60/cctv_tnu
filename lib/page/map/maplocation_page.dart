@@ -5,6 +5,7 @@ import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:latlong2/latlong.dart';
 // import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -61,7 +62,6 @@ class _maplocation_page extends State<maplocation_page> {
         iconTheme: IconThemeData(
           color: ThemeBc.white, //change your color here
         ),
-        shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
         title: Container(
@@ -71,7 +71,17 @@ class _maplocation_page extends State<maplocation_page> {
             // scrollDirection: Axis.horizontal,
             children: [
               SizedBox(height: 10),
-              Center(child: Text('${hotlinee['travelName']}')),
+              Center(
+                  child: Text(
+                '${hotlinee['travelName']}',
+                style: GoogleFonts.sarabun(
+                  textStyle: TextStyle(
+                    color: ThemeBc.textwhite,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              )),
             ],
           ),
         ),
@@ -162,11 +172,12 @@ class _maplocation_page extends State<maplocation_page> {
                               SizedBox(height: 5),
                               Text(
                                 'ชื่อสถานที่ : ${hotlinee['travelName']}',
-                                style: TextStyle(
-                                  fontSize: 17.0,
-                                  fontWeight: FontWeight.bold,
-                                  // backgroundColor: Colors.black45,
-                                  color: ThemeBc.textblack,
+                                style: GoogleFonts.sarabun(
+                                  textStyle: TextStyle(
+                                    color: ThemeBc.textblack,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 17,
+                                  ),
                                 ),
                               ),
                               Padding(
@@ -179,23 +190,25 @@ class _maplocation_page extends State<maplocation_page> {
                                         padding: const EdgeInsets.all(8.0),
                                         child: Text(
                                           '${hotlinee['detail']}',
-                                          style: TextStyle(
-                                            fontSize: 15.0,
-
-                                            // backgroundColor: Colors.black45,
-                                            color: ThemeBc.textblack,
+                                          style: GoogleFonts.sarabun(
+                                            textStyle: TextStyle(
+                                              color: ThemeBc.textblack,
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: 15,
+                                            ),
                                           ),
                                         ),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: Text(
-                                          '${hotlinee['travelName']} คือ : ${hotlinee['travelDetail']}',
-                                          style: TextStyle(
-                                            fontSize: 15.0,
-
-                                            // backgroundColor: Colors.black45,
-                                            color: ThemeBc.textblack,
+                                          '  ${hotlinee['travelDetail']}',
+                                          style: GoogleFonts.sarabun(
+                                            textStyle: TextStyle(
+                                              color: ThemeBc.textblack,
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: 15,
+                                            ),
                                           ),
                                         ),
                                       ),

@@ -4,6 +4,7 @@ import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -76,12 +77,21 @@ class _hotlinee_pageState extends State<hotlinee_page> {
         iconTheme: IconThemeData(
           color: ThemeBc.white, //change your color here
         ),
-        shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
         title: Column(
           children: [
-            Center(child: LocaleText('สายด่วน')),
+            Center(
+                child: LocaleText(
+              'สายด่วน',
+              style: GoogleFonts.sarabun(
+                textStyle: TextStyle(
+                  color: ThemeBc.textwhite,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+            )),
           ],
         ),
         actions: <Widget>[
@@ -89,8 +99,8 @@ class _hotlinee_pageState extends State<hotlinee_page> {
             icon: Image.asset('assets/logo.png', scale: 15),
             tooltip: 'Show Snackbar',
             onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
             },
           ),
         ],
@@ -232,12 +242,14 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                                                   SizedBox(height: 50),
                                                   Text(
                                                     '${snapshot.data!['data'][index]['hotline_name']} ',
-                                                    style: TextStyle(
-                                                      fontSize: 15.0,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      // backgroundColor: Colors.black45,
-                                                      color: ThemeBc.black,
+                                                    style: GoogleFonts.sarabun(
+                                                      textStyle: TextStyle(
+                                                        color:
+                                                            ThemeBc.textblack,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 15,
+                                                      ),
                                                     ),
                                                   ),
                                                 ],
@@ -283,7 +295,7 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                                                                       width:
                                                                           500,
                                                                       height:
-                                                                          140,
+                                                                          160,
                                                                       child:
                                                                           Column(
                                                                         children: [
@@ -292,36 +304,49 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                                                                                 const EdgeInsets.all(8.0),
                                                                             child:
                                                                                 Container(
+                                                                              decoration: BoxDecoration(
+                                                                                  color: Colors.grey[200],
+                                                                                  borderRadius: BorderRadius.circular(
+                                                                                    10,
+                                                                                  ),
+                                                                                  boxShadow: []),
                                                                               width: 500,
-                                                                              height: 50,
-                                                                              child: ListView(
-                                                                                children: [
-                                                                                  Center(
-                                                                                    child: Text(
-                                                                                      'ติดต่อไปที่',
-                                                                                      style: TextStyle(
-                                                                                        fontSize: 18.0,
-                                                                                        fontWeight: FontWeight.bold,
-                                                                                        // backgroundColor: Colors.black45,
-                                                                                        color: ThemeBc.textblack,
+                                                                              height: 80,
+                                                                              child: Padding(
+                                                                                padding: const EdgeInsets.all(8.0),
+                                                                                child: ListView(
+                                                                                  children: [
+                                                                                    Center(
+                                                                                      child: Text(
+                                                                                        'ติดต่อไปที่',
+                                                                                        style: GoogleFonts.sarabun(
+                                                                                          textStyle: TextStyle(
+                                                                                            color: ThemeBc.textblack,
+                                                                                            fontWeight: FontWeight.bold,
+                                                                                            fontSize: 15,
+                                                                                          ),
+                                                                                        ),
                                                                                       ),
                                                                                     ),
-                                                                                  ),
-                                                                                  Center(
-                                                                                    child: Text(
-                                                                                      '${snapshot.data!['data'][index]['hotline_name']} ${snapshot.data!['data'][index]['hotline_phone']} ?',
-                                                                                      style: TextStyle(
-                                                                                        fontSize: 18.0,
-                                                                                        fontWeight: FontWeight.bold,
-                                                                                        // backgroundColor: Colors.black45,
-                                                                                        color: ThemeBc.textblack,
+                                                                                    Center(
+                                                                                      child: Text(
+                                                                                        '${snapshot.data!['data'][index]['hotline_name']} ${snapshot.data!['data'][index]['hotline_phone']} ?',
+                                                                                        style: GoogleFonts.sarabun(
+                                                                                          textStyle: TextStyle(
+                                                                                            color: ThemeBc.textblack,
+                                                                                            fontWeight: FontWeight.w400,
+                                                                                            fontSize: 15,
+                                                                                          ),
+                                                                                        ),
                                                                                       ),
                                                                                     ),
-                                                                                  ),
-                                                                                ],
+                                                                                  ],
+                                                                                ),
                                                                               ),
                                                                             ),
                                                                           ),
+                                                                          SizedBox(
+                                                                              height: 10),
                                                                           ElevatedButton(
                                                                             onPressed:
                                                                                 () async {
@@ -329,7 +354,16 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                                                                             },
                                                                             child:
                                                                                 Container(
-                                                                              child: Text('ตกลง'),
+                                                                              child: Text(
+                                                                                'ตกลง',
+                                                                                style: GoogleFonts.sarabun(
+                                                                                  textStyle: TextStyle(
+                                                                                    color: ThemeBc.textwhite,
+                                                                                    fontWeight: FontWeight.w400,
+                                                                                    fontSize: 15,
+                                                                                  ),
+                                                                                ),
+                                                                              ),
                                                                             ),
                                                                             style:
                                                                                 ElevatedButton.styleFrom(

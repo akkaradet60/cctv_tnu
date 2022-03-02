@@ -3,8 +3,10 @@ import 'package:cctv_tun/models/blogs/blogs.dart';
 
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -196,11 +198,12 @@ class _award_pageState extends State<award_page> {
                                             Text(
                                               // '${titles[_currentIndex]}',
                                               '  ${snapshot.data!['data'][item]['award_name']}',
-                                              style: TextStyle(
-                                                fontSize: 18.0,
-                                                // fontWeight: FontWeight.bold,
-                                                // backgroundColor: Colors.black45,
-                                                color: ThemeBc.white,
+                                              style: GoogleFonts.sarabun(
+                                                textStyle: TextStyle(
+                                                  color: ThemeBc.textwhite,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 18,
+                                                ),
                                               ),
                                             ),
                                           ],
@@ -334,13 +337,15 @@ class _award_pageState extends State<award_page> {
                                                         const EdgeInsets.all(8),
                                                     child: Text(
                                                       '${snapshot.data!['data'][index]['award_name']}',
-                                                      style: TextStyle(
-                                                        fontSize: 17.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        // backgroundColor: Colors.black45,
-                                                        color:
-                                                            ThemeBc.textblack,
+                                                      style:
+                                                          GoogleFonts.sarabun(
+                                                        textStyle: TextStyle(
+                                                          color:
+                                                              ThemeBc.textblack,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 17,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
@@ -351,13 +356,15 @@ class _award_pageState extends State<award_page> {
                                                             8.0),
                                                     child: Text(
                                                       '${snapshot.data!['data'][index]['award_detail']}',
-                                                      style: TextStyle(
-                                                        fontSize: 15.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        // backgroundColor: Colors.black45,
-                                                        color:
-                                                            ThemeBc.textblack,
+                                                      style:
+                                                          GoogleFonts.sarabun(
+                                                        textStyle: TextStyle(
+                                                          color:
+                                                              ThemeBc.textblack,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          fontSize: 15,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
@@ -416,11 +423,12 @@ class _award_pageState extends State<award_page> {
         ),
         child: Text(
           'รางวัลทั้งหมด',
-          style: TextStyle(
-            fontSize: 20.0,
-            fontWeight: FontWeight.bold,
-            // backgroundColor: Colors.black45,
-            color: ThemeBc.textblack,
+          style: GoogleFonts.sarabun(
+            textStyle: TextStyle(
+              color: ThemeBc.textblack,
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
           ),
         ),
       );
@@ -431,12 +439,21 @@ class _award_pageState extends State<award_page> {
           iconTheme: IconThemeData(
             color: ThemeBc.white, //change your color here
           ),
-          shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
           title: Column(
             children: [
-              Center(child: const Text('รางวัล')),
+              Center(
+                  child: LocaleText(
+                'รางวัล',
+                style: GoogleFonts.sarabun(
+                  textStyle: TextStyle(
+                    color: ThemeBc.textwhite,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              )),
             ],
           ),
           actions: <Widget>[
@@ -445,7 +462,7 @@ class _award_pageState extends State<award_page> {
               tooltip: 'Show Snackbar',
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+                    const SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
               },
             ),
           ],

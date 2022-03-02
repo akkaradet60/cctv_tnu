@@ -5,6 +5,7 @@ import 'package:cctv_tun/page/global/global.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:http/http.dart' as http;
@@ -83,12 +84,21 @@ class _manual_pageState extends State<manual_page> {
           iconTheme: IconThemeData(
             color: ThemeBc.white, //change your color here
           ),
-          shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
           title: Column(
             children: [
-              Center(child: const LocaleText('คู่มือการใช้งาน')),
+              Center(
+                  child: LocaleText(
+                'คู่มือการใช้งาน',
+                style: GoogleFonts.sarabun(
+                  textStyle: TextStyle(
+                    color: ThemeBc.textwhite,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              )),
             ],
           ),
           actions: <Widget>[
@@ -97,7 +107,7 @@ class _manual_pageState extends State<manual_page> {
               tooltip: 'Show Snackbar',
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+                    const SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
               },
             ),
           ],

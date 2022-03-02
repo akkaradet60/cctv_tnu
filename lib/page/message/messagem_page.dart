@@ -7,6 +7,7 @@ import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -194,15 +195,16 @@ class _message_pageState extends State<message_page> {
                                         height: 100,
                                         child: ListView(
                                           children: [
-                                            SizedBox(height: 10),
+                                            SizedBox(height: 15),
                                             Text(
                                               // '${titles[_currentIndex]}',
                                               '  ${snapshot.data!['data'][item]['blog_name']}',
-                                              style: TextStyle(
-                                                fontSize: 18.0,
-                                                // fontWeight: FontWeight.bold,
-                                                // backgroundColor: Colors.black45,
-                                                color: ThemeBc.white,
+                                              style: GoogleFonts.sarabun(
+                                                textStyle: TextStyle(
+                                                  color: ThemeBc.textwhite,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 18,
+                                                ),
                                               ),
                                             ),
                                           ],
@@ -353,13 +355,15 @@ class _message_pageState extends State<message_page> {
                                                               8.0),
                                                       child: Text(
                                                         '${snapshot.data!['data'][index]['blog_name']}',
-                                                        style: TextStyle(
-                                                          fontSize: 17.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          // backgroundColor: Colors.black45,
-                                                          color:
-                                                              ThemeBc.textblack,
+                                                        style:
+                                                            GoogleFonts.sarabun(
+                                                          textStyle: TextStyle(
+                                                            color: ThemeBc
+                                                                .textblack,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 17,
+                                                          ),
                                                         ),
                                                         // style: primaryTextStyle
                                                         //     .copyWith(
@@ -377,12 +381,15 @@ class _message_pageState extends State<message_page> {
                                                               8.0),
                                                       child: Text(
                                                         '${snapshot.data!['data'][index]['blog_detail']}',
-                                                        style: TextStyle(
-                                                          fontSize: 15.0,
-
-                                                          // backgroundColor: Colors.black45,
-                                                          color:
-                                                              ThemeBc.textblack,
+                                                        style:
+                                                            GoogleFonts.sarabun(
+                                                          textStyle: TextStyle(
+                                                            color: ThemeBc
+                                                                .textblack,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            fontSize: 15,
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
@@ -462,13 +469,14 @@ class _message_pageState extends State<message_page> {
           title: Column(
             children: [
               Center(
-                  child: const LocaleText(
+                  child: LocaleText(
                 'ข่าวสาร',
-                style: TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                  // backgroundColor: Colors.black45,
-                  color: ThemeBc.textwhite,
+                style: GoogleFonts.sarabun(
+                  textStyle: TextStyle(
+                    color: ThemeBc.textwhite,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
                 ),
               )),
             ],
@@ -479,7 +487,7 @@ class _message_pageState extends State<message_page> {
               tooltip: 'Show Snackbar',
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+                    const SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
               },
             ),
           ],

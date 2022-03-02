@@ -3,6 +3,7 @@ import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MenusCustom extends StatelessWidget {
   final String iconMenus;
@@ -63,11 +64,12 @@ class MenusCustom extends StatelessWidget {
                   children: [
                     LocaleText(
                       titleMenus,
-                      style: TextStyle(
-                        fontSize: 13.0,
-                        fontWeight: FontWeight.bold,
-                        // backgroundColor: Colors.black45,
-                        color: ThemeBc.textblack,
+                      style: GoogleFonts.sarabun(
+                        textStyle: TextStyle(
+                          color: ThemeBc.textblack,
+                          fontWeight: FontWeight.w300,
+                          fontSize: 15,
+                        ),
                       ),
                     ),
                   ],

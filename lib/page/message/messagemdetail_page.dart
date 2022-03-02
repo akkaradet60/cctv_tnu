@@ -5,6 +5,7 @@ import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -66,18 +67,18 @@ class _messagemdetail_page extends State<messagemdetail_page> {
           iconTheme: IconThemeData(
             color: ThemeBc.white, //change your color here
           ),
-          shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
           title: Column(
             children: [
               Text(
                 '${productt['blog_name']}',
-                style: TextStyle(
-                  // fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                  // backgroundColor: Colors.black45,
-                  color: ThemeBc.textwhite,
+                style: GoogleFonts.sarabun(
+                  textStyle: TextStyle(
+                    color: ThemeBc.textwhite,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
                 ),
               ),
             ],
@@ -88,7 +89,7 @@ class _messagemdetail_page extends State<messagemdetail_page> {
               tooltip: 'Show Snackbar',
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+                    SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
               },
             ),
           ],
@@ -230,23 +231,26 @@ class _messagemdetail_page extends State<messagemdetail_page> {
                               child: ListView(
                                 children: [
                                   Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: Text(
                                           '${productt['blog_name']}',
-                                          style: TextStyle(
-                                            fontSize: 18.0,
-                                            fontWeight: FontWeight.bold,
-                                            // backgroundColor: Colors.black45,
-                                            color: Colors.black,
+                                          style: GoogleFonts.sarabun(
+                                            textStyle: TextStyle(
+                                              color: ThemeBc.textblack,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 18,
+                                            ),
                                           ),
                                         ),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: Text(
-                                          '${productt['blog_detail']}',
+                                          '  ${productt['blog_detail']}',
                                           style: TextStyle(
                                             fontSize: 15.0,
 

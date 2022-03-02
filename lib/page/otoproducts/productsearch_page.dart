@@ -6,6 +6,7 @@ import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:cctv_tun/widgets/search_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -74,12 +75,21 @@ class _productstore_page extends State<productstore_page> {
           iconTheme: IconThemeData(
             color: ThemeBc.white, //change your color here
           ),
-          shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
           title: Column(
             children: [
-              Center(child: Text('ค้นหา สินค้า OTOP')),
+              Center(
+                  child: Text(
+                'ค้นหา สินค้า OTOP',
+                style: GoogleFonts.sarabun(
+                  textStyle: TextStyle(
+                    color: ThemeBc.textwhite,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              )),
             ],
           ),
           actions: <Widget>[
@@ -88,7 +98,7 @@ class _productstore_page extends State<productstore_page> {
               tooltip: 'Show Snackbar',
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+                    SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
               },
             ),
           ],
@@ -222,31 +232,34 @@ class _productstore_page extends State<productstore_page> {
                               children: [
                                 Text(
                                   '${productt.title}',
-                                  style: TextStyle(
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.bold,
-                                    // backgroundColor: Colors.black45,
-                                    color: ThemeBc.textblack,
+                                  style: GoogleFonts.sarabun(
+                                    textStyle: TextStyle(
+                                      color: ThemeBc.textblack,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15,
+                                    ),
                                   ),
                                 ),
                                 SizedBox(height: 5),
                                 Text(
                                   '${productt.product_price} บาท',
-                                  style: TextStyle(
-                                    fontSize: 15.0,
-
-                                    // backgroundColor: Colors.black45,
-                                    color: ThemeBc.textblack,
+                                  style: GoogleFonts.sarabun(
+                                    textStyle: TextStyle(
+                                      color: ThemeBc.textblack,
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 15,
+                                    ),
                                   ),
                                 ),
                                 SizedBox(height: 10),
                                 Text(
                                   '  ${productt.author}',
-                                  style: TextStyle(
-                                    fontSize: 15.0,
-
-                                    // backgroundColor: Colors.black45,
-                                    color: ThemeBc.textblack,
+                                  style: GoogleFonts.sarabun(
+                                    textStyle: TextStyle(
+                                      color: ThemeBc.textblack,
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 15,
+                                    ),
                                   ),
                                 ),
                               ],

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:latlong2/latlong.dart';
 // import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -75,12 +76,21 @@ class _map_prod extends State<map_page> {
         iconTheme: IconThemeData(
           color: ThemeBc.white, //change your color here
         ),
-        shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
         title: Column(
           children: [
-            Center(child: Text('ตำแหน่งศูนย์ : ${hotlinee['hotlineName']}')),
+            Center(
+                child: Text(
+              'ตำแหน่งศูนย์ : ${hotlinee['hotlineName']}',
+              style: GoogleFonts.sarabun(
+                textStyle: TextStyle(
+                  color: ThemeBc.textwhite,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+            )),
           ],
         ),
         actions: <Widget>[
@@ -398,7 +408,7 @@ class _map_prod extends State<map_page> {
 //         iconTheme: IconThemeData(
 //           color: ThemeBc.background, //change your color here
 //         ),
-//         shadowColor: ThemeBc.white,
+//         
 //         foregroundColor: ThemeBc.white,
 //         backgroundColor: ThemeBc.background,
 //         // title: Center(child: Text('${hotlinee['hotlineName']}')),

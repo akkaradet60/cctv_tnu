@@ -12,6 +12,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -165,7 +166,7 @@ class _forgot_password extends State<forgot_password>
                                 child: NeumorphicButton(
                                   style: const NeumorphicStyle(
                                     shape: NeumorphicShape.flat,
-                                    color: ThemeBc.white,
+                                    color: Colors.black45,
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(0),
@@ -173,15 +174,29 @@ class _forgot_password extends State<forgot_password>
                                       children: [
                                         Container(
                                           child: FormBuilderTextField(
+                                            style:
+                                                TextStyle(color: Colors.white),
                                             name: "email",
                                             maxLines: 1,
-                                            keyboardType:
-                                                TextInputType.emailAddress,
+                                            keyboardType: TextInputType.name,
                                             decoration: InputDecoration(
                                               // labelText: 'Email',
                                               hintText: 'อีเมล',
+                                              hintStyle: GoogleFonts.sarabun(
+                                                textStyle: TextStyle(
+                                                  color: ThemeBc.textwhite,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 15,
+                                                ),
+                                              ),
                                               filled: true,
-                                              fillColor: ThemeBc.white,
+
+                                              enabledBorder:
+                                                  UnderlineInputBorder(
+                                                borderSide: BorderSide(
+                                                    color: ThemeBc.white),
+                                              ),
+                                              // fillColor: ThemeBc.white,
                                             ),
                                             validator: MultiValidator([
                                               RequiredValidator(
@@ -222,19 +237,19 @@ class _forgot_password extends State<forgot_password>
                                         },
                                         icon: Icon(
                                           Icons.description,
-                                          color: ThemeBc.black,
+                                          color: ThemeBc.white,
                                         ),
                                         label: LocaleText(
                                           'บันทึก',
                                           style: TextStyle(
-                                            fontSize: 20.0,
+                                            fontSize: 18.0,
                                             fontWeight: FontWeight.bold,
                                             // backgroundColor: Colors.black45,
-                                            color: ThemeBc.black,
+                                            color: ThemeBc.textwhite,
                                           ),
                                         ),
                                         style: ElevatedButton.styleFrom(
-                                          primary: ThemeBc.white,
+                                          primary: ThemeBc.background,
                                           // onPrimary: Colors.white,
                                           // shadowColor: Colors.grey[700],
 
@@ -314,7 +329,7 @@ class _forgot_password extends State<forgot_password>
       //   iconTheme: IconThemeData(
       //     color: ThemeBc.white, //change your color here
       //   ),
-      //   shadowColor: ThemeBc.white,
+      //
       //   foregroundColor: ThemeBc.white,
       //   backgroundColor: ThemeBc.black,
       //   title: Center(child: Text('บันทึก')),

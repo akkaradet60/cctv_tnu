@@ -6,6 +6,7 @@ import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -102,18 +103,26 @@ class _trainingcalendardetail_page extends State<trainingcalendardetail_page> {
         iconTheme: IconThemeData(
           color: ThemeBc.white, //change your color here
         ),
-        shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
         title: Center(
-            child: Text('การฝึกอบรม ${trainingcalendardetail['trainName']}')),
+            child: Text(
+          'การฝึกอบรม ${trainingcalendardetail['trainName']}',
+          style: GoogleFonts.sarabun(
+            textStyle: TextStyle(
+              color: ThemeBc.textwhite,
+              fontWeight: FontWeight.w400,
+              fontSize: 18,
+            ),
+          ),
+        )),
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/logo.png', scale: 15),
             tooltip: 'Show Snackbar',
             onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
             },
           ),
         ],
@@ -290,11 +299,12 @@ class _trainingcalendardetail_page extends State<trainingcalendardetail_page> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
                                   '${trainingcalendardetail['trainName']}',
-                                  style: TextStyle(
-                                    fontSize: 17.0,
-                                    fontWeight: FontWeight.bold,
-                                    // backgroundColor: Colors.black45,
-                                    color: Colors.black,
+                                  style: GoogleFonts.sarabun(
+                                    textStyle: TextStyle(
+                                      color: ThemeBc.textblack,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 17,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -302,11 +312,12 @@ class _trainingcalendardetail_page extends State<trainingcalendardetail_page> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
                                   '${trainingcalendardetail['trainDetail']}',
-                                  style: TextStyle(
-                                    fontSize: 15.0,
-
-                                    // backgroundColor: Colors.black45,
-                                    color: Colors.black,
+                                  style: GoogleFonts.sarabun(
+                                    textStyle: TextStyle(
+                                      color: ThemeBc.textblack,
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 15,
+                                    ),
                                   ),
                                 ),
                               ),

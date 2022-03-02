@@ -8,9 +8,11 @@ import 'package:cctv_tun/widgets/text_FormBuilderField.dart';
 import 'package:cctv_tun/widgets/warn_api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:form_builder_image_picker/form_builder_image_picker.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -355,10 +357,11 @@ class _settingprofile extends State<settingprofile>
                               ),
                               const SizedBox(height: 10),
                               FormBuilderFieldText(
-                                  name: 'user_address',
-                                  labelText: 'ที่อยู่',
-                                  icon: Icons.description,
-                                  initialValue: '${profile['user_address']}'),
+                                name: 'user_address',
+                                labelText: 'ที่อยู่',
+                                icon: Icons.description,
+                                initialValue: '${profile['user_address']}',
+                              ),
                               const SizedBox(height: 10),
                               NeumorphicButton(
                                 style: const NeumorphicStyle(
@@ -405,19 +408,19 @@ class _settingprofile extends State<settingprofile>
                                     },
                                     icon: Icon(
                                       Icons.description,
-                                      color: ThemeBc.black,
+                                      color: ThemeBc.textwhite,
                                     ),
                                     label: Text(
                                       'แก้ไขข้อมูล',
-                                      style: TextStyle(
-                                        fontSize: 20.0,
-                                        fontWeight: FontWeight.bold,
-                                        // backgroundColor: Colors.black45,
-                                        color: ThemeBc.black,
+                                      style: GoogleFonts.sarabun(
+                                        textStyle: TextStyle(
+                                            color: ThemeBc.textwhite,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 17),
                                       ),
                                     ),
                                     style: ElevatedButton.styleFrom(
-                                      primary: ThemeBc.white,
+                                      primary: ThemeBc.background,
                                       onPrimary: Colors.white,
                                       // shadowColor: Colors.grey[700],
                                       // elevation: 30,
@@ -454,7 +457,17 @@ class _settingprofile extends State<settingprofile>
         backgroundColor: ThemeBc.background,
         title: Column(
           children: [
-            Center(child: Text('แก้ไขข้อมูลส่วนตัว')),
+            Center(
+                child: LocaleText(
+              'แก้ไขข้อมูลส่วนตัว',
+              style: GoogleFonts.sarabun(
+                textStyle: TextStyle(
+                  color: ThemeBc.textwhite,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+            )),
           ],
         ),
         actions: <Widget>[
@@ -463,7 +476,7 @@ class _settingprofile extends State<settingprofile>
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+                  const SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
             },
           ),
         ],

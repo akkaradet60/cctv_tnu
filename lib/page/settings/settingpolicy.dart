@@ -8,7 +8,9 @@ import 'package:cctv_tun/page/profile/app_reducer.dart';
 import 'package:cctv_tun/widgets/custom_buttonmenu.dart';
 import 'package:cctv_tun/widgets/custom_buttonpolicy.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class settingpolicy extends StatefulWidget {
@@ -103,11 +105,12 @@ class _settingpolicyState extends State<settingpolicy>
                         Container(
                           child: Text(
                             '  $app_agreement',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              // backgroundColor: Colors.black45,
-                              color: ThemeBc.textblack,
+                            style: GoogleFonts.sarabun(
+                              textStyle: TextStyle(
+                                color: ThemeBc.textblack,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 15,
+                              ),
                             ),
                           ),
                         )
@@ -155,11 +158,12 @@ class _settingpolicyState extends State<settingpolicy>
                         Container(
                           child: Text(
                             '  $app_agreement_cn',
-                            style: TextStyle(
-                              fontSize: 15.0,
-
-                              // backgroundColor: Colors.black45,
-                              color: ThemeBc.textblack,
+                            style: GoogleFonts.sarabun(
+                              textStyle: TextStyle(
+                                color: ThemeBc.textblack,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 15,
+                              ),
                             ),
                           ),
                         )
@@ -207,11 +211,12 @@ class _settingpolicyState extends State<settingpolicy>
                         Container(
                           child: Text(
                             '  $app_agreement_en',
-                            style: TextStyle(
-                              fontSize: 15.0,
-
-                              // backgroundColor: Colors.black45,
-                              color: ThemeBc.textblack,
+                            style: GoogleFonts.sarabun(
+                              textStyle: TextStyle(
+                                color: ThemeBc.textblack,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 15,
+                              ),
                             ),
                           ),
                         )
@@ -232,12 +237,21 @@ class _settingpolicyState extends State<settingpolicy>
         iconTheme: IconThemeData(
           color: ThemeBc.white, //change your color here
         ),
-        shadowColor: ThemeBc.white,
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
         title: Column(
           children: [
-            Center(child: const Text('เทศบาลเมืองมหาสารคาม')),
+            Center(
+                child: LocaleText(
+              'เทศบาลตำบลพระลับ',
+              style: GoogleFonts.sarabun(
+                textStyle: TextStyle(
+                  color: ThemeBc.textwhite,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+            )),
           ],
         ),
         actions: <Widget>[
@@ -246,7 +260,7 @@ class _settingpolicyState extends State<settingpolicy>
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+                  const SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
             },
           ),
         ],

@@ -6,6 +6,7 @@ import 'package:cctv_tun/page/menu/manu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_signin_button/button_builder.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class settings extends StatelessWidget {
   const settings({Key? key}) : super(key: key);
@@ -35,11 +36,12 @@ class settings extends StatelessWidget {
               const SizedBox(height: 18),
               LocaleText(
                 "ตั้งค่าข้อมูล",
-                style: TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                  // backgroundColor: Colors.black45,
-                  color: ThemeBc.black,
+                style: GoogleFonts.sarabun(
+                  textStyle: TextStyle(
+                    color: ThemeBc.textblack,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
                 ),
               ),
               const SizedBox(height: 5),
@@ -79,11 +81,12 @@ class settings extends StatelessWidget {
                         child: ElevatedButton.icon(
                           label: LocaleText(
                             'ข้อตกลงและเงื่อนไข',
-                            style: TextStyle(
-                              fontSize: 15.0,
-
-                              // backgroundColor: Colors.black45,
-                              color: ThemeBc.textblack,
+                            style: GoogleFonts.sarabun(
+                              textStyle: TextStyle(
+                                color: ThemeBc.textblack,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 15,
+                              ),
                             ),
                           ),
                           icon: Icon(
@@ -117,11 +120,12 @@ class settings extends StatelessWidget {
                         child: ElevatedButton.icon(
                           label: LocaleText(
                             'แก้ไขข้อมูลส่วนตัว',
-                            style: TextStyle(
-                              fontSize: 15.0,
-
-                              // backgroundColor: Colors.black45,
-                              color: ThemeBc.textblack,
+                            style: GoogleFonts.sarabun(
+                              textStyle: TextStyle(
+                                color: ThemeBc.textblack,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 15,
+                              ),
                             ),
                           ),
                           icon: Icon(
@@ -181,13 +185,14 @@ class settings extends StatelessWidget {
             children: [
               const SizedBox(height: 18),
 
-              const LocaleText(
+              LocaleText(
                 "ตั้งค่า",
-                style: TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                  // backgroundColor: Colors.black45,
-                  color: ThemeBc.black,
+                style: GoogleFonts.sarabun(
+                  textStyle: TextStyle(
+                    color: ThemeBc.textblack,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
                 ),
               ),
               const SizedBox(height: 5),
@@ -201,11 +206,12 @@ class settings extends StatelessWidget {
                   child: ElevatedButton.icon(
                     label: LocaleText(
                       'เปลี่ยนภาษา',
-                      style: TextStyle(
-                        fontSize: 15.0,
-
-                        // backgroundColor: Colors.black45,
-                        color: ThemeBc.textblack,
+                      style: GoogleFonts.sarabun(
+                        textStyle: TextStyle(
+                          color: ThemeBc.textblack,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 15,
+                        ),
                       ),
                     ),
                     icon: Icon(
@@ -264,11 +270,12 @@ class settings extends StatelessWidget {
                                             child: Center(
                                               child: Text(
                                                 'ภาษาไทย',
-                                                style: TextStyle(
-                                                  fontSize: 20.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  // backgroundColor: Colors.black45,
-                                                  color: ThemeBc.textwhite,
+                                                style: GoogleFonts.sarabun(
+                                                  textStyle: TextStyle(
+                                                    color: ThemeBc.textwhite,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 15,
+                                                  ),
                                                 ),
                                               ),
                                             ),
@@ -299,11 +306,12 @@ class settings extends StatelessWidget {
                                             child: Center(
                                               child: Text(
                                                 'English',
-                                                style: TextStyle(
-                                                  fontSize: 20.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  // backgroundColor: Colors.black45,
-                                                  color: ThemeBc.textwhite,
+                                                style: GoogleFonts.sarabun(
+                                                  textStyle: TextStyle(
+                                                    color: ThemeBc.textwhite,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 15,
+                                                  ),
                                                 ),
                                               ),
                                             ),
@@ -334,11 +342,12 @@ class settings extends StatelessWidget {
                                             child: Center(
                                               child: Text(
                                                 '中国',
-                                                style: TextStyle(
-                                                  fontSize: 20.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  // backgroundColor: Colors.black45,
-                                                  color: ThemeBc.textwhite,
+                                                style: GoogleFonts.sarabun(
+                                                  textStyle: TextStyle(
+                                                    color: ThemeBc.textwhite,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 15,
+                                                  ),
                                                 ),
                                               ),
                                             ),
@@ -367,11 +376,12 @@ class settings extends StatelessWidget {
                   child: ElevatedButton.icon(
                     label: LocaleText(
                       'แก้ไขรหัสผ่าน',
-                      style: TextStyle(
-                        fontSize: 15.0,
-
-                        // backgroundColor: Colors.black45,
-                        color: ThemeBc.textblack,
+                      style: GoogleFonts.sarabun(
+                        textStyle: TextStyle(
+                          color: ThemeBc.textblack,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 15,
+                        ),
                       ),
                     ),
                     icon: Icon(
@@ -424,10 +434,16 @@ class settings extends StatelessWidget {
         ),
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
-        title: const Center(
+        title: Center(
           child: LocaleText(
             "ตั้งค่า",
-            style: TextStyle(fontSize: 18),
+            style: GoogleFonts.sarabun(
+              textStyle: TextStyle(
+                color: ThemeBc.textwhite,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
           ),
         ),
         actions: <Widget>[
@@ -436,7 +452,7 @@ class settings extends StatelessWidget {
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+                  const SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
             },
           ),
         ],

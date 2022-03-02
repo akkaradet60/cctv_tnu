@@ -4,6 +4,7 @@ import 'package:cctv_tun/widgets/Text_pane.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -94,12 +95,21 @@ class _productshome_page extends State<travelhome_page> {
           iconTheme: IconThemeData(
             color: ThemeBc.white, //change your color here
           ),
-          shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
           title: Column(
             children: [
-              Center(child: LocaleText('ท่องเที่ยว')),
+              Center(
+                  child: LocaleText(
+                'ท่องเที่ยว',
+                style: GoogleFonts.sarabun(
+                  textStyle: TextStyle(
+                    color: ThemeBc.textwhite,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              )),
             ],
           ),
           actions: <Widget>[
@@ -108,7 +118,7 @@ class _productshome_page extends State<travelhome_page> {
               tooltip: 'Show Snackbar',
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+                    const SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
               },
             ),
           ],
@@ -240,11 +250,12 @@ class _productshome_page extends State<travelhome_page> {
                                             child: Text(
                                               // '${titles[_currentIndex]}',
                                               '${snapshot.data!['data'][0]['type_name']}',
-                                              style: TextStyle(
-                                                fontSize: 24.0,
-                                                fontWeight: FontWeight.bold,
-                                                // backgroundColor: Colors.black45,
-                                                color: ThemeBc.white,
+                                              style: GoogleFonts.sarabun(
+                                                textStyle: TextStyle(
+                                                  color: ThemeBc.textwhite,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 20,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -398,11 +409,12 @@ class _productshome_page extends State<travelhome_page> {
                                             child: Text(
                                               // '${titles[_currentIndex]}',
                                               '${snapshot.data!['data'][0]['type_name']}',
-                                              style: TextStyle(
-                                                fontSize: 24.0,
-                                                fontWeight: FontWeight.bold,
-                                                // backgroundColor: Colors.black45,
-                                                color: ThemeBc.white,
+                                              style: GoogleFonts.sarabun(
+                                                textStyle: TextStyle(
+                                                  color: ThemeBc.textwhite,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 20,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -556,11 +568,12 @@ class _productshome_page extends State<travelhome_page> {
                                             child: Text(
                                               // '${titles[_currentIndex]}',
                                               '${snapshot.data!['data'][0]['type_name']}',
-                                              style: TextStyle(
-                                                fontSize: 24.0,
-                                                fontWeight: FontWeight.bold,
-                                                // backgroundColor: Colors.black45,
-                                                color: ThemeBc.white,
+                                              style: GoogleFonts.sarabun(
+                                                textStyle: TextStyle(
+                                                  color: ThemeBc.textwhite,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 20,
+                                                ),
                                               ),
                                             ),
                                           ),

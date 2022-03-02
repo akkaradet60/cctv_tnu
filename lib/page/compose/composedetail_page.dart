@@ -3,6 +3,7 @@ import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -45,7 +46,6 @@ class _composedetail_page extends State<composedetail_page> {
           iconTheme: IconThemeData(
             color: ThemeBc.white, //change your color here
           ),
-          shadowColor: ThemeBc.white,
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
           title: Center(child: Text('${datail_blogpose['em_type']}')),
@@ -55,7 +55,7 @@ class _composedetail_page extends State<composedetail_page> {
               tooltip: 'Show Snackbar',
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+                    SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
               },
             ),
           ],
@@ -234,50 +234,84 @@ class _composedetail_page extends State<composedetail_page> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: ListView(
                                         children: [
-                                          Text(
-                                            'ชื่อคนร้องเรียน ${datail_blogpose['em_owner']}',
-                                            style: TextStyle(
-                                              fontSize: 17.0,
-                                              fontWeight: FontWeight.bold,
-                                              // backgroundColor: Colors.black45,
-                                              color: Colors.black,
-                                            ),
+                                          Row(
+                                            children: [
+                                              Text(
+                                                'ชื่อผู้แจ้งเหตุ  ',
+                                                style: GoogleFonts.sarabun(
+                                                  textStyle: TextStyle(
+                                                    color: ThemeBc.textblack,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 17,
+                                                  ),
+                                                ),
+                                              ),
+                                              Text(
+                                                '${datail_blogpose['em_owner']}',
+                                                style: GoogleFonts.sarabun(
+                                                  textStyle: TextStyle(
+                                                    color: ThemeBc.textblack,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 17,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                          Text(
-                                            'ประเภทที่ร้องเรียน : ${datail_blogpose['em_type']}',
-                                            style: TextStyle(
-                                              fontSize: 17.0,
-                                              fontWeight: FontWeight.bold,
-                                              // backgroundColor: Colors.black45,
-                                              color: Colors.black,
-                                            ),
+                                          Row(
+                                            children: [
+                                              Text(
+                                                'ประเภท  ',
+                                                style: GoogleFonts.sarabun(
+                                                  textStyle: TextStyle(
+                                                    color: ThemeBc.textblack,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 17,
+                                                  ),
+                                                ),
+                                              ),
+                                              Text(
+                                                '${datail_blogpose['emt_name'] ?? '-'}',
+                                                style: GoogleFonts.sarabun(
+                                                  textStyle: TextStyle(
+                                                    color: ThemeBc.textblack,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 17,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                           SizedBox(height: 20),
                                           Text(
                                             '   ${datail_blogpose['em_detail']}',
-                                            style: TextStyle(
-                                              fontSize: 15.0,
-
-                                              // backgroundColor: Colors.black45,
-                                              color: Colors.black,
+                                            style: GoogleFonts.sarabun(
+                                              textStyle: TextStyle(
+                                                color: ThemeBc.textblack,
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 15,
+                                              ),
                                             ),
                                           ),
+                                          SizedBox(height: 10),
                                           Text(
                                             'เบอร์ติดต่อที่คุณแจ้ง  ${datail_blogpose['em_phone']}',
-                                            style: TextStyle(
-                                              fontSize: 15.0,
-
-                                              // backgroundColor: Colors.black45,
-                                              color: Colors.black,
+                                            style: GoogleFonts.sarabun(
+                                              textStyle: TextStyle(
+                                                color: ThemeBc.textblack,
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 15,
+                                              ),
                                             ),
                                           ),
                                           Text(
                                             'จุดเกิดเหตุ  ${datail_blogpose['em_lat']} ${datail_blogpose['em_lng']}',
-                                            style: TextStyle(
-                                              fontSize: 15.0,
-
-                                              // backgroundColor: Colors.black45,
-                                              color: Colors.black,
+                                            style: GoogleFonts.sarabun(
+                                              textStyle: TextStyle(
+                                                color: ThemeBc.textblack,
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 15,
+                                              ),
                                             ),
                                           ),
                                         ],
@@ -348,7 +382,7 @@ class _composedetail_page extends State<composedetail_page> {
 //           iconTheme: IconThemeData(
 //             color: ThemeBc.white, //change your color here
 //           ),
-//           shadowColor: ThemeBc.white,
+//           
 //           foregroundColor: ThemeBc.white,
 //           backgroundColor: ThemeBc.background,
 //           title: Column(
@@ -362,7 +396,7 @@ class _composedetail_page extends State<composedetail_page> {
 //               tooltip: 'Show Snackbar',
 //               onPressed: () {
 //                 ScaffoldMessenger.of(context).showSnackBar(
-//                     SnackBar(content: Text('เราเทศบาลเมืองมหาสารคาม')));
+//                     SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
 //               },
 //             ),
 //           ],

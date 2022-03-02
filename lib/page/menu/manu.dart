@@ -7,6 +7,7 @@ import 'package:cctv_tun/page/profile/profile_action.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:http/http.dart' as http;
@@ -131,12 +132,17 @@ class _menu_pangState extends State<menu_pang> {
                                                       Center(
                                                         child: LocaleText(
                                                           'ผู้ชม',
-                                                          style: TextStyle(
-                                                            fontSize: 16,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            color:
-                                                                ThemeBc.black,
+                                                          style: GoogleFonts
+                                                              .sarabun(
+                                                            textStyle:
+                                                                TextStyle(
+                                                              color: ThemeBc
+                                                                  .textblack,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontSize: 17,
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
@@ -164,12 +170,15 @@ class _menu_pangState extends State<menu_pang> {
                                                     ),
                                                     title: LocaleText(
                                                       'เปลี่ยนภาษา',
-                                                      style: TextStyle(
-                                                        fontSize: 15.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        // backgroundColor: Colors.black45,
-                                                        color: Colors.black,
+                                                      style:
+                                                          GoogleFonts.sarabun(
+                                                        textStyle: TextStyle(
+                                                          color:
+                                                              ThemeBc.textblack,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          fontSize: 15,
+                                                        ),
                                                       ),
                                                     ),
                                                     trailing: Icon(
@@ -239,11 +248,12 @@ class _menu_pangState extends State<menu_pang> {
                                                                                 Center(
                                                                               child: Text(
                                                                                 'ภาษาไทย',
-                                                                                style: TextStyle(
-                                                                                  fontSize: 20.0,
-                                                                                  fontWeight: FontWeight.bold,
-                                                                                  // backgroundColor: Colors.black45,
-                                                                                  color: ThemeBc.textwhite,
+                                                                                style: GoogleFonts.sarabun(
+                                                                                  textStyle: TextStyle(
+                                                                                    color: ThemeBc.textwhite,
+                                                                                    fontWeight: FontWeight.w400,
+                                                                                    fontSize: 15,
+                                                                                  ),
                                                                                 ),
                                                                               ),
                                                                             ),
@@ -286,11 +296,12 @@ class _menu_pangState extends State<menu_pang> {
                                                                                 Center(
                                                                               child: Text(
                                                                                 'English',
-                                                                                style: TextStyle(
-                                                                                  fontSize: 20.0,
-                                                                                  fontWeight: FontWeight.bold,
-                                                                                  // backgroundColor: Colors.black45,
-                                                                                  color: ThemeBc.textwhite,
+                                                                                style: GoogleFonts.sarabun(
+                                                                                  textStyle: TextStyle(
+                                                                                    color: ThemeBc.textwhite,
+                                                                                    fontWeight: FontWeight.w400,
+                                                                                    fontSize: 15,
+                                                                                  ),
                                                                                 ),
                                                                               ),
                                                                             ),
@@ -333,11 +344,12 @@ class _menu_pangState extends State<menu_pang> {
                                                                                 Center(
                                                                               child: Text(
                                                                                 '中国',
-                                                                                style: TextStyle(
-                                                                                  fontSize: 20.0,
-                                                                                  fontWeight: FontWeight.bold,
-                                                                                  // backgroundColor: Colors.black45,
-                                                                                  color: ThemeBc.textwhite,
+                                                                                style: GoogleFonts.sarabun(
+                                                                                  textStyle: TextStyle(
+                                                                                    color: ThemeBc.textwhite,
+                                                                                    fontWeight: FontWeight.w400,
+                                                                                    fontSize: 15,
+                                                                                  ),
                                                                                 ),
                                                                               ),
                                                                             ),
@@ -375,12 +387,15 @@ class _menu_pangState extends State<menu_pang> {
                                                     ),
                                                     title: LocaleText(
                                                       'หน้าหลัก',
-                                                      style: TextStyle(
-                                                        fontSize: 15.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        // backgroundColor: Colors.black45,
-                                                        color: Colors.black,
+                                                      style:
+                                                          GoogleFonts.sarabun(
+                                                        textStyle: TextStyle(
+                                                          color:
+                                                              ThemeBc.textblack,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          fontSize: 15,
+                                                        ),
                                                       ),
                                                     ),
                                                     trailing: Icon(
@@ -425,12 +440,15 @@ class _menu_pangState extends State<menu_pang> {
                                                     ),
                                                     title: LocaleText(
                                                       'ออกจากระบบ',
-                                                      style: TextStyle(
-                                                        fontSize: 15.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        // backgroundColor: Colors.black45,
-                                                        color: Colors.black,
+                                                      style:
+                                                          GoogleFonts.sarabun(
+                                                        textStyle: TextStyle(
+                                                          color:
+                                                              ThemeBc.textblack,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          fontSize: 15,
+                                                        ),
                                                       ),
                                                     ),
                                                     trailing: Icon(
@@ -569,14 +587,17 @@ class _menu_pangState extends State<menu_pang> {
                                                                     children: [
                                                                       LocaleText(
                                                                         'ชื่อ',
-                                                                        style:
-                                                                            TextStyle(
-                                                                          fontSize:
-                                                                              16,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                          color:
-                                                                              ThemeBc.black,
+                                                                        style: GoogleFonts
+                                                                            .sarabun(
+                                                                          textStyle:
+                                                                              TextStyle(
+                                                                            color:
+                                                                                ThemeBc.textblack,
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
+                                                                            fontSize:
+                                                                                16,
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                       Text(
@@ -584,12 +605,17 @@ class _menu_pangState extends State<menu_pang> {
                                                                                 null
                                                                             ? '${snapshot.data!['data'][index]['user_firstname']}'
                                                                             : _userObj["name"],
-                                                                        style:
-                                                                            TextStyle(
-                                                                          fontSize:
-                                                                              16,
-                                                                          color:
-                                                                              ThemeBc.black,
+                                                                        style: GoogleFonts
+                                                                            .sarabun(
+                                                                          textStyle:
+                                                                              TextStyle(
+                                                                            color:
+                                                                                ThemeBc.textblack,
+                                                                            fontWeight:
+                                                                                FontWeight.w400,
+                                                                            fontSize:
+                                                                                16,
+                                                                          ),
                                                                         ),
                                                                       )
                                                                     ],
@@ -598,14 +624,17 @@ class _menu_pangState extends State<menu_pang> {
                                                                     children: [
                                                                       LocaleText(
                                                                         'นามสกุล',
-                                                                        style:
-                                                                            TextStyle(
-                                                                          fontSize:
-                                                                              16,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                          color:
-                                                                              ThemeBc.black,
+                                                                        style: GoogleFonts
+                                                                            .sarabun(
+                                                                          textStyle:
+                                                                              TextStyle(
+                                                                            color:
+                                                                                ThemeBc.textblack,
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
+                                                                            fontSize:
+                                                                                16,
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                       Container(
@@ -614,9 +643,12 @@ class _menu_pangState extends State<menu_pang> {
                                                                           children: [
                                                                             Text(
                                                                               '${snapshot.data!['data'][index]['user_lastname']}' != null ? '${snapshot.data!['data'][index]['user_lastname']}' : _userObj["user_lastname"],
-                                                                              style: TextStyle(
-                                                                                fontSize: 16,
-                                                                                color: ThemeBc.black,
+                                                                              style: GoogleFonts.sarabun(
+                                                                                textStyle: TextStyle(
+                                                                                  color: ThemeBc.textblack,
+                                                                                  fontWeight: FontWeight.w400,
+                                                                                  fontSize: 16,
+                                                                                ),
                                                                               ),
                                                                             )
                                                                             // Text(
@@ -649,18 +681,23 @@ class _menu_pangState extends State<menu_pang> {
                                                                           children: [
                                                                             LocaleText(
                                                                               'อีเมล',
-                                                                              style: TextStyle(
-                                                                                fontSize: 16,
-                                                                                fontWeight: FontWeight.bold,
-                                                                                color: ThemeBc.black,
+                                                                              style: GoogleFonts.sarabun(
+                                                                                textStyle: TextStyle(
+                                                                                  color: ThemeBc.textblack,
+                                                                                  fontWeight: FontWeight.bold,
+                                                                                  fontSize: 16,
+                                                                                ),
                                                                               ),
                                                                             ),
                                                                             SizedBox(height: 5),
                                                                             Text(
                                                                               '${snapshot.data!['data'][index]['user_email']}' != null ? '${snapshot.data!['data'][index]['user_email']}' : _userObj["user_email"],
-                                                                              style: TextStyle(
-                                                                                fontSize: 16,
-                                                                                color: ThemeBc.black,
+                                                                              style: GoogleFonts.sarabun(
+                                                                                textStyle: TextStyle(
+                                                                                  color: ThemeBc.textblack,
+                                                                                  fontWeight: FontWeight.w400,
+                                                                                  fontSize: 16,
+                                                                                ),
                                                                               ),
                                                                             ),
 
@@ -710,16 +747,18 @@ class _menu_pangState extends State<menu_pang> {
                                                                 title:
                                                                     LocaleText(
                                                                   'หน้าหลัก',
-                                                                  style:
-                                                                      TextStyle(
-                                                                    fontSize:
-                                                                        15.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
-                                                                    // backgroundColor: Colors.black45,
-                                                                    color: ThemeBc
-                                                                        .black,
+                                                                  style: GoogleFonts
+                                                                      .sarabun(
+                                                                    textStyle:
+                                                                        TextStyle(
+                                                                      color: ThemeBc
+                                                                          .textblack,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                      fontSize:
+                                                                          15,
+                                                                    ),
                                                                   ),
                                                                 ),
                                                                 trailing: Icon(
@@ -774,16 +813,18 @@ class _menu_pangState extends State<menu_pang> {
                                                                 title:
                                                                     LocaleText(
                                                                   'ตั้งค่า',
-                                                                  style:
-                                                                      TextStyle(
-                                                                    fontSize:
-                                                                        15.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
-                                                                    // backgroundColor: Colors.black45,
-                                                                    color: Colors
-                                                                        .black,
+                                                                  style: GoogleFonts
+                                                                      .sarabun(
+                                                                    textStyle:
+                                                                        TextStyle(
+                                                                      color: ThemeBc
+                                                                          .textblack,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                      fontSize:
+                                                                          15,
+                                                                    ),
                                                                   ),
                                                                 ),
                                                                 trailing: Icon(
@@ -849,16 +890,18 @@ class _menu_pangState extends State<menu_pang> {
                                                                 title:
                                                                     LocaleText(
                                                                   'ออกจากระบบ',
-                                                                  style:
-                                                                      TextStyle(
-                                                                    fontSize:
-                                                                        15.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
-                                                                    // backgroundColor: Colors.black45,
-                                                                    color: Colors
-                                                                        .black,
+                                                                  style: GoogleFonts
+                                                                      .sarabun(
+                                                                    textStyle:
+                                                                        TextStyle(
+                                                                      color: ThemeBc
+                                                                          .textblack,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                      fontSize:
+                                                                          15,
+                                                                    ),
                                                                   ),
                                                                 ),
                                                                 trailing: Icon(
