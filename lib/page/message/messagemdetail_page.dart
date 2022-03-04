@@ -85,12 +85,12 @@ class _messagemdetail_page extends State<messagemdetail_page> {
           ),
           actions: <Widget>[
             IconButton(
-              icon: Image.asset('assets/logo.png', scale: 15),
+              icon: Icon(
+                Icons.refresh,
+                color: ThemeBc.background,
+              ),
               tooltip: 'Show Snackbar',
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
-              },
+              onPressed: () {},
             ),
           ],
         ),

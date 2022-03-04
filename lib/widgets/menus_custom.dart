@@ -66,7 +66,7 @@ class MenusCustom extends StatelessWidget {
                       titleMenus,
                       style: GoogleFonts.sarabun(
                         textStyle: TextStyle(
-                          color: ThemeBc.textblack,
+                          color: ThemeBc.textwhite,
                           fontWeight: FontWeight.w300,
                           fontSize: 15,
                         ),

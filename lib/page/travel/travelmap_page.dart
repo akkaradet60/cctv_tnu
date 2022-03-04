@@ -25,8 +25,8 @@ class _travelmap_page extends State<travelmap_page> {
   late Map<String, dynamic> imgSlide;
 
   Future<Map<String, dynamic>> getDataSlide() async {
-    var url =
-        ('https://www.bc-official.com/api/app_nt/api/app/travel/restful/?travel_id=8&travel_app_id=${Global.app_id}');
+    var url = (Global.urlWeb +
+        'api/app/travel/restful/?travel_id=8&travel_app_id=${Global.app_id}');
     var response = await http.get(Uri.parse(url), headers: {
       'Authorization':
           'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
@@ -116,7 +116,10 @@ class _travelmap_page extends State<travelmap_page> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: Image.asset('assets/logo.png', scale: 15),
+            icon: Icon(
+              Icons.refresh,
+              color: ThemeBc.background,
+            ),
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context)

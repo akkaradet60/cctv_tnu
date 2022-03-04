@@ -48,15 +48,25 @@ class _composedetail_page extends State<composedetail_page> {
           ),
           foregroundColor: ThemeBc.white,
           backgroundColor: ThemeBc.background,
-          title: Center(child: Text('${datail_blogpose['em_type']}')),
+          title: Center(
+              child: Text(
+            '${datail_blogpose['emt_name'] ?? '-'}',
+            style: GoogleFonts.sarabun(
+              textStyle: TextStyle(
+                color: ThemeBc.textwhite,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+          )),
           actions: <Widget>[
             IconButton(
-              icon: Image.asset('assets/logo.png', scale: 15),
+              icon: Icon(
+                Icons.refresh,
+                color: ThemeBc.background,
+              ),
               tooltip: 'Show Snackbar',
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
-              },
+              onPressed: () {},
             ),
           ],
         ),
@@ -237,7 +247,7 @@ class _composedetail_page extends State<composedetail_page> {
                                           Row(
                                             children: [
                                               Text(
-                                                'ชื่อผู้แจ้งเหตุ  ',
+                                                'ชื่อผู้แจ้ง : ',
                                                 style: GoogleFonts.sarabun(
                                                   textStyle: TextStyle(
                                                     color: ThemeBc.textblack,
@@ -261,7 +271,7 @@ class _composedetail_page extends State<composedetail_page> {
                                           Row(
                                             children: [
                                               Text(
-                                                'ประเภท  ',
+                                                'ประเภท : ',
                                                 style: GoogleFonts.sarabun(
                                                   textStyle: TextStyle(
                                                     color: ThemeBc.textblack,
@@ -295,7 +305,7 @@ class _composedetail_page extends State<composedetail_page> {
                                           ),
                                           SizedBox(height: 10),
                                           Text(
-                                            'เบอร์ติดต่อที่คุณแจ้ง  ${datail_blogpose['em_phone']}',
+                                            'เบอร์ติดต่อที่คุณแจ้ง : ${datail_blogpose['em_phone']}',
                                             style: GoogleFonts.sarabun(
                                               textStyle: TextStyle(
                                                 color: ThemeBc.textblack,
@@ -305,7 +315,7 @@ class _composedetail_page extends State<composedetail_page> {
                                             ),
                                           ),
                                           Text(
-                                            'จุดเกิดเหตุ  ${datail_blogpose['em_lat']} ${datail_blogpose['em_lng']}',
+                                            'จุดเกิดเหตุ : ${datail_blogpose['em_lat']} ${datail_blogpose['em_lng']}',
                                             style: GoogleFonts.sarabun(
                                               textStyle: TextStyle(
                                                 color: ThemeBc.textblack,
@@ -392,7 +402,7 @@ class _composedetail_page extends State<composedetail_page> {
 //           ),
 //           actions: <Widget>[
 //             IconButton(
-//               icon: Image.asset('assets/logo.png', scale: 15),
+//               icon: Icon(Icons.refresh,color: ThemeBc.background,),
 //               tooltip: 'Show Snackbar',
 //               onPressed: () {
 //                 ScaffoldMessenger.of(context).showSnackBar(

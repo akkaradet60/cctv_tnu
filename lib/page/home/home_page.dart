@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
-
+// import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:cctv_tun/page/menu/manu.dart';
 
 import 'package:cctv_tun/widgets/warn_api.dart';
@@ -115,12 +115,7 @@ class _home_pageState extends State<home_page> {
   //     throw Exception('$response.statusCode');
   //   }
   // }
-  late List<String> titles = [
-    ' 1 ',
-    ' 2 ',
-    ' 3 ',
-    ' 4 ',
-  ];
+  late List<String> titles = [' 1 ', ' 2 ', ' 3 ', ' 4 ', '5'];
 
   @override
   var porfile;
@@ -221,21 +216,31 @@ class _home_pageState extends State<home_page> {
               if (snapshot.data!['data'] == 'ไม่พบข้อมูล') {
                 return Center(
                   child: Container(
-                    decoration: BoxDecoration(
-                        color: ThemeBc.textblack,
-                        borderRadius: BorderRadius.circular(
-                          20,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black.withOpacity(0.5),
-                              offset: Offset(2, 4),
-                              blurRadius: 7.0,
-                              spreadRadius: 1.0),
-                        ]),
+                    // decoration: BoxDecoration(
+                    //     color: ThemeBc.textblack,
+                    //     borderRadius: BorderRadius.circular(
+                    //       20,
+                    //     ),
+                    //     boxShadow: [
+
+                    //     ]),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text('ไม่พบข้อมูล'),
+                      child: Column(
+                        children: [
+                          // Image.network(Global.networkImage),
+                          Text(
+                            'ไม่พบข้อมูล',
+                            style: GoogleFonts.sarabun(
+                              textStyle: TextStyle(
+                                color: ThemeBc.textblack,
+                                fontWeight: FontWeight.w100,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 );
@@ -309,42 +314,49 @@ class _home_pageState extends State<home_page> {
 
                       child: ClipRRect(
                         borderRadius: BorderRadius.all(
-                          Radius.circular(5.0),
+                          Radius.circular(0),
                         ),
                         child: ListView(
                           children: [
                             Stack(
                               children: <Widget>[
-                                Image.network(
-                                  snapshot.data!['data'][item]['blog_images'][0]
-                                              ['blogi_path_name'] !=
-                                          null
-                                      ? Global.domainImage +
-                                          snapshot.data!['data'][item]
-                                                  ['blog_images'][0]
-                                              ['blogi_path_name']
-                                      : 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
-                                  fit: BoxFit.cover,
-                                  width: double.infinity,
+                                Container(
+                                  height: 250,
+                                  child: Image.network(
+                                    snapshot.data!['data'][item]['blog_images']
+                                                [0]['blogi_path_name'] !=
+                                            null
+                                        ? Global.domainImage +
+                                            snapshot.data!['data'][item]
+                                                    ['blog_images'][0]
+                                                ['blogi_path_name']
+                                        : 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
+                                    fit: BoxFit.cover,
+                                    width: double.infinity,
+                                  ),
                                 ),
                                 Column(
                                   children: [
-                                    SizedBox(height: 170),
+                                    SizedBox(height: 135),
                                     Container(
-                                      color: ThemeBc.background,
+                                      color: ThemeBc.black54,
                                       width: 370,
                                       height: 100,
                                       child: ListView(
                                         children: [
                                           SizedBox(height: 10),
-                                          Text(
-                                            // '${titles[_currentIndex]}',
-                                            '  ${snapshot.data!['data'][item]['blog_name']}',
-                                            style: GoogleFonts.sarabun(
-                                              textStyle: TextStyle(
-                                                color: ThemeBc.textwhite,
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 18,
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 10, right: 10),
+                                            child: Text(
+                                              // '${titles[_currentIndex]}',
+                                              '  ${snapshot.data!['data'][item]['blog_name']}',
+                                              style: GoogleFonts.sarabun(
+                                                textStyle: TextStyle(
+                                                  color: ThemeBc.textwhite,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 15,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -397,7 +409,7 @@ class _home_pageState extends State<home_page> {
             'เมนู',
             style: GoogleFonts.sarabun(
               textStyle: TextStyle(
-                color: ThemeBc.textblack,
+                color: ThemeBc.textwhite,
                 fontWeight: FontWeight.bold,
                 fontSize: 25,
               ),
@@ -676,9 +688,10 @@ class _home_pageState extends State<home_page> {
             ),
           ],
         ),
+        //Image.asset('assets/Noicon.png', scale: 15),
         actions: <Widget>[
           IconButton(
-            icon: Image.asset('assets/logo.png', scale: 15),
+            icon: Image.asset('assets/logo02.png', scale: 15),
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
@@ -692,7 +705,7 @@ class _home_pageState extends State<home_page> {
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                  colors: [Colors.orangeAccent, Colors.pinkAccent],
+                  colors: [ThemeBc.green05, ThemeBc.green01],
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft),
             ),

@@ -174,36 +174,44 @@ class _message_pageState extends State<message_page> {
                             children: [
                               Stack(
                                 children: <Widget>[
-                                  Image.network(
-                                    snapshot.data!['data'][item]['blog_images']
-                                                [0]['blogi_path_name'] !=
-                                            null
-                                        ? Global.domainImage +
-                                            snapshot.data!['data'][item]
-                                                    ['blog_images'][0]
-                                                ['blogi_path_name']
-                                        : 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
-                                    fit: BoxFit.cover,
-                                    width: double.infinity,
+                                  Container(
+                                    height: 250,
+                                    child: Image.network(
+                                      snapshot.data!['data'][item]
+                                                      ['blog_images'][0]
+                                                  ['blogi_path_name'] !=
+                                              null
+                                          ? Global.domainImage +
+                                              snapshot.data!['data'][item]
+                                                      ['blog_images'][0]
+                                                  ['blogi_path_name']
+                                          : 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/555.jpg/1024px-555.jpg',
+                                      fit: BoxFit.cover,
+                                      width: double.infinity,
+                                    ),
                                   ),
                                   Column(
                                     children: [
-                                      SizedBox(height: 160),
+                                      SizedBox(height: 135),
                                       Container(
-                                        color: ThemeBc.background,
+                                        color: ThemeBc.black54,
                                         width: 370,
                                         height: 100,
                                         child: ListView(
                                           children: [
-                                            SizedBox(height: 15),
-                                            Text(
-                                              // '${titles[_currentIndex]}',
-                                              '  ${snapshot.data!['data'][item]['blog_name']}',
-                                              style: GoogleFonts.sarabun(
-                                                textStyle: TextStyle(
-                                                  color: ThemeBc.textwhite,
-                                                  fontWeight: FontWeight.w400,
-                                                  fontSize: 18,
+                                            SizedBox(height: 10),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 10, right: 10),
+                                              child: Text(
+                                                // '${titles[_currentIndex]}',
+                                                '  ${snapshot.data!['data'][item]['blog_name']}',
+                                                style: GoogleFonts.sarabun(
+                                                  textStyle: TextStyle(
+                                                    color: ThemeBc.textwhite,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 15,
+                                                  ),
                                                 ),
                                               ),
                                             ),
@@ -483,12 +491,12 @@ class _message_pageState extends State<message_page> {
           ),
           actions: <Widget>[
             IconButton(
-              icon: Image.asset('assets/logo.png', scale: 15),
+              icon: Icon(
+                Icons.refresh,
+                color: ThemeBc.background,
+              ),
               tooltip: 'Show Snackbar',
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
-              },
+              onPressed: () {},
             ),
           ],
         ),

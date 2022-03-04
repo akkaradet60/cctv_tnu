@@ -338,7 +338,7 @@ class _forgot_password extends State<forgot_password>
       body: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors: [Colors.pinkAccent, Colors.orange],
+                colors: [ThemeBc.green05, ThemeBc.green01],
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft)),
         child: SafeArea(

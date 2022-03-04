@@ -485,12 +485,12 @@ class _settingshopState extends State<settingshop>
         title: Center(child: const Text('ร้านค้า')),
         actions: <Widget>[
           IconButton(
-            icon: Image.asset('assets/logo.png', scale: 15),
+            icon: Icon(
+              Icons.refresh,
+              color: ThemeBc.background,
+            ),
             tooltip: 'Show Snackbar',
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
-            },
+            onPressed: () {},
           ),
         ],
       ),

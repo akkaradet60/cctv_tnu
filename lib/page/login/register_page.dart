@@ -103,7 +103,7 @@ class _RegisterPageState extends State<register_page> {
         body: Container(
       decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [Colors.pinkAccent, Colors.orange],
+              colors: [ThemeBc.green05, ThemeBc.green01],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft)),
       // decoration: const BoxDecoration(

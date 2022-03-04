@@ -448,19 +448,19 @@ class settings extends StatelessWidget {
         ),
         actions: <Widget>[
           IconButton(
-            icon: Image.asset('assets/logo.png', scale: 15),
+            icon: Icon(
+              Icons.refresh,
+              color: ThemeBc.background,
+            ),
             tooltip: 'Show Snackbar',
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
-            },
+            onPressed: () {},
           ),
         ],
       ),
       body: Container(
         decoration: const BoxDecoration(
           gradient: const LinearGradient(
-              colors: [ThemeBc.orangeAccent, ThemeBc.pinkAccent],
+              colors: [ThemeBc.green05, ThemeBc.green01],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft),
         ),

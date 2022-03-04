@@ -91,12 +91,12 @@ class _awarddetail_page extends State<awarddetail_page> {
           ),
           actions: <Widget>[
             IconButton(
-              icon: Image.asset('assets/logo.png', scale: 15),
+              icon: Icon(
+                Icons.refresh,
+                color: ThemeBc.background,
+              ),
               tooltip: 'Show Snackbar',
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
-              },
+              onPressed: () {},
             ),
           ],
         ),
@@ -257,7 +257,7 @@ class _awarddetail_page extends State<awarddetail_page> {
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(
-                                      '${productt['award_detail']}',
+                                      ' ${productt['award_detail']}',
                                       style: GoogleFonts.sarabun(
                                         textStyle: TextStyle(
                                           color: ThemeBc.textblack,
@@ -291,7 +291,7 @@ class _awarddetail_page extends State<awarddetail_page> {
     //       title: Text('${productt['award_name']}'),
     //       actions: <Widget>[
     //         IconButton(
-    //           icon: Image.asset('assets/logo.png', scale: 15),
+    //           icon: Icon(Icons.refresh,color: ThemeBc.background,),
     //           tooltip: 'Show Snackbar',
     //           onPressed: () {
     //             ScaffoldMessenger.of(context).showSnackBar(

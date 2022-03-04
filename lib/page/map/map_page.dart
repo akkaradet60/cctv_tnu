@@ -82,7 +82,7 @@ class _map_prod extends State<map_page> {
           children: [
             Center(
                 child: Text(
-              'ตำแหน่งศูนย์ : ${hotlinee['hotlineName']}',
+              '${hotlinee['hotlineName']}',
               style: GoogleFonts.sarabun(
                 textStyle: TextStyle(
                   color: ThemeBc.textwhite,
@@ -95,11 +95,14 @@ class _map_prod extends State<map_page> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: Image.asset('assets/logo.png', scale: 15),
+            icon: Icon(
+              Icons.refresh,
+              color: ThemeBc.background,
+            ),
             tooltip: 'Show Snackbar',
             onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: const Text('แจ้งเหตุฉุกเฉิน')));
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(const SnackBar(content: const Text('เทศบาล')));
             },
           ),
         ],
@@ -133,15 +136,15 @@ class _map_prod extends State<map_page> {
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(3.0),
-                                  child: Text(
-                                    "เทศบาลมหาสารคาม",
-                                    style: TextStyle(
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold,
-                                      // backgroundColor: Colors.black45,
-                                      color: Colors.black,
-                                    ),
-                                  ),
+                                  // child: Text(
+                                  //   "เทศบาลมหาสารคาม",
+                                  //   style: TextStyle(
+                                  //     fontSize: 20.0,
+                                  //     fontWeight: FontWeight.bold,
+                                  //     // backgroundColor: Colors.black45,
+                                  //     color: Colors.black,
+                                  //   ),
+                                  // ),
                                 ),
                               ),
                             ],
@@ -160,8 +163,15 @@ class _map_prod extends State<map_page> {
                               context: context,
                               builder: (context) {
                                 return AlertDialog(
-                                  content: Text(
-                                      'ตำแหน่งศูนย์ : ${hotlinee['hotlineName']}'),
+                                  content: Container(
+                                    height: 40,
+                                    width: 200,
+                                    child: ListView(children: [
+                                      Center(
+                                          child: Text(
+                                              '${hotlinee['hotlineName']}'))
+                                    ]),
+                                  ),
                                 );
                               },
                             );
@@ -414,7 +424,7 @@ class _map_prod extends State<map_page> {
 //         // title: Center(child: Text('${hotlinee['hotlineName']}')),
 //         actions: <Widget>[
 //           IconButton(
-//             icon: Image.asset('assets/logo.png', scale: 15),
+//             icon: Icon(Icons.refresh,color: ThemeBc.background,),
 //             tooltip: 'Show Snackbar',
 //             onPressed: () {
 //               ScaffoldMessenger.of(context).showSnackBar(

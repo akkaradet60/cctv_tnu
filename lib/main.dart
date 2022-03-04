@@ -81,7 +81,7 @@ void main() async {
   ]);
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  token = prefs.getString('token');
+  // token = prefs.getString('token');
   runApp(
     MyApp(store: myStore),
   );
@@ -110,7 +110,7 @@ class MyApp extends StatelessWidget {
           routes: {
             '/': (context) => token == null
                 ? login_page()
-                : Global.app_id == "1"
+                : Global.app_id == "2"
                     ? home_page()
                     : Verify(),
             '/appppp': (context) => appp(),

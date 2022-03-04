@@ -118,7 +118,10 @@ class _trainingcalendardetail_page extends State<trainingcalendardetail_page> {
         )),
         actions: <Widget>[
           IconButton(
-            icon: Image.asset('assets/logo.png', scale: 15),
+            icon: Icon(
+              Icons.refresh,
+              color: ThemeBc.background,
+            ),
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context)
@@ -311,7 +314,7 @@ class _trainingcalendardetail_page extends State<trainingcalendardetail_page> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  '${trainingcalendardetail['trainDetail']}',
+                                  ' ${trainingcalendardetail['trainDetail']}',
                                   style: GoogleFonts.sarabun(
                                     textStyle: TextStyle(
                                       color: ThemeBc.textblack,

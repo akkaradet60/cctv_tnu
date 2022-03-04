@@ -114,7 +114,10 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
         )),
         actions: <Widget>[
           IconButton(
-            icon: Image.asset('assets/logo.png', scale: 15),
+            icon: Icon(
+              Icons.refresh,
+              color: ThemeBc.background,
+            ),
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context)
@@ -219,7 +222,7 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
                                     height: 300,
                                     width: 370,
                                     decoration: BoxDecoration(
-                                        color: ThemeBc.grey,
+                                        color: ThemeBc.white,
                                         borderRadius: BorderRadius.circular(
                                           10,
                                         ),
@@ -311,7 +314,7 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
                                                         const EdgeInsets.all(
                                                             8.0),
                                                     child: Text(
-                                                      'เนื้อหาอบรม : ${snapshot.data!['data'][index]['train_detail']}',
+                                                      ' ${snapshot.data!['data'][index]['train_detail']}',
                                                       style:
                                                           GoogleFonts.sarabun(
                                                         textStyle: TextStyle(

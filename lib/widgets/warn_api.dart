@@ -1,6 +1,7 @@
 import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class warn_api extends StatelessWidget {
   final String title;
@@ -24,14 +25,16 @@ class warn_api extends StatelessWidget {
         child: Container(
           height: 100,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               LocaleText(
                 title,
-                style: TextStyle(
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
-                  // backgroundColor: Colors.black45,
-                  color: ThemeBc.textblack,
+                style: GoogleFonts.sarabun(
+                  textStyle: TextStyle(
+                    color: ThemeBc.textblack,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 15,
+                  ),
                 ),
               ),
             ],

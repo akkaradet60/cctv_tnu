@@ -109,71 +109,61 @@ class _settingprofile extends State<settingprofile>
                                         ? Container(
                                             child: profile['user_image'] != null
                                                 ? Container(
-                                                    decoration: BoxDecoration(
-                                                        color: ThemeBc.white,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(
-                                                          20,
-                                                        ),
-                                                        boxShadow: [
-                                                          BoxShadow(
-                                                              color: Colors
-                                                                  .black
-                                                                  .withOpacity(
-                                                                      0.1),
-                                                              offset:
-                                                                  Offset(2, 2),
-                                                              blurRadius: 7,
-                                                              spreadRadius:
-                                                                  1.0),
-                                                        ]),
                                                     child: Padding(
                                                       padding:
                                                           const EdgeInsets.all(
                                                               8.0),
                                                       child: Column(
                                                         children: [
-                                                          Image.network(
-                                                              imageData,
-                                                              width: 200,
-                                                              height: 200,
-                                                              fit: BoxFit.fill),
+                                                          ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .all(
+                                                              Radius.circular(
+                                                                  10),
+                                                            ),
+                                                            child:
+                                                                Image.network(
+                                                                    imageData,
+                                                                    width: 200,
+                                                                    height: 200,
+                                                                    fit: BoxFit
+                                                                        .fill),
+                                                          ),
                                                         ],
                                                       ),
                                                     ),
                                                   )
-                                                : Image.network(
-                                                    selectedImage != null
-                                                        ? Global.urlFile2 +
-                                                            imageData
-                                                        : Global.networkImage,
-                                                    width: 200,
-                                                    height: 200,
-                                                    fit: BoxFit.fill),
+                                                : ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                      Radius.circular(10),
+                                                    ),
+                                                    child: Image.network(
+                                                        selectedImage != null
+                                                            ? Global.urlFile2 +
+                                                                imageData
+                                                            : Global
+                                                                .networkImage,
+                                                        width: 200,
+                                                        height: 200,
+                                                        fit: BoxFit.fill),
+                                                  ),
                                           )
                                         : Container(
-                                            decoration: BoxDecoration(
-                                                color: ThemeBc.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                  20,
-                                                ),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                      color: Colors.black
-                                                          .withOpacity(0.1),
-                                                      offset: Offset(2, 2),
-                                                      blurRadius: 7,
-                                                      spreadRadius: 1.0),
-                                                ]),
                                             child: Padding(
                                               padding:
                                                   const EdgeInsets.all(8.0),
-                                              child: Image.file(selectedImage!,
-                                                  width: 200,
-                                                  height: 200,
-                                                  fit: BoxFit.fill),
+                                              child: ClipRRect(
+                                                borderRadius: BorderRadius.all(
+                                                  Radius.circular(10),
+                                                ),
+                                                child: Image.file(
+                                                    selectedImage!,
+                                                    width: 200,
+                                                    height: 200,
+                                                    fit: BoxFit.fill),
+                                              ),
                                             ),
                                           ),
                                   ],
@@ -184,13 +174,13 @@ class _settingprofile extends State<settingprofile>
                                 decoration: BoxDecoration(
                                     color: ThemeBc.white,
                                     borderRadius: BorderRadius.circular(
-                                      20,
+                                      10,
                                     ),
                                     boxShadow: [
                                       BoxShadow(
                                           color: Colors.black.withOpacity(0.1),
                                           offset: Offset(2, 2),
-                                          blurRadius: 7,
+                                          blurRadius: 2,
                                           spreadRadius: 1.0),
                                     ]),
                                 child: IconButton(
@@ -215,6 +205,12 @@ class _settingprofile extends State<settingprofile>
                                   labelText: 'นามสกุล',
                                   icon: Icons.description,
                                   initialValue: '${profile['user_lastname']}'),
+                              SizedBox(height: 10),
+                              FormBuilderFieldText(
+                                  name: 'user_phone',
+                                  labelText: 'เบอร์โทร',
+                                  icon: Icons.description,
+                                  initialValue: '${profile['user_phone']}'),
                               const SizedBox(height: 10),
                               FormBuilderFieldText(
                                   name: 'user_card_id',
@@ -472,12 +468,12 @@ class _settingprofile extends State<settingprofile>
         ),
         actions: <Widget>[
           IconButton(
-            icon: Image.asset('assets/logo.png', scale: 15),
+            icon: Icon(
+              Icons.refresh,
+              color: ThemeBc.background,
+            ),
             tooltip: 'Show Snackbar',
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
-            },
+            onPressed: () {},
           ),
         ],
       ),
@@ -502,7 +498,7 @@ class _settingprofile extends State<settingprofile>
   var _lat;
   var _fir;
   var _email;
-
+  var _phone;
   Future<void> updataUser(Map formValues) async {
     try {
 //=======  check data ==========
@@ -516,6 +512,7 @@ class _settingprofile extends State<settingprofile>
       var latData = formValues['user_lastname'] ?? _lat;
       var firData = formValues['user_firstname'] ?? _fir;
       var emailData = formValues['user_email'] ?? _email;
+      var phoneData = formValues['user_phone'] ?? _phone;
 
       var url = Uri.parse(Global.urlWeb +
           'api/profile/restful/?user_id=${Global.user_id}&user_app_id=${Global.app_id}');
@@ -530,6 +527,7 @@ class _settingprofile extends State<settingprofile>
         ..fields['user_lastname'] = latData
         ..fields['user_firstname'] = firData
         ..fields['user_status'] = '1'
+        ..fields['user_phone'] = phoneData
         ..fields['user_email'] = emailData;
 
       Map<String, String> headers = {

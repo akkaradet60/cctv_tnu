@@ -31,7 +31,8 @@ class _travel_page extends State<travel_page> {
 
   Future<Map<String, dynamic>> getDataSlide() async {
     var url = (Global.urlWeb +
-        'api/app/travel/restful/?travel_app_id=1&travel_cat=1&travel_type=${travel['type_app_id']}');
+        'api/app/travel/restful/?travel_app_id=${Global.app_id}&travel_cat=1&travel_type=${travel['type_app_id']}');
+
     var response = await http.get(Uri.parse(url), headers: {
       'Authorization':
           'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
@@ -61,317 +62,395 @@ class _travel_page extends State<travel_page> {
       travel = ModalRoute.of(context)!.settings.arguments;
       return Padding(
         padding: const EdgeInsets.all(0),
-        child: Container(
-          // decoration: BoxDecoration(
-          //   color: secondaryTextColor,
-          //   borderRadius: BorderRadius.circular(
-          //     40,
-          //   ),
-          // ),
-          height: 600,
-          width: 500,
+        child: Column(
+          children: [
+            // Text(travel['type_app_id']),
+            Container(
+              // decoration: BoxDecoration(
+              //   color: secondaryTextColor,
+              //   borderRadius: BorderRadius.circular(
+              //     40,
+              //   ),
+              // ),
+              height: 600,
+              width: 500,
 
-          child: FutureBuilder<Map<String, dynamic>>(
-            future: getDataSlide(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: snapshot.data!['data'].length,
-                  itemBuilder: (context, index) {
-                    print(snapshot.data!['data'][index]['travel_images'][0]
-                        ['traveli_path_name']);
-
-                    var datanill = snapshot.data!['data'];
-                    print(snapshot.data!['data'].length);
-                    var em_detaail;
-                    if (datanill == 'ไม่พบข้อมูล') {
-                      em_detaail = 'ไม่พบข้อมูล';
-                      return Text('');
-                    } else {
+              child: FutureBuilder<Map<String, dynamic>>(
+                future: getDataSlide(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    if (snapshot.data!['data'] == 'ไม่พบข้อมูล') {
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
-                          height: 400,
-                          width: 400,
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  child: FutureBuilder<Map<String, dynamic>>(
-                                    future: getDataSlide(),
-                                    builder: (context, snapshot) {
-                                      if (snapshot.hasData) {
-                                        if (snapshot.data!['data'] ==
-                                            'ไม่พบข้อมูล') {
-                                          return Center(
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                  color: ThemeBc.textblack,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                    10,
-                                                  ),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                        color: Colors.black
-                                                            .withOpacity(0.5),
-                                                        offset: Offset(2, 4),
-                                                        blurRadius: 7.0,
-                                                        spreadRadius: 1.0),
-                                                  ]),
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Text('ไม่พบข้อมูล'),
-                                              ),
-                                            ),
-                                          );
-                                        } else {
-                                          return CarouselSlider.builder(
-                                            itemCount:
-                                                snapshot.data!['data'].length,
-                                            options: CarouselOptions(
-                                              autoPlay: true,
-                                              enlargeCenterPage: true,
-                                              viewportFraction: 0.9,
-                                              aspectRatio: 2.0,
-                                              initialPage: 2,
-                                              onPageChanged: (index, reason) {
-                                                setState(
-                                                  () {
-                                                    _currentIndex = index;
-                                                  },
-                                                );
-                                              },
-                                            ),
-                                            itemBuilder: (BuildContext context,
-                                                    int item,
-                                                    int pageViewIndex) =>
-
-                                                // Text('${snapshot.data!['data'][item]['blog_id']}');
-                                                //     Container(
-                                                //   child: Center(child: Text(item.toString())),
-                                                //   color: Colors.green,
-                                                // ),
-                                                NeumorphicButton(
-                                              style: NeumorphicStyle(
-                                                shape: NeumorphicShape.flat,
-                                                // boxShape:
-                                                //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                                                // boxShape: NeumorphicBoxShape.circle(),
-                                                color: Colors.white,
-                                              ),
-                                              padding: EdgeInsets.all(0),
-                                              child: InkWell(
-                                                onTap: () {
-                                                  Navigator.pushNamed(context,
-                                                      '/travelmap_page',
-                                                      arguments: {
-                                                        'travel_name': snapshot
-                                                                    .data![
-                                                                'data'][index]
-                                                            ['travel_name'],
-                                                        'travel_detail': snapshot
-                                                                    .data![
-                                                                'data'][index]
-                                                            ['travel_detail'],
-                                                        'travel_lat': snapshot
-                                                                    .data![
-                                                                'data'][index]
-                                                            ['travel_lat'],
-                                                        'travel_lng': snapshot
-                                                                    .data![
-                                                                'data'][index]
-                                                            ['travel_lng'],
-
-                                                        /*   'id': data[index].id,
-                                  'detail': data[index].detail,
-                                  'picture': data[index].picture,
-                                  'view': data[index].view,*/
-                                                      });
-                                                },
-                                                // child: Card(
-                                                //   margin: EdgeInsets.only(
-                                                //     top: 10.0,
-                                                //     bottom: 10.0,
-                                                //   ),
-                                                //   elevation: 6.0,
-                                                // shadowColor: Colors.redAccent,
-                                                // shape: RoundedRectangleBorder(
-                                                //     // borderRadius: BorderRadius.circular(30.0),
-                                                //     ),
-
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                    Radius.circular(5.0),
-                                                  ),
-                                                  child: ListView(
-                                                    children: [
-                                                      Stack(
-                                                        children: <Widget>[
-                                                          Image.network(
-                                                            snapshot.data!['data'][index]
-                                                                            [
-                                                                            'travel_images'][0]
-                                                                        [
-                                                                        'traveli_path_name'] !=
-                                                                    null
-                                                                ? Global.domainImage +
-                                                                    snapshot.data!['data']
-                                                                            [
-                                                                            index]['travel_images'][0]
-                                                                        [
-                                                                        'traveli_path_name']
-                                                                : '${Global.networkImage}',
-                                                            fit: BoxFit.cover,
-                                                            width:
-                                                                double.infinity,
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          );
-                                        }
-
-                                        // return ListView.separated(
-                                        //     itemBuilder: (context, index) {
-                                        // return Text('3232');
-
-                                      } else if (snapshot.hasError) {
-                                        return Center(
-                                            child: Text(
-                                                'เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
-                                      }
-
-                                      return Center(
-                                          child: CircularProgressIndicator());
-                                    },
+                          decoration: BoxDecoration(
+                              color: secondaryTextColor,
+                              borderRadius: BorderRadius.circular(
+                                10,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.black.withOpacity(0.1),
+                                    offset: Offset(2, 4),
+                                    blurRadius: 7.0,
+                                    spreadRadius: 1.0),
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Center(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: ThemeBc.background,
+                                    borderRadius: BorderRadius.circular(
+                                      10,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.1),
+                                          offset: Offset(2, 4),
+                                          blurRadius: 7.0,
+                                          spreadRadius: 1.0),
+                                    ]),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    'ไม่พบข้อมูล',
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.w300,
+                                      // backgroundColor: Colors.black45,
+                                      color: ThemeBc.textwhite,
+                                    ),
                                   ),
                                 ),
                               ),
-                              InkWell(
-                                onTap: () {
-                                  Navigator.pushNamed(
-                                      context, '/travelmap_page',
-                                      arguments: {
-                                        'travel_name': snapshot.data!['data']
-                                            [index]['travel_name'],
-                                        'travel_detail': snapshot.data!['data']
-                                            [index]['travel_detail'],
-                                        'travel_lat': snapshot.data!['data']
-                                            [index]['travel_lat'],
-                                        'travel_lng': snapshot.data!['data']
-                                            [index]['travel_lng'],
-                                      });
-                                },
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    child: Column(
-                                      children: [
-                                        Stack(
-                                          children: <Widget>[
-                                            Container(
-                                              height: 350,
-                                              child: ClipRRect(
-                                                borderRadius: BorderRadius.all(
-                                                  Radius.circular(10.0),
-                                                ),
-                                                child: Image.network(
-                                                  snapshot.data!['data'][index][
-                                                                  'travel_images'][0]
-                                                              [
-                                                              'traveli_path_name'] !=
-                                                          null
-                                                      ? Global.domainImage +
-                                                          snapshot.data!['data']
-                                                                      [index][
-                                                                  'travel_images'][0]
-                                                              [
-                                                              'traveli_path_name']
-                                                      : '${Global.networkImage}',
-                                                  fit: BoxFit.cover,
-                                                  width: double.infinity,
-                                                ),
-                                              ),
-                                            ),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                SizedBox(height: 60),
-                                                Container(
+                            ),
+                          ),
+                        ),
+                      );
+                    }
+                    return ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: snapshot.data!['data'].length,
+                      itemBuilder: (context, index) {
+                        // print(snapshot.data!['data'][index]['travel_images'][0]
+                        //     ['traveli_path_name']);
+
+                        var datanill = snapshot.data!['data'];
+                        print(snapshot.data!['data'].length);
+                        var em_detaail;
+                        if (datanill == 'ไม่พบข้อมูล') {
+                          em_detaail = 'ไม่พบข้อมูล';
+                          return Text('');
+                        } else {
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              height: 400,
+                              width: 400,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                      child:
+                                          FutureBuilder<Map<String, dynamic>>(
+                                        future: getDataSlide(),
+                                        builder: (context, snapshot) {
+                                          if (snapshot.hasData) {
+                                            if (snapshot.data!['data'] ==
+                                                'ไม่พบข้อมูล') {
+                                              return Center(
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                      color: ThemeBc.textblack,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                        10,
+                                                      ),
+                                                      boxShadow: [
+                                                        BoxShadow(
+                                                            color: Colors.black
+                                                                .withOpacity(
+                                                                    0.5),
+                                                            offset:
+                                                                Offset(2, 4),
+                                                            blurRadius: 7.0,
+                                                            spreadRadius: 1.0),
+                                                      ]),
                                                   child: Padding(
                                                     padding:
                                                         const EdgeInsets.all(
                                                             8.0),
-                                                    child: Text(
-                                                      // '${titles[_currentIndex]}',
-                                                      '${snapshot.data!['data'][index]['travel_name']}',
-                                                      style:
-                                                          GoogleFonts.sarabun(
-                                                        textStyle: TextStyle(
-                                                          color:
-                                                              ThemeBc.textwhite,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 20,
-                                                        ),
+                                                    child: Text('ไม่พบข้อมูล'),
+                                                  ),
+                                                ),
+                                              );
+                                            } else {
+                                              return CarouselSlider.builder(
+                                                itemCount: snapshot
+                                                    .data!['data'].length,
+                                                options: CarouselOptions(
+                                                  autoPlay: true,
+                                                  enlargeCenterPage: true,
+                                                  viewportFraction: 0.9,
+                                                  aspectRatio: 2.0,
+                                                  initialPage: 2,
+                                                  onPageChanged:
+                                                      (index, reason) {
+                                                    setState(
+                                                      () {
+                                                        _currentIndex = index;
+                                                      },
+                                                    );
+                                                  },
+                                                ),
+                                                itemBuilder: (BuildContext
+                                                            context,
+                                                        int item,
+                                                        int pageViewIndex) =>
+
+                                                    // Text('${snapshot.data!['data'][item]['blog_id']}');
+                                                    //     Container(
+                                                    //   child: Center(child: Text(item.toString())),
+                                                    //   color: Colors.green,
+                                                    // ),
+                                                    NeumorphicButton(
+                                                  style: NeumorphicStyle(
+                                                    shape: NeumorphicShape.flat,
+                                                    // boxShape:
+                                                    //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
+                                                    // boxShape: NeumorphicBoxShape.circle(),
+                                                    color: Colors.white,
+                                                  ),
+                                                  padding: EdgeInsets.all(0),
+                                                  child: InkWell(
+                                                    onTap: () {
+                                                      Navigator.pushNamed(
+                                                          context,
+                                                          '/travelmap_page',
+                                                          arguments: {
+                                                            'travel_name': snapshot
+                                                                        .data![
+                                                                    'data'][index]
+                                                                ['travel_name'],
+                                                            'travel_detail':
+                                                                snapshot.data![
+                                                                            'data']
+                                                                        [index][
+                                                                    'travel_detail'],
+                                                            'travel_lat': snapshot
+                                                                        .data![
+                                                                    'data'][index]
+                                                                ['travel_lat'],
+                                                            'travel_lng': snapshot
+                                                                        .data![
+                                                                    'data'][index]
+                                                                ['travel_lng'],
+
+                                                            /*   'id': data[index].id,
+                                      'detail': data[index].detail,
+                                      'picture': data[index].picture,
+                                      'view': data[index].view,*/
+                                                          });
+                                                    },
+                                                    // child: Card(
+                                                    //   margin: EdgeInsets.only(
+                                                    //     top: 10.0,
+                                                    //     bottom: 10.0,
+                                                    //   ),
+                                                    //   elevation: 6.0,
+                                                    // shadowColor: Colors.redAccent,
+                                                    // shape: RoundedRectangleBorder(
+                                                    //     // borderRadius: BorderRadius.circular(30.0),
+                                                    //     ),
+
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                        Radius.circular(5.0),
+                                                      ),
+                                                      child: ListView(
+                                                        children: [
+                                                          Stack(
+                                                            children: <Widget>[
+                                                              Image.network(
+                                                                snapshot.data!['data'][index]['travel_images'][0]
+                                                                            [
+                                                                            'traveli_path_name'] !=
+                                                                        null
+                                                                    ? Global.domainImage +
+                                                                        snapshot.data!['data'][index]['travel_images'][0]
+                                                                            [
+                                                                            'traveli_path_name']
+                                                                    : '${Global.networkImage}',
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                                width: double
+                                                                    .infinity,
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
                                                       ),
                                                     ),
                                                   ),
                                                 ),
-                                                SizedBox(height: 50),
+                                              );
+                                            }
+
+                                            // return ListView.separated(
+                                            //     itemBuilder: (context, index) {
+                                            // return Text('3232');
+
+                                          } else if (snapshot.hasError) {
+                                            return Center(
+                                                child: Text(
+                                                    'เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
+                                          }
+
+                                          return Center(
+                                              child:
+                                                  CircularProgressIndicator());
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                          context, '/travelmap_page',
+                                          arguments: {
+                                            'travel_name':
+                                                snapshot.data!['data'][index]
+                                                    ['travel_name'],
+                                            'travel_detail':
+                                                snapshot.data!['data'][index]
+                                                    ['travel_detail'],
+                                            'travel_lat': snapshot.data!['data']
+                                                [index]['travel_lat'],
+                                            'travel_lng': snapshot.data!['data']
+                                                [index]['travel_lng'],
+                                          });
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        child: Column(
+                                          children: [
+                                            Stack(
+                                              children: <Widget>[
                                                 Container(
-                                                  height: 170,
-                                                  color: Colors.black54,
-                                                  child: ListView(
-                                                    children: [
-                                                      Padding(
+                                                  height: 350,
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                      Radius.circular(10.0),
+                                                    ),
+                                                    child: Image.network(
+                                                      snapshot.data!['data']
+                                                                          [index]
+                                                                      ['travel_images'][0]
+                                                                  [
+                                                                  'traveli_path_name'] !=
+                                                              null
+                                                          ? Global.domainImage +
+                                                              snapshot.data!['data']
+                                                                          [index]
+                                                                      [
+                                                                      'travel_images'][0]
+                                                                  [
+                                                                  'traveli_path_name']
+                                                          : '${Global.networkImage}',
+                                                      fit: BoxFit.cover,
+                                                      width: double.infinity,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    SizedBox(height: 60),
+                                                    Container(
+                                                      decoration: BoxDecoration(
+                                                          color: ThemeBc
+                                                              .background,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                            5,
+                                                          ),
+                                                          boxShadow: []),
+                                                      child: Padding(
                                                         padding:
                                                             const EdgeInsets
                                                                 .all(8.0),
-                                                        child: Text_pane(
-                                                            text:
-                                                                '  ${snapshot.data!['data'][index]['travel_detail']}',
-                                                            color:
-                                                                ThemeBc.white,
-                                                            fontSize: 15),
-                                                      )
-                                                    ],
-                                                  ),
+                                                        child: Text(
+                                                          // '${titles[_currentIndex]}',
+                                                          '${snapshot.data!['data'][index]['travel_name']}',
+                                                          style: GoogleFonts
+                                                              .sarabun(
+                                                            textStyle:
+                                                                TextStyle(
+                                                              color: ThemeBc
+                                                                  .textwhite,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontSize: 20,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    SizedBox(height: 50),
+                                                    Container(
+                                                      height: 170,
+                                                      color: Colors.black54,
+                                                      child: ListView(
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(8.0),
+                                                            child: Text_pane(
+                                                                text:
+                                                                    '  ${snapshot.data!['data'][index]['travel_detail']}',
+                                                                color: ThemeBc
+                                                                    .white,
+                                                                fontSize: 15),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
                                               ],
                                             ),
                                           ],
                                         ),
-                                      ],
+                                      ),
                                     ),
                                   ),
-                                ),
+                                ],
                               ),
-                            ],
-                          ),
-                        ),
-                      );
-                    }
-                  },
-                );
-              } else if (snapshot.hasError) {
-                return Center(
-                    child: Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
-              }
+                            ),
+                          );
+                        }
+                      },
+                    );
+                  } else if (snapshot.hasError) {
+                    return Center(
+                        child:
+                            Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
+                  }
 
-              return Center(child: CircularProgressIndicator());
-            },
-          ),
+                  return Center(child: CircularProgressIndicator());
+                },
+              ),
+            ),
+          ],
         ),
       );
     }
@@ -390,12 +469,12 @@ class _travel_page extends State<travel_page> {
           ),
           actions: <Widget>[
             IconButton(
-              icon: Image.asset('assets/logo.png', scale: 15),
+              icon: Icon(
+                Icons.refresh,
+                color: ThemeBc.background,
+              ),
               tooltip: 'Show Snackbar',
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
-              },
+              onPressed: () {},
             ),
           ],
         ),

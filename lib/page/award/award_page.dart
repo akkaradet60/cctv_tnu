@@ -171,47 +171,83 @@ class _award_pageState extends State<award_page> {
                           ),
                           child: ListView(
                             children: [
-                              Stack(
-                                children: <Widget>[
-                                  Image.network(
-                                    snapshot.data!['data'][item]['award_images']
-                                                [0]['awardi_path_name'] !=
-                                            null
-                                        ? Global.domainImage +
-                                            snapshot.data!['data'][item]
-                                                    ['award_images'][0]
-                                                ['awardi_path_name']
-                                        : '${Global.networkImage}',
-                                    fit: BoxFit.cover,
-                                    width: double.infinity,
-                                  ),
-                                  Column(
-                                    children: [
-                                      SizedBox(height: 160),
-                                      Container(
-                                        color: ThemeBc.background,
-                                        width: 370,
-                                        height: 100,
-                                        child: ListView(
-                                          children: [
-                                            SizedBox(height: 10),
-                                            Text(
-                                              // '${titles[_currentIndex]}',
-                                              '  ${snapshot.data!['data'][item]['award_name']}',
-                                              style: GoogleFonts.sarabun(
-                                                textStyle: TextStyle(
-                                                  color: ThemeBc.textwhite,
-                                                  fontWeight: FontWeight.w400,
-                                                  fontSize: 18,
+                              Container(
+                                child: Stack(
+                                  children: <Widget>[
+                                    Container(
+                                      height: 250,
+                                      child: Image.network(
+                                        snapshot.data!['data'][item]
+                                                        ['award_images'][0]
+                                                    ['awardi_path_name'] !=
+                                                null
+                                            ? Global.domainImage +
+                                                snapshot.data!['data'][item]
+                                                        ['award_images'][0]
+                                                    ['awardi_path_name']
+                                            : '${Global.networkImage}',
+                                        fit: BoxFit.cover,
+                                        width: double.infinity,
+                                      ),
+                                    ),
+                                    Column(
+                                      children: [
+                                        SizedBox(height: 135),
+                                        Container(
+                                          color: ThemeBc.black54,
+                                          width: 370,
+                                          height: 100,
+                                          child: ListView(
+                                            children: [
+                                              SizedBox(height: 10),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 10, right: 10),
+                                                child: Text(
+                                                  // '${titles[_currentIndex]}',
+                                                  '  ${snapshot.data!['data'][item]['award_name']}',
+                                                  style: GoogleFonts.sarabun(
+                                                    textStyle: TextStyle(
+                                                      color: ThemeBc.textwhite,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontSize: 15,
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                        // Container(
+                                        //   color: ThemeBc.background,
+                                        //   width: 370,
+                                        //   height: 100,
+                                        //   child: ListView(
+                                        //     children: [
+                                        //       SizedBox(height: 2),
+                                        //       Padding(
+                                        //         padding: const EdgeInsets.only(
+                                        //             left: 10, right: 10),
+                                        //         child: Text(
+                                        //           // '${titles[_currentIndex]}',
+                                        //           '  ${snapshot.data!['data'][item]['award_name']}',
+                                        //           style: GoogleFonts.sarabun(
+                                        //             textStyle: TextStyle(
+                                        //               color: ThemeBc.textwhite,
+                                        //               fontWeight: FontWeight.w400,
+                                        //               fontSize: 15,
+                                        //             ),
+                                        //           ),
+                                        //         ),
+                                        //       ),
+                                        //     ],
+                                        //   ),
+                                        // ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
@@ -355,7 +391,7 @@ class _award_pageState extends State<award_page> {
                                                         const EdgeInsets.all(
                                                             8.0),
                                                     child: Text(
-                                                      '${snapshot.data!['data'][index]['award_detail']}',
+                                                      ' ${snapshot.data!['data'][index]['award_detail']}',
                                                       style:
                                                           GoogleFonts.sarabun(
                                                         textStyle: TextStyle(
@@ -458,12 +494,12 @@ class _award_pageState extends State<award_page> {
           ),
           actions: <Widget>[
             IconButton(
-              icon: Image.asset('assets/logo.png', scale: 15),
+              icon: Icon(
+                Icons.refresh,
+                color: ThemeBc.background,
+              ),
               tooltip: 'Show Snackbar',
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
-              },
+              onPressed: () {},
             ),
           ],
         ),

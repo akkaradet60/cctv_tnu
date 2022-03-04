@@ -254,7 +254,7 @@ class _LoginPageState extends State<login_page> {
           profile['data'][0]; // { id: 111, name: john ....}
       await prefs.setString('profile', jsonEncode(user));
       print('profile: $user');
-      print(user_id['access_id']);
+      print(user_id);
       var appUrl = Global.urlWeb +
           'api/app/application/restful/?app_id=${Global.app_id}';
       var responseApp = await http.get(Uri.parse(appUrl),
@@ -361,13 +361,19 @@ class _LoginPageState extends State<login_page> {
         backgroundColor: ThemeBc.white,
         body: Stack(
           children: [
-            Image.network(
-              Global.domainImage +
-                  '../../../uploads/emergency/05c5c5e7921159b59cdd588450be25511646028116_bc.jpg',
+            Image.asset(
+              'assets/bk02.jpg',
               width: double.infinity,
               height: MediaQuery.of(context).size.height,
               fit: BoxFit.cover,
             ),
+            // Image.network(
+            //   Global.domainImage +
+            //       '../../../uploads/emergency/05c5c5e7921159b59cdd588450be25511646028116_bc.jpg',
+            //   width: double.infinity,
+            //   height: MediaQuery.of(context).size.height,
+            //   fit: BoxFit.cover,
+            // ),
             Container(
               width: MediaQuery.of(context).size.width,
 
@@ -389,7 +395,7 @@ class _LoginPageState extends State<login_page> {
                           SizedBox(height: 50),
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: 140),
-                            child: Image.asset('assets/logo.png'),
+                            child: Image.asset('assets/logo02.png'),
                           ),
                           SizedBox(height: 20),
                           FormBuilder(
@@ -410,7 +416,7 @@ class _LoginPageState extends State<login_page> {
                                     child: FormBuilderTextField(
                                       name: "email",
                                       style: TextStyle(color: Colors.white),
-                                      initialValue: 'akkaradet.k6@snru.ac.th',
+                                      initialValue: 'demo@phalub.com',
                                       maxLines: 1,
                                       keyboardType: TextInputType.emailAddress,
                                       decoration: const InputDecoration(
@@ -453,7 +459,7 @@ class _LoginPageState extends State<login_page> {
                                       style: TextStyle(color: Colors.white),
                                       name: "password",
                                       maxLines: 1,
-                                      initialValue: '1234567',
+                                      initialValue: '12345678',
                                       keyboardType:
                                           TextInputType.visiblePassword,
                                       obscureText: true,

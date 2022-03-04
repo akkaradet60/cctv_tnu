@@ -57,24 +57,32 @@ TextStyle whiteTextStyle1 = GoogleFonts.poppins(color: backgroundColor1);
 
 //appBar
 class ThemeBc {
+  //ใช้ทุกแอป
   static const white = Colors.white;
-
   static const whiteBg = Color(0xFFFFF9EC);
-
+  static const black54e = Color.fromARGB(204, 42, 39, 39);
   static const black = Color(0xff1B2836);
-  static const green = Color(0xff02d667);
-  static const greens = Colors.green;
-  // static const background = Color.fromARGB(255, 27, 40, 54);
-  static const background = Color(0xffd76302);
-  static const textwhite = Colors.white;
   static const blue = Color(0xff4267B2);
+  static const textwhite = Colors.white;
   static const textblack = Color(0xff1B2836);
   static const grey = Color(0xffeeeeee);
   static const grey01 = Color(0xFF757575);
   static const black54 = Colors.black54;
+
+  //สีหลักแต่ละแอป
+  static const background = Color(0xff084B2C);
+
+//แอป 01
   static const orangeAccent = Colors.orangeAccent;
   static const pinkAccent = Colors.pinkAccent;
-  static const black54e = Color.fromARGB(204, 42, 39, 39);
+
+// แอป 02
+  static const textmenu = Colors.white;
+  static const green05 = Color(0xFF084B2C);
+  static const green01 = Color(0xFF7FE12B);
+  // static const green04 = Color(0xFF6D9A28);
+  // static const green02 = Color(0xFF5FB317);
+  // static const green03 = Color(0xFF84BE42);
 }
 
 TextStyle primaryTextStyle = GoogleFonts.poppins(

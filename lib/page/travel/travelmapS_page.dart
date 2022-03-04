@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_fonts/google_fonts.dart';
 // import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -114,7 +115,7 @@ class _travelmap_page extends State<travelmapS_page> {
                       spreadRadius: 1.0),
                 ]),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 IconButton(
                     icon: Icon(
@@ -137,30 +138,30 @@ class _travelmap_page extends State<travelmapS_page> {
                     Navigator.pushNamed(context, '/travelmapS_page');
                   },
                 ),
-                IconButton(
-                  icon: Icon(
-                    Icons.kitesurfing,
-                    size: 30,
-                    color: ThemeBc.white,
-                  ),
-                  tooltip: 'Show Snackbar',
-                  onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('กำลังพัฒนา')));
-                  },
-                ),
-                IconButton(
-                  icon: Icon(
-                    Icons.landscape,
-                    size: 30,
-                    color: ThemeBc.white,
-                  ),
-                  tooltip: 'Show Snackbar',
-                  onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('กำลังพัฒนา')));
-                  },
-                ),
+                // IconButton(
+                //   icon: Icon(
+                //     Icons.kitesurfing,
+                //     size: 30,
+                //     color: ThemeBc.white,
+                //   ),
+                //   tooltip: 'Show Snackbar',
+                //   onPressed: () {
+                //     ScaffoldMessenger.of(context).showSnackBar(
+                //         const SnackBar(content: Text('กำลังพัฒนา')));
+                //   },
+                // ),
+                // IconButton(
+                //   icon: Icon(
+                //     Icons.landscape,
+                //     size: 30,
+                //     color: ThemeBc.white,
+                //   ),
+                //   tooltip: 'Show Snackbar',
+                //   onPressed: () {
+                //     ScaffoldMessenger.of(context).showSnackBar(
+                //         const SnackBar(content: Text('กำลังพัฒนา')));
+                //   },
+                // ),
               ],
             ),
           ),
@@ -173,11 +174,23 @@ class _travelmap_page extends State<travelmapS_page> {
         foregroundColor: ThemeBc.white,
         backgroundColor: ThemeBc.background,
         title: Center(
-          child: Text('ที่ท้องเที่ยวในมหาสารคาม'),
+          child: Text(
+            'ที่ท่องเที่ยว',
+            style: GoogleFonts.sarabun(
+              textStyle: TextStyle(
+                color: ThemeBc.textwhite,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+          ),
         ),
         actions: <Widget>[
           IconButton(
-            icon: Image.asset('assets/logo.png', scale: 15),
+            icon: Icon(
+              Icons.refresh,
+              color: ThemeBc.background,
+            ),
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context)
@@ -190,7 +203,7 @@ class _travelmap_page extends State<travelmapS_page> {
       //   title: Center(child: Text('${travelmapname['travel_name']}')),
       //   actions: <Widget>[
       //     IconButton(
-      //       icon: Image.asset('assets/logo.png', scale: 15),
+      //       icon: Icon(Icons.refresh,color: ThemeBc.background,),
       //       tooltip: 'Show Snackbar',
       //       onPressed: () {
       //         ScaffoldMessenger.of(context)
@@ -239,7 +252,10 @@ class _travelmap_page extends State<travelmapS_page> {
                                     context: context,
                                     builder: (context) {
                                       return AlertDialog(
-                                        content: Text('มหาสารคาม'),
+                                        content: Container(
+                                            height: 50,
+                                            child:
+                                                Center(child: Text('เทศบาล'))),
                                       );
                                     },
                                   );

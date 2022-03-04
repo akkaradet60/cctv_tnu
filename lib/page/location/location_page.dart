@@ -20,7 +20,7 @@ class _location_page extends State<location_page> {
 
   Future<Map<String, dynamic>> getDataSlide() async {
     var url = (Global.urlWeb +
-        'api/app/travel/restful/?travel_app_id=1&travel_cat=2');
+        'api/app/travel/restful/?travel_app_id=2&travel_cat=2');
     var response = await http.get(Uri.parse(url), headers: {
       'Authorization':
           'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
@@ -115,7 +115,10 @@ class _location_page extends State<location_page> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: Image.asset('assets/logo.png', scale: 15),
+            icon: Icon(
+              Icons.refresh,
+              color: ThemeBc.background,
+            ),
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context)
@@ -152,11 +155,47 @@ class _location_page extends State<location_page> {
     return Container(
       margin: EdgeInsets.only(top: 5, bottom: 0),
       width: 1000,
-      height: 1000,
+      height: 700,
       child: FutureBuilder<Map<String, dynamic>>(
         future: getDataSlide(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
+            if (snapshot.data!['data'] == 'ไม่พบข้อมูล') {
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          color: ThemeBc.background,
+                          borderRadius: BorderRadius.circular(
+                            10,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black.withOpacity(0.1),
+                                offset: Offset(2, 4),
+                                blurRadius: 7.0,
+                                spreadRadius: 1.0),
+                          ]),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'ไม่พบข้อมูล',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.w300,
+                            // backgroundColor: Colors.black45,
+                            color: ThemeBc.textwhite,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            }
+
             return ListView.builder(
               itemCount: snapshot.data!['data'].length,
               itemBuilder: (context, index) {
@@ -296,21 +335,26 @@ class _location_page extends State<location_page> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(height: 10),
-                                    Text(
-                                      '${snapshot.data!['data'][index]['travel_name']}',
-                                      style: GoogleFonts.sarabun(
-                                        textStyle: TextStyle(
-                                          color: ThemeBc.textblack,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 17,
+                                Container(
+                                  height: 40,
+                                  width: 200,
+                                  child: ListView(
+                                    // scrollDirection: Axis.horizontal,
+                                    // crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(height: 10),
+                                      Text(
+                                        '${snapshot.data!['data'][index]['travel_name']}',
+                                        style: GoogleFonts.sarabun(
+                                          textStyle: TextStyle(
+                                            color: ThemeBc.textblack,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 17,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                                 Container(
                                   child: IconButton(

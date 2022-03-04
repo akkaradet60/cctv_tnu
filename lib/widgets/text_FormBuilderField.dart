@@ -25,25 +25,18 @@ class FormBuilderFieldText extends StatelessWidget {
         shape: NeumorphicShape.flat,
         color: ThemeBc.white,
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(0),
-        child: Column(
-          children: [
-            Container(
-              child: FormBuilderTextField(
-                name: name,
-                initialValue: initialValue,
-                maxLines: 1,
-                // keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  // labelText: 'Email',
-                  hintText: labelText,
-                  filled: true,
-                  fillColor: ThemeBc.white,
-                ),
-              ),
-            ),
-          ],
+      child: Container(
+        child: FormBuilderTextField(
+          name: name,
+          initialValue: initialValue,
+          maxLines: 1,
+          // keyboardType: TextInputType.emailAddress,
+          decoration: InputDecoration(
+            labelText: labelText,
+            hintText: labelText,
+            // filled: true,
+            fillColor: ThemeBc.white,
+          ),
         ),
       ),
     );

@@ -73,19 +73,19 @@ class _productshop_page extends State<productstorehome> {
           ),
           actions: <Widget>[
             IconButton(
-              icon: Image.asset('assets/logo.png', scale: 15),
+              icon: Icon(
+                Icons.refresh,
+                color: ThemeBc.background,
+              ),
               tooltip: 'Show Snackbar',
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
-              },
+              onPressed: () {},
             ),
           ],
         ),
         body: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
-                  colors: [ThemeBc.orangeAccent, ThemeBc.pinkAccent],
+                  colors: [ThemeBc.green05, ThemeBc.green01],
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft)),
           child: Padding(
@@ -452,7 +452,6 @@ class _productshop_page extends State<productstorehome> {
                                                           ),
                                                         ),
                                                         Container(
-                                                          height: 20,
                                                           child: Column(
                                                             children: [
                                                               Text(

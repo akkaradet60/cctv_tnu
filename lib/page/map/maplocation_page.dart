@@ -87,7 +87,10 @@ class _maplocation_page extends State<maplocation_page> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: Image.asset('assets/logo.png', scale: 15),
+            icon: Icon(
+              Icons.refresh,
+              color: ThemeBc.background,
+            ),
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
@@ -130,17 +133,7 @@ class _maplocation_page extends State<maplocation_page> {
                                         return Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Row(
-                                            children: [
-                                              Text(
-                                                "เทศบาลมหาสารคาม",
-                                                style: TextStyle(
-                                                  fontSize: 20.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  // backgroundColor: Colors.black45,
-                                                  color: ThemeBc.textblack,
-                                                ),
-                                              ),
-                                            ],
+                                            children: [],
                                           ),
                                         );
                                       },
@@ -150,7 +143,7 @@ class _maplocation_page extends State<maplocation_page> {
                                         point: LatLng(app_lat, app_lng),
                                         builder: (ctx) => const Icon(
                                           Icons.where_to_vote,
-                                          size: 15,
+                                          size: 30,
                                         ),
                                       )
                                     ]),
@@ -171,7 +164,7 @@ class _maplocation_page extends State<maplocation_page> {
                             children: [
                               SizedBox(height: 5),
                               Text(
-                                'ชื่อสถานที่ : ${hotlinee['travelName']}',
+                                ' ${hotlinee['travelName']}',
                                 style: GoogleFonts.sarabun(
                                   textStyle: TextStyle(
                                     color: ThemeBc.textblack,

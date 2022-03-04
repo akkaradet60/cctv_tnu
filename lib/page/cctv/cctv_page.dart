@@ -37,12 +37,12 @@ class _cctv_pageState extends State<cctv_page> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: Image.asset('assets/logo.png', scale: 15),
+            icon: Icon(
+              Icons.refresh,
+              color: ThemeBc.background,
+            ),
             tooltip: 'Show Snackbar',
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
-            },
+            onPressed: () {},
           ),
         ],
       ),
