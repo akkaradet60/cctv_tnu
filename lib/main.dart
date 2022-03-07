@@ -1,3 +1,4 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cctv_tun/generated/languageS.dart';
 import 'package:cctv_tun/page/Manual/Manual_page.dart';
@@ -33,6 +34,7 @@ import 'package:cctv_tun/page/otoproducts/productshop_page.dart';
 import 'package:cctv_tun/page/otoproducts/productsearch_page.dart';
 
 import 'package:cctv_tun/page/otoproducts/productstorehome.dart';
+// import 'package:cctv_tun/page/profile/app/app_reducer.dart';
 
 import 'package:cctv_tun/page/profile/app_reducer.dart';
 
@@ -58,6 +60,7 @@ import 'package:cctv_tun/widgets/verify_email_page.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -81,7 +84,7 @@ void main() async {
   ]);
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  // token = prefs.getString('token');
+  token = prefs.getString('token');
   runApp(
     MyApp(store: myStore),
   );
@@ -102,16 +105,121 @@ class MyApp extends StatelessWidget {
           localizationsDelegates: Locales.delegates,
           supportedLocales: Locales.supportedLocales,
           locale: locale,
-
-          // theme: ThemeData(
+          //  '/': (context) => AnimatedSplashScreen(
+          //             backgroundColor: ThemeBc.background,
+          //             splash: Center(
+          //               child: Container(
+          //                 child: Row(
+          //                   mainAxisAlignment: MainAxisAlignment.center,
+          //                   children: [
+          //                     Container(
+          //                         height: 100,
+          //                         width: 100,
+          //                         child: Image.asset('assets/logo02.png')),
+          //                     Text(
+          //                       'เทศบาลตำบลพระลับ',
+          //                       style: GoogleFonts.sarabun(
+          //                         textStyle: TextStyle(
+          //                           color: Colors.white,
+          //                           fontSize: 16,
+          //                           // decoration: TextDecoration.underline,
+          //                           shadows: <Shadow>[
+          //                             Shadow(
+          //                               offset: Offset(1.0, 1.0),
+          //                               blurRadius: 8.0,
+          //                               color: Color.fromARGB(255, 0, 0, 0),
+          //                             ),
+          //                           ],
+          //                         ),
+          //                       ),
+          //                     )
+          //                   ],
+          //                 ),
+          //               ),
+          //             ),
+          //             // backgroundColor: ThemeBc.background,
+          //             duration: 3000,
+          //             splashTransition: SplashTransition.scaleTransition,
+          //             nextScreen: login_page()),
+          //       // theme: ThemeData(
           //     primarySwatch: Colors.grey,
           //     canvasColor: Colors.white,
           //     scaffoldBackgroundColor: Colors.white),
           routes: {
             '/': (context) => token == null
-                ? login_page()
+                ? AnimatedSplashScreen(
+                    backgroundColor: ThemeBc.background,
+                    splash: Center(
+                      child: Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                                height: 100,
+                                width: 100,
+                                child: Image.asset('assets/logo02.png')),
+                            Text(
+                              'เทศบาลตำบลพระลับ',
+                              style: GoogleFonts.sarabun(
+                                textStyle: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  // decoration: TextDecoration.underline,
+                                  shadows: <Shadow>[
+                                    Shadow(
+                                      offset: Offset(1.0, 1.0),
+                                      blurRadius: 8.0,
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    // backgroundColor: ThemeBc.background,
+                    duration: 3000,
+                    splashTransition: SplashTransition.scaleTransition,
+                    nextScreen: login_page())
                 : Global.app_id == "2"
-                    ? home_page()
+                    ? AnimatedSplashScreen(
+                        backgroundColor: ThemeBc.background,
+                        splash: Center(
+                          child: Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                    height: 100,
+                                    width: 100,
+                                    child: Image.asset('assets/logo02.png')),
+                                Text(
+                                  'เทศบาลตำบลพระลับ',
+                                  style: GoogleFonts.sarabun(
+                                    textStyle: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      // decoration: TextDecoration.underline,
+                                      shadows: <Shadow>[
+                                        Shadow(
+                                          offset: Offset(1.0, 1.0),
+                                          blurRadius: 8.0,
+                                          color: Color.fromARGB(255, 0, 0, 0),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        // backgroundColor: ThemeBc.background,
+                        duration: 3000,
+                        splashTransition: SplashTransition.scaleTransition,
+                        nextScreen: home_page())
                     : Verify(),
             '/appppp': (context) => appp(),
             // '/': (context) => token == null ? login_page() : home_page(),

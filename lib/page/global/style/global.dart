@@ -68,6 +68,8 @@ class ThemeBc {
   static const grey = Color(0xffeeeeee);
   static const grey01 = Color(0xFF757575);
   static const black54 = Colors.black54;
+  static const red = Color.fromARGB(255, 152, 12, 2);
+  static const yellow = Colors.yellow;
 
   //สีหลักแต่ละแอป
   static const background = Color(0xff084B2C);

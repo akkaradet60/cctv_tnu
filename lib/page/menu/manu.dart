@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
+// import 'package:cctv_tun/page/profile/app/app_reducer.dart';
 import 'package:cctv_tun/page/profile/app_reducer.dart';
 import 'package:cctv_tun/page/profile/profile_action.dart';
 import 'package:flutter/material.dart';
@@ -104,6 +105,42 @@ class _menu_pangState extends State<menu_pang> {
                     builder: (context, snapshot) {
                       if (Global.user_id == '111') {
                         if (snapshot.hasData) {
+                          if (snapshot.data!['data'] == 'ไม่พบข้อมูล') {
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color: ThemeBc.background,
+                                        borderRadius: BorderRadius.circular(
+                                          10,
+                                        ),
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color:
+                                                  Colors.black.withOpacity(0.1),
+                                              offset: Offset(2, 4),
+                                              blurRadius: 7.0,
+                                              spreadRadius: 1.0),
+                                        ]),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        'ไม่พบข้อมูล',
+                                        style: TextStyle(
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.w300,
+                                          // backgroundColor: Colors.black45,
+                                          color: ThemeBc.textwhite,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
                           return ListView.builder(
                             itemCount: snapshot.data!['data'].length,
                             itemBuilder: (context, index) {
@@ -486,6 +523,45 @@ class _menu_pangState extends State<menu_pang> {
                                 child: ListView.builder(
                                   itemCount: snapshot.data!['data'].length,
                                   itemBuilder: (context, index) {
+                                    if (snapshot.data!['data'] ==
+                                        'ไม่พบข้อมูล') {
+                                      return Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                  color: ThemeBc.background,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                    10,
+                                                  ),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                        color: Colors.black
+                                                            .withOpacity(0.1),
+                                                        offset: Offset(2, 4),
+                                                        blurRadius: 7.0,
+                                                        spreadRadius: 1.0),
+                                                  ]),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  'ไม่พบข้อมูล',
+                                                  style: TextStyle(
+                                                    fontSize: 20.0,
+                                                    fontWeight: FontWeight.w300,
+                                                    // backgroundColor: Colors.black45,
+                                                    color: ThemeBc.textwhite,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }
                                     var imageData = Global.networkImage;
 
                                     if (snapshot.data!['data'][index]

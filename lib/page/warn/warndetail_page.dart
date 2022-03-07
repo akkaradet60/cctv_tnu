@@ -41,6 +41,18 @@ class _composedetail_page extends State<warndetail_page> {
   @override
   Widget build(BuildContext context) {
     datail_blogpose = ModalRoute.of(context)!.settings.arguments;
+
+    var status_name = 'ตรวจสอบแล้ว';
+    var status_color = Color.fromARGB(255, 9, 172, 28);
+    if (datail_blogpose['em_status'] == '1') {
+      status_name = 'รอรับเรื่อง';
+      status_color = ThemeBc.red;
+    }
+    if (datail_blogpose['em_status'] == '2') {
+      status_name = 'รับเรื่องแล้ว';
+      status_color = ThemeBc.yellow;
+    }
+
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
@@ -285,6 +297,30 @@ class _composedetail_page extends State<warndetail_page> {
                                                 style: GoogleFonts.sarabun(
                                                   textStyle: TextStyle(
                                                     color: ThemeBc.textblack,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 17,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Text(
+                                                'สถานะ : ',
+                                                style: GoogleFonts.sarabun(
+                                                  textStyle: TextStyle(
+                                                    color: ThemeBc.black,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 17,
+                                                  ),
+                                                ),
+                                              ),
+                                              Text(
+                                                '$status_name',
+                                                style: GoogleFonts.sarabun(
+                                                  textStyle: TextStyle(
+                                                    color: status_color,
                                                     fontWeight: FontWeight.w400,
                                                     fontSize: 17,
                                                   ),

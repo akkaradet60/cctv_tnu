@@ -1,5 +1,6 @@
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
+// import 'package:cctv_tun/page/profile/app/app_reducer.dart';
 import 'package:cctv_tun/page/profile/app_reducer.dart';
 import 'package:cctv_tun/widgets/custom_buttonn.dart';
 import 'package:cctv_tun/widgets/text_FormBuilderField.dart';
@@ -844,6 +845,7 @@ class _warn_page extends State<compose_page>
                     itemCount: snapshot.data!['data'].length,
                     itemBuilder: (context, index) {
                       var datanill = snapshot.data!['data'];
+                      var status = snapshot.data!['data'][index]['em_status'];
                       print(snapshot.data!['data'].length);
                       var em_detaail;
                       if (datanill == 'ไม่พบข้อมูล') {
@@ -862,6 +864,10 @@ class _warn_page extends State<compose_page>
                                 onPressed: () => Navigator.pushNamed(
                                     context, '/composedetail_page',
                                     arguments: {
+                                      'em_status': snapshot.data!['data'][index]
+                                          ['em_status'],
+                                      // 'em_status': snapshot.data!['data'][index]
+                                      //     ['em_status'],
                                       'em_owner': snapshot.data!['data'][index]
                                           ['em_owner'],
                                       'em_detail': snapshot.data!['data'][index]

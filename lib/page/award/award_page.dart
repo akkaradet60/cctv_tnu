@@ -77,24 +77,37 @@ class _award_pageState extends State<award_page> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 if (snapshot.data!['data'] == 'ไม่พบข้อมูล') {
-                  return Center(
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: ThemeBc.textblack,
-                          borderRadius: BorderRadius.circular(
-                            20,
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              color: ThemeBc.background,
+                              borderRadius: BorderRadius.circular(
+                                10,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.black.withOpacity(0.1),
+                                    offset: Offset(2, 4),
+                                    blurRadius: 7.0,
+                                    spreadRadius: 1.0),
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'ไม่พบข้อมูล',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w300,
+                                // backgroundColor: Colors.black45,
+                                color: ThemeBc.textwhite,
+                              ),
+                            ),
                           ),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.black.withOpacity(0.5),
-                                offset: Offset(2, 4),
-                                blurRadius: 7.0,
-                                spreadRadius: 1.0),
-                          ]),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text('ไม่พบข้อมูล'),
-                      ),
+                        ),
+                      ],
                     ),
                   );
                 } else {
@@ -277,6 +290,41 @@ class _award_pageState extends State<award_page> {
           future: getDataSlide(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
+              if (snapshot.data!['data'] == 'ไม่พบข้อมูล') {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                            color: ThemeBc.background,
+                            borderRadius: BorderRadius.circular(
+                              10,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.black.withOpacity(0.1),
+                                  offset: Offset(2, 4),
+                                  blurRadius: 7.0,
+                                  spreadRadius: 1.0),
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            'ไม่พบข้อมูล',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w300,
+                              // backgroundColor: Colors.black45,
+                              color: ThemeBc.textwhite,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }
               return ListView.builder(
                 itemCount: snapshot.data!['data'].length,
                 itemBuilder: (context, index) {

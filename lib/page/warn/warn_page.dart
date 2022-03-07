@@ -1,5 +1,6 @@
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
+// import 'package:cctv_tun/page/profile/app/app_reducer.dart';
 import 'package:cctv_tun/page/profile/app_reducer.dart';
 import 'package:cctv_tun/widgets/custom_buttonn.dart';
 import 'package:cctv_tun/widgets/text_FormBuilderField.dart';
@@ -88,7 +89,7 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
   //       // })
   //     );
 
-  //     // if (err['error']) {
+  //     // if (err['error']) {em_status
 
   //   } catch (e) {
   //     return showDialog(
@@ -852,6 +853,16 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                     itemCount: snapshot.data!['data'].length,
                     itemBuilder: (context, index) {
                       var datanill = snapshot.data!['data'];
+                      var status = snapshot.data!['data'][index]['em_status'];
+                      // if (status == '1') {
+                      //   status = "รอรับเรื่อง";
+                      // }
+                      // if (status == '2') {
+                      //   status = "รับเรื่องแล้ว";
+                      // }
+                      // if (status == '3') {
+                      //   status = "ตรวจสอบแล้ว";
+                      // }
                       print(snapshot.data!['data'].length);
                       var em_detaail;
                       if (datanill == 'ไม่พบข้อมูล') {
@@ -872,6 +883,7 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                                 onPressed: () => Navigator.pushNamed(
                                     context, '/warndetail_page',
                                     arguments: {
+                                      'em_status': status,
                                       'em_owner': snapshot.data!['data'][index]
                                           ['em_owner'],
                                       'em_detail': snapshot.data!['data'][index]

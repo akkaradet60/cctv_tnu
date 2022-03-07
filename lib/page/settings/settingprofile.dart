@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
+// import 'package:cctv_tun/page/profile/app/app_reducer.dart';
 import 'package:cctv_tun/page/profile/app_reducer.dart';
 import 'package:cctv_tun/page/profile/profile_action.dart';
 import 'package:cctv_tun/widgets/text_FormBuilderField.dart';
@@ -499,6 +500,7 @@ class _settingprofile extends State<settingprofile>
   var _fir;
   var _email;
   var _phone;
+  // var _level;
   Future<void> updataUser(Map formValues) async {
     try {
 //=======  check data ==========
@@ -513,6 +515,7 @@ class _settingprofile extends State<settingprofile>
       var firData = formValues['user_firstname'] ?? _fir;
       var emailData = formValues['user_email'] ?? _email;
       var phoneData = formValues['user_phone'] ?? _phone;
+      // var user_level = formValues['user_level'] ?? _level;
 
       var url = Uri.parse(Global.urlWeb +
           'api/profile/restful/?user_id=${Global.user_id}&user_app_id=${Global.app_id}');
@@ -528,6 +531,7 @@ class _settingprofile extends State<settingprofile>
         ..fields['user_firstname'] = firData
         ..fields['user_status'] = '1'
         ..fields['user_phone'] = phoneData
+        ..fields['user_level'] = '4'
         ..fields['user_email'] = emailData;
 
       Map<String, String> headers = {

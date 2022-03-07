@@ -40,12 +40,12 @@ android {
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
-
+// Phalub_NT
     defaultConfig {
         // implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         // implementation 'com.facebook.android:facebook-android-sdk:[8,9)'  
-        applicationId "com.example.cctv_tun"
+        applicationId "com.example.Phalub_NT"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()

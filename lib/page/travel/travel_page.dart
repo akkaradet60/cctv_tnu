@@ -72,7 +72,7 @@ class _travel_page extends State<travel_page> {
               //     40,
               //   ),
               // ),
-              height: 600,
+              height: 1000,
               width: 500,
 
               child: FutureBuilder<Map<String, dynamic>>(
@@ -82,50 +82,35 @@ class _travel_page extends State<travel_page> {
                     if (snapshot.data!['data'] == 'ไม่พบข้อมูล') {
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: secondaryTextColor,
-                              borderRadius: BorderRadius.circular(
-                                10,
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.black.withOpacity(0.1),
-                                    offset: Offset(2, 4),
-                                    blurRadius: 7.0,
-                                    spreadRadius: 1.0),
-                              ]),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Center(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    color: ThemeBc.background,
-                                    borderRadius: BorderRadius.circular(
-                                      10,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(0.1),
-                                          offset: Offset(2, 4),
-                                          blurRadius: 7.0,
-                                          spreadRadius: 1.0),
-                                    ]),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    'ไม่พบข้อมูล',
-                                    style: TextStyle(
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.w300,
-                                      // backgroundColor: Colors.black45,
-                                      color: ThemeBc.textwhite,
-                                    ),
+                        child: Column(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: ThemeBc.background,
+                                  borderRadius: BorderRadius.circular(
+                                    10,
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.black.withOpacity(0.1),
+                                        offset: Offset(2, 4),
+                                        blurRadius: 7.0,
+                                        spreadRadius: 1.0),
+                                  ]),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'ไม่พบข้อมูล',
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w300,
+                                    // backgroundColor: Colors.black45,
+                                    color: ThemeBc.textwhite,
                                   ),
                                 ),
                               ),
                             ),
-                          ),
+                          ],
                         ),
                       );
                     }

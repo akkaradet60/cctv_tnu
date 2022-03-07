@@ -343,7 +343,7 @@ class _RegisterPageState extends State<register_page> {
                                   validator: MultiValidator([
                                     RequiredValidator(
                                         errorText: "ป้อนเลขบัตรประชาชนด้วย"),
-                                    MinLengthValidator(14,
+                                    MinLengthValidator(13,
                                         errorText:
                                             "เลขบัตรประชาชนต้อง 14 ตัวอักษรขึ้นไป"),
                                   ]),

@@ -96,7 +96,8 @@ class W_C_Detali extends StatelessWidget {
     );
   }
 }
-
+//  'em_status': snapshot.data!['data'][index]
+//                                           ['em_status'],
   
   
   // Container(

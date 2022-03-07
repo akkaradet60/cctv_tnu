@@ -166,122 +166,134 @@ class _productshome_page extends State<travelhome_page> {
   }
 
   Widget ss1(BuildContext context) {
-    return Container(
-      color: ThemeBc.white,
-      margin: EdgeInsets.only(top: 10, bottom: 0),
-      width: 500,
-      height: 500,
-      child: FutureBuilder<Map<String, dynamic>>(
-        future: getDataSlide(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return ListView.builder(
-              itemCount: snapshot.data!['data'].length,
-              itemBuilder: (context, int index) {
-                return Column(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, '/travel_page',
-                            arguments: {
-                              'type_app_id': snapshot.data!['data'][index]
-                                  ['type_app_id'],
-                              'type_name': snapshot.data!['data'][index]
-                                  ['type_name'],
-                            });
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          child: Column(
-                            children: [
-                              Stack(
-                                children: <Widget>[
-                                  Container(
-                                    height: 300,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(10.0),
-                                      ),
-                                      child: Image.network(
-                                        snapshot.data!['data'][index]
-                                                    ['type_image'] !=
-                                                null
-                                            ? Global.domainImagenew +
-                                                snapshot.data!['data'][index]
-                                                    ['type_image']
-                                            : '${Global.networkImage}',
-                                        fit: BoxFit.cover,
-                                        width: double.infinity,
-                                      ),
-                                    ),
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(height: 60),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                            color: ThemeBc.background,
-                                            borderRadius: BorderRadius.circular(
-                                              5,
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(0),
+          child: Container(
+            color: ThemeBc.white,
+            margin: EdgeInsets.only(top: 10, bottom: 0),
+            width: 500,
+            height: 700,
+            child: FutureBuilder<Map<String, dynamic>>(
+              future: getDataSlide(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                    itemCount: snapshot.data!['data'].length,
+                    itemBuilder: (context, int index) {
+                      return Column(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(context, '/travel_page',
+                                  arguments: {
+                                    'type_app_id': snapshot.data!['data'][index]
+                                        ['type_app_id'],
+                                    'type_name': snapshot.data!['data'][index]
+                                        ['type_name'],
+                                  });
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                child: Column(
+                                  children: [
+                                    Stack(
+                                      children: <Widget>[
+                                        Container(
+                                          height: 300,
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(10.0),
                                             ),
-                                            boxShadow: []),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            // '${titles[_currentIndex]}',
-                                            '${snapshot.data!['data'][index]['type_name']}',
-                                            style: GoogleFonts.sarabun(
-                                              textStyle: TextStyle(
-                                                color: ThemeBc.textwhite,
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 20,
-                                              ),
+                                            child: Image.network(
+                                              snapshot.data!['data'][index]
+                                                          ['type_image'] !=
+                                                      null
+                                                  ? Global.domainImagenew +
+                                                      snapshot.data!['data']
+                                                          [index]['type_image']
+                                                  : '${Global.networkImage}',
+                                              fit: BoxFit.cover,
+                                              width: double.infinity,
                                             ),
                                           ),
                                         ),
-                                      ),
-                                      SizedBox(height: 40),
-                                      Container(
-                                        height: 140,
-                                        color: Colors.black54,
-                                        child: ListView(
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Text_pane(
-                                                  text:
-                                                      '  ${snapshot.data!['data'][index]['type_detail']}',
-                                                  color: ThemeBc.white,
-                                                  fontSize: 15),
-                                            )
+                                            SizedBox(height: 60),
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                  color: ThemeBc.background,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                    5,
+                                                  ),
+                                                  boxShadow: []),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  // '${titles[_currentIndex]}',
+                                                  '${snapshot.data!['data'][index]['type_name']}',
+                                                  style: GoogleFonts.sarabun(
+                                                    textStyle: TextStyle(
+                                                      color: ThemeBc.textwhite,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontSize: 20,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(height: 40),
+                                            Container(
+                                              height: 140,
+                                              color: Colors.black54,
+                                              child: ListView(
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Text_pane(
+                                                        text:
+                                                            '  ${snapshot.data!['data'][index]['type_detail']}',
+                                                        color: ThemeBc.white,
+                                                        fontSize: 15),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
                                           ],
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ],
+                            ),
                           ),
-                        ),
-                      ),
-                    ),
-                  ],
-                );
-              },
-            );
-          } else if (snapshot.hasError) {
-            return Center(
-                child: Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
-          }
+                        ],
+                      );
+                    },
+                  );
+                } else if (snapshot.hasError) {
+                  return Center(
+                      child:
+                          Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
+                }
 
-          return Center(child: CircularProgressIndicator());
-        },
-      ),
+                return Center(child: CircularProgressIndicator());
+              },
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
