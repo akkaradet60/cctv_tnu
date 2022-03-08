@@ -4,6 +4,7 @@ import 'package:cctv_tun/page/global/style/global.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:latlong2/latlong.dart';
@@ -219,14 +220,9 @@ class _maplocation_page extends State<maplocation_page> {
               );
             } else {
               return Center(
-                child: Column(
-
-                    // mainAxisAlignment: MainAxisAlignment.center,
-                    //   children: <Widget>[
-                    //     CircularProgressIndicator(),
-                    //    ],
-                    ),
-              );
+                  child: SpinKitCubeGrid(
+                color: ThemeBc.green05,
+              ));
             }
           },
         ),

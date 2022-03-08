@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
-
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -235,7 +235,10 @@ class _awarddetail_page extends State<awarddetail_page> {
                                   'เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
                         }
 
-                        return Center(child: CircularProgressIndicator());
+                        return Center(
+                            child: SpinKitCubeGrid(
+                          color: ThemeBc.green05,
+                        ));
                       },
                     ),
                   ),

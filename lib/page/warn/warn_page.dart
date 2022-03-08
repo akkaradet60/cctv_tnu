@@ -14,6 +14,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 // import 'package:flutter_point_tab_bar/pointTabIndicator.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 // import 'package:form_builder_image_picker/form_builder_image_picker.dart';
@@ -790,12 +791,9 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                                   // Text('${userLocation.latitude} ${userLocation.longitude}');
                                 } else {
                                   return Center(
-                                    child: Column(
-                                      children: <Widget>[
-                                        CircularProgressIndicator(),
-                                      ],
-                                    ),
-                                  );
+                                      child: SpinKitCubeGrid(
+                                    color: ThemeBc.green05,
+                                  ));
                                 }
                                 return Container();
                               }),
@@ -957,7 +955,10 @@ class _warn_page extends State<warn_page> with SingleTickerProviderStateMixin {
                     child: Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
               }
 
-              return Center(child: CircularProgressIndicator());
+              return Center(
+                  child: SpinKitCubeGrid(
+                color: ThemeBc.green05,
+              ));
             },
           ),
         ),

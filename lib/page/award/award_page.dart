@@ -4,7 +4,7 @@ import 'package:cctv_tun/models/blogs/blogs.dart';
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:flutter_locales/flutter_locales.dart';
-
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -274,7 +274,10 @@ class _award_pageState extends State<award_page> {
                     child: Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
               }
 
-              return Center(child: CircularProgressIndicator());
+              return Center(
+                  child: SpinKitCubeGrid(
+                color: ThemeBc.green05,
+              ));
             },
           ),
         ),
@@ -475,7 +478,10 @@ class _award_pageState extends State<award_page> {
                   child: Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
             }
 
-            return Center(child: CircularProgressIndicator());
+            return Center(
+                child: SpinKitCubeGrid(
+              color: ThemeBc.green05,
+            ));
           },
         ),
       );

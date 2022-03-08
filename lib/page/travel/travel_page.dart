@@ -5,6 +5,7 @@ import 'package:cctv_tun/widgets/Text_pane.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:http/http.dart' as http;
@@ -451,7 +452,10 @@ class _travel_page extends State<travel_page> {
                             Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
                   }
 
-                  return Center(child: CircularProgressIndicator());
+                  return Center(
+                      child: SpinKitCubeGrid(
+                    color: ThemeBc.green05,
+                  ));
                 },
               ),
             ),

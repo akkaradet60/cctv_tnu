@@ -1,5 +1,6 @@
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 // import 'package:cctv_tun/page/profile/app/app_reducer.dart';
 import 'package:cctv_tun/page/profile/app_reducer.dart';
 import 'package:cctv_tun/widgets/custom_buttonn.dart';
@@ -781,13 +782,10 @@ class _warn_page extends State<compose_page>
                                   );
                                   // Text('${userLocation.latitude} ${userLocation.longitude}');
                                 } else {
-                                  return Center(
-                                    child: Column(
-                                      children: <Widget>[
-                                        CircularProgressIndicator(),
-                                      ],
-                                    ),
-                                  );
+                                  Center(
+                                      child: SpinKitCubeGrid(
+                                    color: ThemeBc.green05,
+                                  ));
                                 }
                                 return Container();
                               }),
@@ -941,7 +939,10 @@ class _warn_page extends State<compose_page>
                     child: Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
               }
 
-              return Center(child: CircularProgressIndicator());
+              return Center(
+                  child: SpinKitCubeGrid(
+                color: ThemeBc.green05,
+              ));
             },
           ),
         ),

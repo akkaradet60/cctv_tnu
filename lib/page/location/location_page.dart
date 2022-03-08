@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class location_page extends StatefulWidget {
   location_page({Key? key}) : super(key: key);
@@ -394,7 +395,10 @@ class _location_page extends State<location_page> {
                 child: Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
           }
 
-          return Center(child: CircularProgressIndicator());
+          return Center(
+              child: SpinKitCubeGrid(
+            color: ThemeBc.green05,
+          ));
         },
       ),
     );

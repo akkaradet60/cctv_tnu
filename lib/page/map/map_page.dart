@@ -5,6 +5,7 @@ import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:latlong2/latlong.dart';
@@ -192,14 +193,14 @@ class _map_prod extends State<map_page> {
               // Text('${userLocation.latitude} ${userLocation.longitude}');
             } else {
               return Center(
-                child: Column(
-                  children: <Widget>[
-                    CircularProgressIndicator(),
-                  ],
-                ),
-              );
+                  child: SpinKitCubeGrid(
+                color: ThemeBc.green05,
+              ));
             }
-            return Container();
+            return Center(
+                child: SpinKitCubeGrid(
+              color: ThemeBc.green05,
+            ));
           }),
       //   height: 1000,
       //   child: FutureBuilder(

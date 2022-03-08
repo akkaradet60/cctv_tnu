@@ -563,7 +563,10 @@ class _composedetail_page extends State<composedetail_page> {
 //                                       'เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
 //                             }
 
-//                             return Center(child: CircularProgressIndicator());
+//                             return Center(
+          //     child: SpinKitCubeGrid(
+          //   color: ThemeBc.green05,
+          // ));
 //                           },
 //                         ),
 //                       ),

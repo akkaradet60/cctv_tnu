@@ -9,6 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart' as http;
 
 class appp extends StatefulWidget {
@@ -235,7 +236,10 @@ class _apppState extends State<appp> {
                             Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
                   }
 
-                  return Center(child: CircularProgressIndicator());
+                  return Center(
+                      child: SpinKitCubeGrid(
+                    color: ThemeBc.green05,
+                  ));
                 },
               ),
             ),

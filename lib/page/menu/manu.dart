@@ -8,6 +8,7 @@ import 'package:cctv_tun/page/profile/profile_action.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -508,10 +509,11 @@ class _menu_pangState extends State<menu_pang> {
                               );
                             },
                           );
-                        } else if (snapshot.hasError) {
+                        } else {
                           return Center(
-                              child: Text(
-                                  'เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
+                              child: SpinKitCubeGrid(
+                            color: ThemeBc.green05,
+                          ));
                         }
                       } else {
                         if (snapshot.hasData) {
@@ -1013,7 +1015,10 @@ class _menu_pangState extends State<menu_pang> {
                         }
                       }
 
-                      return Center(child: CircularProgressIndicator());
+                      return Center(
+                          child: SpinKitCubeGrid(
+                        color: ThemeBc.green05,
+                      ));
                     },
                   ),
                 ),

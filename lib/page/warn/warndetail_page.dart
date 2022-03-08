@@ -14,7 +14,8 @@ class warndetail_page extends StatefulWidget {
   State<warndetail_page> createState() => _composedetail_page();
 }
 
-class _composedetail_page extends State<warndetail_page> {
+class _composedetail_page extends State<warndetail_page>
+    with TickerProviderStateMixin {
   var datail_blogpose;
   bool isLoading = true;
   late Map<String, dynamic> imgSlide;
@@ -214,7 +215,10 @@ class _composedetail_page extends State<warndetail_page> {
                                 }
 
                                 return Center(
-                                    child: CircularProgressIndicator());
+                                  child: CircularProgressIndicator(
+                                    semanticsLabel: 'รอสักหน่อยนะครับ',
+                                  ),
+                                );
                               },
                             ),
                           ),

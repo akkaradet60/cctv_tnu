@@ -5,6 +5,7 @@ import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -226,7 +227,10 @@ class _messagemdetail_page extends State<messagemdetail_page> {
                                   'เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
                         }
 
-                        return Center(child: CircularProgressIndicator());
+                        return Center(
+                            child: SpinKitCubeGrid(
+                          color: ThemeBc.green05,
+                        ));
                       },
                     ),
                   ),

@@ -10,6 +10,7 @@ import 'package:cctv_tun/widgets/warn_api.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
@@ -397,7 +398,10 @@ class _home_pageState extends State<home_page> {
                   child: Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
             }
 
-            return Center(child: CircularProgressIndicator());
+            return Center(
+                child: SpinKitCubeGrid(
+              color: ThemeBc.green05,
+            ));
           },
         ),
       );

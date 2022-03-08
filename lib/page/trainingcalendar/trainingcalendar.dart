@@ -1,7 +1,7 @@
 import 'package:cctv_tun/page/global/global.dart';
 import 'package:cctv_tun/page/global/style/global.dart';
 import 'package:flutter/gestures.dart';
-
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -374,6 +374,7 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
                               ),
                             ),
                           ),
+                          // ThemeBc.green05
                         ],
                       ),
                     ),
@@ -385,7 +386,10 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
                   child: Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
             }
 
-            return Center(child: CircularProgressIndicator());
+            return Center(
+                child: SpinKitCubeGrid(
+              color: ThemeBc.green05,
+            ));
           },
         ),
       ),

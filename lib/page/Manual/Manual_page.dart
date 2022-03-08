@@ -5,6 +5,7 @@ import 'package:cctv_tun/page/global/global.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
@@ -183,7 +184,10 @@ class _manual_pageState extends State<manual_page> {
                     child: Text('เกิดข้อผิดพลาดจาก Server ${snapshot.error}'));
               }
 
-              return Center(child: CircularProgressIndicator());
+              return Center(
+                  child: SpinKitCubeGrid(
+                color: ThemeBc.green05,
+              ));
             },
           ),
         ),
