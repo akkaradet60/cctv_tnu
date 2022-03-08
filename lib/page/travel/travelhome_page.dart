@@ -20,7 +20,7 @@ class _productshome_page extends State<travelhome_page> {
   late Map<String, dynamic> imgSlide;
   Future<Map<String, dynamic>> getDataSlide() async {
     var url =
-        ('https://www.bc-official.com/api/app_nt/api/app/travel/type/restful/?type_app_id=0');
+        ('http://113.53.239.193/tedsaban/api/app/travel/type/restful/?type_app_id=${Global.app_id}');
     var response = await http.get(Uri.parse(url), headers: {
       'Authorization':
           'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
@@ -46,7 +46,7 @@ class _productshome_page extends State<travelhome_page> {
             color: ThemeBc.white,
             child: Container(
               decoration: BoxDecoration(
-                  color: ThemeBc.background,
+                  color: ThemeBc.green05,
                   borderRadius: BorderRadius.circular(
                     10,
                   ),
@@ -115,7 +115,7 @@ class _productshome_page extends State<travelhome_page> {
             color: ThemeBc.white, //change your color here
           ),
           foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.background,
+          backgroundColor: ThemeBc.green05,
           title: Column(
             children: [
               Center(
@@ -135,7 +135,7 @@ class _productshome_page extends State<travelhome_page> {
             IconButton(
               icon: Icon(
                 Icons.refresh,
-                color: ThemeBc.background,
+                color: ThemeBc.green05,
               ),
               tooltip: 'Show Snackbar',
               onPressed: () {},
@@ -179,6 +179,41 @@ class _productshome_page extends State<travelhome_page> {
               future: getDataSlide(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
+                  if (snapshot.data!['data'] == 'ไม่พบข้อมูล') {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                color: ThemeBc.green05,
+                                borderRadius: BorderRadius.circular(
+                                  10,
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.black.withOpacity(0.1),
+                                      offset: Offset(2, 4),
+                                      blurRadius: 7.0,
+                                      spreadRadius: 1.0),
+                                ]),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                'ไม่พบข้อมูล',
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.w300,
+                                  // backgroundColor: Colors.black45,
+                                  color: ThemeBc.textwhite,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
                   return ListView.builder(
                     itemCount: snapshot.data!['data'].length,
                     itemBuilder: (context, int index) {
@@ -190,9 +225,11 @@ class _productshome_page extends State<travelhome_page> {
                                   arguments: {
                                     'type_app_id': snapshot.data!['data'][index]
                                         ['type_app_id'],
+                                    'type_id': snapshot.data!['data'][index]
+                                        ['type_id'],
                                     'type_name': snapshot.data!['data'][index]
                                         ['type_name'],
-                                  });
+                                  }); //type_id
                             },
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -227,7 +264,7 @@ class _productshome_page extends State<travelhome_page> {
                                             SizedBox(height: 60),
                                             Container(
                                               decoration: BoxDecoration(
-                                                  color: ThemeBc.background,
+                                                  color: ThemeBc.green05,
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                     5,

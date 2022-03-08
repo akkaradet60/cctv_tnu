@@ -88,7 +88,7 @@ class ThemeBc {
 }
 
 TextStyle primaryTextStyle = GoogleFonts.poppins(
-  color: ThemeBc.background,
+  color: ThemeBc.green05,
 );
 //bg
 // const whiteBg = Color(0xFFFFF9EC);

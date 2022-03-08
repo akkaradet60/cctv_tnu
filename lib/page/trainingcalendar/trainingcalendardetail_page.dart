@@ -104,7 +104,7 @@ class _trainingcalendardetail_page extends State<trainingcalendardetail_page> {
           color: ThemeBc.white, //change your color here
         ),
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.background,
+        backgroundColor: ThemeBc.green05,
         title: Center(
             child: Text(
           'การฝึกอบรม ${trainingcalendardetail['trainName']}',
@@ -120,12 +120,12 @@ class _trainingcalendardetail_page extends State<trainingcalendardetail_page> {
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.background,
+              color: ThemeBc.green05,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context)
-                  .showSnackBar(SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
+                  .showSnackBar(SnackBar(content: Text('เราเทศบาลพระลับ')));
             },
           ),
         ],
@@ -177,7 +177,7 @@ class _trainingcalendardetail_page extends State<trainingcalendardetail_page> {
                                   children: [
                                     Container(
                                       decoration: BoxDecoration(
-                                          color: ThemeBc.background,
+                                          color: ThemeBc.green05,
                                           borderRadius: BorderRadius.circular(
                                             10,
                                           ),

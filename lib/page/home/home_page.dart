@@ -220,7 +220,7 @@ class _home_pageState extends State<home_page> {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                            color: ThemeBc.background,
+                            color: ThemeBc.green05,
                             borderRadius: BorderRadius.circular(
                               10,
                             ),
@@ -650,7 +650,7 @@ class _home_pageState extends State<home_page> {
                   ),
                   // SizedBox(width: 48),
                   MenusCustom(
-                    iconMenus: 'assets/homepage/icon_12.png',
+                    iconMenus: 'assets/homepage/icon_13.png',
                     titleMenus: 'สถานที่ราชการ',
                     pathName: () {
                       Navigator.pushNamed(context, '/location_page');
@@ -674,12 +674,12 @@ class _home_pageState extends State<home_page> {
           color: ThemeBc.white, //change your color here
         ),
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.background,
+        backgroundColor: ThemeBc.green05,
         title: Column(
           children: [
             Center(
               child: LocaleText(
-                'เทศบาลตำบลพระลับ',
+                'เทศบาลพระลับ',
                 style: GoogleFonts.sarabun(
                   textStyle: TextStyle(
                     color: ThemeBc.textwhite,
@@ -691,6 +691,7 @@ class _home_pageState extends State<home_page> {
             ),
           ],
         ),
+        //เทศบาลพระลับ
         //Image.asset('assets/Noicon.png', scale: 15),
         actions: <Widget>[
           IconButton(
@@ -698,7 +699,7 @@ class _home_pageState extends State<home_page> {
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
+                  const SnackBar(content: Text('เราเทศบาลพระลับ')));
             },
           ),
         ],
@@ -714,6 +715,7 @@ class _home_pageState extends State<home_page> {
             ),
             child: ListView(
               children: <Widget>[
+                // ThemeBc.green01
                 SizedBox(height: 15),
                 slide(context),
                 Padding(

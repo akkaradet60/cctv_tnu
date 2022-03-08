@@ -83,7 +83,7 @@ class _awarddetail_page extends State<awarddetail_page> {
             color: ThemeBc.white, //change your color here
           ),
           foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.background,
+          backgroundColor: ThemeBc.green05,
           title: Column(
             children: [
               Center(child: Text('${productt['award_name']}')),
@@ -93,7 +93,7 @@ class _awarddetail_page extends State<awarddetail_page> {
             IconButton(
               icon: Icon(
                 Icons.refresh,
-                color: ThemeBc.background,
+                color: ThemeBc.green05,
               ),
               tooltip: 'Show Snackbar',
               onPressed: () {},
@@ -123,7 +123,7 @@ class _awarddetail_page extends State<awarddetail_page> {
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
-                                        color: ThemeBc.background,
+                                        color: ThemeBc.green05,
                                         borderRadius: BorderRadius.circular(
                                           10,
                                         ),
@@ -301,15 +301,15 @@ class _awarddetail_page extends State<awarddetail_page> {
     //       ),
     //
     //       foregroundColor: ThemeBc.white,
-    //       backgroundColor: ThemeBc.background,
+    //       backgroundColor: ThemeBc.green05,
     //       title: Text('${productt['award_name']}'),
     //       actions: <Widget>[
     //         IconButton(
-    //           icon: Icon(Icons.refresh,color: ThemeBc.background,),
+    //           icon: Icon(Icons.refresh,color: ThemeBc.green05,),
     //           tooltip: 'Show Snackbar',
     //           onPressed: () {
     //             ScaffoldMessenger.of(context).showSnackBar(
-    //                 SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
+    //                 SnackBar(content: Text('เราเทศบาลพระลับ')));
     //           },
     //         ),
     //       ],
@@ -334,7 +334,7 @@ class _awarddetail_page extends State<awarddetail_page> {
     //                           begin: Alignment.topRight,
     //                           end: Alignment.bottomLeft)),
     //                   child: Container(
-    //                      color: ThemeBc.background,
+    //                      color: ThemeBc.green05,
     //                         child: ListView(
     //                           children: [
     //                             Container(

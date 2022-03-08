@@ -481,13 +481,13 @@ class _settingshopState extends State<settingshop>
           color: ThemeBc.white, //change your color here
         ),
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.background,
+        backgroundColor: ThemeBc.green05,
         title: Center(child: const Text('ร้านค้า')),
         actions: <Widget>[
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.background,
+              color: ThemeBc.green05,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {},

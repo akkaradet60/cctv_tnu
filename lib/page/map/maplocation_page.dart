@@ -63,7 +63,7 @@ class _maplocation_page extends State<maplocation_page> {
           color: ThemeBc.white, //change your color here
         ),
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.background,
+        backgroundColor: ThemeBc.green05,
         title: Container(
           height: 50,
           width: 300,
@@ -89,7 +89,7 @@ class _maplocation_page extends State<maplocation_page> {
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.background,
+              color: ThemeBc.green05,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {

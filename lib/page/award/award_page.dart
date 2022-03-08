@@ -83,7 +83,7 @@ class _award_pageState extends State<award_page> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              color: ThemeBc.background,
+                              color: ThemeBc.green05,
                               borderRadius: BorderRadius.circular(
                                 10,
                               ),
@@ -233,7 +233,7 @@ class _award_pageState extends State<award_page> {
                                           ),
                                         ),
                                         // Container(
-                                        //   color: ThemeBc.background,
+                                        //   color: ThemeBc.green05,
                                         //   width: 370,
                                         //   height: 100,
                                         //   child: ListView(
@@ -297,7 +297,7 @@ class _award_pageState extends State<award_page> {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                            color: ThemeBc.background,
+                            color: ThemeBc.green05,
                             borderRadius: BorderRadius.circular(
                               10,
                             ),
@@ -524,7 +524,7 @@ class _award_pageState extends State<award_page> {
             color: ThemeBc.white, //change your color here
           ),
           foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.background,
+          backgroundColor: ThemeBc.green05,
           title: Column(
             children: [
               Center(
@@ -544,7 +544,7 @@ class _award_pageState extends State<award_page> {
             IconButton(
               icon: Icon(
                 Icons.refresh,
-                color: ThemeBc.background,
+                color: ThemeBc.green05,
               ),
               tooltip: 'Show Snackbar',
               onPressed: () {},

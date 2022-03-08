@@ -25,7 +25,7 @@ class _productshome_page extends State<productshome_page> {
             color: ThemeBc.white, //change your color here
           ),
           foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.background,
+          backgroundColor: ThemeBc.green05,
           title: Column(
             children: [
               Center(
@@ -167,7 +167,7 @@ class _productshome_page extends State<productshome_page> {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                                color: ThemeBc.background,
+                                color: ThemeBc.green05,
                                 borderRadius: BorderRadius.circular(
                                   10,
                                 ),
@@ -433,7 +433,7 @@ class _productshome_page extends State<productshome_page> {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                                color: ThemeBc.background,
+                                color: ThemeBc.green05,
                                 borderRadius: BorderRadius.circular(
                                   10,
                                 ),
@@ -699,7 +699,7 @@ class _productshome_page extends State<productshome_page> {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                                color: ThemeBc.background,
+                                color: ThemeBc.green05,
                                 borderRadius: BorderRadius.circular(
                                   10,
                                 ),

@@ -85,7 +85,7 @@ class _manual_pageState extends State<manual_page> {
             color: ThemeBc.white, //change your color here
           ),
           foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.background,
+          backgroundColor: ThemeBc.green05,
           title: Column(
             children: [
               Center(
@@ -105,7 +105,7 @@ class _manual_pageState extends State<manual_page> {
             IconButton(
               icon: Icon(
                 Icons.refresh,
-                color: ThemeBc.background,
+                color: ThemeBc.green05,
               ),
               tooltip: 'Show Snackbar',
               onPressed: () {},
@@ -113,7 +113,7 @@ class _manual_pageState extends State<manual_page> {
           ],
         ),
         body: Container(
-          color: ThemeBc.background,
+          color: ThemeBc.green05,
           width: 1000,
           height: 1000,
           child: FutureBuilder<Map<String, dynamic>>(
@@ -127,7 +127,7 @@ class _manual_pageState extends State<manual_page> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              color: ThemeBc.background,
+                              color: ThemeBc.green05,
                               borderRadius: BorderRadius.circular(
                                 10,
                               ),

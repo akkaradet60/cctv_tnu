@@ -55,7 +55,7 @@ class _productshop_page extends State<productstorehome> {
             color: ThemeBc.white, //change your color here
           ),
           foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.background,
+          backgroundColor: ThemeBc.green05,
           title: Column(
             children: [
               Center(
@@ -75,7 +75,7 @@ class _productshop_page extends State<productstorehome> {
             IconButton(
               icon: Icon(
                 Icons.refresh,
-                color: ThemeBc.background,
+                color: ThemeBc.green05,
               ),
               tooltip: 'Show Snackbar',
               onPressed: () {},
@@ -283,7 +283,6 @@ class _productshop_page extends State<productstorehome> {
       } else {
         throw Exception('$response.statusCode');
       }
-      if (feedback['data'] == "ไม่พบข้อม") {}
     }
 
     @override
@@ -304,6 +303,41 @@ class _productshop_page extends State<productstorehome> {
               future: probests(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
+                  if (snapshot.data!['data'] == 'ไม่พบข้อมูล') {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                color: ThemeBc.green05,
+                                borderRadius: BorderRadius.circular(
+                                  10,
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.black.withOpacity(0.1),
+                                      offset: Offset(2, 4),
+                                      blurRadius: 7.0,
+                                      spreadRadius: 1.0),
+                                ]),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                'ไม่พบข้อมูล',
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.w300,
+                                  // backgroundColor: Colors.black45,
+                                  color: ThemeBc.textwhite,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
                   return ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: snapshot.data!['data'].length,

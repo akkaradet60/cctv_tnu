@@ -93,7 +93,7 @@ class _LoginPageState extends State<login_page> {
       print(token['message']);*/
         //กลับไปที่หน้า HomeStack
         Navigator.pushNamedAndRemoveUntil(
-            context, '/home_page', (route) => false);
+            context, '/loginlon', (route) => false);
       } else {
         return showDialog(
           context: context,
@@ -152,6 +152,8 @@ class _LoginPageState extends State<login_page> {
         },
         body: json.encode({
           "user_app_id": Global.app_id,
+          // "email": 'akkaradet.k6@snru.ac.th',
+          // "password": '1234567'
           "email": 'demo@demo.com',
           "password": '1234567'
         }));
@@ -198,8 +200,7 @@ class _LoginPageState extends State<login_page> {
       // print('profile: $user');
       print(token['message']);*/
       //กลับไปที่หน้า HomeStack
-      Navigator.pushNamedAndRemoveUntil(
-          context, '/home_page', (route) => false);
+      Navigator.pushNamedAndRemoveUntil(context, '/loginlon', (route) => false);
 
       // Navigator.pushNamed(context, '/home_page');
     } else {
@@ -282,8 +283,7 @@ class _LoginPageState extends State<login_page> {
       // print('profile: $user');
       print(token['message']);*/
       //กลับไปที่หน้า HomeStack
-      Navigator.pushNamedAndRemoveUntil(
-          context, '/home_page', (route) => false);
+      Navigator.pushNamedAndRemoveUntil(context, '/loginlon', (route) => false);
 
       // Navigator.pushNamed(context, '/home_page');
     } else {
@@ -369,8 +369,8 @@ class _LoginPageState extends State<login_page> {
               fit: BoxFit.cover,
             ),
             // Image.network(
-            //   Global.domainImage +
-            //       '../../../uploads/emergency/05c5c5e7921159b59cdd588450be25511646028116_bc.jpg',
+            //   Global.urlWeb +
+            //       'img/original.jpg?fbclid=IwAR2tktKpEOMA2WCk24J24T1GZx5Ot5Yx-XVQnBHJC_O7YcOBOtmHTbBjSjo',
             //   width: double.infinity,
             //   height: MediaQuery.of(context).size.height,
             //   fit: BoxFit.cover,
@@ -529,7 +529,7 @@ class _LoginPageState extends State<login_page> {
                                         Icons.login,
                                       ),
                                       style: ElevatedButton.styleFrom(
-                                        primary: ThemeBc.background,
+                                        primary: ThemeBc.green05,
                                         //side: BorderSide(color: Colors.red, width: 5),
                                         textStyle:
                                             const TextStyle(fontSize: 15),
@@ -553,25 +553,6 @@ class _LoginPageState extends State<login_page> {
                               ),
                             ),
                           ),
-                          // Container(
-                          //   // color: Colors.transparent,
-                          //   // margin: EdgeInsets.only(
-                          //   //   top: 20,
-                          //   // ),
-                          //   child: CustomButton(
-                          //     title: 'เข้าสู่ระบบ',
-                          //     onPressed: () {
-                          //       // login(_fbKey.currentState!.value);
-                          //       if (_fbKey.currentState!.saveAndValidate()) {
-                          //         // print(_fbKey.currentState!.value);
-                          //         login(_fbKey.currentState!.value);
-                          //       }
-                          //     },
-                          //     colorButton: ThemeBc.background,
-                          //     textStyle: secondaryTextStyle.copyWith(
-                          //         fontWeight: FontWeight.w100, fontSize: 16),
-                          //   ),
-                          // ),
                           SizedBox(height: 5),
                           Padding(
                             padding: const EdgeInsets.all(0.0),
@@ -878,13 +859,13 @@ class _LoginPageState extends State<login_page> {
                                         color: Colors.white,
                                         fontSize: 15,
                                         // decoration: TextDecoration.underline,
-                                        shadows: <Shadow>[
-                                          Shadow(
-                                            offset: Offset(1.0, 1.0),
-                                            blurRadius: 8.0,
-                                            color: Color.fromARGB(255, 0, 0, 0),
-                                          ),
-                                        ],
+                                        // shadows: <Shadow>[
+                                        //   Shadow(
+                                        //     offset: Offset(1.0, 1.0),
+                                        //     blurRadius: 8.0,
+                                        //     color: Color.fromARGB(255, 0, 0, 0),
+                                        //   ),
+                                        // ],
                                       ),
                                     ),
                                   ),
@@ -900,13 +881,13 @@ class _LoginPageState extends State<login_page> {
                                         color: Colors.white,
                                         fontSize: 15,
                                         // decoration: TextDecoration.underline,
-                                        shadows: <Shadow>[
-                                          Shadow(
-                                            offset: Offset(1.0, 1.0),
-                                            blurRadius: 8.0,
-                                            color: Color.fromARGB(255, 0, 0, 0),
-                                          ),
-                                        ],
+                                        // shadows: <Shadow>[
+                                        //   Shadow(
+                                        //     offset: Offset(1.0, 1.0),
+                                        //     blurRadius: 8.0,
+                                        //     color: Color.fromARGB(255, 0, 0, 0),
+                                        //   ),
+                                        // ],
                                       ),
                                     ),
                                   ),

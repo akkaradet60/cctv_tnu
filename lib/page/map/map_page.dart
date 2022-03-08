@@ -77,7 +77,7 @@ class _map_prod extends State<map_page> {
           color: ThemeBc.white, //change your color here
         ),
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.background,
+        backgroundColor: ThemeBc.green05,
         title: Column(
           children: [
             Center(
@@ -97,7 +97,7 @@ class _map_prod extends State<map_page> {
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.background,
+              color: ThemeBc.green05,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {
@@ -137,7 +137,7 @@ class _map_prod extends State<map_page> {
                                 child: Padding(
                                   padding: const EdgeInsets.all(3.0),
                                   // child: Text(
-                                  //   "เทศบาลมหาสารคาม",
+                                  //   "เทศบาลพระลับ",
                                   //   style: TextStyle(
                                   //     fontSize: 20.0,
                                   //     fontWeight: FontWeight.bold,
@@ -416,15 +416,15 @@ class _map_prod extends State<map_page> {
 //       backgroundColor: ThemeBc.black,
 //       appBar: AppBar(
 //         iconTheme: IconThemeData(
-//           color: ThemeBc.background, //change your color here
+//           color: ThemeBc.green05, //change your color here
 //         ),
 //         
 //         foregroundColor: ThemeBc.white,
-//         backgroundColor: ThemeBc.background,
+//         backgroundColor: ThemeBc.green05,
 //         // title: Center(child: Text('${hotlinee['hotlineName']}')),
 //         actions: <Widget>[
 //           IconButton(
-//             icon: Icon(Icons.refresh,color: ThemeBc.background,),
+//             icon: Icon(Icons.refresh,color: ThemeBc.green05,),
 //             tooltip: 'Show Snackbar',
 //             onPressed: () {
 //               ScaffoldMessenger.of(context).showSnackBar(
@@ -453,7 +453,7 @@ class _map_prod extends State<map_page> {
       //   children: [
 
       //     Container(
-      //       color: ThemeBc.background,
+      //       color: ThemeBc.green05,
       //       child: Padding(
       //         padding: const EdgeInsets.all(8.0),
       //         child: Container(
@@ -515,7 +515,7 @@ class _map_prod extends State<map_page> {
       //                                 //   icon: Icon(Icons.gps_fixed),
       //                                 //   label: Text('ตำแหน่งของคุณ'),
       //                                 //   style: ElevatedButton.styleFrom(
-      //                                 //     primary: ThemeBc.background,
+      //                                 //     primary: ThemeBc.green05,
       //                                 //     onPrimary: Colors.white,
       //                                 //     elevation: 30,
       //                                 //     shape: RoundedRectangleBorder(
@@ -524,7 +524,7 @@ class _map_prod extends State<map_page> {
       //                                 //   ),
       //                                 // ),
       //                                 Text(
-      //                                   "เทศบาลมหาสารคาม",
+      //                                   "เทศบาลพระลับ",
       //                                   style: TextStyle(
       //                                     fontSize: 20.0,
       //                                     fontWeight: FontWeight.bold,

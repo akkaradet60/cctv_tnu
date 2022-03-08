@@ -169,7 +169,7 @@ class _EmergecyPageState extends State<fix_password>
                                           ),
                                         ),
                                         style: ElevatedButton.styleFrom(
-                                          primary: ThemeBc.background,
+                                          primary: ThemeBc.green05,
                                           onPrimary: Colors.black,
                                           // shadowColor: Colors.grey[700],
 
@@ -233,7 +233,7 @@ class _EmergecyPageState extends State<fix_password>
           color: ThemeBc.white, //change your color here
         ),
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.background,
+        backgroundColor: ThemeBc.green05,
         title: Column(
           children: [
             Center(
@@ -253,7 +253,7 @@ class _EmergecyPageState extends State<fix_password>
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.background,
+              color: ThemeBc.green05,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {},
@@ -661,11 +661,11 @@ class _EmergecyPageState extends State<fix_password>
 //         title: Center(child: const Text('แก้ไขรหัสผ่าน')),
 //         actions: <Widget>[
 //           IconButton(
-//             icon: Icon(Icons.refresh,color: ThemeBc.background,),
+//             icon: Icon(Icons.refresh,color: ThemeBc.green05,),
 //             tooltip: 'Show Snackbar',
 //             onPressed: () {
 //               ScaffoldMessenger.of(context).showSnackBar(
-//                   const SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
+//                   const SnackBar(content: Text('เราเทศบาลพระลับ')));
 //             },
 //           ),
 //         ],

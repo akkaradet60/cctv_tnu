@@ -100,7 +100,7 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
           color: ThemeBc.white, //change your color here
         ),
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.background,
+        backgroundColor: ThemeBc.green05,
         title: Center(
             child: Text(
           'การฝึกอบรม',
@@ -116,12 +116,12 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.background,
+              color: ThemeBc.green05,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context)
-                  .showSnackBar(SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
+                  .showSnackBar(SnackBar(content: Text('เราเทศบาลพระลับ')));
             },
           ),
         ],
@@ -153,12 +153,12 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
     return Container(
       // decoration: BoxDecoration(
       //     gradient: LinearGradient(
-      //         colors: [ThemeBc.background, Colors.white],
+      //         colors: [ThemeBc.green05, Colors.white],
       //         begin: Alignment.topRight,
       //         end: Alignment.bottomLeft)),
       height: 800,
       child: Container(
-        //  color: ThemeBc.background,
+        //  color: ThemeBc.green05,
         width: 1000,
 
         child: FutureBuilder<Map<String, dynamic>>(
@@ -172,7 +172,7 @@ class _trainingcalendar_page extends State<trainingcalendar_page> {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                            color: ThemeBc.background,
+                            color: ThemeBc.green05,
                             borderRadius: BorderRadius.circular(
                               10,
                             ),

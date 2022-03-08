@@ -808,7 +808,7 @@ class _warn_page extends State<compose_page>
                                       addEmergecy(_fbKey.currentState!.value);
                                     }
                                   },
-                                  colorButton: ThemeBc.background,
+                                  colorButton: ThemeBc.green05,
                                   textStyle: GoogleFonts.sarabun(
                                     textStyle: TextStyle(
                                       color: ThemeBc.textwhite,
@@ -839,6 +839,41 @@ class _warn_page extends State<compose_page>
             future: getDataSlide(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
+                if (snapshot.data!['data'] == 'ไม่พบข้อมูล') {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              color: ThemeBc.green05,
+                              borderRadius: BorderRadius.circular(
+                                10,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.black.withOpacity(0.1),
+                                    offset: Offset(2, 4),
+                                    blurRadius: 7.0,
+                                    spreadRadius: 1.0),
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'ไม่พบข้อมูล',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w300,
+                                // backgroundColor: Colors.black45,
+                                color: ThemeBc.textwhite,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }
                 return Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: ListView.builder(
@@ -920,7 +955,7 @@ class _warn_page extends State<compose_page>
           color: ThemeBc.white, //change your color here
         ),
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.background,
+        backgroundColor: ThemeBc.green05,
         title: LocaleText(
           'ร้องเรียน',
           style: GoogleFonts.sarabun(
@@ -936,7 +971,7 @@ class _warn_page extends State<compose_page>
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.background,
+              color: ThemeBc.green05,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {},

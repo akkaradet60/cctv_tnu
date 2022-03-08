@@ -417,7 +417,7 @@ class _settingprofile extends State<settingprofile>
                                       ),
                                     ),
                                     style: ElevatedButton.styleFrom(
-                                      primary: ThemeBc.background,
+                                      primary: ThemeBc.green05,
                                       onPrimary: Colors.white,
                                       // shadowColor: Colors.grey[700],
                                       // elevation: 30,
@@ -451,7 +451,7 @@ class _settingprofile extends State<settingprofile>
           color: ThemeBc.white, //change your color here
         ),
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.background,
+        backgroundColor: ThemeBc.green05,
         title: Column(
           children: [
             Center(
@@ -471,7 +471,7 @@ class _settingprofile extends State<settingprofile>
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.background,
+              color: ThemeBc.green05,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {},

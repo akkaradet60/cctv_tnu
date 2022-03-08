@@ -60,7 +60,7 @@ class settings extends StatelessWidget {
                     //       style: TextStyle(fontSize: 18),
                     //     ),
                     //     style: ElevatedButton.styleFrom(
-                    //       primary: ThemeBc.background,
+                    //       primary: ThemeBc.green05,
                     //       onPrimary: Colors.white,
                     //       shadowColor: Colors.grey[700],
                     //       elevation: 30,
@@ -260,7 +260,7 @@ class settings extends StatelessWidget {
                                           height: 40,
                                           width: 250,
                                           decoration: BoxDecoration(
-                                            color: ThemeBc.background,
+                                            color: ThemeBc.green05,
                                             borderRadius: BorderRadius.circular(
                                               10,
                                             ),
@@ -296,7 +296,7 @@ class settings extends StatelessWidget {
                                           height: 40,
                                           width: 250,
                                           decoration: BoxDecoration(
-                                            color: ThemeBc.background,
+                                            color: ThemeBc.green05,
                                             borderRadius: BorderRadius.circular(
                                               10,
                                             ),
@@ -332,7 +332,7 @@ class settings extends StatelessWidget {
                                           height: 40,
                                           width: 250,
                                           decoration: BoxDecoration(
-                                            color: ThemeBc.background,
+                                            color: ThemeBc.green05,
                                             borderRadius: BorderRadius.circular(
                                               10,
                                             ),
@@ -433,7 +433,7 @@ class settings extends StatelessWidget {
           color: ThemeBc.white, //change your color here
         ),
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.background,
+        backgroundColor: ThemeBc.green05,
         title: Center(
           child: LocaleText(
             "ตั้งค่า",
@@ -450,7 +450,7 @@ class settings extends StatelessWidget {
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.background,
+              color: ThemeBc.green05,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {},

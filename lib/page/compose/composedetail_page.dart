@@ -58,7 +58,7 @@ class _composedetail_page extends State<composedetail_page> {
             color: ThemeBc.white, //change your color here
           ),
           foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.background,
+          backgroundColor: ThemeBc.green05,
           title: Center(
               child: Text(
             '${datail_blogpose['emt_name'] ?? '-'}',
@@ -74,7 +74,7 @@ class _composedetail_page extends State<composedetail_page> {
             IconButton(
               icon: Icon(
                 Icons.refresh,
-                color: ThemeBc.background,
+                color: ThemeBc.green05,
               ),
               tooltip: 'Show Snackbar',
               onPressed: () {},
@@ -429,7 +429,7 @@ class _composedetail_page extends State<composedetail_page> {
 //           ),
 //           
 //           foregroundColor: ThemeBc.white,
-//           backgroundColor: ThemeBc.background,
+//           backgroundColor: ThemeBc.green05,
 //           title: Column(
 //             children: [
 //               Center(child: Text('${datail_blogpose['em_type']}')),
@@ -437,11 +437,11 @@ class _composedetail_page extends State<composedetail_page> {
 //           ),
 //           actions: <Widget>[
 //             IconButton(
-//               icon: Icon(Icons.refresh,color: ThemeBc.background,),
+//               icon: Icon(Icons.refresh,color: ThemeBc.green05,),
 //               tooltip: 'Show Snackbar',
 //               onPressed: () {
 //                 ScaffoldMessenger.of(context).showSnackBar(
-//                     SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
+//                     SnackBar(content: Text('เราเทศบาลพระลับ')));
 //               },
 //             ),
 //           ],
@@ -455,7 +455,7 @@ class _composedetail_page extends State<composedetail_page> {
 //           height: 1000,
 //           width: 1000,
 //           child: Container(
-//             color: ThemeBc.background,
+//             color: ThemeBc.green05,
 //             child: ListView(
 //               children: [
 //                 Container(
@@ -585,7 +585,7 @@ class _composedetail_page extends State<composedetail_page> {
 //                 // ),
 //                 Container(
 //                   height: 500,
-//                   color: ThemeBc.background,
+//                   color: ThemeBc.green05,
 //                   child: ListView(
 //                     children: [
 //                       Column(

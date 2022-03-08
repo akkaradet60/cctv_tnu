@@ -135,13 +135,16 @@ class _forgot_password extends State<forgot_password>
                                       Center(
                                         child: LocaleText(
                                           'ลืมรหัสผ่าน',
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 40,
-                                            decoration:
-                                                TextDecoration.underline,
-                                            /*shadows: <Shadow>[
+                                          style: GoogleFonts.sarabun(
+                                            textStyle: TextStyle(
+                                              color: ThemeBc.textblack,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 30,
+                                            ),
+                                          ),
+                                          // decoration:
+                                          //     TextDecoration.underline,
+                                          /*shadows: <Shadow>[
                               Shadow(
                                 offset: Offset(1.0, 1.0),
                                 blurRadius: 3.0,
@@ -153,7 +156,7 @@ class _forgot_password extends State<forgot_password>
                                 color: Color.fromARGB(255, 0, 0, 0),
                               ),
                             ],*/
-                                          ),
+                                          // ),
                                         ),
                                       ),
                                     ],
@@ -250,7 +253,7 @@ class _forgot_password extends State<forgot_password>
                                           ),
                                         ),
                                         style: ElevatedButton.styleFrom(
-                                          primary: ThemeBc.background,
+                                          primary: ThemeBc.green05,
                                           // onPrimary: Colors.white,
                                           // shadowColor: Colors.grey[700],
 
@@ -323,7 +326,7 @@ class _forgot_password extends State<forgot_password>
     }
 
     return Scaffold(
-      // backgroundColor: ThemeBc.background,
+      // backgroundColor: ThemeBc.green05,
       // drawer: manu(),
       // drawer: Icon(Icons.ac_unit, color: white),
       // appBar: AppBar(

@@ -238,12 +238,12 @@ class _settingpolicyState extends State<settingpolicy>
           color: ThemeBc.white, //change your color here
         ),
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.background,
+        backgroundColor: ThemeBc.green05,
         title: Column(
           children: [
             Center(
                 child: LocaleText(
-              'เทศบาลตำบลพระลับ',
+              'เทศบาลพระลับ',
               style: GoogleFonts.sarabun(
                 textStyle: TextStyle(
                   color: ThemeBc.textwhite,
@@ -258,7 +258,7 @@ class _settingpolicyState extends State<settingpolicy>
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.background,
+              color: ThemeBc.green05,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {},

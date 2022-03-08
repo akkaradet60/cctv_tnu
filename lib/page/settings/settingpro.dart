@@ -84,7 +84,7 @@ class _warn1State extends State<settingpro> {
           color: ThemeBc.white, //change your color here
         ),
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.background,
+        backgroundColor: ThemeBc.green05,
         title: Column(
           children: [
             Center(child: const Text('จัดการสินค้า')),
@@ -94,7 +94,7 @@ class _warn1State extends State<settingpro> {
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.background,
+              color: ThemeBc.green05,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {},

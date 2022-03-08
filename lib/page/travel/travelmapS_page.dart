@@ -103,7 +103,7 @@ class _travelmap_page extends State<travelmapS_page> {
           color: ThemeBc.white,
           child: Container(
             decoration: BoxDecoration(
-                color: ThemeBc.background,
+                color: ThemeBc.green05,
                 borderRadius: BorderRadius.circular(
                   10,
                 ),
@@ -172,7 +172,7 @@ class _travelmap_page extends State<travelmapS_page> {
           color: ThemeBc.white, //change your color here
         ),
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.background,
+        backgroundColor: ThemeBc.green05,
         title: Center(
           child: Text(
             'ที่ท่องเที่ยว',
@@ -189,12 +189,12 @@ class _travelmap_page extends State<travelmapS_page> {
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.background,
+              color: ThemeBc.green05,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context)
-                  .showSnackBar(SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
+                  .showSnackBar(SnackBar(content: Text('เราเทศบาลพระลับ')));
             },
           ),
         ],
@@ -203,7 +203,7 @@ class _travelmap_page extends State<travelmapS_page> {
       //   title: Center(child: Text('${travelmapname['travel_name']}')),
       //   actions: <Widget>[
       //     IconButton(
-      //       icon: Icon(Icons.refresh,color: ThemeBc.background,),
+      //       icon: Icon(Icons.refresh,color: ThemeBc.green05,),
       //       tooltip: 'Show Snackbar',
       //       onPressed: () {
       //         ScaffoldMessenger.of(context)
@@ -213,7 +213,7 @@ class _travelmap_page extends State<travelmapS_page> {
       //   ],
       // ),
       body: Container(
-        color: ThemeBc.background,
+        color: ThemeBc.green05,
         child: Padding(
           padding: const EdgeInsets.all(0),
           child: ListView(

@@ -47,7 +47,7 @@ class _VerifyState extends State<Verify> {
                   label: const Text('หน้าเข้าสู้ระบบ'),
                   icon: const Icon(Icons.login_rounded),
                   style: ElevatedButton.styleFrom(
-                    primary: ThemeBc.background,
+                    primary: ThemeBc.green05,
                     //side: BorderSide(color: Colors.red, width: 5),
                     textStyle: const TextStyle(fontSize: 15),
                     padding: const EdgeInsets.all(15),

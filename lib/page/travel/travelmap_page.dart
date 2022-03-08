@@ -101,7 +101,7 @@ class _travelmap_page extends State<travelmap_page> {
           color: ThemeBc.white, //change your color here
         ),
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.background,
+        backgroundColor: ThemeBc.green05,
         title: Center(
           child: Text(
             '${travelmapname['travel_name']}',
@@ -118,12 +118,12 @@ class _travelmap_page extends State<travelmap_page> {
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.background,
+              color: ThemeBc.green05,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context)
-                  .showSnackBar(SnackBar(content: Text('เราเทศบาลตำบลพระลับ')));
+                  .showSnackBar(SnackBar(content: Text('เราเทศบาลพระลับ')));
             },
           ),
         ],

@@ -17,6 +17,7 @@ import 'package:cctv_tun/page/login/facebook_login.dart';
 import 'package:cctv_tun/page/login/forgot_password.dart';
 
 import 'package:cctv_tun/page/login/login.page.dart';
+import 'package:cctv_tun/page/login/loginlon.dart';
 import 'package:cctv_tun/page/login/register_page.dart';
 import 'package:cctv_tun/page/map/map_page.dart';
 import 'package:cctv_tun/page/map/map_prod.dart';
@@ -105,50 +106,10 @@ class MyApp extends StatelessWidget {
           localizationsDelegates: Locales.delegates,
           supportedLocales: Locales.supportedLocales,
           locale: locale,
-          //  '/': (context) => AnimatedSplashScreen(
-          //             backgroundColor: ThemeBc.background,
-          //             splash: Center(
-          //               child: Container(
-          //                 child: Row(
-          //                   mainAxisAlignment: MainAxisAlignment.center,
-          //                   children: [
-          //                     Container(
-          //                         height: 100,
-          //                         width: 100,
-          //                         child: Image.asset('assets/logo02.png')),
-          //                     Text(
-          //                       'เทศบาลตำบลพระลับ',
-          //                       style: GoogleFonts.sarabun(
-          //                         textStyle: TextStyle(
-          //                           color: Colors.white,
-          //                           fontSize: 16,
-          //                           // decoration: TextDecoration.underline,
-          //                           shadows: <Shadow>[
-          //                             Shadow(
-          //                               offset: Offset(1.0, 1.0),
-          //                               blurRadius: 8.0,
-          //                               color: Color.fromARGB(255, 0, 0, 0),
-          //                             ),
-          //                           ],
-          //                         ),
-          //                       ),
-          //                     )
-          //                   ],
-          //                 ),
-          //               ),
-          //             ),
-          //             // backgroundColor: ThemeBc.background,
-          //             duration: 3000,
-          //             splashTransition: SplashTransition.scaleTransition,
-          //             nextScreen: login_page()),
-          //       // theme: ThemeData(
-          //     primarySwatch: Colors.grey,
-          //     canvasColor: Colors.white,
-          //     scaffoldBackgroundColor: Colors.white),
           routes: {
             '/': (context) => token == null
                 ? AnimatedSplashScreen(
-                    backgroundColor: ThemeBc.background,
+                    backgroundColor: ThemeBc.green05,
                     splash: Center(
                       child: Container(
                         child: Row(
@@ -159,7 +120,7 @@ class MyApp extends StatelessWidget {
                                 width: 100,
                                 child: Image.asset('assets/logo02.png')),
                             Text(
-                              'เทศบาลตำบลพระลับ',
+                              'เทศบาลพระลับ',
                               style: GoogleFonts.sarabun(
                                 textStyle: TextStyle(
                                   color: Colors.white,
@@ -179,13 +140,13 @@ class MyApp extends StatelessWidget {
                         ),
                       ),
                     ),
-                    // backgroundColor: ThemeBc.background,
+                    // backgroundColor: ThemeBc.green05,
                     duration: 3000,
                     splashTransition: SplashTransition.scaleTransition,
                     nextScreen: login_page())
                 : Global.app_id == "2"
                     ? AnimatedSplashScreen(
-                        backgroundColor: ThemeBc.background,
+                        backgroundColor: ThemeBc.green05,
                         splash: Center(
                           child: Container(
                             child: Row(
@@ -196,7 +157,7 @@ class MyApp extends StatelessWidget {
                                     width: 100,
                                     child: Image.asset('assets/logo02.png')),
                                 Text(
-                                  'เทศบาลตำบลพระลับ',
+                                  'เทศบาลพระลับ',
                                   style: GoogleFonts.sarabun(
                                     textStyle: TextStyle(
                                       color: Colors.white,
@@ -216,7 +177,7 @@ class MyApp extends StatelessWidget {
                             ),
                           ),
                         ),
-                        // backgroundColor: ThemeBc.background,
+                        // backgroundColor: ThemeBc.green05,
                         duration: 3000,
                         splashTransition: SplashTransition.scaleTransition,
                         nextScreen: home_page())
@@ -224,7 +185,7 @@ class MyApp extends StatelessWidget {
             '/appppp': (context) => appp(),
             // '/': (context) => token == null ? login_page() : home_page(),
             '/fix_password': (context) => fix_password(),
-            // '/sss': (context) => EmergecyPage(),
+            '/loginlon': (context) => loginlon(),
             '/map_prod': (context) => map_prod(),
             '/productstore_page': (context) => productstore_page(),
             //  '/confirmemail': (context) => confirmemail(),

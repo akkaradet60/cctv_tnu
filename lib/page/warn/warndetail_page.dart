@@ -59,7 +59,7 @@ class _composedetail_page extends State<warndetail_page> {
             color: ThemeBc.white, //change your color here
           ),
           foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.background,
+          backgroundColor: ThemeBc.green05,
           title: Center(
               child: Text(
             '${datail_blogpose['emt_name'] ?? '-'}',
@@ -75,7 +75,7 @@ class _composedetail_page extends State<warndetail_page> {
             IconButton(
               icon: Icon(
                 Icons.refresh,
-                color: ThemeBc.background,
+                color: ThemeBc.green05,
               ),
               tooltip: 'Show Snackbar',
               onPressed: () {},

@@ -377,7 +377,7 @@ class _RegisterPageState extends State<register_page> {
                           ),
                           icon: Icon(Icons.login_rounded),
                           style: ElevatedButton.styleFrom(
-                            primary: ThemeBc.background,
+                            primary: ThemeBc.green05,
                             //side: BorderSide(color: Colors.red, width: 5),
                             textStyle: TextStyle(fontSize: 15),
                             padding: EdgeInsets.all(15),

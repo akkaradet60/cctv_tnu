@@ -19,7 +19,7 @@ class _cctv_pageState extends State<cctv_page> {
           color: ThemeBc.white, //change your color here
         ),
         foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.background,
+        backgroundColor: ThemeBc.green05,
         title: Column(
           children: [
             Center(
@@ -39,7 +39,7 @@ class _cctv_pageState extends State<cctv_page> {
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.background,
+              color: ThemeBc.green05,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {},
@@ -48,7 +48,8 @@ class _cctv_pageState extends State<cctv_page> {
       ),
       body: WebView(
         javascriptMode: JavascriptMode.unrestricted,
-        initialUrl: 'https://www.ntplc.co.th/News/news17',
+        initialUrl:
+            'http://113.53.239.193/cctvmon/mobileapp/cctv.php?prov=%E0%B9%80%E0%B8%A5%E0%B8%A2&site=MKM01',
       ),
     );
   }

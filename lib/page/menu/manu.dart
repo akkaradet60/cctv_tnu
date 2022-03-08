@@ -112,7 +112,7 @@ class _menu_pangState extends State<menu_pang> {
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
-                                        color: ThemeBc.background,
+                                        color: ThemeBc.green05,
                                         borderRadius: BorderRadius.circular(
                                           10,
                                         ),
@@ -271,7 +271,7 @@ class _menu_pangState extends State<menu_pang> {
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             color:
-                                                                                ThemeBc.background,
+                                                                                ThemeBc.green05,
                                                                             borderRadius:
                                                                                 BorderRadius.circular(
                                                                               10,
@@ -319,7 +319,7 @@ class _menu_pangState extends State<menu_pang> {
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             color:
-                                                                                ThemeBc.background,
+                                                                                ThemeBc.green05,
                                                                             borderRadius:
                                                                                 BorderRadius.circular(
                                                                               10,
@@ -367,7 +367,7 @@ class _menu_pangState extends State<menu_pang> {
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             color:
-                                                                                ThemeBc.background,
+                                                                                ThemeBc.green05,
                                                                             borderRadius:
                                                                                 BorderRadius.circular(
                                                                               10,
@@ -531,7 +531,7 @@ class _menu_pangState extends State<menu_pang> {
                                           children: [
                                             Container(
                                               decoration: BoxDecoration(
-                                                  color: ThemeBc.background,
+                                                  color: ThemeBc.green05,
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                     10,
