@@ -83,10 +83,10 @@ class _manual_pageState extends State<manual_page> {
       child: Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
-            color: ThemeBc.white, //change your color here
+            color: ThemeBc.app_white_color, //change your color here
           ),
-          foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.green05,
+          foregroundColor: ThemeBc.app_white_color,
+          backgroundColor: ThemeBc.app_theme_color,
           title: Column(
             children: [
               Center(
@@ -94,7 +94,7 @@ class _manual_pageState extends State<manual_page> {
                 'คู่มือการใช้งาน',
                 style: GoogleFonts.sarabun(
                   textStyle: TextStyle(
-                    color: ThemeBc.textwhite,
+                    color: ThemeBc.app_textwhite_color,
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
@@ -106,7 +106,7 @@ class _manual_pageState extends State<manual_page> {
             IconButton(
               icon: Icon(
                 Icons.refresh,
-                color: ThemeBc.green05,
+                color: ThemeBc.app_linear_on,
               ),
               tooltip: 'Show Snackbar',
               onPressed: () {},
@@ -114,7 +114,6 @@ class _manual_pageState extends State<manual_page> {
           ],
         ),
         body: Container(
-          color: ThemeBc.green05,
           width: 1000,
           height: 1000,
           child: FutureBuilder<Map<String, dynamic>>(
@@ -128,7 +127,7 @@ class _manual_pageState extends State<manual_page> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              color: ThemeBc.green05,
+                              color: ThemeBc.app_linear_on,
                               borderRadius: BorderRadius.circular(
                                 10,
                               ),
@@ -147,7 +146,7 @@ class _manual_pageState extends State<manual_page> {
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.w300,
                                 // backgroundColor: Colors.black45,
-                                color: ThemeBc.textwhite,
+                                color: ThemeBc.app_textwhite_color,
                               ),
                             ),
                           ),
@@ -185,8 +184,8 @@ class _manual_pageState extends State<manual_page> {
               }
 
               return Center(
-                  child: SpinKitCubeGrid(
-                color: ThemeBc.green05,
+                  child: SpinKitThreeInOut(
+                color: ThemeBc.app_linear_on,
               ));
             },
           ),

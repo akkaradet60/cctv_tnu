@@ -23,10 +23,10 @@ class _productshome_page extends State<productshome_page> {
         // bottomNavigationBar: customBottomNav(),
         appBar: AppBar(
           iconTheme: IconThemeData(
-            color: ThemeBc.white, //change your color here
+            color: ThemeBc.app_white_color, //change your color here
           ),
-          foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.green05,
+          foregroundColor: ThemeBc.app_white_color,
+          backgroundColor: ThemeBc.app_theme_color,
           title: Column(
             children: [
               Center(
@@ -34,7 +34,7 @@ class _productshome_page extends State<productshome_page> {
                 'สินค้าโอทอป',
                 style: GoogleFonts.sarabun(
                   textStyle: TextStyle(
-                    color: ThemeBc.textwhite,
+                    color: ThemeBc.app_textwhite_color,
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
@@ -47,7 +47,7 @@ class _productshome_page extends State<productshome_page> {
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 decoration: BoxDecoration(
-                    color: ThemeBc.white,
+                    color: ThemeBc.app_white_color,
                     borderRadius: BorderRadius.circular(
                       20,
                     ),
@@ -78,10 +78,10 @@ class _productshome_page extends State<productshome_page> {
         ), //ThemeBc.green05
         body: Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [ThemeBc.green05, ThemeBc.green01],
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft),
+            gradient: LinearGradient(colors: [
+              ThemeBc.app_linear_on,
+              ThemeBc.app_linear_lower,
+            ], begin: Alignment.topRight, end: Alignment.bottomLeft),
           ),
           child: ListView(
             children: [
@@ -147,7 +147,7 @@ class _productshome_page extends State<productshome_page> {
               'สินค้าขายดีอาทิตย์นี้',
               style: GoogleFonts.sarabun(
                 textStyle: TextStyle(
-                  color: ThemeBc.textwhite,
+                  color: ThemeBc.app_textwhite_color,
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
                 ),
@@ -168,7 +168,7 @@ class _productshome_page extends State<productshome_page> {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                                color: ThemeBc.green05,
+                                color: ThemeBc.app_linear_on,
                                 borderRadius: BorderRadius.circular(
                                   10,
                                 ),
@@ -187,7 +187,7 @@ class _productshome_page extends State<productshome_page> {
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.w300,
                                   // backgroundColor: Colors.black45,
-                                  color: ThemeBc.textwhite,
+                                  color: ThemeBc.app_textwhite_color,
                                 ),
                               ),
                             ),
@@ -319,7 +319,7 @@ class _productshome_page extends State<productshome_page> {
                                                                 textStyle:
                                                                     TextStyle(
                                                                   color: ThemeBc
-                                                                      .textblack,
+                                                                      .app_textblack_color,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -337,7 +337,7 @@ class _productshome_page extends State<productshome_page> {
                                                             GoogleFonts.sarabun(
                                                           textStyle: TextStyle(
                                                             color: ThemeBc
-                                                                .textblack,
+                                                                .app_textblack_color,
                                                             fontWeight:
                                                                 FontWeight.w400,
                                                             fontSize: 15,
@@ -363,8 +363,8 @@ class _productshome_page extends State<productshome_page> {
                 } else if (snapshot.hasError) {}
 
                 return Center(
-                    child: SpinKitCubeGrid(
-                  color: ThemeBc.green05,
+                    child: SpinKitThreeInOut(
+                  color: ThemeBc.app_linear_on,
                 ));
               },
             ),
@@ -416,7 +416,7 @@ class _productshome_page extends State<productshome_page> {
               'ยอดนิยมประจำสัมปดาห์',
               style: GoogleFonts.sarabun(
                 textStyle: TextStyle(
-                  color: ThemeBc.textwhite,
+                  color: ThemeBc.app_textwhite_color,
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
                 ),
@@ -437,7 +437,7 @@ class _productshome_page extends State<productshome_page> {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                                color: ThemeBc.green05,
+                                color: ThemeBc.app_linear_on,
                                 borderRadius: BorderRadius.circular(
                                   10,
                                 ),
@@ -456,7 +456,7 @@ class _productshome_page extends State<productshome_page> {
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.w300,
                                   // backgroundColor: Colors.black45,
-                                  color: ThemeBc.textwhite,
+                                  color: ThemeBc.app_textwhite_color,
                                 ),
                               ),
                             ),
@@ -588,7 +588,7 @@ class _productshome_page extends State<productshome_page> {
                                                                 textStyle:
                                                                     TextStyle(
                                                                   color: ThemeBc
-                                                                      .textblack,
+                                                                      .app_textblack_color,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -606,7 +606,7 @@ class _productshome_page extends State<productshome_page> {
                                                             GoogleFonts.sarabun(
                                                           textStyle: TextStyle(
                                                             color: ThemeBc
-                                                                .textblack,
+                                                                .app_textblack_color,
                                                             fontWeight:
                                                                 FontWeight.w400,
                                                             fontSize: 15,
@@ -632,8 +632,8 @@ class _productshome_page extends State<productshome_page> {
                 } else if (snapshot.hasError) {}
 
                 return Center(
-                    child: SpinKitCubeGrid(
-                  color: ThemeBc.green05,
+                    child: SpinKitThreeInOut(
+                  color: ThemeBc.app_linear_on,
                 ));
               },
             ),
@@ -685,7 +685,7 @@ class _productshome_page extends State<productshome_page> {
               'ใหม่ล่าสุด',
               style: GoogleFonts.sarabun(
                 textStyle: TextStyle(
-                  color: ThemeBc.textwhite,
+                  color: ThemeBc.app_textwhite_color,
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                 ),
@@ -706,7 +706,7 @@ class _productshome_page extends State<productshome_page> {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                                color: ThemeBc.green05,
+                                color: ThemeBc.app_linear_on,
                                 borderRadius: BorderRadius.circular(
                                   10,
                                 ),
@@ -725,7 +725,7 @@ class _productshome_page extends State<productshome_page> {
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.w300,
                                   // backgroundColor: Colors.black45,
-                                  color: ThemeBc.textwhite,
+                                  color: ThemeBc.app_textwhite_color,
                                 ),
                               ),
                             ),
@@ -869,7 +869,7 @@ class _productshome_page extends State<productshome_page> {
                                                                             style:
                                                                                 GoogleFonts.sarabun(
                                                                               textStyle: TextStyle(
-                                                                                color: ThemeBc.textblack,
+                                                                                color: ThemeBc.app_textblack_color,
                                                                                 fontWeight: FontWeight.bold,
                                                                                 fontSize: 10,
                                                                               ),
@@ -889,7 +889,7 @@ class _productshome_page extends State<productshome_page> {
                                                                   textStyle:
                                                                       TextStyle(
                                                                     color: ThemeBc
-                                                                        .textblack,
+                                                                        .app_textblack_color,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w500,
@@ -923,8 +923,8 @@ class _productshome_page extends State<productshome_page> {
                 } else if (snapshot.hasError) {}
 
                 return Center(
-                    child: SpinKitCubeGrid(
-                  color: ThemeBc.green05,
+                    child: SpinKitThreeInOut(
+                  color: ThemeBc.app_linear_on,
                 ));
               },
             ),

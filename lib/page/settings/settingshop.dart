@@ -478,16 +478,16 @@ class _settingshopState extends State<settingshop>
       // drawer: Icon(Icons.ac_unit, color: white),
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: ThemeBc.white, //change your color here
+          color: ThemeBc.app_white_color, //change your color here
         ),
-        foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.green05,
+        foregroundColor: ThemeBc.app_white_color,
+        backgroundColor: ThemeBc.app_theme_color,
         title: Center(child: const Text('ร้านค้า')),
         actions: <Widget>[
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.green05,
+              color: ThemeBc.app_linear_on,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {},
@@ -496,10 +496,10 @@ class _settingshopState extends State<settingshop>
       ),
       body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [ThemeBc.white, ThemeBc.white],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft),
+          gradient: LinearGradient(colors: [
+            ThemeBc.app_white_color,
+            ThemeBc.app_white_color,
+          ], begin: Alignment.topRight, end: Alignment.bottomLeft),
         ),
         child: SafeArea(
           child: ListView(

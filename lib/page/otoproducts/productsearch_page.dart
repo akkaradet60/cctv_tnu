@@ -73,10 +73,10 @@ class _productstore_page extends State<productstore_page> {
         appBar: AppBar(
           centerTitle: true,
           iconTheme: IconThemeData(
-            color: ThemeBc.white, //change your color here
+            color: ThemeBc.app_white_color, //change your color here
           ),
-          foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.green05,
+          foregroundColor: ThemeBc.app_white_color,
+          backgroundColor: ThemeBc.app_theme_color,
           title: Column(
             children: [
               Center(
@@ -84,7 +84,7 @@ class _productstore_page extends State<productstore_page> {
                 'ค้นหา สินค้า OTOP',
                 style: GoogleFonts.sarabun(
                   textStyle: TextStyle(
-                    color: ThemeBc.textwhite,
+                    color: ThemeBc.app_textwhite_color,
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
@@ -96,7 +96,7 @@ class _productstore_page extends State<productstore_page> {
             IconButton(
               icon: Icon(
                 Icons.refresh,
-                color: ThemeBc.green05,
+                color: ThemeBc.app_linear_on,
               ),
               tooltip: 'Show Snackbar',
               onPressed: () {},
@@ -105,10 +105,10 @@ class _productstore_page extends State<productstore_page> {
         ),
         body: Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [ThemeBc.green05, ThemeBc.green01],
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft),
+            gradient: LinearGradient(colors: [
+              ThemeBc.app_linear_on,
+              ThemeBc.app_linear_lower,
+            ], begin: Alignment.topRight, end: Alignment.bottomLeft),
           ),
           child: Column(
             children: <Widget>[
@@ -132,7 +132,7 @@ class _productstore_page extends State<productstore_page> {
         padding: const EdgeInsets.all(8.0),
         child: Container(
           decoration: BoxDecoration(
-              color: ThemeBc.white,
+              color: ThemeBc.app_white_color,
               borderRadius: BorderRadius.circular(
                 10,
               ),
@@ -234,7 +234,7 @@ class _productstore_page extends State<productstore_page> {
                                   '${productt.title}',
                                   style: GoogleFonts.sarabun(
                                     textStyle: TextStyle(
-                                      color: ThemeBc.textblack,
+                                      color: ThemeBc.app_textblack_color,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 15,
                                     ),
@@ -245,7 +245,7 @@ class _productstore_page extends State<productstore_page> {
                                   '${productt.product_price} บาท',
                                   style: GoogleFonts.sarabun(
                                     textStyle: TextStyle(
-                                      color: ThemeBc.textblack,
+                                      color: ThemeBc.app_textblack_color,
                                       fontWeight: FontWeight.w400,
                                       fontSize: 15,
                                     ),
@@ -256,7 +256,7 @@ class _productstore_page extends State<productstore_page> {
                                   '  ${productt.author}',
                                   style: GoogleFonts.sarabun(
                                     textStyle: TextStyle(
-                                      color: ThemeBc.textblack,
+                                      color: ThemeBc.app_textblack_color,
                                       fontWeight: FontWeight.w400,
                                       fontSize: 15,
                                     ),

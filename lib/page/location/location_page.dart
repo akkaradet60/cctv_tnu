@@ -95,10 +95,10 @@ class _location_page extends State<location_page> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: ThemeBc.white, //change your color here
+          color: ThemeBc.app_white_color, //change your color here
         ),
-        foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.green05,
+        foregroundColor: ThemeBc.app_white_color,
+        backgroundColor: ThemeBc.app_theme_color,
         title: Column(
           children: [
             Center(
@@ -106,7 +106,7 @@ class _location_page extends State<location_page> {
               'สถานที่ราชการ',
               style: GoogleFonts.sarabun(
                 textStyle: TextStyle(
-                  color: ThemeBc.textwhite,
+                  color: ThemeBc.app_textwhite_color,
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                 ),
@@ -118,12 +118,12 @@ class _location_page extends State<location_page> {
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.green05,
+              color: ThemeBc.app_linear_on,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context)
-                  .showSnackBar(SnackBar(content: Text('เราเทศบาลพระลับ')));
+                  .showSnackBar(SnackBar(content: Text('เรา' + AppNew.name)));
             },
           ),
         ],
@@ -131,10 +131,10 @@ class _location_page extends State<location_page> {
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [ThemeBc.white, ThemeBc.white],
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft),
+            gradient: LinearGradient(colors: [
+              ThemeBc.app_white_color,
+              ThemeBc.app_white_color,
+            ], begin: Alignment.topRight, end: Alignment.bottomLeft),
           ),
           child: ListView(
             children: [
@@ -168,7 +168,7 @@ class _location_page extends State<location_page> {
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                          color: ThemeBc.green05,
+                          color: ThemeBc.app_linear_on,
                           borderRadius: BorderRadius.circular(
                             10,
                           ),
@@ -187,7 +187,7 @@ class _location_page extends State<location_page> {
                             fontSize: 20.0,
                             fontWeight: FontWeight.w300,
                             // backgroundColor: Colors.black45,
-                            color: ThemeBc.textwhite,
+                            color: ThemeBc.app_textwhite_color,
                           ),
                         ),
                       ),
@@ -348,7 +348,7 @@ class _location_page extends State<location_page> {
                                         '${snapshot.data!['data'][index]['travel_name']}',
                                         style: GoogleFonts.sarabun(
                                           textStyle: TextStyle(
-                                            color: ThemeBc.textblack,
+                                            color: ThemeBc.app_textblack_color,
                                             fontWeight: FontWeight.bold,
                                             fontSize: 17,
                                           ),
@@ -396,8 +396,8 @@ class _location_page extends State<location_page> {
           }
 
           return Center(
-              child: SpinKitCubeGrid(
-            color: ThemeBc.green05,
+              child: SpinKitThreeInOut(
+            color: ThemeBc.app_linear_on,
           ));
         },
       ),

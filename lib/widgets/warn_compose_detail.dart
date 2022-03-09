@@ -48,7 +48,7 @@ class W_C_Detali extends StatelessWidget {
                           name,
                           style: GoogleFonts.sarabun(
                             textStyle: TextStyle(
-                              color: ThemeBc.textblack,
+                              color: ThemeBc.app_textblack_color,
                               fontWeight: FontWeight.bold,
                               fontSize: 15,
                             ),
@@ -64,7 +64,7 @@ class W_C_Detali extends StatelessWidget {
                                 name02,
                                 style: GoogleFonts.sarabun(
                                   textStyle: TextStyle(
-                                    color: ThemeBc.textblack,
+                                    color: ThemeBc.app_textblack_color,
                                     fontWeight: FontWeight.w400,
                                     fontSize: 13,
                                   ),
@@ -79,7 +79,7 @@ class W_C_Detali extends StatelessWidget {
                       child: IconButton(
                         icon: Icon(
                           Icons.article,
-                          color: ThemeBc.textblack,
+                          color: ThemeBc.app_textblack_color,
                           size: 30,
                         ),
                         tooltip: 'Show Snackbar',
@@ -143,7 +143,7 @@ class W_C_Detali extends StatelessWidget {
   //                                               child: IconButton(
   //                                                 icon: Icon(
   //                                                   Icons.article,
-  //                                                   color: ThemeBc.white,
+  //                                                   color: ThemeBc.app_white_color,
   //                                                   size: 30,
   //                                                 ),
   //                                                 tooltip: 'Show Snackbar',

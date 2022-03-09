@@ -137,7 +137,8 @@ class _forgot_password extends State<forgot_password>
                                           'ลืมรหัสผ่าน',
                                           style: GoogleFonts.sarabun(
                                             textStyle: TextStyle(
-                                              color: ThemeBc.textblack,
+                                              color:
+                                                  ThemeBc.app_textblack_color,
                                               fontWeight: FontWeight.bold,
                                               fontSize: 30,
                                             ),
@@ -188,7 +189,8 @@ class _forgot_password extends State<forgot_password>
                                               hintText: 'อีเมล',
                                               hintStyle: GoogleFonts.sarabun(
                                                 textStyle: TextStyle(
-                                                  color: ThemeBc.textwhite,
+                                                  color: ThemeBc
+                                                      .app_textwhite_color,
                                                   fontWeight: FontWeight.w400,
                                                   fontSize: 15,
                                                 ),
@@ -198,9 +200,11 @@ class _forgot_password extends State<forgot_password>
                                               enabledBorder:
                                                   UnderlineInputBorder(
                                                 borderSide: BorderSide(
-                                                    color: ThemeBc.white),
+                                                  color:
+                                                      ThemeBc.app_white_color,
+                                                ),
                                               ),
-                                              // fillColor: ThemeBc.white,
+                                              // fillColor: ThemeBc.app_white_color,
                                             ),
                                             validator: MultiValidator([
                                               RequiredValidator(
@@ -241,7 +245,7 @@ class _forgot_password extends State<forgot_password>
                                         },
                                         icon: Icon(
                                           Icons.description,
-                                          color: ThemeBc.white,
+                                          color: ThemeBc.app_white_color,
                                         ),
                                         label: LocaleText(
                                           'บันทึก',
@@ -249,11 +253,11 @@ class _forgot_password extends State<forgot_password>
                                             fontSize: 18.0,
                                             fontWeight: FontWeight.bold,
                                             // backgroundColor: Colors.black45,
-                                            color: ThemeBc.textwhite,
+                                            color: ThemeBc.app_textwhite_color,
                                           ),
                                         ),
                                         style: ElevatedButton.styleFrom(
-                                          primary: ThemeBc.green05,
+                                          primary: ThemeBc.app_linear_on,
                                           // onPrimary: Colors.white,
                                           // shadowColor: Colors.grey[700],
 
@@ -270,7 +274,7 @@ class _forgot_password extends State<forgot_password>
                                           style: TextStyle(
                                               decoration:
                                                   TextDecoration.underline)),
-                                      textColor: ThemeBc.white,
+                                      textColor: ThemeBc.app_white_color,
                                       onPressed: () {
                                         // _fbKey.currentState.reset();
                                         Navigator.pushNamed(
@@ -326,25 +330,25 @@ class _forgot_password extends State<forgot_password>
     }
 
     return Scaffold(
-      // backgroundColor: ThemeBc.green05,
+      // backgroundColor: ThemeBc.app_theme_color,
       // drawer: manu(),
       // drawer: Icon(Icons.ac_unit, color: white),
       // appBar: AppBar(
       //   iconTheme: IconThemeData(
-      //     color: ThemeBc.white, //change your color here
+      //     color: ThemeBc.app_white_color, //change your color here
       //   ),
       //
-      //   foregroundColor: ThemeBc.white,
+      //   foregroundColor: ThemeBc.app_white_color,
       //   backgroundColor: ThemeBc.black,
       //   title: Center(child: Text('บันทึก')),
       //   actions: <Widget>[],
       // ),
       body: Container(
         decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [ThemeBc.green05, ThemeBc.green01],
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft)),
+            gradient: LinearGradient(colors: [
+          ThemeBc.app_linear_on,
+          ThemeBc.app_linear_lower,
+        ], begin: Alignment.topRight, end: Alignment.bottomLeft)),
         child: SafeArea(
           child: ListView(
             children: [

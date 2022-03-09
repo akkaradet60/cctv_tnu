@@ -81,10 +81,10 @@ class _warn1State extends State<settingpro> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: ThemeBc.white, //change your color here
+          color: ThemeBc.app_white_color, //change your color here
         ),
-        foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.green05,
+        foregroundColor: ThemeBc.app_white_color,
+        backgroundColor: ThemeBc.app_theme_color,
         title: Column(
           children: [
             Center(child: const Text('จัดการสินค้า')),
@@ -94,7 +94,7 @@ class _warn1State extends State<settingpro> {
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.green05,
+              color: ThemeBc.app_linear_on,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {},
@@ -103,10 +103,10 @@ class _warn1State extends State<settingpro> {
       ),
       body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [ThemeBc.white, ThemeBc.white],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft),
+          gradient: LinearGradient(colors: [
+            ThemeBc.app_white_color,
+            ThemeBc.app_white_color,
+          ], begin: Alignment.topRight, end: Alignment.bottomLeft),
         ),
         child: SafeArea(
           child: ListView(

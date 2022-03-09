@@ -93,10 +93,10 @@ class _menu_pangState extends State<menu_pang> {
         child: Drawer(
           child: Container(
             decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    colors: [ThemeBc.green05, ThemeBc.green01],
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft)),
+                gradient: LinearGradient(colors: [
+              ThemeBc.app_linear_on,
+              ThemeBc.app_linear_lower,
+            ], begin: Alignment.topRight, end: Alignment.bottomLeft)),
             child: ListView(
               children: [
                 Container(
@@ -113,7 +113,7 @@ class _menu_pangState extends State<menu_pang> {
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
-                                        color: ThemeBc.green05,
+                                        color: ThemeBc.app_linear_on,
                                         borderRadius: BorderRadius.circular(
                                           10,
                                         ),
@@ -133,7 +133,7 @@ class _menu_pangState extends State<menu_pang> {
                                           fontSize: 20.0,
                                           fontWeight: FontWeight.w300,
                                           // backgroundColor: Colors.black45,
-                                          color: ThemeBc.textwhite,
+                                          color: ThemeBc.app_textwhite_color,
                                         ),
                                       ),
                                     ),
@@ -175,7 +175,7 @@ class _menu_pangState extends State<menu_pang> {
                                                             textStyle:
                                                                 TextStyle(
                                                               color: ThemeBc
-                                                                  .textblack,
+                                                                  .app_textblack_color,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
@@ -194,7 +194,8 @@ class _menu_pangState extends State<menu_pang> {
                                                     const EdgeInsets.all(2.0),
                                                 child: Container(
                                                   decoration: BoxDecoration(
-                                                      color: ThemeBc.white,
+                                                      color: ThemeBc
+                                                          .app_white_color,
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                         10,
@@ -211,8 +212,8 @@ class _menu_pangState extends State<menu_pang> {
                                                       style:
                                                           GoogleFonts.sarabun(
                                                         textStyle: TextStyle(
-                                                          color:
-                                                              ThemeBc.textblack,
+                                                          color: ThemeBc
+                                                              .app_textblack_color,
                                                           fontWeight:
                                                               FontWeight.w400,
                                                           fontSize: 15,
@@ -272,7 +273,7 @@ class _menu_pangState extends State<menu_pang> {
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             color:
-                                                                                ThemeBc.green05,
+                                                                                ThemeBc.app_linear_on,
                                                                             borderRadius:
                                                                                 BorderRadius.circular(
                                                                               10,
@@ -288,7 +289,7 @@ class _menu_pangState extends State<menu_pang> {
                                                                                 'ภาษาไทย',
                                                                                 style: GoogleFonts.sarabun(
                                                                                   textStyle: TextStyle(
-                                                                                    color: ThemeBc.textwhite,
+                                                                                    color: ThemeBc.app_textwhite_color,
                                                                                     fontWeight: FontWeight.w400,
                                                                                     fontSize: 15,
                                                                                   ),
@@ -320,7 +321,7 @@ class _menu_pangState extends State<menu_pang> {
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             color:
-                                                                                ThemeBc.green05,
+                                                                                ThemeBc.app_linear_on,
                                                                             borderRadius:
                                                                                 BorderRadius.circular(
                                                                               10,
@@ -336,7 +337,7 @@ class _menu_pangState extends State<menu_pang> {
                                                                                 'English',
                                                                                 style: GoogleFonts.sarabun(
                                                                                   textStyle: TextStyle(
-                                                                                    color: ThemeBc.textwhite,
+                                                                                    color: ThemeBc.app_textwhite_color,
                                                                                     fontWeight: FontWeight.w400,
                                                                                     fontSize: 15,
                                                                                   ),
@@ -368,7 +369,7 @@ class _menu_pangState extends State<menu_pang> {
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             color:
-                                                                                ThemeBc.green05,
+                                                                                ThemeBc.app_linear_on,
                                                                             borderRadius:
                                                                                 BorderRadius.circular(
                                                                               10,
@@ -384,7 +385,7 @@ class _menu_pangState extends State<menu_pang> {
                                                                                 '中国',
                                                                                 style: GoogleFonts.sarabun(
                                                                                   textStyle: TextStyle(
-                                                                                    color: ThemeBc.textwhite,
+                                                                                    color: ThemeBc.app_textwhite_color,
                                                                                     fontWeight: FontWeight.w400,
                                                                                     fontSize: 15,
                                                                                   ),
@@ -411,7 +412,8 @@ class _menu_pangState extends State<menu_pang> {
                                                     const EdgeInsets.all(2.0),
                                                 child: Container(
                                                   decoration: BoxDecoration(
-                                                      color: ThemeBc.white,
+                                                      color: ThemeBc
+                                                          .app_white_color,
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                         10,
@@ -428,8 +430,8 @@ class _menu_pangState extends State<menu_pang> {
                                                       style:
                                                           GoogleFonts.sarabun(
                                                         textStyle: TextStyle(
-                                                          color:
-                                                              ThemeBc.textblack,
+                                                          color: ThemeBc
+                                                              .app_textblack_color,
                                                           fontWeight:
                                                               FontWeight.w400,
                                                           fontSize: 15,
@@ -464,7 +466,8 @@ class _menu_pangState extends State<menu_pang> {
                                                     const EdgeInsets.all(2.0),
                                                 child: Container(
                                                   decoration: BoxDecoration(
-                                                      color: ThemeBc.white,
+                                                      color: ThemeBc
+                                                          .app_white_color,
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                         10,
@@ -481,8 +484,8 @@ class _menu_pangState extends State<menu_pang> {
                                                       style:
                                                           GoogleFonts.sarabun(
                                                         textStyle: TextStyle(
-                                                          color:
-                                                              ThemeBc.textblack,
+                                                          color: ThemeBc
+                                                              .app_textblack_color,
                                                           fontWeight:
                                                               FontWeight.w400,
                                                           fontSize: 15,
@@ -511,12 +514,48 @@ class _menu_pangState extends State<menu_pang> {
                           );
                         } else {
                           return Center(
-                              child: SpinKitCubeGrid(
-                            color: ThemeBc.green05,
+                              child: SpinKitThreeInOut(
+                            color: ThemeBc.app_linear_on,
                           ));
                         }
                       } else {
                         if (snapshot.hasData) {
+                          if (snapshot.data!['data'] == 'ไม่พบข้อมูล') {
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color: ThemeBc.app_linear_on,
+                                        borderRadius: BorderRadius.circular(
+                                          10,
+                                        ),
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color:
+                                                  Colors.black.withOpacity(0.1),
+                                              offset: Offset(2, 4),
+                                              blurRadius: 7.0,
+                                              spreadRadius: 1.0),
+                                        ]),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        'ไม่พบข้อมูล',
+                                        style: TextStyle(
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.w300,
+                                          // backgroundColor: Colors.black45,
+                                          color: ThemeBc.app_textwhite_color,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
                           Map _userObj = {};
                           return Column(
                             children: [
@@ -525,60 +564,21 @@ class _menu_pangState extends State<menu_pang> {
                                 child: ListView.builder(
                                   itemCount: snapshot.data!['data'].length,
                                   itemBuilder: (context, index) {
-                                    if (snapshot.data!['data'] ==
-                                        'ไม่พบข้อมูล') {
-                                      return Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              decoration: BoxDecoration(
-                                                  color: ThemeBc.green05,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                    10,
-                                                  ),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                        color: Colors.black
-                                                            .withOpacity(0.1),
-                                                        offset: Offset(2, 4),
-                                                        blurRadius: 7.0,
-                                                        spreadRadius: 1.0),
-                                                  ]),
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Text(
-                                                  'ไม่พบข้อมูล',
-                                                  style: TextStyle(
-                                                    fontSize: 20.0,
-                                                    fontWeight: FontWeight.w300,
-                                                    // backgroundColor: Colors.black45,
-                                                    color: ThemeBc.textwhite,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    }
                                     var imageData = Global.networkImage;
 
-                                    if (snapshot.data!['data'][index]
+                                    if (snapshot.data!['data'][0]
                                                 ['user_image'] !=
                                             null &&
-                                        snapshot.data!['data'][index]
+                                        snapshot.data!['data'][0]
                                                 ['user_image_check'] ==
                                             '1') {
                                       imageData = Global.urlFile2 +
-                                          snapshot.data!['data'][index]
+                                          snapshot.data!['data'][0]
                                               ['user_image'];
-                                    } else if (snapshot.data!['data'][index]
+                                    } else if (snapshot.data!['data'][0]
                                                 ['user_image'] !=
                                             null &&
-                                        snapshot.data!['data'][index]
+                                        snapshot.data!['data'][0]
                                                 ['user_image_check'] ==
                                             '2') {
                                       imageData = Global.networkImage;
@@ -670,7 +670,7 @@ class _menu_pangState extends State<menu_pang> {
                                                                           textStyle:
                                                                               TextStyle(
                                                                             color:
-                                                                                ThemeBc.textblack,
+                                                                                ThemeBc.app_textblack_color,
                                                                             fontWeight:
                                                                                 FontWeight.bold,
                                                                             fontSize:
@@ -679,16 +679,16 @@ class _menu_pangState extends State<menu_pang> {
                                                                         ),
                                                                       ),
                                                                       Text(
-                                                                        ' ${snapshot.data!['data'][index]['user_firstname']}' !=
+                                                                        ' ${snapshot.data!['data'][0]['user_firstname']}' !=
                                                                                 null
-                                                                            ? '${snapshot.data!['data'][index]['user_firstname']}'
+                                                                            ? '${snapshot.data!['data'][0]['user_firstname']}'
                                                                             : _userObj["name"],
                                                                         style: GoogleFonts
                                                                             .sarabun(
                                                                           textStyle:
                                                                               TextStyle(
                                                                             color:
-                                                                                ThemeBc.textblack,
+                                                                                ThemeBc.app_textblack_color,
                                                                             fontWeight:
                                                                                 FontWeight.w400,
                                                                             fontSize:
@@ -707,7 +707,7 @@ class _menu_pangState extends State<menu_pang> {
                                                                           textStyle:
                                                                               TextStyle(
                                                                             color:
-                                                                                ThemeBc.textblack,
+                                                                                ThemeBc.app_textblack_color,
                                                                             fontWeight:
                                                                                 FontWeight.bold,
                                                                             fontSize:
@@ -720,10 +720,10 @@ class _menu_pangState extends State<menu_pang> {
                                                                             Column(
                                                                           children: [
                                                                             Text(
-                                                                              '${snapshot.data!['data'][index]['user_lastname']}' != null ? '${snapshot.data!['data'][index]['user_lastname']}' : _userObj["user_lastname"],
+                                                                              '${snapshot.data!['data'][0]['user_lastname']}' != null ? '${snapshot.data!['data'][0]['user_lastname']}' : _userObj["user_lastname"],
                                                                               style: GoogleFonts.sarabun(
                                                                                 textStyle: TextStyle(
-                                                                                  color: ThemeBc.textblack,
+                                                                                  color: ThemeBc.app_textblack_color,
                                                                                   fontWeight: FontWeight.w400,
                                                                                   fontSize: 16,
                                                                                 ),
@@ -761,7 +761,7 @@ class _menu_pangState extends State<menu_pang> {
                                                                               'อีเมล',
                                                                               style: GoogleFonts.sarabun(
                                                                                 textStyle: TextStyle(
-                                                                                  color: ThemeBc.textblack,
+                                                                                  color: ThemeBc.app_textblack_color,
                                                                                   fontWeight: FontWeight.bold,
                                                                                   fontSize: 16,
                                                                                 ),
@@ -769,10 +769,10 @@ class _menu_pangState extends State<menu_pang> {
                                                                             ),
                                                                             SizedBox(height: 5),
                                                                             Text(
-                                                                              '${snapshot.data!['data'][index]['user_email']}' != null ? '${snapshot.data!['data'][index]['user_email']}' : _userObj["user_email"],
+                                                                              '${snapshot.data!['data'][0]['user_email']}' != null ? '${snapshot.data!['data'][0]['user_email']}' : _userObj["user_email"],
                                                                               style: GoogleFonts.sarabun(
                                                                                 textStyle: TextStyle(
-                                                                                  color: ThemeBc.textblack,
+                                                                                  color: ThemeBc.app_textblack_color,
                                                                                   fontWeight: FontWeight.w400,
                                                                                   fontSize: 16,
                                                                                 ),
@@ -808,7 +808,7 @@ class _menu_pangState extends State<menu_pang> {
                                                               decoration:
                                                                   BoxDecoration(
                                                                       color: ThemeBc
-                                                                          .white,
+                                                                          .app_white_color,
                                                                       borderRadius:
                                                                           BorderRadius
                                                                               .circular(
@@ -830,7 +830,7 @@ class _menu_pangState extends State<menu_pang> {
                                                                     textStyle:
                                                                         TextStyle(
                                                                       color: ThemeBc
-                                                                          .textblack,
+                                                                          .app_textblack_color,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w400,
@@ -873,7 +873,7 @@ class _menu_pangState extends State<menu_pang> {
                                                               decoration:
                                                                   BoxDecoration(
                                                                       color: ThemeBc
-                                                                          .white,
+                                                                          .app_white_color,
                                                                       borderRadius:
                                                                           BorderRadius
                                                                               .circular(
@@ -896,7 +896,7 @@ class _menu_pangState extends State<menu_pang> {
                                                                     textStyle:
                                                                         TextStyle(
                                                                       color: ThemeBc
-                                                                          .textblack,
+                                                                          .app_textblack_color,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w400,
@@ -938,7 +938,7 @@ class _menu_pangState extends State<menu_pang> {
                                                               decoration:
                                                                   BoxDecoration(
                                                                       color: ThemeBc
-                                                                          .white,
+                                                                          .app_white_color,
                                                                       borderRadius:
                                                                           BorderRadius
                                                                               .circular(
@@ -973,7 +973,7 @@ class _menu_pangState extends State<menu_pang> {
                                                                     textStyle:
                                                                         TextStyle(
                                                                       color: ThemeBc
-                                                                          .textblack,
+                                                                          .app_textblack_color,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w400,
@@ -1016,8 +1016,8 @@ class _menu_pangState extends State<menu_pang> {
                       }
 
                       return Center(
-                          child: SpinKitCubeGrid(
-                        color: ThemeBc.green05,
+                          child: SpinKitThreeInOut(
+                        color: ThemeBc.app_linear_on,
                       ));
                     },
                   ),

@@ -98,16 +98,16 @@ class _travelmap_page extends State<travelmap_page> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: ThemeBc.white, //change your color here
+          color: ThemeBc.app_white_color, //change your color here
         ),
-        foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.green05,
+        foregroundColor: ThemeBc.app_white_color,
+        backgroundColor: ThemeBc.app_theme_color,
         title: Center(
           child: Text(
             '${travelmapname['travel_name']}',
             style: GoogleFonts.sarabun(
               textStyle: TextStyle(
-                color: ThemeBc.textwhite,
+                color: ThemeBc.app_textwhite_color,
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
@@ -118,19 +118,19 @@ class _travelmap_page extends State<travelmap_page> {
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.green05,
+              color: ThemeBc.app_linear_on,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context)
-                  .showSnackBar(SnackBar(content: Text('เราเทศบาลพระลับ')));
+                  .showSnackBar(SnackBar(content: Text('เรา' + AppNew.name)));
             },
           ),
         ],
       ),
 
       body: Container(
-        color: ThemeBc.white,
+        color: ThemeBc.app_white_color,
         child: Padding(
           padding: const EdgeInsets.all(0.0),
           child: ListView(
@@ -229,7 +229,7 @@ class _travelmap_page extends State<travelmap_page> {
                                 '${travelmapname['travel_name']}',
                                 style: GoogleFonts.sarabun(
                                   textStyle: TextStyle(
-                                    color: ThemeBc.textblack,
+                                    color: ThemeBc.app_textblack_color,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 17,
                                   ),
@@ -242,7 +242,7 @@ class _travelmap_page extends State<travelmap_page> {
                                 '  ${travelmapname['travel_detail']} ',
                                 style: GoogleFonts.sarabun(
                                   textStyle: TextStyle(
-                                    color: ThemeBc.textblack,
+                                    color: ThemeBc.app_textblack_color,
                                     fontWeight: FontWeight.w400,
                                     fontSize: 15,
                                   ),

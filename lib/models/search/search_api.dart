@@ -6,8 +6,8 @@ import 'package:http/http.dart' as http;
 
 class BooksApi {
   static Future<List<product>> getBooks(String query) async {
-    final url =
-        ('https://www.bc-official.com/api/app_nt/api/app/otop/search-product/restful/?product_app_id=1');
+    final url = (Global.urlWeb +
+        'api/app/otop/search-product/restful/?product_app_id=${Global.app_id}');
     final response = await http.get(Uri.parse(url), headers: {
       'Authorization':
           'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'

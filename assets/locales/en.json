@@ -22,7 +22,6 @@
   "สถานที่ราชการ": "Government office",
   "สินค้าโอทอป": "OTOP Products",
   "โทรทัศน์วงจรปิด": "CCTV",
-  "เทศบาลพระลับ": "Maha Sarakham Municipality",
   "สินค้าขายดีอาทิตย์นี้": "Best seller this week",
   "ราคา": "Price",
   "ผู้ชม": "Audience",
@@ -54,5 +53,6 @@
   "ค้นหาสินค้า": "Product search",
   "ค้นหาร้านค้า": "Find a store",
   "เข้าสู่ระบบ": "Login",
-  "ไม่สำเร็จ": "Failed"
+  "ไม่สำเร็จ": "Failed",
+  "nameapp": "Khon Kaen NEDA District 4"
 }

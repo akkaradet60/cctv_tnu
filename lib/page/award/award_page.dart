@@ -83,7 +83,7 @@ class _award_pageState extends State<award_page> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              color: ThemeBc.green05,
+                              color: ThemeBc.app_linear_on,
                               borderRadius: BorderRadius.circular(
                                 10,
                               ),
@@ -102,7 +102,7 @@ class _award_pageState extends State<award_page> {
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.w300,
                                 // backgroundColor: Colors.black45,
-                                color: ThemeBc.textwhite,
+                                color: ThemeBc.app_textwhite_color,
                               ),
                             ),
                           ),
@@ -207,7 +207,7 @@ class _award_pageState extends State<award_page> {
                                       children: [
                                         SizedBox(height: 135),
                                         Container(
-                                          color: ThemeBc.black54,
+                                          color: ThemeBc.app_black45_color,
                                           width: 370,
                                           height: 100,
                                           child: ListView(
@@ -221,7 +221,8 @@ class _award_pageState extends State<award_page> {
                                                   '  ${snapshot.data!['data'][item]['award_name']}',
                                                   style: GoogleFonts.sarabun(
                                                     textStyle: TextStyle(
-                                                      color: ThemeBc.textwhite,
+                                                      color: ThemeBc
+                                                          .app_textwhite_color,
                                                       fontWeight:
                                                           FontWeight.w400,
                                                       fontSize: 15,
@@ -233,7 +234,7 @@ class _award_pageState extends State<award_page> {
                                           ),
                                         ),
                                         // Container(
-                                        //   color: ThemeBc.green05,
+                                        //   color: ThemeBc.app_linear_on,
                                         //   width: 370,
                                         //   height: 100,
                                         //   child: ListView(
@@ -247,7 +248,7 @@ class _award_pageState extends State<award_page> {
                                         //           '  ${snapshot.data!['data'][item]['award_name']}',
                                         //           style: GoogleFonts.sarabun(
                                         //             textStyle: TextStyle(
-                                        //               color: ThemeBc.textwhite,
+                                        //               color: ThemeBc.app_textwhite_color,
                                         //               fontWeight: FontWeight.w400,
                                         //               fontSize: 15,
                                         //             ),
@@ -275,8 +276,8 @@ class _award_pageState extends State<award_page> {
               }
 
               return Center(
-                  child: SpinKitCubeGrid(
-                color: ThemeBc.green05,
+                  child: SpinKitThreeInOut(
+                color: ThemeBc.app_linear_on,
               ));
             },
           ),
@@ -300,7 +301,7 @@ class _award_pageState extends State<award_page> {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                            color: ThemeBc.green05,
+                            color: ThemeBc.app_linear_on,
                             borderRadius: BorderRadius.circular(
                               10,
                             ),
@@ -319,7 +320,7 @@ class _award_pageState extends State<award_page> {
                               fontSize: 20.0,
                               fontWeight: FontWeight.w300,
                               // backgroundColor: Colors.black45,
-                              color: ThemeBc.textwhite,
+                              color: ThemeBc.app_textwhite_color,
                             ),
                           ),
                         ),
@@ -370,7 +371,7 @@ class _award_pageState extends State<award_page> {
                                     height: 400,
                                     width: 350,
                                     decoration: BoxDecoration(
-                                        color: ThemeBc.white,
+                                        color: ThemeBc.app_white_color,
                                         borderRadius: BorderRadius.circular(
                                           10,
                                         ),
@@ -427,8 +428,8 @@ class _award_pageState extends State<award_page> {
                                                       style:
                                                           GoogleFonts.sarabun(
                                                         textStyle: TextStyle(
-                                                          color:
-                                                              ThemeBc.textblack,
+                                                          color: ThemeBc
+                                                              .app_textblack_color,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                           fontSize: 17,
@@ -446,8 +447,8 @@ class _award_pageState extends State<award_page> {
                                                       style:
                                                           GoogleFonts.sarabun(
                                                         textStyle: TextStyle(
-                                                          color:
-                                                              ThemeBc.textblack,
+                                                          color: ThemeBc
+                                                              .app_textblack_color,
                                                           fontWeight:
                                                               FontWeight.w400,
                                                           fontSize: 15,
@@ -479,8 +480,8 @@ class _award_pageState extends State<award_page> {
             }
 
             return Center(
-                child: SpinKitCubeGrid(
-              color: ThemeBc.green05,
+                child: SpinKitThreeInOut(
+              color: ThemeBc.app_linear_on,
             ));
           },
         ),
@@ -498,7 +499,7 @@ class _award_pageState extends State<award_page> {
     //           fontSize: 20.0,
     //           fontWeight: FontWeight.bold,
     //           // backgroundColor: Colors.black45,
-    //           color: ThemeBc.textblack,
+    //           color: ThemeBc.app_textblack_color,
     //         ),
     //       ),
     //     ),
@@ -515,7 +516,7 @@ class _award_pageState extends State<award_page> {
           'รางวัลทั้งหมด',
           style: GoogleFonts.sarabun(
             textStyle: TextStyle(
-              color: ThemeBc.textblack,
+              color: ThemeBc.app_textblack_color,
               fontWeight: FontWeight.bold,
               fontSize: 20,
             ),
@@ -527,10 +528,10 @@ class _award_pageState extends State<award_page> {
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
-            color: ThemeBc.white, //change your color here
+            color: ThemeBc.app_white_color, //change your color here
           ),
-          foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.green05,
+          foregroundColor: ThemeBc.app_white_color,
+          backgroundColor: ThemeBc.app_theme_color,
           title: Column(
             children: [
               Center(
@@ -538,7 +539,7 @@ class _award_pageState extends State<award_page> {
                 'รางวัล',
                 style: GoogleFonts.sarabun(
                   textStyle: TextStyle(
-                    color: ThemeBc.textwhite,
+                    color: ThemeBc.app_textwhite_color,
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
@@ -550,7 +551,7 @@ class _award_pageState extends State<award_page> {
             IconButton(
               icon: Icon(
                 Icons.refresh,
-                color: ThemeBc.green05,
+                color: ThemeBc.app_linear_on,
               ),
               tooltip: 'Show Snackbar',
               onPressed: () {},
@@ -559,10 +560,10 @@ class _award_pageState extends State<award_page> {
         ),
         body: Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [ThemeBc.white, ThemeBc.white],
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft),
+            gradient: LinearGradient(colors: [
+              ThemeBc.app_white_color,
+              ThemeBc.app_white_color,
+            ], begin: Alignment.topRight, end: Alignment.bottomLeft),
           ),
           child: ListView(
             children: [

@@ -173,7 +173,7 @@ class _settingprofile extends State<settingprofile>
                               const SizedBox(height: 20),
                               Container(
                                 decoration: BoxDecoration(
-                                    color: ThemeBc.white,
+                                    color: ThemeBc.app_white_color,
                                     borderRadius: BorderRadius.circular(
                                       10,
                                     ),
@@ -228,7 +228,7 @@ class _settingprofile extends State<settingprofile>
                               NeumorphicButton(
                                 style: const NeumorphicStyle(
                                   shape: NeumorphicShape.flat,
-                                  color: ThemeBc.white,
+                                  color: ThemeBc.app_white_color,
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(0),
@@ -274,7 +274,7 @@ class _settingprofile extends State<settingprofile>
                               NeumorphicButton(
                                 style: const NeumorphicStyle(
                                   shape: NeumorphicShape.flat,
-                                  color: ThemeBc.white,
+                                  color: ThemeBc.app_white_color,
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(0),
@@ -316,7 +316,7 @@ class _settingprofile extends State<settingprofile>
                               NeumorphicButton(
                                 style: const NeumorphicStyle(
                                   shape: NeumorphicShape.flat,
-                                  color: ThemeBc.white,
+                                  color: ThemeBc.app_white_color,
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(0),
@@ -363,7 +363,7 @@ class _settingprofile extends State<settingprofile>
                               NeumorphicButton(
                                 style: const NeumorphicStyle(
                                   shape: NeumorphicShape.flat,
-                                  color: ThemeBc.white,
+                                  color: ThemeBc.app_white_color,
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(0),
@@ -405,19 +405,19 @@ class _settingprofile extends State<settingprofile>
                                     },
                                     icon: Icon(
                                       Icons.description,
-                                      color: ThemeBc.textwhite,
+                                      color: ThemeBc.app_textwhite_color,
                                     ),
                                     label: Text(
                                       'แก้ไขข้อมูล',
                                       style: GoogleFonts.sarabun(
                                         textStyle: TextStyle(
-                                            color: ThemeBc.textwhite,
+                                            color: ThemeBc.app_textwhite_color,
                                             fontWeight: FontWeight.w400,
                                             fontSize: 17),
                                       ),
                                     ),
                                     style: ElevatedButton.styleFrom(
-                                      primary: ThemeBc.green05,
+                                      primary: ThemeBc.app_linear_on,
                                       onPrimary: Colors.white,
                                       // shadowColor: Colors.grey[700],
                                       // elevation: 30,
@@ -443,15 +443,15 @@ class _settingprofile extends State<settingprofile>
     }
 
     return Scaffold(
-      backgroundColor: ThemeBc.white,
+      backgroundColor: ThemeBc.app_white_color,
       // drawer: manu(),
       // drawer: Icon(Icons.ac_unit, color: white),
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: ThemeBc.white, //change your color here
+          color: ThemeBc.app_white_color, //change your color here
         ),
-        foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.green05,
+        foregroundColor: ThemeBc.app_white_color,
+        backgroundColor: ThemeBc.app_theme_color,
         title: Column(
           children: [
             Center(
@@ -459,7 +459,7 @@ class _settingprofile extends State<settingprofile>
               'แก้ไขข้อมูลส่วนตัว',
               style: GoogleFonts.sarabun(
                 textStyle: TextStyle(
-                  color: ThemeBc.textwhite,
+                  color: ThemeBc.app_textwhite_color,
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                 ),
@@ -471,7 +471,7 @@ class _settingprofile extends State<settingprofile>
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.green05,
+              color: ThemeBc.app_linear_on,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {},

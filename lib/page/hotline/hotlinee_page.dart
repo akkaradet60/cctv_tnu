@@ -76,10 +76,10 @@ class _hotlinee_pageState extends State<hotlinee_page> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: ThemeBc.white, //change your color here
+          color: ThemeBc.app_white_color, //change your color here
         ),
-        foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.green05,
+        foregroundColor: ThemeBc.app_white_color,
+        backgroundColor: ThemeBc.app_theme_color,
         title: Column(
           children: [
             Center(
@@ -87,7 +87,7 @@ class _hotlinee_pageState extends State<hotlinee_page> {
               'สายด่วน',
               style: GoogleFonts.sarabun(
                 textStyle: TextStyle(
-                  color: ThemeBc.textwhite,
+                  color: ThemeBc.app_textwhite_color,
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                 ),
@@ -99,12 +99,12 @@ class _hotlinee_pageState extends State<hotlinee_page> {
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.green05,
+              color: ThemeBc.app_linear_on,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context)
-                  .showSnackBar(SnackBar(content: Text('เราเทศบาลพระลับ')));
+                  .showSnackBar(SnackBar(content: Text('เรา' + AppNew.name)));
             },
           ),
         ],
@@ -112,10 +112,10 @@ class _hotlinee_pageState extends State<hotlinee_page> {
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [ThemeBc.white, ThemeBc.white],
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft),
+            gradient: LinearGradient(colors: [
+              ThemeBc.app_white_color,
+              ThemeBc.app_white_color,
+            ], begin: Alignment.topRight, end: Alignment.bottomLeft),
           ),
           child: ListView(
             children: [
@@ -184,10 +184,10 @@ class _hotlinee_pageState extends State<hotlinee_page> {
     return Container(
       child: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [ThemeBc.white, ThemeBc.white],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft),
+          gradient: LinearGradient(colors: [
+            ThemeBc.app_white_color,
+            ThemeBc.app_white_color,
+          ], begin: Alignment.topRight, end: Alignment.bottomLeft),
         ),
         child: Column(
           children: [
@@ -205,7 +205,7 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                           children: [
                             Container(
                               decoration: BoxDecoration(
-                                  color: ThemeBc.green05,
+                                  color: ThemeBc.app_linear_on,
                                   borderRadius: BorderRadius.circular(
                                     10,
                                   ),
@@ -224,7 +224,7 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                                     fontSize: 20.0,
                                     fontWeight: FontWeight.w300,
                                     // backgroundColor: Colors.black45,
-                                    color: ThemeBc.textwhite,
+                                    color: ThemeBc.app_textwhite_color,
                                   ),
                                 ),
                               ),
@@ -283,8 +283,8 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                                                     '${snapshot.data!['data'][index]['hotline_name']} ',
                                                     style: GoogleFonts.sarabun(
                                                       textStyle: TextStyle(
-                                                        color:
-                                                            ThemeBc.textblack,
+                                                        color: ThemeBc
+                                                            .app_textblack_color,
                                                         fontWeight:
                                                             FontWeight.bold,
                                                         fontSize: 15,
@@ -322,7 +322,7 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                                                                 return AlertDialog(
                                                                   backgroundColor:
                                                                       ThemeBc
-                                                                          .white,
+                                                                          .app_white_color,
                                                                   shape: RoundedRectangleBorder(
                                                                       borderRadius:
                                                                           new BorderRadius.circular(
@@ -360,7 +360,7 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                                                                                         'ติดต่อไปที่',
                                                                                         style: GoogleFonts.sarabun(
                                                                                           textStyle: TextStyle(
-                                                                                            color: ThemeBc.textblack,
+                                                                                            color: ThemeBc.app_textblack_color,
                                                                                             fontWeight: FontWeight.bold,
                                                                                             fontSize: 15,
                                                                                           ),
@@ -372,7 +372,7 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                                                                                         '${snapshot.data!['data'][index]['hotline_name']} ${snapshot.data!['data'][index]['hotline_phone']} ?',
                                                                                         style: GoogleFonts.sarabun(
                                                                                           textStyle: TextStyle(
-                                                                                            color: ThemeBc.textblack,
+                                                                                            color: ThemeBc.app_textblack_color,
                                                                                             fontWeight: FontWeight.w400,
                                                                                             fontSize: 15,
                                                                                           ),
@@ -397,7 +397,7 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                                                                                 'ตกลง',
                                                                                 style: GoogleFonts.sarabun(
                                                                                   textStyle: TextStyle(
-                                                                                    color: ThemeBc.textwhite,
+                                                                                    color: ThemeBc.app_textwhite_color,
                                                                                     fontWeight: FontWeight.w400,
                                                                                     fontSize: 15,
                                                                                   ),
@@ -406,7 +406,7 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                                                                             ),
                                                                             style:
                                                                                 ElevatedButton.styleFrom(
-                                                                              primary: ThemeBc.green05,
+                                                                              primary: ThemeBc.app_linear_on,
                                                                               onPrimary: Colors.white,
                                                                               // shadowColor: Colors.white,
                                                                               // elevation: 30,
@@ -479,8 +479,8 @@ class _hotlinee_pageState extends State<hotlinee_page> {
                   }
 
                   return Center(
-                      child: SpinKitCubeGrid(
-                    color: ThemeBc.green05,
+                      child: SpinKitThreeInOut(
+                    color: ThemeBc.app_linear_on,
                   ));
                 },
               ),

@@ -221,7 +221,7 @@ class _home_pageState extends State<home_page> {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                            color: ThemeBc.green05,
+                            color: ThemeBc.app_linear_on,
                             borderRadius: BorderRadius.circular(
                               10,
                             ),
@@ -240,7 +240,7 @@ class _home_pageState extends State<home_page> {
                               fontSize: 20.0,
                               fontWeight: FontWeight.w300,
                               // backgroundColor: Colors.black45,
-                              color: ThemeBc.textwhite,
+                              color: ThemeBc.app_textwhite_color,
                             ),
                           ),
                         ),
@@ -343,7 +343,7 @@ class _home_pageState extends State<home_page> {
                                   children: [
                                     SizedBox(height: 135),
                                     Container(
-                                      color: ThemeBc.black54,
+                                      color: ThemeBc.app_black45_color,
                                       width: 370,
                                       height: 100,
                                       child: ListView(
@@ -357,7 +357,8 @@ class _home_pageState extends State<home_page> {
                                               '  ${snapshot.data!['data'][item]['blog_name']}',
                                               style: GoogleFonts.sarabun(
                                                 textStyle: TextStyle(
-                                                  color: ThemeBc.textwhite,
+                                                  color: ThemeBc
+                                                      .app_textwhite_color,
                                                   fontWeight: FontWeight.w400,
                                                   fontSize: 15,
                                                 ),
@@ -399,8 +400,8 @@ class _home_pageState extends State<home_page> {
             }
 
             return Center(
-                child: SpinKitCubeGrid(
-              color: ThemeBc.green05,
+                child: SpinKitThreeInOut(
+              color: ThemeBc.app_linear_on,
             ));
           },
         ),
@@ -416,7 +417,7 @@ class _home_pageState extends State<home_page> {
             'เมนู',
             style: GoogleFonts.sarabun(
               textStyle: TextStyle(
-                color: ThemeBc.textwhite,
+                color: ThemeBc.app_textwhite_color,
                 fontWeight: FontWeight.bold,
                 fontSize: 25,
               ),
@@ -675,18 +676,18 @@ class _home_pageState extends State<home_page> {
       drawer: menu_pang(),
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: ThemeBc.white, //change your color here
+          color: ThemeBc.app_white_color, //change your color here
         ),
-        foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.green05,
+        foregroundColor: ThemeBc.app_white_color,
+        backgroundColor: ThemeBc.app_theme_color,
         title: Column(
           children: [
             Center(
               child: LocaleText(
-                'เทศบาลพระลับ',
+                AppNew.name,
                 style: GoogleFonts.sarabun(
                   textStyle: TextStyle(
-                    color: ThemeBc.textwhite,
+                    color: ThemeBc.app_textwhite_color,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
@@ -699,11 +700,11 @@ class _home_pageState extends State<home_page> {
         //Image.asset('assets/Noicon.png', scale: 15),
         actions: <Widget>[
           IconButton(
-            icon: Image.asset('assets/logo02.png', scale: 15),
+            icon: Image.asset(AppNew.iconasset, scale: 15),
             tooltip: 'Show Snackbar',
             onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('เราเทศบาลพระลับ')));
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text('เรา' + AppNew.name)));
             },
           ),
         ],
@@ -712,14 +713,14 @@ class _home_pageState extends State<home_page> {
         child: SafeArea(
           child: Container(
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [ThemeBc.green05, ThemeBc.green01],
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft),
+              gradient: LinearGradient(colors: [
+                ThemeBc.app_linear_on,
+                ThemeBc.app_linear_lower,
+              ], begin: Alignment.topRight, end: Alignment.bottomLeft),
             ),
             child: ListView(
               children: <Widget>[
-                // ThemeBc.green01
+                // ThemeBc.app_linear_lower,
                 SizedBox(height: 15),
                 slide(context),
                 Padding(

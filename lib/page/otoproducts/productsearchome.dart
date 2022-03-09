@@ -19,10 +19,10 @@ class _produscthomeState extends State<produsctsearchome> {
         appBar: AppBar(
           centerTitle: true,
           iconTheme: IconThemeData(
-            color: ThemeBc.white, //change your color here
+            color: ThemeBc.app_white_color, //change your color here
           ),
-          foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.green05,
+          foregroundColor: ThemeBc.app_white_color,
+          backgroundColor: ThemeBc.app_theme_color,
           title: Column(
             children: [
               Center(
@@ -30,7 +30,7 @@ class _produscthomeState extends State<produsctsearchome> {
                 'ค้นหา',
                 style: GoogleFonts.sarabun(
                   textStyle: TextStyle(
-                    color: ThemeBc.textwhite,
+                    color: ThemeBc.app_textwhite_color,
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
@@ -42,7 +42,7 @@ class _produscthomeState extends State<produsctsearchome> {
             IconButton(
               icon: Icon(
                 Icons.refresh,
-                color: ThemeBc.green05,
+                color: ThemeBc.app_linear_on,
               ),
               tooltip: 'Show Snackbar',
               onPressed: () {},
@@ -51,10 +51,10 @@ class _produscthomeState extends State<produsctsearchome> {
         ),
         body: Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [ThemeBc.green05, ThemeBc.green01],
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft),
+            gradient: LinearGradient(colors: [
+              ThemeBc.app_linear_on,
+              ThemeBc.app_linear_lower,
+            ], begin: Alignment.topRight, end: Alignment.bottomLeft),
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -74,10 +74,10 @@ class _produscthomeState extends State<produsctsearchome> {
                             '/productstore_page',
                           );
                         },
-                        colorButton: ThemeBc.white,
+                        colorButton: ThemeBc.app_white_color,
                         textStyle: GoogleFonts.sarabun(
                           textStyle: TextStyle(
-                            color: ThemeBc.textblack,
+                            color: ThemeBc.app_textblack_color,
                             fontWeight: FontWeight.bold,
                             fontSize: 17,
                           ),
@@ -91,10 +91,10 @@ class _produscthomeState extends State<produsctsearchome> {
                               context, '/productsearchstore_page',
                               arguments: {});
                         },
-                        colorButton: ThemeBc.white,
+                        colorButton: ThemeBc.app_white_color,
                         textStyle: GoogleFonts.sarabun(
                           textStyle: TextStyle(
-                            color: ThemeBc.textblack,
+                            color: ThemeBc.app_textblack_color,
                             fontWeight: FontWeight.bold,
                             fontSize: 17,
                           ),
@@ -134,12 +134,12 @@ class _produscthomeState extends State<produsctsearchome> {
 //                     '/productstore_page',
 //                   );
 //                 },
-//                 colorButton: ThemeBc.white,
+//                 colorButton: ThemeBc.app_white_color,
 //                 textStyle: TextStyle(
 //                   fontSize: 20.0,
 //                   fontWeight: FontWeight.bold,
 //                   // backgroundColor: Colors.black45,
-//                   color: ThemeBc.textblack,
+//                   color: ThemeBc.app_textblack_color,
 //                 )),
 //             SizedBox(height: 10),
 //             CustomButton(
@@ -150,12 +150,12 @@ class _produscthomeState extends State<produsctsearchome> {
 //                     '/productsearchstore_page',
 //                   );
 //                 },
-//                 colorButton: ThemeBc.white,
+//                 colorButton: ThemeBc.app_white_color,
 //                 textStyle: TextStyle(
 //                   fontSize: 20.0,
 //                   fontWeight: FontWeight.bold,
 //                   // backgroundColor: Colors.black45,
-//                   color: ThemeBc.textblack,
+//                   color: ThemeBc.app_textblack_color,
 //                 ))
 //           ],
 //         ),

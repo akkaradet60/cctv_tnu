@@ -16,7 +16,7 @@ class warn_api extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: ThemeBc.white,
+      backgroundColor: ThemeBc.app_white_color,
       // shape: CircleBorder(),
       shape:
           RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30)),
@@ -31,7 +31,7 @@ class warn_api extends StatelessWidget {
                 title,
                 style: GoogleFonts.sarabun(
                   textStyle: TextStyle(
-                    color: ThemeBc.textblack,
+                    color: ThemeBc.app_textblack_color,
                     fontWeight: FontWeight.w400,
                     fontSize: 15,
                   ),
@@ -45,7 +45,7 @@ class warn_api extends StatelessWidget {
           //     fontSize: 18.0,
           //     fontWeight: FontWeight.bold,
           //     // backgroundColor: Colors.black45,
-          //     color: ThemeBc.white,
+          //     color: ThemeBc.app_white_color,
           //   ),
           // ),
         ),

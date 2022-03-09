@@ -359,11 +359,11 @@ class _LoginPageState extends State<login_page> {
     bool _isLoggedIn = false;
     Map _userObj = {};
     return Scaffold(
-        backgroundColor: ThemeBc.white,
+        backgroundColor: ThemeBc.app_white_color,
         body: Stack(
           children: [
             Image.asset(
-              'assets/bk02.jpg',
+              AppNew.imageBKasset,
               width: double.infinity,
               height: MediaQuery.of(context).size.height,
               fit: BoxFit.cover,
@@ -383,7 +383,7 @@ class _LoginPageState extends State<login_page> {
               //     borderRadius: BorderRadius.circular(0)),
               // decoration: BoxDecoration(
               //     gradient: LinearGradient(
-              //         colors: [ThemeBc.white, ThemeBc.white],
+              //         colors: [ThemeBc.app_white_color, ThemeBc.app_white_color,],
               //         begin: Alignment.topRight,
               //         end: Alignment.bottomLeft)),
               child: Container(
@@ -396,7 +396,7 @@ class _LoginPageState extends State<login_page> {
                           SizedBox(height: 50),
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: 140),
-                            child: Image.asset('assets/logo02.png'),
+                            child: Image.asset(AppNew.iconasset),
                           ),
                           SizedBox(height: 20),
                           FormBuilder(
@@ -417,7 +417,7 @@ class _LoginPageState extends State<login_page> {
                                     child: FormBuilderTextField(
                                       name: "email",
                                       style: TextStyle(color: Colors.white),
-                                      initialValue: 'demo@phalub.com',
+                                      initialValue: 'akkaradet.k6@snru.ac.th',
                                       maxLines: 1,
                                       keyboardType: TextInputType.emailAddress,
                                       decoration: const InputDecoration(
@@ -426,8 +426,9 @@ class _LoginPageState extends State<login_page> {
                                           color: Colors.white,
                                         ),
                                         enabledBorder: UnderlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: ThemeBc.white),
+                                          borderSide: BorderSide(
+                                            color: ThemeBc.app_white_color,
+                                          ),
                                         ),
                                         // // labelText: 'Email',
                                         hintText: 'อีเมล',
@@ -460,14 +461,15 @@ class _LoginPageState extends State<login_page> {
                                       style: TextStyle(color: Colors.white),
                                       name: "password",
                                       maxLines: 1,
-                                      initialValue: '12345678',
+                                      initialValue: '1234567',
                                       keyboardType:
                                           TextInputType.visiblePassword,
                                       obscureText: true,
                                       decoration: InputDecoration(
                                         enabledBorder: UnderlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: ThemeBc.white),
+                                          borderSide: BorderSide(
+                                            color: ThemeBc.app_white_color,
+                                          ),
                                         ),
                                         suffixIcon: const Icon(
                                           Icons.vpn_key,
@@ -500,7 +502,7 @@ class _LoginPageState extends State<login_page> {
                             child: Container(
                               width: 342,
                               decoration: BoxDecoration(
-                                  color: ThemeBc.white,
+                                  color: ThemeBc.app_white_color,
                                   borderRadius: BorderRadius.circular(
                                     10,
                                   ),
@@ -519,7 +521,7 @@ class _LoginPageState extends State<login_page> {
                                         'เข้าสู่ระบบ',
                                         style: GoogleFonts.sarabun(
                                           textStyle: TextStyle(
-                                            color: ThemeBc.textwhite,
+                                            color: ThemeBc.app_textwhite_color,
                                             fontWeight: FontWeight.w400,
                                             fontSize: 15,
                                           ),
@@ -529,7 +531,7 @@ class _LoginPageState extends State<login_page> {
                                         Icons.login,
                                       ),
                                       style: ElevatedButton.styleFrom(
-                                        primary: ThemeBc.green05,
+                                        primary: ThemeBc.app_linear_on,
                                         //side: BorderSide(color: Colors.red, width: 5),
                                         textStyle:
                                             const TextStyle(fontSize: 15),
@@ -559,7 +561,7 @@ class _LoginPageState extends State<login_page> {
                             child: Container(
                               width: 342,
                               decoration: BoxDecoration(
-                                  color: ThemeBc.white,
+                                  color: ThemeBc.app_white_color,
                                   borderRadius: BorderRadius.circular(
                                     10,
                                   ),
@@ -578,7 +580,7 @@ class _LoginPageState extends State<login_page> {
                                         'facebook',
                                         style: GoogleFonts.sarabun(
                                           textStyle: TextStyle(
-                                            color: ThemeBc.textwhite,
+                                            color: ThemeBc.app_textwhite_color,
                                             fontWeight: FontWeight.w400,
                                             fontSize: 15,
                                           ),
@@ -612,10 +614,10 @@ class _LoginPageState extends State<login_page> {
                               onPressed: () {
                                 loginapp();
                               },
-                              colorButton: ThemeBc.grey01,
+                              colorButton: ThemeBc.app_grey01_color,
                               textStyle: GoogleFonts.sarabun(
                                 textStyle: TextStyle(
-                                  color: ThemeBc.textwhite,
+                                  color: ThemeBc.app_textwhite_color,
                                   fontWeight: FontWeight.w400,
                                   fontSize: 15,
                                 ),
@@ -635,7 +637,7 @@ class _LoginPageState extends State<login_page> {
                                         'เปลี่ยนภาษา',
                                         style: GoogleFonts.sarabun(
                                           textStyle: TextStyle(
-                                            color: ThemeBc.textwhite,
+                                            color: ThemeBc.app_textwhite_color,
                                             fontWeight: FontWeight.w400,
                                             fontSize: 15,
                                           ),
@@ -643,7 +645,7 @@ class _LoginPageState extends State<login_page> {
                                       ),
                                       icon: const Icon(
                                         Icons.spellcheck,
-                                        color: ThemeBc.white,
+                                        color: ThemeBc.app_white_color,
                                       ),
                                       style: ElevatedButton.styleFrom(
                                         primary: Colors.black38,
@@ -695,7 +697,7 @@ class _LoginPageState extends State<login_page> {
                                                             decoration:
                                                                 BoxDecoration(
                                                                     color: ThemeBc
-                                                                        .background,
+                                                                        .app_theme_color,
                                                                     borderRadius:
                                                                         BorderRadius
                                                                             .circular(
@@ -714,7 +716,7 @@ class _LoginPageState extends State<login_page> {
                                                                     textStyle:
                                                                         TextStyle(
                                                                       color: ThemeBc
-                                                                          .textwhite,
+                                                                          .app_text_color,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w400,
@@ -746,7 +748,7 @@ class _LoginPageState extends State<login_page> {
                                                             decoration:
                                                                 BoxDecoration(
                                                                     color: ThemeBc
-                                                                        .background,
+                                                                        .app_theme_color,
                                                                     borderRadius:
                                                                         BorderRadius
                                                                             .circular(
@@ -765,7 +767,7 @@ class _LoginPageState extends State<login_page> {
                                                                     textStyle:
                                                                         TextStyle(
                                                                       color: ThemeBc
-                                                                          .textwhite,
+                                                                          .app_text_color,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w400,
@@ -797,7 +799,7 @@ class _LoginPageState extends State<login_page> {
                                                             decoration:
                                                                 BoxDecoration(
                                                               color: ThemeBc
-                                                                  .background,
+                                                                  .app_theme_color,
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
@@ -816,7 +818,7 @@ class _LoginPageState extends State<login_page> {
                                                                     textStyle:
                                                                         TextStyle(
                                                                       color: ThemeBc
-                                                                          .textwhite,
+                                                                          .app_text_color,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w400,

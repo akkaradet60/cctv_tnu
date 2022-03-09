@@ -53,10 +53,10 @@ class _productshop_page extends State<productstorehome> {
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
-            color: ThemeBc.white, //change your color here
+            color: ThemeBc.app_white_color, //change your color here
           ),
-          foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.green05,
+          foregroundColor: ThemeBc.app_white_color,
+          backgroundColor: ThemeBc.app_theme_color,
           title: Column(
             children: [
               Center(
@@ -64,7 +64,7 @@ class _productshop_page extends State<productstorehome> {
                 'ร้านค้า',
                 style: GoogleFonts.sarabun(
                   textStyle: TextStyle(
-                    color: ThemeBc.textwhite,
+                    color: ThemeBc.app_textwhite_color,
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
@@ -76,7 +76,7 @@ class _productshop_page extends State<productstorehome> {
             IconButton(
               icon: Icon(
                 Icons.refresh,
-                color: ThemeBc.green05,
+                color: ThemeBc.app_linear_on,
               ),
               tooltip: 'Show Snackbar',
               onPressed: () {},
@@ -85,10 +85,10 @@ class _productshop_page extends State<productstorehome> {
         ),
         body: Container(
           decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [ThemeBc.green05, ThemeBc.green01],
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft)),
+              gradient: LinearGradient(colors: [
+            ThemeBc.app_linear_on,
+            ThemeBc.app_linear_lower,
+          ], begin: Alignment.topRight, end: Alignment.bottomLeft)),
           child: Padding(
             padding: EdgeInsets.all(10),
             child: ListView(
@@ -133,7 +133,7 @@ class _productshop_page extends State<productstorehome> {
                                 child: Container(
                                   height: 250,
                                   decoration: BoxDecoration(
-                                      color: ThemeBc.white,
+                                      color: ThemeBc.app_white_color,
                                       borderRadius: BorderRadius.circular(
                                         10,
                                       ),
@@ -156,14 +156,16 @@ class _productshop_page extends State<productstorehome> {
                                             Icon(
                                               Icons.article,
                                               size: 40,
-                                              color: ThemeBc.textblack,
+                                              color:
+                                                  ThemeBc.app_textblack_color,
                                             ),
                                             SizedBox(width: 10),
                                             Text(
                                               '${productt['otop_name']}',
                                               style: GoogleFonts.sarabun(
                                                 textStyle: TextStyle(
-                                                  color: ThemeBc.textblack,
+                                                  color: ThemeBc
+                                                      .app_textblack_color,
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 17,
                                                 ),
@@ -203,7 +205,7 @@ class _productshop_page extends State<productstorehome> {
                                                             GoogleFonts.sarabun(
                                                           textStyle: TextStyle(
                                                             color: ThemeBc
-                                                                .textblack,
+                                                                .app_textblack_color,
                                                             fontWeight:
                                                                 FontWeight.w400,
                                                             fontSize: 15,
@@ -239,7 +241,7 @@ class _productshop_page extends State<productstorehome> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text_pane(
                                           text: 'สินค้าของร้านค้า',
-                                          color: ThemeBc.textwhite,
+                                          color: ThemeBc.app_textwhite_color,
                                           fontSize: 20),
                                     ),
                                   ],
@@ -311,7 +313,7 @@ class _productshop_page extends State<productstorehome> {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                                color: ThemeBc.green05,
+                                color: ThemeBc.app_linear_on,
                                 borderRadius: BorderRadius.circular(
                                   10,
                                 ),
@@ -330,7 +332,7 @@ class _productshop_page extends State<productstorehome> {
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.w300,
                                   // backgroundColor: Colors.black45,
-                                  color: ThemeBc.textwhite,
+                                  color: ThemeBc.app_textwhite_color,
                                 ),
                               ),
                             ),
@@ -474,7 +476,7 @@ class _productshop_page extends State<productstorehome> {
                                                                   textStyle:
                                                                       TextStyle(
                                                                     color: ThemeBc
-                                                                        .textblack,
+                                                                        .app_textblack_color,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .bold,
@@ -497,7 +499,7 @@ class _productshop_page extends State<productstorehome> {
                                                                   textStyle:
                                                                       TextStyle(
                                                                     color: ThemeBc
-                                                                        .textblack,
+                                                                        .app_textblack_color,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w400,
@@ -531,8 +533,8 @@ class _productshop_page extends State<productstorehome> {
                 } else if (snapshot.hasError) {}
 
                 return Center(
-                    child: SpinKitCubeGrid(
-                  color: ThemeBc.green05,
+                    child: SpinKitThreeInOut(
+                  color: ThemeBc.app_linear_on,
                 ));
               },
             ),

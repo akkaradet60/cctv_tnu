@@ -100,10 +100,10 @@ class _travelmap_page extends State<travelmapS_page> {
         padding: const EdgeInsets.all(8.0),
         child: Container(
           height: 60,
-          color: ThemeBc.white,
+          color: ThemeBc.app_white_color,
           child: Container(
             decoration: BoxDecoration(
-                color: ThemeBc.green05,
+                color: ThemeBc.app_linear_on,
                 borderRadius: BorderRadius.circular(
                   10,
                 ),
@@ -121,7 +121,7 @@ class _travelmap_page extends State<travelmapS_page> {
                     icon: Icon(
                       Icons.festival,
                       size: 30,
-                      color: ThemeBc.white,
+                      color: ThemeBc.app_white_color,
                     ),
                     tooltip: 'Show Snackbar',
                     onPressed: () {
@@ -131,7 +131,7 @@ class _travelmap_page extends State<travelmapS_page> {
                   icon: Icon(
                     Icons.room,
                     size: 30,
-                    color: ThemeBc.white,
+                    color: ThemeBc.app_white_color,
                   ),
                   tooltip: 'Show Snackbar',
                   onPressed: () {
@@ -142,7 +142,7 @@ class _travelmap_page extends State<travelmapS_page> {
                 //   icon: Icon(
                 //     Icons.kitesurfing,
                 //     size: 30,
-                //     color: ThemeBc.white,
+                //     color: ThemeBc.app_white_color,
                 //   ),
                 //   tooltip: 'Show Snackbar',
                 //   onPressed: () {
@@ -154,7 +154,7 @@ class _travelmap_page extends State<travelmapS_page> {
                 //   icon: Icon(
                 //     Icons.landscape,
                 //     size: 30,
-                //     color: ThemeBc.white,
+                //     color: ThemeBc.app_white_color,
                 //   ),
                 //   tooltip: 'Show Snackbar',
                 //   onPressed: () {
@@ -169,16 +169,16 @@ class _travelmap_page extends State<travelmapS_page> {
       ),
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: ThemeBc.white, //change your color here
+          color: ThemeBc.app_white_color, //change your color here
         ),
-        foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.green05,
+        foregroundColor: ThemeBc.app_white_color,
+        backgroundColor: ThemeBc.app_theme_color,
         title: Center(
           child: Text(
             'ที่ท่องเที่ยว',
             style: GoogleFonts.sarabun(
               textStyle: TextStyle(
-                color: ThemeBc.textwhite,
+                color: ThemeBc.app_textwhite_color,
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
@@ -189,12 +189,12 @@ class _travelmap_page extends State<travelmapS_page> {
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.green05,
+              color: ThemeBc.app_linear_on,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context)
-                  .showSnackBar(SnackBar(content: Text('เราเทศบาลพระลับ')));
+                  .showSnackBar(SnackBar(content: Text('เรา' + AppNew.name)));
             },
           ),
         ],
@@ -203,7 +203,7 @@ class _travelmap_page extends State<travelmapS_page> {
       //   title: Center(child: Text('${travelmapname['travel_name']}')),
       //   actions: <Widget>[
       //     IconButton(
-      //       icon: Icon(Icons.refresh,color: ThemeBc.green05,),
+      //       icon: Icon(Icons.refresh,color: ThemeBc.app_linear_on,),
       //       tooltip: 'Show Snackbar',
       //       onPressed: () {
       //         ScaffoldMessenger.of(context)
@@ -213,7 +213,7 @@ class _travelmap_page extends State<travelmapS_page> {
       //   ],
       // ),
       body: Container(
-        color: ThemeBc.green05,
+        color: ThemeBc.app_linear_on,
         child: Padding(
           padding: const EdgeInsets.all(0),
           child: ListView(
@@ -226,8 +226,7 @@ class _travelmap_page extends State<travelmapS_page> {
                       Flexible(
                           child: FlutterMap(
                         options: MapOptions(
-                            center:
-                                LatLng(16.186348810730625, 103.30025897021274),
+                            center: LatLng(AppNew.traveLat, AppNew.travelng),
                             zoom: 13),
                         layers: [
                           TileLayerOptions(
@@ -240,8 +239,7 @@ class _travelmap_page extends State<travelmapS_page> {
                           ),
                           MarkerLayerOptions(markers: [
                             Marker(
-                              point:
-                                  LatLng(16.1863488107307, 103.3002589702128),
+                              point: LatLng(AppNew.traveLat, AppNew.travelng),
                               builder: (ctx) => IconButton(
                                 icon: Icon(
                                   Icons.where_to_vote,

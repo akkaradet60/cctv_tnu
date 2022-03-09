@@ -55,7 +55,7 @@ class _RegisterPageState extends State<register_page> {
             DialogButton(
               child: Text(
                 "ปิด",
-                style: TextStyle(color: ThemeBc.white, fontSize: 18),
+                style: TextStyle(color: ThemeBc.app_white_color, fontSize: 18),
               ),
               onPressed: () => Navigator.pushNamed(context, '/login_page'),
               gradient: LinearGradient(colors: [
@@ -81,7 +81,7 @@ class _RegisterPageState extends State<register_page> {
             DialogButton(
               child: Text(
                 "ปิด",
-                style: TextStyle(color: ThemeBc.white, fontSize: 18),
+                style: TextStyle(color: ThemeBc.app_white_color, fontSize: 18),
               ),
               onPressed: () => Navigator.pop(context),
               gradient: LinearGradient(colors: [
@@ -102,10 +102,10 @@ class _RegisterPageState extends State<register_page> {
     return Scaffold(
         body: Container(
       decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [ThemeBc.green05, ThemeBc.green01],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft)),
+          gradient: LinearGradient(colors: [
+        ThemeBc.app_linear_on,
+        ThemeBc.app_linear_lower,
+      ], begin: Alignment.topRight, end: Alignment.bottomLeft)),
       // decoration: const BoxDecoration(
       //     gradient: LinearGradient(
       //         colors: [Colors.deepPurple, Colors.lightBlue],
@@ -135,7 +135,7 @@ class _RegisterPageState extends State<register_page> {
                       NeumorphicButton(
                         style: const NeumorphicStyle(
                           shape: NeumorphicShape.flat,
-                          color: ThemeBc.black54,
+                          color: ThemeBc.app_black45_color,
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(0),
@@ -149,12 +149,13 @@ class _RegisterPageState extends State<register_page> {
                                   keyboardType: TextInputType.name,
                                   decoration: InputDecoration(
                                     enabledBorder: UnderlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: ThemeBc.white),
+                                      borderSide: BorderSide(
+                                        color: ThemeBc.app_white_color,
+                                      ),
                                     ),
                                     hintStyle: GoogleFonts.sarabun(
                                       textStyle: TextStyle(
-                                        color: ThemeBc.textwhite,
+                                        color: ThemeBc.app_textwhite_color,
                                         fontWeight: FontWeight.w400,
                                         fontSize: 15,
                                       ),
@@ -177,7 +178,7 @@ class _RegisterPageState extends State<register_page> {
                       NeumorphicButton(
                         style: const NeumorphicStyle(
                           shape: NeumorphicShape.flat,
-                          color: ThemeBc.black54,
+                          color: ThemeBc.app_black45_color,
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(0),
@@ -191,12 +192,13 @@ class _RegisterPageState extends State<register_page> {
                                   keyboardType: TextInputType.name,
                                   decoration: InputDecoration(
                                     enabledBorder: UnderlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: ThemeBc.white),
+                                      borderSide: BorderSide(
+                                        color: ThemeBc.app_white_color,
+                                      ),
                                     ),
                                     hintStyle: GoogleFonts.sarabun(
                                       textStyle: TextStyle(
-                                        color: ThemeBc.textwhite,
+                                        color: ThemeBc.app_textwhite_color,
                                         fontWeight: FontWeight.w400,
                                         fontSize: 15,
                                       ),
@@ -204,7 +206,7 @@ class _RegisterPageState extends State<register_page> {
                                     // labelText: 'Email',
                                     hintText: 'นามสกุล',
                                     filled: true,
-                                    // fillColor: ThemeBc.white,
+                                    // fillColor: ThemeBc.app_white_color,
                                   ),
                                   validator: MultiValidator([
                                     RequiredValidator(
@@ -220,7 +222,7 @@ class _RegisterPageState extends State<register_page> {
                       NeumorphicButton(
                         style: const NeumorphicStyle(
                           shape: NeumorphicShape.flat,
-                          color: ThemeBc.black54,
+                          color: ThemeBc.app_black45_color,
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(0),
@@ -234,12 +236,13 @@ class _RegisterPageState extends State<register_page> {
                                   keyboardType: TextInputType.emailAddress,
                                   decoration: InputDecoration(
                                     enabledBorder: UnderlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: ThemeBc.white),
+                                      borderSide: BorderSide(
+                                        color: ThemeBc.app_white_color,
+                                      ),
                                     ),
                                     hintStyle: GoogleFonts.sarabun(
                                       textStyle: TextStyle(
-                                        color: ThemeBc.textwhite,
+                                        color: ThemeBc.app_textwhite_color,
                                         fontWeight: FontWeight.w400,
                                         fontSize: 15,
                                       ),
@@ -247,7 +250,7 @@ class _RegisterPageState extends State<register_page> {
                                     // labelText: 'Email',
                                     hintText: 'อีเมล',
                                     filled: true,
-                                    // fillColor: ThemeBc.white,
+                                    // fillColor: ThemeBc.app_white_color,
                                   ),
                                   validator: MultiValidator([
                                     RequiredValidator(
@@ -265,7 +268,7 @@ class _RegisterPageState extends State<register_page> {
                       NeumorphicButton(
                         style: const NeumorphicStyle(
                           shape: NeumorphicShape.flat,
-                          color: ThemeBc.black54,
+                          color: ThemeBc.app_black45_color,
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(0),
@@ -279,12 +282,13 @@ class _RegisterPageState extends State<register_page> {
                                   keyboardType: TextInputType.emailAddress,
                                   decoration: InputDecoration(
                                     enabledBorder: UnderlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: ThemeBc.white),
+                                      borderSide: BorderSide(
+                                        color: ThemeBc.app_white_color,
+                                      ),
                                     ),
                                     hintStyle: GoogleFonts.sarabun(
                                       textStyle: TextStyle(
-                                        color: ThemeBc.textwhite,
+                                        color: ThemeBc.app_textwhite_color,
                                         fontWeight: FontWeight.w400,
                                         fontSize: 15,
                                       ),
@@ -292,7 +296,7 @@ class _RegisterPageState extends State<register_page> {
                                     // labelText: 'Email',
                                     hintText: 'รหัสผ่าน',
                                     filled: true,
-                                    // fillColor: ThemeBc.white,
+                                    // fillColor: ThemeBc.app_white_color,
                                   ),
                                   validator: MultiValidator([
                                     RequiredValidator(
@@ -311,7 +315,7 @@ class _RegisterPageState extends State<register_page> {
                       NeumorphicButton(
                         style: const NeumorphicStyle(
                           shape: NeumorphicShape.flat,
-                          color: ThemeBc.black54,
+                          color: ThemeBc.app_black45_color,
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(0),
@@ -325,12 +329,13 @@ class _RegisterPageState extends State<register_page> {
                                   keyboardType: TextInputType.number,
                                   decoration: InputDecoration(
                                     enabledBorder: UnderlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: ThemeBc.white),
+                                      borderSide: BorderSide(
+                                        color: ThemeBc.app_white_color,
+                                      ),
                                     ),
                                     hintStyle: GoogleFonts.sarabun(
                                       textStyle: TextStyle(
-                                        color: ThemeBc.textwhite,
+                                        color: ThemeBc.app_textwhite_color,
                                         fontWeight: FontWeight.w400,
                                         fontSize: 15,
                                       ),
@@ -338,7 +343,7 @@ class _RegisterPageState extends State<register_page> {
                                     // labelText: 'Email',
                                     hintText: 'เลขบัตรประชาชน',
                                     filled: true,
-                                    // fillColor: ThemeBc.white,
+                                    // fillColor: ThemeBc.app_white_color,
                                   ),
                                   validator: MultiValidator([
                                     RequiredValidator(
@@ -369,7 +374,7 @@ class _RegisterPageState extends State<register_page> {
                             'ลงทะเบียน',
                             style: GoogleFonts.sarabun(
                               textStyle: TextStyle(
-                                color: ThemeBc.textwhite,
+                                color: ThemeBc.app_textwhite_color,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 15,
                               ),
@@ -377,7 +382,7 @@ class _RegisterPageState extends State<register_page> {
                           ),
                           icon: Icon(Icons.login_rounded),
                           style: ElevatedButton.styleFrom(
-                            primary: ThemeBc.green05,
+                            primary: ThemeBc.app_linear_on,
                             //side: BorderSide(color: Colors.red, width: 5),
                             textStyle: TextStyle(fontSize: 15),
                             padding: EdgeInsets.all(15),
@@ -401,14 +406,14 @@ class _RegisterPageState extends State<register_page> {
                           "ย้อนกลับ",
                           style: GoogleFonts.sarabun(
                             textStyle: TextStyle(
-                              color: ThemeBc.textwhite,
+                              color: ThemeBc.app_textwhite_color,
                               fontWeight: FontWeight.w400,
                               decoration: TextDecoration.underline,
                               fontSize: 15,
                             ),
                           ),
                         ),
-                        textColor: ThemeBc.textblack,
+                        textColor: ThemeBc.app_textblack_color,
                         onPressed: () {
                           // _fbKey.currentState.reset();
                           Navigator.pushNamed(context, '/login_page');

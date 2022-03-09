@@ -99,7 +99,7 @@ class _facebook_login extends State<facebook_login>
                               const SizedBox(height: 20),
                               Container(
                                 decoration: BoxDecoration(
-                                    color: ThemeBc.white,
+                                    color: ThemeBc.app_white_color,
                                     borderRadius: BorderRadius.circular(
                                       20,
                                     ),
@@ -119,12 +119,12 @@ class _facebook_login extends State<facebook_login>
                                           20,
                                         ),
                                         boxShadow: [
-                                          BoxShadow(
-                                              color: ThemeBc.white
-                                                  .withOpacity(0.5),
-                                              offset: Offset(2, 2),
-                                              blurRadius: 7,
-                                              spreadRadius: 1.0),
+                                          // BoxShadow(
+                                          //     color: ThemeBc.app_white_color,
+                                          //         .withOpacity(0.5),
+                                          //     offset: Offset(2, 2),
+                                          //     blurRadius: 7,
+                                          //     spreadRadius: 1.0),
                                         ]),
 
                                     child: FormBuilderTextField(
@@ -151,7 +151,7 @@ class _facebook_login extends State<facebook_login>
                               SizedBox(height: 10),
                               Container(
                                 decoration: BoxDecoration(
-                                    color: ThemeBc.white,
+                                    color: ThemeBc.app_white_color,
                                     borderRadius: BorderRadius.circular(
                                       20,
                                     ),
@@ -189,7 +189,7 @@ class _facebook_login extends State<facebook_login>
                               const SizedBox(height: 10),
                               Container(
                                 decoration: BoxDecoration(
-                                    color: ThemeBc.white,
+                                    color: ThemeBc.app_white_color,
                                     borderRadius: BorderRadius.circular(
                                       20,
                                     ),
@@ -227,7 +227,7 @@ class _facebook_login extends State<facebook_login>
                               const SizedBox(height: 10),
                               Container(
                                 decoration: BoxDecoration(
-                                    color: ThemeBc.white,
+                                    color: ThemeBc.app_white_color,
                                     borderRadius: BorderRadius.circular(
                                       20,
                                     ),
@@ -264,7 +264,7 @@ class _facebook_login extends State<facebook_login>
                               // const SizedBox(height: 10),
                               // Container(
                               //   decoration: BoxDecoration(
-                              //       color: ThemeBc.white,
+                              //       color: ThemeBc.app_white_color,
                               //       borderRadius: BorderRadius.circular(
                               //         20,
                               //       ),
@@ -326,7 +326,7 @@ class _facebook_login extends State<facebook_login>
                               // const SizedBox(height: 10),
                               // Container(
                               //   decoration: BoxDecoration(
-                              //       color: ThemeBc.white,
+                              //       color: ThemeBc.app_white_color,
                               //       borderRadius: BorderRadius.circular(
                               //         20,
                               //       ),
@@ -384,7 +384,7 @@ class _facebook_login extends State<facebook_login>
                               const SizedBox(height: 10),
                               // Container(
                               //   decoration: BoxDecoration(
-                              //       color: ThemeBc.white,
+                              //       color: ThemeBc.app_white_color,
                               //       borderRadius: BorderRadius.circular(
                               //         20,
                               //       ),
@@ -440,7 +440,7 @@ class _facebook_login extends State<facebook_login>
                               const SizedBox(height: 10),
                               Container(
                                 decoration: BoxDecoration(
-                                    color: ThemeBc.white,
+                                    color: ThemeBc.app_white_color,
                                     borderRadius: BorderRadius.circular(
                                       20,
                                     ),
@@ -478,7 +478,7 @@ class _facebook_login extends State<facebook_login>
                               const SizedBox(height: 10),
                               Container(
                                 decoration: BoxDecoration(
-                                    color: ThemeBc.white,
+                                    color: ThemeBc.app_white_color,
                                     borderRadius: BorderRadius.circular(
                                       20,
                                     ),
@@ -554,7 +554,7 @@ class _facebook_login extends State<facebook_login>
                                           ),
                                         ),
                                         style: ElevatedButton.styleFrom(
-                                          primary: ThemeBc.white,
+                                          primary: ThemeBc.app_white_color,
                                           onPrimary: Colors.white,
                                           shadowColor: Colors.grey[700],
                                           elevation: 30,
@@ -571,7 +571,7 @@ class _facebook_login extends State<facebook_login>
                                           style: TextStyle(
                                               decoration:
                                                   TextDecoration.underline)),
-                                      textColor: ThemeBc.white,
+                                      textColor: ThemeBc.app_white_color,
                                       onPressed: () {
                                         // _fbKey.currentState.reset();
                                         Navigator.pushNamed(
@@ -627,15 +627,15 @@ class _facebook_login extends State<facebook_login>
     }
 
     return Scaffold(
-      backgroundColor: ThemeBc.green05,
+      backgroundColor: ThemeBc.app_theme_color,
       // drawer: manu(),
       // drawer: Icon(Icons.ac_unit, color: white),
       // appBar: AppBar(
       //   iconTheme: IconThemeData(
-      //     color: ThemeBc.white, //change your color here
+      //     color: ThemeBc.app_white_color, //change your color here
       //   ),
       //
-      //   foregroundColor: ThemeBc.white,
+      //   foregroundColor: ThemeBc.app_white_color,
       //   backgroundColor: ThemeBc.black,
       //   title: Center(child: Text('บันทึก')),
       //   actions: <Widget>[],

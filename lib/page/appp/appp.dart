@@ -237,8 +237,8 @@ class _apppState extends State<appp> {
                   }
 
                   return Center(
-                      child: SpinKitCubeGrid(
-                    color: ThemeBc.green05,
+                      child: SpinKitThreeInOut(
+                    color: ThemeBc.app_linear_on,
                   ));
                 },
               ),

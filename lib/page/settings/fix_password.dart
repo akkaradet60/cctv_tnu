@@ -78,19 +78,19 @@ class _EmergecyPageState extends State<fix_password>
                                   NeumorphicButton(
                                     style: const NeumorphicStyle(
                                       shape: NeumorphicShape.flat,
-                                      color: ThemeBc.white,
+                                      color: ThemeBc.app_white_color,
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsets.all(0),
                                       child: Container(
                                         decoration: BoxDecoration(
-                                            color: ThemeBc.white,
+                                            color: ThemeBc.app_white_color,
                                             borderRadius: BorderRadius.circular(
                                               20,
                                             ),
                                             boxShadow: [
                                               BoxShadow(
-                                                  color: ThemeBc.white
+                                                  color: ThemeBc.app_white_color
                                                       .withOpacity(0.1),
                                                   offset: Offset(2, 2),
                                                   blurRadius: 7,
@@ -106,7 +106,7 @@ class _EmergecyPageState extends State<fix_password>
                                             // labelText: 'Email',
                                             hintText: "รหัสผ่านใหม่",
                                             filled: true,
-                                            fillColor: ThemeBc.white,
+                                            fillColor: ThemeBc.app_white_color,
                                           ),
                                         ), //รายละเอียดเหตุการณ์
                                       ),
@@ -116,7 +116,7 @@ class _EmergecyPageState extends State<fix_password>
                                   NeumorphicButton(
                                     style: const NeumorphicStyle(
                                       shape: NeumorphicShape.flat,
-                                      color: ThemeBc.white,
+                                      color: ThemeBc.app_white_color,
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsets.all(0),
@@ -130,7 +130,7 @@ class _EmergecyPageState extends State<fix_password>
                                             // labelText: 'Email',
                                             hintText: "ยืนยันรหัสผ่านใหม่",
                                             filled: true,
-                                            fillColor: ThemeBc.white,
+                                            fillColor: ThemeBc.app_white_color,
                                           ),
                                         ),
                                       ),
@@ -156,20 +156,21 @@ class _EmergecyPageState extends State<fix_password>
                                         },
                                         icon: Icon(
                                           Icons.lock,
-                                          color: ThemeBc.textwhite,
+                                          color: ThemeBc.app_textwhite_color,
                                         ),
                                         label: Text(
                                           'เปลี่ยนรหัสผ่าน',
                                           style: GoogleFonts.sarabun(
                                             textStyle: TextStyle(
-                                              color: ThemeBc.textwhite,
+                                              color:
+                                                  ThemeBc.app_textwhite_color,
                                               fontWeight: FontWeight.w400,
                                               fontSize: 15,
                                             ),
                                           ),
                                         ),
                                         style: ElevatedButton.styleFrom(
-                                          primary: ThemeBc.green05,
+                                          primary: ThemeBc.app_linear_on,
                                           onPrimary: Colors.black,
                                           // shadowColor: Colors.grey[700],
 
@@ -227,13 +228,13 @@ class _EmergecyPageState extends State<fix_password>
     }
 
     return Scaffold(
-      backgroundColor: ThemeBc.white,
+      backgroundColor: ThemeBc.app_white_color,
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: ThemeBc.white, //change your color here
+          color: ThemeBc.app_white_color, //change your color here
         ),
-        foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.green05,
+        foregroundColor: ThemeBc.app_white_color,
+        backgroundColor: ThemeBc.app_theme_color,
         title: Column(
           children: [
             Center(
@@ -241,7 +242,7 @@ class _EmergecyPageState extends State<fix_password>
               'แก้ไขรหัสผ่าน',
               style: GoogleFonts.sarabun(
                 textStyle: TextStyle(
-                  color: ThemeBc.textwhite,
+                  color: ThemeBc.app_textwhite_color,
                   fontWeight: FontWeight.w400,
                   fontSize: 18,
                 ),
@@ -253,7 +254,7 @@ class _EmergecyPageState extends State<fix_password>
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.green05,
+              color: ThemeBc.app_linear_on,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {},
@@ -653,15 +654,15 @@ class _EmergecyPageState extends State<fix_password>
 //       // drawer: Icon(Icons.ac_unit, color: white),
 //       appBar: AppBar(
 //         iconTheme: IconThemeData(
-//           color: ThemeBc.white, //change your color here
+//           color: ThemeBc.app_white_color, //change your color here
 //         ),
 //         
-//         foregroundColor: ThemeBc.white,
+//         foregroundColor: ThemeBc.app_white_color,
 //         backgroundColor: ThemeBc.black,
 //         title: Center(child: const Text('แก้ไขรหัสผ่าน')),
 //         actions: <Widget>[
 //           IconButton(
-//             icon: Icon(Icons.refresh,color: ThemeBc.green05,),
+//             icon: Icon(Icons.refresh,color: ThemeBc.app_linear_on,),
 //             tooltip: 'Show Snackbar',
 //             onPressed: () {
 //               ScaffoldMessenger.of(context).showSnackBar(
@@ -673,7 +674,7 @@ class _EmergecyPageState extends State<fix_password>
 //       body: Container(
 //         decoration: BoxDecoration(
 //           gradient: LinearGradient(
-//               colors: [ThemeBc.white, ThemeBc.white],
+//               colors: [ThemeBc.app_white_color, ThemeBc.white],
 //               begin: Alignment.topRight,
 //               end: Alignment.bottomLeft),
 //         ),

@@ -85,10 +85,10 @@ class _productshop_page extends State<productshop_page> {
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
-            color: ThemeBc.white, //change your color here
+            color: ThemeBc.app_white_color, //change your color here
           ),
-          foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.green05,
+          foregroundColor: ThemeBc.app_white_color,
+          backgroundColor: ThemeBc.app_theme_color,
           title: Column(
             children: [
               Center(
@@ -96,7 +96,7 @@ class _productshop_page extends State<productshop_page> {
                 'สินค้า',
                 style: GoogleFonts.sarabun(
                   textStyle: TextStyle(
-                    color: ThemeBc.textwhite,
+                    color: ThemeBc.app_textwhite_color,
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
@@ -108,7 +108,7 @@ class _productshop_page extends State<productshop_page> {
             IconButton(
               icon: Icon(
                 Icons.refresh,
-                color: ThemeBc.green05,
+                color: ThemeBc.app_linear_on,
               ),
               tooltip: 'Show Snackbar',
               onPressed: () {},
@@ -117,10 +117,10 @@ class _productshop_page extends State<productshop_page> {
         ),
         body: Container(
           decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [ThemeBc.green05, ThemeBc.green01],
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft)),
+              gradient: LinearGradient(colors: [
+            ThemeBc.app_linear_on,
+            ThemeBc.app_linear_lower,
+          ], begin: Alignment.topRight, end: Alignment.bottomLeft)),
           child: Padding(
             padding: EdgeInsets.all(10),
             child: ListView(
@@ -144,7 +144,7 @@ class _productshop_page extends State<productshop_page> {
                                         children: [
                                           Container(
                                             decoration: BoxDecoration(
-                                                color: ThemeBc.green05,
+                                                color: ThemeBc.app_linear_on,
                                                 borderRadius:
                                                     BorderRadius.circular(
                                                   10,
@@ -166,7 +166,8 @@ class _productshop_page extends State<productshop_page> {
                                                   fontSize: 20.0,
                                                   fontWeight: FontWeight.w300,
                                                   // backgroundColor: Colors.black45,
-                                                  color: ThemeBc.textwhite,
+                                                  color: ThemeBc
+                                                      .app_textwhite_color,
                                                 ),
                                               ),
                                             ),
@@ -277,7 +278,7 @@ class _productshop_page extends State<productshop_page> {
                                 child: Container(
                                   height: 400,
                                   decoration: BoxDecoration(
-                                      color: ThemeBc.white,
+                                      color: ThemeBc.app_white_color,
                                       borderRadius: BorderRadius.circular(
                                         10,
                                       ),
@@ -298,14 +299,16 @@ class _productshop_page extends State<productshop_page> {
                                             Icon(
                                               Icons.article,
                                               size: 30,
-                                              color: ThemeBc.textblack,
+                                              color:
+                                                  ThemeBc.app_textblack_color,
                                             ),
                                             SizedBox(width: 10),
                                             LocaleText(
                                               'ชื่อสินค้า',
                                               style: GoogleFonts.sarabun(
                                                 textStyle: TextStyle(
-                                                  color: ThemeBc.textblack,
+                                                  color: ThemeBc
+                                                      .app_textblack_color,
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 15,
                                                 ),
@@ -315,7 +318,8 @@ class _productshop_page extends State<productshop_page> {
                                               ' :  ${productt['productName']}',
                                               style: GoogleFonts.sarabun(
                                                 textStyle: TextStyle(
-                                                  color: ThemeBc.textblack,
+                                                  color: ThemeBc
+                                                      .app_textblack_color,
                                                   fontWeight: FontWeight.w400,
                                                   fontSize: 15,
                                                 ),
@@ -332,14 +336,16 @@ class _productshop_page extends State<productshop_page> {
                                                 Icon(
                                                   Icons.shopping_cart_rounded,
                                                   size: 30,
-                                                  color: ThemeBc.textblack,
+                                                  color: ThemeBc
+                                                      .app_textblack_color,
                                                 ),
                                                 SizedBox(width: 10),
                                                 LocaleText(
                                                   'ศูนย์แสดงสินค้าโอทอป',
                                                   style: GoogleFonts.sarabun(
                                                     textStyle: TextStyle(
-                                                      color: ThemeBc.textblack,
+                                                      color: ThemeBc
+                                                          .app_textblack_color,
                                                       fontWeight:
                                                           FontWeight.bold,
                                                       fontSize: 15,
@@ -350,14 +356,16 @@ class _productshop_page extends State<productshop_page> {
                                             ),
                                             ElevatedButton(
                                               style: ElevatedButton.styleFrom(
-                                                primary: ThemeBc.green05,
-                                                onPrimary: ThemeBc.white,
+                                                primary: ThemeBc.app_linear_on,
+                                                onPrimary:
+                                                    ThemeBc.app_white_color,
                                               ),
                                               child: LocaleText(
                                                 'ดูร้านค้า',
                                                 style: GoogleFonts.sarabun(
                                                   textStyle: TextStyle(
-                                                    color: ThemeBc.textwhite,
+                                                    color: ThemeBc
+                                                        .app_textwhite_color,
                                                     fontWeight: FontWeight.w400,
                                                     fontSize: 15,
                                                   ),
@@ -379,7 +387,8 @@ class _productshop_page extends State<productshop_page> {
                                                 '$_product',
                                                 style: GoogleFonts.sarabun(
                                                   textStyle: TextStyle(
-                                                    color: ThemeBc.textblack,
+                                                    color: ThemeBc
+                                                        .app_textblack_color,
                                                     fontWeight: FontWeight.w400,
                                                     fontSize: 20,
                                                   ),
@@ -389,7 +398,8 @@ class _productshop_page extends State<productshop_page> {
                                                 'บาท',
                                                 style: GoogleFonts.sarabun(
                                                   textStyle: TextStyle(
-                                                    color: ThemeBc.textblack,
+                                                    color: ThemeBc
+                                                        .app_textblack_color,
                                                     fontWeight: FontWeight.w400,
                                                     fontSize: 20,
                                                   ),
@@ -411,8 +421,8 @@ class _productshop_page extends State<productshop_page> {
                                                     ElevatedButton(
                                                         style: ElevatedButton
                                                             .styleFrom(
-                                                          primary:
-                                                              ThemeBc.white,
+                                                          primary: ThemeBc
+                                                              .app_white_color,
                                                           onPrimary:
                                                               Colors.white,
                                                         ),
@@ -424,7 +434,7 @@ class _productshop_page extends State<productshop_page> {
                                                                 FontWeight.bold,
                                                             // backgroundColor: Colors.black45,
                                                             color: ThemeBc
-                                                                .textblack,
+                                                                .app_textblack_color,
                                                           ),
                                                         ),
                                                         onPressed:
@@ -439,8 +449,8 @@ class _productshop_page extends State<productshop_page> {
                                                         fontWeight:
                                                             FontWeight.bold,
                                                         // backgroundColor: Colors.black45,
-                                                        color:
-                                                            ThemeBc.textblack,
+                                                        color: ThemeBc
+                                                            .app_textblack_color,
                                                       ),
                                                     ),
                                                     SizedBox(
@@ -449,8 +459,8 @@ class _productshop_page extends State<productshop_page> {
                                                     ElevatedButton(
                                                         style: ElevatedButton
                                                             .styleFrom(
-                                                          primary:
-                                                              ThemeBc.white,
+                                                          primary: ThemeBc
+                                                              .app_white_color,
                                                         ),
                                                         child: Text(
                                                           '+',
@@ -460,7 +470,7 @@ class _productshop_page extends State<productshop_page> {
                                                                 FontWeight.bold,
                                                             // backgroundColor: Colors.black45,
                                                             color: ThemeBc
-                                                                .textblack,
+                                                                .app_textblack_color,
                                                           ),
                                                         ),
                                                         onPressed:
@@ -471,14 +481,15 @@ class _productshop_page extends State<productshop_page> {
                                               ElevatedButton(
                                                   style:
                                                       ElevatedButton.styleFrom(
-                                                    primary: ThemeBc.green05,
+                                                    primary:
+                                                        ThemeBc.app_linear_on,
                                                   ),
                                                   child: Text(
                                                     'ชื้อ',
                                                     style: GoogleFonts.sarabun(
                                                       textStyle: TextStyle(
-                                                        color:
-                                                            ThemeBc.textwhite,
+                                                        color: ThemeBc
+                                                            .app_textwhite_color,
                                                         fontWeight:
                                                             FontWeight.w400,
                                                         fontSize: 15,
@@ -528,7 +539,7 @@ class _productshop_page extends State<productshop_page> {
                                                                                     'ชื่อสินค้า',
                                                                                     style: GoogleFonts.sarabun(
                                                                                       textStyle: TextStyle(
-                                                                                        color: ThemeBc.textblack,
+                                                                                        color: ThemeBc.app_textblack_color,
                                                                                         fontWeight: FontWeight.bold,
                                                                                         fontSize: 15,
                                                                                       ),
@@ -544,7 +555,7 @@ class _productshop_page extends State<productshop_page> {
                                                                                           '  ${productt['productName']}',
                                                                                           style: GoogleFonts.sarabun(
                                                                                             textStyle: TextStyle(
-                                                                                              color: ThemeBc.textblack,
+                                                                                              color: ThemeBc.app_textblack_color,
                                                                                               fontWeight: FontWeight.w400,
                                                                                               fontSize: 15,
                                                                                             ),
@@ -562,7 +573,7 @@ class _productshop_page extends State<productshop_page> {
                                                                                   'จำนวน',
                                                                                   style: GoogleFonts.sarabun(
                                                                                     textStyle: TextStyle(
-                                                                                      color: ThemeBc.textblack,
+                                                                                      color: ThemeBc.app_textblack_color,
                                                                                       fontWeight: FontWeight.w400,
                                                                                       fontSize: 15,
                                                                                     ),
@@ -574,7 +585,7 @@ class _productshop_page extends State<productshop_page> {
                                                                                     '  ${_counter}',
                                                                                     style: GoogleFonts.sarabun(
                                                                                       textStyle: TextStyle(
-                                                                                        color: ThemeBc.textblack,
+                                                                                        color: ThemeBc.app_textblack_color,
                                                                                         fontWeight: FontWeight.w400,
                                                                                         fontSize: 15,
                                                                                       ),
@@ -595,7 +606,7 @@ class _productshop_page extends State<productshop_page> {
                                                                                           'ราคา',
                                                                                           style: GoogleFonts.sarabun(
                                                                                             textStyle: TextStyle(
-                                                                                              color: ThemeBc.textblack,
+                                                                                              color: ThemeBc.app_textblack_color,
                                                                                               fontWeight: FontWeight.w400,
                                                                                               fontSize: 15,
                                                                                             ),
@@ -607,7 +618,7 @@ class _productshop_page extends State<productshop_page> {
                                                                                             ' $_product  ',
                                                                                             style: GoogleFonts.sarabun(
                                                                                               textStyle: TextStyle(
-                                                                                                color: ThemeBc.textblack,
+                                                                                                color: ThemeBc.app_textblack_color,
                                                                                                 fontWeight: FontWeight.w400,
                                                                                                 fontSize: 15,
                                                                                               ),
@@ -618,7 +629,7 @@ class _productshop_page extends State<productshop_page> {
                                                                                           'บาท',
                                                                                           style: GoogleFonts.sarabun(
                                                                                             textStyle: TextStyle(
-                                                                                              color: ThemeBc.textblack,
+                                                                                              color: ThemeBc.app_textblack_color,
                                                                                               fontWeight: FontWeight.w400,
                                                                                               fontSize: 15,
                                                                                             ),
@@ -647,7 +658,7 @@ class _productshop_page extends State<productshop_page> {
                                                                         style: ElevatedButton
                                                                             .styleFrom(
                                                                           primary:
-                                                                              ThemeBc.green05,
+                                                                              ThemeBc.app_linear_on,
                                                                         ),
                                                                         child:
                                                                             Text(
@@ -656,7 +667,7 @@ class _productshop_page extends State<productshop_page> {
                                                                               GoogleFonts.sarabun(
                                                                             textStyle:
                                                                                 TextStyle(
-                                                                              color: ThemeBc.textwhite,
+                                                                              color: ThemeBc.app_textwhite_color,
                                                                               fontWeight: FontWeight.w400,
                                                                               fontSize: 15,
                                                                             ),
@@ -702,7 +713,7 @@ class _productshop_page extends State<productshop_page> {
                                                             GoogleFonts.sarabun(
                                                           textStyle: TextStyle(
                                                             color: ThemeBc
-                                                                .textblack,
+                                                                .app_textblack_color,
                                                             fontWeight:
                                                                 FontWeight.w400,
                                                             fontSize: 15,

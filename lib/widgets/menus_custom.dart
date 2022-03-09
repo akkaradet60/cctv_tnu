@@ -32,7 +32,7 @@ class MenusCustom extends StatelessWidget {
             onPressed: pathName,
             style: const NeumorphicStyle(
               // shadowDarkColor: ThemeBc.black,
-              shadowLightColor: ThemeBc.black54,
+              shadowLightColor: ThemeBc.app_black45_color,
               // shadowDarkColorEmboss: ThemeBc.black,
               // shadowLightColorEmboss: ThemeBc.black,
 
@@ -40,7 +40,7 @@ class MenusCustom extends StatelessWidget {
               // boxShape:
               //     NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
               boxShape: NeumorphicBoxShape.circle(),
-              color: ThemeBc.white,
+              color: ThemeBc.app_text_color,
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -66,7 +66,7 @@ class MenusCustom extends StatelessWidget {
                       titleMenus,
                       style: GoogleFonts.sarabun(
                         textStyle: TextStyle(
-                          color: ThemeBc.textwhite,
+                          color: ThemeBc.app_textwhite_color,
                           fontWeight: FontWeight.w300,
                           fontSize: 15,
                         ),

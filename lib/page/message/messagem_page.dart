@@ -84,7 +84,7 @@ class _message_pageState extends State<message_page> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              color: ThemeBc.green05,
+                              color: ThemeBc.app_linear_on,
                               borderRadius: BorderRadius.circular(
                                 10,
                               ),
@@ -103,7 +103,7 @@ class _message_pageState extends State<message_page> {
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.w300,
                                 // backgroundColor: Colors.black45,
-                                color: ThemeBc.textwhite,
+                                color: ThemeBc.app_textwhite_color,
                               ),
                             ),
                           ),
@@ -208,7 +208,7 @@ class _message_pageState extends State<message_page> {
                                     children: [
                                       SizedBox(height: 135),
                                       Container(
-                                        color: ThemeBc.black54,
+                                        color: ThemeBc.app_black45_color,
                                         width: 370,
                                         height: 100,
                                         child: ListView(
@@ -222,7 +222,8 @@ class _message_pageState extends State<message_page> {
                                                 '  ${snapshot.data!['data'][item]['blog_name']}',
                                                 style: GoogleFonts.sarabun(
                                                   textStyle: TextStyle(
-                                                    color: ThemeBc.textwhite,
+                                                    color: ThemeBc
+                                                        .app_textwhite_color,
                                                     fontWeight: FontWeight.w400,
                                                     fontSize: 15,
                                                   ),
@@ -254,8 +255,8 @@ class _message_pageState extends State<message_page> {
               }
 
               return Center(
-                  child: SpinKitCubeGrid(
-                color: ThemeBc.green05,
+                  child: SpinKitThreeInOut(
+                color: ThemeBc.app_linear_on,
               ));
             },
           ),
@@ -265,7 +266,7 @@ class _message_pageState extends State<message_page> {
 
     Widget ss1(BuildContext context) {
       return Container(
-        color: ThemeBc.white,
+        color: ThemeBc.app_white_color,
         margin: EdgeInsets.only(top: 10, bottom: 0),
         width: 500,
         height: 500,
@@ -273,44 +274,44 @@ class _message_pageState extends State<message_page> {
           future: getDataSlide(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
+              if (snapshot.data!['data'] == 'ไม่พบข้อมูล') {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                            color: ThemeBc.app_linear_on,
+                            borderRadius: BorderRadius.circular(
+                              10,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.black.withOpacity(0.1),
+                                  offset: Offset(2, 4),
+                                  blurRadius: 7.0,
+                                  spreadRadius: 1.0),
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            'ไม่พบข้อมูล',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w300,
+                              // backgroundColor: Colors.black45,
+                              color: ThemeBc.app_textwhite_color,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }
               return ListView.builder(
                 itemCount: snapshot.data!['data'].length,
                 itemBuilder: (context, int index) {
-                  if (snapshot.data!['data'] == 'ไม่พบข้อมูล') {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                color: ThemeBc.green05,
-                                borderRadius: BorderRadius.circular(
-                                  10,
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.black.withOpacity(0.1),
-                                      offset: Offset(2, 4),
-                                      blurRadius: 7.0,
-                                      spreadRadius: 1.0),
-                                ]),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                'ไม่พบข้อมูล',
-                                style: TextStyle(
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.w300,
-                                  // backgroundColor: Colors.black45,
-                                  color: ThemeBc.textwhite,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  }
                   return Container(
                     width: 500,
                     child: Center(
@@ -419,7 +420,7 @@ class _message_pageState extends State<message_page> {
                                                             GoogleFonts.sarabun(
                                                           textStyle: TextStyle(
                                                             color: ThemeBc
-                                                                .textblack,
+                                                                .app_textblack_color,
                                                             fontWeight:
                                                                 FontWeight.bold,
                                                             fontSize: 17,
@@ -445,7 +446,7 @@ class _message_pageState extends State<message_page> {
                                                             GoogleFonts.sarabun(
                                                           textStyle: TextStyle(
                                                             color: ThemeBc
-                                                                .textblack,
+                                                                .app_textblack_color,
                                                             fontWeight:
                                                                 FontWeight.w400,
                                                             fontSize: 15,
@@ -478,8 +479,8 @@ class _message_pageState extends State<message_page> {
             }
 
             return Center(
-                child: SpinKitCubeGrid(
-              color: ThemeBc.green05,
+                child: SpinKitThreeInOut(
+              color: ThemeBc.app_linear_on,
             ));
           },
         ),
@@ -516,7 +517,7 @@ class _message_pageState extends State<message_page> {
             fontSize: 20.0,
             fontWeight: FontWeight.bold,
             // backgroundColor: Colors.black45,
-            color: ThemeBc.textblack,
+            color: ThemeBc.app_textblack_color,
           ),
         ),
       );
@@ -525,10 +526,10 @@ class _message_pageState extends State<message_page> {
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
-            color: ThemeBc.white, //change your color here
+            color: ThemeBc.app_white_color, //change your color here
           ),
-          foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.green05,
+          foregroundColor: ThemeBc.app_white_color,
+          backgroundColor: ThemeBc.app_theme_color,
           title: Column(
             children: [
               Center(
@@ -536,7 +537,7 @@ class _message_pageState extends State<message_page> {
                 'ข่าวสาร',
                 style: GoogleFonts.sarabun(
                   textStyle: TextStyle(
-                    color: ThemeBc.textwhite,
+                    color: ThemeBc.app_textwhite_color,
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
@@ -548,7 +549,7 @@ class _message_pageState extends State<message_page> {
             IconButton(
               icon: Icon(
                 Icons.refresh,
-                color: ThemeBc.green05,
+                color: ThemeBc.app_linear_on,
               ),
               tooltip: 'Show Snackbar',
               onPressed: () {},
@@ -557,10 +558,10 @@ class _message_pageState extends State<message_page> {
         ),
         body: Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [ThemeBc.white, ThemeBc.white],
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft),
+            gradient: LinearGradient(colors: [
+              ThemeBc.app_white_color,
+              ThemeBc.app_white_color,
+            ], begin: Alignment.topRight, end: Alignment.bottomLeft),
           ),
           child: ListView(
             children: [

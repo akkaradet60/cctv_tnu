@@ -20,8 +20,8 @@ class travelhome_page extends StatefulWidget {
 class _productshome_page extends State<travelhome_page> {
   late Map<String, dynamic> imgSlide;
   Future<Map<String, dynamic>> getDataSlide() async {
-    var url =
-        ('http://113.53.239.193/tedsaban/api/app/travel/type/restful/?type_app_id=${Global.app_id}');
+    var url = (Global.urlWeb +
+        '/api/app/travel/type/restful/?type_app_id=${Global.app_id}');
     var response = await http.get(Uri.parse(url), headers: {
       'Authorization':
           'Bearer ${Global.token ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAZ21haWwuY29tIiwiZXhwIjoxNjcxNTY2NjU4fQ.uSP6DuFYLScksvlgYZbHPEVG8FaQYGZjk37IZoOlGbg"}'
@@ -44,10 +44,10 @@ class _productshome_page extends State<travelhome_page> {
           padding: const EdgeInsets.all(8.0),
           child: Container(
             height: 60,
-            color: ThemeBc.white,
+            color: ThemeBc.app_white_color,
             child: Container(
               decoration: BoxDecoration(
-                  color: ThemeBc.green05,
+                  color: ThemeBc.app_linear_on,
                   borderRadius: BorderRadius.circular(
                     10,
                   ),
@@ -65,7 +65,7 @@ class _productshome_page extends State<travelhome_page> {
                       icon: Icon(
                         Icons.festival,
                         size: 30,
-                        color: ThemeBc.white,
+                        color: ThemeBc.app_white_color,
                       ),
                       tooltip: 'Show Snackbar',
                       onPressed: () {
@@ -75,7 +75,7 @@ class _productshome_page extends State<travelhome_page> {
                     icon: Icon(
                       Icons.room,
                       size: 30,
-                      color: ThemeBc.white,
+                      color: ThemeBc.app_white_color,
                     ),
                     tooltip: 'Show Snackbar',
                     onPressed: () {
@@ -86,7 +86,7 @@ class _productshome_page extends State<travelhome_page> {
                   //   icon: Icon(
                   //     Icons.kitesurfing,
                   //     size: 30,
-                  //     color: ThemeBc.white,
+                  //     color: ThemeBc.app_white_color,
                   //   ),
                   //   tooltip: 'Show Snackbar',
                   //   onPressed: () {
@@ -98,7 +98,7 @@ class _productshome_page extends State<travelhome_page> {
                   //   icon: Icon(
                   //     Icons.landscape,
                   //     size: 30,
-                  //     color: ThemeBc.white,
+                  //     color: ThemeBc.app_white_color,
                   //   ),
                   //   tooltip: 'Show Snackbar',
                   //   onPressed: () {
@@ -113,10 +113,10 @@ class _productshome_page extends State<travelhome_page> {
         ),
         appBar: AppBar(
           iconTheme: IconThemeData(
-            color: ThemeBc.white, //change your color here
+            color: ThemeBc.app_white_color, //change your color here
           ),
-          foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.green05,
+          foregroundColor: ThemeBc.app_white_color,
+          backgroundColor: ThemeBc.app_theme_color,
           title: Column(
             children: [
               Center(
@@ -124,7 +124,7 @@ class _productshome_page extends State<travelhome_page> {
                 'ท่องเที่ยว',
                 style: GoogleFonts.sarabun(
                   textStyle: TextStyle(
-                    color: ThemeBc.textwhite,
+                    color: ThemeBc.app_textwhite_color,
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
@@ -136,7 +136,7 @@ class _productshome_page extends State<travelhome_page> {
             IconButton(
               icon: Icon(
                 Icons.refresh,
-                color: ThemeBc.green05,
+                color: ThemeBc.app_linear_on,
               ),
               tooltip: 'Show Snackbar',
               onPressed: () {},
@@ -145,10 +145,10 @@ class _productshome_page extends State<travelhome_page> {
         ),
         body: Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [ThemeBc.white, ThemeBc.white],
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft),
+            gradient: LinearGradient(colors: [
+              ThemeBc.app_white_color,
+              ThemeBc.app_white_color,
+            ], begin: Alignment.topRight, end: Alignment.bottomLeft),
           ),
           child: ListView(
             children: [
@@ -172,7 +172,7 @@ class _productshome_page extends State<travelhome_page> {
         Padding(
           padding: const EdgeInsets.all(0),
           child: Container(
-            color: ThemeBc.white,
+            color: ThemeBc.app_white_color,
             margin: EdgeInsets.only(top: 10, bottom: 0),
             width: 500,
             height: 700,
@@ -187,7 +187,7 @@ class _productshome_page extends State<travelhome_page> {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                                color: ThemeBc.green05,
+                                color: ThemeBc.app_linear_on,
                                 borderRadius: BorderRadius.circular(
                                   10,
                                 ),
@@ -206,7 +206,7 @@ class _productshome_page extends State<travelhome_page> {
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.w300,
                                   // backgroundColor: Colors.black45,
-                                  color: ThemeBc.textwhite,
+                                  color: ThemeBc.app_textwhite_color,
                                 ),
                               ),
                             ),
@@ -265,7 +265,7 @@ class _productshome_page extends State<travelhome_page> {
                                             SizedBox(height: 60),
                                             Container(
                                               decoration: BoxDecoration(
-                                                  color: ThemeBc.green05,
+                                                  color: ThemeBc.app_linear_on,
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                     5,
@@ -279,7 +279,8 @@ class _productshome_page extends State<travelhome_page> {
                                                   '${snapshot.data!['data'][index]['type_name']}',
                                                   style: GoogleFonts.sarabun(
                                                     textStyle: TextStyle(
-                                                      color: ThemeBc.textwhite,
+                                                      color: ThemeBc
+                                                          .app_textwhite_color,
                                                       fontWeight:
                                                           FontWeight.w400,
                                                       fontSize: 20,
@@ -301,7 +302,8 @@ class _productshome_page extends State<travelhome_page> {
                                                     child: Text_pane(
                                                         text:
                                                             '  ${snapshot.data!['data'][index]['type_detail']}',
-                                                        color: ThemeBc.white,
+                                                        color: ThemeBc
+                                                            .app_white_color,
                                                         fontSize: 15),
                                                   )
                                                 ],
@@ -327,8 +329,8 @@ class _productshome_page extends State<travelhome_page> {
                 }
 
                 return Center(
-                    child: SpinKitCubeGrid(
-                  color: ThemeBc.green05,
+                    child: SpinKitThreeInOut(
+                  color: ThemeBc.app_linear_on,
                 ));
               },
             ),

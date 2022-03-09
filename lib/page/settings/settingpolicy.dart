@@ -85,7 +85,7 @@ class _settingpolicyState extends State<settingpolicy>
                 padding: const EdgeInsets.all(5),
                 child: Container(
                   decoration: BoxDecoration(
-                      color: ThemeBc.white,
+                      color: ThemeBc.app_white_color,
                       borderRadius: BorderRadius.circular(
                         10,
                       ),
@@ -107,7 +107,7 @@ class _settingpolicyState extends State<settingpolicy>
                             '  $app_agreement',
                             style: GoogleFonts.sarabun(
                               textStyle: TextStyle(
-                                color: ThemeBc.textblack,
+                                color: ThemeBc.app_textblack_color,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 15,
                               ),
@@ -138,7 +138,7 @@ class _settingpolicyState extends State<settingpolicy>
                 padding: const EdgeInsets.all(5),
                 child: Container(
                   decoration: BoxDecoration(
-                      color: ThemeBc.white,
+                      color: ThemeBc.app_white_color,
                       borderRadius: BorderRadius.circular(
                         10,
                       ),
@@ -160,7 +160,7 @@ class _settingpolicyState extends State<settingpolicy>
                             '  $app_agreement_cn',
                             style: GoogleFonts.sarabun(
                               textStyle: TextStyle(
-                                color: ThemeBc.textblack,
+                                color: ThemeBc.app_textblack_color,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 15,
                               ),
@@ -191,7 +191,7 @@ class _settingpolicyState extends State<settingpolicy>
                 padding: const EdgeInsets.all(5),
                 child: Container(
                   decoration: BoxDecoration(
-                      color: ThemeBc.white,
+                      color: ThemeBc.app_white_color,
                       borderRadius: BorderRadius.circular(
                         10,
                       ),
@@ -213,7 +213,7 @@ class _settingpolicyState extends State<settingpolicy>
                             '  $app_agreement_en',
                             style: GoogleFonts.sarabun(
                               textStyle: TextStyle(
-                                color: ThemeBc.textblack,
+                                color: ThemeBc.app_textblack_color,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 15,
                               ),
@@ -235,18 +235,18 @@ class _settingpolicyState extends State<settingpolicy>
       // drawer: Icon(Icons.ac_unit, color: white),
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: ThemeBc.white, //change your color here
+          color: ThemeBc.app_white_color, //change your color here
         ),
-        foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.green05,
+        foregroundColor: ThemeBc.app_white_color,
+        backgroundColor: ThemeBc.app_theme_color,
         title: Column(
           children: [
             Center(
                 child: LocaleText(
-              'เทศบาลพระลับ',
+              AppNew.name,
               style: GoogleFonts.sarabun(
                 textStyle: TextStyle(
-                  color: ThemeBc.textwhite,
+                  color: ThemeBc.app_textwhite_color,
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                 ),
@@ -258,7 +258,7 @@ class _settingpolicyState extends State<settingpolicy>
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.green05,
+              color: ThemeBc.app_linear_on,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {},

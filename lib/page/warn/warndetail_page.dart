@@ -57,16 +57,16 @@ class _composedetail_page extends State<warndetail_page>
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
-            color: ThemeBc.white, //change your color here
+            color: ThemeBc.app_white_color, //change your color here
           ),
-          foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.green05,
+          foregroundColor: ThemeBc.app_white_color,
+          backgroundColor: ThemeBc.app_theme_color,
           title: Center(
               child: Text(
             '${datail_blogpose['emt_name'] ?? '-'}',
             style: GoogleFonts.sarabun(
               textStyle: TextStyle(
-                color: ThemeBc.textwhite,
+                color: ThemeBc.app_textwhite_color,
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
@@ -76,7 +76,7 @@ class _composedetail_page extends State<warndetail_page>
             IconButton(
               icon: Icon(
                 Icons.refresh,
-                color: ThemeBc.green05,
+                color: ThemeBc.app_linear_on,
               ),
               tooltip: 'Show Snackbar',
               onPressed: () {},
@@ -85,10 +85,10 @@ class _composedetail_page extends State<warndetail_page>
         ),
         body: Container(
           decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [ThemeBc.white, ThemeBc.white],
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft)),
+              gradient: LinearGradient(colors: [
+            ThemeBc.app_white_color,
+            ThemeBc.app_white_color,
+          ], begin: Alignment.topRight, end: Alignment.bottomLeft)),
           height: 1000,
           width: 1000,
           child: Container(
@@ -116,7 +116,7 @@ class _composedetail_page extends State<warndetail_page>
                                     return Center(
                                       child: Container(
                                         decoration: BoxDecoration(
-                                            color: ThemeBc.textblack,
+                                            color: ThemeBc.app_textblack_color,
                                             borderRadius: BorderRadius.circular(
                                               20,
                                             ),
@@ -266,7 +266,8 @@ class _composedetail_page extends State<warndetail_page>
                                                 'ชื่อผู้แจ้ง : ',
                                                 style: GoogleFonts.sarabun(
                                                   textStyle: TextStyle(
-                                                    color: ThemeBc.textblack,
+                                                    color: ThemeBc
+                                                        .app_textblack_color,
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 17,
                                                   ),
@@ -276,7 +277,8 @@ class _composedetail_page extends State<warndetail_page>
                                                 '${datail_blogpose['em_owner']}',
                                                 style: GoogleFonts.sarabun(
                                                   textStyle: TextStyle(
-                                                    color: ThemeBc.textblack,
+                                                    color: ThemeBc
+                                                        .app_textblack_color,
                                                     fontWeight: FontWeight.w400,
                                                     fontSize: 17,
                                                   ),
@@ -290,7 +292,8 @@ class _composedetail_page extends State<warndetail_page>
                                                 'ประเภท : ',
                                                 style: GoogleFonts.sarabun(
                                                   textStyle: TextStyle(
-                                                    color: ThemeBc.textblack,
+                                                    color: ThemeBc
+                                                        .app_textblack_color,
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 17,
                                                   ),
@@ -300,7 +303,8 @@ class _composedetail_page extends State<warndetail_page>
                                                 '${datail_blogpose['emt_name'] ?? '-'}',
                                                 style: GoogleFonts.sarabun(
                                                   textStyle: TextStyle(
-                                                    color: ThemeBc.textblack,
+                                                    color: ThemeBc
+                                                        .app_textblack_color,
                                                     fontWeight: FontWeight.w400,
                                                     fontSize: 17,
                                                   ),
@@ -337,7 +341,8 @@ class _composedetail_page extends State<warndetail_page>
                                             '   ${datail_blogpose['em_detail']}',
                                             style: GoogleFonts.sarabun(
                                               textStyle: TextStyle(
-                                                color: ThemeBc.textblack,
+                                                color:
+                                                    ThemeBc.app_textblack_color,
                                                 fontWeight: FontWeight.w400,
                                                 fontSize: 15,
                                               ),
@@ -348,7 +353,8 @@ class _composedetail_page extends State<warndetail_page>
                                             'เบอร์ติดต่อที่คุณแจ้ง : ${datail_blogpose['em_phone']}',
                                             style: GoogleFonts.sarabun(
                                               textStyle: TextStyle(
-                                                color: ThemeBc.textblack,
+                                                color:
+                                                    ThemeBc.app_textblack_color,
                                                 fontWeight: FontWeight.w400,
                                                 fontSize: 15,
                                               ),
@@ -358,7 +364,8 @@ class _composedetail_page extends State<warndetail_page>
                                             'จุดเกิดเหตุ : ${datail_blogpose['em_lat']} ${datail_blogpose['em_lng']}',
                                             style: GoogleFonts.sarabun(
                                               textStyle: TextStyle(
-                                                color: ThemeBc.textblack,
+                                                color:
+                                                    ThemeBc.app_textblack_color,
                                                 fontWeight: FontWeight.w400,
                                                 fontSize: 15,
                                               ),

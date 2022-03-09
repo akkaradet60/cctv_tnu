@@ -354,7 +354,7 @@ class _warn_page extends State<compose_page>
                           NeumorphicButton(
                             style: const NeumorphicStyle(
                               shape: NeumorphicShape.flat,
-                              color: ThemeBc.white,
+                              color: ThemeBc.app_white_color,
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(0),
@@ -383,7 +383,7 @@ class _warn_page extends State<compose_page>
                           NeumorphicButton(
                             style: const NeumorphicStyle(
                               shape: NeumorphicShape.flat,
-                              color: ThemeBc.white,
+                              color: ThemeBc.app_white_color,
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(0),
@@ -398,7 +398,7 @@ class _warn_page extends State<compose_page>
                                         labelText: 'ชื่อผู้แจ้ง',
                                         hintText: 'ชื่อผู้แจ้ง',
                                         // filled: true,
-                                        fillColor: ThemeBc.white,
+                                        fillColor: ThemeBc.app_white_color,
                                       ),
                                       validator: MultiValidator([
                                         RequiredValidator(
@@ -413,7 +413,7 @@ class _warn_page extends State<compose_page>
                           NeumorphicButton(
                             style: const NeumorphicStyle(
                               shape: NeumorphicShape.flat,
-                              color: ThemeBc.white,
+                              color: ThemeBc.app_white_color,
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(0),
@@ -429,7 +429,7 @@ class _warn_page extends State<compose_page>
                                         // labelText: 'Email',
                                         hintText: 'เบอร์โทรศัพท์',
                                         // filled: true,
-                                        fillColor: ThemeBc.white,
+                                        fillColor: ThemeBc.app_white_color,
                                       ),
                                       validator: MultiValidator([
                                         RequiredValidator(
@@ -447,7 +447,7 @@ class _warn_page extends State<compose_page>
                           NeumorphicButton(
                             style: const NeumorphicStyle(
                               shape: NeumorphicShape.flat,
-                              color: ThemeBc.white,
+                              color: ThemeBc.app_white_color,
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(0),
@@ -463,7 +463,7 @@ class _warn_page extends State<compose_page>
                                         // labelText: 'Email',
                                         hintText: 'รายละเอียดเหตุการณ์',
                                         // filled: true,
-                                        fillColor: ThemeBc.white,
+                                        fillColor: ThemeBc.app_white_color,
                                       ),
                                       validator: MultiValidator([
                                         RequiredValidator(
@@ -481,7 +481,7 @@ class _warn_page extends State<compose_page>
                           NeumorphicButton(
                             style: const NeumorphicStyle(
                               shape: NeumorphicShape.flat,
-                              color: ThemeBc.white,
+                              color: ThemeBc.app_white_color,
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -543,7 +543,7 @@ class _warn_page extends State<compose_page>
                                           child: NeumorphicButton(
                                             style: const NeumorphicStyle(
                                               shape: NeumorphicShape.flat,
-                                              color: ThemeBc.white,
+                                              color: ThemeBc.app_white_color,
                                             ),
                                             child: Padding(
                                               padding: const EdgeInsets.all(0),
@@ -643,7 +643,7 @@ class _warn_page extends State<compose_page>
                                                                                     fontSize: 20.0,
                                                                                     fontWeight: FontWeight.bold,
                                                                                     // backgroundColor: Colors.black45,
-                                                                                    color: ThemeBc.white,
+                                                                                    color: ThemeBc.app_white_color,
                                                                                   ),
                                                                                 ),
                                                                               ],
@@ -669,7 +669,8 @@ class _warn_page extends State<compose_page>
                                           '      จุดเกิดเหตุ ',
                                           style: GoogleFonts.sarabun(
                                             textStyle: TextStyle(
-                                              color: ThemeBc.textblack,
+                                              color:
+                                                  ThemeBc.app_textblack_color,
                                               fontWeight: FontWeight.bold,
                                               fontSize: 16,
                                             ),
@@ -679,11 +680,11 @@ class _warn_page extends State<compose_page>
                                         NeumorphicButton(
                                           style: const NeumorphicStyle(
                                             shape: NeumorphicShape.flat,
-                                            color: ThemeBc.white,
+                                            color: ThemeBc.app_white_color,
                                           ),
                                           child: Container(
                                             decoration: BoxDecoration(
-                                              color: ThemeBc.grey,
+                                              color: ThemeBc.app_grey_color,
                                               borderRadius:
                                                   BorderRadius.circular(
                                                 10,
@@ -748,7 +749,7 @@ class _warn_page extends State<compose_page>
                                                                         textStyle:
                                                                             TextStyle(
                                                                           color:
-                                                                              ThemeBc.textblack,
+                                                                              ThemeBc.app_textblack_color,
                                                                           fontWeight:
                                                                               FontWeight.w400,
                                                                           fontSize:
@@ -783,8 +784,8 @@ class _warn_page extends State<compose_page>
                                   // Text('${userLocation.latitude} ${userLocation.longitude}');
                                 } else {
                                   Center(
-                                      child: SpinKitCubeGrid(
-                                    color: ThemeBc.green05,
+                                      child: SpinKitThreeInOut(
+                                    color: ThemeBc.app_linear_on,
                                   ));
                                 }
                                 return Container();
@@ -806,10 +807,10 @@ class _warn_page extends State<compose_page>
                                       addEmergecy(_fbKey.currentState!.value);
                                     }
                                   },
-                                  colorButton: ThemeBc.green05,
+                                  colorButton: ThemeBc.app_linear_on,
                                   textStyle: GoogleFonts.sarabun(
                                     textStyle: TextStyle(
-                                      color: ThemeBc.textwhite,
+                                      color: ThemeBc.app_textwhite_color,
                                       fontWeight: FontWeight.w400,
                                       fontSize: 15,
                                     ),
@@ -844,7 +845,7 @@ class _warn_page extends State<compose_page>
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              color: ThemeBc.green05,
+                              color: ThemeBc.app_linear_on,
                               borderRadius: BorderRadius.circular(
                                 10,
                               ),
@@ -863,7 +864,7 @@ class _warn_page extends State<compose_page>
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.w300,
                                 // backgroundColor: Colors.black45,
-                                color: ThemeBc.textwhite,
+                                color: ThemeBc.app_textwhite_color,
                               ),
                             ),
                           ),
@@ -940,8 +941,8 @@ class _warn_page extends State<compose_page>
               }
 
               return Center(
-                  child: SpinKitCubeGrid(
-                color: ThemeBc.green05,
+                  child: SpinKitThreeInOut(
+                color: ThemeBc.app_linear_on,
               ));
             },
           ),
@@ -953,15 +954,15 @@ class _warn_page extends State<compose_page>
       // drawer: Icon(Icons.ac_unit, color: white),
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: ThemeBc.white, //change your color here
+          color: ThemeBc.app_white_color, //change your color here
         ),
-        foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.green05,
+        foregroundColor: ThemeBc.app_white_color,
+        backgroundColor: ThemeBc.app_theme_color,
         title: LocaleText(
           'ร้องเรียน',
           style: GoogleFonts.sarabun(
             textStyle: TextStyle(
-              color: ThemeBc.textwhite,
+              color: ThemeBc.app_textwhite_color,
               fontWeight: FontWeight.w400,
               fontSize: 18,
             ),
@@ -972,7 +973,7 @@ class _warn_page extends State<compose_page>
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.green05,
+              color: ThemeBc.app_linear_on,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {},
@@ -994,10 +995,10 @@ class _warn_page extends State<compose_page>
       ),
       body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [ThemeBc.white, ThemeBc.white],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft),
+          gradient: LinearGradient(colors: [
+            ThemeBc.app_white_color,
+            ThemeBc.app_white_color,
+          ], begin: Alignment.topRight, end: Alignment.bottomLeft),
         ),
         child: TabBarView(
           controller: _tabController,

@@ -61,10 +61,10 @@ class _maplocation_page extends State<maplocation_page> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: ThemeBc.white, //change your color here
+          color: ThemeBc.app_white_color, //change your color here
         ),
-        foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.green05,
+        foregroundColor: ThemeBc.app_white_color,
+        backgroundColor: ThemeBc.app_theme_color,
         title: Container(
           height: 50,
           width: 300,
@@ -77,7 +77,7 @@ class _maplocation_page extends State<maplocation_page> {
                 '${hotlinee['travelName']}',
                 style: GoogleFonts.sarabun(
                   textStyle: TextStyle(
-                    color: ThemeBc.textwhite,
+                    color: ThemeBc.app_textwhite_color,
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
@@ -90,7 +90,7 @@ class _maplocation_page extends State<maplocation_page> {
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.green05,
+              color: ThemeBc.app_linear_on,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {
@@ -168,7 +168,7 @@ class _maplocation_page extends State<maplocation_page> {
                                 ' ${hotlinee['travelName']}',
                                 style: GoogleFonts.sarabun(
                                   textStyle: TextStyle(
-                                    color: ThemeBc.textblack,
+                                    color: ThemeBc.app_textblack_color,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 17,
                                   ),
@@ -186,7 +186,8 @@ class _maplocation_page extends State<maplocation_page> {
                                           '${hotlinee['detail']}',
                                           style: GoogleFonts.sarabun(
                                             textStyle: TextStyle(
-                                              color: ThemeBc.textblack,
+                                              color:
+                                                  ThemeBc.app_textblack_color,
                                               fontWeight: FontWeight.w400,
                                               fontSize: 15,
                                             ),
@@ -199,7 +200,8 @@ class _maplocation_page extends State<maplocation_page> {
                                           '  ${hotlinee['travelDetail']}',
                                           style: GoogleFonts.sarabun(
                                             textStyle: TextStyle(
-                                              color: ThemeBc.textblack,
+                                              color:
+                                                  ThemeBc.app_textblack_color,
                                               fontWeight: FontWeight.w400,
                                               fontSize: 15,
                                             ),
@@ -220,8 +222,8 @@ class _maplocation_page extends State<maplocation_page> {
               );
             } else {
               return Center(
-                  child: SpinKitCubeGrid(
-                color: ThemeBc.green05,
+                  child: SpinKitThreeInOut(
+                color: ThemeBc.app_linear_on,
               ));
             }
           },

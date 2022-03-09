@@ -72,13 +72,13 @@ class _map_prod extends State<map_page> {
     //   zoom: 14,
     // );
     return Scaffold(
-      backgroundColor: ThemeBc.white,
+      backgroundColor: ThemeBc.app_white_color,
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: ThemeBc.white, //change your color here
+          color: ThemeBc.app_white_color, //change your color here
         ),
-        foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.green05,
+        foregroundColor: ThemeBc.app_white_color,
+        backgroundColor: ThemeBc.app_theme_color,
         title: Column(
           children: [
             Center(
@@ -86,7 +86,7 @@ class _map_prod extends State<map_page> {
               '${hotlinee['hotlineName']}',
               style: GoogleFonts.sarabun(
                 textStyle: TextStyle(
-                  color: ThemeBc.textwhite,
+                  color: ThemeBc.app_textwhite_color,
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                 ),
@@ -98,7 +98,7 @@ class _map_prod extends State<map_page> {
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.green05,
+              color: ThemeBc.app_linear_on,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {
@@ -193,13 +193,13 @@ class _map_prod extends State<map_page> {
               // Text('${userLocation.latitude} ${userLocation.longitude}');
             } else {
               return Center(
-                  child: SpinKitCubeGrid(
-                color: ThemeBc.green05,
+                  child: SpinKitThreeInOut(
+                color: ThemeBc.app_linear_on,
               ));
             }
             return Center(
-                child: SpinKitCubeGrid(
-              color: ThemeBc.green05,
+                child: SpinKitThreeInOut(
+              color: ThemeBc.app_linear_on,
             ));
           }),
       //   height: 1000,
@@ -417,15 +417,15 @@ class _map_prod extends State<map_page> {
 //       backgroundColor: ThemeBc.black,
 //       appBar: AppBar(
 //         iconTheme: IconThemeData(
-//           color: ThemeBc.green05, //change your color here
+//           color: ThemeBc.app_linear_on, //change your color here
 //         ),
 //         
-//         foregroundColor: ThemeBc.white,
-//         backgroundColor: ThemeBc.green05,
+//         foregroundColor: ThemeBc.app_white_color,
+//         backgroundColor: ThemeBc.app_theme_color,
 //         // title: Center(child: Text('${hotlinee['hotlineName']}')),
 //         actions: <Widget>[
 //           IconButton(
-//             icon: Icon(Icons.refresh,color: ThemeBc.green05,),
+//             icon: Icon(Icons.refresh,color: ThemeBc.app_linear_on,),
 //             tooltip: 'Show Snackbar',
 //             onPressed: () {
 //               ScaffoldMessenger.of(context).showSnackBar(
@@ -454,7 +454,7 @@ class _map_prod extends State<map_page> {
       //   children: [
 
       //     Container(
-      //       color: ThemeBc.green05,
+      //       color: ThemeBc.app_linear_on,
       //       child: Padding(
       //         padding: const EdgeInsets.all(8.0),
       //         child: Container(
@@ -516,7 +516,7 @@ class _map_prod extends State<map_page> {
       //                                 //   icon: Icon(Icons.gps_fixed),
       //                                 //   label: Text('ตำแหน่งของคุณ'),
       //                                 //   style: ElevatedButton.styleFrom(
-      //                                 //     primary: ThemeBc.green05,
+      //                                 //     primary: ThemeBc.app_linear_on,
       //                                 //     onPrimary: Colors.white,
       //                                 //     elevation: 30,
       //                                 //     shape: RoundedRectangleBorder(

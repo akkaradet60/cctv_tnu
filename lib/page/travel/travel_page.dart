@@ -87,7 +87,7 @@ class _travel_page extends State<travel_page> {
                           children: [
                             Container(
                               decoration: BoxDecoration(
-                                  color: ThemeBc.green05,
+                                  color: ThemeBc.app_linear_on,
                                   borderRadius: BorderRadius.circular(
                                     10,
                                   ),
@@ -106,7 +106,7 @@ class _travel_page extends State<travel_page> {
                                     fontSize: 20.0,
                                     fontWeight: FontWeight.w300,
                                     // backgroundColor: Colors.black45,
-                                    color: ThemeBc.textwhite,
+                                    color: ThemeBc.app_textwhite_color,
                                   ),
                                 ),
                               ),
@@ -154,7 +154,7 @@ class _travel_page extends State<travel_page> {
                                                     Container(
                                                       decoration: BoxDecoration(
                                                           color: ThemeBc
-                                                              .orangeAccent,
+                                                              .app_theme_color,
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
@@ -184,7 +184,7 @@ class _travel_page extends State<travel_page> {
                                                                 FontWeight.w300,
                                                             // backgroundColor: Colors.black45,
                                                             color: ThemeBc
-                                                                .textwhite,
+                                                                .app_textwhite_color,
                                                           ),
                                                         ),
                                                       ),
@@ -381,7 +381,7 @@ class _travel_page extends State<travel_page> {
                                                     Container(
                                                       decoration: BoxDecoration(
                                                           color: ThemeBc
-                                                              .background,
+                                                              .app_theme_color,
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
@@ -400,7 +400,7 @@ class _travel_page extends State<travel_page> {
                                                             textStyle:
                                                                 TextStyle(
                                                               color: ThemeBc
-                                                                  .textwhite,
+                                                                  .app_textwhite_color,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
@@ -424,7 +424,7 @@ class _travel_page extends State<travel_page> {
                                                                 text:
                                                                     '  ${snapshot.data!['data'][index]['travel_detail']}',
                                                                 color: ThemeBc
-                                                                    .white,
+                                                                    .app_textwhite_color,
                                                                 fontSize: 15),
                                                           )
                                                         ],
@@ -453,8 +453,8 @@ class _travel_page extends State<travel_page> {
                   }
 
                   return Center(
-                      child: SpinKitCubeGrid(
-                    color: ThemeBc.green05,
+                      child: SpinKitThreeInOut(
+                    color: ThemeBc.app_linear_on,
                   ));
                 },
               ),
@@ -467,10 +467,10 @@ class _travel_page extends State<travel_page> {
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
-            color: ThemeBc.white, //change your color here
+            color: ThemeBc.app_white_color, //change your color here
           ),
-          foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.green05,
+          foregroundColor: ThemeBc.app_white_color,
+          backgroundColor: ThemeBc.app_theme_color,
           title: Column(
             children: [
               Center(child: Text('${travel['type_name']}')),
@@ -480,7 +480,7 @@ class _travel_page extends State<travel_page> {
             IconButton(
               icon: Icon(
                 Icons.refresh,
-                color: ThemeBc.green05,
+                color: ThemeBc.app_linear_on,
               ),
               tooltip: 'Show Snackbar',
               onPressed: () {},
@@ -489,10 +489,10 @@ class _travel_page extends State<travel_page> {
         ),
         body: Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [ThemeBc.white, ThemeBc.white],
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft),
+            gradient: LinearGradient(colors: [
+              ThemeBc.app_white_color,
+              ThemeBc.app_white_color,
+            ], begin: Alignment.topRight, end: Alignment.bottomLeft),
           ),
           child: ListView(
             children: [

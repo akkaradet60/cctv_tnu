@@ -38,7 +38,7 @@ class settings extends StatelessWidget {
                 "ตั้งค่าข้อมูล",
                 style: GoogleFonts.sarabun(
                   textStyle: TextStyle(
-                    color: ThemeBc.textblack,
+                    color: ThemeBc.app_textblack_color,
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                   ),
@@ -60,7 +60,7 @@ class settings extends StatelessWidget {
                     //       style: TextStyle(fontSize: 18),
                     //     ),
                     //     style: ElevatedButton.styleFrom(
-                    //       primary: ThemeBc.green05,
+                    //       primary: ThemeBc.app_linear_on,
                     //       onPrimary: Colors.white,
                     //       shadowColor: Colors.grey[700],
                     //       elevation: 30,
@@ -83,7 +83,7 @@ class settings extends StatelessWidget {
                             'ข้อตกลงและเงื่อนไข',
                             style: GoogleFonts.sarabun(
                               textStyle: TextStyle(
-                                color: ThemeBc.textblack,
+                                color: ThemeBc.app_textblack_color,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 15,
                               ),
@@ -94,7 +94,7 @@ class settings extends StatelessWidget {
                             color: Colors.black,
                           ),
                           style: ElevatedButton.styleFrom(
-                            primary: ThemeBc.white,
+                            primary: ThemeBc.app_white_color,
                             //side: BorderSide(color: Colors.red, width: 5),
                             textStyle: TextStyle(fontSize: 15),
                             padding: EdgeInsets.all(17),
@@ -122,7 +122,7 @@ class settings extends StatelessWidget {
                             'แก้ไขข้อมูลส่วนตัว',
                             style: GoogleFonts.sarabun(
                               textStyle: TextStyle(
-                                color: ThemeBc.textblack,
+                                color: ThemeBc.app_textblack_color,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 15,
                               ),
@@ -133,7 +133,7 @@ class settings extends StatelessWidget {
                             color: Colors.black,
                           ),
                           style: ElevatedButton.styleFrom(
-                            primary: ThemeBc.white,
+                            primary: ThemeBc.app_white_color,
                             //side: BorderSide(color: Colors.red, width: 5),
                             textStyle: TextStyle(fontSize: 15),
                             padding: EdgeInsets.all(17),
@@ -189,7 +189,7 @@ class settings extends StatelessWidget {
                 "ตั้งค่า",
                 style: GoogleFonts.sarabun(
                   textStyle: TextStyle(
-                    color: ThemeBc.textblack,
+                    color: ThemeBc.app_textblack_color,
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                   ),
@@ -208,7 +208,7 @@ class settings extends StatelessWidget {
                       'เปลี่ยนภาษา',
                       style: GoogleFonts.sarabun(
                         textStyle: TextStyle(
-                          color: ThemeBc.textblack,
+                          color: ThemeBc.app_textblack_color,
                           fontWeight: FontWeight.w400,
                           fontSize: 15,
                         ),
@@ -219,7 +219,7 @@ class settings extends StatelessWidget {
                       color: Colors.black,
                     ),
                     style: ElevatedButton.styleFrom(
-                      primary: ThemeBc.white,
+                      primary: ThemeBc.app_white_color,
                       //side: BorderSide(color: Colors.red, width: 5),
                       textStyle: TextStyle(fontSize: 15),
                       padding: EdgeInsets.all(17),
@@ -260,7 +260,7 @@ class settings extends StatelessWidget {
                                           height: 40,
                                           width: 250,
                                           decoration: BoxDecoration(
-                                            color: ThemeBc.green05,
+                                            color: ThemeBc.app_linear_on,
                                             borderRadius: BorderRadius.circular(
                                               10,
                                             ),
@@ -272,7 +272,8 @@ class settings extends StatelessWidget {
                                                 'ภาษาไทย',
                                                 style: GoogleFonts.sarabun(
                                                   textStyle: TextStyle(
-                                                    color: ThemeBc.textwhite,
+                                                    color: ThemeBc
+                                                        .app_textwhite_color,
                                                     fontWeight: FontWeight.w400,
                                                     fontSize: 15,
                                                   ),
@@ -296,7 +297,7 @@ class settings extends StatelessWidget {
                                           height: 40,
                                           width: 250,
                                           decoration: BoxDecoration(
-                                            color: ThemeBc.green05,
+                                            color: ThemeBc.app_linear_on,
                                             borderRadius: BorderRadius.circular(
                                               10,
                                             ),
@@ -308,7 +309,8 @@ class settings extends StatelessWidget {
                                                 'English',
                                                 style: GoogleFonts.sarabun(
                                                   textStyle: TextStyle(
-                                                    color: ThemeBc.textwhite,
+                                                    color: ThemeBc
+                                                        .app_textwhite_color,
                                                     fontWeight: FontWeight.w400,
                                                     fontSize: 15,
                                                   ),
@@ -332,7 +334,7 @@ class settings extends StatelessWidget {
                                           height: 40,
                                           width: 250,
                                           decoration: BoxDecoration(
-                                            color: ThemeBc.green05,
+                                            color: ThemeBc.app_linear_on,
                                             borderRadius: BorderRadius.circular(
                                               10,
                                             ),
@@ -344,7 +346,8 @@ class settings extends StatelessWidget {
                                                 '中国',
                                                 style: GoogleFonts.sarabun(
                                                   textStyle: TextStyle(
-                                                    color: ThemeBc.textwhite,
+                                                    color: ThemeBc
+                                                        .app_textwhite_color,
                                                     fontWeight: FontWeight.w400,
                                                     fontSize: 15,
                                                   ),
@@ -378,7 +381,7 @@ class settings extends StatelessWidget {
                       'แก้ไขรหัสผ่าน',
                       style: GoogleFonts.sarabun(
                         textStyle: TextStyle(
-                          color: ThemeBc.textblack,
+                          color: ThemeBc.app_textblack_color,
                           fontWeight: FontWeight.w400,
                           fontSize: 15,
                         ),
@@ -389,7 +392,7 @@ class settings extends StatelessWidget {
                       color: Colors.black,
                     ),
                     style: ElevatedButton.styleFrom(
-                      primary: ThemeBc.white,
+                      primary: ThemeBc.app_white_color,
                       //side: BorderSide(color: Colors.red, width: 5),
                       textStyle: TextStyle(fontSize: 15),
                       padding: EdgeInsets.all(17),
@@ -430,16 +433,16 @@ class settings extends StatelessWidget {
       drawer: menu_pang(),
       appBar: AppBar(
         iconTheme: const IconThemeData(
-          color: ThemeBc.white, //change your color here
+          color: ThemeBc.app_white_color, //change your color here
         ),
-        foregroundColor: ThemeBc.white,
-        backgroundColor: ThemeBc.green05,
+        foregroundColor: ThemeBc.app_white_color,
+        backgroundColor: ThemeBc.app_theme_color,
         title: Center(
           child: LocaleText(
             "ตั้งค่า",
             style: GoogleFonts.sarabun(
               textStyle: TextStyle(
-                color: ThemeBc.textwhite,
+                color: ThemeBc.app_textwhite_color,
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
@@ -450,7 +453,7 @@ class settings extends StatelessWidget {
           IconButton(
             icon: Icon(
               Icons.refresh,
-              color: ThemeBc.green05,
+              color: ThemeBc.app_linear_on,
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {},
@@ -459,10 +462,10 @@ class settings extends StatelessWidget {
       ),
       body: Container(
         decoration: const BoxDecoration(
-          gradient: const LinearGradient(
-              colors: [ThemeBc.green05, ThemeBc.green01],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft),
+          gradient: const LinearGradient(colors: [
+            ThemeBc.app_linear_on,
+            ThemeBc.app_linear_lower,
+          ], begin: Alignment.topRight, end: Alignment.bottomLeft),
         ),
         child: SafeArea(
           child: ListView(

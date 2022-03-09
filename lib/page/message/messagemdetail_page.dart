@@ -66,17 +66,17 @@ class _messagemdetail_page extends State<messagemdetail_page> {
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
-            color: ThemeBc.white, //change your color here
+            color: ThemeBc.app_white_color, //change your color here
           ),
-          foregroundColor: ThemeBc.white,
-          backgroundColor: ThemeBc.green05,
+          foregroundColor: ThemeBc.app_white_color,
+          backgroundColor: ThemeBc.app_theme_color,
           title: Column(
             children: [
               Text(
                 '${productt['blog_name']}',
                 style: GoogleFonts.sarabun(
                   textStyle: TextStyle(
-                    color: ThemeBc.textwhite,
+                    color: ThemeBc.app_textwhite_color,
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
@@ -88,7 +88,7 @@ class _messagemdetail_page extends State<messagemdetail_page> {
             IconButton(
               icon: Icon(
                 Icons.refresh,
-                color: ThemeBc.green05,
+                color: ThemeBc.app_linear_on,
               ),
               tooltip: 'Show Snackbar',
               onPressed: () {},
@@ -115,7 +115,7 @@ class _messagemdetail_page extends State<messagemdetail_page> {
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
-                                        color: ThemeBc.green05,
+                                        color: ThemeBc.app_linear_on,
                                         borderRadius: BorderRadius.circular(
                                           10,
                                         ),
@@ -135,7 +135,7 @@ class _messagemdetail_page extends State<messagemdetail_page> {
                                           fontSize: 20.0,
                                           fontWeight: FontWeight.w300,
                                           // backgroundColor: Colors.black45,
-                                          color: ThemeBc.textwhite,
+                                          color: ThemeBc.app_textwhite_color,
                                         ),
                                       ),
                                     ),
@@ -228,8 +228,8 @@ class _messagemdetail_page extends State<messagemdetail_page> {
                         }
 
                         return Center(
-                            child: SpinKitCubeGrid(
-                          color: ThemeBc.green05,
+                            child: SpinKitThreeInOut(
+                          color: ThemeBc.app_linear_on,
                         ));
                       },
                     ),
@@ -258,7 +258,8 @@ class _messagemdetail_page extends State<messagemdetail_page> {
                                           '${productt['blog_name']}',
                                           style: GoogleFonts.sarabun(
                                             textStyle: TextStyle(
-                                              color: ThemeBc.textblack,
+                                              color:
+                                                  ThemeBc.app_textblack_color,
                                               fontWeight: FontWeight.bold,
                                               fontSize: 18,
                                             ),

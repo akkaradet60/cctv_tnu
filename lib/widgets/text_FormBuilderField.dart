@@ -23,7 +23,7 @@ class FormBuilderFieldText extends StatelessWidget {
     return NeumorphicButton(
       style: const NeumorphicStyle(
         shape: NeumorphicShape.flat,
-        color: ThemeBc.white,
+        color: ThemeBc.app_white_color,
       ),
       child: Container(
         child: FormBuilderTextField(
@@ -35,7 +35,7 @@ class FormBuilderFieldText extends StatelessWidget {
             labelText: labelText,
             hintText: labelText,
             // filled: true,
-            fillColor: ThemeBc.white,
+            fillColor: ThemeBc.app_white_color,
           ),
         ),
       ),

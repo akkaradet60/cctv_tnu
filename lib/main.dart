@@ -77,7 +77,7 @@ void main() async {
       channelName: 'poro',
       channelDescription: 'not',
       defaultColor: ThemeBc.black,
-      ledColor: ThemeBc.white,
+      ledColor: ThemeBc.app_white_color,
       playSound: true,
       enableLights: true,
       enableVibration: true,
@@ -109,7 +109,7 @@ class MyApp extends StatelessWidget {
           routes: {
             '/': (context) => token == null
                 ? AnimatedSplashScreen(
-                    backgroundColor: ThemeBc.green05,
+                    backgroundColor: ThemeBc.app_theme_color,
                     splash: Center(
                       child: Container(
                         child: Row(
@@ -118,9 +118,9 @@ class MyApp extends StatelessWidget {
                             Container(
                                 height: 100,
                                 width: 100,
-                                child: Image.asset('assets/logo02.png')),
-                            Text(
-                              'เทศบาลพระลับ',
+                                child: Image.asset(AppNew.iconasset)),
+                            LocaleText(
+                              AppNew.name,
                               style: GoogleFonts.sarabun(
                                 textStyle: TextStyle(
                                   color: Colors.white,
@@ -140,13 +140,13 @@ class MyApp extends StatelessWidget {
                         ),
                       ),
                     ),
-                    // backgroundColor: ThemeBc.green05,
+                    // backgroundColor: ThemeBc.app_theme_color,
                     duration: 3000,
                     splashTransition: SplashTransition.scaleTransition,
                     nextScreen: login_page())
-                : Global.app_id == "2"
+                : Global.app_id == Global.app_id
                     ? AnimatedSplashScreen(
-                        backgroundColor: ThemeBc.green05,
+                        backgroundColor: ThemeBc.app_theme_color,
                         splash: Center(
                           child: Container(
                             child: Row(
@@ -155,9 +155,9 @@ class MyApp extends StatelessWidget {
                                 Container(
                                     height: 100,
                                     width: 100,
-                                    child: Image.asset('assets/logo02.png')),
-                                Text(
-                                  'เทศบาลพระลับ',
+                                    child: Image.asset(AppNew.iconasset)),
+                                LocaleText(
+                                  AppNew.name,
                                   style: GoogleFonts.sarabun(
                                     textStyle: TextStyle(
                                       color: Colors.white,
@@ -177,7 +177,7 @@ class MyApp extends StatelessWidget {
                             ),
                           ),
                         ),
-                        // backgroundColor: ThemeBc.green05,
+                        // backgroundColor: ThemeBc.app_theme_color,
                         duration: 3000,
                         splashTransition: SplashTransition.scaleTransition,
                         nextScreen: home_page())

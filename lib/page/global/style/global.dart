@@ -39,7 +39,7 @@ TextTheme defaultText = TextTheme(
 //         ),
 //         Text(
 //           "กำลังโหลด...",
-//           style: TextStyle(color: ThemeBc.white),
+//           style: TextStyle(color: ThemeBc.app_white_color,),
 //         )
 //       ]),
 //     ),
@@ -58,37 +58,49 @@ TextStyle whiteTextStyle1 = GoogleFonts.poppins(color: backgroundColor1);
 //appBar
 class ThemeBc {
   //ใช้ทุกแอป
-  static const white = Colors.white;
-  static const whiteBg = Color(0xFFFFF9EC);
-  static const black54e = Color.fromARGB(204, 42, 39, 39);
+  // static const white = Colors.white;
+  // static const whiteBg = Color(0xFFFFF9EC);
+  // static const black54e = Color.fromARGB(204, 42, 39, 39);
   static const black = Color(0xff1B2836);
   static const blue = Color(0xff4267B2);
-  static const textwhite = Colors.white;
-  static const textblack = Color(0xff1B2836);
-  static const grey = Color(0xffeeeeee);
-  static const grey01 = Color(0xFF757575);
-  static const black54 = Colors.black54;
+  // static const textwhite = Colors.white;
+  // static const textblack = Color(0xff1B2836);
+  // static const grey = Color(0xffeeeeee);
+  // static const grey01 = Color(0xFF757575);
+  // static const black54 = Colors.black54;
   static const red = Color.fromARGB(255, 152, 12, 2);
   static const yellow = Colors.yellow;
 
   //สีหลักแต่ละแอป
-  static const background = Color(0xff084B2C);
+  // static const background = Color(0xff084B2C);
+
+  static const app_white_color = Colors.white;
+  static const app_grey01_color = Color(0xFF757575);
+  static const app_textwhite_color = Colors.white; // -ข้อความขาว
+  static const app_textblack_color = Colors.black; // -ข้อความดำ
+  static const app_black45_color = Colors.black45;
+  static const app_theme_color = Color(0xFF660066); // -สีดำใส่
+  static const app_grey_color = Color(0xffeeeeee);
+  static const app_background_color = Colors.black45; //สีพื้นหลัง
+  static const app_text_color = Colors.white; //เมนู
+  static const app_linear_on = Color(0xFF660066); //สีพื้นหลังบน
+  static const app_linear_lower = Color(0xFFFF9900); // //สีพื้นหลังล่าง
 
 //แอป 01
-  static const orangeAccent = Colors.orangeAccent;
-  static const pinkAccent = Colors.pinkAccent;
+  // static const orangeAccent = Colors.orangeAccent;
+  // static const pinkAccent = Colors.pinkAccent;
 
 // แอป 02
-  static const textmenu = Colors.white;
-  static const green05 = Color(0xFF084B2C);
-  static const green01 = Color(0xFF7FE12B);
+  // static const textmenu = Colors.white;
+  // static const green05 = Color(0xFF084B2C);
+  // static const green01 = Color(0xFF7FE12B);
   // static const green04 = Color(0xFF6D9A28);
   // static const green02 = Color(0xFF5FB317);
   // static const green03 = Color(0xFF84BE42);
 }
 
 TextStyle primaryTextStyle = GoogleFonts.poppins(
-  color: ThemeBc.green05,
+  color: ThemeBc.app_linear_on,
 );
 //bg
 // const whiteBg = Color(0xFFFFF9EC);
@@ -116,7 +128,7 @@ TextStyle primaryTextStyle = GoogleFonts.poppins(
 //   color: secondaryTextColor,
 // );
 
-TextStyle whiteTextStyle = GoogleFonts.poppins(color: ThemeBc.white);
+TextStyle whiteTextStyle = GoogleFonts.poppins(color: ThemeBc.app_white_color);
 
 FontWeight light = FontWeight.w300;
 FontWeight regular = FontWeight.w400;
@@ -152,7 +164,6 @@ class AppTheme {
   static const Color nearlyBlack = Color(0xFF213333);
   static const Color grey = Color(0xFF3A5160);
   static const Color dark_grey = Color(0xFF313A44);
-
   static const Color darkText = Color(0xFF253840);
   static const Color darkerText = Color(0xFF17262A);
   static const Color lightText = Color(0xFF4A6572);
